@@ -23,6 +23,7 @@
 #define GEARS_META_META_HPP
 
 #include <type_traits>
+#include <utility>
 
 namespace gears {
 template<typename T>
@@ -73,6 +74,22 @@ struct All : Bool<true> {};
 
 template<typename T, typename... Args>
 struct All<T, Args...> : Conditional<T, All<Args...>, Bool<false>> {};
+
+template<typename Signature, typename Anon = void>
+struct result_of_impl {};
+
+template<typename Function, typename... Args>
+struct result_of_impl<Function(Args...), Void<decltype(std::declval<Function>()(std::declval<Args>()...))>> {
+    using type = decltype(std::declval<Function>()(std::declval<Args>()...));
+};
+
+template<typename Signature>
+using ResultOf = Type<result_of_impl<Signature>>;
+
+template<typename T>
+constexpr const T& as_const(T& t) {
+    return t;
+}
 
 template<typename T>
 constexpr T abs(T t) {
