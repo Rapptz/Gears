@@ -27,7 +27,7 @@
 
 namespace gears {
 template<typename CharT, typename Traits>
-std::basic_string<CharT, Traits> to_lower(std::basic_string<CharT, Traits> str, const std::locale& loc = std::locale()) {
+inline std::basic_string<CharT, Traits> to_lower(std::basic_string<CharT, Traits> str, const std::locale& loc = std::locale()) {
     for(auto&& c : str) {
         c = std::tolower(c, loc);
     }
@@ -35,7 +35,7 @@ std::basic_string<CharT, Traits> to_lower(std::basic_string<CharT, Traits> str, 
 }
 
 template<typename CharT, typename Traits>
-std::basic_string<CharT, Traits> to_upper(std::basic_string<CharT, Traits> str, const std::locale& loc = std::locale()) {
+inline std::basic_string<CharT, Traits> to_upper(std::basic_string<CharT, Traits> str, const std::locale& loc = std::locale()) {
     for(auto&& c : str) {
         c = std::toupper(c, loc);
     }
@@ -43,7 +43,7 @@ std::basic_string<CharT, Traits> to_upper(std::basic_string<CharT, Traits> str, 
 }
 
 template<typename CharT, typename Traits>
-bool is_lower(const std::basic_string<CharT, Traits>& str, const std::locale& loc = std::locale()) {
+inline bool is_lower(const std::basic_string<CharT, Traits>& str, const std::locale& loc = std::locale()) {
     for(auto&& c : str) {
         if(c != std::tolower(c, loc))
             return false;
@@ -52,7 +52,7 @@ bool is_lower(const std::basic_string<CharT, Traits>& str, const std::locale& lo
 }
 
 template<typename CharT, typename Traits>
-bool is_upper(const std::basic_string<CharT, Traits>& str, const std::locale& loc = std::locale()) {
+inline bool is_upper(const std::basic_string<CharT, Traits>& str, const std::locale& loc = std::locale()) {
     for(auto&& c : str) {
         if(c != std::toupper(c, loc))
             return false;
