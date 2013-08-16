@@ -45,6 +45,14 @@ struct identity {
     using type = T;
 };
 
+template<typename...>
+struct void_ { 
+    using type = void;
+};
+
+template<typename... T>
+using Void = Type<void_<T...>>;
+
 template<bool I>
 using Bool = Const<bool, I>;
 
