@@ -30,7 +30,9 @@ template<typename CharT, typename Traits>
 inline bool iequal(const std::basic_string<CharT, Traits>& lhs, const std::basic_string<CharT, Traits>& rhs, const std::locale& loc = std::locale()) {
     if(lhs.length() != rhs.length())
         return false;
-    for(auto i = lhs.cbegin(), auto j = rhs.cbegin(); i != lhs.cend() && j != rhs.cend(); ++i, ++j) {
+    auto i = lhs.cbegin();
+    auto j = rhs.cbegin();
+    for(; i != lhs.cend() && j != rhs.cend(); ++i, ++j) {
         if(std::toupper(*i, loc) != std::toupper(*j, loc))
             return false;
     }
