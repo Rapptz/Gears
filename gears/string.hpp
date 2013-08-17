@@ -27,5 +27,6 @@
 #include "string/literal.hpp"
 #include "string/replace.hpp"
 #include "string/trim.hpp"
+#include "string/transforms.hpp"
 
 #endif // GEARS_STRING_HPP

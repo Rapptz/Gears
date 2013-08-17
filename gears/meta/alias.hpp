@@ -82,6 +82,9 @@ using Unsigned = Type<std::make_unsigned<T>>;
 
 template<typename T>
 using Unqualified = RemoveCV<RemoveRef<T>>;
+
+template<typename T>
+using ValueType = typename Unqualified<T>::value_type;
 } // gears
 
 #endif // GEARS_META_ALIAS_HPP

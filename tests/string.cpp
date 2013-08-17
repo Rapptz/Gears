@@ -20,6 +20,7 @@
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 #include <catch.hpp>
+#include <vector>
 #include <gears/string.hpp>
 
 TEST_CASE("Case convert", "[case]") {
@@ -77,4 +78,16 @@ TEST_CASE("Trim", "[trim]") {
     REQUIRE(gears::trim_right(test) == "  Hello");
     REQUIRE(gears::trim(test) == "Hello");
     REQUIRE(test == "  Hello  ");
+}
+
+TEST_CASE("Transforms", "[trans]") {
+    using namespace gears::literals;
+    std::vector<int> v = {1,2,3,4,5};
+    REQUIRE(gears::right("abcdef"_s, 4) == "cdef");
+    REQUIRE(gears::right("abcdef"_s, 10) == "abcdef");
+    REQUIRE(gears::left("abcdef"_s, 4) == "abcd");
+    REQUIRE(gears::left("abcdef"_s, 10) == "abcdef");
+    REQUIRE(gears::reverse("abcdef"_s) == "fedcba");
+    REQUIRE(gears::join(v, ", "_s) == "1, 2, 3, 4, 5");
+    REQUIRE(gears::join_if(v, ", "_s, [](int x) { return x < 3; }) == "1, 2");
 }
