@@ -39,4 +39,5 @@ TEST_CASE("Predicates", "[pred]") {
     REQUIRE(gears::iends_with("Hello World"_s, "WoRLd"_s));
     REQUIRE(gears::contains("Hello World"_s, "World"_s));
     REQUIRE(gears::icontains("Hello World"_s, "Lo WoRL"_s));
+    REQUIRE(gears::all("i3aa34"_s, gears::is_any_of<>("i3a4")));
 }

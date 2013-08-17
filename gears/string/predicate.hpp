@@ -26,6 +26,20 @@
 #include <locale>
 
 namespace gears {
+template<typename CharT = char>
+struct is_any_of {
+    const CharT* str;
+    is_any_of(const CharT* str): str(str) {}
+    bool operator()(CharT s) const {
+        auto copy = str;
+        while(*copy) {
+            if(*copy++ == s)
+                return true;
+        }
+        return false;
+    }
+};
+
 template<typename CharT, typename Traits>
 inline bool iequal(const std::basic_string<CharT, Traits>& lhs, const std::basic_string<CharT, Traits>& rhs, const std::locale& loc = std::locale()) {
     if(lhs.length() != rhs.length())
@@ -97,6 +111,15 @@ inline bool icontains(const std::basic_string<CharT, Traits>& str, const std::ba
                 break;
         }
     }
+}
+
+template<typename CharT, typename Traits, typename Predicate>
+inline bool all(const std::basic_string<CharT, Traits>& str, Predicate&& pred) {
+    for(auto&& c : str) {
+        if(!pred(c))
+            return false;
+    }
+    return true;
 }
 } // gears
 
