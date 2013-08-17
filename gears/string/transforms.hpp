@@ -89,6 +89,17 @@ inline Unqualified<String> join_if(const Cont& cont, const String& sep, UnaryPre
 
     return { ss.str() };
 }
+
+template<typename String, typename OutIt>
+inline OutIt split(const String& str, const String& sep, OutIt it) {
+    size_t start = 0, end = 0;
+    while((end = str.find(sep, start)) != String::npos) {
+        *it++ = str.substr(start, end - start);
+        start = end + sep.length();
+    }
+    *it++ = str.substr(start);
+    return it;
+}
 } // gears
 
 #endif // GEARS_STRING_TRANSFORMS_HPP

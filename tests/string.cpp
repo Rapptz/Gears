@@ -21,6 +21,7 @@
 
 #include <catch.hpp>
 #include <vector>
+#include <iterator>
 #include <gears/string.hpp>
 
 TEST_CASE("Case convert", "[case]") {
@@ -83,6 +84,8 @@ TEST_CASE("Trim", "[trim]") {
 TEST_CASE("Transforms", "[trans]") {
     using namespace gears::literals;
     std::vector<int> v = {1,2,3,4,5};
+    std::vector<std::string> a;
+    std::vector<std::string> expected_one = {"a", "b", "c", "d"};
     REQUIRE(gears::right("abcdef"_s, 4) == "cdef");
     REQUIRE(gears::right("abcdef"_s, 10) == "abcdef");
     REQUIRE(gears::left("abcdef"_s, 4) == "abcd");
@@ -90,4 +93,6 @@ TEST_CASE("Transforms", "[trans]") {
     REQUIRE(gears::reverse("abcdef"_s) == "fedcba");
     REQUIRE(gears::join(v, ", "_s) == "1, 2, 3, 4, 5");
     REQUIRE(gears::join_if(v, ", "_s, [](int x) { return x < 3; }) == "1, 2");
+    gears::split("a, b, c, d"_s, ", "_s, std::back_inserter(a));
+    REQUIRE((a == expected_one)); // work around
 }
