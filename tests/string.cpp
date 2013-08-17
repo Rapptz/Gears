@@ -41,3 +41,12 @@ TEST_CASE("Predicates", "[pred]") {
     REQUIRE(gears::icontains("Hello World"_s, "Lo WoRL"_s));
     REQUIRE(gears::all("i3aa34"_s, gears::is_any_of<>("i3a4")));
 }
+
+TEST_CASE("Replacing", "[replace]") {
+    using namespace gears::literals;
+    std::string test("Hello Hello Hello");
+    REQUIRE(gears::replace_first(test, "Hello"_s, "Bye"_s) == "Bye Hello Hello");
+    REQUIRE(gears::replace_last(test, "Hello"_s, "Bye"_s) == "Hello Hello Bye");
+    REQUIRE(gears::replace_nth(test, 1, "Hello"_s, "Bye"_s) == "Hello Bye Hello");
+    REQUIRE(gears::replace_all(test, "Hello"_s, "Bye"_s) == "Bye Bye Bye");
+}

@@ -25,5 +25,6 @@
 #include "string/case.hpp"
 #include "string/predicate.hpp"
 #include "string/literal.hpp"
+#include "string/replace.hpp"
 
 #endif // GEARS_STRING_HPP
