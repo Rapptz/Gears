@@ -35,4 +35,8 @@ TEST_CASE("Predicates", "[pred]") {
     REQUIRE(gears::iequal("hello"_s, "HELLO"_s));
     REQUIRE(gears::starts_with("Hello World"_s, "Hello"_s));
     REQUIRE(gears::istarts_with("HELLO world"_s, "hello"_s));
+    REQUIRE(gears::ends_with("Hello World"_s, "World"_s));
+    REQUIRE(gears::iends_with("Hello World"_s, "WoRLd"_s));
+    REQUIRE(gears::contains("Hello World"_s, "World"_s));
+    REQUIRE(gears::icontains("Hello World"_s, "Lo WoRL"_s));
 }

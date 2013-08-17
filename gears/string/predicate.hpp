@@ -54,6 +54,50 @@ inline bool istarts_with(const std::basic_string<CharT, Traits>& str, const std:
     }
     return true;
 }
+
+template<typename CharT, typename Traits>
+inline bool ends_with(const std::basic_string<CharT, Traits>& str, const std::basic_string<CharT, Traits>& other) {
+    if(str.length() >= other.length())
+        return str.compare(str.length() - other.length(), other.length(), other) == 0;
+    else
+        return false;
+}
+
+template<typename CharT, typename Traits>
+inline bool iends_with(const std::basic_string<CharT, Traits>& str, const std::basic_string<CharT, Traits>& other, const std::locale& loc = std::locale()) {
+    if(str.length() >= other.length()) {
+        for(unsigned start = str.length() - other.length(), i = 0; i < other.length(); ++i, ++start) {
+            if(std::toupper(str[start], loc) != std::toupper(other[i], loc))
+                return false;
+        }
+        return true;
+    }
+    else 
+        return false;
+}
+
+template<typename CharT, typename Traits>
+inline bool contains(const std::basic_string<CharT, Traits>& str, const std::basic_string<CharT, Traits>& other) {
+    return str.find(other) != std::basic_string<CharT, Traits>::npos;
+}
+
+template<typename CharT, typename Traits>
+inline bool icontains(const std::basic_string<CharT, Traits>& str, const std::basic_string<CharT, Traits>& other, const std::locale& loc = std::locale()) {
+    auto first = str.cbegin();
+    auto last = str.cend();
+    auto other_last = other.cend();
+    for(; ; ++first) {
+        auto it = first;
+        for(auto i = other.cbegin(); ; ++i, ++it) {
+            if(i == other_last)
+                return true;
+            if(it == last)
+                return false;
+            if(std::toupper(*it, loc) != std::toupper(*i, loc))
+                break;
+        }
+    }
+}
 } // gears
 
 #endif // GEARS_STRING_PREDICATE_HPP
