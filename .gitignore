@@ -15,3 +15,10 @@
 # Scripts and executables
 *.bat
 *.exe
+
+# Scons stuff
+.*scons*
+
+# obj and bin directories
+bin/*
+obj/*
