@@ -45,8 +45,18 @@ TEST_CASE("Predicates", "[pred]") {
 TEST_CASE("Replacing", "[replace]") {
     using namespace gears::literals;
     std::string test("Hello Hello Hello");
-    REQUIRE(gears::replace_first(test, "Hello"_s, "Bye"_s) == "Bye Hello Hello");
-    REQUIRE(gears::replace_last(test, "Hello"_s, "Bye"_s) == "Hello Hello Bye");
-    REQUIRE(gears::replace_nth(test, 1, "Hello"_s, "Bye"_s) == "Hello Bye Hello");
-    REQUIRE(gears::replace_all(test, "Hello"_s, "Bye"_s) == "Bye Bye Bye");
+
+    SECTION("Replace Algorithms", "[replace-algo]") {
+        REQUIRE(gears::replace_first(test, "Hello"_s, "Bye"_s) == "Bye Hello Hello");
+        REQUIRE(gears::replace_last(test, "Hello"_s, "Bye"_s) == "Hello Hello Bye");
+        REQUIRE(gears::replace_nth(test, 1, "Hello"_s, "Bye"_s) == "Hello Bye Hello");
+        REQUIRE(gears::replace_all(test, "Hello"_s, "Bye"_s) == "Bye Bye Bye");
+    }
+
+    SECTION("Erase Algorithms", "[erase-algo]") {
+        REQUIRE(gears::erase_first(test, "Hello"_s) == " Hello Hello");
+        REQUIRE(gears::erase_last(test, "Hello"_s) == "Hello Hello ");
+        REQUIRE(gears::erase_nth(test, 1, "Hello"_s) == "Hello  Hello");
+        REQUIRE(gears::erase_all(test, "Hello"_s) == "  ");
+    }
 }

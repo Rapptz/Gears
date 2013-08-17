@@ -75,6 +75,42 @@ inline Unqualified<String> replace_all(String str, const String& from, const Str
     }
     return str;
 }
+
+template<typename String>
+inline Unqualified<String> erase_first(String str, const String& erase) {
+    auto start_pos = str.find_first_of(erase);
+    if(start_pos == String::npos)
+        return str;
+    str.replace(start_pos, erase.length(), "");
+    return str;
+}
+
+template<typename String>
+inline Unqualified<String> erase_last(String str, const String& erase) {
+    auto start_pos = str.rfind(erase);
+    if(start_pos == String::npos)
+        return str;
+    str.replace(start_pos, erase.length(), "");
+    return str;
+}
+
+template<typename String>
+inline Unqualified<String> erase_nth(String str, size_t nth, const String& erase) {
+    auto pos = string_replace_detail::nth_finder(str, erase, nth);
+    if(pos == String::npos)
+        return str;
+    str.replace(pos, erase.length(), "");
+    return str;
+}
+
+template<typename String>
+inline Unqualified<String> erase_all(String str, const String& erase) {
+    size_t start_pos = 0;
+    while((start_pos = str.find(erase, start_pos)) != String::npos) {
+        str.replace(start_pos, erase.length(), "");
+    }
+    return str;
+}
 } // gears
 
 #endif // GEARS_STRING_REPLACE_HPP
