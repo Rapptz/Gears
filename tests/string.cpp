@@ -26,8 +26,8 @@ TEST_CASE("Case convert", "[case]") {
     using namespace gears::literals;
     REQUIRE(gears::to_lower("HELLO wOrLD"_s) == "hello world");
     REQUIRE(gears::to_upper("hello world"_s) == "HELLO WORLD");
-    REQUIRE(gears::is_lower("hello world"_s));
-    REQUIRE(gears::is_upper("HELLO WORLD"_s));
+    REQUIRE(gears::is_all_lower("hello world"_s));
+    REQUIRE(gears::is_all_upper("HELLO WORLD"_s));
 }
 
 TEST_CASE("Predicates", "[pred]") {

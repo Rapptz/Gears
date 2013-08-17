@@ -43,7 +43,7 @@ inline Unqualified<String> to_upper(String str, const std::locale& loc = std::lo
 }
 
 template<typename String>
-inline bool is_lower(const String& str, const std::locale& loc = std::locale()) {
+inline bool is_all_lower(const String& str, const std::locale& loc = std::locale()) {
     for(auto&& c : str) {
         if(c != std::tolower(c, loc))
             return false;
@@ -52,7 +52,7 @@ inline bool is_lower(const String& str, const std::locale& loc = std::locale()) 
 }
 
 template<typename String>
-inline bool is_upper(const String& str, const std::locale& loc = std::locale()) {
+inline bool is_all_upper(const String& str, const std::locale& loc = std::locale()) {
     for(auto&& c : str) {
         if(c != std::toupper(c, loc))
             return false;
