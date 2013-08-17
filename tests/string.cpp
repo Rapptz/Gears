@@ -69,3 +69,12 @@ TEST_CASE("Finding", "[find]") {
     REQUIRE(gears::find_last_of("Hello"_s, gears::is_any_of<>("l")) == 3);
     REQUIRE(gears::find_last_not_of(" Hello "_s, gears::is_any_of<>(" ")) == 5);
 }
+
+TEST_CASE("Trim", "[trim]") {
+    using namespace gears::literals;
+    std::string test("  Hello  ");
+    REQUIRE(gears::trim_left(test) == "Hello  ");
+    REQUIRE(gears::trim_right(test) == "  Hello");
+    REQUIRE(gears::trim(test) == "Hello");
+    REQUIRE(test == "  Hello  ");
+}
