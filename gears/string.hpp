@@ -27,5 +27,6 @@
 #include "string/literal.hpp"
 #include "string/replace.hpp"
 #include "string/find.hpp"
+#include "string/classification.hpp"
 
 #endif // GEARS_STRING_HPP
