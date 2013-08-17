@@ -19,15 +19,47 @@
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-#ifndef GEARS_STRING_HPP
-#define GEARS_STRING_HPP
+#ifndef GEARS_STRING_BUILDER_HPP
+#define GEARS_STRING_BUILDER_HPP
 
-#include "string/case.hpp"
-#include "string/predicate.hpp"
-#include "string/literal.hpp"
-#include "string/replace.hpp"
-#include "string/trim.hpp"
-#include "string/transforms.hpp"
-#include "string/builder.hpp"
+#include <sstream>
+#include <utility>
 
-#endif // GEARS_STRING_HPP
+namespace gears {
+template<typename CharT = char>
+struct stringbuilder {
+private:
+    std::basic_ostringstream<CharT> ss;
+public:
+    stringbuilder() = default;
+    stringbuilder(decltype(ss.str()) str): ss(std::move(str), std::ios_base::ate) {}
+
+    template<typename T>
+    auto operator<<(T&& data) -> decltype(*this) {
+        ss << std::forward<T>(data);
+        return *this;
+    }
+
+    template<typename T>
+    auto append(T&& data) -> decltype(*this) {
+        ss << std::forward<T>(data);
+        return *this;
+    }
+
+    auto clear() -> decltype(*this) {
+        ss.str(CharT());
+        ss.clear();
+        return *this;
+    }
+
+    auto to_string() -> decltype(ss.str()) {
+        return { ss.str() };
+    }
+
+    operator decltype(ss.str())() {
+        return { ss.str() };
+    }
+};
+} // gears
+
+#endif // GEARS_STRING_BUILDER_HPP
