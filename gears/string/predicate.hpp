@@ -22,7 +22,6 @@
 #ifndef GEARS_STRING_PREDICATE_HPP
 #define GEARS_STRING_PREDICATE_HPP
 
-#include <string>
 #include <locale>
 
 namespace gears {
@@ -40,8 +39,8 @@ struct is_any_of {
     }
 };
 
-template<typename CharT, typename Traits>
-inline bool iequal(const std::basic_string<CharT, Traits>& lhs, const std::basic_string<CharT, Traits>& rhs, const std::locale& loc = std::locale()) {
+template<typename String>
+inline bool iequal(const String& lhs, const String& rhs, const std::locale& loc = std::locale()) {
     if(lhs.length() != rhs.length())
         return false;
     auto i = lhs.cbegin();
@@ -53,13 +52,13 @@ inline bool iequal(const std::basic_string<CharT, Traits>& lhs, const std::basic
     return true;
 }
 
-template<typename CharT, typename Traits>
-inline bool starts_with(const std::basic_string<CharT, Traits>& str, const std::basic_string<CharT, Traits>& other) {
+template<typename String>
+inline bool starts_with(const String& str, const String& other) {
     return str.find(other) == 0;
 }
 
-template<typename CharT, typename Traits>
-inline bool istarts_with(const std::basic_string<CharT, Traits>& str, const std::basic_string<CharT, Traits>& other, const std::locale& loc = std::locale()) {
+template<typename String>
+inline bool istarts_with(const String& str, const String& other, const std::locale& loc = std::locale()) {
     if(other.length() > str.length())
         return false;
     for(unsigned i = 0; i < other.length(); ++i) {
@@ -69,16 +68,16 @@ inline bool istarts_with(const std::basic_string<CharT, Traits>& str, const std:
     return true;
 }
 
-template<typename CharT, typename Traits>
-inline bool ends_with(const std::basic_string<CharT, Traits>& str, const std::basic_string<CharT, Traits>& other) {
+template<typename String>
+inline bool ends_with(const String& str, const String& other) {
     if(str.length() >= other.length())
         return str.compare(str.length() - other.length(), other.length(), other) == 0;
     else
         return false;
 }
 
-template<typename CharT, typename Traits>
-inline bool iends_with(const std::basic_string<CharT, Traits>& str, const std::basic_string<CharT, Traits>& other, const std::locale& loc = std::locale()) {
+template<typename String>
+inline bool iends_with(const String& str, const String& other, const std::locale& loc = std::locale()) {
     if(str.length() >= other.length()) {
         for(unsigned start = str.length() - other.length(), i = 0; i < other.length(); ++i, ++start) {
             if(std::toupper(str[start], loc) != std::toupper(other[i], loc))
@@ -90,13 +89,13 @@ inline bool iends_with(const std::basic_string<CharT, Traits>& str, const std::b
         return false;
 }
 
-template<typename CharT, typename Traits>
-inline bool contains(const std::basic_string<CharT, Traits>& str, const std::basic_string<CharT, Traits>& other) {
-    return str.find(other) != std::basic_string<CharT, Traits>::npos;
+template<typename String>
+inline bool contains(const String& str, const String& other) {
+    return str.find(other) != String::npos;
 }
 
-template<typename CharT, typename Traits>
-inline bool icontains(const std::basic_string<CharT, Traits>& str, const std::basic_string<CharT, Traits>& other, const std::locale& loc = std::locale()) {
+template<typename String>
+inline bool icontains(const String& str, const String& other, const std::locale& loc = std::locale()) {
     auto first = str.cbegin();
     auto last = str.cend();
     auto other_last = other.cend();
@@ -113,8 +112,8 @@ inline bool icontains(const std::basic_string<CharT, Traits>& str, const std::ba
     }
 }
 
-template<typename CharT, typename Traits, typename Predicate>
-inline bool all(const std::basic_string<CharT, Traits>& str, Predicate&& pred) {
+template<typename String, typename Predicate>
+inline bool all(const String& str, Predicate&& pred) {
     for(auto&& c : str) {
         if(!pred(c))
             return false;

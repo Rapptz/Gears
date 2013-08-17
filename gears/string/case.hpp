@@ -22,28 +22,28 @@
 #ifndef GEARS_STRING_CASE_HPP
 #define GEARS_STRING_CASE_HPP
 
-#include <string>
 #include <locale>
+#include "../meta/alias.hpp"
 
 namespace gears {
-template<typename CharT, typename Traits>
-inline std::basic_string<CharT, Traits> to_lower(std::basic_string<CharT, Traits> str, const std::locale& loc = std::locale()) {
+template<typename String>
+inline Unqualified<String> to_lower(String str, const std::locale& loc = std::locale()) {
     for(auto&& c : str) {
         c = std::tolower(c, loc);
     }
     return str;
 }
 
-template<typename CharT, typename Traits>
-inline std::basic_string<CharT, Traits> to_upper(std::basic_string<CharT, Traits> str, const std::locale& loc = std::locale()) {
+template<typename String>
+inline Unqualified<String> to_upper(String str, const std::locale& loc = std::locale()) {
     for(auto&& c : str) {
         c = std::toupper(c, loc);
     }
     return str;
 }
 
-template<typename CharT, typename Traits>
-inline bool is_lower(const std::basic_string<CharT, Traits>& str, const std::locale& loc = std::locale()) {
+template<typename String>
+inline bool is_lower(const String& str, const std::locale& loc = std::locale()) {
     for(auto&& c : str) {
         if(c != std::tolower(c, loc))
             return false;
@@ -51,8 +51,8 @@ inline bool is_lower(const std::basic_string<CharT, Traits>& str, const std::loc
     return true;
 }
 
-template<typename CharT, typename Traits>
-inline bool is_upper(const std::basic_string<CharT, Traits>& str, const std::locale& loc = std::locale()) {
+template<typename String>
+inline bool is_upper(const String& str, const std::locale& loc = std::locale()) {
     for(auto&& c : str) {
         if(c != std::toupper(c, loc))
             return false;
