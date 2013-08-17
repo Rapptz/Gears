@@ -60,3 +60,12 @@ TEST_CASE("Replacing", "[replace]") {
         REQUIRE(gears::erase_all(test, "Hello"_s) == "  ");
     }
 }
+
+TEST_CASE("Finding", "[find]") {
+    using namespace gears::literals;
+    REQUIRE(gears::find_first_of("Hello"_s, gears::is_any_of<>("lo")) == 2);
+    REQUIRE(gears::find_first_of("Hello"_s, gears::is_any_of<>("a")) == std::string::npos);
+    REQUIRE(gears::find_first_not_of("Hello There"_s, gears::is_any_of<>("HeloThr")) == 5);
+    REQUIRE(gears::find_last_of("Hello"_s, gears::is_any_of<>("l")) == 3);
+    REQUIRE(gears::find_last_not_of(" Hello "_s, gears::is_any_of<>(" ")) == 5);
+}
