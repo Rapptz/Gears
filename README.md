@@ -4,3 +4,7 @@ Gears is a library that offers utilities for C++11 programmers. This is a plan t
 
 [1]: https://bitbucket.org/Rapptz/gears
 [2]: https://github.com/Rapptz/Gears/issues?milestone=1&state=open
+
+# Status
+
+[![Build Status](https://travis-ci.org/Rapptz/Gears.png?branch=master)](https://travis-ci.org/Rapptz/Gears)
