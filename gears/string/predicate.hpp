@@ -112,8 +112,8 @@ inline bool icontains(const String& str, const String& other, const std::locale&
     }
 }
 
-template<typename String, typename Predicate>
-inline bool all(const String& str, Predicate&& pred) {
+template<typename String, typename BinaryPredicate>
+inline bool all(const String& str, BinaryPredicate&& pred) {
     for(auto&& c : str) {
         if(!pred(c))
             return false;

@@ -22,7 +22,6 @@
 #ifndef GEARS_STRING_REPLACE_HPP
 #define GEARS_STRING_REPLACE_HPP
 
-#include <locale>
 #include "../meta/alias.hpp"
 
 namespace gears {
@@ -41,7 +40,7 @@ inline size_t nth_finder(const String& str, const String& find, size_t nth) {
 
 template<typename String>
 inline Unqualified<String> replace_first(String str, const String& from, const String& to) {
-    auto start_pos = str.find_first_of(from);
+    auto start_pos = str.find(from);
     if(start_pos == String::npos) 
         return str;
     str.replace(start_pos, from.length(), to);
@@ -78,7 +77,7 @@ inline Unqualified<String> replace_all(String str, const String& from, const Str
 
 template<typename String>
 inline Unqualified<String> erase_first(String str, const String& erase) {
-    auto start_pos = str.find_first_of(erase);
+    auto start_pos = str.find(erase);
     if(start_pos == String::npos)
         return str;
     str.replace(start_pos, erase.length(), "");
