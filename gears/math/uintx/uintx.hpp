@@ -29,6 +29,10 @@
 #include <stdexcept>
 #include "../../meta/alias.hpp"
 
+#ifndef GEARS_NO_IOSTREAM
+#include <iosfwd>
+#endif // GEARS_NO_IOSTREAM
+
 namespace gears {
 namespace uintx_detail {
 constexpr size_t pow(size_t base, size_t exponent) {
@@ -424,6 +428,31 @@ public:
         *this -= 1;
         return *this;
     }
+
+    #ifndef GEARS_NO_IOSTREAM
+    template<typename Elem, typename Traits>
+    friend std::basic_ostream<Elem, Traits>& operator<<(std::basic_ostream<Elem, Traits>& out, const uintx& n) {
+        auto first = n.digits.crbegin();
+        auto last = n.digits.crend();
+        if(first != last)
+            out << *first++;
+        while(first != last) {
+            out.fill('0');
+            out.width(uintx::digits10);
+            out << *first++;
+        }
+        return out;
+    }
+
+    template<typename Elem, typename Traits>
+    friend std::basic_istream<Elem, Traits>& operator>>(std::basic_istream<Elem, Traits>& in, uintx& n) {
+        std::string str;
+        in >> str;
+        n = str;
+        return in;
+    }
+
+    #endif // GEARS_NO_IOSTREAM
 };
 } // gears
 
