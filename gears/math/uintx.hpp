@@ -19,15 +19,15 @@
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-#ifndef GEARS_MATH_UINTX_UINTX_HPP
-#define GEARS_MATH_UINTX_UINTX_HPP
+#ifndef GEARS_MATH_UINTX_HPP
+#define GEARS_MATH_UINTX_HPP
 
 #include <cstddef>
 #include <limits>
 #include <vector>
 #include <string>
 #include <stdexcept>
-#include "../../meta/alias.hpp"
+#include "../meta/alias.hpp"
 
 #ifndef GEARS_NO_IOSTREAM
 #include <iosfwd>
@@ -70,6 +70,31 @@ inline OutIt map(InIt first, InIt last, InIt2 start, OutIt result, BinaryF&& f) 
     }
     return result;
 }
+
+template<typename T>
+struct partial_cast {
+    template<typename U>
+    T operator()(const U& u, size_t base) const {
+        T result{};
+        for(int i = u.size() - 1; i >= 0; --i) {
+            result = result * base + u[i];
+        }
+        return result;
+    }
+};
+
+template<>
+struct partial_cast<std::string> {
+    template<typename U>
+    std::string operator()(const U& u, size_t base) const {
+        unsigned long long x = 0;
+        for(int i = u.size() - 1; i >= 0; --i) {
+            x = x * base + u[i];
+        }
+        return std::to_string(x);
+    }
+};
+
 } // uintx_detail
 
 template<size_t Bits = -1, typename Digit = unsigned int, typename Digits = unsigned long long>
@@ -453,7 +478,12 @@ public:
     }
 
     #endif // GEARS_NO_IOSTREAM
+
+    template<typename T, size_t N, typename U, typename V>
+    friend T uintx_cast(const uintx<N, U, V>& obj) {
+        return uintx_detail::partial_cast<T>()(obj.digits, uintx<N, U, V>::base);
+    }
 };
 } // gears
 
-#endif // GEARS_MATH_UINTX_UINTX_HPP
+#endif // GEARS_MATH_UINTX_HPP

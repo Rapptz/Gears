@@ -20,7 +20,7 @@
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 #include <catch.hpp>
-#include <gears/math/uintx/uintx.hpp>
+#include <gears/math/uintx.hpp>
 
 TEST_CASE("Higher Precision Integer", "[uintx]") {
     SECTION("Addition", "[uintx-add]") {
@@ -63,5 +63,13 @@ TEST_CASE("Higher Precision Integer", "[uintx]") {
         REQUIRE(stuff == expected);
         REQUIRE(stuff > 100);
         REQUIRE(stuff != 0);
+    }
+
+    SECTION("Conversion", "[uintx-conv]") {
+        gears::uintx<> stuff("1234567890");
+        auto i = gears::uintx_cast<long long>(stuff);
+        REQUIRE(i == 1234567890LL);
+        auto str = gears::uintx_cast<std::string>(stuff);
+        REQUIRE(str == "1234567890");
     }
 }
