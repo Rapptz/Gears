@@ -54,10 +54,10 @@ inline void reverse(Cont& c) {
 template<size_t Bits = -1, typename Digit = unsigned int, typename Digits = unsigned long long>
 struct uintx {
 private:
-    using signed_type = typename std::make_signed<Digits>::type;
+    using signed_type = Type<std::make_signed<Digits>>;
     static constexpr size_t digit_bits = sizeof(Digits) * 8;
     static constexpr size_t digit_count = Bits == size_t(-1) ? -1 : (Bits / digit_bits);
-    static_assert(digit_count, "Invalid bits parameter. >= 128 recommended or none for infinite precision");
+    static_assert(digit_count, "Invalid bits parameter. Note: Use -1 for \"infinite\" precision");
 
     std::vector<Digits> digits;
 
@@ -90,6 +90,36 @@ private:
 
         Digits operator()(Digits a, Digits b) {
             return carry::operator()(Base::operator()(a, b));
+        }
+    };
+
+    struct borrow {
+        signed_type& b;
+        borrow(signed_type& b): b(b) {}
+
+        signed_type operator()(signed_type n) {
+            n -= b;
+            b = 0;
+            while(n < 0) {
+                n += base;
+                ++b;
+            }
+            return n;
+        }
+    };
+
+    struct sub_borrow {
+        signed_type& borrow;
+        sub_borrow(signed_type& b): borrow(b) {}
+
+        Digits operator()(signed_type a, signed_type b) {
+            signed_type n = b - a - borrow;
+            borrow = 0;
+            while(n < 0) {
+                n += base;
+                ++borrow;
+            }
+            return n;
         }
     };
 
@@ -162,9 +192,24 @@ public:
         return *this;
     }
 
+    uintx& operator-=(const uintx& other) {
+        signed_type b = 0;
+        using uintx_detail::map;
+        auto it = map(other.digits.begin(), other.digits.end(), digits.begin(), digits.begin(), sub_borrow(b));
+        map(it, digits.end(), it, borrow(b));
+        normalize();
+        check_bits();
+        return *this;
+    }
+
     uintx operator+(const uintx& other) const {
         uintx result(*this);
         return (result += other);
+    }
+
+    uintx operator-(const uintx& other) const {
+        uintx result(*this);
+        return (result -= other);
     }
 };
 } // gears
