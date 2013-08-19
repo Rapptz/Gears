@@ -67,6 +67,16 @@ private:
         }
     };
 
+    struct multiply {
+        Digits k;
+        multiply() = default;
+        multiply(Digits n): k(n) {}
+
+        Digits operator()(Digits a) {
+            return a * k;
+        }
+    };
+
     struct carry {
         Digits& c;
         carry(Digits& a): c(a) {}
@@ -132,11 +142,31 @@ private:
         }
     }
 
+    void add_zeroes(Digits n) {
+        digits.resize(digits.size() + n);
+        digits.insert(digits.begin(), n, 0);
+    }
+
     void check_bits() {
         if(digit_count == Bits)
             return;
         if(digits.capacity() >= digit_count)
             digits.resize(digit_count);
+    }
+
+    void multiply_helper(uintx& x, Digits digit) {
+        Digits c = 0;
+        operator_carry<multiply> mulwc(c);
+        mulwc.k = digit;
+        detail::map(x.digits.begin(), x.digits.end(), x.digits.begin(), mulwc);
+
+        while(c) {
+            x.digits.push_back(c % base);
+            c /= base;
+        }
+
+        x.normalize();
+        x.check_bits();
     }
 
 public:
@@ -202,6 +232,39 @@ public:
         return *this;
     }
 
+    uintx& operator*=(const uintx& other) {
+        const uintx* first = this;
+        const uintx* second = &other;
+
+        auto first_size = first->digits.size();
+        auto second_size = second->digits.size();
+
+        if(first_size < second_size) {
+            using std::swap;
+            swap(first, second);
+            swap(first_size, second_size);
+        }
+
+        std::vector<uintx> ints(second_size);
+
+        for(unsigned i = 0; i < second_size; ++i) {
+            ints[i].digits = first->digits;
+            multiply_helper(ints[i], second->digits[i]);
+        }
+
+        *this = ints.front();
+        digits.resize(first_size + second_size);
+
+        for(unsigned i = 1; i < second_size; ++i) {
+            ints[i].add_zeroes(i);
+            *this += ints[i];
+        }
+
+        normalize();
+        check_bits();
+        return *this;
+    }
+
     uintx operator+(const uintx& other) const {
         uintx result(*this);
         return (result += other);
@@ -210,6 +273,11 @@ public:
     uintx operator-(const uintx& other) const {
         uintx result(*this);
         return (result -= other);
+    }
+
+    uintx operator*(const uintx& other) const {
+        uintx result(*this);
+        return (result *= other);
     }
 };
 } // gears
