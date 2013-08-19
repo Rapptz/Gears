@@ -61,6 +61,38 @@ private:
 
     std::vector<Digits> digits;
 
+    struct add {
+        Digits operator()(Digits a, Digits b) {
+            return a + b;
+        }
+    };
+
+    struct carry {
+        Digits& c;
+        carry(Digits& a): c(a) {}
+
+        Digits operator()(Digits n) {
+            n += c;
+            c = n / base;
+            n %= base;
+
+            return n;
+        }
+    };
+
+    template<class Base>
+    struct operator_carry : public Base, public carry {
+        operator_carry(Digits& c): carry(c) {}
+
+        Digits operator()(Digits a) {
+            return carry::operator()(Base::operator()(a));
+        }
+
+        Digits operator()(Digits a, Digits b) {
+            return carry::operator()(Base::operator()(a, b));
+        }
+    };
+
     void normalize() {
         while(digits.size() > 1) {
             if(digits.back() == 0)
@@ -107,6 +139,32 @@ public:
 
         uintx_detail::reverse(digits);
         check_bits();
+    }
+
+    uintx& operator+=(const uintx& other) {
+        if(digits.size() < other.digits.size()) {
+            digits.resize(other.digits.size());
+        }
+
+        Digits c = 0;
+        operator_carry<add> addwc(c);
+
+        using uintx_detail::map;
+
+        auto it = map(other.digits.begin(), other.digits.end(), digits.begin(), digits.begin(), addwc);
+        map(it, digits.end(), it, carry(c));
+
+        if(c)
+            digits.push_back(c);
+
+        normalize();
+        check_bits();
+        return *this;
+    }
+
+    uintx operator+(const uintx& other) const {
+        uintx result(*this);
+        return (result += other);
     }
 };
 } // gears
