@@ -26,6 +26,7 @@
 #include <limits>
 #include <vector>
 #include <string>
+#include <stdexcept>
 #include "../../meta/alias.hpp"
 
 namespace gears {
@@ -185,6 +186,29 @@ private:
         x.check_bits();
     }
 
+    Digit divide_helper(const uintx& remainder, const uintx& denominator) {
+        Digit minimum = 0;
+        Digit maximum = base - 1;
+        while(maximum - minimum > 0) {
+            Digit total = maximum + minimum;
+            Digit half_total = total / 2;
+            total = total - half_total * 2 ? half_total + 1 : half_total;
+            auto product = denominator * total;
+            if(product == remainder) {
+                return total;
+            }
+
+            if(remainder > product) {
+                minimum = total;
+            }
+            else {
+                maximum = total - 1;
+            }
+        }
+
+        return minimum;
+    }
+
 public:
     static constexpr size_t digits10 = std::numeric_limits<Digit>::digits10;
     static constexpr size_t base = uintx_detail::pow(10, digits10);
@@ -278,6 +302,46 @@ public:
         return *this;
     }
 
+    uintx& operator/=(const uintx& other) {
+        if(other == 0)
+            throw std::logic_error("Division by zero");
+
+        uintx remainder;
+        auto copy = digits;
+        digits.clear();
+        digits.resize(copy.size(), 0);
+        remainder.digits.reserve(digits.size());
+        for(int i = digits.size() - 1; i >= 0; --i) {
+            remainder.add_zeroes(1);
+            remainder.digits[0] = copy[i];
+            remainder.normalize();
+            Digit count = divide_helper(remainder, other);
+            remainder -= other * count;
+            digits[i] += count;
+        }
+
+        normalize();
+        check_bits();
+        return *this;
+    }
+
+    uintx& operator%=(const uintx& other) {
+        if(other == 0)
+            throw std::logic_error("Division by zero");
+
+        auto copy = digits;
+        digits.clear();
+        for(int i = copy.size() - 1; i >= 0; --i) {
+            add_zeroes(1);
+            digits[0] = copy[i];
+            normalize();
+            *this -= other * divide_helper(*this, other);
+        }
+        normalize();
+        check_bits();
+        return *this;
+    }
+
     uintx operator+(const uintx& other) const {
         uintx result(*this);
         return (result += other);
@@ -291,6 +355,16 @@ public:
     uintx operator*(const uintx& other) const {
         uintx result(*this);
         return (result *= other);
+    }
+
+    uintx operator/(const uintx& other) const {
+        uintx result(*this);
+        return (result /= other);
+    }
+
+    uintx operator%(const uintx& other) const {
+        uintx result(*this);
+        return (result %= other);
     }
 
     bool operator==(const uintx& other) const {

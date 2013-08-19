@@ -46,4 +46,22 @@ TEST_CASE("Higher Precision Integer", "[uintx]") {
         REQUIRE(stuff > 100);
         REQUIRE(stuff != 0);
     }
+
+    SECTION("Division", "[uintx-div]") {
+        gears::uintx<> stuff("1927498748914987934621746728364782163748212212231");
+        stuff /= 814371284321ULL;
+        gears::uintx<> expected("2366855003393301719774904141041689695");
+        REQUIRE(stuff == expected);
+        REQUIRE(stuff > 100);
+        REQUIRE(stuff != 0);
+    }
+
+    SECTION("Modulus", "[uintx-mod]") {
+        gears::uintx<> stuff("91984712847987981232998147123812");
+        stuff %= 8914712412LL;
+        gears::uintx<> expected("3725426300");
+        REQUIRE(stuff == expected);
+        REQUIRE(stuff > 100);
+        REQUIRE(stuff != 0);
+    }
 }
