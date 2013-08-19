@@ -23,10 +23,11 @@
 #include <gears/math/uintx.hpp>
 
 TEST_CASE("Higher Precision Integer", "[uintx]") {
+    using namespace gears::literals;
     SECTION("Addition", "[uintx-add]") {
         gears::uintx<> stuff("6719847289364162472817421");
         stuff += 1928317212831712ULL;
-        REQUIRE(stuff == gears::uintx<>("6719847291292479685649133"));
+        REQUIRE(stuff == "6719847291292479685649133"_x);
         REQUIRE(stuff > 100);
         REQUIRE(stuff != 0);
     }
@@ -34,7 +35,7 @@ TEST_CASE("Higher Precision Integer", "[uintx]") {
     SECTION("Subtraction", "[uintx-sub]") {
         gears::uintx<> stuff("9123847281347218347214212");
         stuff -= 9182371232121ULL;
-        REQUIRE(stuff == gears::uintx<>("9123847281338035975982091"));
+        REQUIRE(stuff == "9123847281338035975982091"_x);
         REQUIRE(stuff > 100);
         REQUIRE(stuff != 0);
     }
@@ -42,7 +43,7 @@ TEST_CASE("Higher Precision Integer", "[uintx]") {
     SECTION("Multiplication", "[uintx-mul]") {
         gears::uintx<> stuff("819374812937489172894782121212212");
         stuff *= 7182461231831ULL;
-        REQUIRE(stuff == gears::uintx<>("5885127828262293680350082130474219356480320172"));
+        REQUIRE(stuff == "5885127828262293680350082130474219356480320172"_x);
         REQUIRE(stuff > 100);
         REQUIRE(stuff != 0);
     }

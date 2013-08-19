@@ -484,6 +484,16 @@ public:
         return uintx_detail::partial_cast<T>()(obj.digits, uintx<N, U, V>::base);
     }
 };
+
+namespace literals {
+uintx<> operator"" _x(unsigned long long n) {
+    return { n };
+}
+
+uintx<> operator"" _x(const char* s, size_t len) {
+    return { std::string(s, len) };
+}
+} // literals
 } // gears
 
 #endif // GEARS_MATH_UINTX_HPP
