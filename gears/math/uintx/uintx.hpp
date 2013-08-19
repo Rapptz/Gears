@@ -279,6 +279,42 @@ public:
         uintx result(*this);
         return (result *= other);
     }
+
+    bool operator==(const uintx& other) const {
+        return digits == other.digits;
+    }
+
+    bool operator!=(const uintx& other) const {
+        return digits != other.digits;
+    }
+
+    bool operator<(const uintx& other) const {
+        if(digits.size() < other.digits.size())
+            return true;
+        if(other.digits.size() < digits.size())
+            return false;
+
+        for(unsigned i = digits.size() - 1; i > 0; --i) {
+            if(digits[i] < other.digits[i])
+                return true;
+            if(other.digits[i] < digits[i])
+                return false;
+        }
+
+        return true;
+    }
+
+    bool operator>(const uintx& other) const {
+        return !(*this < other);
+    }
+
+    bool operator<=(const uintx& other) const {
+        return !(other < *this);
+    }
+
+    bool operator>=(const uintx& other) const {
+        return !(*this < other);
+    }
 };
 } // gears
 
