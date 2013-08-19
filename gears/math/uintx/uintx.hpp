@@ -49,6 +49,22 @@ inline void reverse(Cont& c) {
         --last;
     }
 }
+
+template<typename InIt, typename OutIt, typename UnaryF>
+inline OutIt map(InIt first, InIt last, OutIt result, UnaryF&& f) {
+    for(; first != last; ++first, ++result) {
+        *result = f(*first);
+    }
+    return result;
+}
+
+template<typename InIt, typename InIt2, typename OutIt, typename BinaryF>
+inline OutIt map(InIt first, InIt last, InIt2 start, OutIt result, BinaryF&& f) {
+    for (; first != last; ++first, ++start, ++result) {
+        *result = f(*first, *start);
+    }
+    return result;
+}
 } // uintx_detail
 
 template<size_t Bits = -1, typename Digit = unsigned int, typename Digits = unsigned long long>
@@ -158,7 +174,7 @@ private:
         Digits c = 0;
         operator_carry<multiply> mulwc(c);
         mulwc.k = digit;
-        detail::map(x.digits.begin(), x.digits.end(), x.digits.begin(), mulwc);
+        uintx_detail::map(x.digits.begin(), x.digits.end(), x.digits.begin(), mulwc);
 
         while(c) {
             x.digits.push_back(c % base);
@@ -171,7 +187,7 @@ private:
 
 public:
     static constexpr size_t digits10 = std::numeric_limits<Digit>::digits10;
-    static constexpr size_t base = detail::pow(10, digits10);
+    static constexpr size_t base = uintx_detail::pow(10, digits10);
     uintx(): digits(1) {}
 
     template<typename Integer, EnableIf<std::is_integral<Integer>>...>
@@ -209,10 +225,8 @@ public:
         Digits c = 0;
         operator_carry<add> addwc(c);
 
-        using uintx_detail::map;
-
-        auto it = map(other.digits.begin(), other.digits.end(), digits.begin(), digits.begin(), addwc);
-        map(it, digits.end(), it, carry(c));
+        auto it = uintx_detail::map(other.digits.begin(), other.digits.end(), digits.begin(), digits.begin(), addwc);
+        uintx_detail::map(it, digits.end(), it, carry(c));
 
         if(c)
             digits.push_back(c);
@@ -224,9 +238,8 @@ public:
 
     uintx& operator-=(const uintx& other) {
         signed_type b = 0;
-        using uintx_detail::map;
-        auto it = map(other.digits.begin(), other.digits.end(), digits.begin(), digits.begin(), sub_borrow(b));
-        map(it, digits.end(), it, borrow(b));
+        auto it = uintx_detail::map(other.digits.begin(), other.digits.end(), digits.begin(), digits.begin(), sub_borrow(b));
+        uintx_detail::map(it, digits.end(), it, borrow(b));
         normalize();
         check_bits();
         return *this;
@@ -314,6 +327,28 @@ public:
 
     bool operator>=(const uintx& other) const {
         return !(*this < other);
+    }
+
+    uintx operator++(int) {
+        auto copy = *this;
+        *this += 1;
+        return copy;
+    }
+
+    const uintx& operator++() {
+        *this += 1;
+        return *this;
+    }
+
+    uintx operator--(int) {
+        auto copy = *this;
+        *this -= 1;
+        return copy;
+    }
+
+    const uintx& operator--() {
+        *this -= 1;
+        return *this;
     }
 };
 } // gears
