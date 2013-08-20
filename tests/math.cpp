@@ -20,7 +20,7 @@
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 #include <catch.hpp>
-#include <gears/math/uintx.hpp>
+#include <gears/math.hpp>
 
 TEST_CASE("Higher Precision Integer", "[uintx]") {
     using namespace gears::literals;
