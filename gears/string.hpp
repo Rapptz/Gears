@@ -24,7 +24,7 @@
 
 #include "string/case.hpp"
 #include "string/predicate.hpp"
-#include "string/literal.hpp"
+#include "string/literals.hpp"
 #include "string/replace.hpp"
 #include "string/trim.hpp"
 #include "string/transforms.hpp"

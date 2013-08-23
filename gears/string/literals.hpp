@@ -19,8 +19,8 @@
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-#ifndef GEARS_STRING_LITERAL_HPP
-#define GEARS_STRING_LITERAL_HPP
+#ifndef GEARS_STRING_LITERALS_HPP
+#define GEARS_STRING_LITERALS_HPP
 
 #include <string>
 
@@ -45,4 +45,4 @@ inline std::basic_string<char16_t> operator"" _s(const char16_t* str, size_t n) 
 } // gears
 
 
-#endif // GEARS_STRING_LITERAL_HPP
+#endif // GEARS_STRING_LITERALS_HPP
