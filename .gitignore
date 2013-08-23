@@ -22,3 +22,6 @@
 # obj and bin directories
 bin/*
 obj/*
+
+# Development .cpp file
+dev.cpp
