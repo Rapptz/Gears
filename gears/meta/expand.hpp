@@ -19,10 +19,15 @@
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-#ifndef GEARS_META_HPP
-#define GEARS_META_HPP
+#ifndef GEARS_META_EXPAND_HPP
+#define GEARS_META_EXPAND_HPP
 
-#include "meta/alias.hpp"
-#include "meta/expand.hpp"
+namespace gears {
+namespace expand_detail {
+using expander = int[];
+} // expand_detail
+} // gears
 
-#endif // GEARS_META_HPP
+#define GEARS_EXPAND(...) void(::gears::expand_detail::expander{(__VA_ARGS__, 0)...})
+
+#endif // GEARS_META_EXPAND_HPP
