@@ -19,11 +19,20 @@
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-#ifndef GEARS_META_HPP
-#define GEARS_META_HPP
+#ifndef GEARS_META_INDICES_HPP
+#define GEARS_META_INDICES_HPP
 
-#include "meta/alias.hpp"
-#include "meta/expand.hpp"
-#include "meta/indices.hpp"
+#include <cstddef>
 
-#endif // GEARS_META_HPP
+namespace gears {
+template<size_t... Ns>
+struct indices {};
+
+template<size_t N, size_t... Ns>
+struct build_indices : build_indices<N-1, N-1, Ns...> {};
+
+template<size_t... Ns>
+struct build_indices<0, Ns...> : indices<Ns...> {};
+} // gears
+
+#endif // GEARS_META_INDICES_HPP
