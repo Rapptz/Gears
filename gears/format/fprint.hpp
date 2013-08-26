@@ -27,7 +27,7 @@
 
 namespace gears {
 template<class Elem, class Traits, size_t N, typename... Args>
-void fprint(std::basic_ostream<Elem, Traits>& out, const Elem (&str)[N], Args&&... arguments) {
+inline void fprint(std::basic_ostream<Elem, Traits>& out, const Elem (&str)[N], Args&&... arguments) {
     if(sizeof...(arguments) < 1) {
         out << str;
         return;
