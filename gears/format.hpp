@@ -24,5 +24,6 @@
 
 #include "format/print.hpp"
 #include "format/flags.hpp"
+#include "format/sprint.hpp"
 
 #endif // GEARS_FORMAT_HPP

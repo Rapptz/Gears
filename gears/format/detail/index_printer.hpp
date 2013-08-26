@@ -32,7 +32,7 @@ namespace gears {
 namespace format_detail {
 template<size_t N = 0, class Elem, class Traits, typename... Args, EnableIf<Bool<(N >= sizeof...(Args))>>...>
 inline void index_printer(std::basic_ostream<Elem,Traits>& out, const size_t i, const std::tuple<Args...>& tup) {
-    throw std::logic_error("Index exceeds number of arguments provided");
+    throw std::out_of_range("Index exceeds number of arguments provided");
 }
 
 template<size_t N = 0, class Elem, class Traits, typename... Args, EnableIf<Bool<(N < sizeof...(Args))>>...>

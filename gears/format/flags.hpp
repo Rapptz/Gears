@@ -65,12 +65,12 @@ inline std::basic_ostream<Elem, Traits>& operator<<(std::basic_ostream<Elem, Tra
 } // format_detail
 
 template<typename T>
-format_detail::flag_type<T> flags(T&& t, std::ios_base::fmtflags flag) {
+inline format_detail::flag_type<T> flags(T&& t, std::ios_base::fmtflags flag) {
     return { std::forward<T>(t), flag };
 }
 
 template<typename T, typename... Flags>
-format_detail::manipulator_type<T, Flags...> flags(T&& t, Flags&&... f) {
+inline format_detail::manipulator_type<T, Flags...> flags(T&& t, Flags&&... f) {
     return { std::forward<T>(t), std::forward<Flags>(f)... };
 }
 } // gears
