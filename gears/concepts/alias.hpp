@@ -19,15 +19,40 @@
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-#ifndef GEARS_META_EXPAND_HPP
-#define GEARS_META_EXPAND_HPP
+#ifndef GEARS_CONCEPTS_ALIAS_HPP
+#define GEARS_CONCEPTS_ALIAS_HPP
+
+#include <type_traits>
 
 namespace gears {
-namespace expand_detail {
-using expander = int[];
-} // expand_detail
+template<typename T>
+using Bare = typename std::remove_reference<T>::type;
+
+template<typename T>
+using ConstLRef = const Bare<T>&;
+
+template<typename T>
+using LRef = Bare<T>&;
+
+template<typename T>
+using RRef = Bare<T>&&;
+
+template<typename... Args>
+struct And : std::true_type {};
+
+template<typename T, typename... Args>
+struct And<T, Args...> : typename std::conditional<T::value, And<Args...>, std::false_type>::type {};
+
+enum class concept_checker_t {};
+
+template<typename... Concepts>
+struct requires {
+    static_assert(And<Concepts...>(), "Concept Violation");
+    using type = concept_checker_t;
+};
+
+template<typename... Concepts>
+using Requires = typename requires<Concepts...>::type;
 } // gears
 
-#define GEARS_EXPAND(...) void(::gears::expand_detail::expander{(0, (__VA_ARGS__), 0)...})
-
-#endif // GEARS_META_EXPAND_HPP
+#endif // GEARS_CONCEPTS_ALIAS_HPP
