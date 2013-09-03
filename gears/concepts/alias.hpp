@@ -41,7 +41,7 @@ template<typename... Args>
 struct And : std::true_type {};
 
 template<typename T, typename... Args>
-struct And<T, Args...> : typename std::conditional<T::value, And<Args...>, std::false_type>::type {};
+struct And<T, Args...> : std::conditional<T::value, And<Args...>, std::false_type>::type {};
 
 enum class concept_checker_t {};
 

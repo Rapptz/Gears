@@ -47,6 +47,9 @@ template<typename T>
 using Copyable = And<CopyAssignable<T>, CopyConstructible<T>>;
 
 template<typename T>
+using Assignable = And<MoveAssignable<T>, CopyAssignable<T>>;
+
+template<typename T>
 using Destructible = std::is_destructible<Bare<T>>;
 
 template<typename T>
