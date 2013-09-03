@@ -4,7 +4,7 @@
 import os, sys
 
 # Meta data set up here
-compiler_flags = ['-Wall', '-pedantic', '-pedantic-errors', '-Werror', '-std=c++11']
+compiler_flags = ['-Wall', '-pedantic', '-pedantic-errors', '-Werror', '-std=c++11', '-O2']
 compiler_path = 'C:/mingw64/'
 include_paths = ['./', 'gears', 'tests']
 ignored_warnings = ['switch']
