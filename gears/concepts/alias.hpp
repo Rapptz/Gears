@@ -43,6 +43,9 @@ struct And : std::true_type {};
 template<typename T, typename... Args>
 struct And<T, Args...> : std::conditional<T::value, And<Args...>, std::false_type>::type {};
 
+template<typename Test, typename... Args>
+using TraitOf = decltype(Test::template test<Args...>(0));
+
 enum class concept_checker_t {};
 
 template<typename... Concepts>

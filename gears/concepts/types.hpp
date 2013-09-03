@@ -26,17 +26,17 @@
 #include "alias.hpp"
 
 namespace gears {
-namespace types_detail {
+namespace detail {
 struct is_swappable_impl {
     template<typename T, typename U>
     static auto test(int) -> decltype(std::swap(std::declval<T&>(), std::declval<U&>()), std::true_type{}) {}
     template<typename...>
     static std::false_type test(...);
 };
-} // types_detail
+} // detail
 
-template<typename T, typename U>
-struct is_swappable : decltype(types_detail::is_swappable_impl::test<T, U>(0)) {};
+template<typename T, typename U = T>
+struct is_swappable : TraitOf<detail::is_swappable_impl, T, U> {};
 
 template<typename T, typename U = T>
 using Swappable = is_swappable<T, U>;
@@ -63,7 +63,7 @@ template<typename T>
 using Fundamental = std::is_fundamental<T>;
 
 template<typename T>
-using Composite = std::is_composite<T>;
+using Compound = std::is_compound<T>;
 
 template<typename T>
 using Pointer = std::is_pointer<T>;
