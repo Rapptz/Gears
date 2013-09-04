@@ -142,6 +142,35 @@ struct is_equality_comparable {
     template<typename...>
     static std::false_type test(...);
 };
+
+struct is_comparable {
+    template<typename T, typename U,
+             typename LT = decltype(std::declval<T&>() <  std::declval<U&>()),
+             typename LE = decltype(std::declval<T&>() <= std::declval<U&>()),
+             typename GT = decltype(std::declval<T&>() >  std::declval<U&>()),
+             typename GE = decltype(std::declval<T&>() >= std::declval<U&>()),
+             TrueIf<ContextualBool<LT>, ContextualBool<LE>, ContextualBool<GT>, ContextualBool<GE>>...>
+    static std::true_type test(int);
+    template<typename...>
+    static std::false_type test(...);
+};
+
+template<typename Pointer>
+struct is_np_assignable_impl {
+private:
+    Pointer a;
+    std::nullptr_t np = nullptr;
+    const std::nullptr_t npc = nullptr;
+public:
+    static const bool one = std::is_same<Pointer&, decltype(a = np)>();
+    static const bool two = std::is_same<Pointer&, decltype(a = npc)>();
+    static const bool three = std::is_constructible<Pointer, std::nullptr_t>();
+    static const bool four = std::is_constructible<Pointer, const std::nullptr_t>();
+    static const bool value = one && two && three && four;
+};
+
+template<typename T>
+struct is_np_assign : std::integral_constant<bool, is_np_assignable_impl<T>::value> {};
 } // basic_detail
 
 template<typename T, typename U = T>
@@ -149,6 +178,18 @@ struct LessThanComparable : TraitOf<basic_detail::is_less_than_comparable, T, U>
 
 template<typename T, typename U = T>
 struct EqualityComparable : TraitOf<basic_detail::is_equality_comparable, T, U> {};
+
+template<typename T, typename U = T>
+struct Comparable : TraitOf<basic_detail::is_comparable, T, U> {};
+
+template<typename T>
+struct NullablePointer :  And<DefaultConstructible<T>, 
+                              CopyConstructible<T>, 
+                              CopyAssignable<T>, 
+                              Destructible<T>,
+                              EqualityComparable<T, std::nullptr_t>, 
+                              EqualityComparable<std::nullptr_t, T>, 
+                              basic_detail::is_np_assign<T>> {};
 } // gears
 
 #endif // GEARS_CONCEPTS_BASIC_HPP
