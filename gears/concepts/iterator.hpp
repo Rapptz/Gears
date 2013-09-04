@@ -31,6 +31,12 @@ struct Iterator : And<CopyConstructible<T>,
                       Destructible<T>,
                       Dereferenceable<T>,
                       Incrementable<T>> {};
+
+template<typename T>
+struct InputIterator : And<Iterator<T>, EqualityComparable<T>> {};
+
+template<typename T>
+struct OutputIterator : And<Iterator<T>, Assignable<T>> {};
 } // gears
 
 #endif // GEARS_CONCEPTS_ITERATOR_HPP
