@@ -174,6 +174,35 @@ public:
 
 template<typename T>
 struct is_np_assign : std::integral_constant<bool, is_np_assignable_impl<T>::value> {};
+
+struct is_incrementable {
+    template<typename T,
+             typename Po = decltype(std::declval<T&>().operator++(0)),
+             typename Pr = decltype(std::declval<T&>().operator++()),
+             TrueIf<std::is_same<Pr, LRef<T>>>...>
+    static std::true_type test(int);
+    template<typename...>
+    static std::false_type test(...);
+};
+
+struct is_decrementable {
+    template<typename T,
+             typename Po = decltype(std::declval<T&>().operator--(0)),
+             typename Pr = decltype(std::declval<T&>().operator--()),
+             TrueIf<std::is_same<Pr, LRef<T>>>...>
+    static std::true_type test(int);
+    template<typename...>
+    static std::false_type test(...);
+};
+
+struct is_dereferenceable  {
+    template<typename T,
+             typename Re = decltype(std::declval<T&>().operator*()),
+             typename Ar = decltype(std::declval<T&>().operator->())>
+    static std::true_type test(int);
+    template<typename...>
+    static std::false_type test(...);
+};
 } // basic_detail
 
 template<typename T, typename U = T>
@@ -196,6 +225,15 @@ struct NullablePointer :  And<DefaultConstructible<T>,
                               EqualityComparable<T, std::nullptr_t>, 
                               EqualityComparable<std::nullptr_t, T>, 
                               basic_detail::is_np_assign<T>> {};
+
+template<typename T>
+struct Incrementable : Or<Fundamental<T>, TraitOf<basic_detail::is_incrementable, T>> {};
+
+template<typename T>
+struct Decrementable : Or<Fundamental<T>, TraitOf<basic_detail::is_decrementable, T>> {};
+
+template<typename T>
+struct Dereferenceable : Or<Pointer<T>, TraitOf<basic_detail::is_dereferenceable, T>> {};
 } // gears
 
 #endif // GEARS_CONCEPTS_BASIC_HPP
