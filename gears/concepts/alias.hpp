@@ -43,6 +43,12 @@ struct And : std::true_type {};
 template<typename T, typename... Args>
 struct And<T, Args...> : std::conditional<T::value, And<Args...>, std::false_type>::type {};
 
+template<typename... Args>
+struct Or : std::false_type {};
+
+template<typename T, typename... Args>
+struct Or<T, Args...> : std::conditional<T::value, std::true_type, Or<Args...>>::type {};
+
 template<typename Test, typename... Args>
 using TraitOf = decltype(Test::template test<Args...>(0));
 

@@ -64,7 +64,7 @@ template<typename T>
 using Not = Bool<!T::value>;
 
 template<typename... Args>
-struct Any : Bool<true> {};
+struct Any : Bool<false> {};
 
 template<typename T, typename... Args>
 struct Any<T, Args...> : Conditional<T, Bool<true>, Any<Args...>> {};
