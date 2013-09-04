@@ -19,9 +19,18 @@
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-#ifndef GEARS_CONCEPTS_HPP
-#define GEARS_CONCEPTS_HPP
+#ifndef GEARS_CONCEPTS_ITERATOR_HPP
+#define GEARS_CONCEPTS_ITERATOR_HPP
 
-#include "concepts/iterator.hpp"
+#include "basic.hpp"
 
-#endif // GEARS_CONCEPTS_HPP
+namespace gears {
+template<typename T>
+struct Iterator : And<CopyConstructible<T>, 
+                      CopyAssignable<T>, 
+                      Destructible<T>,
+                      Dereferenceable<T>,
+                      Incrementable<T>> {};
+} // gears
+
+#endif // GEARS_CONCEPTS_ITERATOR_HPP
