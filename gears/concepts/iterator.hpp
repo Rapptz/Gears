@@ -58,6 +58,12 @@ struct ForwardIterator : And<InputIterator<T>, DefaultConstructible<T>> {};
 
 template<typename T>
 struct MutableForwardIterator : And<ForwardIterator<T>, Assignable<T>> {};
+
+template<typename T>
+struct BidirectionalIterator : And<ForwardIterator<T>, Decrementable<T>> {};
+
+template<typename T>
+struct MutableBidirectionalIterator : And<MutableForwardIterator<T>, Decrementable<T>> {};
 } // gears
 
 #endif // GEARS_CONCEPTS_ITERATOR_HPP
