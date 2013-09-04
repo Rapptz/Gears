@@ -23,6 +23,5 @@
 #define GEARS_CONCEPTS_HPP
 
 #include "concepts/basic.hpp"
-#include "concepts/types.hpp"
 
 #endif // GEARS_CONCEPTS_HPP

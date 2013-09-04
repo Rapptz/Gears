@@ -75,10 +75,10 @@ template<typename T>
 using AddPointer = Type<std::add_pointer<T>>;
 
 template<typename T>
-using Signed = Type<std::make_signed<T>>;
+using MakeSigned = Type<std::make_signed<T>>;
 
 template<typename T>
-using Unsigned = Type<std::make_unsigned<T>>;
+using MakeUnsigned = Type<std::make_unsigned<T>>;
 
 template<typename T>
 using Unqualified = RemoveCV<RemoveRef<T>>;

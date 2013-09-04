@@ -26,16 +26,16 @@
 
 namespace gears {
 template<typename T>
-using Bare = typename std::remove_reference<T>::type;
+using NoRef = typename std::remove_reference<T>::type;
 
 template<typename T>
-using ConstLRef = const Bare<T>&;
+using ConstLRef = const NoRef<T>&;
 
 template<typename T>
-using LRef = Bare<T>&;
+using LRef = NoRef<T>&;
 
 template<typename T>
-using RRef = Bare<T>&&;
+using RRef = NoRef<T>&&;
 
 template<typename... Args>
 struct And : std::true_type {};
@@ -49,13 +49,22 @@ using TraitOf = decltype(Test::template test<Args...>(0));
 enum class concept_checker_t {};
 
 template<typename... Concepts>
-struct requires {
+struct requires_checker {
     static_assert(And<Concepts...>(), "Concept Violation");
     using type = concept_checker_t;
 };
 
 template<typename... Concepts>
-using Requires = typename requires<Concepts...>::type;
+using Requires = typename requires_checker<Concepts...>::type;
+
+template<typename... Concepts>
+using TrueIf = typename std::enable_if<And<Concepts...>::value, concept_checker_t>::type;
+
+template<typename T, template<typename...> class... Concepts>
+constexpr bool require() {
+    static_assert(And<Concepts<T>...>(), "Concept Violation");
+    return true;
+}
 } // gears
 
 #endif // GEARS_CONCEPTS_ALIAS_HPP

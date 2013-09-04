@@ -23,43 +23,132 @@
 #define GEARS_CONCEPTS_BASIC_HPP
 
 #include "alias.hpp"
+#include <utility>
 
 namespace gears {
-template<typename T>
-using DefaultConstructible = std::is_default_constructible<Bare<T>>;
+namespace basic_detail {
+struct is_lvalue_swappable {
+    template<typename T, typename U>
+    static auto test(int) -> decltype(std::swap(std::declval<LRef<T>>(), std::declval<LRef<U>>()), std::true_type{}) {}
+    template<typename...>
+    static std::false_type test(...);
+};
+
+struct is_rvalue_swappable {
+    template<typename T, typename U>
+    static auto test(int) -> decltype(std::swap(std::declval<RRef<T>>(), std::declval<RRef<U>>()), std::true_type{}) {}
+    template<typename...>
+    static std::false_type test(...);
+};
+} // basic_detail
 
 template<typename T>
-using MoveConstructible = std::is_move_constructible<Bare<T>>;
+struct DefaultConstructible : std::is_default_constructible<NoRef<T>> {};
 
 template<typename T>
-using CopyConstructible = std::is_copy_constructible<Bare<T>>;
+struct MoveConstructible : std::is_move_constructible<NoRef<T>> {};
 
 template<typename T>
-using MoveAssignable = std::is_move_assignable<Bare<T>>;
+struct CopyConstructible : std::is_copy_constructible<NoRef<T>> {};
 
 template<typename T>
-using CopyAssignable = std::is_copy_assignable<Bare<T>>;
+struct MoveAssignable : std::is_move_assignable<NoRef<T>> {};
 
 template<typename T>
-using Movable = And<MoveAssignable<T>, MoveConstructible<T>>;
+struct CopyAssignable : std::is_copy_assignable<NoRef<T>> {};
 
 template<typename T>
-using Copyable = And<CopyAssignable<T>, CopyConstructible<T>>;
+struct Movable : And<MoveAssignable<T>, MoveConstructible<T>> {};
 
 template<typename T>
-using Assignable = And<MoveAssignable<T>, CopyAssignable<T>>;
+struct Copyable : And<CopyAssignable<T>, CopyConstructible<T>> {};
 
 template<typename T>
-using Destructible = std::is_destructible<Bare<T>>;
+struct Assignable : And<MoveAssignable<T>, CopyAssignable<T>> {};
 
 template<typename T>
-using Constructible = std::is_constructible<Bare<T>>;
+struct Destructible : std::is_destructible<NoRef<T>> {};
 
 template<typename T>
-using StandardLayout = std::is_standard_layout<Bare<T>>;
+struct Constructible : std::is_constructible<NoRef<T>> {};
 
 template<typename T>
-using POD = std::is_pod<Bare<T>>;
+struct StandardLayout : std::is_standard_layout<NoRef<T>> {};
+
+template<typename T>
+struct POD : std::is_pod<NoRef<T>> {};
+
+template<typename T, typename U = T>
+struct LValueSwappable : TraitOf<basic_detail::is_lvalue_swappable, T, U> {};
+
+template<typename T, typename U = T>
+struct RValueSwappable : TraitOf<basic_detail::is_rvalue_swappable, T, U> {};
+
+template<typename T, typename U = T>
+struct Swappable : And<LValueSwappable<T, U>, RValueSwappable<T, U>> {};
+
+template<typename T>
+struct ContextualBool : std::is_constructible<bool, T> {};
+
+template<typename T>
+struct Integral : std::is_integral<T> {};
+
+template<typename T>
+struct FloatingPoint : std::is_floating_point<T> {};
+
+template<typename T>
+struct Signed : std::is_signed<T> {};
+
+template<typename T>
+struct Unsigned : std::is_unsigned<T> {};
+
+template<typename T>
+struct Arithmetic : std::is_arithmetic<T> {};
+
+template<typename T>
+struct Fundamental : std::is_fundamental<T> {};
+
+template<typename T>
+struct Compound : std::is_compound<T> {};
+
+template<typename T>
+struct Pointer : std::is_pointer<T> {};
+
+template<typename T>
+struct LValueReference : std::is_lvalue_reference<T> {};
+
+template<typename T>
+struct RValueReference : std::is_rvalue_reference<T> {};
+
+template<typename T>
+struct Reference : std::is_reference<T> {};
+
+namespace basic_detail {
+struct is_less_than_comparable {
+    template<typename T, typename U,
+             typename LT = decltype(std::declval<T&>() < std::declval<U&>()),
+             TrueIf<ContextualBool<LT>>...>
+    static std::true_type test(int);
+    template<typename...>
+    static std::false_type test(...);
+};
+
+struct is_equality_comparable {
+    template<typename T, typename U,
+             typename EQ = decltype(std::declval<T&>() == std::declval<U&>()),
+             typename NE = decltype(std::declval<T&>() != std::declval<U&>()),
+             TrueIf<ContextualBool<EQ>, ContextualBool<NE>>...>
+    static std::true_type test(int);
+    template<typename...>
+    static std::false_type test(...);
+};
+} // basic_detail
+
+template<typename T, typename U = T>
+struct LessThanComparable : TraitOf<basic_detail::is_less_than_comparable, T, U> {};
+
+template<typename T, typename U = T>
+struct EqualityComparable : TraitOf<basic_detail::is_equality_comparable, T, U> {};
 } // gears
 
 #endif // GEARS_CONCEPTS_BASIC_HPP
