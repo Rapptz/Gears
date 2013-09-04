@@ -25,18 +25,39 @@
 #include "basic.hpp"
 
 namespace gears {
+namespace iter_detail {
+struct is_iterator {
+    template<typename T,
+             typename V = typename NoRef<T>::value_type,
+             typename D = typename NoRef<T>::difference_type,
+             typename P = typename NoRef<T>::pointer,
+             typename R = typename NoRef<T>::reference,
+             typename I = typename NoRef<T>::iterator_category>
+    static std::true_type test(int);
+    template<typename...>
+    static std::false_type test(...);
+};
+} // iter_detail
+
 template<typename T>
 struct Iterator : And<CopyConstructible<T>, 
                       CopyAssignable<T>, 
                       Destructible<T>,
                       Dereferenceable<T>,
-                      Incrementable<T>> {};
+                      Incrementable<T>,
+                      TraitOf<iter_detail::is_iterator, T>> {};
 
 template<typename T>
 struct InputIterator : And<Iterator<T>, EqualityComparable<T>> {};
 
 template<typename T>
 struct OutputIterator : And<Iterator<T>, Assignable<T>> {};
+
+template<typename T>
+struct ForwardIterator : And<InputIterator<T>, DefaultConstructible<T>> {};
+
+template<typename T>
+struct MutableForwardIterator : And<ForwardIterator<T>, Assignable<T>> {};
 } // gears
 
 #endif // GEARS_CONCEPTS_ITERATOR_HPP
