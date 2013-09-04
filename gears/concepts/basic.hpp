@@ -69,8 +69,8 @@ struct Assignable : And<MoveAssignable<T>, CopyAssignable<T>> {};
 template<typename T>
 struct Destructible : std::is_destructible<NoRef<T>> {};
 
-template<typename T>
-struct Constructible : std::is_constructible<NoRef<T>> {};
+template<typename T, typename... Args>
+struct Constructible : std::is_constructible<NoRef<T>, Args...> {};
 
 template<typename T>
 struct StandardLayout : std::is_standard_layout<NoRef<T>> {};
@@ -164,8 +164,8 @@ private:
 public:
     static const bool one = std::is_same<Pointer&, decltype(a = np)>();
     static const bool two = std::is_same<Pointer&, decltype(a = npc)>();
-    static const bool three = std::is_constructible<Pointer, std::nullptr_t>();
-    static const bool four = std::is_constructible<Pointer, const std::nullptr_t>();
+    static const bool three = Constructible<Pointer, std::nullptr_t>();
+    static const bool four = Constructible<Pointer, const std::nullptr_t>();
     static const bool value = one && two && three && four;
 };
 
