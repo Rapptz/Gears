@@ -49,13 +49,13 @@ using TraitOf = decltype(Test::template test<Args...>(0));
 enum class concept_checker_t {};
 
 template<typename... Concepts>
-struct requires_checker {
+struct require_checker {
     static_assert(And<Concepts...>(), "Concept Violation");
     using type = concept_checker_t;
 };
 
 template<typename... Concepts>
-using Requires = typename requires_checker<Concepts...>::type;
+using Require = typename require_checker<Concepts...>::type;
 
 template<typename... Concepts>
 using TrueIf = typename std::enable_if<And<Concepts...>::value, concept_checker_t>::type;

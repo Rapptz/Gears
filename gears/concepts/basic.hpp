@@ -78,6 +78,9 @@ struct StandardLayout : std::is_standard_layout<NoRef<T>> {};
 template<typename T>
 struct POD : std::is_pod<NoRef<T>> {};
 
+template<typename T>
+struct Semiregular : And<Movable<T>, Copyable<T>, DefaultConstructible<T>> {}; 
+
 template<typename T, typename U = T>
 struct LValueSwappable : TraitOf<basic_detail::is_lvalue_swappable, T, U> {};
 
@@ -178,6 +181,9 @@ struct LessThanComparable : TraitOf<basic_detail::is_less_than_comparable, T, U>
 
 template<typename T, typename U = T>
 struct EqualityComparable : TraitOf<basic_detail::is_equality_comparable, T, U> {};
+
+template<typename T>
+struct Regular : And<Semiregular<T>, EqualityComparable<T>> {};
 
 template<typename T, typename U = T>
 struct Comparable : TraitOf<basic_detail::is_comparable, T, U> {};
