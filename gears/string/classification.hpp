@@ -58,17 +58,6 @@ public:
     }
 };
 
-struct is_blank {
-private:
-    std::locale loc;
-public:
-    is_blank(const std::locale& loc = std::locale()): loc(loc) {}
-    template<typename CharT>
-    bool operator()(CharT c) const {
-        return std::isblank(c, loc);
-    }
-};
-
 struct is_cntrl {
 private:
     std::locale loc;
