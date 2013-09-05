@@ -227,10 +227,10 @@ struct NullablePointer :  And<DefaultConstructible<T>,
                               basic_detail::is_np_assign<T>> {};
 
 template<typename T>
-struct Incrementable : Or<Fundamental<T>, TraitOf<basic_detail::is_incrementable, T>> {};
+struct Incrementable : Or<Fundamental<T>, Pointer<T>, TraitOf<basic_detail::is_incrementable, T>> {};
 
 template<typename T>
-struct Decrementable : Or<Fundamental<T>, TraitOf<basic_detail::is_decrementable, T>> {};
+struct Decrementable : Or<Fundamental<T>, Pointer<T>, TraitOf<basic_detail::is_decrementable, T>> {};
 
 template<typename T>
 struct Dereferenceable : Or<Pointer<T>, TraitOf<basic_detail::is_dereferenceable, T>> {};

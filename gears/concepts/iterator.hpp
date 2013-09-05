@@ -26,37 +26,21 @@
 
 namespace gears {
 namespace iter_detail {
-struct is_iterator {
-    template<typename T,
-             typename V = typename NoRef<T>::value_type,
-             typename D = typename NoRef<T>::difference_type,
-             typename P = typename NoRef<T>::pointer,
-             typename R = typename NoRef<T>::reference,
-             typename I = typename NoRef<T>::iterator_category>
+struct is_random_access {
+    template<typename It,
+             typename D = typename NoRef<It>::difference_type,
+             typename R = typename NoRef<It>::reference,
+             TrueIf<std::is_same<decltype(std::declval<It&>() += 2), It&>,
+                    std::is_same<decltype(std::declval<It&>() + 2), It>,
+                    std::is_same<decltype(2 + std::declval<It&>()), It>,
+                    std::is_same<decltype(std::declval<It&>() -= 2), It&>,
+                    std::is_same<decltype(std::declval<It&>() - 2), It>,
+                    std::is_same<decltype(std::declval<It&>() - (std::declval<It&>() + 2)), D>,
+                    std::is_convertible<decltype(std::declval<It&>()[2]), R>>...>
     static std::true_type test(int);
     template<typename...>
     static std::false_type test(...);
 };
-
-template<typename It>
-struct is_random_access_impl {
-private:
-    It r;
-    using D = typename NoRef<It>::difference_type;
-    using R = typename NoRef<It>::reference;
-public:
-    static const bool one   = std::is_same<decltype(r += 2), It&>();
-    static const bool two   = std::is_same<decltype(r + 2), It>();
-    static const bool three = std::is_same<decltype(2 + r), It>();
-    static const bool four  = std::is_same<decltype(r -= 2), It&>();
-    static const bool five  = std::is_same<decltype(r - 2), It>();
-    static const bool six   = std::is_same<decltype(r - (r + 2)), D>();
-    static const bool seven = std::is_convertible<decltype(r[2]), R>();
-    static const bool value = one && two && three && four && five && six && seven; 
-};
-
-template<typename It>
-struct is_random_access : std::integral_constant<bool, is_random_access_impl<NoRef<It>>::value> {};
 } // iter_detail
 
 template<typename T>
@@ -64,8 +48,7 @@ struct Iterator : And<CopyConstructible<T>,
                       CopyAssignable<T>, 
                       Destructible<T>,
                       Dereferenceable<T>,
-                      Incrementable<T>,
-                      TraitOf<iter_detail::is_iterator, T>> {};
+                      Incrementable<T>> {};
 
 template<typename T>
 struct InputIterator : And<Iterator<T>, EqualityComparable<T>> {};
@@ -86,7 +69,10 @@ template<typename T>
 struct MutableBidirectionalIterator : And<MutableForwardIterator<T>, Decrementable<T>> {};
 
 template<typename T>
-struct RandomAccessIterator : Or<Pointer<T>, And<BidirectionalIterator<T>, Comparable<T>, iter_detail::is_random_access<T>>> {};
+struct RandomAccessIterator : Or<Pointer<T>,
+                                 And<BidirectionalIterator<T>, 
+                                     Comparable<T>, 
+                                     TraitOf<iter_detail::is_random_access, T>>> {};
 
 template<typename T>
 struct MutableRandomAccessIterator : And<RandomAccessIterator<T>, Assignable<T>> {};
