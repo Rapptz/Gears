@@ -28,8 +28,8 @@ namespace gears {
 namespace iter_detail {
 struct is_random_access {
     template<typename It,
-             typename D = typename NoRef<It>::difference_type,
-             typename R = typename NoRef<It>::reference,
+             typename D = typename Bare<It>::difference_type,
+             typename R = typename Bare<It>::reference,
              TrueIf<std::is_same<decltype(std::declval<It&>() += 2), It&>,
                     std::is_same<decltype(std::declval<It&>() + 2), It>,
                     std::is_same<decltype(2 + std::declval<It&>()), It>,

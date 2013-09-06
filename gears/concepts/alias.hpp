@@ -26,16 +26,16 @@
 
 namespace gears {
 template<typename T>
-using NoRef = typename std::remove_reference<T>::type;
+using Bare = typename std::remove_cv<typename std::remove_reference<T>::type>::type;
 
 template<typename T>
-using ConstLRef = const NoRef<T>&;
+using ConstLRef = const Bare<T>&;
 
 template<typename T>
-using LRef = NoRef<T>&;
+using LRef = Bare<T>&;
 
 template<typename T>
-using RRef = NoRef<T>&&;
+using RRef = Bare<T>&&;
 
 template<typename... Args>
 struct And : std::true_type {};

@@ -50,7 +50,7 @@ template<typename T, typename = concept_checker_t>
 struct is_function_impl : std::is_function<T> {};
 
 template<typename T>
-struct is_function_impl<T, TrueIf<std::is_class<NoRef<T>>>> {
+struct is_function_impl<T, TrueIf<std::is_class<Bare<T>>>> {
     using yes = char;
     using no = struct { char s[2]; };
 

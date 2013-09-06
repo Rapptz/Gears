@@ -43,19 +43,19 @@ struct is_rvalue_swappable {
 } // basic_detail
 
 template<typename T>
-struct DefaultConstructible : std::is_default_constructible<NoRef<T>> {};
+struct DefaultConstructible : std::is_default_constructible<Bare<T>> {};
 
 template<typename T>
-struct MoveConstructible : std::is_move_constructible<NoRef<T>> {};
+struct MoveConstructible : std::is_move_constructible<Bare<T>> {};
 
 template<typename T>
-struct CopyConstructible : std::is_copy_constructible<NoRef<T>> {};
+struct CopyConstructible : std::is_copy_constructible<Bare<T>> {};
 
 template<typename T>
-struct MoveAssignable : std::is_move_assignable<NoRef<T>> {};
+struct MoveAssignable : std::is_move_assignable<Bare<T>> {};
 
 template<typename T>
-struct CopyAssignable : std::is_copy_assignable<NoRef<T>> {};
+struct CopyAssignable : std::is_copy_assignable<Bare<T>> {};
 
 template<typename T>
 struct Movable : And<MoveAssignable<T>, MoveConstructible<T>> {};
@@ -67,16 +67,16 @@ template<typename T>
 struct Assignable : And<MoveAssignable<T>, CopyAssignable<T>> {};
 
 template<typename T>
-struct Destructible : std::is_destructible<NoRef<T>> {};
+struct Destructible : std::is_destructible<Bare<T>> {};
 
 template<typename T, typename... Args>
-struct Constructible : std::is_constructible<NoRef<T>, Args...> {};
+struct Constructible : std::is_constructible<Bare<T>, Args...> {};
 
 template<typename T>
-struct StandardLayout : std::is_standard_layout<NoRef<T>> {};
+struct StandardLayout : std::is_standard_layout<Bare<T>> {};
 
 template<typename T>
-struct POD : std::is_pod<NoRef<T>> {};
+struct POD : std::is_pod<Bare<T>> {};
 
 template<typename T>
 struct Semiregular : And<Movable<T>, Copyable<T>, DefaultConstructible<T>> {}; 
