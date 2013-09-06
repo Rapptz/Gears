@@ -53,6 +53,19 @@ struct is_container {
     static std::false_type test(...);
 };
 
+struct is_forward_list {
+    template<typename C,
+             typename T = typename Bare<C>::value_type,
+             typename It = typename Bare<C>::const_iterator,
+             typename Ia = decltype(std::declval<LRef<C>>().insert_after(std::declval<It&>(), std::declval<T&>())),
+             typename Em = decltype(std::declval<LRef<C>>().emplace_after(std::declval<It&>())),
+             typename Ea = decltype(std::declval<LRef<C>>().erase_after(std::declval<It&>())),
+             typename Sa = decltype(std::declval<LRef<C>>().splice_after(std::declval<It&>(), std::declval<LRef<C>>()))>
+    static std::true_type test(int);
+    template<typename...>
+    static std::false_type test(...);
+};
+
 struct is_reversible {
     template<typename C,
              typename Ri = typename Bare<C>::reverse_iterator,
@@ -68,13 +81,29 @@ struct is_reversible {
     template<typename...>
     static std::false_type test(...);
 };
+
+struct is_allocator_aware {
+    template<typename C,
+             typename A = typename Bare<C>::allocator_type,
+             typename G = decltype(std::declval<LRef<C>>().get_allocator()),
+             TrueIf<std::is_same<A, G>>...>
+    static std::true_type test(int);
+    template<typename...>
+    static std::false_type test(...);
+};
 } // container_detail
 
 template<typename T>
-struct Container : And<TraitOf<container_detail::is_container, T>, Regular<T>, Destructible<T>> {};
+struct Container : And<Or<TraitOf<container_detail::is_container, T>, 
+                          TraitOf<container_detail::is_forward_list, T>>, 
+                       Regular<T>, 
+                       Destructible<T>> {};
 
 template<typename T>
 struct ReversibleContainer : And<Container<T>, TraitOf<container_detail::is_reversible, T>> {};
+
+template<typename T>
+struct AllocatorAwareContainer : And<Container<T>, TraitOf<container_detail::is_allocator_aware, T>> {};
 } // gears
 
 #endif // GEARS_CONCEPTS_CONTAINER_HPP
