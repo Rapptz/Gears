@@ -120,6 +120,46 @@ struct is_array_sequence {
     template<typename>
     static std::false_type test(...);
 };
+
+struct is_associative_container {
+    template<typename C,
+             typename B  = Bare<C>,
+             typename Kt = typename B::key_type,
+             typename T  = typename B::value_type,
+             typename It = typename B::iterator,
+             typename Kc = typename B::key_compare,
+             typename Vc = typename B::value_compare,
+             typename St = typename B::size_type,
+             typename KC = decltype(std::declval<B&>().key_comp()),
+             typename VC = decltype(std::declval<B&>().value_comp()),
+             typename Em = decltype(std::declval<B&>().emplace()),
+             typename Eh = decltype(std::declval<B&>().emplace_hint(std::declval<It&>())),
+             typename I1 = decltype(std::declval<B&>().insert(std::declval<T&>())),
+             typename I2 = decltype(std::declval<B&>().insert(std::declval<It&>(), std::declval<T&>())),
+             typename I3 = decltype(std::declval<B&>().insert(std::declval<It&>(), std::declval<It&>())),
+             typename E1 = decltype(std::declval<B&>().erase(std::declval<Kt&>())),
+             typename E2 = decltype(std::declval<B&>().erase(std::declval<It&>())),
+             typename E3 = decltype(std::declval<B&>().erase(std::declval<It&>(), std::declval<It&>())),
+             typename Cl = decltype(std::declval<B&>().clear()),
+             typename Fi = decltype(std::declval<B&>().find(std::declval<Kt>())),
+             typename Co = decltype(std::declval<B&>().count(std::declval<Kt>())),
+             typename Lb = decltype(std::declval<B&>().lower_bound(std::declval<Kt>())),
+             typename Ub = decltype(std::declval<B&>().upper_bound(std::declval<Kt>())),
+             typename Er = decltype(std::declval<B&>().equal_range(std::declval<Kt>())),
+             TrueIf<std::is_constructible<B, It, It, Kc>,
+                    std::is_constructible<B, It, It>,
+                    std::is_convertible<I2, It>,
+                    std::is_convertible<E1, St>,
+                    std::is_convertible<E2, It>,
+                    std::is_convertible<E3, It>,
+                    std::is_convertible<Fi, It>,
+                    std::is_convertible<Co, St>,
+                    std::is_convertible<Lb, It>,
+                    std::is_convertible<Ub, It>>...>
+    static std::true_type test(int);
+    template<typename...>
+    static std::false_type test(...);
+};
 } // container_detail
 
 template<typename T>
@@ -138,6 +178,9 @@ template<typename T>
 struct SequenceContainer : And<Container<T>, Or<TraitOf<container_detail::is_sequence_container, T>, 
                                                 TraitOf<container_detail::is_array_sequence, T>,
                                                 TraitOf<container_detail::is_forward_list, T>>> {};
+
+template<typename T>
+struct AssociativeContainer : And<Container<T>, TraitOf<container_detail::is_associative_container, T>> {};
 } // gears
 
 #endif // GEARS_CONCEPTS_CONTAINER_HPP
