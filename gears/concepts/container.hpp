@@ -91,6 +91,35 @@ struct is_allocator_aware {
     template<typename...>
     static std::false_type test(...);
 };
+
+struct is_sequence_container {
+    template<typename C,
+             typename B = Bare<C>,
+             typename T  = typename B::value_type,
+             typename St = typename B::size_type,
+             typename It = typename B::iterator,
+             typename C1 = decltype(B(St(), std::declval<LRef<T>>())),
+             typename C2 = decltype(B(std::declval<It&>(), std::declval<It&>())),
+             typename E1 = decltype(std::declval<B&>().emplace(std::declval<It&>())),
+             typename E2 = decltype(std::declval<B&>().emplace(std::declval<It&>(), std::declval<LRef<T>>())),
+             typename I  = decltype(std::declval<B&>().insert(std::declval<It&>(), St(), std::declval<LRef<T>>())),
+             typename I2 = decltype(std::declval<B&>().insert(std::declval<It&>(), std::declval<It&>(), std::declval<It&>())),
+             typename E3 = decltype(std::declval<B&>().erase(std::declval<It&>())),
+             typename E4 = decltype(std::declval<B&>().erase(std::declval<It&>(), std::declval<It&>())),
+             typename Cl = decltype(std::declval<B&>().clear()),
+             typename A1 = decltype(std::declval<B&>().assign(std::declval<It&>(), std::declval<It&>())),
+             typename A2 = decltype(std::declval<B&>().assign(St(), std::declval<LRef<T>>()))>
+    static std::true_type test(int);
+    template<typename...>
+    static std::false_type test(...);
+};
+
+struct is_array_sequence {
+    template<typename C>
+    static auto test(int) -> decltype(std::declval<LRef<C>>().fill(0), std::true_type{}) {}
+    template<typename>
+    static std::false_type test(...);
+};
 } // container_detail
 
 template<typename T>
@@ -104,6 +133,11 @@ struct ReversibleContainer : And<Container<T>, TraitOf<container_detail::is_reve
 
 template<typename T>
 struct AllocatorAwareContainer : And<Container<T>, TraitOf<container_detail::is_allocator_aware, T>> {};
+
+template<typename T>
+struct SequenceContainer : And<Container<T>, Or<TraitOf<container_detail::is_sequence_container, T>, 
+                                                TraitOf<container_detail::is_array_sequence, T>,
+                                                TraitOf<container_detail::is_forward_list, T>>> {};
 } // gears
 
 #endif // GEARS_CONCEPTS_CONTAINER_HPP
