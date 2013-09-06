@@ -52,10 +52,29 @@ struct is_container {
     template<typename...>
     static std::false_type test(...);
 };
+
+struct is_reversible {
+    template<typename C,
+             typename Ri = typename Bare<C>::reverse_iterator,
+             typename Cr = typename Bare<C>::const_reverse_iterator,
+             typename Rb = decltype(std::declval<LRef<C>>().rbegin()),
+             typename Re = decltype(std::declval<LRef<C>>().rend()),
+             typename Cb = decltype(std::declval<LRef<C>>().crbegin()),
+             typename Ce = decltype(std::declval<LRef<C>>().crend()),
+             TrueIf<std::is_convertible<Ri, Cr>, std::is_convertible<Rb, Cr>,
+                    std::is_convertible<Re, Cr>, std::is_same<Cb, Cr>,
+                    std::is_same<Ce, Cr>>...>
+    static std::true_type test(int);
+    template<typename...>
+    static std::false_type test(...);
+};
 } // container_detail
 
 template<typename T>
 struct Container : And<TraitOf<container_detail::is_container, T>, Regular<T>, Destructible<T>> {};
+
+template<typename T>
+struct ReversibleContainer : And<Container<T>, TraitOf<container_detail::is_reversible, T>> {};
 } // gears
 
 #endif // GEARS_CONCEPTS_CONTAINER_HPP
