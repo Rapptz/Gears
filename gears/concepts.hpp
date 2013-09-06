@@ -23,5 +23,6 @@
 #define GEARS_CONCEPTS_HPP
 
 #include "concepts/iterator.hpp"
+#include "concepts/function.hpp"
 
 #endif // GEARS_CONCEPTS_HPP

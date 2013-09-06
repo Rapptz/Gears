@@ -23,6 +23,7 @@
 #define GEARS_CONCEPTS_FUNCTION_HPP
 
 #include "alias.hpp"
+#include <utility>
 
 namespace gears {
 namespace function_detail {
@@ -45,6 +46,27 @@ struct is_callable : std::false_type {
     static_assert(std::is_function<Signature>(), "Signature must be a function");
 };
 
+template<typename T, typename = concept_checker_t>
+struct is_function_impl : std::is_function<T> {};
+
+template<typename T>
+struct is_function_impl<T, TrueIf<std::is_class<NoRef<T>>>> {
+    using yes = char;
+    using no = struct { char s[2]; };
+
+    struct F { void operator()(); };
+    struct Derived : T, F { };
+    template<typename U, U> struct Check;
+
+    template<typename V>
+    static no test(Check<void (F::*)(), &V::operator()>*);
+
+    template<typename>
+    static yes test(...);
+
+    static const bool value = sizeof(test<Derived>(0)) == sizeof(yes);
+};
+
 template<typename T, typename R, typename... Args>
 struct is_callable<T, R(Args...), Void_<decltype(sink<R>(std::declval<T>()(std::declval<Args>()...)))>> : std::true_type {};
 
@@ -64,6 +86,10 @@ struct Callable : function_detail::is_callable<T, Signature> {};
 
 template<typename T>
 struct Generator : TraitOf<function_detail::is_generator, T> {};
+
+template<typename T>
+struct Function : std::integral_constant<bool, function_detail::is_function_impl<T>::value> {};
+
 } // gears
 
 #endif // GEARS_CONCEPTS_FUNCTION_HPP
