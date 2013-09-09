@@ -40,7 +40,7 @@ inline void fprint(std::basic_ostream<Elem, Traits>& out, const Elem (&str)[N], 
     size_t index = 0;
 
     while(*first) {
-        if(*first != '{') {
+        if(*first != out.widen('{')) {
             out << *first++;
             continue;
         }
@@ -48,17 +48,17 @@ inline void fprint(std::basic_ostream<Elem, Traits>& out, const Elem (&str)[N], 
         auto check = first;
 
         // Handle special cases
-        if(!*(++check) || *check == '}') {
+        if(!*(++check) || *check == out.widen('}')) {
             out << *first++;
             continue;
         }
 
         index = 0;
         while(*check && cmp(*check)) {
-            index = (index * 10) + (*check++ - '0');
+            index = (index * 10) + (*check++ - out.widen('0'));
         }
 
-        if(*check == '}') {
+        if(*check == out.widen('}')) {
             format_detail::index_printer(out, index, args);
             ++check;
         }
