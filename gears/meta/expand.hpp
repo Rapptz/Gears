@@ -28,6 +28,6 @@ using expander = int[];
 } // expand_detail
 } // gears
 
-#define GEARS_EXPAND(...) void(::gears::expand_detail::expander{(0, (__VA_ARGS__), 0)...})
+#define GEARS_EXPAND(...) void(::gears::expand_detail::expander{((__VA_ARGS__), 0)...})
 
 #endif // GEARS_META_EXPAND_HPP
