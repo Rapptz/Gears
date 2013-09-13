@@ -85,6 +85,9 @@ using Unqualified = RemoveCV<RemoveRef<T>>;
 
 template<typename T>
 using ValueType = typename Unqualified<T>::value_type;
+
+template<typename T>
+using StorageFor = Type<std::aligned_storage<sizeof(T), std::alignment_of<T>::value>>;
 } // gears
 
 #endif // GEARS_META_ALIAS_HPP
