@@ -25,3 +25,6 @@ obj/*
 
 # Development .cpp file
 dev.cpp
+
+# CTags
+.tags*
