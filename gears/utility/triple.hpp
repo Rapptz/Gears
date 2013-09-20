@@ -19,10 +19,10 @@
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-#ifndef GEARS_TRIPLE_HPP
-#define GEARS_TRIPLE_HPP
+#ifndef GEARS_UTILITY_TRIPLE_HPP
+#define GEARS_UTILITY_TRIPLE_HPP
 
-#include "meta/alias.hpp"
+#include "../meta/alias.hpp"
 #include <cstddef>
 
 namespace gears {
@@ -36,18 +36,10 @@ struct triple {
     U second;
     V third;
 
-    constexpr triple()              = default;
-    constexpr triple(const triple&) = default;
-    constexpr triple(triple&&)      = default;
-
-    constexpr triple(T&& a, U&& b, V&& c) noexcept: first(std::forward<T>(a)), second(std::forward<U>(b)), third(std::forward<V>(c)) {}
-
-    template<class X, class Y, class Z, EnableIf<std::is_convertible<X, T>, std::is_convertible<Y, U>, std::is_convertible<Z, V>>...>
-    constexpr triple(const triple<X, Y, Z>& t) noexcept: first(t.first), second(t.second), third(t.third) {}
-
-    template<class X, class Y, class Z, EnableIf<std::is_convertible<X, T>, std::is_convertible<Y, U>, std::is_convertible<Z, V>>...>
-    constexpr triple(triple<X, Y, Z>&& t) noexcept: first(std::forward<X>(t.first)), second(std::forward<Y>(t.second)), third(std::forward<Z>(t.third)) {}
-
+    triple()              noexcept = default;
+    triple(const triple&) noexcept = default;
+    triple(triple&&)      noexcept = default;
+    
     void swap(triple& t) noexcept(noexcept(std::swap(first, t.first))   &&
                                   noexcept(std::swap(second, t.second)) &&
                                   noexcept(std::swap(third, t.third))) {
@@ -199,4 +191,4 @@ constexpr gears::Type<tuple_element<N, gears::triple<T, U, V>>>&& get(gears::tri
 }
 } // std
 
-#endif // GEARS_TRIPLE_HPP
+#endif // GEARS_UTILITY_TRIPLE_HPP

@@ -19,22 +19,10 @@
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-#include <catch.hpp>
-#include <tuple>
-#include <gears/utility/triple.hpp>
+#ifndef GEARS_UTILITY_HPP
+#define GEARS_UTILITY_HPP
 
-TEST_CASE("Triples", "[triple]") {
-    constexpr gears::triple<int, float, char> a = {1, 2.f, '3'};
-    static_assert(a.first  == 1  , "..");
-    static_assert(a.second == 2.f, "..");
-    static_assert(a.third  == '3', "..");
-    static_assert(std::get<0>(a) == 1, "..");
-    static_assert(std::get<1>(a) == 2.f, "..");
-    static_assert(std::get<2>(a) == '3', "..");
-    constexpr auto b = gears::make_triple(20, 3.f, 'b');
-    static_assert(a != b, "..");
-    static_assert(a < b, "..");
-    static_assert(a <= b, "..");
-    constexpr auto c = a;
-    static_assert(a == c, "..");
-}
+#include "utility/line_reader.hpp"
+#include "utility/triple.hpp"
+
+#endif // GEARS_UTILITY_HPP
