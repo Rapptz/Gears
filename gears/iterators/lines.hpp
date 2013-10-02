@@ -19,8 +19,8 @@
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-#ifndef GEARS_UTILITY_LINE_READER_HPP
-#define GEARS_UTILITY_LINE_READER_HPP
+#ifndef GEARS_ITERATORS_LINES_HPP
+#define GEARS_ITERATORS_LINES_HPP
 
 #include <istream>
 #include <string>
@@ -85,9 +85,9 @@ public:
 };
 
 template<typename CharT, typename Traits>
-inline line_reader<CharT, Traits> by_line(std::basic_istream<CharT, Traits>& in) {
+inline line_reader<CharT, Traits> lines(std::basic_istream<CharT, Traits>& in) {
     return line_reader<CharT, Traits>(in);
 }
 } // gears
 
-#endif // GEARS_UTILITY_LINE_READER_HPP
+#endif // GEARS_ITERATORS_LINES_HPP

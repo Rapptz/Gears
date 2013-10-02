@@ -28,3 +28,6 @@ dev.cpp
 
 # CTags
 .tags*
+
+# Sublime cruft
+*.sublime*
