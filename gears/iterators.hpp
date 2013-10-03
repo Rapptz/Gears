@@ -24,5 +24,6 @@
 
 #include "iterators/lines.hpp"
 #include "iterators/keys_values.hpp"
+#include "iterators/enumerate.hpp"
 
 #endif // GEARS_ITERATORS_HPP
