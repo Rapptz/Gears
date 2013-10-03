@@ -24,11 +24,11 @@
 
 #include <istream>
 #include <string>
-#include <iterator>
+#include "primitives.hpp"
 
 namespace gears {
 template<typename CharT = char, typename Traits = std::char_traits<CharT>>
-struct line_iterator : std::iterator<std::input_iterator_tag, std::basic_string<CharT, Traits>> {
+struct line_iterator : input_iterator<std::basic_string<CharT, Traits>> {
 private:
     std::basic_istream<CharT, Traits>* reader;
     std::basic_string<CharT, Traits> value;
