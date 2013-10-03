@@ -19,10 +19,35 @@
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-#ifndef GEARS_ITERATORS_HPP
-#define GEARS_ITERATORS_HPP
+#ifndef GEARS_ITERATORS_KEYS_AND_VALUES_HPP
+#define GEARS_ITERATORS_KEYS_AND_VALUES_HPP
 
-#include "iterators/lines.hpp"
-#include "iterators/keys_values.hpp"
+#include "map.hpp"
 
-#endif // GEARS_ITERATORS_HPP
+namespace gears {
+struct keys_helper {
+    template<typename Pair>
+    constexpr auto operator()(const Pair& c) const noexcept -> decltype(c.first) {
+        return c.first;
+    }
+};
+
+struct values_helper {
+    template<typename Pair>
+    constexpr auto operator()(const Pair& c) const noexcept -> decltype(c.second) {
+        return c.second;
+    }
+};
+
+template<typename Cont>
+inline mapper<Cont, keys_helper> keys(const Cont& c) noexcept {
+    return { c, keys_helper{} };
+}
+
+template<typename Cont>
+inline mapper<Cont, values_helper> values(const Cont& c) noexcept {
+    return { c, values_helper{} };
+}
+} // gears
+ 
+#endif // GEARS_ITERATORS_KEYS_AND_VALUES_HPP
