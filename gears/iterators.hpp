@@ -23,5 +23,6 @@
 #define GEARS_ITERATORS_HPP
 
 #include "iterators/lines.hpp"
+#include "iterators/map.hpp"
 
 #endif // GEARS_ITERATORS_HPP
