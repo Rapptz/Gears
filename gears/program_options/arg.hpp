@@ -42,6 +42,27 @@ public:
     arg(std::string name, std::string desc = "", char shorter = '\0', std::string p = "") noexcept: 
     name(std::move(name)), description(std::move(desc)), parameter(std::move(p)), short_name(shorter) {}
 
+    bool is_value() const noexcept {
+        return !parameter.empty();
+    }
+
+    arg& shorter(char c) noexcept {
+        short_name = c;
+        return *this;
+    }
+
+    arg& help(std::string str) noexcept {
+        description = std::move(str);
+        return *this;
+    }
+
+    arg& param(std::string str) noexcept {
+        parameter = std::move(str);
+        return *this;
+    }
+
+    #ifndef GEARS_NO_IOSTREAM
+
     template<typename Elem, typename Traits>
     friend auto operator<<(std::basic_ostream<Elem, Traits>& out, const arg& a) -> decltype(out) {
         int spaces = 30;
@@ -70,24 +91,7 @@ public:
         return out;
     }
 
-    bool is_value() const noexcept {
-        return !parameter.empty();
-    }
-
-    arg& shorter(char c) noexcept {
-        short_name = c;
-        return *this;
-    }
-
-    arg& help(std::string str) noexcept {
-        description = std::move(str);
-        return *this;
-    }
-
-    arg& param(std::string str) noexcept {
-        parameter = std::move(str);
-        return *this;
-    }
+    #endif // GEARS_NO_IOSTREAM
 };
 } // gears
 
