@@ -43,7 +43,7 @@ struct arg_not_found : std::exception {
 };
 
 template<typename T>
-T lexical_cast(const std::string& str) {
+inline T lexical_cast(const std::string& str) {
     std::stringstream ss(str);
     T result;
     if((ss >> result).fail() || !(ss >> std::ws).eof())
@@ -51,13 +51,18 @@ T lexical_cast(const std::string& str) {
     return result;
 }
 
+template<>
+inline std::string lexical_cast<std::string>(const std::string& str) {
+    return str;
+}
+
 template<typename Cont, typename T>
-auto insert_impl(Cont& c, T&& t) -> decltype(c.push_back(std::forward<T>(t)), void()) {
+inline auto insert_impl(Cont& c, T&& t) -> decltype(c.push_back(std::forward<T>(t)), void()) {
     c.push_back(std::forward<T>(t));
 }
 
 template<typename Cont, typename T>
-auto insert_impl(Cont& c, T&& t) -> decltype(c.insert(std::forward<T>(t)), void()) {
+inline auto insert_impl(Cont& c, T&& t) -> decltype(c.insert(std::forward<T>(t)), void()) {
     c.insert(std::forward<T>(t));
 }
 } // detail
