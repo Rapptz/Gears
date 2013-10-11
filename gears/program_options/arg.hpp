@@ -62,6 +62,11 @@ public:
         return *this;
     }
 
+    arg& default_value(std::string str) noexcept {
+        value = std::move(str);
+        return *this;
+    }
+
     #ifndef GEARS_NO_IOSTREAM
 
     template<typename Elem, typename Traits>
