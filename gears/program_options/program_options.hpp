@@ -33,6 +33,25 @@ private:
     std::string program_name;
     std::string program_usage;
 
+    int parse_value(arg& argu, char* argv[], int counter) {
+        // next arg isn't a flag or option
+        // intersperse values with a space separator
+        if(argv[counter] != nullptr && argv[counter][0] != '-') {
+            // overwrite value
+            std::string temp(argv[counter]);
+            argu.value.swap(temp);
+            ++counter;
+        }
+
+        while(argv[counter] != nullptr && argv[counter][0] != '-') {
+            // append the value to the space separated list
+            argu.value.push_back(' ');
+            argu.value.append(argv[counter++]);
+        }
+
+        return counter - 1;
+    }
+
     void parse_short_option(const std::string& option, int& i, char* argv[]) {
         for(auto&& arg : args) {
 
@@ -42,21 +61,7 @@ private:
             if(option.size() == 2) {
                 if(pos != std::string::npos) {
                     if(arg.second.is_value()) {
-                        int counter = i + 1;
-
-                        // next arg isn't a flag or option
-                        // interspersing values with comma separation
-                        if(argv[counter] != nullptr && argv[counter][0] != '-') {
-                            arg.second.value.append(argv[counter++]);
-                        }
-
-                        while(argv[counter] != nullptr && argv[counter][0] != '-') {                            
-                            // append option value to arg value
-                            arg.second.value.push_back(' ');
-                            arg.second.value.append(argv[counter++]);
-                        }
-
-                        i = counter - 1;
+                        i = parse_value(arg.second, argv, i + 1);
                         break;
                     }
 
@@ -130,21 +135,7 @@ public:
 
                 // value options
                 if(it->second.is_value()) {
-                    int counter = i + 1;
-
-                    // next arg isn't a flag or value
-                    // interspersing values with comma separation
-                    if(argv[counter] != nullptr && argv[counter][0] != '-') {
-                        it->second.value.append(argv[counter++]);
-                    }
-
-                    while(argv[counter] != nullptr && argv[counter][0] != '-') {
-                        // append value
-                        it->second.value.push_back(' ');
-                        it->second.value.append(argv[counter++]);
-                    }
-
-                    i = counter - 1;
+                    i = parse_value(it->second, argv, i + 1);
                 }
 
                 // regular flag

@@ -22,6 +22,6 @@
 #ifndef GEARS_PROGRAM_OPTIONS_HPP
 #define GEARS_PROGRAM_OPTIONS_HPP
 
-#include "program_options/arg.hpp"
+#include "program_options/program_options.hpp"
 
 #endif // GEARS_PROGRAM_OPTIONS_HPP

@@ -39,8 +39,9 @@ private:
     bool active = false;
     char short_name = '\0';
 public:
-    arg(std::string name, std::string desc = "", char shorter = '\0', std::string p = "") noexcept: 
-    name(std::move(name)), description(std::move(desc)), parameter(std::move(p)), short_name(shorter) {}
+    arg(std::string name, std::string desc = "", char shorter = '\0', std::string param = "", std::string val = "") noexcept: 
+    name(std::move(name)), description(std::move(desc)), parameter(std::move(param)), 
+    value(std::move(val)), short_name(shorter) {}
 
     bool is_value() const noexcept {
         return !parameter.empty();
