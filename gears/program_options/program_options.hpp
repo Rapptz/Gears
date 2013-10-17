@@ -201,6 +201,16 @@ public:
         throw detail::invalid_arg_get(argument);
     }
 
+    void check_required_args() const {
+        // loop through every argument to see if the required
+        // arguments haven't been provided.
+        for(auto&& arg : args) {
+            if(arg.second.req && !arg.second.active) {
+                throw detail::missing_required_arg(program_name, "--" + arg.second.name);
+            }
+        }
+    }
+
     #ifndef GEARS_NO_IOSTREAM
 
     template<typename Elem, typename Traits>

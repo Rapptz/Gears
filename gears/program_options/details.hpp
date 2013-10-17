@@ -35,8 +35,23 @@ struct bad_lexical_cast : std::bad_cast {
 };
 
 struct invalid_arg_get : std::exception {
+private:
     std::string str;
+public:
     invalid_arg_get(const std::string& str): str("error: " + str + " is not a value or valid argument") {}
+    
+    virtual const char* what() const noexcept {
+        return str.c_str();
+    }
+};
+
+struct missing_required_arg : std::exception {
+private:
+    std::string str;
+public:
+    using string_type = const std::string&;
+    missing_required_arg(string_type prog, string_type str): str(prog + ": error: missing required argument: " + str) {}
+    
     virtual const char* what() const noexcept {
         return str.c_str();
     }

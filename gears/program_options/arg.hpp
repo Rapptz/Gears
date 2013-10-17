@@ -37,11 +37,13 @@ private:
     std::string parameter;
     std::string value;
     bool active = false;
-    char short_name = '\0';
+    bool req;
+    char short_name;
 public:
-    arg(std::string name, std::string desc = "", char shorter = '\0', std::string param = "", std::string val = "") noexcept: 
+    arg(std::string name, std::string desc = "", char shorter = '\0', 
+        bool req = false, std::string param = "", std::string val = "") noexcept: 
     name(std::move(name)), description(std::move(desc)), parameter(std::move(param)), 
-    value(std::move(val)), short_name(shorter) {}
+    value(std::move(val)), req(req), short_name(shorter) {}
 
     bool is_value() const noexcept {
         return !parameter.empty();
@@ -64,6 +66,11 @@ public:
 
     arg& default_value(std::string str) noexcept {
         value = std::move(str);
+        return *this;
+    }
+
+    arg& required(bool b) noexcept {
+        req = b;
         return *this;
     }
 
