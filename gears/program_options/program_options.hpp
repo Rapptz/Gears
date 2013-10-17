@@ -106,7 +106,6 @@ public:
     }
 
     void parse(int argc, char* argv[]) noexcept {
-        program_name = argv[0];
         std::string current;
         for(int i = 1; i < argc; ++i) {
             current = argv[i];
@@ -159,12 +158,15 @@ public:
         return false;
     }
 
-    void usage(std::string str) noexcept {
+    program_options& usage(std::string str) noexcept {
         program_usage = std::move(str);
+        return *this;
     }
 
-    std::string usage() const noexcept {
-        return "usage: " + program_name + ' ' + program_usage;
+    program_options& name(std::string str) noexcept {
+        program_name = std::move(str);
+        program_name.push_back(' ');
+        return *this;
     }
 
     template<typename T = std::string>
@@ -201,7 +203,7 @@ public:
 
     template<typename Elem, typename Traits>
     friend auto operator<<(std::basic_ostream<Elem, Traits>& out, const program_options& po) -> decltype(out) {
-        out << "usage: " << po.program_name << ' ' << po.program_usage << "\n\n";
+        out << "usage: " << po.program_name << po.program_usage << "\n\n";
 
         for(auto&& arg : po.args) {
             out << arg.second;            
