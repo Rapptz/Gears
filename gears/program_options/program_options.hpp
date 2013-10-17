@@ -107,6 +107,11 @@ public:
 
     void parse(int argc, char* argv[]) {
         std::string current;
+
+        if(program_name.empty()) {
+            program_name = argv[0];
+        }
+        
         for(int i = 1; i < argc; ++i) {
             current = argv[i];
 
