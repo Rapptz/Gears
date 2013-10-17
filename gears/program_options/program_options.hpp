@@ -171,18 +171,20 @@ public:
 
     template<typename T = std::string>
     T get(const std::string& str) const {
-        auto it = args.find("--" + str);
+        const auto& argument = "--" + str;
+        auto it = args.find(argument);
         if(it != args.end()) {
             if(it->second.is_value())
                 return detail::lexical_cast<T>(it->second.value);
         }
 
-        throw detail::arg_not_found(str + " is not an option argument");
+        throw detail::invalid_arg_get(argument);
     }
 
     template<typename T>
     T get_list(const std::string& str) const {
-        auto it = args.find("--" + str);
+        const auto& argument = "--" + str;
+        auto it = args.find(argument);
         if(it != args.end()) {
             if(it->second.is_value()) {
                 T result;
@@ -196,7 +198,7 @@ public:
             }
         }
 
-        throw detail::arg_not_found(str + " is not an option argument");
+        throw detail::invalid_arg_get(argument);
     }
 
     #ifndef GEARS_NO_IOSTREAM

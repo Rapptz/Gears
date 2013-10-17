@@ -34,9 +34,9 @@ struct bad_lexical_cast : std::bad_cast {
     }
 };
 
-struct arg_not_found : std::exception {
+struct invalid_arg_get : std::exception {
     std::string str;
-    arg_not_found(const std::string& str): str(str) {}
+    invalid_arg_get(const std::string& str): str("error: " + str + " is not a value or valid argument") {}
     virtual const char* what() const noexcept {
         return str.c_str();
     }
