@@ -105,7 +105,7 @@ public:
         return (p.first)->second;
     }
 
-    void parse(int argc, char* argv[]) noexcept {
+    void parse(int argc, char* argv[]) {
         std::string current;
         for(int i = 1; i < argc; ++i) {
             current = argv[i];
@@ -146,6 +146,10 @@ public:
             // short options found
             if(current.front() == '-') {
                 parse_short_option(current, i, argv);
+            }
+            else {
+                // otherwise, it is an unrecognised argument
+                throw detail::unrecognised_arg(current);
             }
         }
     }
