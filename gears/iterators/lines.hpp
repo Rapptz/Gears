@@ -50,11 +50,11 @@ public:
         return copy;
     }
 
-    auto operator*() noexcept -> decltype(value) {
+    auto operator*() const noexcept -> decltype(value) {
         return value;
     }
 
-    auto operator->() noexcept -> decltype(&value) {
+    auto operator->() const noexcept -> decltype(&value) {
         return &value;
     }
 
@@ -75,17 +75,17 @@ private:
 public:
     line_reader(std::basic_istream<CharT, Traits>& in) noexcept: first(in) {}
 
-    auto begin() noexcept -> decltype(first) {
+    auto begin() const noexcept -> decltype(first) {
         return first;
     }
 
-    auto end() noexcept -> decltype(last) {
+    auto end() const noexcept -> decltype(last) {
         return last;
     }
 };
 
 template<typename CharT, typename Traits>
-inline line_reader<CharT, Traits> lines(std::basic_istream<CharT, Traits>& in) {
+inline line_reader<CharT, Traits> lines(std::basic_istream<CharT, Traits>& in) noexcept {
     return line_reader<CharT, Traits>(in);
 }
 } // gears
