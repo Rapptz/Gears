@@ -38,8 +38,7 @@ private:
         // intersperse values with a space separator
         if(argv[counter] != nullptr && argv[counter][0] != '-') {
             // overwrite value
-            std::string temp(argv[counter]);
-            argu.value.swap(temp);
+            argu.value = argv[counter];
             ++counter;
         }
 
@@ -123,7 +122,8 @@ public:
 
                 // make sure the argument is valid
                 if(it != args.end()) {
-                    it->second.value.append(current.substr(pos + 1));
+                    // Override value
+                    it->second.value = current.substr(pos + 1);
                 }
 
                 continue;
