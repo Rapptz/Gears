@@ -69,7 +69,7 @@ public:
         return *this;
     }
 
-    arg& required(bool b) noexcept {
+    arg& required(bool b = true) noexcept {
         req = b;
         return *this;
     }
