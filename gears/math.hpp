@@ -23,5 +23,6 @@
 #define GEARS_MATH_HPP
 
 #include "math/uintx.hpp"
+#include "math/algorithm.hpp"
 
 #endif // GEARS_MATH_HPP
