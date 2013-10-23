@@ -179,7 +179,6 @@ public:
 
     program_options& name(std::string str) noexcept {
         program_name = std::move(str);
-        program_name.push_back(' ');
         return *this;
     }
 
@@ -229,7 +228,7 @@ public:
 
     template<typename Elem, typename Traits>
     friend auto operator<<(std::basic_ostream<Elem, Traits>& out, const program_options& po) -> decltype(out) {
-        out << "usage: " << po.program_name << po.program_usage << "\n\n";
+        out << "usage: " << po.program_name << ' ' << po.program_usage << "\n\n";
 
         for(auto&& arg : po.args) {
             out << arg.second;            
