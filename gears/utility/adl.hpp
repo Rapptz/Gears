@@ -24,12 +24,15 @@
 
 #include <utility>
 #include <iterator>
+#include <tuple>
+#include <cstddef>
 
 namespace gears {
 namespace detail {
 using std::begin;
 using std::end;
 using std::swap;
+using std::get;
 
 template<typename T>
 constexpr auto adl_begin(T&& t) -> decltype(begin(std::forward<T>(t))) {
@@ -44,6 +47,11 @@ constexpr auto adl_end(T&& t) -> decltype(end(std::forward<T>(t))) {
 template<typename T, typename U, typename R = decltype(swap(std::declval<T>(), std::declval<U>()))>
 constexpr R adl_swap(T&& t, U&& u) noexcept(swap(std::declval<T>(), std::declval<U>())) {
     return swap(std::declval<T>(), std::declval<U>());
+}
+
+template<size_t N, typename T>
+constexpr auto adl_get(T&& t) -> decltype(get<N>(std::forward<T>(t))) {
+    return get<N>(std::forward<T>(t));
 }
 } // detail
 
@@ -60,6 +68,11 @@ constexpr auto end(T&& t) -> decltype(detail::adl_end(std::forward<T>(t))) {
 template<typename T, typename U, typename R = decltype(detail::adl_swap(std::declval<T>(), std::declval<U>()))> 
 constexpr R swap(T&& t, U&& u) noexcept(detail::adl_swap(std::declval<T>(), std::declval<U>())) {
     return detail::adl_swap(std::declval<T>(), std::declval<U>());
+}
+
+template<size_t N, typename T>
+constexpr auto get(T&& t) -> decltype(detail::adl_get<N>(std::forward<T>(t))) {
+    return detail::adl_get<N>(std::forward<T>(t));    
 }
 } // gears
 
