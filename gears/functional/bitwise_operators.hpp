@@ -19,56 +19,66 @@
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-#ifndef GEARS_FUNCTIONAL_ARITHMETIC_OPERATORS_HPP
-#define GEARS_FUNCTIONAL_ARITHMETIC_OPERATORS_HPP
+#ifndef GEARS_FUNCTIONAL_BITWISE_OPERATORS_HPP
+#define GEARS_FUNCTIONAL_BITWISE_OPERATORS_HPP
 
 #include <utility>
 
 namespace gears {
-struct plus_type {
+struct bit_and_type {
     template<typename T, typename U>
-    constexpr auto operator()(T&& t, U&& u) const -> decltype(std::forward<T>(t) + std::forward<U>(u)) {
-        return std::forward<T>(t) + std::forward<U>(u);
+    constexpr auto operator()(T&& t, U&& u) const -> decltype(std::forward<T>(t) & std::forward<U>(u)) {
+        return std::forward<T>(t) & std::forward<U>(u);
     }
 };
 
-struct minus_type {
+struct bit_or_type {
     template<typename T, typename U>
-    constexpr auto operator()(T&& t, U&& u) const -> decltype(std::forward<T>(t) - std::forward<U>(u)) {
-        return std::forward<T>(t) - std::forward<U>(u);
+    constexpr auto operator()(T&& t, U&& u) const -> decltype(std::forward<T>(t) | std::forward<U>(u)) {
+        return std::forward<T>(t) | std::forward<U>(u);
     }
 };
 
-struct multiplies_type {
+struct bit_xor_type {
     template<typename T, typename U>
-    constexpr auto operator()(T&& t, U&& u) const -> decltype(std::forward<T>(t) * std::forward<U>(u)) {
-        return std::forward<T>(t) * std::forward<U>(u);
+    constexpr auto operator()(T&& t, U&& u) const -> decltype(std::forward<T>(t) ^ std::forward<U>(u)) {
+        return std::forward<T>(t) ^ std::forward<U>(u);
     }
 };
 
-struct divides_type {
-    template<typename T, typename U>
-    constexpr auto operator()(T&& t, U&& u) const -> decltype(std::forward<T>(t) / std::forward<U>(u)) {
-        return std::forward<T>(t) / std::forward<U>(u);
+struct bit_not_type {
+    template<typename T>
+    constexpr auto operator()(T&& t) const -> decltype(~std::forward<T>(t)) {
+        return ~std::forward<T>(t);
     }
 };
 
-struct modulus_type {
+struct lshift_type {
     template<typename T, typename U>
-    constexpr auto operator()(T&& t, U&& u) const -> decltype(std::forward<T>(t) % std::forward<U>(u)) {
-        return std::forward<T>(t) % std::forward<U>(u);
+    constexpr auto operator()(T&& t, U&& u) const -> decltype(std::forward<T>(t) << std::forward<U>(u)) {
+        return std::forward<T>(t) << std::forward<U>(u);
     }
 };
 
-constexpr plus_type plus{};
+struct rshift_type {
+    template<typename T, typename U>
+    constexpr auto operator()(T&& t, U&& u) const -> decltype(std::forward<T>(t) >> std::forward<U>(u)) {
+        return std::forward<T>(t) >> std::forward<U>(u);
+    }
+};
 
-constexpr minus_type minus{};
+constexpr bit_and_type bit_and{};
 
-constexpr multiplies_type multiplies{};
+constexpr bit_or_type bit_or{};
 
-constexpr divides_type divides{};
+constexpr bit_xor_type bit_xor{};
 
-constexpr modulus_type modulus{};
-} // gears
+constexpr bit_not_type bit_not{};
 
-#endif // GEARS_FUNCTIONAL_ARITHMETIC_OPERATORS_HPP
+constexpr lshift_type lshift{};
+
+constexpr rshift_type rshift{};
+}
+
+
+#endif // GEARS_FUNCTIONAL_BITWISE_OPERATORS_HPP
