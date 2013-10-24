@@ -19,11 +19,38 @@
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-#ifndef GEARS_FUNCTIONAL_HPP
-#define GEARS_FUNCTIONAL_HPP
+#ifndef GEARS_FUNCTIONAL_LOGICAL_OPERATORS_HPP
+#define GEARS_FUNCTIONAL_LOGICAL_OPERATORS_HPP
 
-#include "functional/arithmetic_operators.hpp"
-#include "functional/bitwise_operators.hpp"
-#include "functional/logical_operators.hpp"
+#include <utility>
 
-#endif // GEARS_FUNCTIONAL_HPP
+namespace gears {
+struct logical_and_type {
+    template<typename T, typename U>
+    constexpr auto operator()(T&& t, U&& u) const -> decltype(std::forward<T>(t) && std::forward<U>(u)) {
+        return std::forward<T>(t) && std::forward<U>(u);
+    }
+};
+
+struct logical_or_type {
+    template<typename T, typename U>
+    constexpr auto operator()(T&& t, U&& u) const -> decltype(std::forward<T>(t) || std::forward<U>(u)) {
+        return std::forward<T>(t) || std::forward<U>(u);
+    }
+};
+
+struct logical_not_type {
+    template<typename T>
+    constexpr auto operator()(T&& t) const -> decltype(!std::forward<T>(t)) {
+        return !std::forward<T>(t);
+    }
+};
+
+constexpr logical_and_type logical_and{};
+
+constexpr logical_or_type logical_or{};
+
+constexpr logical_not_type logical_not{};
+} // gears
+
+#endif // GEARS_FUNCTIONAL_LOGICAL_OPERATORS_HPP
