@@ -25,5 +25,6 @@
 #include "functional/arithmetic_operators.hpp"
 #include "functional/bitwise_operators.hpp"
 #include "functional/logical_operators.hpp"
+#include "functional/comparison_operators.hpp"
 
 #endif // GEARS_FUNCTIONAL_HPP
