@@ -19,13 +19,29 @@
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-#ifndef GEARS_FUNCTIONAL_HPP
-#define GEARS_FUNCTIONAL_HPP
+#ifndef GEARS_FUNCTIONAL_NUMERICAL_PROPERTIES_HPP
+#define GEARS_FUNCTIONAL_NUMERICAL_PROPERTIES_HPP
 
-#include "functional/arithmetic_operators.hpp"
-#include "functional/bitwise_operators.hpp"
-#include "functional/logical_operators.hpp"
-#include "functional/comparison_operators.hpp"
-#include "functional/numeric_properties.hpp"
+#include <utility>
 
-#endif // GEARS_FUNCTIONAL_HPP
+namespace gears {
+struct even_type {
+    template<typename T>
+    constexpr auto operator()(T&& t) -> decltype(std::forward<T>(t) % 2 == 0) {
+        return std::forward<T>(t) % 2 == 0;
+    }
+};
+
+struct odd_type {
+    template<typename T>
+    constexpr auto operator()(T&& t) -> decltype(std::forward<T>(t) % 2 != 0) {
+        return std::forward<T>(t) % 2 != 0;
+    }
+};
+
+constexpr even_type even{};
+
+constexpr odd_type odd{};
+} // gears
+
+#endif // GEARS_FUNCTIONAL_NUMERICAL_PROPERTIES_HPP
