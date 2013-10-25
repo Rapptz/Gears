@@ -57,8 +57,8 @@ using Void = Type<void_<T...>>;
 template<bool I>
 using Bool = Const<bool, I>;
 
-template<typename If, typename Then, typename Else>
-using Conditional = Type<std::conditional<If::value, Then, Else>>;
+template<typename Condition, typename Then, typename Else>
+using If = Type<std::conditional<Condition::value, Then, Else>>;
 
 template<typename T>
 using Not = Bool<!T::value>;
@@ -67,13 +67,13 @@ template<typename... Args>
 struct Any : Bool<false> {};
 
 template<typename T, typename... Args>
-struct Any<T, Args...> : Conditional<T, Bool<true>, Any<Args...>> {};
+struct Any<T, Args...> : If<T, Bool<true>, Any<Args...>> {};
 
 template<typename... Args>
 struct All : Bool<true> {};
 
 template<typename T, typename... Args>
-struct All<T, Args...> : Conditional<T, All<Args...>, Bool<false>> {};
+struct All<T, Args...> : If<T, All<Args...>, Bool<false>> {};
 
 template<typename Signature, typename Anon = void>
 struct result_of_impl {};
