@@ -60,6 +60,9 @@ using Bool = Const<bool, I>;
 template<typename Condition, typename Then, typename Else>
 using If = Type<std::conditional<Condition::value, Then, Else>>;
 
+template<typename Condition, typename Then, typename Else>
+using TypeIf = Type<If<Condition, Then, Else>>;
+
 template<typename T>
 using Not = Bool<!T::value>;
 
