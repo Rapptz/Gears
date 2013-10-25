@@ -90,6 +90,15 @@ template<typename Signature>
 using ResultOf = Type<result_of_impl<Signature>>;
 
 template<typename T>
+struct class_of {};
+
+template<typename Signature, typename Class>
+struct class_of<Signature Class::*> : identity<Class> {};
+
+template<typename T>
+using ClassOf = Type<class_of<T>>;
+
+template<typename T>
 constexpr const T& as_const(T& t) {
     return t;
 }
