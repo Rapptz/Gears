@@ -19,32 +19,11 @@
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-#ifndef GEARS_FORMAT_DETAIL_INDEX_PRINTER_HPP
-#define GEARS_FORMAT_DETAIL_INDEX_PRINTER_HPP
+#ifndef GEARS_IO_HPP
+#define GEARS_IO_HPP
 
-#include <tuple>
-#include <iosfwd>
-#include <cstddef>
-#include <stdexcept>
-#include "../../meta/alias.hpp"
+#include "io/print.hpp"
+#include "io/flags.hpp"
+#include "io/sprint.hpp"
 
-namespace gears {
-namespace format_detail {
-template<size_t N = 0, class Elem, class Traits, typename... Args, EnableIf<Bool<(N >= sizeof...(Args))>>...>
-inline void index_printer(std::basic_ostream<Elem,Traits>& out, const size_t i, const std::tuple<Args...>& tup) {
-    throw std::out_of_range("Index exceeds number of arguments provided");
-}
-
-template<size_t N = 0, class Elem, class Traits, typename... Args, EnableIf<Bool<(N < sizeof...(Args))>>...>
-inline void index_printer(std::basic_ostream<Elem,Traits>& out, const size_t i, const std::tuple<Args...>& tup) {
-    if(i != N) {
-        index_printer<N+1, Elem, Traits, Args...>(out, i, tup);
-        return;
-    }
-    using std::get;
-    out << get<N>(tup);
-}
-} // format_detail
-} // gears
-
-#endif // GEARS_FORMAT_DETAIL_INDEX_PRINTER_HPP
+#endif // GEARS_IO_HPP

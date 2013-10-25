@@ -19,8 +19,8 @@
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-#ifndef GEARS_FORMAT_FLAGS_HPP
-#define GEARS_FORMAT_FLAGS_HPP
+#ifndef GEARS_IO_FLAGS_HPP
+#define GEARS_IO_FLAGS_HPP
 
 #include <iosfwd>
 #include <utility>
@@ -28,7 +28,7 @@
 #include "../meta/expand.hpp"
 
 namespace gears {
-namespace format_detail {
+namespace io_detail {
 template<typename T>
 struct flag_type {
     const T& value;
@@ -62,17 +62,17 @@ inline std::basic_ostream<Elem, Traits>& operator<<(std::basic_ostream<Elem, Tra
     apply_flags(out, f.flags, build_indices<sizeof...(Flags)>{});
     return out << f.value;
 }
-} // format_detail
+} // io_detail
 
 template<typename T>
-inline format_detail::flag_type<T> flags(T&& t, std::ios_base::fmtflags flag) {
+inline io_detail::flag_type<T> flags(T&& t, std::ios_base::fmtflags flag) {
     return { std::forward<T>(t), flag };
 }
 
 template<typename T, typename... Flags>
-inline format_detail::manipulator_type<T, Flags...> flags(T&& t, Flags&&... f) {
+inline io_detail::manipulator_type<T, Flags...> flags(T&& t, Flags&&... f) {
     return { std::forward<T>(t), std::forward<Flags>(f)... };
 }
 } // gears
 
-#endif // GEARS_FORMAT_FLAGS_HPP
+#endif // GEARS_IO_FLAGS_HPP

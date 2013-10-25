@@ -19,22 +19,20 @@
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-#ifndef GEARS_FORMAT_SPRINT_HPP
-#define GEARS_FORMAT_SPRINT_HPP
+#ifndef GEARS_IO_FPRINT_HPP
+#define GEARS_IO_FPRINT_HPP
 
-#include <string>
-#include <sstream>
 #include "detail/index_printer.hpp"
 #include "../string/classification.hpp"
 
 namespace gears {
-template<typename CharT, size_t N, typename... Args>
-inline std::basic_string<CharT> sprint(const CharT (&str)[N], Args&&... arguments) {
-    if(sizeof...(Args) < 1)
-        return { str, N };
-
+template<class Elem, class Traits, size_t N, typename... Args>
+inline void fprint(std::basic_ostream<Elem, Traits>& out, const Elem (&str)[N], Args&&... arguments) {
+    if(sizeof...(arguments) < 1) {
+        out << str;
+        return;
+    }
     auto args = std::make_tuple(std::forward<Args>(arguments)...);
-    std::basic_ostringstream<CharT> out;
 
     is_digit cmp;
 
@@ -61,7 +59,7 @@ inline std::basic_string<CharT> sprint(const CharT (&str)[N], Args&&... argument
         }
 
         if(*check == out.widen('}')) {
-            format_detail::index_printer(out, index, args);
+            io_detail::index_printer(out, index, args);
             ++check;
         }
         else {
@@ -70,9 +68,7 @@ inline std::basic_string<CharT> sprint(const CharT (&str)[N], Args&&... argument
 
         first = check;
     }
-
-    return out.str();
 }
 } // gears
 
-#endif // GEARS_FORMAT_SPRINT_HPP
+#endif // GEARS_IO_FPRINT_HPP

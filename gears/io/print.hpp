@@ -19,8 +19,8 @@
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-#ifndef GEARS_FORMAT_PRINT_HPP
-#define GEARS_FORMAT_PRINT_HPP
+#ifndef GEARS_IO_PRINT_HPP
+#define GEARS_IO_PRINT_HPP
 
 #include <iostream>
 #include "fprint.hpp"
@@ -37,4 +37,4 @@ inline void print(const wchar_t (&str)[N], Args&&... args) {
 }
 } // gears
 
-#endif // GEARS_FORMAT_PRINT_HPP
+#endif // GEARS_IO_PRINT_HPP
