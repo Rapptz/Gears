@@ -29,5 +29,6 @@
 #include "functional/numeric_properties.hpp"
 #include "functional/invoke.hpp"
 #include "functional/curry.hpp"
+#include "functional/compose.hpp"
 
 #endif // GEARS_FUNCTIONAL_HPP
