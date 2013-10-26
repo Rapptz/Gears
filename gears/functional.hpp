@@ -28,5 +28,6 @@
 #include "functional/comparison_operators.hpp"
 #include "functional/numeric_properties.hpp"
 #include "functional/invoke.hpp"
+#include "functional/curry.hpp"
 
 #endif // GEARS_FUNCTIONAL_HPP
