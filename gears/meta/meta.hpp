@@ -41,6 +41,11 @@ using Const = std::integral_constant<T,t>;
 template<int i>
 using Integer = Const<int,i>;
 
+struct deduced {};
+
+template<typename T>
+using is_deduced = std::is_same<T, deduced>;
+
 template<typename T>
 struct identity {
     using type = T;
