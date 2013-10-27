@@ -19,61 +19,21 @@
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-#ifndef GEARS_UTILITY_ADL_HPP
-#define GEARS_UTILITY_ADL_HPP
+#ifndef GEARS_ADL_SWAP_HPP
+#define GEARS_ADL_SWAP_HPP
 
-#include <utility>
-#include <iterator>
-#include <tuple>
-#include <cstddef>
-
-namespace gears {
 namespace detail {
-using std::begin;
-using std::end;
 using std::swap;
-using std::get;
-
-template<typename T>
-constexpr auto adl_begin(T&& t) -> decltype(begin(std::forward<T>(t))) {
-    return begin(std::forward<T>(t));
-}
-
-template<typename T>
-constexpr auto adl_end(T&& t) -> decltype(end(std::forward<T>(t))) {
-    return end(std::forward<T>(t));
-}
 
 template<typename T, typename U, typename R = decltype(swap(std::declval<T>(), std::declval<U>()))>
 constexpr R adl_swap(T&& t, U&& u) noexcept(swap(std::declval<T>(), std::declval<U>())) {
     return swap(std::declval<T>(), std::declval<U>());
 }
-
-template<size_t N, typename T>
-constexpr auto adl_get(T&& t) -> decltype(get<N>(std::forward<T>(t))) {
-    return get<N>(std::forward<T>(t));
-}
 } // detail
-
-template<typename T>
-constexpr auto begin(T&& t) -> decltype(detail::adl_begin(std::forward<T>(t))) {
-    return detail::adl_begin(std::forward<T>(t));
-}
-
-template<typename T>
-constexpr auto end(T&& t) -> decltype(detail::adl_end(std::forward<T>(t))) {
-    return detail::adl_end(std::forward<T>(t));
-}
 
 template<typename T, typename U, typename R = decltype(detail::adl_swap(std::declval<T>(), std::declval<U>()))> 
 constexpr R swap(T&& t, U&& u) noexcept(detail::adl_swap(std::declval<T>(), std::declval<U>())) {
     return detail::adl_swap(std::declval<T>(), std::declval<U>());
 }
 
-template<size_t N, typename T>
-constexpr auto get(T&& t) -> decltype(detail::adl_get<N>(std::forward<T>(t))) {
-    return detail::adl_get<N>(std::forward<T>(t));    
-}
-} // gears
-
-#endif // GEARS_UTILITY_ADL_HPP
+#endif // GEARS_ADL_SWAP_HPP

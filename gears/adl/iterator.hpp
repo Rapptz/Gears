@@ -19,10 +19,35 @@
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-#ifndef GEARS_UTILITY_HPP
-#define GEARS_UTILITY_HPP
+#ifndef GEARS_ADL_ITERATOR_HPP
+#define GEARS_ADL_ITERATOR_HPP
 
-#include "utility/triple.hpp"
-#include "utility/maybe.hpp"
+#include <iterator>
+#include <utility>
 
-#endif // GEARS_UTILITY_HPP
+namespace detail {
+using std::begin;
+using std::end;
+
+template<typename T>
+constexpr auto adl_begin(T&& t) -> decltype(begin(std::declval<T>())) {
+    return begin(std::forward<T>(t));
+}
+
+template<typename T>
+constexpr auto adl_end(T&& t) -> decltype(end(std::declval<T>())) {
+    return end(std::forward<T>(t));
+}
+} // detail
+
+template<typename T>
+constexpr auto begin(T&& t) -> decltype(detail::adl_begin(std::declval<T>())) {
+    return detail::adl_begin(std::forward<T>(t));
+}
+
+template<typename T>
+constexpr auto end(T&& t) -> decltype(detail::adl_end(std::declval<T>())) {
+    return detail::adl_end(std::forward<T>(t));
+}
+
+#endif // GEARS_ADL_ITERATOR_HPP

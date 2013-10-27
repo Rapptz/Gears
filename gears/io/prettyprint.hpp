@@ -24,11 +24,13 @@
 
 #include "../meta/indices.hpp"
 #include "../meta/alias.hpp"
-#include "../utility/adl.hpp"
+#include "../meta/expand.hpp"
+#include "../adl/get.hpp"
+#include "../adl/iterator.hpp"
 #include <iosfwd>
 
 namespace gears {
-namespace detail {
+namespace io_detail {
 struct has_begin_end_impl {
     template<typename T, typename B = decltype(std::declval<T&>().begin()),
                          typename E = decltype(std::declval<T&>().end())>
@@ -39,10 +41,33 @@ struct has_begin_end_impl {
 
 template<typename T>
 struct has_begin_end : decltype(has_begin_end_impl::test<T>(0)) {};
-} // detail
+
+struct has_get_impl {
+    template<typename T>
+    static auto test(int) -> decltype(get<0>(std::declval<T>()), std::true_type{}) {}
+    template<typename...>
+    static std::false_type test(...);
+};
+
+template<typename T>
+struct has_get : decltype(has_get_impl::test<T>(0)) {};
+
+template<typename Elem, typename Traits, typename Tuple, size_t... Indices>
+void print_expander(std::basic_ostream<Elem, Traits>& out, const Tuple& t, indices<Indices...>) noexcept {
+    GEARS_EXPAND(out << (!Indices ? "" : ", ") << get<Indices>(t));
+}
+} // io_detail
 
 namespace operators {
-template<typename Elem, typename Traits, typename Cont, EnableIf<detail::has_begin_end<Cont>>...>
+template<typename Elem, typename Traits, typename Tuple, EnableIf<io_detail::has_get<Tuple>, Not<io_detail::has_begin_end<Tuple>>>...>
+inline auto operator<<(std::basic_ostream<Elem, Traits>& out, const Tuple& t) -> decltype(out) {
+    out << "(";
+    io_detail::print_expander(out, t, build_indices<std::tuple_size<Tuple>::value>{});
+    out << ")";
+    return out;
+}
+
+template<typename Elem, typename Traits, typename Cont, EnableIf<io_detail::has_begin_end<Cont>>...>
 inline auto operator<<(std::basic_ostream<Elem, Traits>& out, const Cont& cont) -> decltype(out) {
     auto first = begin(cont);
     auto last = end(cont);

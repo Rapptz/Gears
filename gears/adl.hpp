@@ -19,10 +19,11 @@
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-#ifndef GEARS_UTILITY_HPP
-#define GEARS_UTILITY_HPP
+#ifndef GEARS_ADL_HPP
+#define GEARS_ADL_HPP
 
-#include "utility/triple.hpp"
-#include "utility/maybe.hpp"
+#include "adl/get.hpp"
+#include "adl/iterator.hpp"
+#include "adl/swap.hpp"
 
-#endif // GEARS_UTILITY_HPP
+#endif // GEARS_ADL_HPP

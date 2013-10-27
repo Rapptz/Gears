@@ -19,10 +19,25 @@
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-#ifndef GEARS_UTILITY_HPP
-#define GEARS_UTILITY_HPP
+#ifndef GEARS_ADL_GET_HPP
+#define GEARS_ADL_GET_HPP
 
-#include "utility/triple.hpp"
-#include "utility/maybe.hpp"
+#include <tuple>
+#include <utility>
+#include <cstddef>
 
-#endif // GEARS_UTILITY_HPP
+namespace detail {
+using std::get;
+
+template<size_t N, typename T>
+constexpr auto adl_get(T&& t) -> decltype(get<N>(std::declval<T>())) {
+    return get<N>(std::forward<T>(t));
+}
+} // detail
+
+template<size_t N, typename T>
+constexpr auto get(T&& t) -> decltype(detail::adl_get<N>(std::declval<T>())) {
+    return detail::adl_get<N>(std::forward<T>(t));
+}
+
+#endif // GEARS_ADL_GET_HPP
