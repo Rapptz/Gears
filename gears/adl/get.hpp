@@ -26,6 +26,8 @@
 #include <utility>
 #include <cstddef>
 
+namespace gears {
+namespace adl {
 namespace detail {
 using std::get;
 
@@ -39,5 +41,7 @@ template<size_t N, typename T>
 constexpr auto get(T&& t) -> decltype(detail::adl_get<N>(std::declval<T>())) {
     return detail::adl_get<N>(std::forward<T>(t));
 }
+} // adl
+} // gears
 
 #endif // GEARS_ADL_GET_HPP

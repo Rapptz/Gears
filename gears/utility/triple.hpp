@@ -187,7 +187,7 @@ constexpr const gears::Type<tuple_element<N, gears::triple<T, U, V>>>& get(const
 
 template<size_t N, typename T, typename U, typename V>
 constexpr gears::Type<tuple_element<N, gears::triple<T, U, V>>>&& get(gears::triple<T, U, V>&& t) noexcept {
-    return triple_detail::triple_get<N>::move_get(t);
+    return triple_detail::triple_get<N>::move_get(std::move(t));
 }
 } // std
 

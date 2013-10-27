@@ -44,7 +44,7 @@ struct has_begin_end : decltype(has_begin_end_impl::test<T>(0)) {};
 
 struct has_get_impl {
     template<typename T>
-    static auto test(int) -> decltype(get<0>(std::declval<T>()), std::true_type{}) {}
+    static auto test(int) -> decltype(adl::get<0>(std::declval<T>()), std::true_type{}) {}
     template<typename...>
     static std::false_type test(...);
 };
@@ -54,7 +54,7 @@ struct has_get : decltype(has_get_impl::test<T>(0)) {};
 
 template<typename Elem, typename Traits, typename Tuple, size_t... Indices>
 void print_expander(std::basic_ostream<Elem, Traits>& out, const Tuple& t, indices<Indices...>) noexcept {
-    GEARS_EXPAND(out << (!Indices ? "" : ", ") << get<Indices>(t));
+    GEARS_EXPAND(out << (!Indices ? "" : ", ") << adl::get<Indices>(t));
 }
 } // io_detail
 
@@ -69,8 +69,8 @@ inline auto operator<<(std::basic_ostream<Elem, Traits>& out, const Tuple& t) ->
 
 template<typename Elem, typename Traits, typename Cont, EnableIf<io_detail::has_begin_end<Cont>>...>
 inline auto operator<<(std::basic_ostream<Elem, Traits>& out, const Cont& cont) -> decltype(out) {
-    auto first = begin(cont);
-    auto last = end(cont);
+    auto first = adl::begin(cont);
+    auto last = adl::end(cont);
 
     if(first == last) {
         out << "[]";

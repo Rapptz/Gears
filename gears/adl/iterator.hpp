@@ -25,6 +25,8 @@
 #include <iterator>
 #include <utility>
 
+namespace gears {
+namespace adl {
 namespace detail {
 using std::begin;
 using std::end;
@@ -49,5 +51,7 @@ template<typename T>
 constexpr auto end(T&& t) -> decltype(detail::adl_end(std::declval<T>())) {
     return detail::adl_end(std::forward<T>(t));
 }
+} // adl
+} // gears
 
 #endif // GEARS_ADL_ITERATOR_HPP

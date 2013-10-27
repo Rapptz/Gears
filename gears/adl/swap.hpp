@@ -22,6 +22,8 @@
 #ifndef GEARS_ADL_SWAP_HPP
 #define GEARS_ADL_SWAP_HPP
 
+namespace gears {
+namespace adl {
 namespace detail {
 using std::swap;
 
@@ -35,5 +37,7 @@ template<typename T, typename U, typename R = decltype(detail::adl_swap(std::dec
 constexpr R swap(T&& t, U&& u) noexcept(detail::adl_swap(std::declval<T>(), std::declval<U>())) {
     return detail::adl_swap(std::declval<T>(), std::declval<U>());
 }
+} // adl
+} // gears
 
 #endif // GEARS_ADL_SWAP_HPP
