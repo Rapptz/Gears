@@ -19,16 +19,16 @@
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-#ifndef GEARS_ITERATORS_LINES_HPP
-#define GEARS_ITERATORS_LINES_HPP
+#ifndef GEARS_IO_LINES_HPP
+#define GEARS_IO_LINES_HPP
 
 #include <istream>
 #include <string>
-#include "primitives.hpp"
+#include <iterator>
 
 namespace gears {
 template<typename CharT = char, typename Traits = std::char_traits<CharT>>
-struct line_iterator : input_iterator<std::basic_string<CharT, Traits>> {
+struct line_iterator : std::iterator<std::input_iterator_tag, std::basic_string<CharT, Traits>> {
 private:
     std::basic_istream<CharT, Traits>* reader;
     std::basic_string<CharT, Traits> value;
@@ -50,11 +50,11 @@ public:
         return copy;
     }
 
-    auto operator*() const noexcept -> decltype(value) {
+    auto operator*() noexcept -> decltype(value) {
         return value;
     }
 
-    auto operator->() const noexcept -> decltype(&value) {
+    auto operator->() noexcept -> decltype(&value) {
         return &value;
     }
 
@@ -75,19 +75,19 @@ private:
 public:
     line_reader(std::basic_istream<CharT, Traits>& in) noexcept: first(in) {}
 
-    auto begin() const noexcept -> decltype(first) {
+    auto begin() noexcept -> decltype(first) {
         return first;
     }
 
-    auto end() const noexcept -> decltype(last) {
+    auto end() noexcept -> decltype(last) {
         return last;
     }
 };
 
 template<typename CharT, typename Traits>
-inline line_reader<CharT, Traits> lines(std::basic_istream<CharT, Traits>& in) noexcept {
+inline line_reader<CharT, Traits> lines(std::basic_istream<CharT, Traits>& in) {
     return line_reader<CharT, Traits>(in);
 }
 } // gears
 
-#endif // GEARS_ITERATORS_LINES_HPP
+#endif // GEARS_IO_LINES_HPP
