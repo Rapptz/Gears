@@ -19,11 +19,46 @@
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-#ifndef GEARS_UTILITY_HPP
-#define GEARS_UTILITY_HPP
+#ifndef GEARS_UTILITY_MAYBE_TRAITS_HPP
+#define GEARS_UTILITY_MAYBE_TRAITS_HPP
 
-#include "utility/triple.hpp"
-#include "utility/adl.hpp"
-#include "utility/maybe.hpp"
+#include "../../meta/alias.hpp"
+#include <memory> // addressof
 
-#endif // GEARS_UTILITY_HPP
+namespace gears {
+namespace detail {
+struct has_overloaded_address_of_impl {
+    template<typename T>
+    static auto test(int) -> decltype(std::declval<T&>().operator&(), std::true_type{}) {}
+    template<typename...>
+    static std::false_type test(...);
+};
+
+template<typename T>
+struct has_overloaded_address_of : decltype(has_overloaded_address_of_impl::test<T>(0)) {};
+
+template<typename T, DisableIf<has_overloaded_address_of<T>>...>
+constexpr T* address_of(T& t) noexcept {
+    return &t;
+}
+
+template<typename T, EnableIf<has_overloaded_address_of<T>>...>
+T* address_of(T& t) noexcept {
+    return std::addressof(t);
+}
+} // detail
+
+template<typename T>
+class maybe;
+
+template<typename T>
+class maybe<T&>;
+
+template<typename T>
+struct is_maybe : std::false_type {};
+
+template<typename T>
+struct is_maybe<maybe<T>> : std::true_type {};
+} // gears
+
+#endif // GEARS_UTILITY_MAYBE_TRAITS_HPP

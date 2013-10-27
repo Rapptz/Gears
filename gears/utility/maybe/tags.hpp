@@ -19,11 +19,22 @@
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-#ifndef GEARS_UTILITY_HPP
-#define GEARS_UTILITY_HPP
+#ifndef GEARS_UTILITY_MAYBE_TAGS_HPP
+#define GEARS_UTILITY_MAYBE_TAGS_HPP
 
-#include "utility/triple.hpp"
-#include "utility/adl.hpp"
-#include "utility/maybe.hpp"
+namespace gears {
+namespace detail {
+constexpr struct default_init_t{} default_init{};
+constexpr struct regular_init_t{} regular_init{};
+} // detail
 
-#endif // GEARS_UTILITY_HPP
+constexpr struct in_place_t{} in_place{};
+
+struct nothing_t {
+    constexpr nothing_t() {}
+};
+
+constexpr nothing_t nothing{};
+} // gears
+
+#endif // GEARS_UTILITY_MAYBE_TAGS_HPP

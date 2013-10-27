@@ -19,11 +19,36 @@
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-#ifndef GEARS_UTILITY_HPP
-#define GEARS_UTILITY_HPP
+#ifndef GEARS_UTILITY_MAYBE_STORAGE_HPP
+#define GEARS_UTILITY_MAYBE_STORAGE_HPP
 
-#include "utility/triple.hpp"
-#include "utility/adl.hpp"
-#include "utility/maybe.hpp"
+#include "tags.hpp"
+#include "../../meta/meta.hpp"
 
-#endif // GEARS_UTILITY_HPP
+namespace gears {
+namespace detail {
+template<typename T>
+union maybe_storage {
+    unsigned char c;
+    T value;
+
+    template<typename... Args>
+    constexpr maybe_storage(Args&&... args): value(cforward<Args>(args)...) {}
+    constexpr maybe_storage(default_init_t) noexcept: c() {}
+    ~maybe_storage() {}
+};
+
+template<typename T>
+union cmaybe_storage {
+    unsigned char c;
+    T value;
+
+    template<typename... Args>
+    constexpr cmaybe_storage(Args&&... args): value(cforward<Args>(args)...) {}
+    constexpr cmaybe_storage(default_init_t) noexcept: c() {}
+    ~cmaybe_storage() = default;
+};
+} // detail
+} // gears
+
+#endif // GEARS_UTILITY_MAYBE_STORAGE_HPP
