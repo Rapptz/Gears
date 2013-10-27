@@ -25,6 +25,7 @@
 #include <chrono>
 
 namespace gears {
+namespace chrono {
 template<class Clock>
 struct basic_stopwatch {
 public:
@@ -75,6 +76,7 @@ public:
 };
 
 using stopwatch = basic_stopwatch<std::chrono::high_resolution_clock>;
+} // chrono
 } // gears
 
 #endif // GEARS_CHRONO_STOPWATCH_HPP

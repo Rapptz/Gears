@@ -25,6 +25,7 @@
 #include <chrono>
 
 namespace gears {
+namespace chrono {
 namespace literals {
 constexpr std::chrono::duration<long double, std::ratio<3600>> operator"" _h(long double hours) {
     return std::chrono::duration<long double, std::ratio<3600>>{ hours };
@@ -74,6 +75,7 @@ constexpr std::chrono::duration<unsigned long long, std::nano> operator"" _ns(un
     return std::chrono::duration<unsigned long long, std::nano>{ nanoseconds };
 }
 } // literals
+} // chrono
 } // gears
 
 
