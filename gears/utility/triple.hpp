@@ -101,17 +101,17 @@ template<size_t N> struct triple_get;
 template<>
 struct triple_get<0> {
     template<typename T, typename U, typename V>
-    static constexpr T& get(gears::triple<T, U, V>& t) {
+    static constexpr T& get(gears::triple<T, U, V>& t) noexcept {
         return t.first;
     }
 
     template<typename T, typename U, typename V>
-    static constexpr const T& const_get(const gears::triple<T, U, V>& t) {
+    static constexpr const T& const_get(const gears::triple<T, U, V>& t) noexcept {
         return t.first;
     }
 
     template<typename T, typename U, typename V>
-    static constexpr T&& move_get(gears::triple<T, U, V>&& t) {
+    static constexpr T&& move_get(gears::triple<T, U, V>&& t) noexcept {
         return std::forward<T>(t.first);
     }
 };
@@ -119,17 +119,17 @@ struct triple_get<0> {
 template<>
 struct triple_get<1> {
     template<typename T, typename U, typename V>
-    static constexpr U& get(gears::triple<T, U, V>& t) {
+    static constexpr U& get(gears::triple<T, U, V>& t) noexcept {
         return t.second;
     }
 
     template<typename T, typename U, typename V>
-    static constexpr const U& const_get(const gears::triple<T, U, V>& t) {
+    static constexpr const U& const_get(const gears::triple<T, U, V>& t) noexcept {
         return t.second;
     }
 
     template<typename T, typename U, typename V>
-    static constexpr U&& move_get(gears::triple<T, U, V>&& t) {
+    static constexpr U&& move_get(gears::triple<T, U, V>&& t) noexcept {
         return std::forward<U>(t.second);
     }
 };
@@ -137,17 +137,17 @@ struct triple_get<1> {
 template<>
 struct triple_get<2> {
     template<typename T, typename U, typename V>
-    static constexpr V& get(gears::triple<T, U, V>& t) {
+    static constexpr V& get(gears::triple<T, U, V>& t) noexcept {
         return t.third;
     }
 
     template<typename T, typename U, typename V>
-    static constexpr const V& const_get(const gears::triple<T, U, V>& t) {
+    static constexpr const V& const_get(const gears::triple<T, U, V>& t) noexcept {
         return t.third;
     }
 
     template<typename T, typename U, typename V>
-    static constexpr V&& move_get(gears::triple<T, U, V>&& t) {
+    static constexpr V&& move_get(gears::triple<T, U, V>&& t) noexcept {
         return std::forward<V>(t.third);
     }
 };
