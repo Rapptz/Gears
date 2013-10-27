@@ -142,6 +142,22 @@ template<typename T, typename U, typename... Args>
 constexpr auto max(T&& t, U&& u, Args&&... args) -> CommonType<T,U,Args...> {
     return max(max(std::forward<T>(t), std::forward<U>(u)), std::forward<Args>(args)...);
 }
+
+template<typename T>
+constexpr T&& cforward(typename std::remove_reference<T>::type& t) noexcept {
+    return static_cast<T&&>(t);
+}
+
+template<typename T>
+constexpr T&& cforward(typename std::remove_reference<T>::type&& t) noexcept {
+    static_assert(!std::is_lvalue_reference<T>(), "error");
+    return static_cast<T&&>(t);
+}
+
+template<typename T>
+constexpr typename std::remove_reference<T>::type&& cmove(T&& t) noexcept {
+    return static_cast<typename std::remove_reference<T>::type&&>(t);
+}
 } // gears
 
 #endif // GEARS_META_META_HPP
