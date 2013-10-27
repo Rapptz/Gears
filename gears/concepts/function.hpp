@@ -52,7 +52,7 @@ struct is_function_impl : std::is_function<T> {};
 template<typename T>
 struct is_function_impl<T, TrueIf<std::is_class<Bare<T>>>> {
     using yes = char;
-    using no = char[2];
+    using no = struct { char s[2]; };
 
     struct F { void operator()(); };
     struct Derived : T, F { };
