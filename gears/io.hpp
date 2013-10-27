@@ -26,5 +26,6 @@
 #include "io/flags.hpp"
 #include "io/sprint.hpp"
 #include "io/lines.hpp"
+#include "io/prettyprint.hpp"
 
 #endif // GEARS_IO_HPP
