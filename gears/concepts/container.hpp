@@ -25,7 +25,8 @@
 #include "iterator.hpp"
 
 namespace gears {
-namespace container_detail {
+namespace concepts {
+namespace detail {
 struct is_container {
     template<typename C,
              typename T  = typename Bare<C>::value_type,
@@ -160,27 +161,28 @@ struct is_associative_container {
     template<typename...>
     static std::false_type test(...);
 };
-} // container_detail
+} // detail
 
 template<typename T>
-struct Container : And<Or<TraitOf<container_detail::is_container, T>, 
-                          TraitOf<container_detail::is_forward_list, T>>, 
+struct Container : And<Or<TraitOf<detail::is_container, T>, 
+                          TraitOf<detail::is_forward_list, T>>, 
                        Regular<T>, 
                        Destructible<T>> {};
 
 template<typename T>
-struct ReversibleContainer : And<Container<T>, TraitOf<container_detail::is_reversible, T>> {};
+struct ReversibleContainer : And<Container<T>, TraitOf<detail::is_reversible, T>> {};
 
 template<typename T>
-struct AllocatorAwareContainer : And<Container<T>, TraitOf<container_detail::is_allocator_aware, T>> {};
+struct AllocatorAwareContainer : And<Container<T>, TraitOf<detail::is_allocator_aware, T>> {};
 
 template<typename T>
-struct SequenceContainer : And<Container<T>, Or<TraitOf<container_detail::is_sequence_container, T>, 
-                                                TraitOf<container_detail::is_array_sequence, T>,
-                                                TraitOf<container_detail::is_forward_list, T>>> {};
+struct SequenceContainer : And<Container<T>, Or<TraitOf<detail::is_sequence_container, T>, 
+                                                TraitOf<detail::is_array_sequence, T>,
+                                                TraitOf<detail::is_forward_list, T>>> {};
 
 template<typename T>
-struct AssociativeContainer : And<Container<T>, TraitOf<container_detail::is_associative_container, T>> {};
+struct AssociativeContainer : And<Container<T>, TraitOf<detail::is_associative_container, T>> {};
+} // concepts
 } // gears
 
 #endif // GEARS_CONCEPTS_CONTAINER_HPP

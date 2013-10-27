@@ -27,10 +27,10 @@ TEST_CASE("Meta functions", "[meta]") {
     constexpr size_t n = 10;
     REQUIRE(min(1,2,3,4,5,6) == 1);
     REQUIRE(max(5,11,9,14,19,192) == 192);
-    static_assert(std::is_same<decltype(max(10,1)), int>(), "..");
-    static_assert(n == max(10,9,1,4), "max");
-    static_assert(Bool<true>(), "Bool");
-    static_assert(All<Bool<true>, Bool<true>, Bool<true>>(), "All");
-    static_assert(Any<Bool<false>, Bool<false>, Bool<true>>(), "Any");
-    static_assert(Not<Bool<false>>(), "Not");
+    REQUIRE((std::is_same<decltype(max(10,1)), int>()));
+    REQUIRE(n == max(10,9,1,4));
+    REQUIRE(Bool<true>());
+    REQUIRE((All<Bool<true>, Bool<true>, Bool<true>>()));
+    REQUIRE((Any<Bool<false>, Bool<false>, Bool<true>>()));
+    REQUIRE(Not<Bool<false>>());
 }

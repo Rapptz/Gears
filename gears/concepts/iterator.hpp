@@ -25,7 +25,8 @@
 #include "basic.hpp"
 
 namespace gears {
-namespace iter_detail {
+namespace concepts {
+namespace detail {
 struct is_random_access {
     template<typename It,
              typename D = typename Bare<It>::difference_type,
@@ -41,7 +42,7 @@ struct is_random_access {
     template<typename...>
     static std::false_type test(...);
 };
-} // iter_detail
+} // detail
 
 template<typename T>
 struct Iterator : And<CopyConstructible<T>, 
@@ -72,10 +73,11 @@ template<typename T>
 struct RandomAccessIterator : Or<Pointer<T>,
                                  And<BidirectionalIterator<T>, 
                                      Comparable<T>, 
-                                     TraitOf<iter_detail::is_random_access, T>>> {};
+                                     TraitOf<detail::is_random_access, T>>> {};
 
 template<typename T>
 struct MutableRandomAccessIterator : And<RandomAccessIterator<T>, Assignable<T>> {};
+} // concepts
 } // gears
 
 #endif // GEARS_CONCEPTS_ITERATOR_HPP

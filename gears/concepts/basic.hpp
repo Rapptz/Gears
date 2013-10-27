@@ -26,7 +26,8 @@
 #include <utility>
 
 namespace gears {
-namespace basic_detail {
+namespace concepts {
+namespace detail {
 struct is_lvalue_swappable {
     template<typename T, typename U>
     static auto test(int) -> decltype(std::swap(std::declval<LRef<T>>(), std::declval<LRef<U>>()), std::true_type{}) {}
@@ -40,7 +41,7 @@ struct is_rvalue_swappable {
     template<typename...>
     static std::false_type test(...);
 };
-} // basic_detail
+} // detail
 
 template<typename T>
 struct DefaultConstructible : std::is_default_constructible<Bare<T>> {};
@@ -82,10 +83,10 @@ template<typename T>
 struct Semiregular : And<Movable<T>, Copyable<T>, DefaultConstructible<T>> {}; 
 
 template<typename T, typename U = T>
-struct LValueSwappable : TraitOf<basic_detail::is_lvalue_swappable, T, U> {};
+struct LValueSwappable : TraitOf<detail::is_lvalue_swappable, T, U> {};
 
 template<typename T, typename U = T>
-struct RValueSwappable : TraitOf<basic_detail::is_rvalue_swappable, T, U> {};
+struct RValueSwappable : TraitOf<detail::is_rvalue_swappable, T, U> {};
 
 template<typename T, typename U = T>
 struct Swappable : And<LValueSwappable<T, U>, RValueSwappable<T, U>> {};
@@ -126,7 +127,7 @@ struct RValueReference : std::is_rvalue_reference<T> {};
 template<typename T>
 struct Reference : std::is_reference<T> {};
 
-namespace basic_detail {
+namespace detail {
 struct is_less_than_comparable {
     template<typename T, typename U,
              typename LT = decltype(std::declval<T&>() < std::declval<U&>()),
@@ -203,19 +204,19 @@ struct is_dereferenceable  {
     template<typename...>
     static std::false_type test(...);
 };
-} // basic_detail
+} // detail
 
 template<typename T, typename U = T>
-struct LessThanComparable : TraitOf<basic_detail::is_less_than_comparable, T, U> {};
+struct LessThanComparable : TraitOf<detail::is_less_than_comparable, T, U> {};
 
 template<typename T, typename U = T>
-struct EqualityComparable : TraitOf<basic_detail::is_equality_comparable, T, U> {};
+struct EqualityComparable : TraitOf<detail::is_equality_comparable, T, U> {};
 
 template<typename T>
 struct Regular : And<Semiregular<T>, EqualityComparable<T>> {};
 
 template<typename T, typename U = T>
-struct Comparable : TraitOf<basic_detail::is_comparable, T, U> {};
+struct Comparable : TraitOf<detail::is_comparable, T, U> {};
 
 template<typename T>
 struct NullablePointer :  And<DefaultConstructible<T>, 
@@ -224,16 +225,17 @@ struct NullablePointer :  And<DefaultConstructible<T>,
                               Destructible<T>,
                               EqualityComparable<T, std::nullptr_t>, 
                               EqualityComparable<std::nullptr_t, T>, 
-                              basic_detail::is_np_assign<T>> {};
+                              detail::is_np_assign<T>> {};
 
 template<typename T>
-struct Incrementable : Or<Fundamental<T>, Pointer<T>, TraitOf<basic_detail::is_incrementable, T>> {};
+struct Incrementable : Or<Fundamental<T>, Pointer<T>, TraitOf<detail::is_incrementable, T>> {};
 
 template<typename T>
-struct Decrementable : Or<Fundamental<T>, Pointer<T>, TraitOf<basic_detail::is_decrementable, T>> {};
+struct Decrementable : Or<Fundamental<T>, Pointer<T>, TraitOf<detail::is_decrementable, T>> {};
 
 template<typename T>
-struct Dereferenceable : Or<Pointer<T>, TraitOf<basic_detail::is_dereferenceable, T>> {};
+struct Dereferenceable : Or<Pointer<T>, TraitOf<detail::is_dereferenceable, T>> {};
+} // concepts
 } // gears
 
 #endif // GEARS_CONCEPTS_BASIC_HPP

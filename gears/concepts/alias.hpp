@@ -25,6 +25,8 @@
 #include <type_traits>
 
 namespace gears {
+namespace concepts {
+
 template<typename T>
 using Bare = typename std::remove_cv<typename std::remove_reference<T>::type>::type;
 
@@ -71,6 +73,7 @@ constexpr bool require() {
     static_assert(And<Concepts<T>...>(), "Concept Violation");
     return true;
 }
+} // concepts
 } // gears
 
 #endif // GEARS_CONCEPTS_ALIAS_HPP

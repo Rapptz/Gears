@@ -26,7 +26,8 @@
 #include <utility>
 
 namespace gears {
-namespace function_detail {
+namespace concepts {
+namespace detail {
 template<typename...>
 struct void_type {
     using type = void;
@@ -79,17 +80,17 @@ struct is_generator {
     template<typename>
     static std::false_type test(...);
 };
-} // function_detail
+} // detail
 
 template<typename T, typename Signature>
-struct Callable : function_detail::is_callable<T, Signature> {};
+struct Callable : detail::is_callable<T, Signature> {};
 
 template<typename T>
-struct Generator : TraitOf<function_detail::is_generator, T> {};
+struct Generator : TraitOf<detail::is_generator, T> {};
 
 template<typename T>
-struct Function : std::integral_constant<bool, function_detail::is_function_impl<T>::value> {};
-
+struct Function : std::integral_constant<bool, detail::is_function_impl<T>::value> {};
+} // concepts
 } // gears
 
 #endif // GEARS_CONCEPTS_FUNCTION_HPP
