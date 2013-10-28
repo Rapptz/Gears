@@ -34,7 +34,8 @@
 #endif // GEARS_NO_IOSTREAM
 
 namespace gears {
-namespace uintx_detail {
+namespace math {
+namespace detail {
 constexpr size_t pow(size_t base, size_t exponent) {
     return exponent == 0 ? 1 : (base * pow(base, exponent - 1));
 }
@@ -95,7 +96,7 @@ struct partial_cast<std::string> {
     }
 };
 
-} // uintx_detail
+} // detail
 
 template<size_t Bits = -1, typename Digit = unsigned int, typename Digits = unsigned long long>
 struct uintx {
@@ -204,7 +205,7 @@ private:
         Digits c = 0;
         operator_carry<multiply> mulwc(c);
         mulwc.k = digit;
-        uintx_detail::map(x.digits.begin(), x.digits.end(), x.digits.begin(), mulwc);
+        detail::map(x.digits.begin(), x.digits.end(), x.digits.begin(), mulwc);
 
         while(c) {
             x.digits.push_back(c % base);
@@ -240,7 +241,7 @@ private:
 
 public:
     static constexpr size_t digits10 = std::numeric_limits<Digit>::digits10;
-    static constexpr size_t base = uintx_detail::pow(10, digits10);
+    static constexpr size_t base = detail::pow(10, digits10);
     uintx(): digits(1) {}
 
     template<typename Integer, EnableIf<std::is_integral<Integer>>...>
@@ -266,7 +267,7 @@ public:
             position += digits10;
         }
 
-        uintx_detail::reverse(digits);
+        detail::reverse(digits);
         check_bits();
     }
 
@@ -278,8 +279,8 @@ public:
         Digits c = 0;
         operator_carry<add> addwc(c);
 
-        auto it = uintx_detail::map(other.digits.begin(), other.digits.end(), digits.begin(), digits.begin(), addwc);
-        uintx_detail::map(it, digits.end(), it, carry(c));
+        auto it = detail::map(other.digits.begin(), other.digits.end(), digits.begin(), digits.begin(), addwc);
+        detail::map(it, digits.end(), it, carry(c));
 
         if(c)
             digits.push_back(c);
@@ -291,8 +292,8 @@ public:
 
     uintx& operator-=(const uintx& other) {
         signed_type b = 0;
-        auto it = uintx_detail::map(other.digits.begin(), other.digits.end(), digits.begin(), digits.begin(), sub_borrow(b));
-        uintx_detail::map(it, digits.end(), it, borrow(b));
+        auto it = detail::map(other.digits.begin(), other.digits.end(), digits.begin(), digits.begin(), sub_borrow(b));
+        detail::map(it, digits.end(), it, borrow(b));
         normalize();
         check_bits();
         return *this;
@@ -481,19 +482,22 @@ public:
 
     template<typename T, size_t N, typename U, typename V>
     friend T uintx_cast(const uintx<N, U, V>& obj) {
-        return uintx_detail::partial_cast<T>()(obj.digits, uintx<N, U, V>::base);
+        return detail::partial_cast<T>()(obj.digits, uintx<N, U, V>::base);
     }
 };
 
 namespace literals {
-uintx<> operator"" _x(unsigned long long n) {
-    return { n };
+template<char... Numbers>
+inline uintx<> operator"" _x() noexcept {
+    const char str[sizeof...(Numbers)] = { Numbers... };
+    return { std::string(str, sizeof(str)) };
 }
 
-uintx<> operator"" _x(const char* s, size_t len) {
+inline uintx<> operator"" _x(const char* s, size_t len) {
     return { std::string(s, len) };
 }
 } // literals
+} // math
 } // gears
 
 #endif // GEARS_MATH_UINTX_HPP

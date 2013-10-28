@@ -23,54 +23,60 @@
 #include <gears/math.hpp>
 
 TEST_CASE("Higher Precision Integer", "[uintx]") {
-    using namespace gears::literals;
+    using namespace gears::math::literals;
     SECTION("Addition", "[uintx-add]") {
-        gears::uintx<> stuff("6719847289364162472817421");
+        auto stuff = 6719847289364162472817421_x;
         stuff += 1928317212831712ULL;
-        REQUIRE(stuff == "6719847291292479685649133"_x);
+        REQUIRE(stuff == 6719847291292479685649133_x);
         REQUIRE(stuff > 100);
         REQUIRE(stuff != 0);
     }
 
     SECTION("Subtraction", "[uintx-sub]") {
-        gears::uintx<> stuff("9123847281347218347214212");
+        auto stuff = 9123847281347218347214212_x;
         stuff -= 9182371232121ULL;
-        REQUIRE(stuff == "9123847281338035975982091"_x);
+        REQUIRE(stuff == 9123847281338035975982091_x);
         REQUIRE(stuff > 100);
         REQUIRE(stuff != 0);
     }
 
     SECTION("Multiplication", "[uintx-mul]") {
-        gears::uintx<> stuff("819374812937489172894782121212212");
+        auto stuff = 819374812937489172894782121212212_x;
         stuff *= 7182461231831ULL;
-        REQUIRE(stuff == "5885127828262293680350082130474219356480320172"_x);
+        REQUIRE(stuff == 5885127828262293680350082130474219356480320172_x);
         REQUIRE(stuff > 100);
         REQUIRE(stuff != 0);
     }
 
     SECTION("Division", "[uintx-div]") {
-        gears::uintx<> stuff("1927498748914987934621746728364782163748212212231");
+        auto stuff = 1927498748914987934621746728364782163748212212231_x;
         stuff /= 814371284321ULL;
-        gears::uintx<> expected("2366855003393301719774904141041689695");
+        auto expected = 2366855003393301719774904141041689695_x;
         REQUIRE(stuff == expected);
         REQUIRE(stuff > 100);
         REQUIRE(stuff != 0);
     }
 
     SECTION("Modulus", "[uintx-mod]") {
-        gears::uintx<> stuff("91984712847987981232998147123812");
+        auto stuff = 91984712847987981232998147123812_x;
         stuff %= 8914712412LL;
-        gears::uintx<> expected("3725426300");
+        auto expected = 3725426300_x;
         REQUIRE(stuff == expected);
         REQUIRE(stuff > 100);
         REQUIRE(stuff != 0);
     }
 
     SECTION("Conversion", "[uintx-conv]") {
-        gears::uintx<> stuff("1234567890");
-        auto i = gears::uintx_cast<long long>(stuff);
+        auto stuff = 1234567890_x;
+        auto i = gears::math::uintx_cast<long long>(stuff);
         REQUIRE(i == 1234567890LL);
-        auto str = gears::uintx_cast<std::string>(stuff);
+        auto str = gears::math::uintx_cast<std::string>(stuff);
         REQUIRE(str == "1234567890");
     }
+}
+
+TEST_CASE("Basic Algorithms", "[math-basic-algo]") {
+    REQUIRE(gears::math::factorial(10) == 3628800);
+    // REQUIRE(gears::math::fibonacci(20) == 832040);
+    REQUIRE(gears::math::gcd(252, 105) == 21);
 }

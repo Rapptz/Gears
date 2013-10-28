@@ -23,8 +23,9 @@
 #define GEARS_MATH_ALGORITHM_HPP
 
 namespace gears {
+namespace math {
 template<typename T = unsigned long long>
-inline T fibonacci(const T& number) {
+inline T fibonacci(T number) {
     T a(1);
     T b(0);
     T c(0);
@@ -47,6 +48,7 @@ template<typename T = unsigned long long>
 constexpr T gcd(const T& x, const T& y) {
     return y == 0 ? x : gcd(y, x % y);
 }
+} // math
 } // gears
 
 #endif // GEARS_MATH_ALGORITHM_HPP
