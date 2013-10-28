@@ -23,6 +23,7 @@
 #define GEARS_UTILITY_MAYBE_TAGS_HPP
 
 namespace gears {
+namespace utility {
 namespace detail {
 constexpr struct default_init_t{} default_init{};
 constexpr struct regular_init_t{} regular_init{};
@@ -35,6 +36,7 @@ struct nothing_t {
 };
 
 constexpr nothing_t nothing{};
+} // utility
 } // gears
 
 #endif // GEARS_UTILITY_MAYBE_TAGS_HPP

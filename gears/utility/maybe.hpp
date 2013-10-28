@@ -27,6 +27,7 @@
 #include <exception>
 
 namespace gears {
+namespace utility {
 namespace detail {
 struct bad_maybe_access : std::exception {
     virtual const char* what() const noexcept {
@@ -36,7 +37,7 @@ struct bad_maybe_access : std::exception {
 } // detail
 
 template<typename T>
-using MaybeBase = If<std::is_trivially_destructible<T>, detail::cmaybe_base<T>, detail::maybe_base<T>>;
+using MaybeBase = meta::If<std::is_trivially_destructible<T>, detail::cmaybe_base<T>, detail::maybe_base<T>>;
 
 template<typename T>
 class maybe : private MaybeBase<T> {
@@ -345,6 +346,7 @@ template<typename T>
 constexpr bool operator>=(const T& value, const maybe<T>& rhs) {
     return static_cast<bool>(rhs) ? value >= *rhs : true;
 }
+} // utility
 } // gears
 
 #endif // GEARS_UTILITY_MAYBE_HPP

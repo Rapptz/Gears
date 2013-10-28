@@ -25,6 +25,7 @@
 #include "storage.hpp"
 
 namespace gears {
+namespace utility {
 namespace detail {
 template<typename T>
 struct maybe_base {
@@ -34,10 +35,10 @@ struct maybe_base {
     constexpr maybe_base() noexcept: valid(false), storage(default_init) {}
     constexpr explicit maybe_base(regular_init_t, bool valid) noexcept: valid(valid), storage(default_init) {}
     constexpr explicit maybe_base(const T& value): valid(true), storage(value) {}
-    constexpr explicit maybe_base(T&& value): valid(true), storage(cmove(value)) {}
+    constexpr explicit maybe_base(T&& value): valid(true), storage(meta::cmove(value)) {}
 
     template<typename... Args>
-    explicit maybe_base(in_place_t, Args&&... args): valid(true), storage(cforward<Args>(args)...) {}
+    explicit maybe_base(in_place_t, Args&&... args): valid(true), storage(meta::cforward<Args>(args)...) {}
 
     ~maybe_base() {
         if(valid) {
@@ -54,14 +55,15 @@ struct cmaybe_base {
     constexpr cmaybe_base() noexcept: valid(false), storage(default_init) {}
     constexpr explicit cmaybe_base(regular_init_t, bool valid) noexcept: valid(valid), storage(default_init) {}
     constexpr explicit cmaybe_base(const T& value): valid(true), storage(value) {}
-    constexpr explicit cmaybe_base(T&& value): valid(true), storage(cmove(value)) {}
+    constexpr explicit cmaybe_base(T&& value): valid(true), storage(meta::cmove(value)) {}
 
     template<typename... Args>
-    constexpr explicit cmaybe_base(in_place_t, Args&&... args): valid(true), storage(cforward<Args>(args)...) {}
+    constexpr explicit cmaybe_base(in_place_t, Args&&... args): valid(true), storage(meta::cforward<Args>(args)...) {}
 
     ~cmaybe_base() = default;
 };
 } // detail
+} // utility
 } // gears
 
 #endif // GEARS_UTILITY_MAYBE_BASE_HPP
