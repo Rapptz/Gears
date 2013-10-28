@@ -26,6 +26,7 @@
 #include "fprint.hpp"
 
 namespace gears {
+namespace io {
 template<size_t N, typename... Args>
 inline void print(const char (&str)[N], Args&&... args) {
     fprint(std::cout, str, std::forward<Args>(args)...);
@@ -35,6 +36,7 @@ template<size_t N, typename... Args>
 inline void print(const wchar_t (&str)[N], Args&&... args) {
     fprint(std::wcout, str, std::forward<Args>(args)...);
 }
+} // io
 } // gears
 
 #endif // GEARS_IO_PRINT_HPP

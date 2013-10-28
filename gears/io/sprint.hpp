@@ -28,6 +28,7 @@
 #include "../string/classification.hpp"
 
 namespace gears {
+namespace io {
 template<typename CharT, size_t N, typename... Args>
 inline std::basic_string<CharT> sprint(const CharT (&str)[N], Args&&... arguments) {
     if(sizeof...(Args) < 1)
@@ -73,6 +74,7 @@ inline std::basic_string<CharT> sprint(const CharT (&str)[N], Args&&... argument
 
     return out.str();
 }
+} // io
 } // gears
 
 #endif // GEARS_IO_SPRINT_HPP

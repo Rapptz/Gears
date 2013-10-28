@@ -27,6 +27,7 @@
 #include <iterator>
 
 namespace gears {
+namespace io {
 template<typename CharT = char, typename Traits = std::char_traits<CharT>>
 struct line_iterator : std::iterator<std::input_iterator_tag, std::basic_string<CharT, Traits>> {
 private:
@@ -88,6 +89,7 @@ template<typename CharT, typename Traits>
 inline line_reader<CharT, Traits> lines(std::basic_istream<CharT, Traits>& in) {
     return line_reader<CharT, Traits>(in);
 }
+} // io
 } // gears
 
 #endif // GEARS_IO_LINES_HPP

@@ -30,7 +30,8 @@
 #include <iosfwd>
 
 namespace gears {
-namespace io_detail {
+namespace io {
+namespace detail {
 struct has_begin_end_impl {
     template<typename T, typename B = decltype(std::declval<T&>().begin()),
                          typename E = decltype(std::declval<T&>().end())>
@@ -56,18 +57,18 @@ template<typename Elem, typename Traits, typename Tuple, size_t... Indices>
 void print_expander(std::basic_ostream<Elem, Traits>& out, const Tuple& t, indices<Indices...>) noexcept {
     GEARS_EXPAND(out << (!Indices ? "" : ", ") << adl::get<Indices>(t));
 }
-} // io_detail
+} // detail
 
 namespace operators {
-template<typename Elem, typename Traits, typename Tuple, EnableIf<io_detail::has_get<Tuple>, Not<io_detail::has_begin_end<Tuple>>>...>
+template<typename Elem, typename Traits, typename Tuple, EnableIf<detail::has_get<Tuple>, Not<detail::has_begin_end<Tuple>>>...>
 inline auto operator<<(std::basic_ostream<Elem, Traits>& out, const Tuple& t) -> decltype(out) {
     out << "(";
-    io_detail::print_expander(out, t, build_indices<std::tuple_size<Tuple>::value>{});
+    detail::print_expander(out, t, build_indices<std::tuple_size<Tuple>::value>{});
     out << ")";
     return out;
 }
 
-template<typename Elem, typename Traits, typename Cont, EnableIf<io_detail::has_begin_end<Cont>>...>
+template<typename Elem, typename Traits, typename Cont, EnableIf<detail::has_begin_end<Cont>>...>
 inline auto operator<<(std::basic_ostream<Elem, Traits>& out, const Cont& cont) -> decltype(out) {
     auto first = adl::begin(cont);
     auto last = adl::end(cont);
@@ -87,6 +88,7 @@ inline auto operator<<(std::basic_ostream<Elem, Traits>& out, const Cont& cont) 
     return out;
 }
 } // operators
+} // io
 } // gears
 
 #endif // GEARS_IO_PRETTYPRINT_HPP

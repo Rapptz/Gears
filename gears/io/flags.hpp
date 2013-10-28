@@ -23,12 +23,13 @@
 #define GEARS_IO_FLAGS_HPP
 
 #include <iosfwd>
-#include <utility>
 #include "../meta/indices.hpp"
 #include "../meta/expand.hpp"
+#include "../adl/get.hpp"
 
 namespace gears {
-namespace io_detail {
+namespace io {
+namespace detail {
 template<typename T>
 struct flag_type {
     const T& value;
@@ -53,8 +54,7 @@ inline std::basic_ostream<Elem, Traits>& operator<<(std::basic_ostream<Elem, Tra
 
 template<class Elem, class Traits, class Tuple, size_t... Indices>
 inline void apply_flags(std::basic_ostream<Elem, Traits>& out, const Tuple& t, indices<Indices...>) {
-    using std::get;
-    GEARS_EXPAND(out << get<Indices>(t));
+    GEARS_EXPAND(out << adl::get<Indices>(t));
 }
 
 template<class Elem, class Traits, typename T, typename... Flags>
@@ -62,17 +62,18 @@ inline std::basic_ostream<Elem, Traits>& operator<<(std::basic_ostream<Elem, Tra
     apply_flags(out, f.flags, build_indices<sizeof...(Flags)>{});
     return out << f.value;
 }
-} // io_detail
+} // detail
 
 template<typename T>
-inline io_detail::flag_type<T> flags(T&& t, std::ios_base::fmtflags flag) {
+inline detail::flag_type<T> flags(T&& t, std::ios_base::fmtflags flag) {
     return { std::forward<T>(t), flag };
 }
 
 template<typename T, typename... Flags>
-inline io_detail::manipulator_type<T, Flags...> flags(T&& t, Flags&&... f) {
+inline detail::manipulator_type<T, Flags...> flags(T&& t, Flags&&... f) {
     return { std::forward<T>(t), std::forward<Flags>(f)... };
 }
+} // io
 } // gears
 
 #endif // GEARS_IO_FLAGS_HPP

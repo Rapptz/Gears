@@ -29,7 +29,8 @@
 #include "../../meta/alias.hpp"
 
 namespace gears {
-namespace io_detail {
+namespace io {
+namespace detail {
 template<size_t N = 0, class Elem, class Traits, typename... Args, EnableIf<Bool<(N >= sizeof...(Args))>>...>
 inline void index_printer(std::basic_ostream<Elem,Traits>& out, const size_t i, const std::tuple<Args...>& tup) {
     throw std::out_of_range("Index exceeds number of arguments provided");
@@ -41,10 +42,10 @@ inline void index_printer(std::basic_ostream<Elem,Traits>& out, const size_t i, 
         index_printer<N+1, Elem, Traits, Args...>(out, i, tup);
         return;
     }
-    using std::get;
-    out << get<N>(tup);
+    out << adl::get<N>(tup);
 }
-} // io_detail
+} // detail
+} // io
 } // gears
 
 #endif // GEARS_IO_DETAIL_INDEX_PRINTER_HPP

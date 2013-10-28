@@ -22,23 +22,20 @@
 #ifndef GEARS_FUNCTIONAL_CURRY_HPP
 #define GEARS_FUNCTIONAL_CURRY_HPP
 
-#include <tuple>
-#include <utility>
+#include "../adl/get.hpp"
 #include "../meta/indices.hpp"
 #include "../meta/meta.hpp"
 
 namespace gears {
 namespace functional {
 namespace detail {
-using std::get;
-
 template<typename Tuple>
 using IndicesFor = build_indices<std::tuple_size<Tuple>::value>;
 
 template<typename F, typename Tuple, size_t... Indices,
-         typename Return = decltype(std::declval<F>()(get<Indices>(std::declval<Tuple>())...))>
+         typename Return = decltype(std::declval<F>()(adl::get<Indices>(std::declval<Tuple>())...))>
 constexpr Return invoke_impl(F&& f, Tuple&& t, indices<Indices...>) {
-    return std::forward<F>(f)(get<Indices>(std::forward<Tuple>(t))...);
+    return std::forward<F>(f)(adl::get<Indices>(std::forward<Tuple>(t))...);
 }
 
 template<typename F, typename Tuple,

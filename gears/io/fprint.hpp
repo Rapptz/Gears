@@ -26,6 +26,7 @@
 #include "../string/classification.hpp"
 
 namespace gears {
+namespace io {
 template<class Elem, class Traits, size_t N, typename... Args>
 inline void fprint(std::basic_ostream<Elem, Traits>& out, const Elem (&str)[N], Args&&... arguments) {
     if(sizeof...(arguments) < 1) {
@@ -69,6 +70,7 @@ inline void fprint(std::basic_ostream<Elem, Traits>& out, const Elem (&str)[N], 
         first = check;
     }
 }
+} // io
 } // gears
 
 #endif // GEARS_IO_FPRINT_HPP
