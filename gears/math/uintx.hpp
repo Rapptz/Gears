@@ -460,6 +460,10 @@ public:
         return *this;
     }
 
+    explicit operator bool() const noexcept {
+        return digits.back() > 0;
+    }
+
     #ifndef GEARS_NO_IOSTREAM
     template<typename Elem, typename Traits>
     friend std::basic_ostream<Elem, Traits>& operator<<(std::basic_ostream<Elem, Traits>& out, const uintx& n) {

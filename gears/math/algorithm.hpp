@@ -26,11 +26,13 @@ namespace gears {
 namespace math {
 template<typename T = unsigned long long>
 inline T fibonacci(T number) {
+    if(number < 2)
+        return number;
     T a(1);
     T b(0);
     T c(0);
 
-    while(number--) {
+    while(--number) {
         c = b;
         b = a;
         a = b + c;
