@@ -26,6 +26,7 @@
 #include <utility>
 
 namespace gears {
+namespace string {
 template<typename CharT = char>
 struct stringbuilder {
 private:
@@ -60,6 +61,7 @@ public:
         return { ss.str() };
     }
 };
+} // string
 } // gears
 
 #endif // GEARS_STRING_BUILDER_HPP

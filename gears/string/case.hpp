@@ -26,6 +26,7 @@
 #include "../meta/alias.hpp"
 
 namespace gears {
+namespace string {
 template<typename String>
 inline meta::Unqualified<String> to_lower(String str, const std::locale& loc = std::locale()) {
     for(auto&& c : str) {
@@ -59,6 +60,7 @@ inline bool is_all_upper(const String& str, const std::locale& loc = std::locale
     }
     return true;
 }
+} // string
 } // gears
 
 #endif // GEARS_STRING_CASE_HPP

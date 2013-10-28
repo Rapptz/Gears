@@ -26,6 +26,7 @@
 #include "classification.hpp"
 
 namespace gears {
+namespace string {
 template<typename String, typename UnaryPredicate>
 inline meta::Unqualified<String> trim_left_if(String&& str, UnaryPredicate&& pred) {
     auto pos = find_first_not_of(std::forward<String>(str), std::forward<UnaryPredicate>(pred));
@@ -63,6 +64,7 @@ template<typename String>
 inline meta::Unqualified<String> trim(String&& str, const std::locale& loc = std::locale()) {
     return trim_left(trim_right(std::forward<String>(str), loc), loc);
 }
+} // string
 } // gears
 
 #endif // GEARS_STRING_TRIM_HPP

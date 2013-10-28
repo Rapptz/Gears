@@ -25,6 +25,7 @@
 #include "../meta/alias.hpp"
 
 namespace gears {
+namespace string {
 namespace string_find_detail {
 template<typename T>
 struct negator {
@@ -67,6 +68,7 @@ template<typename String, typename UnaryPredicate>
 inline string_find_detail::SizeType<String> find_last_not_of(const String& str, UnaryPredicate&& pred) {
     return find_last_of(str, string_find_detail::negator<UnaryPredicate>(pred));
 }
+} // string
 } // gears
 
 #endif // GEARS_STRING_FIND_HPP

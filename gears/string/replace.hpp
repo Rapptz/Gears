@@ -25,6 +25,7 @@
 #include "../meta/alias.hpp"
 
 namespace gears {
+namespace string {
 namespace string_replace_detail {
 template<typename String>
 inline size_t nth_finder(const String& str, const String& find, size_t nth) {
@@ -110,6 +111,7 @@ inline meta::Unqualified<String> erase_all(String str, const String& erase) {
     }
     return str;
 }
+} // string
 } // gears
 
 #endif // GEARS_STRING_REPLACE_HPP

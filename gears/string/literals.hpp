@@ -25,6 +25,7 @@
 #include <string>
 
 namespace gears {
+namespace string {
 namespace literals {
 inline std::basic_string<wchar_t> operator"" _s(const wchar_t* str, size_t n) {
     return { str, n };
@@ -42,6 +43,7 @@ inline std::basic_string<char16_t> operator"" _s(const char16_t* str, size_t n) 
     return { str, n };
 }
 } // literals
+} // string
 } // gears
 
 

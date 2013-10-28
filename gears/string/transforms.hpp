@@ -27,6 +27,7 @@
 #include "../meta/alias.hpp"
 
 namespace gears {
+namespace string {
 template<typename String>
 inline meta::Unqualified<String> left(String str, size_t n) {
     if(n >= str.size())
@@ -100,6 +101,7 @@ inline OutIt split(const String& str, const String& sep, OutIt it) {
     *it++ = str.substr(start);
     return it;
 }
+} // string
 } // gears
 
 #endif // GEARS_STRING_TRANSFORMS_HPP

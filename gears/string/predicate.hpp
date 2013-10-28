@@ -25,6 +25,7 @@
 #include <locale>
 
 namespace gears {
+namespace string {
 template<typename CharT = char>
 struct is_any_of {
     const CharT* str;
@@ -120,6 +121,7 @@ inline bool all(const String& str, BinaryPredicate&& pred) {
     }
     return true;
 }
+} // string
 } // gears
 
 #endif // GEARS_STRING_PREDICATE_HPP

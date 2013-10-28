@@ -25,6 +25,7 @@
 #include <locale>
 
 namespace gears {
+namespace string {
 struct is_lower {
 private:
     std::locale loc;
@@ -145,6 +146,7 @@ public:
         return std::isxdigit(c, loc);
     }
 };
+} // string
 } // gears
 
 #endif // GEARS_STRING_CLASSIFICATION_HPP
