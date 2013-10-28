@@ -406,19 +406,24 @@ public:
     }
 
     bool operator<(const uintx& other) const {
-        if(digits.size() < other.digits.size())
+        auto i = digits.size();
+
+        if(i < other.digits.size())
             return true;
-        if(other.digits.size() < digits.size())
+        if(other.digits.size() < i)
             return false;
 
-        for(unsigned i = digits.size() - 1; i > 0; --i) {
+        --i;
+
+        do {
             if(digits[i] < other.digits[i])
                 return true;
             if(other.digits[i] < digits[i])
                 return false;
-        }
+            --i;
+        } while (i > 0);
 
-        return true;
+        return false;
     }
 
     bool operator>(const uintx& other) const {

@@ -77,6 +77,6 @@ TEST_CASE("Higher Precision Integer", "[uintx]") {
 
 TEST_CASE("Basic Algorithms", "[math-basic-algo]") {
     REQUIRE(gears::math::factorial(10) == 3628800);
-    // REQUIRE(gears::math::fibonacci(20) == 832040);
+    REQUIRE(gears::math::fibonacci(20) == 6765);
     REQUIRE(gears::math::gcd(252, 105) == 21);
 }
