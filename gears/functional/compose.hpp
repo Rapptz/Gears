@@ -26,6 +26,7 @@
 #include <utility>
 
 namespace gears {
+namespace functional {
 namespace detail {
 template<typename T>
 using Decayed = typename std::decay<T>::type;
@@ -65,6 +66,7 @@ template<typename First, typename... Rest>
 constexpr detail::Composer<First, Rest...> compose(First&& f, Rest&&... args) {
     return detail::Composer<First, Rest...>(std::forward<First>(f), compose(std::forward<Rest>(args)...));
 }
+} // functional
 } // gears
 
 #endif // GEARS_FUNCTIONAL_COMPOSE_HPP

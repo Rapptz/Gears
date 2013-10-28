@@ -25,6 +25,7 @@
 #include <utility>
 
 namespace gears {
+namespace functional {
 struct plus_type {
     template<typename T, typename U>
     constexpr auto operator()(T&& t, U&& u) const -> decltype(std::forward<T>(t) + std::forward<U>(u)) {
@@ -69,6 +70,7 @@ constexpr multiplies_type multiplies{};
 constexpr divides_type divides{};
 
 constexpr modulus_type modulus{};
+} // functional
 } // gears
 
 #endif // GEARS_FUNCTIONAL_ARITHMETIC_OPERATORS_HPP

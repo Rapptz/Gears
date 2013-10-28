@@ -28,6 +28,7 @@
 #include "../meta/meta.hpp"
 
 namespace gears {
+namespace functional {
 namespace detail {
 using std::get;
 
@@ -42,7 +43,7 @@ constexpr Return invoke_impl(F&& f, Tuple&& t, indices<Indices...>) {
 
 template<typename F, typename Tuple,
          typename Return = decltype(invoke_impl(std::declval<F>(), std::declval<Tuple>(), IndicesFor<Tuple>{}))>
-constexpr Return invoke(F&& f, Tuple&& tuple) {
+constexpr Return invoke_tup(F&& f, Tuple&& tuple) {
     return invoke_impl(std::forward<F>(f), std::forward<Tuple>(tuple), IndicesFor<Tuple>{});
 }
 
@@ -80,8 +81,8 @@ public:
     constexpr curry_type(Function&& f, tuple_type n) noexcept: func(std::forward<Function>(f)), args(std::move(n)) {}
 
     template<typename... T>
-    constexpr auto operator()(T&&... t) -> decltype(detail::invoke(func, std::tuple_cat(std::move(args), std::make_tuple(t...)))) {
-        return detail::invoke(func, std::tuple_cat(std::move(args), std::make_tuple(t...)));
+    constexpr auto operator()(T&&... t) -> decltype(detail::invoke_tup(func, std::tuple_cat(std::move(args), std::make_tuple(t...)))) {
+        return detail::invoke_tup(func, std::tuple_cat(std::move(args), std::make_tuple(t...)));
     }
 };
 
@@ -89,6 +90,7 @@ template<typename Function, typename... Args>
 constexpr curry_type<Function, detail::SpecialDecay<Args>...> curry(Function&& f, Args&&... args) {
     return { std::forward<Function>(f), std::make_tuple(args...) };
 }
+} // functional
 } // gears
 
 #endif // GEARS_FUNCTIONAL_CURRY_HPP

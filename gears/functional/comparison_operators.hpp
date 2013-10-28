@@ -25,6 +25,7 @@
 #include <utility>
 
 namespace gears {
+namespace functional {
 struct equal_to_type {
     template<typename T, typename U>
     constexpr auto operator()(T&& t, U&& u) const -> decltype(std::forward<T>(t) == std::forward<U>(u)) {
@@ -78,6 +79,7 @@ constexpr less_type less{};
 constexpr greater_equal_type greater_equal{};
 
 constexpr less_equal_type less_equal{};
+} // functional
 } // gears
 
 #endif // GEARS_FUNCTIONAL_COMPARISON_OPERATORS_HPP

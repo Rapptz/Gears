@@ -25,6 +25,7 @@
 #include <utility>
 
 namespace gears {
+namespace functional {
 struct even_type {
     template<typename T>
     constexpr auto operator()(T&& t) -> decltype(std::forward<T>(t) % 2 == 0) {
@@ -42,6 +43,7 @@ struct odd_type {
 constexpr even_type even{};
 
 constexpr odd_type odd{};
+} // functional
 } // gears
 
 #endif // GEARS_FUNCTIONAL_NUMERICAL_PROPERTIES_HPP

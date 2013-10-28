@@ -25,6 +25,7 @@
 #include "../meta/alias.hpp"
 
 namespace gears {
+namespace functional {
 namespace detail {
 template<typename Func, typename Obj, typename... Args, 
          EnableIf<std::is_member_function_pointer<Unqualified<Func>>,
@@ -68,6 +69,7 @@ template<typename Deduced = deduced, typename... T, typename Actual = decltype(d
 constexpr Result invoke(T&&... t) noexcept {
     return Result(detail::invoke(std::forward<T>(t)...));
 }
+} // functional
 } // gears
 
 #endif // GEARS_FUNCTIONAL_INVOKE_HPP

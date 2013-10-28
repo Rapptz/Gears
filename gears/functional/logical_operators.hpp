@@ -25,6 +25,7 @@
 #include <utility>
 
 namespace gears {
+namespace functional {
 struct logical_and_type {
     template<typename T, typename U>
     constexpr auto operator()(T&& t, U&& u) const -> decltype(std::forward<T>(t) && std::forward<U>(u)) {
@@ -51,6 +52,7 @@ constexpr logical_and_type logical_and{};
 constexpr logical_or_type logical_or{};
 
 constexpr logical_not_type logical_not{};
+} // functional
 } // gears
 
 #endif // GEARS_FUNCTIONAL_LOGICAL_OPERATORS_HPP

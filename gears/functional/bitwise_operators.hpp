@@ -25,6 +25,7 @@
 #include <utility>
 
 namespace gears {
+namespace functional {
 struct bit_and_type {
     template<typename T, typename U>
     constexpr auto operator()(T&& t, U&& u) const -> decltype(std::forward<T>(t) & std::forward<U>(u)) {
@@ -78,7 +79,8 @@ constexpr bit_not_type bit_not{};
 constexpr lshift_type lshift{};
 
 constexpr rshift_type rshift{};
-}
+} // functional
+} // gears
 
 
 #endif // GEARS_FUNCTIONAL_BITWISE_OPERATORS_HPP
