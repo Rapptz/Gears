@@ -39,7 +39,7 @@ inline size_t nth_finder(const String& str, const String& find, size_t nth) {
 } // string_replace_detail
 
 template<typename String>
-inline Unqualified<String> replace_first(String str, const String& from, const String& to) {
+inline meta::Unqualified<String> replace_first(String str, const String& from, const String& to) {
     auto start_pos = str.find(from);
     if(start_pos == String::npos) 
         return str;
@@ -48,7 +48,7 @@ inline Unqualified<String> replace_first(String str, const String& from, const S
 }
 
 template<typename String>
-inline Unqualified<String> replace_last(String str, const String& from, const String& to) {
+inline meta::Unqualified<String> replace_last(String str, const String& from, const String& to) {
     auto start_pos = str.rfind(from);
     if(start_pos == String::npos) 
         return str;
@@ -57,7 +57,7 @@ inline Unqualified<String> replace_last(String str, const String& from, const St
 }
 
 template<typename String>
-inline Unqualified<String> replace_nth(String str, size_t nth, const String& from, const String& to) {
+inline meta::Unqualified<String> replace_nth(String str, size_t nth, const String& from, const String& to) {
     auto pos = string_replace_detail::nth_finder(str, from, nth);
     if(pos == String::npos)
         return str;
@@ -66,7 +66,7 @@ inline Unqualified<String> replace_nth(String str, size_t nth, const String& fro
 }
 
 template<typename String>
-inline Unqualified<String> replace_all(String str, const String& from, const String& to) {
+inline meta::Unqualified<String> replace_all(String str, const String& from, const String& to) {
     size_t start_pos = 0;
     while((start_pos = str.find(from, start_pos)) != String::npos) {
         str.replace(start_pos, from.length(), to);
@@ -76,7 +76,7 @@ inline Unqualified<String> replace_all(String str, const String& from, const Str
 }
 
 template<typename String>
-inline Unqualified<String> erase_first(String str, const String& erase) {
+inline meta::Unqualified<String> erase_first(String str, const String& erase) {
     auto start_pos = str.find(erase);
     if(start_pos == String::npos)
         return str;
@@ -85,7 +85,7 @@ inline Unqualified<String> erase_first(String str, const String& erase) {
 }
 
 template<typename String>
-inline Unqualified<String> erase_last(String str, const String& erase) {
+inline meta::Unqualified<String> erase_last(String str, const String& erase) {
     auto start_pos = str.rfind(erase);
     if(start_pos == String::npos)
         return str;
@@ -94,7 +94,7 @@ inline Unqualified<String> erase_last(String str, const String& erase) {
 }
 
 template<typename String>
-inline Unqualified<String> erase_nth(String str, size_t nth, const String& erase) {
+inline meta::Unqualified<String> erase_nth(String str, size_t nth, const String& erase) {
     auto pos = string_replace_detail::nth_finder(str, erase, nth);
     if(pos == String::npos)
         return str;
@@ -103,7 +103,7 @@ inline Unqualified<String> erase_nth(String str, size_t nth, const String& erase
 }
 
 template<typename String>
-inline Unqualified<String> erase_all(String str, const String& erase) {
+inline meta::Unqualified<String> erase_all(String str, const String& erase) {
     size_t start_pos = 0;
     while((start_pos = str.find(erase, start_pos)) != String::npos) {
         str.replace(start_pos, erase.length(), "");

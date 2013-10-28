@@ -28,21 +28,21 @@
 
 namespace gears {
 template<typename String>
-inline Unqualified<String> left(String str, size_t n) {
+inline meta::Unqualified<String> left(String str, size_t n) {
     if(n >= str.size())
         return str;
     return { str.substr(0, n) };
 }
 
 template<typename String>
-inline Unqualified<String> right(String str, size_t n) {
+inline meta::Unqualified<String> right(String str, size_t n) {
     if(n >= str.size())
         return str;
     return { str.substr(str.size() - n) };
 }
 
 template<typename String>
-inline Unqualified<String> reverse(String str) {
+inline meta::Unqualified<String> reverse(String str) {
     auto first = str.begin();
     auto last = str.end();
     while((first != last) && (first != --last)) {
@@ -53,10 +53,10 @@ inline Unqualified<String> reverse(String str) {
 }
 
 template<typename String, typename Cont>
-inline Unqualified<String> join(const Cont& cont, const String& sep) {
+inline meta::Unqualified<String> join(const Cont& cont, const String& sep) {
     auto first = cont.cbegin();
     auto last = cont.cend();
-    std::basic_ostringstream<ValueType<String>> ss;
+    std::basic_ostringstream<meta::ValueType<String>> ss;
     if(first != last) {
         ss << *first++;
     }
@@ -67,10 +67,10 @@ inline Unqualified<String> join(const Cont& cont, const String& sep) {
 }
 
 template<typename String, typename Cont, typename UnaryPredicate>
-inline Unqualified<String> join_if(const Cont& cont, const String& sep, UnaryPredicate&& pred) {
+inline meta::Unqualified<String> join_if(const Cont& cont, const String& sep, UnaryPredicate&& pred) {
     auto first = cont.cbegin();
     auto last = cont.cend();
-    std::basic_ostringstream<ValueType<String>> ss;
+    std::basic_ostringstream<meta::ValueType<String>> ss;
 
     // Increase first until predicate is met
     while(!pred(*first)) ++first;

@@ -27,7 +27,7 @@
 
 namespace gears {
 template<typename String>
-inline Unqualified<String> to_lower(String str, const std::locale& loc = std::locale()) {
+inline meta::Unqualified<String> to_lower(String str, const std::locale& loc = std::locale()) {
     for(auto&& c : str) {
         c = std::tolower(c, loc);
     }
@@ -35,7 +35,7 @@ inline Unqualified<String> to_lower(String str, const std::locale& loc = std::lo
 }
 
 template<typename String>
-inline Unqualified<String> to_upper(String str, const std::locale& loc = std::locale()) {
+inline meta::Unqualified<String> to_upper(String str, const std::locale& loc = std::locale()) {
     for(auto&& c : str) {
         c = std::toupper(c, loc);
     }

@@ -54,21 +54,21 @@ template<typename T>
 struct has_get : decltype(has_get_impl::test<T>(0)) {};
 
 template<typename Elem, typename Traits, typename Tuple, size_t... Indices>
-void print_expander(std::basic_ostream<Elem, Traits>& out, const Tuple& t, indices<Indices...>) noexcept {
+void print_expander(std::basic_ostream<Elem, Traits>& out, const Tuple& t, meta::indices<Indices...>) noexcept {
     GEARS_EXPAND(out << (!Indices ? "" : ", ") << adl::get<Indices>(t));
 }
 } // detail
 
 namespace operators {
-template<typename Elem, typename Traits, typename Tuple, EnableIf<detail::has_get<Tuple>, Not<detail::has_begin_end<Tuple>>>...>
+template<typename Elem, typename Traits, typename Tuple, meta::EnableIf<detail::has_get<Tuple>, meta::Not<detail::has_begin_end<Tuple>>>...>
 inline auto operator<<(std::basic_ostream<Elem, Traits>& out, const Tuple& t) -> decltype(out) {
     out << "(";
-    detail::print_expander(out, t, build_indices<std::tuple_size<Tuple>::value>{});
+    detail::print_expander(out, t, meta::build_indices<std::tuple_size<Tuple>::value>{});
     out << ")";
     return out;
 }
 
-template<typename Elem, typename Traits, typename Cont, EnableIf<detail::has_begin_end<Cont>>...>
+template<typename Elem, typename Traits, typename Cont, meta::EnableIf<detail::has_begin_end<Cont>>...>
 inline auto operator<<(std::basic_ostream<Elem, Traits>& out, const Cont& cont) -> decltype(out) {
     auto first = adl::begin(cont);
     auto last = adl::end(cont);

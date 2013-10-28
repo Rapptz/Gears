@@ -33,7 +33,7 @@ union maybe_storage {
     T value;
 
     template<typename... Args>
-    constexpr maybe_storage(Args&&... args): value(cforward<Args>(args)...) {}
+    constexpr maybe_storage(Args&&... args): value(meta::cforward<Args>(args)...) {}
     constexpr maybe_storage(default_init_t) noexcept: c() {}
     ~maybe_storage() {}
 };
@@ -44,7 +44,7 @@ union cmaybe_storage {
     T value;
 
     template<typename... Args>
-    constexpr cmaybe_storage(Args&&... args): value(cforward<Args>(args)...) {}
+    constexpr cmaybe_storage(Args&&... args): value(meta::cforward<Args>(args)...) {}
     constexpr cmaybe_storage(default_init_t) noexcept: c() {}
     ~cmaybe_storage() = default;
 };

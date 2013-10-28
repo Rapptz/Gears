@@ -23,7 +23,7 @@
 #include <gears/meta.hpp>
 
 TEST_CASE("Meta functions", "[meta]") {
-    using namespace gears;
+    using namespace gears::meta;
     constexpr size_t n = 10;
     REQUIRE(min(1,2,3,4,5,6) == 1);
     REQUIRE(max(5,11,9,14,19,192) == 192);

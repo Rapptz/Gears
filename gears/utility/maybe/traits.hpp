@@ -37,12 +37,12 @@ struct has_overloaded_address_of_impl {
 template<typename T>
 struct has_overloaded_address_of : decltype(has_overloaded_address_of_impl::test<T>(0)) {};
 
-template<typename T, DisableIf<has_overloaded_address_of<T>>...>
+template<typename T, meta::DisableIf<has_overloaded_address_of<T>>...>
 constexpr T* address_of(T& t) noexcept {
     return &t;
 }
 
-template<typename T, EnableIf<has_overloaded_address_of<T>>...>
+template<typename T, meta::EnableIf<has_overloaded_address_of<T>>...>
 T* address_of(T& t) noexcept {
     return std::addressof(t);
 }

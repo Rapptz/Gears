@@ -40,8 +40,8 @@ using MaybeBase = If<std::is_trivially_destructible<T>, detail::cmaybe_base<T>, 
 
 template<typename T>
 class maybe : private MaybeBase<T> {
-    static_assert(!std::is_same<Decay<T>, nothing_t>(), "Invalid type. Must not be nothing");
-    static_assert(!std::is_same<Decay<T>, in_place_t>(), "Invalid type. Must not be in_place tag");
+    static_assert(!std::is_same<meta::Decay<T>, nothing_t>(), "Invalid type. Must not be nothing");
+    static_assert(!std::is_same<meta::Decay<T>, in_place_t>(), "Invalid type. Must not be in_place tag");
     static_assert(!std::is_reference<T>(), "Invalid type. Must not be a reference type");
     static_assert(!is_maybe<T>(), "Invalid type. Must not be a maybe type");
 
@@ -84,10 +84,10 @@ public:
     constexpr maybe() noexcept: MaybeBase<T>() {}
     constexpr maybe(nothing_t) noexcept : MaybeBase<T>() {}
     constexpr maybe(const T& value): MaybeBase<T>(value) {}
-    constexpr maybe(T&& value): MaybeBase<T>(cmove(value)) {}
+    constexpr maybe(T&& value): MaybeBase<T>(meta::cmove(value)) {}
 
     template<typename... Args>
-    constexpr explicit maybe(in_place_t, Args&&... args): MaybeBase<T>(in_place, cforward<Args>(args)...) {}
+    constexpr explicit maybe(in_place_t, Args&&... args): MaybeBase<T>(in_place, meta::cforward<Args>(args)...) {}
 
     maybe(const maybe& rhs): MaybeBase<T>(detail::regular_init, rhs.is_valid()) {
         if(rhs.is_valid()) {
@@ -136,7 +136,7 @@ public:
         return *this;
     }
 
-    template<typename U, EnableIf<std::is_constructible<T, Decay<U>>, std::is_assignable<T, Decay<U>>>...>
+    template<typename U, meta::EnableIf<std::is_constructible<T, meta::Decay<U>>, std::is_assignable<T, meta::Decay<U>>>...>
     maybe& operator=(U&& value) {
         if(is_valid()) {
             internal() = std::forward<U>(value);
@@ -183,13 +183,13 @@ public:
 
     template<typename U>
     constexpr T value_or(U&& value) const {
-        return is_valid() ? internal() : static_cast<T>(cforward<U>(value));
+        return is_valid() ? internal() : static_cast<T>(meta::cforward<U>(value));
     }
 };
 
 template<typename T>
-constexpr maybe<Decay<T>> just(T&& t) {
-    return { cforward<T>(t) };
+constexpr maybe<meta::Decay<T>> just(T&& t) {
+    return { meta::cforward<T>(t) };
 }
 
 // Comparison with maybe<T> and maybe<T>

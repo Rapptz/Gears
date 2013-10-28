@@ -53,13 +53,13 @@ inline std::basic_ostream<Elem, Traits>& operator<<(std::basic_ostream<Elem, Tra
 }
 
 template<class Elem, class Traits, class Tuple, size_t... Indices>
-inline void apply_flags(std::basic_ostream<Elem, Traits>& out, const Tuple& t, indices<Indices...>) {
+inline void apply_flags(std::basic_ostream<Elem, Traits>& out, const Tuple& t, meta::indices<Indices...>) {
     GEARS_EXPAND(out << adl::get<Indices>(t));
 }
 
 template<class Elem, class Traits, typename T, typename... Flags>
 inline std::basic_ostream<Elem, Traits>& operator<<(std::basic_ostream<Elem, Traits>& out, const manipulator_type<T, Flags...>& f) {
-    apply_flags(out, f.flags, build_indices<sizeof...(Flags)>{});
+    apply_flags(out, f.flags, meta::build_indices<sizeof...(Flags)>{});
     return out << f.value;
 }
 } // detail

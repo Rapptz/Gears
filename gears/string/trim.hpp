@@ -27,40 +27,40 @@
 
 namespace gears {
 template<typename String, typename UnaryPredicate>
-inline Unqualified<String> trim_left_if(String&& str, UnaryPredicate&& pred) {
+inline meta::Unqualified<String> trim_left_if(String&& str, UnaryPredicate&& pred) {
     auto pos = find_first_not_of(std::forward<String>(str), std::forward<UnaryPredicate>(pred));
-    if(pos != Unqualified<String>::npos) {
+    if(pos != meta::Unqualified<String>::npos) {
         return { str.substr(pos) };
     }
     return { };
 }
 
 template<typename String, typename UnaryPredicate>
-inline Unqualified<String> trim_right_if(String&& str, UnaryPredicate&& pred) {
+inline meta::Unqualified<String> trim_right_if(String&& str, UnaryPredicate&& pred) {
     auto pos = find_last_not_of(std::forward<String>(str), std::forward<UnaryPredicate>(pred));
-    if(pos != Unqualified<String>::npos) {
+    if(pos != meta::Unqualified<String>::npos) {
         return { str.substr(0, pos + 1) };
     }
     return { };
 }
 
 template<typename String, typename UnaryPredicate>
-inline Unqualified<String> trim_if(String&& str, UnaryPredicate&& pred) {
+inline meta::Unqualified<String> trim_if(String&& str, UnaryPredicate&& pred) {
     return trim_left_if(trim_right_if(std::forward<String>(str), pred), pred);
 }
 
 template<typename String>
-inline Unqualified<String> trim_left(String&& str, const std::locale& loc = std::locale()) {
+inline meta::Unqualified<String> trim_left(String&& str, const std::locale& loc = std::locale()) {
     return trim_left_if(std::forward<String>(str), is_space(loc));
 }
 
 template<typename String>
-inline Unqualified<String> trim_right(String&& str, const std::locale& loc = std::locale()) {
+inline meta::Unqualified<String> trim_right(String&& str, const std::locale& loc = std::locale()) {
     return trim_right_if(std::forward<String>(str), is_space(loc));
 }
 
 template<typename String>
-inline Unqualified<String> trim(String&& str, const std::locale& loc = std::locale()) {
+inline meta::Unqualified<String> trim(String&& str, const std::locale& loc = std::locale()) {
     return trim_left(trim_right(std::forward<String>(str), loc), loc);
 }
 } // gears

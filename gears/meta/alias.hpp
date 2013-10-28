@@ -25,6 +25,7 @@
 #include "meta.hpp"
 
 namespace gears {
+namespace meta {
 namespace alias_detail {
 enum class enabler {};
 } // alias_detail
@@ -33,7 +34,7 @@ template<typename... Args>
 using EnableIf = Type<std::enable_if<All<Args...>::value, alias_detail::enabler>>;
 
 template<typename... Args>
-using DisableIf = Type<std::enable_if<Not<All<Args...>>::value, alias_detail::enabler>>;
+using DisableIf = Type<std::enable_if<meta::Not<All<Args...>>::value, alias_detail::enabler>>;
 
 template<typename T>
 using Decay = Type<std::decay<T>>;
@@ -88,6 +89,7 @@ using ValueType = typename Unqualified<T>::value_type;
 
 template<typename T>
 using StorageFor = Type<std::aligned_storage<sizeof(T), std::alignment_of<T>::value>>;
+} // meta
 } // gears
 
 #endif // GEARS_META_ALIAS_HPP

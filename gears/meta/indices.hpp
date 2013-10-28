@@ -25,6 +25,7 @@
 #include <cstddef>
 
 namespace gears {
+namespace meta {
 template<size_t... Ns>
 struct indices {};
 
@@ -33,6 +34,7 @@ struct build_indices : build_indices<N-1, N-1, Ns...> {};
 
 template<size_t... Ns>
 struct build_indices<0, Ns...> : indices<Ns...> {};
+} // meta
 } // gears
 
 #endif // GEARS_META_INDICES_HPP

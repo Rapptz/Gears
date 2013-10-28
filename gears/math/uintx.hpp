@@ -35,6 +35,7 @@
 
 namespace gears {
 namespace math {
+using namespace gears::meta; // workaround for extremely strange bug
 namespace detail {
 constexpr size_t pow(size_t base, size_t exponent) {
     return exponent == 0 ? 1 : (base * pow(base, exponent - 1));
@@ -101,7 +102,7 @@ struct partial_cast<std::string> {
 template<size_t Bits = -1, typename Digit = unsigned int, typename Digits = unsigned long long>
 struct uintx {
 private:
-    using signed_type = Type<std::make_signed<Digits>>;
+    using signed_type = gears::meta::Type<std::make_signed<Digits>>;
     static constexpr size_t digit_bits = sizeof(Digits) * 8;
     static constexpr size_t digit_count = Bits == size_t(-1) ? -1 : (Bits / digit_bits);
     static_assert(digit_count, "Invalid bits parameter. Note: Use -1 for \"infinite\" precision");
@@ -244,7 +245,7 @@ public:
     static constexpr size_t base = detail::pow(10, digits10);
     uintx(): digits(1) {}
 
-    template<typename Integer, EnableIf<std::is_integral<Integer>>...>
+    template<typename Integer, gears::meta::EnableIf<std::is_integral<Integer>>...>
     uintx(Integer value) {
         value = abs(value);
         do {

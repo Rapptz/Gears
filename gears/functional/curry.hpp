@@ -30,11 +30,11 @@ namespace gears {
 namespace functional {
 namespace detail {
 template<typename Tuple>
-using IndicesFor = build_indices<std::tuple_size<Tuple>::value>;
+using IndicesFor = meta::build_indices<std::tuple_size<Tuple>::value>;
 
 template<typename F, typename Tuple, size_t... Indices,
          typename Return = decltype(std::declval<F>()(adl::get<Indices>(std::declval<Tuple>())...))>
-constexpr Return invoke_impl(F&& f, Tuple&& t, indices<Indices...>) {
+constexpr Return invoke_impl(F&& f, Tuple&& t, meta::indices<Indices...>) {
     return std::forward<F>(f)(adl::get<Indices>(std::forward<Tuple>(t))...);
 }
 
@@ -61,11 +61,11 @@ struct unref {
 
 template<typename T>
 struct special_decay {
-    using type = TypeIf<is_reference_wrapper<T>, unref<T>, identity<T>>; 
+    using type = meta::TypeIf<is_reference_wrapper<T>, unref<T>, meta::identity<T>>; 
 };
 
 template<typename T>
-using SpecialDecay = Type<special_decay<Decay<T>>>;
+using SpecialDecay = meta::Type<special_decay<meta::Decay<T>>>;
 } // detail
 
 template<typename Function, typename... Args>

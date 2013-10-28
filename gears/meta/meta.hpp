@@ -26,6 +26,7 @@
 #include <utility>
 
 namespace gears {
+namespace meta {
 template<typename T>
 using Type = typename T::type;
 
@@ -158,6 +159,7 @@ template<typename T>
 constexpr typename std::remove_reference<T>::type&& cmove(T&& t) noexcept {
     return static_cast<typename std::remove_reference<T>::type&&>(t);
 }
+} // meta
 } // gears
 
 #endif // GEARS_META_META_HPP

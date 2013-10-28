@@ -37,7 +37,7 @@ struct negator {
 };
 
 template<typename T>
-using SizeType = typename Unqualified<T>::size_type;
+using SizeType = typename meta::Unqualified<T>::size_type;
 } // string_find_detail
 
 template<typename String, typename UnaryPredicate>

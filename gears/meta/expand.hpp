@@ -23,9 +23,11 @@
 #define GEARS_META_EXPAND_HPP
 
 namespace gears {
+namespace meta {
 namespace expand_detail {
 using expander = int[];
 } // expand_detail
+} // meta
 } // gears
 
 #define GEARS_EXPAND(...) void(::gears::expand_detail::expander{((__VA_ARGS__), 0)...})
