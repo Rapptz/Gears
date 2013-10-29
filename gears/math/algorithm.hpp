@@ -50,6 +50,21 @@ template<typename T = unsigned long long>
 constexpr T gcd(const T& x, const T& y) {
     return y == 0 ? x : gcd(y, x % y);
 }
+
+template<typename T = unsigned long long>
+inline T mod_pow(T base, T exponent, const T& modulus) {
+    T result(1);
+
+    while(exponent) {
+        if((exponent % 2) == 1) {
+            result = (base * result) % modulus; 
+        }
+        exponent /= 2;
+        base = (base * base) % modulus;
+    }
+
+    return result;
+}
 } // math
 } // gears
 
