@@ -65,6 +65,13 @@ inline T mod_pow(T base, T exponent, const T& modulus) {
 
     return result;
 }
+
+template<typename T = unsigned long long>
+inline T sum_of_divisors(const T& number) noexcept {
+    T result(1);
+    for(T i = 2; i * i <= number; result += number % i ? 0 : (i * i == number ? i : i + number/i), ++i);
+    return result;
+}
 } // math
 } // gears
 
