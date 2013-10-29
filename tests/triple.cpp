@@ -22,16 +22,19 @@
 #include <catch.hpp>
 #include <tuple>
 #include <gears/utility/triple.hpp>
+#include <gears/adl/get.hpp>
+
+namespace gu = gears::utility;
 
 TEST_CASE("Triples", "[triple]") {
-    constexpr gears::triple<int, float, char> a = {1, 2.f, '3'};
+    constexpr gu::triple<int, float, char> a = {1, 2.f, '3'};
     static_assert(a.first  == 1  , "..");
     static_assert(a.second == 2.f, "..");
     static_assert(a.third  == '3', "..");
-    static_assert(std::get<0>(a) == 1, "..");
-    static_assert(std::get<1>(a) == 2.f, "..");
-    static_assert(std::get<2>(a) == '3', "..");
-    constexpr auto b = gears::make_triple(20, 3.f, 'b');
+    static_assert(gears::adl::get<0>(a) == 1, "..");
+    static_assert(gears::adl::get<1>(a) == 2.f, "..");
+    static_assert(gears::adl::get<2>(a) == '3', "..");
+    constexpr auto b = gu::make_triple(20, 3.f, 'b');
     static_assert(a != b, "..");
     static_assert(a < b, "..");
     static_assert(a <= b, "..");
