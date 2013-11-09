@@ -160,7 +160,7 @@ public:
             }
             else {
                 // otherwise, it is an unrecognised argument
-                throw detail::unrecognised_arg(current);
+                throw detail::unrecognised_arg(program_name, current);
             }
         }
     }
