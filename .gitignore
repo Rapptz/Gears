@@ -1,0 +1,36 @@
+# Compiled Object files
+*.slo
+*.lo
+*.o
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+
+# Scripts and executables
+*.bat
+*.exe
+
+# Scons stuff
+.*scons*
+
+# obj and bin directories
+bin/*
+obj/*
+
+# Development .cpp file
+dev.cpp
+
+# CTags
+.tags*
+
+# Sublime cruft
+*.sublime*
+
+# Documentation
+docs/html/*
