@@ -375,7 +375,7 @@ LOOKUP_CACHE_SIZE      = 0
 # Private class members and static file members will be hidden unless 
 # the EXTRACT_PRIVATE and EXTRACT_STATIC tags are set to YES
 
-EXTRACT_ALL            = YES
+EXTRACT_ALL            = NO
 
 # If the EXTRACT_PRIVATE tag is set to YES all private members of a class 
 # will be included in the documentation.
@@ -766,7 +766,8 @@ EXCLUDE_PATTERNS       =
 # AClass::ANamespace, ANamespace::*Test
 
 EXCLUDE_SYMBOLS        = detail \
-                         *_detail
+                         *_detail \
+                         *::literals
 
 # The EXAMPLE_PATH tag can be used to specify one or more files or 
 # directories that contain example code fragments that are included (see 

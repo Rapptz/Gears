@@ -26,7 +26,7 @@
 
 namespace gears {
 namespace chrono {
-template<class Clock>
+template<typename Clock>
 struct basic_stopwatch {
 public:
     using time_point = typename Clock::time_point;
@@ -40,11 +40,17 @@ private:
 public:
     basic_stopwatch() = default;
 
+    ///
+    /// \brief Starts the stopwatch
+    /// 
     void start() {
         now = Clock::now();
         running = true;
     }
 
+    ///
+    /// \brief Stops the stopwatch
+    /// 
     void stop() {
         if(running) {
             elapsed_time += Clock::now() - now;
@@ -52,17 +58,50 @@ public:
         }
     }
 
+    ///
+    /// \brief Resets the stopwatch
+    /// 
+    /// Resets the stopwatch and pauses it. Meaning that it 
+    /// sets the elapsed time to zero and the post-condition of
+    /// #is_running is false.
+    /// 
+    /// \see restart
     void reset() {
         elapsed_time = duration::zero();
         running = false;
     }
 
+    ///
+    /// \brief Restarts the stopwatch
+    /// 
+    /// Restarts the stopwatch, meaning that it sets the elapsed
+    /// time to zero, and starts the stopwatch again. This is equivalent to
+    /// doing the following:
+    /// 
+    /// \code
+    /// my_stopwatch.reset();
+    /// my_stopwatch.start();
+    /// \endcode
+    /// 
+    /// \see reset
     void restart() {
         elapsed_time = duration::zero();
         now = Clock::now();
         running = true;
     }
 
+    ///
+    /// \brief Returns the elapsed time.
+    /// 
+    /// The elapsed time is considered the time since the stopwatch was
+    /// started via the #start member function. Consecutive calls to elapsed 
+    /// would not stop the watch and would simply return the elapsed time since the 
+    /// starting point.
+    /// 
+    /// \tparam Duration The duration to cast the elapsed time to. Defaults to `std::chrono::milliseconds`.
+    /// 
+    /// \return Elapsed time since the stopwatch started.
+    /// 
     template<typename Duration = std::chrono::milliseconds>
     rep elapsed() {
         if(running)
@@ -70,6 +109,9 @@ public:
         return std::chrono::duration_cast<Duration>(elapsed_time).count();
     }
 
+    ///
+    /// \brief Checks if the stopwatch is running
+    /// 
     bool is_running() const {
         return running;
     }
@@ -78,5 +120,46 @@ public:
 using stopwatch = basic_stopwatch<std::chrono::high_resolution_clock>;
 } // chrono
 } // gears
+
+///
+/// \struct gears::chrono::basic_stopwatch
+/// \ingroup chrono
+/// \brief A basic stopwatch for measuring time.
+/// 
+/// \tparam Clock The internal clock to use to calculate time
+/// 
+/// basic_stopwatch is a class that defines the most basic stopwatch representation.
+/// It's underlying clock can be configured through its template parameter to give you the
+/// most flexibility desired. 
+/// 
+/// For convenience, a typedef named `stopwatch` is provided that defaults to 
+/// `std::chrono::high_resolution_clock`. 
+/// 
+/// Example usage:
+/// 
+/// \code
+/// #include <gears/chrono.hpp>
+/// #include <thread>
+/// #include <iostream>
+/// 
+/// namespace ch = gears::chrono;
+/// 
+/// void f() {
+///     using namespace ch::literals;
+///     std::this_thread::sleep_for(1.16_s);
+/// }
+/// 
+/// int main() {
+///     ch::stopwatch w;
+///     w.start();
+///     f();
+///     w.stop();
+///     std::cout << w.elapsed() << ' ' << w.elapsed<std::chrono::seconds>();
+/// }
+/// \endcode
+/// 
+/// Possible Output:
+/// <pre>1159 1</pre>
+/// 
 
 #endif // GEARS_CHRONO_STOPWATCH_HPP
