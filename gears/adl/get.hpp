@@ -38,9 +38,16 @@ constexpr auto adl_get(T&& t) -> decltype(get<N>(std::declval<T>())) {
 } // detail
 
 ///
+/// \ingroup adl
 /// \brief ADL enabled get function for tuple-like interfaces
 /// 
-/// Allows for argument dependent lookup of `std::get`-like interfaces
+/// Allows for argument dependent lookup of `std::get`-like interfaces.
+/// Equivalent to doing the following:
+/// 
+/// \code
+/// using std::get;
+/// get<N>(t);
+/// \endcode
 /// 
 /// \tparam N Index to get
 /// \param t Tuple-like class to receive index from
@@ -52,50 +59,5 @@ constexpr auto get(T&& t) -> decltype(detail::adl_get<N>(std::declval<T>())) {
 }
 } // adl
 } // gears
-
-/// \file get.hpp
-/// \ingroup adl
-/// 
-/// \brief ADL-enabled get
-/// 
-/// This function is very simple, allowing for an ADL-enabled `get` call.
-/// This is useful because it allows you to write generic code that relies on `std::get`
-/// without actually having to specify `using std::get` in every line.
-/// 
-/// Example usage:
-/// \code
-/// #include <gears/adl/get.hpp>
-/// #include <tuple>
-/// #include <iostream>
-/// 
-/// namespace adl = gears::adl;
-/// 
-/// namespace my {
-/// struct get_example {
-///     int x;
-///     int y;
-/// };
-/// 
-/// template<size_t N>
-/// constexpr int get(const get_example& g) {
-///     return N == 0 ? g.x : g.y;
-/// }
-/// } // my
-/// 
-/// int main() {
-///     auto tup = std::make_tuple("hello", 3.14);
-///     my::get_example f = {10, 11};
-///     
-///     std::cout << adl::get<0>(tup) << ' ' << adl::get<0>(f);
-/// 
-/// }
-/// 
-/// \endcode
-/// 
-/// Output:
-/// <pre>
-/// hello 10
-/// </pre>
-/// 
 
 #endif // GEARS_ADL_GET_HPP

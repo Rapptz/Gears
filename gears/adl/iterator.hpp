@@ -42,11 +42,41 @@ constexpr auto adl_end(T&& t) -> decltype(end(std::declval<T>())) {
 }
 } // detail
 
+/// 
+/// \ingroup adl
+/// \brief ADL-enabled begin for iterators
+/// 
+/// Allows for retrieval of the `begin` iterator with ADL. 
+/// Equivalent to doing the following:
+/// 
+/// \code
+/// using std::begin;
+/// begin(t);
+/// \endcode
+/// 
+/// \param t Container or array to retrieve iterator from.
+/// \return automatically deduced return value of `begin(t)`.
+/// 
 template<typename T>
 constexpr auto begin(T&& t) -> decltype(detail::adl_begin(std::declval<T>())) {
     return detail::adl_begin(std::forward<T>(t));
 }
 
+/// 
+/// \ingroup adl
+/// \brief ADL-enabled end for iterators
+/// 
+/// Allows for retrieval of the `end` iterator with ADL. 
+/// Equivalent to doing the following:
+/// 
+/// \code
+/// using std::end;
+/// end(t);
+/// \endcode
+/// 
+/// \param t Container or array to retrieve iterator from.
+/// \return automatically deduced return value of `end(t)`.
+/// 
 template<typename T>
 constexpr auto end(T&& t) -> decltype(detail::adl_end(std::declval<T>())) {
     return detail::adl_end(std::forward<T>(t));

@@ -33,6 +33,21 @@ constexpr R adl_swap(T&& t, U&& u) noexcept(swap(std::declval<T>(), std::declval
 }
 } // detail
 
+/// 
+/// \ingroup adl
+/// \brief ADL-enabled swap.
+/// 
+/// Allows for ADL-enabled `swap`. Equivalent to doing the following:
+/// 
+/// \code
+/// using std::swap;
+/// swap(x, y);
+/// \endcode
+/// 
+/// \param t First element to swap.
+/// \param u Second element to swap.
+/// \return automatically deduced return value of `swap(t, u)`.
+/// 
 template<typename T, typename U, typename R = decltype(detail::adl_swap(std::declval<T>(), std::declval<U>()))> 
 constexpr R swap(T&& t, U&& u) noexcept(detail::adl_swap(std::declval<T>(), std::declval<U>())) {
     return detail::adl_swap(std::declval<T>(), std::declval<U>());
