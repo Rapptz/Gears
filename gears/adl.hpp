@@ -26,4 +26,12 @@
 #include "adl/iterator.hpp"
 #include "adl/swap.hpp"
 
+/// 
+/// \defgroup adl ADL module
+/// 
+/// Provides an interface for common ADL (Argument Dependent Lookup)
+/// functions.
+/// 
+/// 
+
 #endif // GEARS_ADL_HPP

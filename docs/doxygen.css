@@ -685,8 +685,12 @@ dl.reflist dd {
 .params .paramname, .retval .paramname {
     font-family: Consolas, Monaco, monospace;
     font-weight: bold;
-    padding-right: 20px;
+    /*padding-right: 20px;*/
     vertical-align: top;
+}
+
+table.tparams td.paramname, table.params td.paramname {
+  padding-right: 20px;
 }
 
 .params .paramtype {
