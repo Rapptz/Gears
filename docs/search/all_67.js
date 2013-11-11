@@ -1,26 +1,7 @@
 var searchData=
 [
-  ['adl',['adl',['../namespacegears_1_1adl.html',1,'gears']]],
-  ['chrono',['chrono',['../namespacegears_1_1chrono.html',1,'gears']]],
-  ['command_5fline',['command_line',['../namespacegears_1_1command__line.html',1,'gears']]],
-  ['concepts',['concepts',['../namespacegears_1_1concepts.html',1,'gears']]],
-  ['functional',['functional',['../namespacegears_1_1functional.html',1,'gears']]],
-  ['gcd',['gcd',['../namespacegears_1_1math.html#ad71aa8b025dc65b171dac7c10fdae68e',1,'gears::math']]],
-  ['gears',['gears',['../namespacegears.html',1,'']]],
   ['generator',['Generator',['../structgears_1_1concepts_1_1_generator.html',1,'gears::concepts']]],
-  ['get',['get',['../classgears_1_1command__line_1_1parser.html#ae19c50a725cfb7ce7e7bba82415e1fc8',1,'gears::command_line::parser::get()'],['../group__adl.html#ga6f49a37a364444c9fd177626a33f563a',1,'gears::adl::get()'],['../namespacegears_1_1utility.html#ae9a10d9940da11b1f3c44ee28aee49bf',1,'gears::utility::get(triple&lt; T, U, V &gt; &amp;t) noexcept'],['../namespacegears_1_1utility.html#a7a39432ec2992044e4219327fb862d58',1,'gears::utility::get(const triple&lt; T, U, V &gt; &amp;t) noexcept'],['../namespacegears_1_1utility.html#a49d3691721c751bac6acc276977096b3',1,'gears::utility::get(triple&lt; T, U, V &gt; &amp;&amp;t) noexcept']]],
-  ['get_5flist',['get_list',['../classgears_1_1command__line_1_1parser.html#a98f052fc94e8795f156e4964ae32bff1',1,'gears::command_line::parser']]],
-  ['greater',['greater',['../namespacegears_1_1functional.html#ad76bffd0137b8f60ec3bca7da0943b0f',1,'gears::functional']]],
-  ['greater_5fequal',['greater_equal',['../namespacegears_1_1functional.html#ae532b5887a5493a18055d37b2ae8ad07',1,'gears::functional']]],
+  ['get',['get',['../group__adl.html#ga6f49a37a364444c9fd177626a33f563a',1,'gears::adl']]],
   ['greater_5fequal_5ftype',['greater_equal_type',['../structgears_1_1functional_1_1greater__equal__type.html',1,'gears::functional']]],
-  ['greater_5ftype',['greater_type',['../structgears_1_1functional_1_1greater__type.html',1,'gears::functional']]],
-  ['io',['io',['../namespacegears_1_1io.html',1,'gears']]],
-  ['literals',['literals',['../namespacegears_1_1string_1_1literals.html',1,'gears::string']]],
-  ['literals',['literals',['../namespacegears_1_1math_1_1literals.html',1,'gears::math']]],
-  ['literals',['literals',['../namespacegears_1_1chrono_1_1literals.html',1,'gears::chrono']]],
-  ['math',['math',['../namespacegears_1_1math.html',1,'gears']]],
-  ['meta',['meta',['../namespacegears_1_1meta.html',1,'gears']]],
-  ['operators',['operators',['../namespacegears_1_1io_1_1operators.html',1,'gears::io']]],
-  ['string',['string',['../namespacegears_1_1string.html',1,'gears']]],
-  ['utility',['utility',['../namespacegears_1_1utility.html',1,'gears']]]
+  ['greater_5ftype',['greater_type',['../structgears_1_1functional_1_1greater__type.html',1,'gears::functional']]]
 ];

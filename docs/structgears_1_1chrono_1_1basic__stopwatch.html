@@ -89,7 +89,7 @@ $(document).ready(function(){initNavTree('structgears_1_1chrono_1_1basic__stopwa
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Groups</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Groups</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -104,142 +104,93 @@ $(document).ready(function(){initNavTree('structgears_1_1chrono_1_1basic__stopwa
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="structgears_1_1chrono_1_1basic__stopwatch-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">gears::chrono::basic_stopwatch&lt; Clock &gt; Struct Template Reference</div>  </div>
+<div class="title">gears::chrono::basic_stopwatch&lt; Clock &gt; Struct Template Reference<div class="ingroups"><a class="el" href="group__chrono.html">Chrono module</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>A basic stopwatch for measuring time.  
+ <a href="structgears_1_1chrono_1_1basic__stopwatch.html#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:aa6408d6942d10992dec50188f91a0ceb"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgears_1_1chrono_1_1basic__stopwatch.html#aa6408d6942d10992dec50188f91a0ceb">time_point</a> = typename Clock::time_point</td></tr>
+<tr class="memitem:aa6408d6942d10992dec50188f91a0ceb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa6408d6942d10992dec50188f91a0ceb"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>time_point</b> = typename Clock::time_point</td></tr>
 <tr class="separator:aa6408d6942d10992dec50188f91a0ceb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a88432355fe8c52c40959bf7a14e41797"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgears_1_1chrono_1_1basic__stopwatch.html#a88432355fe8c52c40959bf7a14e41797">duration</a> = typename Clock::duration</td></tr>
+<tr class="memitem:a88432355fe8c52c40959bf7a14e41797"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a88432355fe8c52c40959bf7a14e41797"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>duration</b> = typename Clock::duration</td></tr>
 <tr class="separator:a88432355fe8c52c40959bf7a14e41797"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a544529db0feebaa3f2be88376b9c0550"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgears_1_1chrono_1_1basic__stopwatch.html#a544529db0feebaa3f2be88376b9c0550">rep</a> = typename Clock::rep</td></tr>
+<tr class="memitem:a544529db0feebaa3f2be88376b9c0550"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a544529db0feebaa3f2be88376b9c0550"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>rep</b> = typename Clock::rep</td></tr>
 <tr class="separator:a544529db0feebaa3f2be88376b9c0550"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a789858adfacfd43af6a2b9363fdbff1a"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgears_1_1chrono_1_1basic__stopwatch.html#a789858adfacfd43af6a2b9363fdbff1a">period</a> = typename Clock::period</td></tr>
+<tr class="memitem:a789858adfacfd43af6a2b9363fdbff1a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a789858adfacfd43af6a2b9363fdbff1a"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>period</b> = typename Clock::period</td></tr>
 <tr class="separator:a789858adfacfd43af6a2b9363fdbff1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a171cfc9f8e31459ef09e3ae5bc54d1ca"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgears_1_1chrono_1_1basic__stopwatch.html#a171cfc9f8e31459ef09e3ae5bc54d1ca">basic_stopwatch</a> ()=default</td></tr>
-<tr class="separator:a171cfc9f8e31459ef09e3ae5bc54d1ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a552f74e2f6d12f9f87c35987d8985902"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgears_1_1chrono_1_1basic__stopwatch.html#a552f74e2f6d12f9f87c35987d8985902">start</a> ()</td></tr>
+<tr class="memitem:a552f74e2f6d12f9f87c35987d8985902"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a552f74e2f6d12f9f87c35987d8985902"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgears_1_1chrono_1_1basic__stopwatch.html#a552f74e2f6d12f9f87c35987d8985902">start</a> ()</td></tr>
+<tr class="memdesc:a552f74e2f6d12f9f87c35987d8985902"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts the stopwatch. <br/></td></tr>
 <tr class="separator:a552f74e2f6d12f9f87c35987d8985902"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab6d9c72d67329952a48c79c7246f023f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgears_1_1chrono_1_1basic__stopwatch.html#ab6d9c72d67329952a48c79c7246f023f">stop</a> ()</td></tr>
+<tr class="memitem:ab6d9c72d67329952a48c79c7246f023f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab6d9c72d67329952a48c79c7246f023f"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgears_1_1chrono_1_1basic__stopwatch.html#ab6d9c72d67329952a48c79c7246f023f">stop</a> ()</td></tr>
+<tr class="memdesc:ab6d9c72d67329952a48c79c7246f023f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stops the stopwatch. <br/></td></tr>
 <tr class="separator:ab6d9c72d67329952a48c79c7246f023f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a921d145a41fc7135c46d12773ed6714b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgears_1_1chrono_1_1basic__stopwatch.html#a921d145a41fc7135c46d12773ed6714b">reset</a> ()</td></tr>
+<tr class="memdesc:a921d145a41fc7135c46d12773ed6714b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resets the stopwatch.  <a href="#a921d145a41fc7135c46d12773ed6714b">More...</a><br/></td></tr>
 <tr class="separator:a921d145a41fc7135c46d12773ed6714b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af469930f80033294029cad8053ac04c5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgears_1_1chrono_1_1basic__stopwatch.html#af469930f80033294029cad8053ac04c5">restart</a> ()</td></tr>
+<tr class="memdesc:af469930f80033294029cad8053ac04c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Restarts the stopwatch.  <a href="#af469930f80033294029cad8053ac04c5">More...</a><br/></td></tr>
 <tr class="separator:af469930f80033294029cad8053ac04c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8a221c5610f4825bd1ce4bef493ef731"><td class="memTemplParams" colspan="2">template&lt;typename Duration  = std::chrono::milliseconds&gt; </td></tr>
-<tr class="memitem:a8a221c5610f4825bd1ce4bef493ef731"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="structgears_1_1chrono_1_1basic__stopwatch.html#a544529db0feebaa3f2be88376b9c0550">rep</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structgears_1_1chrono_1_1basic__stopwatch.html#a8a221c5610f4825bd1ce4bef493ef731">elapsed</a> ()</td></tr>
+<tr class="memitem:a8a221c5610f4825bd1ce4bef493ef731"><td class="memTemplItemLeft" align="right" valign="top">rep&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structgears_1_1chrono_1_1basic__stopwatch.html#a8a221c5610f4825bd1ce4bef493ef731">elapsed</a> ()</td></tr>
+<tr class="memdesc:a8a221c5610f4825bd1ce4bef493ef731"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the elapsed time.  <a href="#a8a221c5610f4825bd1ce4bef493ef731">More...</a><br/></td></tr>
 <tr class="separator:a8a221c5610f4825bd1ce4bef493ef731"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad45463cad34dc0e822947bd842b48d16"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgears_1_1chrono_1_1basic__stopwatch.html#ad45463cad34dc0e822947bd842b48d16">is_running</a> () const </td></tr>
+<tr class="memitem:ad45463cad34dc0e822947bd842b48d16"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad45463cad34dc0e822947bd842b48d16"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgears_1_1chrono_1_1basic__stopwatch.html#ad45463cad34dc0e822947bd842b48d16">is_running</a> () const </td></tr>
+<tr class="memdesc:ad45463cad34dc0e822947bd842b48d16"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the stopwatch is running. <br/></td></tr>
 <tr class="separator:ad45463cad34dc0e822947bd842b48d16"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><h3>template&lt;class Clock&gt;<br/>
+<div class="textblock"><h3>template&lt;typename Clock&gt;<br/>
 struct gears::chrono::basic_stopwatch&lt; Clock &gt;</h3>
 
-
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Clock</td><td>The internal clock to use to calculate time</td></tr>
+  </table>
+  </dd>
+</dl>
+<p><a class="el" href="structgears_1_1chrono_1_1basic__stopwatch.html" title="A basic stopwatch for measuring time.">basic_stopwatch</a> is a class that defines the most basic stopwatch representation. It's underlying clock can be configured through its template parameter to give you the most flexibility desired.</p>
+<p>For convenience, a typedef named <code>stopwatch</code> is provided that defaults to <code>std::chrono::high_resolution_clock</code>.</p>
+<p>Example usage:</p>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;gears/chrono.hpp&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;thread&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"></div>
+<div class="line"><span class="keyword">namespace </span>ch = gears::chrono;</div>
+<div class="line"></div>
+<div class="line"><span class="keywordtype">void</span> f() {</div>
+<div class="line">    <span class="keyword">using namespace </span>ch::literals;</div>
+<div class="line">    std::this_thread::sleep_for(1.16_s);</div>
+<div class="line">}</div>
+<div class="line"></div>
+<div class="line"><span class="keywordtype">int</span> main() {</div>
+<div class="line">    ch::stopwatch w;</div>
+<div class="line">    w.start();</div>
+<div class="line">    f();</div>
+<div class="line">    w.stop();</div>
+<div class="line">    std::cout &lt;&lt; w.elapsed() &lt;&lt; <span class="charliteral">&#39; &#39;</span> &lt;&lt; w.elapsed&lt;std::chrono::seconds&gt;();</div>
+<div class="line">}</div>
+</div><!-- fragment --><p>Possible Output: </p>
+<pre>1159 1</pre> 
 <p>Definition at line <a class="el" href="stopwatch_8hpp_source.html#l00030">30</a> of file <a class="el" href="stopwatch_8hpp_source.html">stopwatch.hpp</a>.</p>
-</div><h2 class="groupheader">Member Typedef Documentation</h2>
-<a class="anchor" id="a88432355fe8c52c40959bf7a14e41797"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class Clock &gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">using <a class="el" href="structgears_1_1chrono_1_1basic__stopwatch.html">gears::chrono::basic_stopwatch</a>&lt; Clock &gt;::<a class="el" href="structgears_1_1chrono_1_1basic__stopwatch.html#a88432355fe8c52c40959bf7a14e41797">duration</a> =  typename Clock::duration</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="stopwatch_8hpp_source.html#l00033">33</a> of file <a class="el" href="stopwatch_8hpp_source.html">stopwatch.hpp</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a789858adfacfd43af6a2b9363fdbff1a"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class Clock &gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">using <a class="el" href="structgears_1_1chrono_1_1basic__stopwatch.html">gears::chrono::basic_stopwatch</a>&lt; Clock &gt;::<a class="el" href="structgears_1_1chrono_1_1basic__stopwatch.html#a789858adfacfd43af6a2b9363fdbff1a">period</a> =  typename Clock::period</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="stopwatch_8hpp_source.html#l00035">35</a> of file <a class="el" href="stopwatch_8hpp_source.html">stopwatch.hpp</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a544529db0feebaa3f2be88376b9c0550"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class Clock &gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">using <a class="el" href="structgears_1_1chrono_1_1basic__stopwatch.html">gears::chrono::basic_stopwatch</a>&lt; Clock &gt;::<a class="el" href="structgears_1_1chrono_1_1basic__stopwatch.html#a544529db0feebaa3f2be88376b9c0550">rep</a> =  typename Clock::rep</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="stopwatch_8hpp_source.html#l00034">34</a> of file <a class="el" href="stopwatch_8hpp_source.html">stopwatch.hpp</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="aa6408d6942d10992dec50188f91a0ceb"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class Clock &gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">using <a class="el" href="structgears_1_1chrono_1_1basic__stopwatch.html">gears::chrono::basic_stopwatch</a>&lt; Clock &gt;::<a class="el" href="structgears_1_1chrono_1_1basic__stopwatch.html#aa6408d6942d10992dec50188f91a0ceb">time_point</a> =  typename Clock::time_point</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="stopwatch_8hpp_source.html#l00032">32</a> of file <a class="el" href="stopwatch_8hpp_source.html">stopwatch.hpp</a>.</p>
-
-</div>
-</div>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="a171cfc9f8e31459ef09e3ae5bc54d1ca"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class Clock &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="structgears_1_1chrono_1_1basic__stopwatch.html">gears::chrono::basic_stopwatch</a>&lt; Clock &gt;::<a class="el" href="structgears_1_1chrono_1_1basic__stopwatch.html">basic_stopwatch</a> </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">default</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<h2 class="groupheader">Member Function Documentation</h2>
+</div><h2 class="groupheader">Member Function Documentation</h2>
 <a class="anchor" id="a8a221c5610f4825bd1ce4bef493ef731"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Clock &gt; </div>
+template&lt;typename Clock &gt; </div>
 <div class="memtemplate">
 template&lt;typename Duration  = std::chrono::milliseconds&gt; </div>
 <table class="mlabels">
@@ -247,7 +198,7 @@ template&lt;typename Duration  = std::chrono::milliseconds&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structgears_1_1chrono_1_1basic__stopwatch.html#a544529db0feebaa3f2be88376b9c0550">rep</a> <a class="el" href="structgears_1_1chrono_1_1basic__stopwatch.html">gears::chrono::basic_stopwatch</a>&lt; Clock &gt;::elapsed </td>
+          <td class="memname">rep <a class="el" href="structgears_1_1chrono_1_1basic__stopwatch.html">gears::chrono::basic_stopwatch</a>&lt; Clock &gt;::elapsed </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -259,35 +210,16 @@ template&lt;typename Duration  = std::chrono::milliseconds&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>The elapsed time is considered the time since the stopwatch was started via the <a class="el" href="structgears_1_1chrono_1_1basic__stopwatch.html#a552f74e2f6d12f9f87c35987d8985902" title="Starts the stopwatch.">start</a> member function. Consecutive calls to elapsed would not stop the watch and would simply return the elapsed time since the starting point.</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Duration</td><td>The duration to cast the elapsed time to. Defaults to <code>std::chrono::milliseconds</code>.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Elapsed time since the stopwatch started. </dd></dl>
 
-<p>Definition at line <a class="el" href="stopwatch_8hpp_source.html#l00067">67</a> of file <a class="el" href="stopwatch_8hpp_source.html">stopwatch.hpp</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="ad45463cad34dc0e822947bd842b48d16"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class Clock &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool <a class="el" href="structgears_1_1chrono_1_1basic__stopwatch.html">gears::chrono::basic_stopwatch</a>&lt; Clock &gt;::is_running </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="stopwatch_8hpp_source.html#l00073">73</a> of file <a class="el" href="stopwatch_8hpp_source.html">stopwatch.hpp</a>.</p>
+<p>Definition at line <a class="el" href="stopwatch_8hpp_source.html#l00106">106</a> of file <a class="el" href="stopwatch_8hpp_source.html">stopwatch.hpp</a>.</p>
 
 </div>
 </div>
@@ -295,7 +227,7 @@ template&lt;class Clock &gt; </div>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Clock &gt; </div>
+template&lt;typename Clock &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -313,8 +245,10 @@ template&lt;class Clock &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Resets the stopwatch and pauses it. Meaning that it sets the elapsed time to zero and the post-condition of <a class="el" href="structgears_1_1chrono_1_1basic__stopwatch.html#ad45463cad34dc0e822947bd842b48d16" title="Checks if the stopwatch is running.">is_running</a> is false.</p>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="structgears_1_1chrono_1_1basic__stopwatch.html#af469930f80033294029cad8053ac04c5" title="Restarts the stopwatch.">restart</a> </dd></dl>
 
-<p>Definition at line <a class="el" href="stopwatch_8hpp_source.html#l00055">55</a> of file <a class="el" href="stopwatch_8hpp_source.html">stopwatch.hpp</a>.</p>
+<p>Definition at line <a class="el" href="stopwatch_8hpp_source.html#l00069">69</a> of file <a class="el" href="stopwatch_8hpp_source.html">stopwatch.hpp</a>.</p>
 
 </div>
 </div>
@@ -322,7 +256,7 @@ template&lt;class Clock &gt; </div>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Clock &gt; </div>
+template&lt;typename Clock &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -340,62 +274,12 @@ template&lt;class Clock &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Restarts the stopwatch, meaning that it sets the elapsed time to zero, and starts the stopwatch again. This is equivalent to doing the following:</p>
+<div class="fragment"><div class="line">my_stopwatch.reset();</div>
+<div class="line">my_stopwatch.start();</div>
+</div><!-- fragment --><dl class="section see"><dt>See Also</dt><dd><a class="el" href="structgears_1_1chrono_1_1basic__stopwatch.html#a921d145a41fc7135c46d12773ed6714b" title="Resets the stopwatch.">reset</a> </dd></dl>
 
-<p>Definition at line <a class="el" href="stopwatch_8hpp_source.html#l00060">60</a> of file <a class="el" href="stopwatch_8hpp_source.html">stopwatch.hpp</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a552f74e2f6d12f9f87c35987d8985902"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class Clock &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void <a class="el" href="structgears_1_1chrono_1_1basic__stopwatch.html">gears::chrono::basic_stopwatch</a>&lt; Clock &gt;::start </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="stopwatch_8hpp_source.html#l00043">43</a> of file <a class="el" href="stopwatch_8hpp_source.html">stopwatch.hpp</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="ab6d9c72d67329952a48c79c7246f023f"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class Clock &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void <a class="el" href="structgears_1_1chrono_1_1basic__stopwatch.html">gears::chrono::basic_stopwatch</a>&lt; Clock &gt;::stop </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="stopwatch_8hpp_source.html#l00048">48</a> of file <a class="el" href="stopwatch_8hpp_source.html">stopwatch.hpp</a>.</p>
+<p>Definition at line <a class="el" href="stopwatch_8hpp_source.html#l00087">87</a> of file <a class="el" href="stopwatch_8hpp_source.html">stopwatch.hpp</a>.</p>
 
 </div>
 </div>

@@ -1,28 +1,16 @@
 var searchData=
 [
   ['callable',['Callable',['../structgears_1_1concepts_1_1_callable.html',1,'gears::concepts']]],
-  ['cforward',['cforward',['../namespacegears_1_1meta.html#acd97147b640ce48c7dd7ae931e8fd05d',1,'gears::meta::cforward(typename std::remove_reference&lt; T &gt;::type &amp;t) noexcept'],['../namespacegears_1_1meta.html#a2d45ad88b3b8e36130bb3e9819d7cb23',1,'gears::meta::cforward(typename std::remove_reference&lt; T &gt;::type &amp;&amp;t) noexcept']]],
-  ['check_5frequired_5fargs',['check_required_args',['../classgears_1_1command__line_1_1parser.html#afd3caacb9d0a5b06bd479af55c91157a',1,'gears::command_line::parser']]],
+  ['chrono_20module',['Chrono module',['../group__chrono.html',1,'']]],
   ['class_5fof',['class_of',['../structgears_1_1meta_1_1class__of.html',1,'gears::meta']]],
   ['class_5fof_3c_20signature_20class_3a_3a_2a_20_3e',['class_of&lt; Signature Class::* &gt;',['../structgears_1_1meta_1_1class__of_3_01_signature_01_class_1_1_5_01_4.html',1,'gears::meta']]],
-  ['classof',['ClassOf',['../namespacegears_1_1meta.html#a8600f6ca7168635374717ac15ed84b6b',1,'gears::meta']]],
-  ['clear',['clear',['../structgears_1_1string_1_1stringbuilder.html#a343cec07fa3d1abd07027fe6d37f4ab0',1,'gears::string::stringbuilder']]],
-  ['cmove',['cmove',['../namespacegears_1_1meta.html#a736fb9655071daeabbc91bb34046f130',1,'gears::meta']]],
-  ['commontype',['CommonType',['../namespacegears_1_1meta.html#a585a97c044dc4b4c5ceb9ac4e8021f04',1,'gears::meta']]],
   ['comparable',['Comparable',['../structgears_1_1concepts_1_1_comparable.html',1,'gears::concepts']]],
-  ['compose',['compose',['../namespacegears_1_1functional.html#ad7c3afc30e4a95710d42cbf4ee478abd',1,'gears::functional::compose(Function &amp;&amp;f)'],['../namespacegears_1_1functional.html#ada3fb865efe49c85347051419a758ec3',1,'gears::functional::compose(First &amp;&amp;f, Rest &amp;&amp;...args)']]],
   ['compound',['Compound',['../structgears_1_1concepts_1_1_compound.html',1,'gears::concepts']]],
-  ['concept_5fchecker_5ft',['concept_checker_t',['../namespacegears_1_1concepts.html#a8638dfc96e8bede55e22243bf66ceca7',1,'gears::concepts']]],
-  ['const',['Const',['../namespacegears_1_1meta.html#a1381e28221e23b8aa5a15b27f4abe6d5',1,'gears::meta']]],
-  ['constlref',['ConstLRef',['../namespacegears_1_1concepts.html#a13d78d14409ecc55c6922306b3d405dc',1,'gears::concepts']]],
   ['constructible',['Constructible',['../structgears_1_1concepts_1_1_constructible.html',1,'gears::concepts']]],
   ['container',['Container',['../structgears_1_1concepts_1_1_container.html',1,'gears::concepts']]],
-  ['contains',['contains',['../namespacegears_1_1string.html#a81be9919dbf6af19f9ecb7a7013620d5',1,'gears::string']]],
   ['contextualbool',['ContextualBool',['../structgears_1_1concepts_1_1_contextual_bool.html',1,'gears::concepts']]],
   ['copyable',['Copyable',['../structgears_1_1concepts_1_1_copyable.html',1,'gears::concepts']]],
   ['copyassignable',['CopyAssignable',['../structgears_1_1concepts_1_1_copy_assignable.html',1,'gears::concepts']]],
   ['copyconstructible',['CopyConstructible',['../structgears_1_1concepts_1_1_copy_constructible.html',1,'gears::concepts']]],
-  ['curry',['curry',['../namespacegears_1_1functional.html#a39169e3b53ed3bed41475b7bf7dafc6f',1,'gears::functional']]],
-  ['curry_5ftype',['curry_type',['../structgears_1_1functional_1_1curry__type.html',1,'gears::functional']]],
-  ['curry_5ftype',['curry_type',['../structgears_1_1functional_1_1curry__type.html#a47ae5b549ca0c43d41745ef5633255a0',1,'gears::functional::curry_type']]]
+  ['curry_5ftype',['curry_type',['../structgears_1_1functional_1_1curry__type.html',1,'gears::functional']]]
 ];

@@ -81,7 +81,7 @@ $(document).ready(function(){initNavTree('storage_8hpp_source.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Groups</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Groups</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -131,7 +131,7 @@ $(document).ready(function(){initNavTree('storage_8hpp_source.html','');});
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    T value;</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keyword">template</span>&lt;<span class="keyword">typename</span>... Args&gt;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    constexpr maybe_storage(Args&amp;&amp;... args): value(meta::<a class="code" href="namespacegears_1_1meta.html#acd97147b640ce48c7dd7ae931e8fd05d">cforward</a>&lt;Args&gt;(args)...) {}</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    constexpr maybe_storage(Args&amp;&amp;... args): value(meta::cforward&lt;Args&gt;(args)...) {}</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    constexpr maybe_storage(default_init_t) noexcept: c() {}</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    ~maybe_storage() {}</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;};</div>
@@ -142,7 +142,7 @@ $(document).ready(function(){initNavTree('storage_8hpp_source.html','');});
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    T value;</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keyword">template</span>&lt;<span class="keyword">typename</span>... Args&gt;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    constexpr cmaybe_storage(Args&amp;&amp;... args): value(meta::<a class="code" href="namespacegears_1_1meta.html#acd97147b640ce48c7dd7ae931e8fd05d">cforward</a>&lt;Args&gt;(args)...) {}</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    constexpr cmaybe_storage(Args&amp;&amp;... args): value(meta::cforward&lt;Args&gt;(args)...) {}</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    constexpr cmaybe_storage(default_init_t) noexcept: c() {}</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    ~cmaybe_storage() = <span class="keywordflow">default</span>;</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;};</div>

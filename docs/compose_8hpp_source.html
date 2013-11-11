@@ -81,7 +81,7 @@ $(document).ready(function(){initNavTree('compose_8hpp_source.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Groups</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Groups</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -155,13 +155,13 @@ $(document).ready(function(){initNavTree('compose_8hpp_source.html','');});
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;} <span class="comment">// detail</span></div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> Function&gt;</div>
-<div class="line"><a name="l00061"></a><span class="lineno"><a class="code" href="namespacegears_1_1functional.html#ad7c3afc30e4a95710d42cbf4ee478abd">   61</a></span>&#160;constexpr detail::Decayed&lt;Function&gt; <a class="code" href="namespacegears_1_1functional.html#ad7c3afc30e4a95710d42cbf4ee478abd">compose</a>(Function&amp;&amp; f) {</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;constexpr detail::Decayed&lt;Function&gt; compose(Function&amp;&amp; f) {</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordflow">return</span> std::forward&lt;Function&gt;(f);</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;}</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> First, <span class="keyword">typename</span>... Rest&gt;</div>
-<div class="line"><a name="l00066"></a><span class="lineno"><a class="code" href="namespacegears_1_1functional.html#ada3fb865efe49c85347051419a758ec3">   66</a></span>&#160;constexpr detail::Composer&lt;First, Rest...&gt; <a class="code" href="namespacegears_1_1functional.html#ad7c3afc30e4a95710d42cbf4ee478abd">compose</a>(First&amp;&amp; f, Rest&amp;&amp;... args) {</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keywordflow">return</span> detail::Composer&lt;First, Rest...&gt;(std::forward&lt;First&gt;(f), <a class="code" href="namespacegears_1_1functional.html#ad7c3afc30e4a95710d42cbf4ee478abd">compose</a>(std::forward&lt;Rest&gt;(args)...));</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;constexpr detail::Composer&lt;First, Rest...&gt; compose(First&amp;&amp; f, Rest&amp;&amp;... args) {</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keywordflow">return</span> detail::Composer&lt;First, Rest...&gt;(std::forward&lt;First&gt;(f), compose(std::forward&lt;Rest&gt;(args)...));</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;}</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;} <span class="comment">// functional</span></div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;} <span class="comment">// gears</span></div>

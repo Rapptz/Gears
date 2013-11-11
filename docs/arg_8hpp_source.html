@@ -81,7 +81,7 @@ $(document).ready(function(){initNavTree('arg_8hpp_source.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Groups</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Groups</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -126,10 +126,10 @@ $(document).ready(function(){initNavTree('arg_8hpp_source.html','');});
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#endif // GEARS_NO_IOSTREAM</span></div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor"></span></div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">namespace </span>gears {</div>
-<div class="line"><a name="l00032"></a><span class="lineno"><a class="code" href="namespacegears_1_1command__line.html">   32</a></span>&#160;<span class="keyword">namespace </span>command_line {</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keyword">namespace </span>command_line {</div>
 <div class="line"><a name="l00033"></a><span class="lineno"><a class="code" href="structgears_1_1command__line_1_1arg.html">   33</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structgears_1_1command__line_1_1arg.html">arg</a> {</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00035"></a><span class="lineno"><a class="code" href="structgears_1_1command__line_1_1arg.html#a8de78aa991dff0fc519d5c721ea49733">   35</a></span>&#160;    <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="classgears_1_1command__line_1_1parser.html">parser</a>;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="classgears_1_1command__line_1_1parser.html">parser</a>;</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    std::string name;</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    std::string description;</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    std::string parameter;</div>
@@ -138,36 +138,36 @@ $(document).ready(function(){initNavTree('arg_8hpp_source.html','');});
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordtype">bool</span> req;</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordtype">char</span> short_name;</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00044"></a><span class="lineno"><a class="code" href="structgears_1_1command__line_1_1arg.html#a94258c4bbf77e736e09c8c95fab09ca0">   44</a></span>&#160;    <a class="code" href="structgears_1_1command__line_1_1arg.html#a94258c4bbf77e736e09c8c95fab09ca0">arg</a>(std::string name, std::string desc = <span class="stringliteral">&quot;&quot;</span>, <span class="keywordtype">char</span> <a class="code" href="structgears_1_1command__line_1_1arg.html#a09b3cd5c0d8ae47c7c29e6e3de38caad">shorter</a> = <span class="charliteral">&#39;\0&#39;</span>, </div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <span class="keywordtype">bool</span> req = <span class="keyword">false</span>, std::string <a class="code" href="structgears_1_1command__line_1_1arg.html#a54d8f573fb2255d67750ba8dfc625ef4">param</a> = <span class="stringliteral">&quot;&quot;</span>, std::string val = <span class="stringliteral">&quot;&quot;</span>) noexcept: </div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    name(std::move(name)), description(std::move(desc)), parameter(std::move(<a class="code" href="structgears_1_1command__line_1_1arg.html#a54d8f573fb2255d67750ba8dfc625ef4">param</a>)), </div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    value(std::move(val)), req(req), short_name(<a class="code" href="structgears_1_1command__line_1_1arg.html#a09b3cd5c0d8ae47c7c29e6e3de38caad">shorter</a>) {}</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <a class="code" href="structgears_1_1command__line_1_1arg.html">arg</a>(std::string name, std::string desc = <span class="stringliteral">&quot;&quot;</span>, <span class="keywordtype">char</span> shorter = <span class="charliteral">&#39;\0&#39;</span>, </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <span class="keywordtype">bool</span> req = <span class="keyword">false</span>, std::string param = <span class="stringliteral">&quot;&quot;</span>, std::string val = <span class="stringliteral">&quot;&quot;</span>) noexcept: </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    name(std::move(name)), description(std::move(desc)), parameter(std::move(param)), </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    value(std::move(val)), req(req), short_name(shorter) {}</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
-<div class="line"><a name="l00049"></a><span class="lineno"><a class="code" href="structgears_1_1command__line_1_1arg.html#a235ed6f444d165986a73c43101ee90ad">   49</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="structgears_1_1command__line_1_1arg.html#a235ed6f444d165986a73c43101ee90ad">is_value</a>() const noexcept {</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordtype">bool</span> is_value() <span class="keyword">const</span> noexcept {</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="keywordflow">return</span> !parameter.empty();</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    }</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
-<div class="line"><a name="l00053"></a><span class="lineno"><a class="code" href="structgears_1_1command__line_1_1arg.html#a09b3cd5c0d8ae47c7c29e6e3de38caad">   53</a></span>&#160;    <a class="code" href="structgears_1_1command__line_1_1arg.html">arg</a>&amp; <a class="code" href="structgears_1_1command__line_1_1arg.html#a09b3cd5c0d8ae47c7c29e6e3de38caad">shorter</a>(<span class="keywordtype">char</span> c) noexcept {</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <a class="code" href="structgears_1_1command__line_1_1arg.html">arg</a>&amp; shorter(<span class="keywordtype">char</span> c) noexcept {</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        short_name = c;</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    }</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
-<div class="line"><a name="l00058"></a><span class="lineno"><a class="code" href="structgears_1_1command__line_1_1arg.html#ac5042bfb2029218eca666ed209e2035e">   58</a></span>&#160;    <a class="code" href="structgears_1_1command__line_1_1arg.html">arg</a>&amp; <a class="code" href="structgears_1_1command__line_1_1arg.html#ac5042bfb2029218eca666ed209e2035e">help</a>(std::string str) noexcept {</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <a class="code" href="structgears_1_1command__line_1_1arg.html">arg</a>&amp; help(std::string str) noexcept {</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        description = std::move(str);</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    }</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
-<div class="line"><a name="l00063"></a><span class="lineno"><a class="code" href="structgears_1_1command__line_1_1arg.html#a54d8f573fb2255d67750ba8dfc625ef4">   63</a></span>&#160;    <a class="code" href="structgears_1_1command__line_1_1arg.html">arg</a>&amp; <a class="code" href="structgears_1_1command__line_1_1arg.html#a54d8f573fb2255d67750ba8dfc625ef4">param</a>(std::string str) noexcept {</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <a class="code" href="structgears_1_1command__line_1_1arg.html">arg</a>&amp; param(std::string str) noexcept {</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        parameter = std::move(str);</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    }</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
-<div class="line"><a name="l00068"></a><span class="lineno"><a class="code" href="structgears_1_1command__line_1_1arg.html#a2c7ebf231ff2c4424d1f9615432a8526">   68</a></span>&#160;    <a class="code" href="structgears_1_1command__line_1_1arg.html">arg</a>&amp; <a class="code" href="structgears_1_1command__line_1_1arg.html#a2c7ebf231ff2c4424d1f9615432a8526">default_value</a>(std::string str) noexcept {</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <a class="code" href="structgears_1_1command__line_1_1arg.html">arg</a>&amp; default_value(std::string str) noexcept {</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        value = std::move(str);</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    }</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
-<div class="line"><a name="l00073"></a><span class="lineno"><a class="code" href="structgears_1_1command__line_1_1arg.html#ac4167754369435050705a71b6bc0c27f">   73</a></span>&#160;    <a class="code" href="structgears_1_1command__line_1_1arg.html">arg</a>&amp; <a class="code" href="structgears_1_1command__line_1_1arg.html#ac4167754369435050705a71b6bc0c27f">required</a>(<span class="keywordtype">bool</span> b = <span class="keyword">true</span>) noexcept {</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <a class="code" href="structgears_1_1command__line_1_1arg.html">arg</a>&amp; required(<span class="keywordtype">bool</span> b = <span class="keyword">true</span>) noexcept {</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        req = b;</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    }</div>
@@ -175,7 +175,7 @@ $(document).ready(function(){initNavTree('arg_8hpp_source.html','');});
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="preprocessor">    #ifndef GEARS_NO_IOSTREAM</span></div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="preprocessor"></span></div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> Elem, <span class="keyword">typename</span> Traits&gt;</div>
-<div class="line"><a name="l00081"></a><span class="lineno"><a class="code" href="structgears_1_1command__line_1_1arg.html#a8f383732ae67fe30ceba5c062bb37e4f">   81</a></span>&#160;    <span class="keyword">friend</span> <span class="keyword">auto</span> operator&lt;&lt;(std::basic_ostream&lt;Elem, Traits&gt;&amp; out, <span class="keyword">const</span> <a class="code" href="structgears_1_1command__line_1_1arg.html">arg</a>&amp; a) -&gt; decltype(out) {</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keyword">friend</span> <span class="keyword">auto</span> operator&lt;&lt;(std::basic_ostream&lt;Elem, Traits&gt;&amp; out, <span class="keyword">const</span> <a class="code" href="structgears_1_1command__line_1_1arg.html">arg</a>&amp; a) -&gt; decltype(out) {</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        <span class="keywordtype">int</span> spaces = 30;</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        out &lt;&lt; <span class="stringliteral">&quot;    &quot;</span>;</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        <span class="keywordflow">if</span>(!a.name.empty()) {</div>

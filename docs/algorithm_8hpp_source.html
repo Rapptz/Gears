@@ -81,7 +81,7 @@ $(document).ready(function(){initNavTree('algorithm_8hpp_source.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Groups</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Groups</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -120,9 +120,9 @@ $(document).ready(function(){initNavTree('algorithm_8hpp_source.html','');});
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define GEARS_MATH_ALGORITHM_HPP</span></div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor"></span></div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">namespace </span>gears {</div>
-<div class="line"><a name="l00026"></a><span class="lineno"><a class="code" href="namespacegears_1_1math.html">   26</a></span>&#160;<span class="keyword">namespace </span>math {</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">namespace </span>math {</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T = <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span>&gt;</div>
-<div class="line"><a name="l00028"></a><span class="lineno"><a class="code" href="namespacegears_1_1math.html#aae183425c07ebd9916f81e7ab4009b55">   28</a></span>&#160;<span class="keyword">inline</span> T <a class="code" href="namespacegears_1_1math.html#aae183425c07ebd9916f81e7ab4009b55">fibonacci</a>(T number) {</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">inline</span> T fibonacci(T number) {</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keywordflow">if</span>(number &lt; 2)</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <span class="keywordflow">return</span> number;</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    T a(1);</div>
@@ -139,17 +139,17 @@ $(document).ready(function(){initNavTree('algorithm_8hpp_source.html','');});
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;}</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T = <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span>&gt;</div>
-<div class="line"><a name="l00045"></a><span class="lineno"><a class="code" href="namespacegears_1_1math.html#ad81ec97e5d09b8ada64c3a3a2c4b453c">   45</a></span>&#160;constexpr T <a class="code" href="namespacegears_1_1math.html#ad81ec97e5d09b8ada64c3a3a2c4b453c">factorial</a>(<span class="keyword">const</span> T&amp; number) {</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordflow">return</span> number == 0 ? 1 : number * <a class="code" href="namespacegears_1_1math.html#ad81ec97e5d09b8ada64c3a3a2c4b453c">factorial</a>(number - 1);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;constexpr T factorial(<span class="keyword">const</span> T&amp; number) {</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordflow">return</span> number == 0 ? 1 : number * factorial(number - 1);</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;}</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T = <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span>&gt;</div>
-<div class="line"><a name="l00050"></a><span class="lineno"><a class="code" href="namespacegears_1_1math.html#ad71aa8b025dc65b171dac7c10fdae68e">   50</a></span>&#160;constexpr T <a class="code" href="namespacegears_1_1math.html#ad71aa8b025dc65b171dac7c10fdae68e">gcd</a>(<span class="keyword">const</span> T&amp; x, <span class="keyword">const</span> T&amp; y) {</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordflow">return</span> y == 0 ? x : <a class="code" href="namespacegears_1_1math.html#ad71aa8b025dc65b171dac7c10fdae68e">gcd</a>(y, x % y);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;constexpr T gcd(<span class="keyword">const</span> T&amp; x, <span class="keyword">const</span> T&amp; y) {</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordflow">return</span> y == 0 ? x : gcd(y, x % y);</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;}</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T = <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span>&gt;</div>
-<div class="line"><a name="l00055"></a><span class="lineno"><a class="code" href="namespacegears_1_1math.html#a292dbc5139c31286c440c2c9e01dd524">   55</a></span>&#160;<span class="keyword">inline</span> T <a class="code" href="namespacegears_1_1math.html#a292dbc5139c31286c440c2c9e01dd524">mod_pow</a>(T base, T exponent, <span class="keyword">const</span> T&amp; modulus) {</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="keyword">inline</span> T mod_pow(T base, T exponent, <span class="keyword">const</span> T&amp; modulus) {</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    T result(1);</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordflow">while</span>(exponent) {</div>
@@ -164,7 +164,7 @@ $(document).ready(function(){initNavTree('algorithm_8hpp_source.html','');});
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;}</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T = <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span>&gt;</div>
-<div class="line"><a name="l00070"></a><span class="lineno"><a class="code" href="namespacegears_1_1math.html#ad8b0beb0e045fb275fbf777c8b30027b">   70</a></span>&#160;<span class="keyword">inline</span> T <a class="code" href="namespacegears_1_1math.html#ad8b0beb0e045fb275fbf777c8b30027b">sum_of_divisors</a>(<span class="keyword">const</span> T&amp; number) noexcept {</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="keyword">inline</span> T sum_of_divisors(<span class="keyword">const</span> T&amp; number) noexcept {</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    T result(1);</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keywordflow">for</span>(T i = 2; i * i &lt;= number; result += number % i ? 0 : (i * i == number ? i : i + number/i), ++i);</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keywordflow">return</span> result;</div>

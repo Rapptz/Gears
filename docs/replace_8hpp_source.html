@@ -81,7 +81,7 @@ $(document).ready(function(){initNavTree('replace_8hpp_source.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Groups</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Groups</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -137,7 +137,7 @@ $(document).ready(function(){initNavTree('replace_8hpp_source.html','');});
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;} <span class="comment">// string_replace_detail</span></div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> String&gt;</div>
-<div class="line"><a name="l00043"></a><span class="lineno"><a class="code" href="namespacegears_1_1string.html#a61e4ce050ffc3245413130ddba903a75">   43</a></span>&#160;<span class="keyword">inline</span> <a class="code" href="namespacegears_1_1meta.html#ab61090840d1e77d78ccd461caf025dbb">meta::Unqualified&lt;String&gt;</a> <a class="code" href="namespacegears_1_1string.html#a61e4ce050ffc3245413130ddba903a75">replace_first</a>(String str, <span class="keyword">const</span> String&amp; from, <span class="keyword">const</span> String&amp; to) {</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keyword">inline</span> meta::Unqualified&lt;String&gt; replace_first(String str, <span class="keyword">const</span> String&amp; from, <span class="keyword">const</span> String&amp; to) {</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keyword">auto</span> start_pos = str.find(from);</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordflow">if</span>(start_pos == String::npos) </div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <span class="keywordflow">return</span> str;</div>
@@ -146,7 +146,7 @@ $(document).ready(function(){initNavTree('replace_8hpp_source.html','');});
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;}</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> String&gt;</div>
-<div class="line"><a name="l00052"></a><span class="lineno"><a class="code" href="namespacegears_1_1string.html#a274bd0633d847e11bdb3e71f0fbfe59a">   52</a></span>&#160;<span class="keyword">inline</span> <a class="code" href="namespacegears_1_1meta.html#ab61090840d1e77d78ccd461caf025dbb">meta::Unqualified&lt;String&gt;</a> <a class="code" href="namespacegears_1_1string.html#a274bd0633d847e11bdb3e71f0fbfe59a">replace_last</a>(String str, <span class="keyword">const</span> String&amp; from, <span class="keyword">const</span> String&amp; to) {</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="keyword">inline</span> meta::Unqualified&lt;String&gt; replace_last(String str, <span class="keyword">const</span> String&amp; from, <span class="keyword">const</span> String&amp; to) {</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keyword">auto</span> start_pos = str.rfind(from);</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordflow">if</span>(start_pos == String::npos) </div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <span class="keywordflow">return</span> str;</div>
@@ -155,7 +155,7 @@ $(document).ready(function(){initNavTree('replace_8hpp_source.html','');});
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;}</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> String&gt;</div>
-<div class="line"><a name="l00061"></a><span class="lineno"><a class="code" href="namespacegears_1_1string.html#aeac2bd0a47111d3161c300e790bb6d5f">   61</a></span>&#160;<span class="keyword">inline</span> <a class="code" href="namespacegears_1_1meta.html#ab61090840d1e77d78ccd461caf025dbb">meta::Unqualified&lt;String&gt;</a> <a class="code" href="namespacegears_1_1string.html#aeac2bd0a47111d3161c300e790bb6d5f">replace_nth</a>(String str, <span class="keywordtype">size_t</span> nth, <span class="keyword">const</span> String&amp; from, <span class="keyword">const</span> String&amp; to) {</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="keyword">inline</span> meta::Unqualified&lt;String&gt; replace_nth(String str, <span class="keywordtype">size_t</span> nth, <span class="keyword">const</span> String&amp; from, <span class="keyword">const</span> String&amp; to) {</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keyword">auto</span> pos = string_replace_detail::nth_finder(str, from, nth);</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordflow">if</span>(pos == String::npos)</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <span class="keywordflow">return</span> str;</div>
@@ -164,7 +164,7 @@ $(document).ready(function(){initNavTree('replace_8hpp_source.html','');});
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;}</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> String&gt;</div>
-<div class="line"><a name="l00070"></a><span class="lineno"><a class="code" href="namespacegears_1_1string.html#a2d62febfb33db83e33cd8ebeaf33ba7e">   70</a></span>&#160;<span class="keyword">inline</span> <a class="code" href="namespacegears_1_1meta.html#ab61090840d1e77d78ccd461caf025dbb">meta::Unqualified&lt;String&gt;</a> <a class="code" href="namespacegears_1_1string.html#a2d62febfb33db83e33cd8ebeaf33ba7e">replace_all</a>(String str, <span class="keyword">const</span> String&amp; from, <span class="keyword">const</span> String&amp; to) {</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="keyword">inline</span> meta::Unqualified&lt;String&gt; replace_all(String str, <span class="keyword">const</span> String&amp; from, <span class="keyword">const</span> String&amp; to) {</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordtype">size_t</span> start_pos = 0;</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keywordflow">while</span>((start_pos = str.find(from, start_pos)) != String::npos) {</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        str.replace(start_pos, from.length(), to);</div>
@@ -174,7 +174,7 @@ $(document).ready(function(){initNavTree('replace_8hpp_source.html','');});
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;}</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> String&gt;</div>
-<div class="line"><a name="l00080"></a><span class="lineno"><a class="code" href="namespacegears_1_1string.html#a500bdbf88a864a2eb63cabe0420a967a">   80</a></span>&#160;<span class="keyword">inline</span> <a class="code" href="namespacegears_1_1meta.html#ab61090840d1e77d78ccd461caf025dbb">meta::Unqualified&lt;String&gt;</a> <a class="code" href="namespacegears_1_1string.html#a500bdbf88a864a2eb63cabe0420a967a">erase_first</a>(String str, <span class="keyword">const</span> String&amp; erase) {</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="keyword">inline</span> meta::Unqualified&lt;String&gt; erase_first(String str, <span class="keyword">const</span> String&amp; erase) {</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keyword">auto</span> start_pos = str.find(erase);</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keywordflow">if</span>(start_pos == String::npos)</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        <span class="keywordflow">return</span> str;</div>
@@ -183,7 +183,7 @@ $(document).ready(function(){initNavTree('replace_8hpp_source.html','');});
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;}</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;</div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> String&gt;</div>
-<div class="line"><a name="l00089"></a><span class="lineno"><a class="code" href="namespacegears_1_1string.html#a66ec9f3c78a260b14ac5577821d397e3">   89</a></span>&#160;<span class="keyword">inline</span> <a class="code" href="namespacegears_1_1meta.html#ab61090840d1e77d78ccd461caf025dbb">meta::Unqualified&lt;String&gt;</a> <a class="code" href="namespacegears_1_1string.html#a66ec9f3c78a260b14ac5577821d397e3">erase_last</a>(String str, <span class="keyword">const</span> String&amp; erase) {</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="keyword">inline</span> meta::Unqualified&lt;String&gt; erase_last(String str, <span class="keyword">const</span> String&amp; erase) {</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="keyword">auto</span> start_pos = str.rfind(erase);</div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="keywordflow">if</span>(start_pos == String::npos)</div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        <span class="keywordflow">return</span> str;</div>
@@ -192,7 +192,7 @@ $(document).ready(function(){initNavTree('replace_8hpp_source.html','');});
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;}</div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> String&gt;</div>
-<div class="line"><a name="l00098"></a><span class="lineno"><a class="code" href="namespacegears_1_1string.html#aa58af5118b34305b126feb90159215df">   98</a></span>&#160;<span class="keyword">inline</span> <a class="code" href="namespacegears_1_1meta.html#ab61090840d1e77d78ccd461caf025dbb">meta::Unqualified&lt;String&gt;</a> <a class="code" href="namespacegears_1_1string.html#aa58af5118b34305b126feb90159215df">erase_nth</a>(String str, <span class="keywordtype">size_t</span> nth, <span class="keyword">const</span> String&amp; erase) {</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="keyword">inline</span> meta::Unqualified&lt;String&gt; erase_nth(String str, <span class="keywordtype">size_t</span> nth, <span class="keyword">const</span> String&amp; erase) {</div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="keyword">auto</span> pos = string_replace_detail::nth_finder(str, erase, nth);</div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <span class="keywordflow">if</span>(pos == String::npos)</div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        <span class="keywordflow">return</span> str;</div>
@@ -201,7 +201,7 @@ $(document).ready(function(){initNavTree('replace_8hpp_source.html','');});
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;}</div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;</div>
 <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> String&gt;</div>
-<div class="line"><a name="l00107"></a><span class="lineno"><a class="code" href="namespacegears_1_1string.html#a1ca96f363a484be184dc213ca5d570c3">  107</a></span>&#160;<span class="keyword">inline</span> <a class="code" href="namespacegears_1_1meta.html#ab61090840d1e77d78ccd461caf025dbb">meta::Unqualified&lt;String&gt;</a> <a class="code" href="namespacegears_1_1string.html#a1ca96f363a484be184dc213ca5d570c3">erase_all</a>(String str, <span class="keyword">const</span> String&amp; erase) {</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="keyword">inline</span> meta::Unqualified&lt;String&gt; erase_all(String str, <span class="keyword">const</span> String&amp; erase) {</div>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    <span class="keywordtype">size_t</span> start_pos = 0;</div>
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    <span class="keywordflow">while</span>((start_pos = str.find(erase, start_pos)) != String::npos) {</div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        str.replace(start_pos, erase.length(), <span class="stringliteral">&quot;&quot;</span>);</div>

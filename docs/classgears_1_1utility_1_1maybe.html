@@ -89,7 +89,7 @@ $(document).ready(function(){initNavTree('classgears_1_1utility_1_1maybe.html','
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Groups</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Groups</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -118,56 +118,72 @@ Inheritance diagram for gears::utility::maybe&lt; T &gt;:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:a6f4933a98479a121405997eb9c9d874c"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgears_1_1utility_1_1maybe.html#a6f4933a98479a121405997eb9c9d874c">value_type</a> = T</td></tr>
+<tr class="memitem:a6f4933a98479a121405997eb9c9d874c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6f4933a98479a121405997eb9c9d874c"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>value_type</b> = T</td></tr>
 <tr class="separator:a6f4933a98479a121405997eb9c9d874c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a9073b6a9b67bb06550a49ed737beae81"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgears_1_1utility_1_1maybe.html#a9073b6a9b67bb06550a49ed737beae81">maybe</a> () noexcept</td></tr>
-<tr class="separator:a9073b6a9b67bb06550a49ed737beae81"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a13729236286d0f8606d526e0266185d8"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgears_1_1utility_1_1maybe.html#a13729236286d0f8606d526e0266185d8">maybe</a> (<a class="el" href="structgears_1_1utility_1_1nothing__t.html">nothing_t</a>) noexcept</td></tr>
+<tr class="memitem:a13729236286d0f8606d526e0266185d8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a13729236286d0f8606d526e0266185d8"></a>
+constexpr&#160;</td><td class="memItemRight" valign="bottom"><b>maybe</b> (<a class="el" href="structgears_1_1utility_1_1nothing__t.html">nothing_t</a>) noexcept</td></tr>
 <tr class="separator:a13729236286d0f8606d526e0266185d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a169e11c0882ba18fadbf18b6668b5d4e"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgears_1_1utility_1_1maybe.html#a169e11c0882ba18fadbf18b6668b5d4e">maybe</a> (const T &amp;<a class="el" href="classgears_1_1utility_1_1maybe.html#ac5d2f4752ed0d9d985268dbe00fd1f39">value</a>)</td></tr>
+<tr class="memitem:a169e11c0882ba18fadbf18b6668b5d4e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a169e11c0882ba18fadbf18b6668b5d4e"></a>
+constexpr&#160;</td><td class="memItemRight" valign="bottom"><b>maybe</b> (const T &amp;value)</td></tr>
 <tr class="separator:a169e11c0882ba18fadbf18b6668b5d4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac126bd9ca12fb7ca849b479504fb19a2"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgears_1_1utility_1_1maybe.html#ac126bd9ca12fb7ca849b479504fb19a2">maybe</a> (T &amp;&amp;<a class="el" href="classgears_1_1utility_1_1maybe.html#ac5d2f4752ed0d9d985268dbe00fd1f39">value</a>)</td></tr>
+<tr class="memitem:ac126bd9ca12fb7ca849b479504fb19a2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac126bd9ca12fb7ca849b479504fb19a2"></a>
+constexpr&#160;</td><td class="memItemRight" valign="bottom"><b>maybe</b> (T &amp;&amp;value)</td></tr>
 <tr class="separator:ac126bd9ca12fb7ca849b479504fb19a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a146bb6da1e977fcd6e4a9fe4523ecc14"><td class="memTemplParams" colspan="2">template&lt;typename... Args&gt; </td></tr>
-<tr class="memitem:a146bb6da1e977fcd6e4a9fe4523ecc14"><td class="memTemplItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classgears_1_1utility_1_1maybe.html#a146bb6da1e977fcd6e4a9fe4523ecc14">maybe</a> (<a class="el" href="structgears_1_1utility_1_1in__place__t.html">in_place_t</a>, Args &amp;&amp;...args)</td></tr>
+<tr class="memitem:a146bb6da1e977fcd6e4a9fe4523ecc14"><td class="memTemplParams" colspan="2"><a class="anchor" id="a146bb6da1e977fcd6e4a9fe4523ecc14"></a>
+template&lt;typename... Args&gt; </td></tr>
+<tr class="memitem:a146bb6da1e977fcd6e4a9fe4523ecc14"><td class="memTemplItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memTemplItemRight" valign="bottom"><b>maybe</b> (<a class="el" href="structgears_1_1utility_1_1in__place__t.html">in_place_t</a>, Args &amp;&amp;...args)</td></tr>
 <tr class="separator:a146bb6da1e977fcd6e4a9fe4523ecc14"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acfe1d884686a0d617ad1662212a484b6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgears_1_1utility_1_1maybe.html#acfe1d884686a0d617ad1662212a484b6">maybe</a> (const <a class="el" href="classgears_1_1utility_1_1maybe.html">maybe</a> &amp;rhs)</td></tr>
+<tr class="memitem:acfe1d884686a0d617ad1662212a484b6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acfe1d884686a0d617ad1662212a484b6"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>maybe</b> (const <a class="el" href="classgears_1_1utility_1_1maybe.html">maybe</a> &amp;rhs)</td></tr>
 <tr class="separator:acfe1d884686a0d617ad1662212a484b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5339382352ab151e14e8bce643d6898c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgears_1_1utility_1_1maybe.html#a5339382352ab151e14e8bce643d6898c">maybe</a> (<a class="el" href="classgears_1_1utility_1_1maybe.html">maybe</a> &amp;&amp;rhs) noexcept(std::is_nothrow_move_constructible&lt; T &gt;())</td></tr>
+<tr class="memitem:a5339382352ab151e14e8bce643d6898c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5339382352ab151e14e8bce643d6898c"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>maybe</b> (<a class="el" href="classgears_1_1utility_1_1maybe.html">maybe</a> &amp;&amp;rhs) noexcept(std::is_nothrow_move_constructible&lt; T &gt;())</td></tr>
 <tr class="separator:a5339382352ab151e14e8bce643d6898c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa59eff2b2c039083bc26710bf22dc1e5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgears_1_1utility_1_1maybe.html#aa59eff2b2c039083bc26710bf22dc1e5">~maybe</a> ()=default</td></tr>
-<tr class="separator:aa59eff2b2c039083bc26710bf22dc1e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac3bf9960cefadfa97804b148376dfbea"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgears_1_1utility_1_1maybe.html">maybe</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgears_1_1utility_1_1maybe.html#ac3bf9960cefadfa97804b148376dfbea">operator=</a> (<a class="el" href="structgears_1_1utility_1_1nothing__t.html">nothing_t</a>) noexcept</td></tr>
+<tr class="memitem:ac3bf9960cefadfa97804b148376dfbea"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac3bf9960cefadfa97804b148376dfbea"></a>
+<a class="el" href="classgears_1_1utility_1_1maybe.html">maybe</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (<a class="el" href="structgears_1_1utility_1_1nothing__t.html">nothing_t</a>) noexcept</td></tr>
 <tr class="separator:ac3bf9960cefadfa97804b148376dfbea"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a66df68fcbe6638849db624c25589ea96"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgears_1_1utility_1_1maybe.html">maybe</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgears_1_1utility_1_1maybe.html#a66df68fcbe6638849db624c25589ea96">operator=</a> (const <a class="el" href="classgears_1_1utility_1_1maybe.html">maybe</a> &amp;rhs)</td></tr>
+<tr class="memitem:a66df68fcbe6638849db624c25589ea96"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a66df68fcbe6638849db624c25589ea96"></a>
+<a class="el" href="classgears_1_1utility_1_1maybe.html">maybe</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (const <a class="el" href="classgears_1_1utility_1_1maybe.html">maybe</a> &amp;rhs)</td></tr>
 <tr class="separator:a66df68fcbe6638849db624c25589ea96"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a20586414d73ddfd6161e5d5e6188dfc6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgears_1_1utility_1_1maybe.html">maybe</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgears_1_1utility_1_1maybe.html#a20586414d73ddfd6161e5d5e6188dfc6">operator=</a> (<a class="el" href="classgears_1_1utility_1_1maybe.html">maybe</a> &amp;&amp;rhs) noexcept(std::is_nothrow_move_assignable&lt; T &gt;()&amp;&amp;std::is_nothrow_move_constructible&lt; T &gt;())</td></tr>
+<tr class="memitem:a20586414d73ddfd6161e5d5e6188dfc6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a20586414d73ddfd6161e5d5e6188dfc6"></a>
+<a class="el" href="classgears_1_1utility_1_1maybe.html">maybe</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (<a class="el" href="classgears_1_1utility_1_1maybe.html">maybe</a> &amp;&amp;rhs) noexcept(std::is_nothrow_move_assignable&lt; T &gt;()&amp;&amp;std::is_nothrow_move_constructible&lt; T &gt;())</td></tr>
 <tr class="separator:a20586414d73ddfd6161e5d5e6188dfc6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a114a4b7603ddac6cd0c8de39664e18e6"><td class="memTemplParams" colspan="2">template&lt;typename U , meta::EnableIf&lt; std::is_constructible&lt; T, meta::Decay&lt; U &gt;&gt;, std::is_assignable&lt; T, meta::Decay&lt; U &gt;&gt;&gt; ...&gt; </td></tr>
-<tr class="memitem:a114a4b7603ddac6cd0c8de39664e18e6"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classgears_1_1utility_1_1maybe.html">maybe</a> &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classgears_1_1utility_1_1maybe.html#a114a4b7603ddac6cd0c8de39664e18e6">operator=</a> (U &amp;&amp;<a class="el" href="classgears_1_1utility_1_1maybe.html#ac5d2f4752ed0d9d985268dbe00fd1f39">value</a>)</td></tr>
+<tr class="memitem:a114a4b7603ddac6cd0c8de39664e18e6"><td class="memTemplParams" colspan="2"><a class="anchor" id="a114a4b7603ddac6cd0c8de39664e18e6"></a>
+template&lt;typename U , meta::EnableIf&lt; std::is_constructible&lt; T, meta::Decay&lt; U &gt;&gt;, std::is_assignable&lt; T, meta::Decay&lt; U &gt;&gt;&gt; ...&gt; </td></tr>
+<tr class="memitem:a114a4b7603ddac6cd0c8de39664e18e6"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classgears_1_1utility_1_1maybe.html">maybe</a> &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>operator=</b> (U &amp;&amp;value)</td></tr>
 <tr class="separator:a114a4b7603ddac6cd0c8de39664e18e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af3616478258fa3f28b56a876f440e864"><td class="memTemplParams" colspan="2">template&lt;typename... Args&gt; </td></tr>
-<tr class="memitem:af3616478258fa3f28b56a876f440e864"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classgears_1_1utility_1_1maybe.html#af3616478258fa3f28b56a876f440e864">emplace</a> (Args &amp;&amp;...args)</td></tr>
+<tr class="memitem:af3616478258fa3f28b56a876f440e864"><td class="memTemplParams" colspan="2"><a class="anchor" id="af3616478258fa3f28b56a876f440e864"></a>
+template&lt;typename... Args&gt; </td></tr>
+<tr class="memitem:af3616478258fa3f28b56a876f440e864"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><b>emplace</b> (Args &amp;&amp;...args)</td></tr>
 <tr class="separator:af3616478258fa3f28b56a876f440e864"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaa97dc6520da2cfc34fc725430218142"><td class="memItemLeft" align="right" valign="top">constexpr const T *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgears_1_1utility_1_1maybe.html#aaa97dc6520da2cfc34fc725430218142">operator-&gt;</a> () const </td></tr>
+<tr class="memitem:aaa97dc6520da2cfc34fc725430218142"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aaa97dc6520da2cfc34fc725430218142"></a>
+constexpr const T *&#160;</td><td class="memItemRight" valign="bottom"><b>operator-&gt;</b> () const </td></tr>
 <tr class="separator:aaa97dc6520da2cfc34fc725430218142"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0ab1407c9ddcca85f5727ead63cb2f2d"><td class="memItemLeft" align="right" valign="top">T *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgears_1_1utility_1_1maybe.html#a0ab1407c9ddcca85f5727ead63cb2f2d">operator-&gt;</a> ()</td></tr>
+<tr class="memitem:a0ab1407c9ddcca85f5727ead63cb2f2d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0ab1407c9ddcca85f5727ead63cb2f2d"></a>
+T *&#160;</td><td class="memItemRight" valign="bottom"><b>operator-&gt;</b> ()</td></tr>
 <tr class="separator:a0ab1407c9ddcca85f5727ead63cb2f2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad73fb17e9b4289bd070ad2b5fc8f92d7"><td class="memItemLeft" align="right" valign="top">constexpr const T &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgears_1_1utility_1_1maybe.html#ad73fb17e9b4289bd070ad2b5fc8f92d7">operator*</a> () const </td></tr>
+<tr class="memitem:ad73fb17e9b4289bd070ad2b5fc8f92d7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad73fb17e9b4289bd070ad2b5fc8f92d7"></a>
+constexpr const T &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator*</b> () const </td></tr>
 <tr class="separator:ad73fb17e9b4289bd070ad2b5fc8f92d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a229b3602b2c6094c1264aa46e917bb4f"><td class="memItemLeft" align="right" valign="top">T &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgears_1_1utility_1_1maybe.html#a229b3602b2c6094c1264aa46e917bb4f">operator*</a> ()</td></tr>
+<tr class="memitem:a229b3602b2c6094c1264aa46e917bb4f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a229b3602b2c6094c1264aa46e917bb4f"></a>
+T &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator*</b> ()</td></tr>
 <tr class="separator:a229b3602b2c6094c1264aa46e917bb4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac5d2f4752ed0d9d985268dbe00fd1f39"><td class="memItemLeft" align="right" valign="top">constexpr const T &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgears_1_1utility_1_1maybe.html#ac5d2f4752ed0d9d985268dbe00fd1f39">value</a> () const </td></tr>
+<tr class="memitem:ac5d2f4752ed0d9d985268dbe00fd1f39"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac5d2f4752ed0d9d985268dbe00fd1f39"></a>
+constexpr const T &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>value</b> () const </td></tr>
 <tr class="separator:ac5d2f4752ed0d9d985268dbe00fd1f39"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae98716ededb20222f758ba80d184faed"><td class="memItemLeft" align="right" valign="top">T &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgears_1_1utility_1_1maybe.html#ae98716ededb20222f758ba80d184faed">value</a> ()</td></tr>
+<tr class="memitem:ae98716ededb20222f758ba80d184faed"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae98716ededb20222f758ba80d184faed"></a>
+T &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>value</b> ()</td></tr>
 <tr class="separator:ae98716ededb20222f758ba80d184faed"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a994d984828813f06d90dd09f8a70a64d"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgears_1_1utility_1_1maybe.html#a994d984828813f06d90dd09f8a70a64d">operator bool</a> () const noexcept</td></tr>
+<tr class="memitem:a994d984828813f06d90dd09f8a70a64d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a994d984828813f06d90dd09f8a70a64d"></a>
+constexpr&#160;</td><td class="memItemRight" valign="bottom"><b>operator bool</b> () const noexcept</td></tr>
 <tr class="separator:a994d984828813f06d90dd09f8a70a64d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a99d41f71e1ccfa17f4ddb83b656eda53"><td class="memTemplParams" colspan="2">template&lt;typename U &gt; </td></tr>
-<tr class="memitem:a99d41f71e1ccfa17f4ddb83b656eda53"><td class="memTemplItemLeft" align="right" valign="top">constexpr T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classgears_1_1utility_1_1maybe.html#a99d41f71e1ccfa17f4ddb83b656eda53">value_or</a> (U &amp;&amp;<a class="el" href="classgears_1_1utility_1_1maybe.html#ac5d2f4752ed0d9d985268dbe00fd1f39">value</a>) const </td></tr>
+<tr class="memitem:a99d41f71e1ccfa17f4ddb83b656eda53"><td class="memTemplParams" colspan="2"><a class="anchor" id="a99d41f71e1ccfa17f4ddb83b656eda53"></a>
+template&lt;typename U &gt; </td></tr>
+<tr class="memitem:a99d41f71e1ccfa17f4ddb83b656eda53"><td class="memTemplItemLeft" align="right" valign="top">constexpr T&#160;</td><td class="memTemplItemRight" valign="bottom"><b>value_or</b> (U &amp;&amp;value) const </td></tr>
 <tr class="separator:a99d41f71e1ccfa17f4ddb83b656eda53"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -176,621 +192,7 @@ class gears::utility::maybe&lt; T &gt;</h3>
 
 
 <p>Definition at line <a class="el" href="traits_8hpp_source.html#l00053">53</a> of file <a class="el" href="traits_8hpp_source.html">traits.hpp</a>.</p>
-</div><h2 class="groupheader">Member Typedef Documentation</h2>
-<a class="anchor" id="a6f4933a98479a121405997eb9c9d874c"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">using <a class="el" href="classgears_1_1utility_1_1maybe.html">gears::utility::maybe</a>&lt; T &gt;::<a class="el" href="classgears_1_1utility_1_1maybe.html#a6f4933a98479a121405997eb9c9d874c">value_type</a> =  T</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="maybe_8hpp_source.html#l00083">83</a> of file <a class="el" href="maybe_8hpp_source.html">maybe.hpp</a>.</p>
-
-</div>
-</div>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="a9073b6a9b67bb06550a49ed737beae81"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">constexpr <a class="el" href="classgears_1_1utility_1_1maybe.html">gears::utility::maybe</a>&lt; T &gt;::<a class="el" href="classgears_1_1utility_1_1maybe.html">maybe</a> </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="maybe_8hpp_source.html#l00085">85</a> of file <a class="el" href="maybe_8hpp_source.html">maybe.hpp</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a13729236286d0f8606d526e0266185d8"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">constexpr <a class="el" href="classgears_1_1utility_1_1maybe.html">gears::utility::maybe</a>&lt; T &gt;::<a class="el" href="classgears_1_1utility_1_1maybe.html">maybe</a> </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structgears_1_1utility_1_1nothing__t.html">nothing_t</a>&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="maybe_8hpp_source.html#l00086">86</a> of file <a class="el" href="maybe_8hpp_source.html">maybe.hpp</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a169e11c0882ba18fadbf18b6668b5d4e"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">constexpr <a class="el" href="classgears_1_1utility_1_1maybe.html">gears::utility::maybe</a>&lt; T &gt;::<a class="el" href="classgears_1_1utility_1_1maybe.html">maybe</a> </td>
-          <td>(</td>
-          <td class="paramtype">const T &amp;&#160;</td>
-          <td class="paramname"><em>value</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="maybe_8hpp_source.html#l00087">87</a> of file <a class="el" href="maybe_8hpp_source.html">maybe.hpp</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="ac126bd9ca12fb7ca849b479504fb19a2"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">constexpr <a class="el" href="classgears_1_1utility_1_1maybe.html">gears::utility::maybe</a>&lt; T &gt;::<a class="el" href="classgears_1_1utility_1_1maybe.html">maybe</a> </td>
-          <td>(</td>
-          <td class="paramtype">T &amp;&amp;&#160;</td>
-          <td class="paramname"><em>value</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="maybe_8hpp_source.html#l00088">88</a> of file <a class="el" href="maybe_8hpp_source.html">maybe.hpp</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a146bb6da1e977fcd6e4a9fe4523ecc14"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T&gt; </div>
-<div class="memtemplate">
-template&lt;typename... Args&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">constexpr <a class="el" href="classgears_1_1utility_1_1maybe.html">gears::utility::maybe</a>&lt; T &gt;::<a class="el" href="classgears_1_1utility_1_1maybe.html">maybe</a> </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structgears_1_1utility_1_1in__place__t.html">in_place_t</a>&#160;</td>
-          <td class="paramname">, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">Args &amp;&amp;...&#160;</td>
-          <td class="paramname"><em>args</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">explicit</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="maybe_8hpp_source.html#l00091">91</a> of file <a class="el" href="maybe_8hpp_source.html">maybe.hpp</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="acfe1d884686a0d617ad1662212a484b6"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classgears_1_1utility_1_1maybe.html">gears::utility::maybe</a>&lt; T &gt;::<a class="el" href="classgears_1_1utility_1_1maybe.html">maybe</a> </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="classgears_1_1utility_1_1maybe.html">maybe</a>&lt; T &gt; &amp;&#160;</td>
-          <td class="paramname"><em>rhs</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="maybe_8hpp_source.html#l00093">93</a> of file <a class="el" href="maybe_8hpp_source.html">maybe.hpp</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a5339382352ab151e14e8bce643d6898c"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classgears_1_1utility_1_1maybe.html">gears::utility::maybe</a>&lt; T &gt;::<a class="el" href="classgears_1_1utility_1_1maybe.html">maybe</a> </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="classgears_1_1utility_1_1maybe.html">maybe</a>&lt; T &gt; &amp;&amp;&#160;</td>
-          <td class="paramname"><em>rhs</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="maybe_8hpp_source.html#l00099">99</a> of file <a class="el" href="maybe_8hpp_source.html">maybe.hpp</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="aa59eff2b2c039083bc26710bf22dc1e5"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classgears_1_1utility_1_1maybe.html">gears::utility::maybe</a>&lt; T &gt;::~<a class="el" href="classgears_1_1utility_1_1maybe.html">maybe</a> </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">default</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="af3616478258fa3f28b56a876f440e864"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T&gt; </div>
-<div class="memtemplate">
-template&lt;typename... Args&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void <a class="el" href="classgears_1_1utility_1_1maybe.html">gears::utility::maybe</a>&lt; T &gt;::emplace </td>
-          <td>(</td>
-          <td class="paramtype">Args &amp;&amp;...&#160;</td>
-          <td class="paramname"><em>args</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="maybe_8hpp_source.html#l00152">152</a> of file <a class="el" href="maybe_8hpp_source.html">maybe.hpp</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a994d984828813f06d90dd09f8a70a64d"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">constexpr <a class="el" href="classgears_1_1utility_1_1maybe.html">gears::utility::maybe</a>&lt; T &gt;::operator bool </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">explicit</span><span class="mlabel">noexcept</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="maybe_8hpp_source.html#l00181">181</a> of file <a class="el" href="maybe_8hpp_source.html">maybe.hpp</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="ad73fb17e9b4289bd070ad2b5fc8f92d7"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">constexpr const T&amp; <a class="el" href="classgears_1_1utility_1_1maybe.html">gears::utility::maybe</a>&lt; T &gt;::operator* </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="maybe_8hpp_source.html#l00165">165</a> of file <a class="el" href="maybe_8hpp_source.html">maybe.hpp</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a229b3602b2c6094c1264aa46e917bb4f"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">T&amp; <a class="el" href="classgears_1_1utility_1_1maybe.html">gears::utility::maybe</a>&lt; T &gt;::operator* </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="maybe_8hpp_source.html#l00169">169</a> of file <a class="el" href="maybe_8hpp_source.html">maybe.hpp</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="aaa97dc6520da2cfc34fc725430218142"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">constexpr const T* <a class="el" href="classgears_1_1utility_1_1maybe.html">gears::utility::maybe</a>&lt; T &gt;::operator-&gt; </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="maybe_8hpp_source.html#l00157">157</a> of file <a class="el" href="maybe_8hpp_source.html">maybe.hpp</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a0ab1407c9ddcca85f5727ead63cb2f2d"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">T* <a class="el" href="classgears_1_1utility_1_1maybe.html">gears::utility::maybe</a>&lt; T &gt;::operator-&gt; </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="maybe_8hpp_source.html#l00161">161</a> of file <a class="el" href="maybe_8hpp_source.html">maybe.hpp</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="ac3bf9960cefadfa97804b148376dfbea"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classgears_1_1utility_1_1maybe.html">maybe</a>&amp; <a class="el" href="classgears_1_1utility_1_1maybe.html">gears::utility::maybe</a>&lt; T &gt;::operator= </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structgears_1_1utility_1_1nothing__t.html">nothing_t</a>&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="maybe_8hpp_source.html#l00107">107</a> of file <a class="el" href="maybe_8hpp_source.html">maybe.hpp</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a66df68fcbe6638849db624c25589ea96"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classgears_1_1utility_1_1maybe.html">maybe</a>&amp; <a class="el" href="classgears_1_1utility_1_1maybe.html">gears::utility::maybe</a>&lt; T &gt;::operator= </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="classgears_1_1utility_1_1maybe.html">maybe</a>&lt; T &gt; &amp;&#160;</td>
-          <td class="paramname"><em>rhs</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="maybe_8hpp_source.html#l00112">112</a> of file <a class="el" href="maybe_8hpp_source.html">maybe.hpp</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a20586414d73ddfd6161e5d5e6188dfc6"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classgears_1_1utility_1_1maybe.html">maybe</a>&amp; <a class="el" href="classgears_1_1utility_1_1maybe.html">gears::utility::maybe</a>&lt; T &gt;::operator= </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="classgears_1_1utility_1_1maybe.html">maybe</a>&lt; T &gt; &amp;&amp;&#160;</td>
-          <td class="paramname"><em>rhs</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="maybe_8hpp_source.html#l00126">126</a> of file <a class="el" href="maybe_8hpp_source.html">maybe.hpp</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a114a4b7603ddac6cd0c8de39664e18e6"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T&gt; </div>
-<div class="memtemplate">
-template&lt;typename U , meta::EnableIf&lt; std::is_constructible&lt; T, meta::Decay&lt; U &gt;&gt;, std::is_assignable&lt; T, meta::Decay&lt; U &gt;&gt;&gt; ...&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classgears_1_1utility_1_1maybe.html">maybe</a>&amp; <a class="el" href="classgears_1_1utility_1_1maybe.html">gears::utility::maybe</a>&lt; T &gt;::operator= </td>
-          <td>(</td>
-          <td class="paramtype">U &amp;&amp;&#160;</td>
-          <td class="paramname"><em>value</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="maybe_8hpp_source.html#l00141">141</a> of file <a class="el" href="maybe_8hpp_source.html">maybe.hpp</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="ac5d2f4752ed0d9d985268dbe00fd1f39"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">constexpr const T&amp; <a class="el" href="classgears_1_1utility_1_1maybe.html">gears::utility::maybe</a>&lt; T &gt;::value </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="maybe_8hpp_source.html#l00173">173</a> of file <a class="el" href="maybe_8hpp_source.html">maybe.hpp</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="ae98716ededb20222f758ba80d184faed"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">T&amp; <a class="el" href="classgears_1_1utility_1_1maybe.html">gears::utility::maybe</a>&lt; T &gt;::value </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="maybe_8hpp_source.html#l00177">177</a> of file <a class="el" href="maybe_8hpp_source.html">maybe.hpp</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a99d41f71e1ccfa17f4ddb83b656eda53"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T&gt; </div>
-<div class="memtemplate">
-template&lt;typename U &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">constexpr T <a class="el" href="classgears_1_1utility_1_1maybe.html">gears::utility::maybe</a>&lt; T &gt;::value_or </td>
-          <td>(</td>
-          <td class="paramtype">U &amp;&amp;&#160;</td>
-          <td class="paramname"><em>value</em></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="maybe_8hpp_source.html#l00186">186</a> of file <a class="el" href="maybe_8hpp_source.html">maybe.hpp</a>.</p>
-
-</div>
-</div>
-</div><!-- contents -->
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.3.1-->
 <!-- start footer part -->

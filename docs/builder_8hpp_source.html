@@ -81,7 +81,7 @@ $(document).ready(function(){initNavTree('builder_8hpp_source.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Groups</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Groups</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -123,38 +123,38 @@ $(document).ready(function(){initNavTree('builder_8hpp_source.html','');});
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &lt;utility&gt;</span></div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">namespace </span>gears {</div>
-<div class="line"><a name="l00029"></a><span class="lineno"><a class="code" href="namespacegears_1_1string.html">   29</a></span>&#160;<span class="keyword">namespace </span>string {</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">namespace </span>string {</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> CharT = <span class="keywordtype">char</span>&gt;</div>
 <div class="line"><a name="l00031"></a><span class="lineno"><a class="code" href="structgears_1_1string_1_1stringbuilder.html">   31</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structgears_1_1string_1_1stringbuilder.html">stringbuilder</a> {</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keyword">private</span>:</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    std::basic_ostringstream&lt;CharT&gt; ss;</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <a class="code" href="structgears_1_1string_1_1stringbuilder.html#a16757f97019b2612f63f973710b00e1c">stringbuilder</a>() = <span class="keywordflow">default</span>;</div>
-<div class="line"><a name="l00036"></a><span class="lineno"><a class="code" href="structgears_1_1string_1_1stringbuilder.html#a5f59dc1afd7b070ee96f076ffa8d76b4">   36</a></span>&#160;    <a class="code" href="structgears_1_1string_1_1stringbuilder.html#a5f59dc1afd7b070ee96f076ffa8d76b4">stringbuilder</a>(decltype(ss.str()) str): ss(std::move(str), std::ios_base::ate) {}</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <a class="code" href="structgears_1_1string_1_1stringbuilder.html">stringbuilder</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <a class="code" href="structgears_1_1string_1_1stringbuilder.html">stringbuilder</a>(decltype(ss.str()) str): ss(std::move(str), std::ios_base::ate) {}</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00039"></a><span class="lineno"><a class="code" href="structgears_1_1string_1_1stringbuilder.html#a26603bb754916fed06d10981b4f8d7ee">   39</a></span>&#160;    <span class="keyword">auto</span> <a class="code" href="structgears_1_1string_1_1stringbuilder.html#a26603bb754916fed06d10981b4f8d7ee">operator&lt;&lt;</a>(T&amp;&amp; data) -&gt; decltype(*<span class="keyword">this</span>) {</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keyword">auto</span> operator&lt;&lt;(T&amp;&amp; data) -&gt; decltype(*<span class="keyword">this</span>) {</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        ss &lt;&lt; std::forward&lt;T&gt;(data);</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    }</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00045"></a><span class="lineno"><a class="code" href="structgears_1_1string_1_1stringbuilder.html#a046400b1b1cc0186d6a8de9252a9c1e9">   45</a></span>&#160;    <span class="keyword">auto</span> <a class="code" href="structgears_1_1string_1_1stringbuilder.html#a046400b1b1cc0186d6a8de9252a9c1e9">append</a>(T&amp;&amp; data) -&gt; decltype(*<span class="keyword">this</span>) {</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keyword">auto</span> append(T&amp;&amp; data) -&gt; decltype(*<span class="keyword">this</span>) {</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        ss &lt;&lt; std::forward&lt;T&gt;(data);</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    }</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
-<div class="line"><a name="l00050"></a><span class="lineno"><a class="code" href="structgears_1_1string_1_1stringbuilder.html#a343cec07fa3d1abd07027fe6d37f4ab0">   50</a></span>&#160;    <span class="keyword">auto</span> <a class="code" href="structgears_1_1string_1_1stringbuilder.html#a343cec07fa3d1abd07027fe6d37f4ab0">clear</a>() -&gt; decltype(*<span class="keyword">this</span>) {</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keyword">auto</span> clear() -&gt; decltype(*<span class="keyword">this</span>) {</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        ss.str(CharT());</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        ss.clear();</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    }</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
-<div class="line"><a name="l00056"></a><span class="lineno"><a class="code" href="structgears_1_1string_1_1stringbuilder.html#a861e2960a6a88fbe5f9a2da3d9a539f2">   56</a></span>&#160;    <span class="keyword">auto</span> <a class="code" href="structgears_1_1string_1_1stringbuilder.html#a861e2960a6a88fbe5f9a2da3d9a539f2">to_string</a>() -&gt; decltype(ss.str()) {</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keyword">auto</span> to_string() -&gt; decltype(ss.str()) {</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <span class="keywordflow">return</span> { ss.str() };</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    }</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
-<div class="line"><a name="l00060"></a><span class="lineno"><a class="code" href="structgears_1_1string_1_1stringbuilder.html#a66e3e05c09ef92d85e70008c46224f08">   60</a></span>&#160;    <span class="keyword">operator</span> decltype(ss.str())() {</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keyword">operator</span> decltype(ss.str())() {</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <span class="keywordflow">return</span> { ss.str() };</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    }</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;};</div>
