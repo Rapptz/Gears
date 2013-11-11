@@ -31,3 +31,6 @@ dev.cpp
 
 # Sublime cruft
 *.sublime*
+
+# Documentation
+docs/html/*
