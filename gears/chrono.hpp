@@ -25,49 +25,49 @@
 #include "chrono/literals.hpp"
 #include "chrono/stopwatch.hpp"
 
-/// 
-/// \defgroup chrono Chrono module
-/// 
-/// Provides time utilities.
-/// 
-/// This module defines utilities that make working with the `<chrono>` header
-/// easier and adds new tools for it as well.
-/// 
-/// One of the first things the chrono module is useful for is the creation of 
-/// `std::chrono::duration`s using the new C++11 user defined literal feature. The table
-/// below specifies the literals and their return value.
-/// 
-/// | Literal | Result       |
-/// |:-------:|:-------------|
-/// | _h      | hours        |
-/// | _min    | minutes      |
-/// | _s      | seconds      |
-/// | _ms     | milliseconds |
-/// | _us     | microseconds |
-/// | _ns     | nanoseconds  |
-/// 
-/// All of these have `unsigned long long` and `long double` overloads. They reside in `<gears/chrono/literals.hpp>`. 
-/// Example usage can be found below.
-/// 
-/// \code
-/// #include <gears/chrono/literals.hpp>
-/// #include <thread>
-/// #include <iostream>
-/// 
-/// // this line is required
-/// using namespace gears::chrono::literals;
-/// 
-/// void f() {
-///     std::this_thread::sleep_for(1.4_s); // 1.4 seconds
-/// }
-/// 
-/// int main() {
-///     std::cout << "Going to sleep for 1.4 seconds...";
-///     f();
-///     std::cout << "\nDone!";
-/// }
-/// \endcode
-/// </br>
-/// 
+/** 
+ * @defgroup chrono Chrono module
+ * 
+ * Provides time utilities.
+ * 
+ * This module defines utilities that make working with the `<chrono>` header
+ * easier and adds new tools for it as well.
+ * 
+ * One of the first things the chrono module is useful for is the creation of 
+ * `std::chrono::duration`s using the new C++11 user defined literal feature. The table
+ * below specifies the literals and their return value.
+ * 
+ * | Literal | Result       |
+ * |:-------:|:-------------|
+ * | _h      | hours        |
+ * | _min    | minutes      |
+ * | _s      | seconds      |
+ * | _ms     | milliseconds |
+ * | _us     | microseconds |
+ * | _ns     | nanoseconds  |
+ * 
+ * All of these have `unsigned long long` and `long double` overloads. They reside in `<gears/chrono/literals.hpp>`. 
+ * Example usage can be found below.
+ * 
+ * @code
+ * #include <gears/chrono/literals.hpp>
+ * #include <thread>
+ * #include <iostream>
+ * 
+ * // this line is required
+ * using namespace gears::chrono::literals;
+ * 
+ * void f() {
+ *     std::this_thread::sleep_for(1.4_s); // 1.4 seconds
+ * }
+ * 
+ * int main() {
+ *     std::cout << "Going to sleep for 1.4 seconds...";
+ *     f();
+ *     std::cout << "\nDone!";
+ * }
+ * @endcode
+ * 
+ */
 
 #endif // GEARS_CHRONO_HPP
