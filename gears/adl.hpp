@@ -26,50 +26,51 @@
 #include "adl/iterator.hpp"
 #include "adl/swap.hpp"
 
-/// 
-/// \defgroup adl ADL module
-/// 
-/// Provides an interface for common ADL (Argument Dependent Lookup)
-/// functions.
-/// 
-/// This module is very simple, allowing for an ADL-enabled function calls.
-/// This is useful because it allows you to write generic code that relies on certain functions
-/// without actually having to specify the `using` statement for every function in every line.
-/// 
-/// Example usage:
-/// \code
-/// #include <gears/adl/get.hpp>
-/// #include <tuple>
-/// #include <iostream>
-/// 
-/// namespace adl = gears::adl;
-/// 
-/// namespace my {
-/// struct get_example {
-///     int x;
-///     int y;
-/// };
-/// 
-/// template<size_t N>
-/// constexpr int get(const get_example& g) {
-///     return N == 0 ? g.x : g.y;
-/// }
-/// } // my
-/// 
-/// int main() {
-///     auto tup = std::make_tuple("hello", 3.14);
-///     my::get_example f = {10, 11};
-///     
-///     std::cout << adl::get<0>(tup) << ' ' << adl::get<0>(f);
-/// 
-/// }
-/// 
-/// \endcode
-/// 
-/// Output:
-/// <pre>
-/// hello 10
-/// </pre>
-/// 
+/** 
+ * @defgroup adl ADL module
+ * 
+ * Provides an interface for common ADL (Argument Dependent Lookup)
+ * functions.
+ * 
+ * This module is very simple, allowing for an ADL-enabled function calls.
+ * This is useful because it allows you to write generic code that relies on certain functions
+ * without actually having to specify the `using` statement for every function in every line.
+ * 
+ * Example usage:
+ * @code
+ * #include <gears/adl/get.hpp>
+ * #include <tuple>
+ * #include <iostream>
+ * 
+ * namespace adl = gears::adl;
+ * 
+ * namespace my {
+ * struct get_example {
+ *     int x;
+ *     int y;
+ * };
+ * 
+ * template<size_t N>
+ * constexpr int get(const get_example& g) {
+ *     return N == 0 ? g.x : g.y;
+ * }
+ * } // my
+ * 
+ * int main() {
+ *     auto tup = std::make_tuple("hello", 3.14);
+ *     my::get_example f = {10, 11};
+ *     
+ *     std::cout << adl::get<0>(tup) << ' ' << adl::get<0>(f);
+ * 
+ * }
+ * 
+ * @endcode
+ * 
+ * Output:
+ * <pre>
+ * hello 10
+ * </pre>
+ * 
+ */
 
 #endif // GEARS_ADL_HPP

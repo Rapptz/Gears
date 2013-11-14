@@ -37,22 +37,21 @@ constexpr auto adl_get(T&& t) -> decltype(get<N>(std::declval<T>())) {
 }
 } // detail
 
-///
-/// \ingroup adl
-/// \brief ADL enabled get function for tuple-like interfaces
-/// 
-/// Allows for argument dependent lookup of `std::get`-like interfaces.
-/// Equivalent to doing the following:
-/// 
-/// \code
-/// using std::get;
-/// get<N>(t);
-/// \endcode
-/// 
-/// \tparam N Index to get
-/// \param t Tuple-like class to receive index from
-/// \return automatically deduced return value of `get<N>(t)`
-/// 
+/**
+ * @ingroup adl
+ * @brief ADL enabled get function for tuple-like classes.
+ * @details Allows for argument dependent lookup of `std::get` and overloaded
+ * specialisations of `get`.
+ * 
+ * @code 
+ * using std::get;
+ * get<N>(t);
+ * @endcode
+ * 
+ * @tparam N Index to retrieve
+ * @param t Tuple-like class to retrieve index from
+ * @return automatically deduced return value of `get<N>(t)`
+ */
 template<size_t N, typename T>
 constexpr auto get(T&& t) -> decltype(detail::adl_get<N>(std::declval<T>())) {
     return detail::adl_get<N>(std::forward<T>(t));
