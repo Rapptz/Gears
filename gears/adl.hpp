@@ -29,10 +29,10 @@
 /** 
  * @defgroup adl ADL module
  * 
- * Provides an interface for common ADL (Argument Dependent Lookup)
+ * @brief Provides an interface for common ADL (Argument Dependent Lookup)
  * functions.
  * 
- * This module is very simple, allowing for an ADL-enabled function calls.
+ * @details This module is very simple, allowing for an ADL-enabled function calls.
  * This is useful because it allows you to write generic code that relies on certain functions
  * without actually having to specify the `using` statement for every function in every line.
  * 

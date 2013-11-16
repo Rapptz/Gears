@@ -26,7 +26,7 @@
 
 namespace gears {
 namespace concepts {
-
+/// @internal
 template<typename T>
 using Bare = typename std::remove_cv<typename std::remove_reference<T>::type>::type;
 
@@ -63,11 +63,39 @@ struct require_checker {
 };
 
 template<typename... Concepts>
-using Require = typename require_checker<Concepts...>::type;
-
-template<typename... Concepts>
 using TrueIf = typename std::enable_if<And<Concepts...>::value, concept_checker_t>::type;
 
+template<typename... Concepts>
+using Require = typename require_checker<Concepts...>::type;
+
+/// @endinternal
+
+/**
+ * @ingroup concepts
+ * @brief Asserts that a type meets concepts provided.
+ * @details The place for `require` is best inside functions rather than classes.
+ * As this function returns a boolean, it isn't possible to put it in its own line
+ * for template classes. For example, the following won't work:
+ * 
+ * @code 
+ * template<typename T>
+ * struct my_type {
+ *     require<T, Assignable>();
+ * };
+ * @endcode
+ * 
+ * This is because this function returns a boolean.
+ * Consider using the `Requires` statement instead:
+ * 
+ * @code 
+ * template<typename T, Requires<Assinable<T>>...>
+ * struct my_type {};
+ * @endcode
+ * 
+ * @tparam T Type to check concepts for
+ * @tparam Concepts... Unary concepts to assert.
+ * 
+ */
 template<typename T, template<typename...> class... Concepts>
 constexpr bool require() {
     static_assert(And<Concepts<T>...>(), "Concept Violation");

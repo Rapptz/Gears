@@ -43,30 +43,173 @@ struct is_rvalue_swappable {
 };
 } // detail
 
+/**
+ * @defgroup basic_concepts Basic concepts submodule
+ * @ingroup concepts
+ * 
+ * @brief Concepts involving constructibility and operational semantics.
+ * 
+ * @details This is a collection of concepts that deal mainly with properties
+ * of objects such as constructibility (e.g. DefaultConstructible, MoveConstructible),
+ * and other semantics relating to types such as Reference, LessThanConstructible, 
+ * Integral, etc.
+ */
+
+/**
+ * @ingroup basic_concepts
+ * @brief Checks if a type is default constructible
+ * @details A Unary concept to check if a type is default 
+ * constructible. 
+ * 
+ * This means that the following code must be
+ * valid:
+ * 
+ * @code 
+ * T t; // default constructed
+ * @endcode
+ * 
+ * @tparam T Type to check
+ */
 template<typename T>
 struct DefaultConstructible : std::is_default_constructible<Bare<T>> {};
 
+/**
+ * @ingroup basic_concepts
+ * @brief Checks if a type is move constructible
+ * @details A Unary concept to check if a type is
+ * move constructible.
+ * 
+ * This means that the following code must be valid:
+ * 
+ * @code 
+ * // other_var is of type T
+ * T var(std::move(other_var)); // move constructor
+ * @endcode
+ * 
+ * @tparam T Type to check
+ */
 template<typename T>
 struct MoveConstructible : std::is_move_constructible<Bare<T>> {};
 
+/**
+ * @ingroup basic_concepts
+ * @brief Checks if a type is copy constructible
+ * @details A Unary concept to check if a type is 
+ * copy constructible.
+ * 
+ * This means that the following code must be valid:
+ * 
+ * @code 
+ * // other_var is of type T
+ * T var(other_var); // copy constructor 
+ * @endcode
+ * 
+ * @tparam T Type to check
+ */
 template<typename T>
 struct CopyConstructible : std::is_copy_constructible<Bare<T>> {};
 
+/**
+ * @ingroup basic_concepts
+ * @brief Checks if a type is move assignable
+ * @details A Unary concept to check if a type is 
+ * move assignable.
+ * 
+ * This means that the following code must be valid:
+ * 
+ * @code 
+ * // other_var is of type T
+ * T var = std::move(other_var); // move assignment
+ * @endcode
+ * 
+ * @tparam T Type to check
+ */
 template<typename T>
 struct MoveAssignable : std::is_move_assignable<Bare<T>> {};
 
+/**
+ * @ingroup basic_concepts
+ * @brief Checks if a type is copy assignable
+ * @details A Unary concept to check if a type is 
+ * copy assignable.
+ * 
+ * This means that the following code must be valid:
+ * 
+ * @code 
+ * // other_var is of type T
+ * T var = other_var; // copy assignment
+ * @endcode
+ * 
+ * @tparam T Type to check
+ */
 template<typename T>
 struct CopyAssignable : std::is_copy_assignable<Bare<T>> {};
 
+/**
+ * @brief Checks if a type has move assignment and constructor
+ * @details A Unary concept to check if a type has a move assignment
+ * and a move constructor.
+ * 
+ * This means that the following code must be valid:
+ * 
+ * @code 
+ * // other_var is of type T
+ * T var(std::move(other_var)); // move constructor
+ * T new_var = std::move(var); // move assignment
+ * @endcode
+ * 
+ * @tparam T Type to check
+ */
 template<typename T>
 struct Movable : And<MoveAssignable<T>, MoveConstructible<T>> {};
 
+/**
+ * @brief Checks if a type has copy assignment and constructor
+ * @details A Unary concept to check if a type has a copy assignment
+ * and a copy constructor.
+ * 
+ * This means that the following code must be valid:
+ * 
+ * @code 
+ * // other_var is of type T
+ * T var(other_var); // copy constructor
+ * T new_var = var; // copy assignment
+ * @endcode
+ * 
+ * @tparam T Type to check
+ */
 template<typename T>
 struct Copyable : And<CopyAssignable<T>, CopyConstructible<T>> {};
 
+/**
+ * @brief Checks if a type has move assignment and copy assignment.
+ * @details A Unary concept to check if a type has a copy assignment 
+ * and a move assignment.
+ * 
+ * This means that the following code must be valid:
+ * 
+ * @code 
+ * // other_var is of type T
+ * T var = other_var; // copy assignment
+ * T new_var = std::move(var); // move assignment
+ * @endcode
+ * 
+ * @tparam T Type to check
+ */
 template<typename T>
 struct Assignable : And<MoveAssignable<T>, CopyAssignable<T>> {};
 
+/**
+ * @brief Checks if a type has a destructor
+ * @details A Unary concept to check if a type has a destructor.
+ * 
+ * Classes without a destructor can typically not be instantiated with
+ * automatic storage duration, so this would be useful to check in those
+ * situations where this is a requirement. Types without a destructor are 
+ * often pretty rare, however.
+ * 
+ * @tparam T Type to check
+ */
 template<typename T>
 struct Destructible : std::is_destructible<Bare<T>> {};
 

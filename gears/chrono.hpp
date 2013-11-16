@@ -28,9 +28,9 @@
 /** 
  * @defgroup chrono Chrono module
  * 
- * Provides time utilities.
+ * @brief Provides time utilities.
  * 
- * This module defines utilities that make working with the `<chrono>` header
+ * @details This module defines utilities that make working with the `<chrono>` header
  * easier and adds new tools for it as well.
  * 
  * One of the first things the chrono module is useful for is the creation of 
