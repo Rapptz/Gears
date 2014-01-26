@@ -37,7 +37,7 @@ inline std::basic_string<CharT> sprint(const CharT (&str)[N], Args&&... argument
     auto args = std::make_tuple(std::forward<Args>(arguments)...);
     std::basic_ostringstream<CharT> out;
 
-    is_digit cmp;
+    string::is_digit cmp;
 
     auto first = str;
     size_t index = 0;
@@ -62,7 +62,7 @@ inline std::basic_string<CharT> sprint(const CharT (&str)[N], Args&&... argument
         }
 
         if(*check == out.widen('}')) {
-            io_detail::index_printer(out, index, args);
+            detail::index_printer(out, index, args);
             ++check;
         }
         else {

@@ -51,7 +51,11 @@ struct is_rvalue_swappable {
  * 
  * @details This is a collection of concepts that deal mainly with properties
  * of objects such as constructibility (e.g. DefaultConstructible, MoveConstructible),
+<<<<<<< HEAD
+ * and other semantics relating to types such as Reference, LessThanComparable, 
+=======
  * and other semantics relating to types such as Reference, LessThanConstructible, 
+>>>>>>> a8c3fd363a0f368ebf5ec78012dd2ecec67b3c4c
  * Integral, etc.
  */
 
@@ -146,6 +150,10 @@ template<typename T>
 struct CopyAssignable : std::is_copy_assignable<Bare<T>> {};
 
 /**
+<<<<<<< HEAD
+ * @ingroup basic_concepts
+=======
+>>>>>>> a8c3fd363a0f368ebf5ec78012dd2ecec67b3c4c
  * @brief Checks if a type has move assignment and constructor
  * @details A Unary concept to check if a type has a move assignment
  * and a move constructor.
@@ -164,6 +172,10 @@ template<typename T>
 struct Movable : And<MoveAssignable<T>, MoveConstructible<T>> {};
 
 /**
+<<<<<<< HEAD
+ * @ingroup basic_concepts
+=======
+>>>>>>> a8c3fd363a0f368ebf5ec78012dd2ecec67b3c4c
  * @brief Checks if a type has copy assignment and constructor
  * @details A Unary concept to check if a type has a copy assignment
  * and a copy constructor.
@@ -182,6 +194,10 @@ template<typename T>
 struct Copyable : And<CopyAssignable<T>, CopyConstructible<T>> {};
 
 /**
+<<<<<<< HEAD
+ * @ingroup basic_concepts
+=======
+>>>>>>> a8c3fd363a0f368ebf5ec78012dd2ecec67b3c4c
  * @brief Checks if a type has move assignment and copy assignment.
  * @details A Unary concept to check if a type has a copy assignment 
  * and a move assignment.
@@ -200,6 +216,10 @@ template<typename T>
 struct Assignable : And<MoveAssignable<T>, CopyAssignable<T>> {};
 
 /**
+<<<<<<< HEAD
+ * @ingroup basic_concepts
+=======
+>>>>>>> a8c3fd363a0f368ebf5ec78012dd2ecec67b3c4c
  * @brief Checks if a type has a destructor
  * @details A Unary concept to check if a type has a destructor.
  * 
@@ -213,15 +233,65 @@ struct Assignable : And<MoveAssignable<T>, CopyAssignable<T>> {};
 template<typename T>
 struct Destructible : std::is_destructible<Bare<T>> {};
 
+/**
+ * @ingroup basic_concepts
+ * @brief Checks if a type is constructible.
+ * @details An uncategorised concept that checks if a type can be constructed.
+ * 
+ * Classes with a constructor can have multiple different ways of being constructed.
+ * If you rely on a certain way to construct a type, then this concept can be used to
+ * assert that a type meets those constructibility requirements. For example, if you want
+ * the type of `MyClass` to have an `MyClass(int, int)` constructor, then you would check it
+ * with `Constructible<MyClass, int, int>`.
+ * 
+ * @tparam T Type to check
+ * @tparam Args Types of the parameters expected in the constructor. If empty,
+ * default constructor is assumed.
+ */
 template<typename T, typename... Args>
 struct Constructible : std::is_constructible<Bare<T>, Args...> {};
 
+/**
+ * @ingroup basic_concepts
+ * @brief Checks if a type has standard layout
+ * @details A Unary concept that checks if a type has standard layout.
+ * 
+ * A type with standard layout meets the following requirements:
+ * 
+ * - No virtual functions.
+ * - No virtual base classes.
+ * - Same access control for all non-static data members.
+ * - No base classes that don't meet the StandardLayout concept.
+ * - No non-static members that don't meet the StandardLayout concept.
+ * - No base class of the same type as the first non-static data member.
+ * 
+ * @tparam T Type to check
+ */
 template<typename T>
 struct StandardLayout : std::is_standard_layout<Bare<T>> {};
 
+/**
+ * @ingroup basic_concepts
+ * @brief Checks if a type is a plain-old-data (POD).
+ * @details A Unary concept that checks if a type is a plain old data (POD) type.
+ * 
+ * A type that is a POD is a type that meets StandardLayout and is trivial.
+ * 
+ * @tparam T Type to check
+ */
 template<typename T>
 struct POD : std::is_pod<Bare<T>> {};
 
+/**
+ * @brief Checks if a type is semi-regular.
+ * @details A Unary concept that checks if a type is semi-regular.
+ * 
+ * A type that is semi-regular is one that can be usually used in a regular way.
+ * In order to be a semi-regular type, a type must meet the Movable, Copyable, and
+ * DefaultConstructible concepts.
+ * 
+ * @tparam T Type to check
+ */
 template<typename T>
 struct Semiregular : And<Movable<T>, Copyable<T>, DefaultConstructible<T>> {}; 
 

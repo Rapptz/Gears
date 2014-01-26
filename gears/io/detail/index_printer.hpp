@@ -32,7 +32,7 @@ namespace gears {
 namespace io {
 namespace detail {
 template<size_t N = 0, class Elem, class Traits, typename... Args, meta::EnableIf<meta::Bool<(N >= sizeof...(Args))>>...>
-inline void index_printer(std::basic_ostream<Elem,Traits>& out, const size_t i, const std::tuple<Args...>& tup) {
+inline void index_printer(std::basic_ostream<Elem,Traits>&, const size_t, const std::tuple<Args...>&) {
     throw std::out_of_range("Index exceeds number of arguments provided");
 }
 

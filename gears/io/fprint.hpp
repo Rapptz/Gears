@@ -35,7 +35,7 @@ inline void fprint(std::basic_ostream<Elem, Traits>& out, const Elem (&str)[N], 
     }
     auto args = std::make_tuple(std::forward<Args>(arguments)...);
 
-    is_digit cmp;
+    string::is_digit cmp;
 
     auto first = str;
     size_t index = 0;
@@ -60,7 +60,7 @@ inline void fprint(std::basic_ostream<Elem, Traits>& out, const Elem (&str)[N], 
         }
 
         if(*check == out.widen('}')) {
-            io_detail::index_printer(out, index, args);
+            detail::index_printer(out, index, args);
             ++check;
         }
         else {
