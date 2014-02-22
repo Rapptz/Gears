@@ -36,13 +36,9 @@
  * 
  * Concepts are split into two categories, Unary and Binary. A Unary Concept
  * is defined as a concept that takes in a single type. A Binary Concept is a
- * concept that takes in two types. Sometimes the second type is optional, this
-<<<<<<< HEAD
+ * concept that takes in two types. Most of the time the second type is optional, this
  * depends on the Concept. Sometimes a concept is not part of these categories, this
  * makes the concept uncategorised. An example of this is Constructible.
-=======
- * depends on the Concept.
->>>>>>> a8c3fd363a0f368ebf5ec78012dd2ecec67b3c4c
  * 
  * Just like the Concepts themselves are split into different categories, the
  * Concepts module itself is split into different categories which include:
