@@ -34,6 +34,7 @@ constexpr R adl_swap(T&& t, U&& u) noexcept(swap(std::declval<T>(), std::declval
 } // detail
 
 /**
+ * @ingroup adl
  * @brief ADL-enabled swap.
  * @details Allows for ADL of `std::swap`. Equivalent to the following:
  * 
