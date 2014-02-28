@@ -65,7 +65,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
       <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
-      <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
       <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
@@ -89,7 +88,7 @@ $(document).ready(function(){initNavTree('structgears_1_1concepts_1_1_unsigned.h
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Groups</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Groups</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -100,23 +99,28 @@ $(document).ready(function(){initNavTree('structgears_1_1concepts_1_1_unsigned.h
 
 <div class="header">
   <div class="headertitle">
-<div class="title">gears::concepts::Unsigned&lt; T &gt; Struct Template Reference</div>  </div>
+<div class="title">gears::concepts::Unsigned&lt; T &gt; Struct Template Reference<div class="ingroups"><a class="el" href="group__basic__concepts.html">Basic concepts submodule</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="dynheader">
-Inheritance diagram for gears::concepts::Unsigned&lt; T &gt;:</div>
-<div class="dyncontent">
- <div class="center">
-  <img src="structgears_1_1concepts_1_1_unsigned.png" usemap="#gears::concepts::Unsigned&lt; T &gt;_map" alt=""/>
-  <map id="gears::concepts::Unsigned&lt; T &gt;_map" name="gears::concepts::Unsigned&lt; T &gt;_map">
-</map>
- </div></div>
+
+<p>Checks if a type is unsigned.  
+ <a href="structgears_1_1concepts_1_1_unsigned.html#details">More...</a></p>
+
+<p>Inherits is_unsigned&lt; T &gt;.</p>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><h3>template&lt;typename T&gt;<br/>
 struct gears::concepts::Unsigned&lt; T &gt;</h3>
 
+<p>A Unary concept to check if a type is unsigned.</p>
+<p>An <a class="el" href="structgears_1_1concepts_1_1_integral.html" title="Checks if a type is an integral type.">Integral</a> type is <code>unsigned</code> if it has the modifier appended to it, e.g. <code>unsigned int</code> is obviously unsigned.</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>Type to check. </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p>Definition at line <a class="el" href="basic_8hpp_source.html#l00107">107</a> of file <a class="el" href="basic_8hpp_source.html">basic.hpp</a>.</p>
+<p>Definition at line <a class="el" href="basic_8hpp_source.html#l00410">410</a> of file <a class="el" href="basic_8hpp_source.html">basic.hpp</a>.</p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.3.1-->

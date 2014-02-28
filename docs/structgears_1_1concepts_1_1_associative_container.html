@@ -65,7 +65,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
       <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
-      <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
       <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
@@ -89,7 +88,7 @@ $(document).ready(function(){initNavTree('structgears_1_1concepts_1_1_associativ
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Groups</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Groups</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -100,24 +99,51 @@ $(document).ready(function(){initNavTree('structgears_1_1concepts_1_1_associativ
 
 <div class="header">
   <div class="headertitle">
-<div class="title">gears::concepts::AssociativeContainer&lt; T &gt; Struct Template Reference</div>  </div>
+<div class="title">gears::concepts::AssociativeContainer&lt; T &gt; Struct Template Reference<div class="ingroups"><a class="el" href="group__container__concepts.html">Container concepts submodule</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="dynheader">
-Inheritance diagram for gears::concepts::AssociativeContainer&lt; T &gt;:</div>
-<div class="dyncontent">
- <div class="center">
-  <img src="structgears_1_1concepts_1_1_associative_container.png" usemap="#gears::concepts::AssociativeContainer&lt; T &gt;_map" alt=""/>
-  <map id="gears::concepts::AssociativeContainer&lt; T &gt;_map" name="gears::concepts::AssociativeContainer&lt; T &gt;_map">
-<area href="structgears_1_1concepts_1_1_and.html" alt="gears::concepts::And&lt; Container&lt; T &gt;, TraitOf&lt; detail::is_associative_container, T &gt; &gt;" shape="rect" coords="0,56,503,80"/>
-</map>
- </div></div>
+
+<p>Checks if a type is an associative container.  
+ <a href="structgears_1_1concepts_1_1_associative_container.html#details">More...</a></p>
+
+<p>Inherits gears::concepts::And&lt; Container&lt; T &gt;, TraitOf&lt; detail::is_associative_container, T &gt; &gt;.</p>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><h3>template&lt;typename T&gt;<br/>
 struct gears::concepts::AssociativeContainer&lt; T &gt;</h3>
 
+<p>A Unary concept that checks if a type is an associative container.</p>
+<p>It must meet the <a class="el" href="structgears_1_1concepts_1_1_container.html" title="Checks if a type is a container.">Container</a> concept. In addition, the following typedefs must be defined:</p>
+<ul>
+<li><code>key_type</code></li>
+<li><code>key_compare</code></li>
+<li><code>value_compare</code></li>
+</ul>
+<p>and the following expressions must be valid:</p>
+<div class="fragment"><div class="line">T x;</div>
+<div class="line">key_compare kc = x.key_comp();</div>
+<div class="line">value_compare vc = x.value_comp(); </div>
+<div class="line">iterator a = x.emplace(args...);</div>
+<div class="line">iterator b = x.emplace_hint(iterator{}, args...);</div>
+<div class="line">iterator c = x.insert(iterator{});</div>
+<div class="line">iterator d = x.insert(iterator{}, value_type{});</div>
+<div class="line">iterator e = x.insert(iterator{}, iterator{});</div>
+<div class="line">iterator f = x.erase(const_iterator{});</div>
+<div class="line">iterator g = x.erase(const_iterator{}, const_iterator{});</div>
+<div class="line">size_type h = x.erase(key_type{});</div>
+<div class="line">x.clear();</div>
+<div class="line">iterator i = x.find(key_type{});</div>
+<div class="line">size_type j = x.count(key_type{});</div>
+<div class="line">iterator k = x.lower_bound(key_type{});</div>
+<div class="line">iterator l = x.upper_bound(key_type{});</div>
+<div class="line">std::pair&lt;iterator, iterator&gt; m = x.equal_range(key_type{}); </div>
+</div><!-- fragment --><dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>Type to check. </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p>Definition at line <a class="el" href="container_8hpp_source.html#l00184">184</a> of file <a class="el" href="container_8hpp_source.html">container.hpp</a>.</p>
+<p>Definition at line <a class="el" href="container_8hpp_source.html#l00340">340</a> of file <a class="el" href="container_8hpp_source.html">container.hpp</a>.</p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.3.1-->

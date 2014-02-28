@@ -1,7 +1,6 @@
 var hierarchy =
 [
     [ "gears::any", "classgears_1_1any.html", null ],
-    [ "gears::command_line::arg", "structgears_1_1command__line_1_1arg.html", null ],
     [ "gears::chrono::basic_stopwatch< Clock >", "structgears_1_1chrono_1_1basic__stopwatch.html", null ],
     [ "gears::functional::bit_and_type", "structgears_1_1functional_1_1bit__and__type.html", null ],
     [ "gears::functional::bit_not_type", "structgears_1_1functional_1_1bit__not__type.html", null ],
@@ -150,7 +149,6 @@ var hierarchy =
     [ "gears::functional::not_equal_to_type", "structgears_1_1functional_1_1not__equal__to__type.html", null ],
     [ "gears::utility::nothing_t", "structgears_1_1utility_1_1nothing__t.html", null ],
     [ "gears::functional::odd_type", "structgears_1_1functional_1_1odd__type.html", null ],
-    [ "gears::command_line::parser", "classgears_1_1command__line_1_1parser.html", null ],
     [ "gears::functional::plus_type", "structgears_1_1functional_1_1plus__type.html", null ],
     [ "gears::concepts::require_checker< Concepts >", "structgears_1_1concepts_1_1require__checker.html", null ],
     [ "gears::meta::result_of_impl< Signature, Anon >", "structgears_1_1meta_1_1result__of__impl.html", null ],
@@ -167,67 +165,66 @@ var hierarchy =
     ] ],
     [ "gears::utility::triple< T, U, V >", "structgears_1_1utility_1_1triple.html", null ],
     [ "true_type", null, [
-      [ "gears::concepts::And< Container< T >, Or< TraitOf< detail::is_sequence_container, T >, TraitOf< detail::is_array_sequence, T >, TraitOf< detail::is_forward_list, T > > >", "structgears_1_1concepts_1_1_and.html", [
+      [ "gears::concepts::And< Container< T >, Or< TraitOf< detail::is_sequence_container, T >, TraitOf< detail::is_array_sequence, T >, TraitOf< detail::is_forward_list, T > > >", null, [
         [ "gears::concepts::SequenceContainer< T >", "structgears_1_1concepts_1_1_sequence_container.html", null ]
       ] ],
-      [ "gears::concepts::And< Container< T >, TraitOf< detail::is_allocator_aware, T > >", "structgears_1_1concepts_1_1_and.html", [
+      [ "gears::concepts::And< Container< T >, TraitOf< detail::is_allocator_aware, T > >", null, [
         [ "gears::concepts::AllocatorAwareContainer< T >", "structgears_1_1concepts_1_1_allocator_aware_container.html", null ]
       ] ],
-      [ "gears::concepts::And< Container< T >, TraitOf< detail::is_associative_container, T > >", "structgears_1_1concepts_1_1_and.html", [
+      [ "gears::concepts::And< Container< T >, TraitOf< detail::is_associative_container, T > >", null, [
         [ "gears::concepts::AssociativeContainer< T >", "structgears_1_1concepts_1_1_associative_container.html", null ]
       ] ],
-      [ "gears::concepts::And< Container< T >, TraitOf< detail::is_reversible, T > >", "structgears_1_1concepts_1_1_and.html", [
+      [ "gears::concepts::And< Container< T >, TraitOf< detail::is_reversible, T > >", null, [
         [ "gears::concepts::ReversibleContainer< T >", "structgears_1_1concepts_1_1_reversible_container.html", null ]
       ] ],
-      [ "gears::concepts::And< CopyAssignable< T >, CopyConstructible< T > >", "structgears_1_1concepts_1_1_and.html", [
+      [ "gears::concepts::And< CopyAssignable< T >, CopyConstructible< T > >", null, [
         [ "gears::concepts::Copyable< T >", "structgears_1_1concepts_1_1_copyable.html", null ]
       ] ],
-      [ "gears::concepts::And< CopyConstructible< T >, CopyAssignable< T >, Destructible< T >, Dereferenceable< T >, Incrementable< T > >", "structgears_1_1concepts_1_1_and.html", [
+      [ "gears::concepts::And< CopyConstructible< T >, CopyAssignable< T >, Destructible< T >, Dereferenceable< T >, Incrementable< T > >", null, [
         [ "gears::concepts::Iterator< T >", "structgears_1_1concepts_1_1_iterator.html", null ]
       ] ],
-      [ "gears::concepts::And< DefaultConstructible< T >, CopyConstructible< T >, CopyAssignable< T >, Destructible< T >, EqualityComparable< T, std::nullptr_t >, EqualityComparable< std::nullptr_t, T >, detail::is_np_assign< T > >", "structgears_1_1concepts_1_1_and.html", [
+      [ "gears::concepts::And< DefaultConstructible< T >, CopyConstructible< T >, CopyAssignable< T >, Destructible< T >, ContextualBool< T >, EqualityComparable< T, std::nullptr_t >, EqualityComparable< std::nullptr_t, T >, detail::is_np_assign< T > >", null, [
         [ "gears::concepts::NullablePointer< T >", "structgears_1_1concepts_1_1_nullable_pointer.html", null ]
       ] ],
-      [ "gears::concepts::And< ForwardIterator< T >, Assignable< T > >", "structgears_1_1concepts_1_1_and.html", [
+      [ "gears::concepts::And< ForwardIterator< T >, Assignable< T > >", null, [
         [ "gears::concepts::MutableForwardIterator< T >", "structgears_1_1concepts_1_1_mutable_forward_iterator.html", null ]
       ] ],
-      [ "gears::concepts::And< ForwardIterator< T >, Decrementable< T > >", "structgears_1_1concepts_1_1_and.html", [
+      [ "gears::concepts::And< ForwardIterator< T >, Decrementable< T > >", null, [
         [ "gears::concepts::BidirectionalIterator< T >", "structgears_1_1concepts_1_1_bidirectional_iterator.html", null ]
       ] ],
-      [ "gears::concepts::And< InputIterator< T >, DefaultConstructible< T > >", "structgears_1_1concepts_1_1_and.html", [
+      [ "gears::concepts::And< InputIterator< T >, DefaultConstructible< T > >", null, [
         [ "gears::concepts::ForwardIterator< T >", "structgears_1_1concepts_1_1_forward_iterator.html", null ]
       ] ],
-      [ "gears::concepts::And< Iterator< T >, Assignable< T > >", "structgears_1_1concepts_1_1_and.html", [
+      [ "gears::concepts::And< Iterator< T >, Assignable< T > >", null, [
         [ "gears::concepts::OutputIterator< T >", "structgears_1_1concepts_1_1_output_iterator.html", null ]
       ] ],
-      [ "gears::concepts::And< Iterator< T >, EqualityComparable< T > >", "structgears_1_1concepts_1_1_and.html", [
+      [ "gears::concepts::And< Iterator< T >, EqualityComparable< T > >", null, [
         [ "gears::concepts::InputIterator< T >", "structgears_1_1concepts_1_1_input_iterator.html", null ]
       ] ],
-      [ "gears::concepts::And< LValueSwappable< T, U >, RValueSwappable< T, U > >", "structgears_1_1concepts_1_1_and.html", [
+      [ "gears::concepts::And< LValueSwappable< T, U >, RValueSwappable< T, U > >", null, [
         [ "gears::concepts::Swappable< T, U >", "structgears_1_1concepts_1_1_swappable.html", null ]
       ] ],
-      [ "gears::concepts::And< Movable< T >, Copyable< T >, DefaultConstructible< T > >", "structgears_1_1concepts_1_1_and.html", [
+      [ "gears::concepts::And< Movable< T >, Copyable< T >, DefaultConstructible< T > >", null, [
         [ "gears::concepts::Semiregular< T >", "structgears_1_1concepts_1_1_semiregular.html", null ]
       ] ],
-      [ "gears::concepts::And< MoveAssignable< T >, CopyAssignable< T > >", "structgears_1_1concepts_1_1_and.html", [
+      [ "gears::concepts::And< MoveAssignable< T >, CopyAssignable< T > >", null, [
         [ "gears::concepts::Assignable< T >", "structgears_1_1concepts_1_1_assignable.html", null ]
       ] ],
-      [ "gears::concepts::And< MoveAssignable< T >, MoveConstructible< T > >", "structgears_1_1concepts_1_1_and.html", [
+      [ "gears::concepts::And< MoveAssignable< T >, MoveConstructible< T > >", null, [
         [ "gears::concepts::Movable< T >", "structgears_1_1concepts_1_1_movable.html", null ]
       ] ],
-      [ "gears::concepts::And< MutableForwardIterator< T >, Decrementable< T > >", "structgears_1_1concepts_1_1_and.html", [
+      [ "gears::concepts::And< MutableForwardIterator< T >, Decrementable< T > >", null, [
         [ "gears::concepts::MutableBidirectionalIterator< T >", "structgears_1_1concepts_1_1_mutable_bidirectional_iterator.html", null ]
       ] ],
-      [ "gears::concepts::And< Or< TraitOf< detail::is_container, T >, TraitOf< detail::is_forward_list, T > >, Regular< T >, Destructible< T > >", "structgears_1_1concepts_1_1_and.html", [
+      [ "gears::concepts::And< Or< TraitOf< detail::is_container, T >, TraitOf< detail::is_forward_list, T > >, Regular< T >, EqualityComparable< T >, Copyable< T >, Destructible< T > >", null, [
         [ "gears::concepts::Container< T >", "structgears_1_1concepts_1_1_container.html", null ]
       ] ],
-      [ "gears::concepts::And< RandomAccessIterator< T >, Assignable< T > >", "structgears_1_1concepts_1_1_and.html", [
+      [ "gears::concepts::And< RandomAccessIterator< T >, Assignable< T > >", null, [
         [ "gears::concepts::MutableRandomAccessIterator< T >", "structgears_1_1concepts_1_1_mutable_random_access_iterator.html", null ]
       ] ],
-      [ "gears::concepts::And< Semiregular< T >, EqualityComparable< T > >", "structgears_1_1concepts_1_1_and.html", [
+      [ "gears::concepts::And< Semiregular< T >, EqualityComparable< T > >", null, [
         [ "gears::concepts::Regular< T >", "structgears_1_1concepts_1_1_regular.html", null ]
       ] ],
-      [ "gears::concepts::And< Args >", "structgears_1_1concepts_1_1_and.html", null ],
       [ "gears::utility::is_maybe< maybe< T > >", "structgears_1_1utility_1_1is__maybe_3_01maybe_3_01_t_01_4_01_4.html", null ]
     ] ],
     [ "std::tuple_element< N, T >", "structstd_1_1tuple__element.html", null ],
@@ -236,7 +233,6 @@ var hierarchy =
     [ "std::tuple_element< 2, gears::utility::triple< T, U, V > >", "structstd_1_1tuple__element_3_012_00_01gears_1_1utility_1_1triple_3_01_t_00_01_u_00_01_v_01_4_01_4.html", null ],
     [ "std::tuple_size< T >", "structstd_1_1tuple__size.html", null ],
     [ "type", null, [
-      [ "gears::concepts::And< T, Args...>", "structgears_1_1concepts_1_1_and_3_01_t_00_01_args_8_8_8_4.html", null ],
       [ "gears::concepts::Or< T, Args...>", "structgears_1_1concepts_1_1_or_3_01_t_00_01_args_8_8_8_4.html", null ]
     ] ],
     [ "gears::math::uintx< Bits, Digit, Digits >", "structgears_1_1math_1_1uintx.html", null ],

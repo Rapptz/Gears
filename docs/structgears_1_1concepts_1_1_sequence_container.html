@@ -65,7 +65,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
       <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
-      <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
       <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
@@ -89,7 +88,7 @@ $(document).ready(function(){initNavTree('structgears_1_1concepts_1_1_sequence_c
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Groups</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Groups</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -100,24 +99,39 @@ $(document).ready(function(){initNavTree('structgears_1_1concepts_1_1_sequence_c
 
 <div class="header">
   <div class="headertitle">
-<div class="title">gears::concepts::SequenceContainer&lt; T &gt; Struct Template Reference</div>  </div>
+<div class="title">gears::concepts::SequenceContainer&lt; T &gt; Struct Template Reference<div class="ingroups"><a class="el" href="group__container__concepts.html">Container concepts submodule</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="dynheader">
-Inheritance diagram for gears::concepts::SequenceContainer&lt; T &gt;:</div>
-<div class="dyncontent">
- <div class="center">
-  <img src="structgears_1_1concepts_1_1_sequence_container.png" usemap="#gears::concepts::SequenceContainer&lt; T &gt;_map" alt=""/>
-  <map id="gears::concepts::SequenceContainer&lt; T &gt;_map" name="gears::concepts::SequenceContainer&lt; T &gt;_map">
-<area href="structgears_1_1concepts_1_1_and.html" alt="gears::concepts::And&lt; Container&lt; T &gt;, Or&lt; TraitOf&lt; detail::is_sequence_container, T &gt;, TraitOf&lt; detail::is_array_sequence, T &gt;, TraitOf&lt; detail::is_forward_list, T &gt; &gt; &gt;" shape="rect" coords="0,56,971,80"/>
-</map>
- </div></div>
+
+<p>Checks if a type is a sequence container.  
+ <a href="structgears_1_1concepts_1_1_sequence_container.html#details">More...</a></p>
+
+<p>Inherits gears::concepts::And&lt; Container&lt; T &gt;, Or&lt; TraitOf&lt; detail::is_sequence_container, T &gt;, TraitOf&lt; detail::is_array_sequence, T &gt;, TraitOf&lt; detail::is_forward_list, T &gt; &gt; &gt;.</p>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><h3>template&lt;typename T&gt;<br/>
 struct gears::concepts::SequenceContainer&lt; T &gt;</h3>
 
+<p>A Unary concept that checks if a type is a sequence container.</p>
+<p>It must meet the <a class="el" href="structgears_1_1concepts_1_1_container.html" title="Checks if a type is a container.">Container</a> concept. In addition to that, the following expressions must be valid:</p>
+<div class="fragment"><div class="line">T x(size_type{}, value_type{});</div>
+<div class="line">T y(iterator{}, iterator{});</div>
+<div class="line">iterator a = x.emplace(iterator{}, args...);</div>
+<div class="line">iterator b = x.insert(iterator{}, value_type{});</div>
+<div class="line">iterator c = x.insert(iterator{}, size_type{}, value_type{});</div>
+<div class="line">iterator d = x.insert(iterator{}, iterator{}, iterator{});</div>
+<div class="line">iterator e = x.erase(const_iterator{});</div>
+<div class="line">iterator f = x.erase(const_iterator{}, const_iterator{});</div>
+<div class="line">x.clear();</div>
+<div class="line">x.assign(iterator{}, iterator{});</div>
+<div class="line">x.assign(size_type{}, value_type{});</div>
+</div><!-- fragment --><dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>Type to check </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p>Definition at line <a class="el" href="container_8hpp_source.html#l00179">179</a> of file <a class="el" href="container_8hpp_source.html">container.hpp</a>.</p>
+<p>Definition at line <a class="el" href="container_8hpp_source.html#l00299">299</a> of file <a class="el" href="container_8hpp_source.html">container.hpp</a>.</p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.3.1-->

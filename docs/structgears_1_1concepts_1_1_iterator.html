@@ -65,7 +65,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
       <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
-      <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
       <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
@@ -89,7 +88,7 @@ $(document).ready(function(){initNavTree('structgears_1_1concepts_1_1_iterator.h
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Groups</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Groups</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -100,24 +99,35 @@ $(document).ready(function(){initNavTree('structgears_1_1concepts_1_1_iterator.h
 
 <div class="header">
   <div class="headertitle">
-<div class="title">gears::concepts::Iterator&lt; T &gt; Struct Template Reference</div>  </div>
+<div class="title">gears::concepts::Iterator&lt; T &gt; Struct Template Reference<div class="ingroups"><a class="el" href="group__iterator__concepts.html">Iterator concepts submodule</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="dynheader">
-Inheritance diagram for gears::concepts::Iterator&lt; T &gt;:</div>
-<div class="dyncontent">
- <div class="center">
-  <img src="structgears_1_1concepts_1_1_iterator.png" usemap="#gears::concepts::Iterator&lt; T &gt;_map" alt=""/>
-  <map id="gears::concepts::Iterator&lt; T &gt;_map" name="gears::concepts::Iterator&lt; T &gt;_map">
-<area href="structgears_1_1concepts_1_1_and.html" alt="gears::concepts::And&lt; CopyConstructible&lt; T &gt;, CopyAssignable&lt; T &gt;, Destructible&lt; T &gt;, Dereferenceable&lt; T &gt;, Incrementable&lt; T &gt; &gt;" shape="rect" coords="0,56,783,80"/>
-</map>
- </div></div>
+
+<p>Checks if a type is an iterator.  
+ <a href="structgears_1_1concepts_1_1_iterator.html#details">More...</a></p>
+
+<p>Inherits gears::concepts::And&lt; Args &gt;.</p>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><h3>template&lt;typename T&gt;<br/>
 struct gears::concepts::Iterator&lt; T &gt;</h3>
 
+<p>A Unary concept to check if a type is an iterator. Note that this doesn't mean that it inherits from <code>std::iterator</code>.</p>
+<p>In order to meet this concept, the type must meet these concepts:</p>
+<ul>
+<li><a class="el" href="structgears_1_1concepts_1_1_copy_constructible.html" title="Checks if a type is copy constructible.">CopyConstructible</a></li>
+<li><a class="el" href="structgears_1_1concepts_1_1_copy_assignable.html" title="Checks if a type is copy assignable.">CopyAssignable</a></li>
+<li><a class="el" href="structgears_1_1concepts_1_1_destructible.html" title="Checks if a type has a destructor.">Destructible</a></li>
+<li><a class="el" href="structgears_1_1concepts_1_1_dereferenceable.html" title="Checks if a type can be dereferenced.">Dereferenceable</a></li>
+<li><a class="el" href="structgears_1_1concepts_1_1_incrementable.html" title="Checks if a type can be incremented.">Incrementable</a></li>
+</ul>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>Type to check. </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p>Definition at line <a class="el" href="concepts_2iterator_8hpp_source.html#l00048">48</a> of file <a class="el" href="concepts_2iterator_8hpp_source.html">concepts/iterator.hpp</a>.</p>
+<p>Definition at line <a class="el" href="concepts_2iterator_8hpp_source.html#l00077">77</a> of file <a class="el" href="concepts_2iterator_8hpp_source.html">concepts/iterator.hpp</a>.</p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.3.1-->

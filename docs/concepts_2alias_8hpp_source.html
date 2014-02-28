@@ -81,7 +81,7 @@ $(document).ready(function(){initNavTree('concepts_2alias_8hpp_source.html','');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Groups</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Groups</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -123,7 +123,6 @@ $(document).ready(function(){initNavTree('concepts_2alias_8hpp_source.html','');
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">namespace </span>gears {</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">namespace </span>concepts {</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">using</span> Bare = <span class="keyword">typename</span> std::remove_cv&lt;typename std::remove_reference&lt;T&gt;::type&gt;::type;</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
@@ -137,16 +136,16 @@ $(document).ready(function(){initNavTree('concepts_2alias_8hpp_source.html','');
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="keyword">using</span> RRef = Bare&lt;T&gt;&amp;&amp;;</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span>... Args&gt;</div>
-<div class="line"><a name="l00043"></a><span class="lineno"><a class="code" href="structgears_1_1concepts_1_1_and.html">   43</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structgears_1_1concepts_1_1_and.html">And</a> : std::true_type {};</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keyword">struct </span>And : std::true_type {};</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span>... Args&gt;</div>
-<div class="line"><a name="l00046"></a><span class="lineno"><a class="code" href="structgears_1_1concepts_1_1_and_3_01_t_00_01_args_8_8_8_4.html">   46</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structgears_1_1concepts_1_1_and.html">And</a>&lt;T, Args...&gt; : std::conditional&lt;T::value, And&lt;Args...&gt;, std::false_type&gt;::type {};</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="keyword">struct </span>And&lt;T, Args...&gt; : std::conditional&lt;T::value, And&lt;Args...&gt;, std::false_type&gt;::type {};</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span>... Args&gt;</div>
-<div class="line"><a name="l00049"></a><span class="lineno"><a class="code" href="structgears_1_1concepts_1_1_or.html">   49</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structgears_1_1concepts_1_1_or.html">Or</a> : std::false_type {};</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="keyword">struct </span>Or : std::false_type {};</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span>... Args&gt;</div>
-<div class="line"><a name="l00052"></a><span class="lineno"><a class="code" href="structgears_1_1concepts_1_1_or_3_01_t_00_01_args_8_8_8_4.html">   52</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structgears_1_1concepts_1_1_or.html">Or</a>&lt;T, Args...&gt; : std::conditional&lt;T::value, std::true_type, Or&lt;Args...&gt;&gt;::type {};</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="keyword">struct </span>Or&lt;T, Args...&gt; : std::conditional&lt;T::value, std::true_type, Or&lt;Args...&gt;&gt;::type {};</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> Test, <span class="keyword">typename</span>... Args&gt;</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="keyword">using</span> TraitOf = decltype(Test::template test&lt;Args...&gt;(0));</div>
@@ -154,26 +153,27 @@ $(document).ready(function(){initNavTree('concepts_2alias_8hpp_source.html','');
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="keyword">enum class</span> concept_checker_t {};</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span>... Concepts&gt;</div>
-<div class="line"><a name="l00060"></a><span class="lineno"><a class="code" href="structgears_1_1concepts_1_1require__checker.html">   60</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structgears_1_1concepts_1_1require__checker.html">require_checker</a> {</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    static_assert(<a class="code" href="structgears_1_1concepts_1_1_and.html">And&lt;Concepts...&gt;</a>(), <span class="stringliteral">&quot;Concept Violation&quot;</span>);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="keyword">struct </span>require_checker {</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    static_assert(And&lt;Concepts...&gt;(), <span class="stringliteral">&quot;Concept Violation&quot;</span>);</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keyword">using</span> type = concept_checker_t;</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;};</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span>... Concepts&gt;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="keyword">using</span> Require = <span class="keyword">typename</span> <a class="code" href="structgears_1_1concepts_1_1require__checker.html">require_checker</a>&lt;Concepts...&gt;::type;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="keyword">using</span> TrueIf = <span class="keyword">typename</span> std::enable_if&lt;And&lt;Concepts...&gt;::value, concept_checker_t&gt;::type;</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span>... Concepts&gt;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="keyword">using</span> TrueIf = <span class="keyword">typename</span> std::enable_if&lt;<a class="code" href="structgears_1_1concepts_1_1_and.html">And</a>&lt;Concepts...&gt;::value, concept_checker_t&gt;::type;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="keyword">using</span> Require = <span class="keyword">typename</span> require_checker&lt;Concepts...&gt;::type;</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, <span class="keyword">template</span>&lt;<span class="keyword">typename</span>...&gt; <span class="keyword">class</span>... Concepts&gt;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;constexpr <span class="keywordtype">bool</span> require() {</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    static_assert(<a class="code" href="structgears_1_1concepts_1_1_and.html">And</a>&lt;Concepts&lt;T&gt;...&gt;(), <span class="stringliteral">&quot;Concept Violation&quot;</span>);</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;}</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;} <span class="comment">// concepts</span></div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;} <span class="comment">// gears</span></div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="preprocessor">#endif // GEARS_CONCEPTS_ALIAS_HPP</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, <span class="keyword">template</span>&lt;<span class="keyword">typename</span>...&gt; <span class="keyword">class</span>... Concepts&gt;</div>
+<div class="line"><a name="l00100"></a><span class="lineno"><a class="code" href="group__concepts.html#gac123339dbd70d43fd7526314e0bafe81">  100</a></span>&#160;constexpr <span class="keywordtype">bool</span> <a class="code" href="group__concepts.html#gac123339dbd70d43fd7526314e0bafe81" title="Asserts that a type meets concepts provided.">require</a>() {</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    static_assert(And&lt;Concepts&lt;T&gt;...&gt;(), <span class="stringliteral">&quot;Concept Violation&quot;</span>);</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;}</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;} <span class="comment">// concepts</span></div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;} <span class="comment">// gears</span></div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="preprocessor">#endif // GEARS_CONCEPTS_ALIAS_HPP</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.3.1-->

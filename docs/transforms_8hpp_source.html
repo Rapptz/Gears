@@ -81,7 +81,7 @@ $(document).ready(function(){initNavTree('transforms_8hpp_source.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Groups</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Groups</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -190,10 +190,10 @@ $(document).ready(function(){initNavTree('transforms_8hpp_source.html','');});
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;</div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> String, <span class="keyword">typename</span> OutIt&gt;</div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="keyword">inline</span> OutIt split(<span class="keyword">const</span> String&amp; str, <span class="keyword">const</span> String&amp; sep, OutIt it) {</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="keywordtype">size_t</span> start = 0, <a class="code" href="group__adl.html#ga0749da1b684fb75081f785e580c168c1" title="ADL-enabled end for iterators.">end</a> = 0;</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="keywordflow">while</span>((<a class="code" href="group__adl.html#ga0749da1b684fb75081f785e580c168c1" title="ADL-enabled end for iterators.">end</a> = str.find(sep, start)) != String::npos) {</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        *it++ = str.substr(start, <a class="code" href="group__adl.html#ga0749da1b684fb75081f785e580c168c1" title="ADL-enabled end for iterators.">end</a> - start);</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        start = <a class="code" href="group__adl.html#ga0749da1b684fb75081f785e580c168c1" title="ADL-enabled end for iterators.">end</a> + sep.length();</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="keywordtype">size_t</span> start = 0, <a class="code" href="group__adl.html#ga0749da1b684fb75081f785e580c168c1" title="ADL-enabled end.">end</a> = 0;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="keywordflow">while</span>((<a class="code" href="group__adl.html#ga0749da1b684fb75081f785e580c168c1" title="ADL-enabled end.">end</a> = str.find(sep, start)) != String::npos) {</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        *it++ = str.substr(start, <a class="code" href="group__adl.html#ga0749da1b684fb75081f785e580c168c1" title="ADL-enabled end.">end</a> - start);</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        start = <a class="code" href="group__adl.html#ga0749da1b684fb75081f785e580c168c1" title="ADL-enabled end.">end</a> + sep.length();</div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    }</div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    *it++ = str.substr(start);</div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <span class="keywordflow">return</span> it;</div>

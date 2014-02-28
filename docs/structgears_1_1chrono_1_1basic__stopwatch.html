@@ -65,7 +65,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
       <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
-      <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
       <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
@@ -89,7 +88,7 @@ $(document).ready(function(){initNavTree('structgears_1_1chrono_1_1basic__stopwa
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Groups</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Groups</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -162,7 +161,7 @@ struct gears::chrono::basic_stopwatch&lt; Clock &gt;</h3>
   </dd>
 </dl>
 <p><a class="el" href="structgears_1_1chrono_1_1basic__stopwatch.html" title="A basic stopwatch for measuring time.">basic_stopwatch</a> is a class that defines the most basic stopwatch representation. It's underlying clock can be configured through its template parameter to give you the most flexibility desired.</p>
-<p>For convenience, a typedef named <code>stopwatch</code> is provided that defaults to <code>std::chrono::high_resolution_clock</code>.</p>
+<p>For convenience, a typedef named <code>stopwatch</code> is provided that defaults to <code>std::chrono::high_resolution_clock</code> as the internal clock used.</p>
 <p>Example usage:</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;gears/chrono.hpp&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;thread&gt;</span></div>
@@ -219,7 +218,7 @@ template&lt;typename Duration  = std::chrono::milliseconds&gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Elapsed time since the stopwatch started. </dd></dl>
 
-<p>Definition at line <a class="el" href="stopwatch_8hpp_source.html#l00106">106</a> of file <a class="el" href="stopwatch_8hpp_source.html">stopwatch.hpp</a>.</p>
+<p>Definition at line <a class="el" href="stopwatch_8hpp_source.html#l00107">107</a> of file <a class="el" href="stopwatch_8hpp_source.html">stopwatch.hpp</a>.</p>
 
 </div>
 </div>
@@ -248,7 +247,7 @@ template&lt;typename Clock &gt; </div>
 <p>Resets the stopwatch and pauses it. Meaning that it sets the elapsed time to zero and the post-condition of <a class="el" href="structgears_1_1chrono_1_1basic__stopwatch.html#ad45463cad34dc0e822947bd842b48d16" title="Checks if the stopwatch is running.">is_running</a> is false.</p>
 <dl class="section see"><dt>See Also</dt><dd><a class="el" href="structgears_1_1chrono_1_1basic__stopwatch.html#af469930f80033294029cad8053ac04c5" title="Restarts the stopwatch.">restart</a> </dd></dl>
 
-<p>Definition at line <a class="el" href="stopwatch_8hpp_source.html#l00069">69</a> of file <a class="el" href="stopwatch_8hpp_source.html">stopwatch.hpp</a>.</p>
+<p>Definition at line <a class="el" href="stopwatch_8hpp_source.html#l00071">71</a> of file <a class="el" href="stopwatch_8hpp_source.html">stopwatch.hpp</a>.</p>
 
 </div>
 </div>
@@ -279,7 +278,7 @@ template&lt;typename Clock &gt; </div>
 <div class="line">my_stopwatch.start();</div>
 </div><!-- fragment --><dl class="section see"><dt>See Also</dt><dd><a class="el" href="structgears_1_1chrono_1_1basic__stopwatch.html#a921d145a41fc7135c46d12773ed6714b" title="Resets the stopwatch.">reset</a> </dd></dl>
 
-<p>Definition at line <a class="el" href="stopwatch_8hpp_source.html#l00087">87</a> of file <a class="el" href="stopwatch_8hpp_source.html">stopwatch.hpp</a>.</p>
+<p>Definition at line <a class="el" href="stopwatch_8hpp_source.html#l00089">89</a> of file <a class="el" href="stopwatch_8hpp_source.html">stopwatch.hpp</a>.</p>
 
 </div>
 </div>

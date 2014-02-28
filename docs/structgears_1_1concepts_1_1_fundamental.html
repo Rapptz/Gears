@@ -65,7 +65,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
       <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
-      <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
       <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
@@ -89,7 +88,7 @@ $(document).ready(function(){initNavTree('structgears_1_1concepts_1_1_fundamenta
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Groups</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Groups</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -100,23 +99,33 @@ $(document).ready(function(){initNavTree('structgears_1_1concepts_1_1_fundamenta
 
 <div class="header">
   <div class="headertitle">
-<div class="title">gears::concepts::Fundamental&lt; T &gt; Struct Template Reference</div>  </div>
+<div class="title">gears::concepts::Fundamental&lt; T &gt; Struct Template Reference<div class="ingroups"><a class="el" href="group__basic__concepts.html">Basic concepts submodule</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="dynheader">
-Inheritance diagram for gears::concepts::Fundamental&lt; T &gt;:</div>
-<div class="dyncontent">
- <div class="center">
-  <img src="structgears_1_1concepts_1_1_fundamental.png" usemap="#gears::concepts::Fundamental&lt; T &gt;_map" alt=""/>
-  <map id="gears::concepts::Fundamental&lt; T &gt;_map" name="gears::concepts::Fundamental&lt; T &gt;_map">
-</map>
- </div></div>
+
+<p>Checks if a type is a fundamental type.  
+ <a href="structgears_1_1concepts_1_1_fundamental.html#details">More...</a></p>
+
+<p>Inherits is_fundamental&lt; T &gt;.</p>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><h3>template&lt;typename T&gt;<br/>
 struct gears::concepts::Fundamental&lt; T &gt;</h3>
 
+<p>A Unary concept that checks if a type is fundamental.</p>
+<p>A fundamental type is one that is either:</p>
+<ul>
+<li><a class="el" href="structgears_1_1concepts_1_1_arithmetic.html" title="Checks if a type is floating point or integral.">Arithmetic</a></li>
+<li><code>void</code></li>
+<li><code>nullptr_t</code></li>
+</ul>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>Type to check </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p>Definition at line <a class="el" href="basic_8hpp_source.html#l00113">113</a> of file <a class="el" href="basic_8hpp_source.html">basic.hpp</a>.</p>
+<p>Definition at line <a class="el" href="basic_8hpp_source.html#l00439">439</a> of file <a class="el" href="basic_8hpp_source.html">basic.hpp</a>.</p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.3.1-->

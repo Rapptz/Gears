@@ -81,7 +81,7 @@ $(document).ready(function(){initNavTree('curry_8hpp_source.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Groups</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Groups</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -166,13 +166,13 @@ $(document).ready(function(){initNavTree('curry_8hpp_source.html','');});
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;} <span class="comment">// detail</span></div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> Function, <span class="keyword">typename</span>... Args&gt;</div>
-<div class="line"><a name="l00072"></a><span class="lineno"><a class="code" href="structgears_1_1functional_1_1curry__type.html">   72</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structgears_1_1functional_1_1curry__type.html">curry_type</a> {</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="keyword">struct </span>curry_type {</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keyword">using</span> tuple_type = std::tuple&lt;Args...&gt;;</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="keyword">private</span>:</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    Function func;</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    tuple_type args;</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    constexpr <a class="code" href="structgears_1_1functional_1_1curry__type.html">curry_type</a>(Function&amp;&amp; f, tuple_type n) noexcept: func(std::forward&lt;Function&gt;(f)), args(std::move(n)) {}</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    constexpr curry_type(Function&amp;&amp; f, tuple_type n) noexcept: func(std::forward&lt;Function&gt;(f)), args(std::move(n)) {}</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keyword">template</span>&lt;<span class="keyword">typename</span>... T&gt;</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    constexpr <span class="keyword">auto</span> operator()(T&amp;&amp;... t) -&gt; decltype(detail::invoke_tup(func, std::tuple_cat(std::move(args), std::make_tuple(t...)))) {</div>
@@ -180,14 +180,14 @@ $(document).ready(function(){initNavTree('curry_8hpp_source.html','');});
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    }</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;};</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> Function, <span class="keyword">typename</span>... Args&gt;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;constexpr <a class="code" href="structgears_1_1functional_1_1curry__type.html">curry_type&lt;Function, detail::SpecialDecay&lt;Args&gt;</a>...&gt; curry(Function&amp;&amp; f, Args&amp;&amp;... args) {</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="keywordflow">return</span> { std::forward&lt;Function&gt;(f), std::make_tuple(args...) };</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;}</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;} <span class="comment">// functional</span></div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;} <span class="comment">// gears</span></div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="preprocessor">#endif // GEARS_FUNCTIONAL_CURRY_HPP</span></div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> Function, <span class="keyword">typename</span>... Args&gt;</div>
+<div class="line"><a name="l00116"></a><span class="lineno"><a class="code" href="group__functional.html#ga39169e3b53ed3bed41475b7bf7dafc6f">  116</a></span>&#160;constexpr curry_type&lt;Function, detail::SpecialDecay&lt;Args&gt;...&gt; <a class="code" href="group__functional.html#ga39169e3b53ed3bed41475b7bf7dafc6f" title="Applies function currying to functions.">curry</a>(Function&amp;&amp; f, Args&amp;&amp;... args) {</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    <span class="keywordflow">return</span> { std::forward&lt;Function&gt;(f), std::make_tuple(args...) };</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;}</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;} <span class="comment">// functional</span></div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;} <span class="comment">// gears</span></div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="preprocessor">#endif // GEARS_FUNCTIONAL_CURRY_HPP</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.3.1-->

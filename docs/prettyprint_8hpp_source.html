@@ -81,7 +81,7 @@ $(document).ready(function(){initNavTree('prettyprint_8hpp_source.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Groups</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Groups</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -160,15 +160,15 @@ $(document).ready(function(){initNavTree('prettyprint_8hpp_source.html','');});
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> Elem, <span class="keyword">typename</span> Traits, <span class="keyword">typename</span> Tuple, meta::EnableIf&lt;detail::has_get&lt;Tuple&gt;, meta::Not&lt;detail::has_begin_end&lt;Tuple&gt;&gt;&gt;...&gt;</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="keyword">inline</span> <span class="keyword">auto</span> operator&lt;&lt;(std::basic_ostream&lt;Elem, Traits&gt;&amp; out, <span class="keyword">const</span> Tuple&amp; t) -&gt; decltype(out) {</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    out &lt;&lt; <span class="stringliteral">&quot;(&quot;</span>;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    detail::print_expander(out, t, meta::build_indices&lt;<a class="code" href="structstd_1_1tuple__size.html">std::tuple_size&lt;Tuple&gt;::value</a>&gt;{});</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    detail::print_expander(out, t, meta::build_indices&lt;std::tuple_size&lt;Tuple&gt;::value&gt;{});</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    out &lt;&lt; <span class="stringliteral">&quot;)&quot;</span>;</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordflow">return</span> out;</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;}</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> Elem, <span class="keyword">typename</span> Traits, <span class="keyword">typename</span> Cont, meta::EnableIf&lt;detail::has_begin_end&lt;Cont&gt;&gt;...&gt;</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="keyword">inline</span> <span class="keyword">auto</span> operator&lt;&lt;(std::basic_ostream&lt;Elem, Traits&gt;&amp; out, <span class="keyword">const</span> Cont&amp; cont) -&gt; decltype(out) {</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keyword">auto</span> first = <a class="code" href="group__adl.html#gae45d09ea0dd3b0d25a2c1446a75ae86e" title="ADL-enabled begin for iterators.">adl::begin</a>(cont);</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keyword">auto</span> last = <a class="code" href="group__adl.html#ga0749da1b684fb75081f785e580c168c1" title="ADL-enabled end for iterators.">adl::end</a>(cont);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keyword">auto</span> first = <a class="code" href="group__adl.html#gae45d09ea0dd3b0d25a2c1446a75ae86e" title="ADL-enabled begin.">adl::begin</a>(cont);</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keyword">auto</span> last = <a class="code" href="group__adl.html#ga0749da1b684fb75081f785e580c168c1" title="ADL-enabled end.">adl::end</a>(cont);</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keywordflow">if</span>(first == last) {</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        out &lt;&lt; <span class="stringliteral">&quot;[]&quot;</span>;</div>

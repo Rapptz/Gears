@@ -81,7 +81,7 @@ $(document).ready(function(){initNavTree('group__adl.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Groups</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Groups</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -105,15 +105,15 @@ $(document).ready(function(){initNavTree('group__adl.html','');});
 Functions</h2></td></tr>
 <tr class="memitem:ga6f49a37a364444c9fd177626a33f563a"><td class="memTemplParams" colspan="2">template&lt;size_t N, typename T &gt; </td></tr>
 <tr class="memitem:ga6f49a37a364444c9fd177626a33f563a"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__adl.html#ga6f49a37a364444c9fd177626a33f563a">gears::adl::get</a> (T &amp;&amp;t) -&gt; decltype(detail::adl_get&lt; N &gt;(std::declval&lt; T &gt;()))</td></tr>
-<tr class="memdesc:ga6f49a37a364444c9fd177626a33f563a"><td class="mdescLeft">&#160;</td><td class="mdescRight">ADL enabled get function for tuple-like interfaces.  <a href="#ga6f49a37a364444c9fd177626a33f563a">More...</a><br/></td></tr>
+<tr class="memdesc:ga6f49a37a364444c9fd177626a33f563a"><td class="mdescLeft">&#160;</td><td class="mdescRight">ADL enabled get function for tuple-like classes.  <a href="#ga6f49a37a364444c9fd177626a33f563a">More...</a><br/></td></tr>
 <tr class="separator:ga6f49a37a364444c9fd177626a33f563a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gae45d09ea0dd3b0d25a2c1446a75ae86e"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:gae45d09ea0dd3b0d25a2c1446a75ae86e"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__adl.html#gae45d09ea0dd3b0d25a2c1446a75ae86e">gears::adl::begin</a> (T &amp;&amp;t) -&gt; decltype(detail::adl_begin(std::declval&lt; T &gt;()))</td></tr>
-<tr class="memdesc:gae45d09ea0dd3b0d25a2c1446a75ae86e"><td class="mdescLeft">&#160;</td><td class="mdescRight">ADL-enabled begin for iterators.  <a href="#gae45d09ea0dd3b0d25a2c1446a75ae86e">More...</a><br/></td></tr>
+<tr class="memdesc:gae45d09ea0dd3b0d25a2c1446a75ae86e"><td class="mdescLeft">&#160;</td><td class="mdescRight">ADL-enabled begin.  <a href="#gae45d09ea0dd3b0d25a2c1446a75ae86e">More...</a><br/></td></tr>
 <tr class="separator:gae45d09ea0dd3b0d25a2c1446a75ae86e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga0749da1b684fb75081f785e580c168c1"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:ga0749da1b684fb75081f785e580c168c1"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__adl.html#ga0749da1b684fb75081f785e580c168c1">gears::adl::end</a> (T &amp;&amp;t) -&gt; decltype(detail::adl_end(std::declval&lt; T &gt;()))</td></tr>
-<tr class="memdesc:ga0749da1b684fb75081f785e580c168c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">ADL-enabled end for iterators.  <a href="#ga0749da1b684fb75081f785e580c168c1">More...</a><br/></td></tr>
+<tr class="memdesc:ga0749da1b684fb75081f785e580c168c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">ADL-enabled end.  <a href="#ga0749da1b684fb75081f785e580c168c1">More...</a><br/></td></tr>
 <tr class="separator:ga0749da1b684fb75081f785e580c168c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gafe9c69f1aec1503f154338c7b5da7db9"><td class="memTemplParams" colspan="2">template&lt;typename T , typename U , typename R  = decltype(detail::adl_swap(std::declval&lt;T&gt;(), std::declval&lt;U&gt;()))&gt; </td></tr>
 <tr class="memitem:gafe9c69f1aec1503f154338c7b5da7db9"><td class="memTemplItemLeft" align="right" valign="top">constexpr R&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__adl.html#gafe9c69f1aec1503f154338c7b5da7db9">gears::adl::swap</a> (T &amp;&amp;t, U &amp;&amp;u) noexcept(detail::adl_swap(std::declval&lt; T &gt;(), std::declval&lt; U &gt;()))</td></tr>
@@ -167,16 +167,16 @@ template&lt;typename T &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Allows for retrieval of the <code>begin</code> iterator with ADL. Equivalent to doing the following:</p>
-<div class="fragment"><div class="line"><span class="keyword">using</span> <a class="code" href="group__adl.html#gae45d09ea0dd3b0d25a2c1446a75ae86e" title="ADL-enabled begin for iterators.">std::begin</a>;</div>
-<div class="line"><a class="code" href="group__adl.html#gae45d09ea0dd3b0d25a2c1446a75ae86e" title="ADL-enabled begin for iterators.">begin</a>(t);</div>
+<p>Allows for retrieval of <code>std::begin</code> and specialisations of <code>begin</code> through argument dependent lookup. Equivalent to doing the following:</p>
+<div class="fragment"><div class="line"><span class="keyword">using</span> <a class="code" href="group__adl.html#gae45d09ea0dd3b0d25a2c1446a75ae86e" title="ADL-enabled begin.">std::begin</a>;</div>
+<div class="line"><a class="code" href="group__adl.html#gae45d09ea0dd3b0d25a2c1446a75ae86e" title="ADL-enabled begin.">begin</a>(t);</div>
 </div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">t</td><td>Container or array to retrieve iterator from. </td></tr>
+    <tr><td class="paramname">t</td><td>Object with <code>begin</code> interface </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>automatically deduced return value of <code>begin(t)</code>. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>automatically deduced return value of <code>begin(t)</code> </dd></dl>
 
 <p>Definition at line <a class="el" href="adl_2iterator_8hpp_source.html#l00061">61</a> of file <a class="el" href="adl_2iterator_8hpp_source.html">adl/iterator.hpp</a>.</p>
 
@@ -197,16 +197,16 @@ template&lt;typename T &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Allows for retrieval of the <code>end</code> iterator with ADL. Equivalent to doing the following:</p>
-<div class="fragment"><div class="line"><span class="keyword">using</span> <a class="code" href="group__adl.html#ga0749da1b684fb75081f785e580c168c1" title="ADL-enabled end for iterators.">std::end</a>;</div>
-<div class="line"><a class="code" href="group__adl.html#ga0749da1b684fb75081f785e580c168c1" title="ADL-enabled end for iterators.">end</a>(t);</div>
+<p>Allows for retrieval of <code>std::end</code> and specialisations of <code>end</code> through argument dependent lookup. Equivalent to doing the following:</p>
+<div class="fragment"><div class="line"><span class="keyword">using</span> <a class="code" href="group__adl.html#ga0749da1b684fb75081f785e580c168c1" title="ADL-enabled end.">std::end</a>;</div>
+<div class="line"><a class="code" href="group__adl.html#ga0749da1b684fb75081f785e580c168c1" title="ADL-enabled end.">end</a>(t);</div>
 </div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">t</td><td>Container or array to retrieve iterator from. </td></tr>
+    <tr><td class="paramname">t</td><td>Object with <code>end</code> interface </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>automatically deduced return value of <code>end(t)</code>. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>automatically deduced return value of <code>end(t)</code> </dd></dl>
 
 <p>Definition at line <a class="el" href="adl_2iterator_8hpp_source.html#l00081">81</a> of file <a class="el" href="adl_2iterator_8hpp_source.html">adl/iterator.hpp</a>.</p>
 
@@ -227,24 +227,24 @@ template&lt;size_t N, typename T &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Allows for argument dependent lookup of <code>std::get</code>-like interfaces. Equivalent to doing the following:</p>
-<div class="fragment"><div class="line"><span class="keyword">using</span> <a class="code" href="group__adl.html#ga6f49a37a364444c9fd177626a33f563a" title="ADL enabled get function for tuple-like interfaces.">std::get</a>;</div>
+<p>Allows for argument dependent lookup of <code>std::get</code> and overloaded specialisations of <code>get</code>.</p>
+<div class="fragment"><div class="line"><span class="keyword">using</span> <a class="code" href="group__adl.html#ga6f49a37a364444c9fd177626a33f563a" title="ADL enabled get function for tuple-like classes.">std::get</a>;</div>
 <div class="line">get&lt;N&gt;(t);</div>
 </div><!-- fragment --><dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
-    <tr><td class="paramname">N</td><td>Index to get </td></tr>
+    <tr><td class="paramname">N</td><td>Index to retrieve </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">t</td><td>Tuple-like class to receive index from </td></tr>
+    <tr><td class="paramname">t</td><td>Tuple-like class to retrieve index from </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>automatically deduced return value of <code>get&lt;N&gt;(t)</code> </dd></dl>
 
-<p>Definition at line <a class="el" href="get_8hpp_source.html#l00057">57</a> of file <a class="el" href="get_8hpp_source.html">get.hpp</a>.</p>
+<p>Definition at line <a class="el" href="get_8hpp_source.html#l00056">56</a> of file <a class="el" href="get_8hpp_source.html">get.hpp</a>.</p>
 
 </div>
 </div>
@@ -281,19 +281,19 @@ template&lt;typename T , typename U , typename R  = decltype(detail::adl_swap(st
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Allows for ADL-enabled <code>swap</code>. Equivalent to doing the following:</p>
+<p>Allows for ADL of <code>std::swap</code>. Equivalent to the following:</p>
 <div class="fragment"><div class="line"><span class="keyword">using</span> <a class="code" href="group__adl.html#gafe9c69f1aec1503f154338c7b5da7db9" title="ADL-enabled swap.">std::swap</a>;</div>
-<div class="line"><a class="code" href="group__adl.html#gafe9c69f1aec1503f154338c7b5da7db9" title="ADL-enabled swap.">swap</a>(x, y);</div>
+<div class="line"><a class="code" href="group__adl.html#gafe9c69f1aec1503f154338c7b5da7db9" title="ADL-enabled swap.">swap</a>(t, u);</div>
 </div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">t</td><td>First element to swap. </td></tr>
-    <tr><td class="paramname">u</td><td>Second element to swap. </td></tr>
+    <tr><td class="paramname">t</td><td>First element to swap </td></tr>
+    <tr><td class="paramname">u</td><td>Second element to swap </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>automatically deduced return value of <code>swap(t, u)</code>. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>automatically deduced return value of <code>swap(t, u)</code> </dd></dl>
 
-<p>Definition at line <a class="el" href="swap_8hpp_source.html#l00052">52</a> of file <a class="el" href="swap_8hpp_source.html">swap.hpp</a>.</p>
+<p>Definition at line <a class="el" href="swap_8hpp_source.html#l00051">51</a> of file <a class="el" href="swap_8hpp_source.html">swap.hpp</a>.</p>
 
 </div>
 </div>

@@ -81,7 +81,7 @@ $(document).ready(function(){initNavTree('meta_2meta_8hpp_source.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Groups</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Groups</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -139,23 +139,23 @@ $(document).ready(function(){initNavTree('meta_2meta_8hpp_source.html','');});
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="keyword">template</span>&lt;<span class="keywordtype">int</span> i&gt;</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keyword">using</span> Integer = Const&lt;int,i&gt;;</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
-<div class="line"><a name="l00045"></a><span class="lineno"><a class="code" href="structgears_1_1meta_1_1deduced.html">   45</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structgears_1_1meta_1_1deduced.html">deduced</a> {};</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="keyword">struct </span>deduced {};</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="keyword">using</span> is_deduced = std::is_same&lt;T, deduced&gt;;</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00051"></a><span class="lineno"><a class="code" href="structgears_1_1meta_1_1identity.html">   51</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structgears_1_1meta_1_1identity.html">identity</a> {</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="keyword">struct </span>identity {</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keyword">using</span> type = T;</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;};</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span>...&gt;</div>
-<div class="line"><a name="l00056"></a><span class="lineno"><a class="code" href="structgears_1_1meta_1_1void__.html">   56</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structgears_1_1meta_1_1void__.html">void_</a> { </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="keyword">struct </span>void_ { </div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keyword">using</span> type = void;</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;};</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span>... T&gt;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="keyword">using</span> Void = Type&lt;<a class="code" href="structgears_1_1meta_1_1void__.html">void_</a>&lt;T...&gt;&gt;;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="keyword">using</span> Void = Type&lt;void_&lt;T...&gt;&gt;;</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="keyword">template</span>&lt;<span class="keywordtype">bool</span> I&gt;</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="keyword">using</span> Bool = Const&lt;bool, I&gt;;</div>
@@ -170,22 +170,22 @@ $(document).ready(function(){initNavTree('meta_2meta_8hpp_source.html','');});
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="keyword">using</span> Not = Bool&lt;!T::value&gt;;</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span>... Args&gt;</div>
-<div class="line"><a name="l00076"></a><span class="lineno"><a class="code" href="structgears_1_1meta_1_1_any.html">   76</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structgears_1_1meta_1_1_any.html">Any</a> : Bool&lt;false&gt; {};</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="keyword">struct </span>Any : Bool&lt;false&gt; {};</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span>... Args&gt;</div>
-<div class="line"><a name="l00079"></a><span class="lineno"><a class="code" href="structgears_1_1meta_1_1_any_3_01_t_00_01_args_8_8_8_4.html">   79</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structgears_1_1meta_1_1_any.html">Any</a>&lt;T, Args...&gt; : If&lt;T, Bool&lt;true&gt;, Any&lt;Args...&gt;&gt; {};</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="keyword">struct </span>Any&lt;T, Args...&gt; : If&lt;T, Bool&lt;true&gt;, Any&lt;Args...&gt;&gt; {};</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span>... Args&gt;</div>
-<div class="line"><a name="l00082"></a><span class="lineno"><a class="code" href="structgears_1_1meta_1_1_all.html">   82</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structgears_1_1meta_1_1_all.html">All</a> : Bool&lt;true&gt; {};</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="keyword">struct </span>All : Bool&lt;true&gt; {};</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span>... Args&gt;</div>
-<div class="line"><a name="l00085"></a><span class="lineno"><a class="code" href="structgears_1_1meta_1_1_all_3_01_t_00_01_args_8_8_8_4.html">   85</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structgears_1_1meta_1_1_all.html">All</a>&lt;T, Args...&gt; : If&lt;T, All&lt;Args...&gt;, Bool&lt;false&gt;&gt; {};</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="keyword">struct </span>All&lt;T, Args...&gt; : If&lt;T, All&lt;Args...&gt;, Bool&lt;false&gt;&gt; {};</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> Signature, <span class="keyword">typename</span> Anon = <span class="keywordtype">void</span>&gt;</div>
-<div class="line"><a name="l00088"></a><span class="lineno"><a class="code" href="structgears_1_1meta_1_1result__of__impl.html">   88</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structgears_1_1meta_1_1result__of__impl.html">result_of_impl</a> {};</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="keyword">struct </span>result_of_impl {};</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> Function, <span class="keyword">typename</span>... Args&gt;</div>
-<div class="line"><a name="l00091"></a><span class="lineno"><a class="code" href="structgears_1_1meta_1_1result__of__impl_3_01_function_07_args_8_8_8_08_00_01_void_3_01decltype_01a7d35d95d41088a820c036bb592e8ca.html">   91</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structgears_1_1meta_1_1result__of__impl.html">result_of_impl</a>&lt;Function(Args...), Void&lt;decltype(std::declval&lt;Function&gt;()(std::declval&lt;Args&gt;()...))&gt;&gt; {</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="keyword">struct </span>result_of_impl&lt;Function(Args...), Void&lt;decltype(std::declval&lt;Function&gt;()(std::declval&lt;Args&gt;()...))&gt;&gt; {</div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="keyword">using</span> type = decltype(std::declval&lt;Function&gt;()(std::declval&lt;Args&gt;()...));</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;};</div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
@@ -193,10 +193,10 @@ $(document).ready(function(){initNavTree('meta_2meta_8hpp_source.html','');});
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="keyword">using</span> ResultOf = Type&lt;result_of_impl&lt;Signature&gt;&gt;;</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;</div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00099"></a><span class="lineno"><a class="code" href="structgears_1_1meta_1_1class__of.html">   99</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structgears_1_1meta_1_1class__of.html">class_of</a> {};</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="keyword">struct </span>class_of {};</div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;</div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> Signature, <span class="keyword">typename</span> Class&gt;</div>
-<div class="line"><a name="l00102"></a><span class="lineno"><a class="code" href="structgears_1_1meta_1_1class__of_3_01_signature_01_class_1_1_5_01_4.html">  102</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structgears_1_1meta_1_1class__of.html">class_of</a>&lt;Signature Class::*&gt; : <a class="code" href="structgears_1_1meta_1_1identity.html">identity</a>&lt;Class&gt; {};</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="keyword">struct </span>class_of&lt;Signature Class::*&gt; : identity&lt;Class&gt; {};</div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;</div>
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="keyword">using</span> ClassOf = Type&lt;class_of&lt;T&gt;&gt;;</div>

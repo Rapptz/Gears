@@ -81,7 +81,7 @@ $(document).ready(function(){initNavTree('function_8hpp_source.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Groups</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Groups</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -179,18 +179,18 @@ $(document).ready(function(){initNavTree('function_8hpp_source.html','');});
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;};</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;} <span class="comment">// detail</span></div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span> Signature&gt;</div>
-<div class="line"><a name="l00086"></a><span class="lineno"><a class="code" href="structgears_1_1concepts_1_1_callable.html">   86</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structgears_1_1concepts_1_1_callable.html">Callable</a> : detail::is_callable&lt;T, Signature&gt; {};</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00089"></a><span class="lineno"><a class="code" href="structgears_1_1concepts_1_1_generator.html">   89</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structgears_1_1concepts_1_1_generator.html">Generator</a> : TraitOf&lt;detail::is_generator, T&gt; {};</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00092"></a><span class="lineno"><a class="code" href="structgears_1_1concepts_1_1_function.html">   92</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structgears_1_1concepts_1_1_function.html">Function</a> : std::integral_constant&lt;bool, detail::is_function_impl&lt;T&gt;::value&gt; {};</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;} <span class="comment">// concepts</span></div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;} <span class="comment">// gears</span></div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="preprocessor">#endif // GEARS_CONCEPTS_FUNCTION_HPP</span></div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span> Signature&gt;</div>
+<div class="line"><a name="l00109"></a><span class="lineno"><a class="code" href="structgears_1_1concepts_1_1_callable.html">  109</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structgears_1_1concepts_1_1_callable.html" title="Checks if a function is callable with a certain signature.">Callable</a> : detail::is_callable&lt;T, Signature&gt; {};</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00121"></a><span class="lineno"><a class="code" href="structgears_1_1concepts_1_1_generator.html">  121</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structgears_1_1concepts_1_1_generator.html" title="Checks if a function returns nothing.">Generator</a> : TraitOf&lt;detail::is_generator, T&gt; {};</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00132"></a><span class="lineno"><a class="code" href="structgears_1_1concepts_1_1_function.html">  132</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structgears_1_1concepts_1_1_function.html" title="Checks if a type can be called in general.">Function</a> : std::integral_constant&lt;bool, detail::is_function_impl&lt;typename std::remove_pointer&lt;T&gt;::type&gt;::value&gt; {};</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;} <span class="comment">// concepts</span></div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;} <span class="comment">// gears</span></div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;<span class="preprocessor">#endif // GEARS_CONCEPTS_FUNCTION_HPP</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.3.1-->

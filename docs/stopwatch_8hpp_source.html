@@ -81,7 +81,7 @@ $(document).ready(function(){initNavTree('stopwatch_8hpp_source.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Groups</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Groups</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -137,47 +137,46 @@ $(document).ready(function(){initNavTree('stopwatch_8hpp_source.html','');});
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="keyword">public</span>:</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <a class="code" href="structgears_1_1chrono_1_1basic__stopwatch.html" title="A basic stopwatch for measuring time.">basic_stopwatch</a>() = <span class="keywordflow">default</span>;</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
-<div class="line"><a name="l00046"></a><span class="lineno"><a class="code" href="structgears_1_1chrono_1_1basic__stopwatch.html#a552f74e2f6d12f9f87c35987d8985902">   46</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="structgears_1_1chrono_1_1basic__stopwatch.html#a552f74e2f6d12f9f87c35987d8985902" title="Starts the stopwatch.">start</a>() {</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        now = Clock::now();</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        running = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    }</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
-<div class="line"><a name="l00054"></a><span class="lineno"><a class="code" href="structgears_1_1chrono_1_1basic__stopwatch.html#ab6d9c72d67329952a48c79c7246f023f">   54</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="structgears_1_1chrono_1_1basic__stopwatch.html#ab6d9c72d67329952a48c79c7246f023f" title="Stops the stopwatch.">stop</a>() {</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <span class="keywordflow">if</span>(running) {</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            elapsed_time += Clock::now() - now;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            running = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        }</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    }</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
-<div class="line"><a name="l00069"></a><span class="lineno"><a class="code" href="structgears_1_1chrono_1_1basic__stopwatch.html#a921d145a41fc7135c46d12773ed6714b">   69</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="structgears_1_1chrono_1_1basic__stopwatch.html#a921d145a41fc7135c46d12773ed6714b" title="Resets the stopwatch.">reset</a>() {</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        elapsed_time = duration::zero();</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        running = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    }</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
-<div class="line"><a name="l00087"></a><span class="lineno"><a class="code" href="structgears_1_1chrono_1_1basic__stopwatch.html#af469930f80033294029cad8053ac04c5">   87</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="structgears_1_1chrono_1_1basic__stopwatch.html#af469930f80033294029cad8053ac04c5" title="Restarts the stopwatch.">restart</a>() {</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        elapsed_time = duration::zero();</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        now = Clock::now();</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        running = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    }</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> Duration = std::chrono::milliseconds&gt;</div>
-<div class="line"><a name="l00106"></a><span class="lineno"><a class="code" href="structgears_1_1chrono_1_1basic__stopwatch.html#a8a221c5610f4825bd1ce4bef493ef731">  106</a></span>&#160;    rep <a class="code" href="structgears_1_1chrono_1_1basic__stopwatch.html#a8a221c5610f4825bd1ce4bef493ef731" title="Returns the elapsed time.">elapsed</a>() {</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        <span class="keywordflow">if</span>(running)</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            <span class="keywordflow">return</span> std::chrono::duration_cast&lt;Duration&gt;(elapsed_time + Clock::now() - now).count();</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        <span class="keywordflow">return</span> std::chrono::duration_cast&lt;Duration&gt;(elapsed_time).count();</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    }</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;</div>
-<div class="line"><a name="l00115"></a><span class="lineno"><a class="code" href="structgears_1_1chrono_1_1basic__stopwatch.html#ad45463cad34dc0e822947bd842b48d16">  115</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="structgears_1_1chrono_1_1basic__stopwatch.html#ad45463cad34dc0e822947bd842b48d16" title="Checks if the stopwatch is running.">is_running</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        <span class="keywordflow">return</span> running;</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    }</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;};</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="keyword">using</span> stopwatch = basic_stopwatch&lt;std::chrono::high_resolution_clock&gt;;</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;} <span class="comment">// chrono</span></div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;} <span class="comment">// gears</span></div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;<span class="preprocessor">#endif // GEARS_CHRONO_STOPWATCH_HPP</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="code" href="structgears_1_1chrono_1_1basic__stopwatch.html#a552f74e2f6d12f9f87c35987d8985902">   47</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="structgears_1_1chrono_1_1basic__stopwatch.html#a552f74e2f6d12f9f87c35987d8985902" title="Starts the stopwatch.">start</a>() {</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        now = Clock::now();</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        running = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    }</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="code" href="structgears_1_1chrono_1_1basic__stopwatch.html#ab6d9c72d67329952a48c79c7246f023f">   56</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="structgears_1_1chrono_1_1basic__stopwatch.html#ab6d9c72d67329952a48c79c7246f023f" title="Stops the stopwatch.">stop</a>() {</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <span class="keywordflow">if</span>(running) {</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            elapsed_time += Clock::now() - now;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            running = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        }</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    }</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
+<div class="line"><a name="l00071"></a><span class="lineno"><a class="code" href="structgears_1_1chrono_1_1basic__stopwatch.html#a921d145a41fc7135c46d12773ed6714b">   71</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="structgears_1_1chrono_1_1basic__stopwatch.html#a921d145a41fc7135c46d12773ed6714b" title="Resets the stopwatch.">reset</a>() {</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        elapsed_time = duration::zero();</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        running = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    }</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
+<div class="line"><a name="l00089"></a><span class="lineno"><a class="code" href="structgears_1_1chrono_1_1basic__stopwatch.html#af469930f80033294029cad8053ac04c5">   89</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="structgears_1_1chrono_1_1basic__stopwatch.html#af469930f80033294029cad8053ac04c5" title="Restarts the stopwatch.">restart</a>() {</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        elapsed_time = duration::zero();</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        now = Clock::now();</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        running = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    }</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> Duration = std::chrono::milliseconds&gt;</div>
+<div class="line"><a name="l00107"></a><span class="lineno"><a class="code" href="structgears_1_1chrono_1_1basic__stopwatch.html#a8a221c5610f4825bd1ce4bef493ef731">  107</a></span>&#160;    rep <a class="code" href="structgears_1_1chrono_1_1basic__stopwatch.html#a8a221c5610f4825bd1ce4bef493ef731" title="Returns the elapsed time.">elapsed</a>() {</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        <span class="keywordflow">if</span>(running)</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;            <span class="keywordflow">return</span> std::chrono::duration_cast&lt;Duration&gt;(elapsed_time + Clock::now() - now).count();</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        <span class="keywordflow">return</span> std::chrono::duration_cast&lt;Duration&gt;(elapsed_time).count();</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    }</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;</div>
+<div class="line"><a name="l00117"></a><span class="lineno"><a class="code" href="structgears_1_1chrono_1_1basic__stopwatch.html#ad45463cad34dc0e822947bd842b48d16">  117</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="structgears_1_1chrono_1_1basic__stopwatch.html#ad45463cad34dc0e822947bd842b48d16" title="Checks if the stopwatch is running.">is_running</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        <span class="keywordflow">return</span> running;</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    }</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;};</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="keyword">using</span> stopwatch = basic_stopwatch&lt;std::chrono::high_resolution_clock&gt;;</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;} <span class="comment">// chrono</span></div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;} <span class="comment">// gears</span></div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;<span class="preprocessor">#endif // GEARS_CHRONO_STOPWATCH_HPP</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.3.1-->

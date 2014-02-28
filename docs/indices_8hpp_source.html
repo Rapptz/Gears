@@ -81,7 +81,7 @@ $(document).ready(function(){initNavTree('indices_8hpp_source.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Groups</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Groups</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -124,13 +124,13 @@ $(document).ready(function(){initNavTree('indices_8hpp_source.html','');});
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">namespace </span>gears {</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">namespace </span>meta {</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">template</span>&lt;<span class="keywordtype">size_t</span>... Ns&gt;</div>
-<div class="line"><a name="l00030"></a><span class="lineno"><a class="code" href="structgears_1_1meta_1_1indices.html">   30</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structgears_1_1meta_1_1indices.html">indices</a> {};</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">struct </span>indices {};</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keyword">template</span>&lt;<span class="keywordtype">size_t</span> N, <span class="keywordtype">size_t</span>... Ns&gt;</div>
-<div class="line"><a name="l00033"></a><span class="lineno"><a class="code" href="structgears_1_1meta_1_1build__indices.html">   33</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structgears_1_1meta_1_1build__indices.html">build_indices</a> : <a class="code" href="structgears_1_1meta_1_1build__indices.html">build_indices</a>&lt;N-1, N-1, Ns...&gt; {};</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">struct </span>build_indices : build_indices&lt;N-1, N-1, Ns...&gt; {};</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keyword">template</span>&lt;<span class="keywordtype">size_t</span>... Ns&gt;</div>
-<div class="line"><a name="l00036"></a><span class="lineno"><a class="code" href="structgears_1_1meta_1_1build__indices_3_010_00_01_ns_8_8_8_4.html">   36</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structgears_1_1meta_1_1build__indices.html">build_indices</a>&lt;0, Ns...&gt; : <a class="code" href="structgears_1_1meta_1_1indices.html">indices</a>&lt;Ns...&gt; {};</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keyword">struct </span>build_indices&lt;0, Ns...&gt; : indices&lt;Ns...&gt; {};</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;} <span class="comment">// meta</span></div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;} <span class="comment">// gears</span></div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>

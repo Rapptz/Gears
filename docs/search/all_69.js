@@ -1,27 +1,9 @@
 var searchData=
 [
-  ['identity',['identity',['../structgears_1_1meta_1_1identity.html',1,'gears::meta']]],
-  ['identity_3c_20class_20_3e',['identity&lt; Class &gt;',['../structgears_1_1meta_1_1identity.html',1,'gears::meta']]],
-  ['in_5fplace_5ft',['in_place_t',['../structgears_1_1utility_1_1in__place__t.html',1,'gears::utility']]],
   ['incrementable',['Incrementable',['../structgears_1_1concepts_1_1_incrementable.html',1,'gears::concepts']]],
-  ['indices',['indices',['../structgears_1_1meta_1_1indices.html',1,'gears::meta']]],
-  ['indices_3c_20ns_2e_2e_2e_3e',['indices&lt; Ns...&gt;',['../structgears_1_1meta_1_1indices.html',1,'gears::meta']]],
   ['inputiterator',['InputIterator',['../structgears_1_1concepts_1_1_input_iterator.html',1,'gears::concepts']]],
   ['integral',['Integral',['../structgears_1_1concepts_1_1_integral.html',1,'gears::concepts']]],
-  ['is_5falnum',['is_alnum',['../structgears_1_1string_1_1is__alnum.html',1,'gears::string']]],
-  ['is_5falpha',['is_alpha',['../structgears_1_1string_1_1is__alpha.html',1,'gears::string']]],
-  ['is_5fany_5fof',['is_any_of',['../structgears_1_1string_1_1is__any__of.html',1,'gears::string']]],
-  ['is_5fcntrl',['is_cntrl',['../structgears_1_1string_1_1is__cntrl.html',1,'gears::string']]],
-  ['is_5fdigit',['is_digit',['../structgears_1_1string_1_1is__digit.html',1,'gears::string']]],
-  ['is_5fgraph',['is_graph',['../structgears_1_1string_1_1is__graph.html',1,'gears::string']]],
-  ['is_5flower',['is_lower',['../structgears_1_1string_1_1is__lower.html',1,'gears::string']]],
-  ['is_5fmaybe',['is_maybe',['../structgears_1_1utility_1_1is__maybe.html',1,'gears::utility']]],
-  ['is_5fmaybe_3c_20maybe_3c_20t_20_3e_20_3e',['is_maybe&lt; maybe&lt; T &gt; &gt;',['../structgears_1_1utility_1_1is__maybe_3_01maybe_3_01_t_01_4_01_4.html',1,'gears::utility']]],
-  ['is_5fprint',['is_print',['../structgears_1_1string_1_1is__print.html',1,'gears::string']]],
-  ['is_5fpunct',['is_punct',['../structgears_1_1string_1_1is__punct.html',1,'gears::string']]],
   ['is_5frunning',['is_running',['../structgears_1_1chrono_1_1basic__stopwatch.html#ad45463cad34dc0e822947bd842b48d16',1,'gears::chrono::basic_stopwatch']]],
-  ['is_5fspace',['is_space',['../structgears_1_1string_1_1is__space.html',1,'gears::string']]],
-  ['is_5fupper',['is_upper',['../structgears_1_1string_1_1is__upper.html',1,'gears::string']]],
-  ['is_5fxdigit',['is_xdigit',['../structgears_1_1string_1_1is__xdigit.html',1,'gears::string']]],
-  ['iterator',['Iterator',['../structgears_1_1concepts_1_1_iterator.html',1,'gears::concepts']]]
+  ['iterator',['Iterator',['../structgears_1_1concepts_1_1_iterator.html',1,'gears::concepts']]],
+  ['iterator_20concepts_20submodule',['Iterator concepts submodule',['../group__iterator__concepts.html',1,'']]]
 ];
