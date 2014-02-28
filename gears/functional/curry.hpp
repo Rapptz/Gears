@@ -83,6 +83,35 @@ public:
     }
 };
 
+/**
+ * @ingroup functional
+ * @brief Applies function currying to functions.
+ * @details Curries functions together. More info on what currying is can be
+ * found [here](http://en.wikipedia.org/wiki/Function_currying). 
+ * 
+ * Example:
+ * 
+ * @code 
+ * #include <gears/functional.hpp>
+ * #include <iostream>
+ * 
+ * namespace fn = gears::functional;
+ * 
+ * int main() {
+ *     auto add_five = fn::curry(fn::plus, 5);
+ *     std::cout << add_five(10) << ' ' << add_five(15);
+ * }
+ * @endcode
+ * 
+ * Output
+ * <pre>
+ * 15 20
+ * </pre>
+ * 
+ * @param f First function to curry
+ * @param args Rest of the functions to curry
+ * @return a function object that calls the curried functions
+ */
 template<typename Function, typename... Args>
 constexpr curry_type<Function, detail::SpecialDecay<Args>...> curry(Function&& f, Args&&... args) {
     return { std::forward<Function>(f), std::make_tuple(args...) };
