@@ -40,8 +40,28 @@ struct odd_type {
     }
 };
 
+/**
+ * @ingroup functional_objects
+ * @brief Function object checking if a numeric type is even.
+ * 
+ * @details Checks if a numeric instance is even by effectively
+ * checking if `t % 2 == 0`.
+ * 
+ * @param t numeric type to check
+ * @return generic result of `t % 2 == 0`, usually bool.
+ */
 constexpr even_type even{};
 
+/**
+ * @ingroup functional_objects
+ * @brief Function object checking if a numeric type is odd.
+ * 
+ * @details Checks if a numeric instance is odd by effectively
+ * checking if `t % 2 != 0`.
+ * 
+ * @param t numeric type to check
+ * @return generic result of `t % 2 != 0`, usually bool.
+ */
 constexpr odd_type odd{};
 } // functional
 } // gears

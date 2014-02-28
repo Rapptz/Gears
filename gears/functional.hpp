@@ -31,4 +31,51 @@
 #include "functional/curry.hpp"
 #include "functional/compose.hpp"
 
+/**
+ * @defgroup functional Functional module
+ * 
+ * @brief Provides support for functional programming.
+ * 
+ * @details This module provides multiple function objects (also called
+ * functors) and operations that make working in a functional manner easier.
+ * 
+ * All of the function objects have a `constexpr` instantiation to allow working
+ * with the other components of the module easier. It also allows the user to use the
+ * function objects just like a regular function.
+ * 
+ * There's also basic support for currying and composition. More support for other
+ * things are coming soon.
+ * 
+ * Example usage:
+ * @code 
+ * #include <gears/functional.hpp>
+ * #include <iostream>
+ *  
+ * namespace fn = gears::functional;
+ * 
+ * int main() {
+ *     auto f = fn::compose(fn::even, fn::plus);
+ *              // equivalent to 
+ *              // fn::even(fn::plus(...))
+ *     std::cout << f(11, 15);
+ * }
+ * @endcode
+ * 
+ * Output:
+ * <pre>
+ * 1
+ * </pre>
+ */
+
+ /**
+ * @defgroup functional_objects Function objects submodule
+ * @ingroup functional
+ * 
+ * @brief Provides function objects to use.
+ * @details A function object is any object for which the function
+ * call operator is defined. An instance of a function object could
+ * be called just like a regular function and could emulate functions
+ * as first class citizens.
+ */
+
 #endif // GEARS_FUNCTIONAL_HPP

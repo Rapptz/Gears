@@ -32,7 +32,9 @@
  * 
  * @details This module is the basic implementation of Concepts
  * that were supposed to appear in C++11 but didn't make it due to
- * time constraints.
+ * time constraints. It doesn't support axioms, concept maps, or any of the
+ * fancy stuff but provides enough syntactic sugar for the SFINAE part of the
+ * concepts proposal.
  * 
  * Concepts are split into two categories, Unary and Binary. A Unary Concept
  * is defined as a concept that takes in a single type. A Binary Concept is a
