@@ -57,7 +57,7 @@ using TraitOf = decltype(Test::template test<Args...>(0));
 enum class concept_checker_t {};
 
 template<typename... Concepts>
-struct require_checker {
+struct requires_checker {
     static_assert(And<Concepts...>(), "Concept Violation");
     using type = concept_checker_t;
 };
@@ -66,21 +66,21 @@ template<typename... Concepts>
 using TrueIf = typename std::enable_if<And<Concepts...>::value, concept_checker_t>::type;
 
 template<typename... Concepts>
-using Require = typename require_checker<Concepts...>::type;
+using Requires = typename requires_checker<Concepts...>::type;
 
 /// @endinternal
 
 /**
  * @ingroup concepts
  * @brief Asserts that a type meets concepts provided.
- * @details The place for `require` is best inside functions rather than classes.
+ * @details The place for `requires` is best inside functions rather than classes.
  * As this function returns a boolean, it isn't possible to put it in its own line
  * for template classes. For example, the following won't work:
  * 
  * @code 
  * template<typename T>
  * struct my_type {
- *     require<T, Assignable>();
+ *     requires<T, Assignable>();
  * };
  * @endcode
  * 
@@ -97,7 +97,7 @@ using Require = typename require_checker<Concepts...>::type;
  * 
  */
 template<typename T, template<typename...> class... Concepts>
-constexpr bool require() {
+constexpr bool requires() {
     static_assert(And<Concepts<T>...>(), "Concept Violation");
     return true;
 }
