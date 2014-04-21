@@ -57,7 +57,7 @@ inline string_find_detail::SizeType<String> find_first_not_of(const String& str,
 
 template<typename String, typename UnaryPredicate>
 inline string_find_detail::SizeType<String> find_last_of(const String& str, UnaryPredicate&& pred) {
-    for(unsigned i = str.size() - 1; i >= 0; --i) {
+    for(unsigned i = str.size() - 1; i != 0; --i) {
         if(pred(str[i]))
             return i;
     }

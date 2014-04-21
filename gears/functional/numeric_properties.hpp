@@ -28,14 +28,14 @@ namespace gears {
 namespace functional {
 struct even_type {
     template<typename T>
-    constexpr auto operator()(T&& t) -> decltype(std::forward<T>(t) % 2 == 0) {
+    constexpr auto operator()(T&& t) const -> decltype(std::forward<T>(t) % 2 == 0) {
         return std::forward<T>(t) % 2 == 0;
     }
 };
 
 struct odd_type {
     template<typename T>
-    constexpr auto operator()(T&& t) -> decltype(std::forward<T>(t) % 2 != 0) {
+    constexpr auto operator()(T&& t) const -> decltype(std::forward<T>(t) % 2 != 0) {
         return std::forward<T>(t) % 2 != 0;
     }
 };

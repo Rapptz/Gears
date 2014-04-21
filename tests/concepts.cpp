@@ -32,29 +32,29 @@ using namespace gears::concepts;
 TEST_CASE("Concepts", "[concepts]") {
     struct x {};
     SECTION("basic", "[concepts-basic]") {
-        REQUIRE((require<x, DefaultConstructible, CopyConstructible, MoveConstructible>()));
-        REQUIRE((require<int, Integral, Signed, Decrementable, Incrementable>()));
-        REQUIRE((require<float, FloatingPoint>()));
-        REQUIRE((require<unsigned int, Unsigned>()));
-        REQUIRE((require<x*, Pointer, NullablePointer, Dereferenceable>()));
-        REQUIRE((require<x&&, RValueReference, Reference>()));
-        REQUIRE((require<x&, LValueReference, LValueSwappable, Reference>()));
-        REQUIRE((require<std::shared_ptr<int>, NullablePointer, MoveConstructible, Dereferenceable>()));
-        REQUIRE((require<std::unique_ptr<int>, ContextualBool, Dereferenceable, MoveConstructible>()));
-        REQUIRE((require<std::vector<int>, Regular, Comparable, LessThanComparable>()));
+        REQUIRE((requires<x, DefaultConstructible, CopyConstructible, MoveConstructible>()));
+        REQUIRE((requires<int, Integral, Signed, Decrementable, Incrementable>()));
+        REQUIRE((requires<float, FloatingPoint>()));
+        REQUIRE((requires<unsigned int, Unsigned>()));
+        REQUIRE((requires<x*, Pointer, NullablePointer, Dereferenceable>()));
+        REQUIRE((requires<x&&, RValueReference, Reference>()));
+        REQUIRE((requires<x&, LValueReference, LValueSwappable, Reference>()));
+        REQUIRE((requires<std::shared_ptr<int>, NullablePointer, MoveConstructible, Dereferenceable>()));
+        REQUIRE((requires<std::unique_ptr<int>, ContextualBool, Dereferenceable, MoveConstructible>()));
+        REQUIRE((requires<std::vector<int>, Regular, Comparable, LessThanComparable>()));
     }
 
     SECTION("container", "[concepts-container]") {
-        REQUIRE((require<std::vector<int>, Container, SequenceContainer, AllocatorAwareContainer, ReversibleContainer>()));
-        REQUIRE((require<std::array<int, 5>, Container, SequenceContainer, ReversibleContainer>()));
-        REQUIRE((require<std::forward_list<int>, Container, SequenceContainer, AllocatorAwareContainer>()));
-        REQUIRE((require<std::set<int>, Container, AssociativeContainer>()));
+        REQUIRE((requires<std::vector<int>, Container, SequenceContainer, AllocatorAwareContainer, ReversibleContainer>()));
+        REQUIRE((requires<std::array<int, 5>, Container, SequenceContainer, ReversibleContainer>()));
+        REQUIRE((requires<std::forward_list<int>, Container, SequenceContainer, AllocatorAwareContainer>()));
+        REQUIRE((requires<std::set<int>, Container, AssociativeContainer>()));
     }
 
     SECTION("iterator", "[concepts-iterator]") {
-        REQUIRE((require<int*, RandomAccessIterator, MutableRandomAccessIterator>()));
-        REQUIRE((require<std::forward_list<int>::iterator, ForwardIterator>()));
-        REQUIRE((require<std::vector<int>::iterator, RandomAccessIterator, MutableRandomAccessIterator>()));
+        REQUIRE((requires<int*, RandomAccessIterator, MutableRandomAccessIterator>()));
+        REQUIRE((requires<std::forward_list<int>::iterator, ForwardIterator>()));
+        REQUIRE((requires<std::vector<int>::iterator, RandomAccessIterator, MutableRandomAccessIterator>()));
     }
 
     SECTION("function", "[concepts-function]") {

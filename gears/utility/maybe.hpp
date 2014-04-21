@@ -137,7 +137,7 @@ public:
         return *this;
     }
 
-    template<typename U, meta::EnableIf<std::is_constructible<T, meta::Decay<U>>, std::is_assignable<T, meta::Decay<U>>>...>
+    template<typename U, meta::EnableIf<std::is_constructible<T, meta::Decay<U>>, std::is_assignable<T, meta::Decay<U>>> = meta::_>
     maybe& operator=(U&& value) {
         if(is_valid()) {
             internal() = std::forward<U>(value);

@@ -27,8 +27,10 @@
 namespace gears {
 namespace meta {
 namespace alias_detail {
-enum class enabler {};
+enum class enabler { _ };
 } // alias_detail
+
+constexpr auto _ = alias_detail::enabler::_;
 
 template<typename... Args>
 using EnableIf = Type<std::enable_if<All<Args...>::value, alias_detail::enabler>>;

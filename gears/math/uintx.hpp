@@ -99,7 +99,7 @@ struct partial_cast<std::string> {
 
 } // detail
 
-template<size_t Bits = -1, typename Digit = unsigned int, typename Digits = unsigned long long>
+template<size_t Bits = static_cast<size_t>(-1), typename Digit = unsigned int, typename Digits = unsigned long long>
 struct uintx {
 private:
     using signed_type = gears::meta::Type<std::make_signed<Digits>>;
@@ -245,7 +245,7 @@ public:
     static constexpr size_t base = detail::pow(10, digits10);
     uintx(): digits(1) {}
 
-    template<typename Integer, gears::meta::EnableIf<std::is_integral<Integer>>...>
+    template<typename Integer, gears::meta::EnableIf<std::is_integral<Integer>> = gears::meta::_>
     uintx(Integer value) {
         value = abs(value);
         do {
@@ -491,10 +491,13 @@ public:
     #endif // GEARS_NO_IOSTREAM
 
     template<typename T, size_t N, typename U, typename V>
-    friend T uintx_cast(const uintx<N, U, V>& obj) {
-        return detail::partial_cast<T>()(obj.digits, uintx<N, U, V>::base);
-    }
+    friend T uintx_cast(const uintx<N, U, V>& obj);
 };
+
+template<typename T, size_t N, typename U, typename V>
+inline T uintx_cast(const uintx<N, U, V>& obj) {
+    return detail::partial_cast<T>()(obj.digits, uintx<N, U, V>::base);
+}
 
 namespace literals {
 template<char... Numbers>

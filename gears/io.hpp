@@ -22,10 +22,10 @@
 #ifndef GEARS_IO_HPP
 #define GEARS_IO_HPP
 
+#include "io/prettyprint.hpp"
 #include "io/print.hpp"
 #include "io/flags.hpp"
 #include "io/sprint.hpp"
 #include "io/lines.hpp"
-#include "io/prettyprint.hpp"
 
 #endif // GEARS_IO_HPP

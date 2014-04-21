@@ -31,15 +31,16 @@
 namespace gears {
 namespace io {
 namespace detail {
-template<size_t N = 0, class Elem, class Traits, typename... Args, meta::EnableIf<meta::Bool<(N >= sizeof...(Args))>>...>
+template<size_t N = 0, class Elem, class Traits, typename... Args, 
+         meta::DisableIf<meta::Bool<(N < sizeof...(Args))>> = meta::_>
 inline void index_printer(std::basic_ostream<Elem,Traits>&, const size_t, const std::tuple<Args...>&) {
     throw std::out_of_range("Index exceeds number of arguments provided");
 }
 
-template<size_t N = 0, class Elem, class Traits, typename... Args, meta::EnableIf<meta::Bool<(N < sizeof...(Args))>>...>
+template<size_t N = 0, class Elem, class Traits, typename... Args, meta::EnableIf<meta::Bool<(N < sizeof...(Args))>> = meta::_>
 inline void index_printer(std::basic_ostream<Elem,Traits>& out, const size_t i, const std::tuple<Args...>& tup) {
     if(i != N) {
-        index_printer<N+1, Elem, Traits, Args...>(out, i, tup);
+        index_printer<N + 1>(out, i, tup);
         return;
     }
     out << adl::get<N>(tup);

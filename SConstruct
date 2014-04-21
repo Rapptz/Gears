@@ -4,10 +4,10 @@
 import os, sys
 
 # Meta data set up here
-compiler_flags = ['-Wall', '-pedantic', '-pedantic-errors', '-Werror', '-std=c++11', '-O2']
+compiler_flags = ['-Wall', '-pedantic', '-pedantic-errors', '-std=c++11', '-O2']
 compiler_path = 'C:/mingw64/'
 include_paths = ['./', 'gears', 'tests']
-ignored_warnings = ['switch']
+ignored_warnings = ['switch', 'mismatched-tags']
 
 travis = True # Determine if we're building on travis-ci
 

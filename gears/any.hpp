@@ -67,9 +67,9 @@ public:
     any() noexcept = default;
     template<typename T>
     any(T&& actual) noexcept: obj(new(std::nothrow) object<Decayed<T>>(std::forward<T>(actual))) {}
-    any(any&)       noexcept = default;
-    any(const any&) noexcept = default;
-    any(any&&)      noexcept = default;
+    any(any&)       = default;
+    any(const any&) = default;
+    any(any&&)      = default;
 
     explicit operator bool() const {
         return static_cast<bool>(obj);
