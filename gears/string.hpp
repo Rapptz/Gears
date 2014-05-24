@@ -28,7 +28,6 @@
 #include "string/replace.hpp"
 #include "string/trim.hpp"
 #include "string/transforms.hpp"
-#include "string/builder.hpp"
 
 /**
  * @defgroup string String module
