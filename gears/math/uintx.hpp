@@ -99,12 +99,45 @@ struct partial_cast<std::string> {
 
 } // detail
 
+/**
+ * @ingroup math
+ * @brief Multi-precision unsigned integer.
+ * @details Multi-precision unsigned integer. Basic usage does not
+ * need to modify the Digit or Digits template parameters, those are there
+ * for memory optimisations on rare cases when necessary. Both types should be
+ * unsigned if provided.
+ *
+ * This multi-precision integer overloads all mathematical operators except the
+ * bitwise operators. The streaming operators `operator<<` and `operator>>` are
+ * provided as well. In order to disable the streaming operators, define
+ * `GEARS_NO_IOSTREAM` before including the file.
+ *
+ * All operations do a "bit-check" after their operations to see if the result
+ * fits in the bits provided. The "bit-check" in reality just truncates the result
+ * to however many digits can fit under `Bits / (sizeof(Digit) * 8)`. It is unclear
+ * if this behaviour should change at the moment although it might in the future.
+ * A Bits parameter of `-1` will avoid the "bit-check".
+ *
+ * There are two user-defined literals provided under `gears::math::literals` help
+ * with the construction of a `uintx<>`. An example is provided below.
+ *
+ * @code
+ * using namespace gears::math::literals; // required
+ *
+ * auto one = 1902748734897198347123_x; // recommended way
+ * auto two = "89374128732819928123"_x; // also provided
+ * @endcode
+ *
+ * @tparam Bits Bits of precision needed. Defaults to -1 for "infinite" precision.
+ * @tparam Digit Underlying type to store its bit properties.
+ * @tparam Digits Underlying type to store its numeric properties.
+ */
 template<size_t Bits = static_cast<size_t>(-1), typename Digit = unsigned int, typename Digits = unsigned long long>
 struct uintx {
 private:
     using signed_type = gears::meta::Type<std::make_signed<Digits>>;
     static constexpr size_t digit_bits = sizeof(Digits) * 8;
-    static constexpr size_t digit_count = Bits == size_t(-1) ? -1 : (Bits / digit_bits);
+    static constexpr size_t digit_count = Bits == size_t(-1) ? size_t(-1) : (Bits / digit_bits);
     static_assert(digit_count, "Invalid bits parameter. Note: Use -1 for \"infinite\" precision");
 
     std::vector<Digits> digits;
@@ -243,8 +276,20 @@ private:
 public:
     static constexpr size_t digits10 = std::numeric_limits<Digit>::digits10;
     static constexpr size_t base = detail::pow(10, digits10);
-    uintx(): digits(1) {}
 
+    /**
+     * @brief Default constructor.
+     * @details Sets uintx to 0.
+     */
+    uintx(): digits(0) {}
+
+    /**
+     * @brief Constructs from an integer.
+     * @details Constructs uintx from an integer type. uintx is then
+     * set to the value provided. No bit-checking is done in this constructor.
+     *
+     * @param value Value to set uintx to.
+     */
     template<typename Integer, gears::meta::EnableIf<std::is_integral<Integer>> = gears::meta::_>
     uintx(Integer value) {
         value = abs(value);
@@ -255,6 +300,16 @@ public:
         while(value > 0);
     }
 
+    /**
+     * @brief Constructs from a string.
+     * @details Constructs uintx from a string type. uintx is then
+     * set to the value provided from the string. If the string contains
+     * letters or special characters, the behaviour is undefined. The string
+     * must not represent a negative integer. Bit-checking is done in this
+     * constructor.
+     *
+     * @param s String to set the uintx to.
+     */
     uintx(const std::string& s) {
         size_t count = digits10 - (s.size() % digits10);
         std::string str(count, '0');
@@ -461,6 +516,11 @@ public:
         return *this;
     }
 
+    /**
+     * @brief Checks if uintx is greater than 0.
+     * @details Checks if uintx is greater than 0.
+     * @return `true` if the internal value is greater than 0, `false` otherwise.
+     */
     explicit operator bool() const noexcept {
         return digits.back() > 0;
     }
@@ -494,6 +554,17 @@ public:
     friend T uintx_cast(const uintx<N, U, V>& obj);
 };
 
+/**
+ * @brief Casts a uintx to another type.
+ * @details Casts a uintx to another type. This type
+ * can be an integer type or a string type. To cast to a string,
+ * `uintx_cast<std::string>` must be used. If the underlying value of
+ * `uintx` does not fit in the type casted, then the behaviour is undefined.
+ *
+ * @param obj Object to cast.
+ * @tparam T Type to cast to.
+ * @return Casted value.
+ */
 template<typename T, size_t N, typename U, typename V>
 inline T uintx_cast(const uintx<N, U, V>& obj) {
     return detail::partial_cast<T>()(obj.digits, uintx<N, U, V>::base);
