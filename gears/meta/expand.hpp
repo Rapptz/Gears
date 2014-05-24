@@ -30,6 +30,27 @@ using expander = int[];
 } // meta
 } // gears
 
+/**
+ * @ingroup meta
+ * @brief Expands a variadic template.
+ * @details Expands a variadic template. This is typically
+ * used in combination with indices and/or void functions.
+ *
+ * Example:
+ *
+ * @code
+ * template<typename T>
+ * void f(T t) {
+ *     std::cout << t << '\n';
+ * }
+ *
+ * template<typename... Args>
+ * void print(Args&&... args) {
+ *     GEARS_EXPAND(f(args));
+ * }
+ * @endcode
+ *
+ */
 #define GEARS_EXPAND(...) void(::gears::meta::expand_detail::expander{((__VA_ARGS__), 0)...})
 
 #endif // GEARS_META_EXPAND_HPP

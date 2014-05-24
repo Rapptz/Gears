@@ -26,9 +26,62 @@
 
 namespace gears {
 namespace meta {
+/**
+ * @ingroup meta
+ * @brief Represents an index sequence.
+ * @details Represents an index sequence. Used for
+ * iterating over template parameters.
+ *
+ * @tparam Ns The indices.
+ */
 template<size_t... Ns>
 struct indices {};
 
+/**
+ * @ingroup meta
+ * @brief Creates an index sequence.
+ * @details Creates an index sequence. `build_indices<N>` would
+ * create `indices<0, 1, 2, ..., N - 1>`.
+ *
+ * Example:
+ *
+ * @code
+ * #include <gears/meta/indices.hpp>
+ * #include <gears/adl/get.hpp>
+ * #include <tuple>
+ * #include <iostream>
+ *
+ * using namespace gears::meta;
+ * namespace adl = gears::adl;
+ *
+ * // turns f(std::tuple<Args...>) to f(Args...)
+ * template<typename Function, typename... Args, size_t... Indices>
+ * auto apply(Function f, const std::tuple<Args...>& t, indices<Indices...>) -> decltype(f(adl::get<Indices>(t)...)) {
+ *     return f(adl::get<Indices>(t)...);
+ * }
+ *
+ * template<typename Function, typename... Args>
+ * auto apply(Function f, const std::tuple<Args...>& t) -> decltype(apply(f, t, build_indices<sizeof...(Args)>{})) {
+ *     return apply(f, t, build_indices<sizeof...(Args)>{});
+ * }
+ *
+ * int f(int x, int y, int z) {
+ *     return x + y + z;
+ * }
+ *
+ * int main() {
+ *     auto args = std::make_tuple(10, 11, 12);
+ *     std::cout << apply(f, args);
+ * }
+ * @endcode
+ *
+ * Output:
+ * <pre>
+ * 33
+ * </pre>
+ *
+ * @tparam N Length of the index.
+ */
 template<size_t N, size_t... Ns>
 struct build_indices : build_indices<N-1, N-1, Ns...> {};
 
