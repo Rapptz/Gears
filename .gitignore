@@ -14,6 +14,7 @@
 
 # Scripts and executables
 *.bat
+*.sh
 *.exe
 
 # Scons stuff
@@ -23,8 +24,8 @@
 bin/*
 obj/*
 
-# Development .cpp file
-dev.cpp
+# Development
+dev*
 
 # CTags
 .tags*
