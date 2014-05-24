@@ -27,6 +27,15 @@
 
 namespace gears {
 namespace string {
+/**
+ * @ingroup string
+ * @brief Turns a string to lower case
+ * @details Turns a string to lower case with the provided locale.
+ *
+ * @param str String to transform to lower case.
+ * @param loc The locale to use.
+ * @return the lower case string
+ */
 template<typename String>
 inline meta::Unqualified<String> to_lower(String str, const std::locale& loc = std::locale()) {
     for(auto&& c : str) {
@@ -35,6 +44,15 @@ inline meta::Unqualified<String> to_lower(String str, const std::locale& loc = s
     return str;
 }
 
+/**
+ * @ingroup string
+ * @brief Turns a string to upper case
+ * @details Turns a string to upper case with the provided locale.
+ *
+ * @param str String to transform to upper case.
+ * @param loc The locale to use.
+ * @return the upper case string
+ */
 template<typename String>
 inline meta::Unqualified<String> to_upper(String str, const std::locale& loc = std::locale()) {
     for(auto&& c : str) {
@@ -43,6 +61,15 @@ inline meta::Unqualified<String> to_upper(String str, const std::locale& loc = s
     return str;
 }
 
+/**
+ * @ingroup string
+ * @brief Checks if a string is all lower case.
+ * @details Checks if a string is all lower case with the provided locale.
+ *
+ * @param str String to search through
+ * @param loc The locale to use.
+ * @return `true` is all characters are lower case, `false` otherwise.
+ */
 template<typename String>
 inline bool is_all_lower(const String& str, const std::locale& loc = std::locale()) {
     for(auto&& c : str) {
@@ -52,6 +79,15 @@ inline bool is_all_lower(const String& str, const std::locale& loc = std::locale
     return true;
 }
 
+/**
+ * @ingroup string
+ * @brief Checks if a string is all upper case.
+ * @details Checks if a string is all upper case with the provided locale.
+ *
+ * @param str String to search through
+ * @param loc The locale to use.
+ * @return `true` is all characters are upper case, `false` otherwise.
+ */
 template<typename String>
 inline bool is_all_upper(const String& str, const std::locale& loc = std::locale()) {
     for(auto&& c : str) {
