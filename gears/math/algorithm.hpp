@@ -26,9 +26,18 @@
 
 namespace gears {
 namespace math {
+/**
+ * @ingroup math
+ * @brief Calculates the nth fibonacci number.
+ * @details Calculates the nth fibonacci number. The internal
+ * implementation does not use the naive recursion.
+ *
+ * @param number Which fibonacci number to calculate.
+ * @return Nth fibonacci number.
+ */
 template<typename T>
 inline T fibonacci(T number) {
-    static_assert(std::is_arithmetic<T>::value, "Type passed must be an integer or floating point type");
+    static_assert(std::is_integral<T>::value, "Type passed must be an integral type");
     if(number < 2)
         return number;
     T a(1);
@@ -44,21 +53,54 @@ inline T fibonacci(T number) {
     return a;
 }
 
+/**
+ * @ingroup math
+ * @brief Calculates the Nth factorial.
+ * @details Calculates the Nth factorial. The internal
+ * implementation uses the naive recursion way of doing it
+ * in order to preserve C++11 `constexpr` status.
+ *
+ * @param number Which factorial to calculate.
+ * @return Nth factorial number.
+ */
 template<typename T>
 constexpr T factorial(const T& number) {
-    static_assert(std::is_arithmetic<T>::value, "Type passed must be an integer or floating point type");
+    static_assert(std::is_integral<T>::value, "Type passed must be an integral type");
     return number == 0 ? 1 : number * factorial(number - 1);
 }
 
+/**
+ * @ingroup math
+ * @brief Calculates the greatest common divisor.
+ * @details Calculates the greatest common divisor between
+ * two numbers. Uses Euclid's algorithm to compute it.
+ *
+ * @param x Left hand side.
+ * @param y Right hand side.
+ * @return The greatest common divisor between the numbers.
+ */
 template<typename T>
 constexpr T gcd(const T& x, const T& y) {
-    static_assert(std::is_arithmetic<T>::value, "Type passed must be an integer or floating point type");
+    static_assert(std::is_integral<T>::value, "Type passed must be an integral type");
     return y == 0 ? x : gcd(y, x % y);
 }
 
+/**
+ * @ingroup math
+ * @brief Calculates the modular exponentiation.
+ * @details Calculates the modular exponentiation. That is,
+ * it computes essentially `(base ** exponent) % modulus` where
+ * `**` denotes exponentiation. All numbers provided must be
+ * positive.
+ *
+ * @param base The base number of the formula.
+ * @param exponent The exponent number of the formula.
+ * @param modulus The modulo number of the formula.
+ * @return `(base ** exponent) % modulus`.
+ */
 template<typename T>
 inline T mod_pow(T base, T exponent, const T& modulus) {
-    static_assert(std::is_arithmetic<T>::value, "Type passed must be an integer or floating point type");
+    static_assert(std::is_integral<T>::value, "Type passed must be an integral type");
     T result(1);
 
     while(exponent) {
@@ -72,9 +114,20 @@ inline T mod_pow(T base, T exponent, const T& modulus) {
     return result;
 }
 
+/**
+ * @ingroup math
+ * @brief Calculates the sum of divisors function.
+ * @details Calculates the sum of divisors of a given integer.
+ * For example, the divisors for the number 12 are 1, 2, 3, 4,
+ * 6, and 12. The sum of these numbers is 28. So
+ * `sum_of_divisors(12)` would return 28.
+ *
+ * @param number The number to take the sum of divisors for.
+ * @return The sum of the number's divisors.
+ */
 template<typename T>
 inline T sum_of_divisors(const T& number) noexcept {
-    static_assert(std::is_arithmetic<T>::value, "Type passed must be an integer or floating point type");
+    static_assert(std::is_integral<T>::value, "Type passed must be an integral type");
     T result(0);
     for(T i(1); i * i <= number; ++i) {
         result += (number % i) ? 0 : ((i * i == number) ? i : i + number / i);
