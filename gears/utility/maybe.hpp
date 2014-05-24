@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 
-// Copyright (c) 2012-2013 Danny Y., Rapptz
+// Copyright (c) 2012-2014 Danny Y., Rapptz
 
 // Permission is hereby granted, free of charge, to any person obtaining a copy of
 // this software and associated documentation files (the "Software"), to deal in
@@ -214,12 +214,12 @@ constexpr bool operator>(const maybe<T>& lhs, const maybe<T>& rhs) {
     return (rhs < lhs);
 }
 
-template<typename T> 
+template<typename T>
 constexpr bool operator<=(const maybe<T>& lhs, const maybe<T>& rhs) {
     return !(rhs < lhs);
 }
 
-template<typename T> 
+template<typename T>
 constexpr bool operator>=(const maybe<T>& lhs, const maybe<T>& rhs) {
     return !(lhs < rhs);
 }
@@ -255,12 +255,12 @@ constexpr bool operator<(nothing_t, const maybe<T>& rhs) noexcept {
     return static_cast<bool>(rhs);
 }
 
-template<typename T> 
+template<typename T>
 constexpr bool operator>(const maybe<T>& lhs, nothing_t) noexcept {
     return static_cast<bool>(lhs);
 }
 
-template<typename T> 
+template<typename T>
 constexpr bool operator>(nothing_t, const maybe<T>&) noexcept {
     return false;
 }
@@ -275,12 +275,12 @@ constexpr bool operator<=(nothing_t, const maybe<T>&) noexcept {
     return true;
 }
 
-template<typename T> 
+template<typename T>
 constexpr bool operator>=(const maybe<T>&, nothing_t) noexcept {
     return true;
 }
 
-template<typename T> 
+template<typename T>
 constexpr bool operator>=(nothing_t, const maybe<T>& rhs) noexcept {
     return !rhs;
 }

@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 
-// Copyright (c) 2012-2013 Danny Y., Rapptz
+// Copyright (c) 2012-2014 Danny Y., Rapptz
 
 // Permission is hereby granted, free of charge, to any person obtaining a copy of
 // this software and associated documentation files (the "Software"), to deal in
@@ -60,7 +60,7 @@ void print_expander(std::basic_ostream<Elem, Traits>& out, const Tuple& t, meta:
 } // detail
 
 namespace operators {
-template<typename Elem, typename Traits, typename Tuple, 
+template<typename Elem, typename Traits, typename Tuple,
          meta::EnableIf<detail::has_get<Tuple>, meta::Not<detail::has_begin_end<Tuple>>> = meta::_>
 inline auto operator<<(std::basic_ostream<Elem, Traits>& out, const Tuple& t) -> decltype(out) {
     out << "(";

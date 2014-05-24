@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 
-// Copyright (c) 2012-2013 Danny Y., Rapptz
+// Copyright (c) 2012-2014 Danny Y., Rapptz
 
 // Permission is hereby granted, free of charge, to any person obtaining a copy of
 // this software and associated documentation files (the "Software"), to deal in
@@ -40,7 +40,7 @@ struct triple {
     triple()              noexcept = default;
     triple(const triple&) noexcept = default;
     triple(triple&&)      noexcept = default;
-    
+
     void swap(triple& t) noexcept(noexcept(std::swap(first, t.first))   &&
                                   noexcept(std::swap(second, t.second)) &&
                                   noexcept(std::swap(third, t.third))) {

@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 
-// Copyright (c) 2012-2013 Danny Y., Rapptz
+// Copyright (c) 2012-2014 Danny Y., Rapptz
 
 // Permission is hereby granted, free of charge, to any person obtaining a copy of
 // this software and associated documentation files (the "Software"), to deal in
@@ -71,11 +71,11 @@ struct less_equal_type {
 /**
  * @ingroup functional_objects
  * @brief Function object performing equality comparison.
- * 
+ *
  * @details Effectively calls `operator==` on two variables in a
  * generic manner. This is an instance of a function object and
  * could be called just like a regular function.
- * 
+ *
  * @param t left side to compare
  * @param u right side to compare
  * @return the generic result of `t == u`
@@ -85,11 +85,11 @@ constexpr equal_to_type equal_to{};
 /**
  * @ingroup functional_objects
  * @brief Function object performing inequality comparison.
- * 
+ *
  * @details Effectively calls `operator!=` on two variables in a
  * generic manner. This is an instance of a function object and
  * could be called just like a regular function.
- * 
+ *
  * @param t left side to compare
  * @param u right side to compare
  * @return the generic result of `t != u`
@@ -99,11 +99,11 @@ constexpr not_equal_to_type not_equal_to{};
 /**
  * @ingroup functional_objects
  * @brief Function object performing greater than comparison.
- * 
+ *
  * @details Effectively calls `operator>` on two variables in a
  * generic manner. This is an instance of a function object and
  * could be called just like a regular function.
- * 
+ *
  * @param t left side to compare
  * @param u right side to compare
  * @return the generic result of `t > u`
@@ -113,11 +113,11 @@ constexpr greater_type greater{};
 /**
  * @ingroup functional_objects
  * @brief Function object performing less than comparison.
- * 
+ *
  * @details Effectively calls `operator<` on two variables in a
  * generic manner. This is an instance of a function object and
  * could be called just like a regular function.
- * 
+ *
  * @param t left side to compare
  * @param u right side to compare
  * @return the generic result of `t < u`
@@ -127,11 +127,11 @@ constexpr less_type less{};
 /**
  * @ingroup functional_objects
  * @brief Function object performing greater than or equal comparison.
- * 
+ *
  * @details Effectively calls `operator>=` on two variables in a
  * generic manner. This is an instance of a function object and
  * could be called just like a regular function.
- * 
+ *
  * @param t left side to compare
  * @param u right side to compare
  * @return the generic result of `t >= u`
@@ -141,11 +141,11 @@ constexpr greater_equal_type greater_equal{};
 /**
  * @ingroup functional_objects
  * @brief Function object performing less than or equal comparison.
- * 
+ *
  * @details Effectively calls `operator<=` on two variables in a
  * generic manner. This is an instance of a function object and
  * could be called just like a regular function.
- * 
+ *
  * @param t left side to compare
  * @param u right side to compare
  * @return the generic result of `t <= u`

@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 
-// Copyright (c) 2012-2013 Danny Y., Rapptz
+// Copyright (c) 2012-2014 Danny Y., Rapptz
 
 // Permission is hereby granted, free of charge, to any person obtaining a copy of
 // this software and associated documentation files (the "Software"), to deal in
@@ -67,10 +67,10 @@ inline std::basic_ostream<Elem, Traits>& operator<<(std::basic_ostream<Elem, Tra
 /**
  * @ingroup io
  * @brief A flag that only gets activated once.
- * @details A flag that gets activated once on the 
- * value of t. Useful for passing to io::print, 
+ * @details A flag that gets activated once on the
+ * value of t. Useful for passing to io::print,
  * io::fprint and io::sprint.
- * 
+ *
  * @param t Variable to get manipulated
  * @param flag Flag to manipulate the stream
  * @return Stream object that activates the flag once.
@@ -83,12 +83,12 @@ inline detail::flag_type<T> flags(T&& t, std::ios_base::fmtflags flag) {
 /**
  * @ingroup io
  * @brief A flag that is persistent.
- * @details A flag that persistent on the 
- * value of t and any value afterwards. Useful 
+ * @details A flag that persistent on the
+ * value of t and any value afterwards. Useful
  * for passing to io::print, io::fprint and io::sprint.
  * Outside of using it for those functions, it's not
  * advised to use it.
- * 
+ *
  * @param t Variable to get manipulated
  * @param flags Flags to manipulate the stream persistently
  * @return Stream object that activates the flag persistently.

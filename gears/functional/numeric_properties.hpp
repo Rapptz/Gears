@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 
-// Copyright (c) 2012-2013 Danny Y., Rapptz
+// Copyright (c) 2012-2014 Danny Y., Rapptz
 
 // Permission is hereby granted, free of charge, to any person obtaining a copy of
 // this software and associated documentation files (the "Software"), to deal in
@@ -43,10 +43,10 @@ struct odd_type {
 /**
  * @ingroup functional_objects
  * @brief Function object checking if a numeric type is even.
- * 
+ *
  * @details Checks if a numeric instance is even by effectively
  * checking if `t % 2 == 0`.
- * 
+ *
  * @param t numeric type to check
  * @return generic result of `t % 2 == 0`, usually bool.
  */
@@ -55,10 +55,10 @@ constexpr even_type even{};
 /**
  * @ingroup functional_objects
  * @brief Function object checking if a numeric type is odd.
- * 
+ *
  * @details Checks if a numeric instance is odd by effectively
  * checking if `t % 2 != 0`.
- * 
+ *
  * @param t numeric type to check
  * @return generic result of `t % 2 != 0`, usually bool.
  */

@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 
-// Copyright (c) 2012-2013 Danny Y., Rapptz
+// Copyright (c) 2012-2014 Danny Y., Rapptz
 
 // Permission is hereby granted, free of charge, to any person obtaining a copy of
 // this software and associated documentation files (the "Software"), to deal in
@@ -45,7 +45,7 @@ constexpr Return invoke_tup(F&& f, Tuple&& tuple) {
 }
 
 struct is_reference_wrapper_impl {
-    template<typename T, typename U = typename T::type> 
+    template<typename T, typename U = typename T::type>
     static auto test(int) -> decltype(std::declval<T&>().get(), std::is_convertible<T, U&>{}) {}
     template<typename...>
     static std::false_type test(...);
@@ -61,7 +61,7 @@ struct unref {
 
 template<typename T>
 struct special_decay {
-    using type = meta::TypeIf<is_reference_wrapper<T>, unref<T>, meta::identity<T>>; 
+    using type = meta::TypeIf<is_reference_wrapper<T>, unref<T>, meta::identity<T>>;
 };
 
 template<typename T>
@@ -87,27 +87,27 @@ public:
  * @ingroup functional
  * @brief Applies function currying to functions.
  * @details Curries functions together. More info on what currying is can be
- * found [here](http://en.wikipedia.org/wiki/Function_currying). 
- * 
+ * found [here](http://en.wikipedia.org/wiki/Function_currying).
+ *
  * Example:
- * 
- * @code 
+ *
+ * @code
  * #include <gears/functional.hpp>
  * #include <iostream>
- * 
+ *
  * namespace fn = gears::functional;
- * 
+ *
  * int main() {
  *     auto add_five = fn::curry(fn::plus, 5);
  *     std::cout << add_five(10) << ' ' << add_five(15);
  * }
  * @endcode
- * 
+ *
  * Output
  * <pre>
  * 15 20
  * </pre>
- * 
+ *
  * @param f First function to curry
  * @param args Rest of the functions to curry
  * @return a function object that calls the curried functions

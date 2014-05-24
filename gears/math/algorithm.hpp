@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 
-// Copyright (c) 2012-2013 Danny Y., Rapptz
+// Copyright (c) 2012-2014 Danny Y., Rapptz
 
 // Permission is hereby granted, free of charge, to any person obtaining a copy of
 // this software and associated documentation files (the "Software"), to deal in
@@ -57,7 +57,7 @@ inline T mod_pow(T base, T exponent, const T& modulus) {
 
     while(exponent) {
         if((exponent % 2) == 1) {
-            result = (base * result) % modulus; 
+            result = (base * result) % modulus;
         }
         exponent /= 2;
         base = (base * base) % modulus;

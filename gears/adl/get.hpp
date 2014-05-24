@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 
-// Copyright (c) 2012-2013 Danny Y., Rapptz
+// Copyright (c) 2012-2014 Danny Y., Rapptz
 
 // Permission is hereby granted, free of charge, to any person obtaining a copy of
 // this software and associated documentation files (the "Software"), to deal in
@@ -42,12 +42,12 @@ constexpr auto adl_get(T&& t) -> decltype(get<N>(std::declval<T>())) {
  * @brief ADL enabled get function for tuple-like classes.
  * @details Allows for argument dependent lookup of `std::get` and overloaded
  * specialisations of `get`.
- * 
- * @code 
+ *
+ * @code
  * using std::get;
  * get<N>(t);
  * @endcode
- * 
+ *
  * @tparam N Index to retrieve
  * @param t Tuple-like class to retrieve index from
  * @return automatically deduced return value of `get<N>(t)`

@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 
-// Copyright (c) 2012-2013 Danny Y., Rapptz
+// Copyright (c) 2012-2014 Danny Y., Rapptz
 
 // Permission is hereby granted, free of charge, to any person obtaining a copy of
 // this software and associated documentation files (the "Software"), to deal in
@@ -25,18 +25,18 @@
 #include "chrono/literals.hpp"
 #include "chrono/stopwatch.hpp"
 
-/** 
+/**
  * @defgroup chrono Chrono module
- * 
+ *
  * @brief Provides time utilities.
- * 
+ *
  * @details This module defines utilities that make working with the `<chrono>` header
  * easier and adds new tools for it as well.
- * 
- * One of the first things the chrono module is useful for is the creation of 
+ *
+ * One of the first things the chrono module is useful for is the creation of
  * `std::chrono::duration`s using the new C++11 user defined literal feature. The table
  * below specifies the literals and their return value.
- * 
+ *
  * | Literal | Result       |
  * |:-------:|:-------------|
  * | _h      | hours        |
@@ -45,29 +45,29 @@
  * | _ms     | milliseconds |
  * | _us     | microseconds |
  * | _ns     | nanoseconds  |
- * 
- * All of these have `unsigned long long` and `long double` overloads. They reside in `<gears/chrono/literals.hpp>`. 
+ *
+ * All of these have `unsigned long long` and `long double` overloads. They reside in `<gears/chrono/literals.hpp>`.
  * Example usage can be found below.
- * 
+ *
  * @code
  * #include <gears/chrono/literals.hpp>
  * #include <thread>
  * #include <iostream>
- * 
+ *
  * // this line is required
  * using namespace gears::chrono::literals;
- * 
+ *
  * void f() {
  *     std::this_thread::sleep_for(1.4_s); // 1.4 seconds
  * }
- * 
+ *
  * int main() {
  *     std::cout << "Going to sleep for 1.4 seconds...";
  *     f();
  *     std::cout << "\nDone!";
  * }
  * @endcode
- * 
+ *
  */
 
 #endif // GEARS_CHRONO_HPP

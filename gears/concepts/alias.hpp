@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 
-// Copyright (c) 2012-2013 Danny Y., Rapptz
+// Copyright (c) 2012-2014 Danny Y., Rapptz
 
 // Permission is hereby granted, free of charge, to any person obtaining a copy of
 // this software and associated documentation files (the "Software"), to deal in
@@ -76,25 +76,25 @@ using Requires = typename requires_checker<Concepts...>::type;
  * @details The place for `requires` is best inside functions rather than classes.
  * As this function returns a boolean, it isn't possible to put it in its own line
  * for template classes. For example, the following won't work:
- * 
- * @code 
+ *
+ * @code
  * template<typename T>
  * struct my_type {
  *     requires<T, Assignable>();
  * };
  * @endcode
- * 
+ *
  * This is because this function returns a boolean.
  * Consider using the `Requires` statement instead:
- * 
- * @code 
+ *
+ * @code
  * template<typename T, Requires<Assinable<T>>...>
  * struct my_type {};
  * @endcode
- * 
+ *
  * @tparam T Type to check concepts for
  * @tparam Concepts... Unary concepts to assert.
- * 
+ *
  */
 template<typename T, template<typename...> class... Concepts>
 constexpr bool requires() {

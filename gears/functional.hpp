@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 
-// Copyright (c) 2012-2013 Danny Y., Rapptz
+// Copyright (c) 2012-2014 Danny Y., Rapptz
 
 // Permission is hereby granted, free of charge, to any person obtaining a copy of
 // this software and associated documentation files (the "Software"), to deal in
@@ -33,34 +33,34 @@
 
 /**
  * @defgroup functional Functional module
- * 
+ *
  * @brief Provides support for functional programming.
- * 
+ *
  * @details This module provides multiple function objects (also called
  * functors) and operations that make working in a functional manner easier.
- * 
+ *
  * All of the function objects have a `constexpr` instantiation to allow working
  * with the other components of the module easier. It also allows the user to use the
  * function objects just like a regular function.
- * 
+ *
  * There's also basic support for currying and composition. More support for other
  * things are coming soon.
- * 
+ *
  * Example usage:
- * @code 
+ * @code
  * #include <gears/functional.hpp>
  * #include <iostream>
- *  
+ *
  * namespace fn = gears::functional;
- * 
+ *
  * int main() {
  *     auto f = fn::compose(fn::even, fn::plus);
- *              // equivalent to 
+ *              // equivalent to
  *              // fn::even(fn::plus(...))
  *     std::cout << f(11, 15);
  * }
  * @endcode
- * 
+ *
  * Output:
  * <pre>
  * 1
@@ -70,7 +70,7 @@
  /**
  * @defgroup functional_objects Function objects submodule
  * @ingroup functional
- * 
+ *
  * @brief Provides function objects to use.
  * @details A function object is any object for which the function
  * call operator is defined. An instance of a function object could

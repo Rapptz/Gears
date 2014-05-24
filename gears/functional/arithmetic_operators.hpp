@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 
-// Copyright (c) 2012-2013 Danny Y., Rapptz
+// Copyright (c) 2012-2014 Danny Y., Rapptz
 
 // Permission is hereby granted, free of charge, to any person obtaining a copy of
 // this software and associated documentation files (the "Software"), to deal in
@@ -64,11 +64,11 @@ struct modulus_type {
 /**
  * @ingroup functional_objects
  * @brief Function object performing addition.
- * 
+ *
  * @details Effectively calls `operator+` on two variables in a
  * generic manner. This is an instance of a function object and
  * could be called just like a regular function.
- * 
+ *
  * @param t left parameter to add
  * @param u right parameter to add
  * @return the generic result of `t + u`
@@ -78,11 +78,11 @@ constexpr plus_type plus{};
 /**
  * @ingroup functional_objects
  * @brief Function object performing subtraction.
- * 
+ *
  * @details Effectively calls `operator-` on two variables in a
  * generic manner. This is an instance of a function object and
  * could be called just like a regular function.
- * 
+ *
  * @param t left parameter to subtract
  * @param u right parameter to subtract
  * @return the generic result of `t - u`
@@ -92,11 +92,11 @@ constexpr minus_type minus{};
 /**
  * @ingroup functional_objects
  * @brief Function object performing multiplication.
- * 
+ *
  * @details Effectively calls `operator*` on two variables in a
  * generic manner. This is an instance of a function object and
  * could be called just like a regular function.
- * 
+ *
  * @param t left parameter to multiply
  * @param u right parameter to multiply
  * @return the generic result of `t * u`
@@ -106,11 +106,11 @@ constexpr multiplies_type multiplies{};
 /**
  * @ingroup functional_objects
  * @brief Function object performing division.
- * 
+ *
  * @details Effectively calls `operator/` on two variables in a
  * generic manner. This is an instance of a function object and
  * could be called just like a regular function.
- * 
+ *
  * @param t left parameter to divide
  * @param u right parameter to divide
  * @return the generic result of `t / u`
@@ -120,11 +120,11 @@ constexpr divides_type divides{};
 /**
  * @ingroup functional_objects
  * @brief Function object performing modulus.
- * 
+ *
  * @details Effectively calls `operator%` on two variables in a
  * generic manner. This is an instance of a function object and
  * could be called just like a regular function.
- * 
+ *
  * @param t left parameter to mod
  * @param u right parameter to mod
  * @return the generic result of `t % u`

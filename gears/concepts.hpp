@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 
-// Copyright (c) 2012-2013 Danny Y., Rapptz
+// Copyright (c) 2012-2014 Danny Y., Rapptz
 
 // Permission is hereby granted, free of charge, to any person obtaining a copy of
 // this software and associated documentation files (the "Software"), to deal in
@@ -27,47 +27,47 @@
 
 /**
  * @defgroup concepts Concepts module
- * 
+ *
  * @brief Provides an interface for concept checking.
- * 
+ *
  * @details This module is the basic implementation of Concepts
  * that were supposed to appear in C++11 but didn't make it due to
  * time constraints. It doesn't support axioms, concept maps, or any of the
  * fancy stuff but provides enough syntactic sugar for the SFINAE part of the
  * concepts proposal.
- * 
+ *
  * Concepts are split into two categories, Unary and Binary. A Unary Concept
  * is defined as a concept that takes in a single type. A Binary Concept is a
  * concept that takes in two types. Most of the time the second type is optional, this
  * depends on the Concept. Sometimes a concept is not part of these categories, this
  * makes the concept uncategorised. An example of this is Constructible.
- * 
+ *
  * Just like the Concepts themselves are split into different categories, the
  * Concepts module itself is split into different categories which include:
- * 
+ *
  * - **Basic**: Concepts involving constructibility and operational semantics.
  * - **Container**: Concepts for checking container semantics and traits.
- * - **Function**: Concepts for checking function semantics and traits. 
+ * - **Function**: Concepts for checking function semantics and traits.
  * - **Iterator**: Concepts for checking iterator categories.
- * 
- * The usage of Concepts is simple, most of which needs one function to assert 
+ *
+ * The usage of Concepts is simple, most of which needs one function to assert
  * your concepts.
- * 
+ *
  * Example:
- * 
- * @code 
+ *
+ * @code
  * #include <gears/concepts.hpp>
  * #include <vector>
  * using namespace gears::concepts;
- * 
+ *
  * template<typename Cont, typename T>
  * void compare_and_insert(Cont& c, const T& first, const T& second) {
  *     // first < second must be well defined.
  *     requires<T, LessThanComparable>();
- *     
+ *
  *     // Cont must be a sequence container
  *     requires<Cont, SequenceContainer>();
- *     
+ *
  *     if(first < second) {
  *         c.push_back(first);
  *     }
@@ -75,13 +75,13 @@
  *         c.push_back(second);
  *     }
  * }
- * 
+ *
  * int main() {
  *     std::vector<int> v = {1,2,3,4,5,6,7,8,9,10};
  *     compare_and_insert(v, 11, 12);
  * }
  * @endcode
- * 
+ *
  */
 
 #endif // GEARS_CONCEPTS_HPP

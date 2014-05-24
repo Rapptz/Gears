@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 
-// Copyright (c) 2012-2013 Danny Y., Rapptz
+// Copyright (c) 2012-2014 Danny Y., Rapptz
 
 // Permission is hereby granted, free of charge, to any person obtaining a copy of
 // this software and associated documentation files (the "Software"), to deal in
@@ -48,12 +48,12 @@ constexpr auto adl_end(T&& t) -> decltype(end(std::declval<T>())) {
  * @details Allows for retrieval of `std::begin` and specialisations
  * of `begin` through argument dependent lookup.
  * Equivalent to doing the following:
- * 
- * @code 
+ *
+ * @code
  * using std::begin;
  * begin(t);
  * @endcode
- * 
+ *
  * @param t Object with `begin` interface
  * @return automatically deduced return value of `begin(t)`
  */
@@ -68,12 +68,12 @@ constexpr auto begin(T&& t) -> decltype(detail::adl_begin(std::declval<T>())) {
  * @details Allows for retrieval of `std::end` and specialisations
  * of `end` through argument dependent lookup.
  * Equivalent to doing the following:
- * 
- * @code 
+ *
+ * @code
  * using std::end;
  * end(t);
  * @endcode
- * 
+ *
  * @param t Object with `end` interface
  * @return automatically deduced return value of `end(t)`
  */

@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 
-// Copyright (c) 2012-2013 Danny Y., Rapptz
+// Copyright (c) 2012-2014 Danny Y., Rapptz
 
 // Permission is hereby granted, free of charge, to any person obtaining a copy of
 // this software and associated documentation files (the "Software"), to deal in
@@ -44,9 +44,9 @@ struct is_container {
              typename Si = decltype(std::declval<LRef<C>>().size()),
              typename Ms = decltype(std::declval<LRef<C>>().max_size()),
              typename Em = decltype(std::declval<LRef<C>>().empty()),
-             TrueIf<ContextualBool<Em>,         std::is_same<Si, St>, 
-                    std::is_same<Ms, St>,       std::is_same<Cb, Ci>, 
-                    std::is_same<Ce, Ci>,       std::is_convertible<It, Ci>, 
+             TrueIf<ContextualBool<Em>,         std::is_same<Si, St>,
+                    std::is_same<Ms, St>,       std::is_same<Cb, Ci>,
+                    std::is_same<Ce, Ci>,       std::is_convertible<It, Ci>,
                     std::is_convertible<B, Ci>, std::is_convertible<E, Ci>,
                     ForwardIterator<It>>...>
     static std::true_type test(int);
@@ -166,12 +166,12 @@ struct is_associative_container {
 /**
  * @defgroup container_concepts Container concepts submodule
  * @ingroup concepts
- * 
+ *
  * @brief Concepts involving the standard C++ containers.
- * 
- * @details A collection of concepts that deal with the semantics of 
+ *
+ * @details A collection of concepts that deal with the semantics of
  * what entails a C++ standard container or a type that meets similar
- * requirements. 
+ * requirements.
  */
 
 
@@ -179,10 +179,10 @@ struct is_associative_container {
  * @ingroup container_concepts
  * @brief Checks if a type is a container.
  * @details A Unary concept that checks if a type is a container.
- * 
+ *
  * A type that meets this concept must provide the following
  * typedefs:
- * 
+ *
  * - `value_type`
  * - `reference`
  * - `const_reference`
@@ -190,17 +190,17 @@ struct is_associative_container {
  * - `const_iterator`
  * - `difference_type`
  * - `size_type`
- * 
+ *
  * It must meet the following concepts:
- * 
+ *
  * - Destructible
  * - Regular
  * - EqualityComparable
  * - Copyable
- * 
+ *
  * The following expressions must be valid:
- * 
- * @code 
+ *
+ * @code
  * auto a = x.begin();    // returns iterator or const_iterator
  * auto b = x.end();     //  returns iterator or const_iterator
  * auto c = x.cbegin()  //   returns const_iterator
@@ -208,19 +208,19 @@ struct is_associative_container {
  * x.swap(y);
  * auto e = x.size()     //  returns size_type
  * auto f = x.max_size(); // returns size_type
- * bool g = x.empty(); 
+ * bool g = x.empty();
  * @endcode
- * 
+ *
  * Where x and y are instances of T.
- * 
+ *
  * There is a specialisation for `std::forward_list<T>` to make it a valid container.
- * 
+ *
  * @tparam T Type to check.
  */
 template<typename T>
-struct Container : And<Or<TraitOf<detail::is_container, T>, 
-                          TraitOf<detail::is_forward_list, T>>, 
-                       Regular<T>, 
+struct Container : And<Or<TraitOf<detail::is_container, T>,
+                          TraitOf<detail::is_forward_list, T>>,
+                       Regular<T>,
                        EqualityComparable<T>,
                        Copyable<T>,
                        Destructible<T>> {};
@@ -229,24 +229,24 @@ struct Container : And<Or<TraitOf<detail::is_container, T>,
  * @ingroup container_concepts
  * @brief Checks if a type is a container that can be reversed.
  * @details A Unary concept that checks if a type is a container that can be reversed.
- * 
+ *
  * It must meet the Container concept. In addition to that, it must have the following
  * typedefs defined:
- * 
+ *
  * - `reverse_iterator`
  * - `const_reverse_iterator`
- * 
+ *
  * and the following expressions must be valid:
- * 
- * @code 
+ *
+ * @code
  * auto a = x.rbegin();    // returns reverse_iterator or const_reverse_iterator
  * auto b = x.rend();      // returns reverse_iterator or const_reverse_iterator
  * auto c = x.crbegin();   // returns const_reverse_iterator
  * auto d = x.crend();     // returns const_reverse_iterator
  * @endcode
- * 
+ *
  * Where x is an instance of T.
- * 
+ *
  * @tparam T Type to check
  */
 template<typename T>
@@ -256,16 +256,16 @@ struct ReversibleContainer : And<Container<T>, TraitOf<detail::is_reversible, T>
  * @ingroup container_concepts
  * @brief Checks if a type is a container with an allocator.
  * @details A Unary concept that checks if a type is a container that has an allocator.
- * 
- * It must meet the Container concept. In addition to that, it must have the 
+ *
+ * It must meet the Container concept. In addition to that, it must have the
  * `allocator_type` typedef defined and the following expression must be valid:
- * 
- * @code 
+ *
+ * @code
  * auto a = x.get_allocator(); // returns allocator_type
  * @endcode
- * 
+ *
  * Where x is an instance of T.
- * 
+ *
  * @tparam T Type to check
  */
 template<typename T>
@@ -275,11 +275,11 @@ struct AllocatorAwareContainer : And<Container<T>, TraitOf<detail::is_allocator_
  * @ingroup container_concepts
  * @brief Checks if a type is a sequence container.
  * @details A Unary concept that checks if a type is a sequence container.
- * 
- * It must meet the Container concept. In addition to that, the following expressions 
+ *
+ * It must meet the Container concept. In addition to that, the following expressions
  * must be valid:
- * 
- * @code 
+ *
+ * @code
  * T x(size_type{}, value_type{});
  * T y(iterator{}, iterator{});
  * iterator a = x.emplace(iterator{}, args...);
@@ -292,11 +292,11 @@ struct AllocatorAwareContainer : And<Container<T>, TraitOf<detail::is_allocator_
  * x.assign(iterator{}, iterator{});
  * x.assign(size_type{}, value_type{});
  * @endcode
- * 
+ *
  * @tparam T Type to check
  */
 template<typename T>
-struct SequenceContainer : And<Container<T>, Or<TraitOf<detail::is_sequence_container, T>, 
+struct SequenceContainer : And<Container<T>, Or<TraitOf<detail::is_sequence_container, T>,
                                                 TraitOf<detail::is_array_sequence, T>,
                                                 TraitOf<detail::is_forward_list, T>>> {};
 
@@ -304,20 +304,20 @@ struct SequenceContainer : And<Container<T>, Or<TraitOf<detail::is_sequence_cont
  * @ingroup container_concepts
  * @brief Checks if a type is an associative container.
  * @details A Unary concept that checks if a type is an associative container.
- * 
+ *
  * It must meet the Container concept. In addition, the following typedefs must
  * be defined:
- * 
+ *
  * - `key_type`
  * - `key_compare`
  * - `value_compare`
- * 
+ *
  * and the following expressions must be valid:
- * 
- * @code 
+ *
+ * @code
  * T x;
  * key_compare kc = x.key_comp();
- * value_compare vc = x.value_comp(); 
+ * value_compare vc = x.value_comp();
  * iterator a = x.emplace(args...);
  * iterator b = x.emplace_hint(iterator{}, args...);
  * iterator c = x.insert(iterator{});
@@ -331,9 +331,9 @@ struct SequenceContainer : And<Container<T>, Or<TraitOf<detail::is_sequence_cont
  * size_type j = x.count(key_type{});
  * iterator k = x.lower_bound(key_type{});
  * iterator l = x.upper_bound(key_type{});
- * std::pair<iterator, iterator> m = x.equal_range(key_type{}); 
+ * std::pair<iterator, iterator> m = x.equal_range(key_type{});
  * @endcode
- * 
+ *
  * @tparam T Type to check.
  */
 template<typename T>

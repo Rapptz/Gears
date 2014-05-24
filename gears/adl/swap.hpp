@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 
-// Copyright (c) 2012-2013 Danny Y., Rapptz
+// Copyright (c) 2012-2014 Danny Y., Rapptz
 
 // Permission is hereby granted, free of charge, to any person obtaining a copy of
 // this software and associated documentation files (the "Software"), to deal in
@@ -37,17 +37,17 @@ constexpr R adl_swap(T&& t, U&& u) noexcept(swap(std::declval<T>(), std::declval
  * @ingroup adl
  * @brief ADL-enabled swap.
  * @details Allows for ADL of `std::swap`. Equivalent to the following:
- * 
- * @code 
+ *
+ * @code
  * using std::swap;
  * swap(t, u);
  * @endcode
- * 
+ *
  * @param t First element to swap
  * @param u Second element to swap
  * @return automatically deduced return value of `swap(t, u)`
  */
-template<typename T, typename U, typename R = decltype(detail::adl_swap(std::declval<T>(), std::declval<U>()))> 
+template<typename T, typename U, typename R = decltype(detail::adl_swap(std::declval<T>(), std::declval<U>()))>
 constexpr R swap(T&& t, U&& u) noexcept(detail::adl_swap(std::declval<T>(), std::declval<U>())) {
     return detail::adl_swap(std::declval<T>(), std::declval<U>());
 }

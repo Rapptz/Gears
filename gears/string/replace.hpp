@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 
-// Copyright (c) 2012-2013 Danny Y., Rapptz
+// Copyright (c) 2012-2014 Danny Y., Rapptz
 
 // Permission is hereby granted, free of charge, to any person obtaining a copy of
 // this software and associated documentation files (the "Software"), to deal in
@@ -42,7 +42,7 @@ inline size_t nth_finder(const String& str, const String& find, size_t nth) {
 template<typename String>
 inline meta::Unqualified<String> replace_first(String str, const String& from, const String& to) {
     auto start_pos = str.find(from);
-    if(start_pos == String::npos) 
+    if(start_pos == String::npos)
         return str;
     str.replace(start_pos, from.length(), to);
     return str;
@@ -51,7 +51,7 @@ inline meta::Unqualified<String> replace_first(String str, const String& from, c
 template<typename String>
 inline meta::Unqualified<String> replace_last(String str, const String& from, const String& to) {
     auto start_pos = str.rfind(from);
-    if(start_pos == String::npos) 
+    if(start_pos == String::npos)
         return str;
     str.replace(start_pos, from.length(), to);
     return str;
