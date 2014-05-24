@@ -71,17 +71,16 @@ public:
 template<typename CharT, typename Traits>
 struct line_reader {
 private:
-    line_iterator<CharT, Traits> first;
-    line_iterator<CharT, Traits> last;
+    std::basic_istream<CharT, Traits>& in;
 public:
-    line_reader(std::basic_istream<CharT, Traits>& in) noexcept: first(in) {}
+    line_reader(std::basic_istream<CharT, Traits>& in) noexcept: in(in) {}
 
-    auto begin() noexcept -> decltype(first) {
-        return first;
+    line_iterator<CharT, Traits> begin() noexcept {
+        return { in };
     }
 
-    auto end() noexcept -> decltype(last) {
-        return last;
+    line_iterator<CharT, Traits> end() noexcept {
+        return { };
     }
 };
 

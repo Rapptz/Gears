@@ -64,14 +64,38 @@ inline std::basic_ostream<Elem, Traits>& operator<<(std::basic_ostream<Elem, Tra
 }
 } // detail
 
+/**
+ * @ingroup io
+ * @brief A flag that only gets activated once.
+ * @details A flag that gets activated once on the 
+ * value of t. Useful for passing to io::print, 
+ * io::fprint and io::sprint.
+ * 
+ * @param t Variable to get manipulated
+ * @param flag Flag to manipulate the stream
+ * @return Stream object that activates the flag once.
+ */
 template<typename T>
 inline detail::flag_type<T> flags(T&& t, std::ios_base::fmtflags flag) {
     return { std::forward<T>(t), flag };
 }
 
+/**
+ * @ingroup io
+ * @brief A flag that is persistent.
+ * @details A flag that persistent on the 
+ * value of t and any value afterwards. Useful 
+ * for passing to io::print, io::fprint and io::sprint.
+ * Outside of using it for those functions, it's not
+ * advised to use it.
+ * 
+ * @param t Variable to get manipulated
+ * @param flags Flags to manipulate the stream persistently
+ * @return Stream object that activates the flag persistently.
+ */
 template<typename T, typename... Flags>
-inline detail::manipulator_type<T, Flags...> flags(T&& t, Flags&&... f) {
-    return { std::forward<T>(t), std::forward<Flags>(f)... };
+inline detail::manipulator_type<T, Flags...> flags(T&& t, Flags&&... flags) {
+    return { std::forward<T>(t), std::forward<Flags>(flags)... };
 }
 } // io
 } // gears

@@ -28,4 +28,40 @@
 #include "io/sprint.hpp"
 #include "io/lines.hpp"
 
+/**
+ * @defgroup io Input/Output module
+ * 
+ * @brief Provides utilities to aid with usage of iostreams.
+ * 
+ * @details This module provides tools to help with iostreams, including
+ * prettyprinting, typesafe printf and more. 
+ * 
+ * Example usage:
+ * 
+ * @code 
+ * #include <gears/io.hpp>
+ * #include <vector>
+ * 
+ * namespace io = gears::io;
+ * 
+ * // needed for operator<< of standard library types
+ * using namespace gears::io::operators; 
+ * 
+ * int main() {
+ *     std::vector<int> v = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+ *     io::print("{0} + {0} = {1}\n", v.front(), v[1]);
+ *     
+ *     // note: generic operator<< doesn't work with io::print
+ *     std::cout << v;
+ * }
+ * @endcode
+ * 
+ * Output:
+ * <pre>
+ * 1 + 1 = 2
+ * [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+ * </pre>
+ * 
+ */
+
 #endif // GEARS_IO_HPP

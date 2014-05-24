@@ -27,6 +27,33 @@
 
 namespace gears {
 namespace io {
+
+/**
+ * @ingroup io
+ * @brief Type-safe iostream alternative to printf
+ * @details `fprint` is the type-safe and iostream alternative
+ * to `fprintf`. It accepts any ostream type and uses positional
+ * arguments rather than format specifiers. Index starts at 0.
+ * 
+ * Example:
+ * @code 
+ * io::fprint(std::cout, "{0} {1} {0}", 1, 2);
+ * @endcode
+ * 
+ * would print 1 2 1, with 1 being index 0 and 2 being index 1.
+ * 
+ * If the argument is out of bounds, the function will throw
+ * std::out_of_range. There are two specialisations provided for this
+ * function, `io::print` and `io::sprint`. `io::print` is the equivalent of 
+ * `fprint(std::cout, ...)` or `fprint(std::wcout, ...)` depending on the
+ * format string passed. io::sprint delegates the output stream to a 
+ * `std::stringstream` object to return a string, similar to `sprintf`
+ * 
+ * @param out stream to print to
+ * @param str format string
+ * @param arguments args to print
+ * @throws std::out_of_range index in the format string is out of bounds
+ */
 template<class Elem, class Traits, size_t N, typename... Args>
 inline void fprint(std::basic_ostream<Elem, Traits>& out, const Elem (&str)[N], Args&&... arguments) {
     if(sizeof...(arguments) < 1) {
