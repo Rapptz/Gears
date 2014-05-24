@@ -30,4 +30,23 @@
 #include "string/transforms.hpp"
 #include "string/builder.hpp"
 
+/**
+ * @defgroup string String module
+ * @brief Provides string algorithms
+ * @details This module provides string algorithms to help
+ * with the lack of high level algorithms with `std::string`.
+ * All the functions do not modify the string in-place and instead
+ * return a new string.
+ *
+ * Under the `<gears/string/literals.hpp>` header there is a
+ * user defined literal `_s` to help construct a string easier.
+ * It's provided for all `basic_string` types, e.g. `std::wstring`,
+ * `std::string`, etc.
+ *
+ * @code
+ * using namespace gears::string::literals; // required
+ * auto str = "hello world"_s; // decltype(str) is std::string
+ * @endcode
+ */
+
 #endif // GEARS_STRING_HPP
