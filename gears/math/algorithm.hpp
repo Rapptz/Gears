@@ -35,7 +35,7 @@ inline T fibonacci(T number) {
     T b(0);
     T c(0);
 
-    while(--number) {
+    while(number--) {
         c = b;
         b = a;
         a = b + c;
@@ -75,8 +75,10 @@ inline T mod_pow(T base, T exponent, const T& modulus) {
 template<typename T>
 inline T sum_of_divisors(const T& number) noexcept {
     static_assert(std::is_arithmetic<T>::value, "Type passed must be an integer or floating point type");
-    T result(1);
-    for(T i = 2; i * i <= number; result += number % i ? 0 : (i * i == number ? i : i + number/i), ++i);
+    T result(0);
+    for(T i(1); i * i <= number; ++i) {
+        result += (number % i) ? 0 : ((i * i == number) ? i : i + number / i);
+    }
     return result;
 }
 } // math
