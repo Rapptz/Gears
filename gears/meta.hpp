@@ -26,4 +26,12 @@
 #include "meta/expand.hpp"
 #include "meta/indices.hpp"
 
+/**
+ * @defgroup meta Meta module
+ * @brief Provides utilities to aid template metaprogramming.
+ * @details This module provides metafunctions and other meta
+ * utilities that aid with template metaprogramming such as
+ * typedefs that help reduce the verbosity of working with templates.
+ */
+
 #endif // GEARS_META_HPP

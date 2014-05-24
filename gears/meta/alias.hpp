@@ -32,63 +32,155 @@ enum class enabler { _ };
 
 constexpr auto _ = alias_detail::enabler::_;
 
+/**
+ * @ingroup meta
+ * @brief Template alias for `std::enable_if`
+ * @details Template alias for `std::enable_if`. All
+ * arguments passed are evaluated as `T::value`. If any
+ * of the boolean arguments return false, then the entire
+ * thing returns false. Unlike regular `std::enable_if`, you
+ * cannot provide a return statement on it. This allows you to
+ * use it in template parameters.
+ *
+ * Example:
+ *
+ * @code
+ * template<typename T, meta::EnableIf<std::is_integral<T>> = meta::_>
+ * @endcode
+ */
 template<typename... Args>
 using EnableIf = Type<std::enable_if<All<Args...>::value, alias_detail::enabler>>;
 
+/**
+ * @ingroup meta
+ * @brief The negation of `EnableIf`.
+ */
 template<typename... Args>
 using DisableIf = Type<std::enable_if<meta::Not<All<Args...>>::value, alias_detail::enabler>>;
 
+/**
+ * @ingroup meta
+ * @brief Template alias for `std::decay`.
+ */
 template<typename T>
 using Decay = Type<std::decay<T>>;
 
+/**
+ * @ingroup meta
+ * @brief Template alias for `std::remove_reference`.
+ */
 template<typename T>
 using RemoveRef = Type<std::remove_reference<T>>;
 
+/**
+ * @ingroup meta
+ * @brief Template alias for `std::remove_cv`.
+ */
 template<typename T>
 using RemoveCV = Type<std::remove_cv<T>>;
 
+/**
+ * @ingroup meta
+ * @brief Template alias for `std::remove_const`.
+ */
 template<typename T>
 using RemoveConst = Type<std::remove_const<T>>;
 
+/**
+ * @ingroup meta
+ * @brief Template alias for `std::remove_volatile`.
+ */
 template<typename T>
 using RemoveVolatile = Type<std::remove_volatile<T>>;
 
+/**
+ * @ingroup meta
+ * @brief Template alias for `std::remove_all_extents`.
+ */
 template<typename T>
 using RemoveExtents = Type<std::remove_all_extents<T>>;
 
+/**
+ * @ingroup meta
+ * @brief Template alias for `std::remove_pointer`.
+ */
 template<typename T>
 using RemovePointer = Type<std::remove_pointer<T>>;
 
+/**
+ * @ingroup meta
+ * @brief Template alias for `std::add_lvalue_reference`.
+ */
 template<typename T>
 using AddLValueRef = Type<std::add_lvalue_reference<T>>;
 
+/**
+ * @ingroup meta
+ * @brief Template alias for `std::add_rvalue_reference`.
+ */
 template<typename T>
 using AddRValueRef = Type<std::add_rvalue_reference<T>>;
 
+/**
+ * @ingroup meta
+ * @brief Template alias for `std::add_cv`.
+ */
 template<typename T>
 using AddCV = Type<std::add_cv<T>>;
 
+/**
+ * @ingroup meta
+ * @brief Template alias for `std::add_const`.
+ */
 template<typename T>
 using AddConst = Type<std::add_const<T>>;
 
+/**
+ * @ingroup meta
+ * @brief Template alias for `std::add_volatile`.
+ */
 template<typename T>
 using AddVolatile = Type<std::add_volatile<T>>;
 
+/**
+ * @ingroup meta
+ * @brief Template alias for `std::add_pointer`.
+ */
 template<typename T>
 using AddPointer = Type<std::add_pointer<T>>;
 
+/**
+ * @ingroup meta
+ * @brief Template alias for `std::make_signed`.
+ */
 template<typename T>
 using MakeSigned = Type<std::make_signed<T>>;
 
+/**
+ * @ingroup meta
+ * @brief Template alias for `std::make_unsigned`.
+ */
 template<typename T>
 using MakeUnsigned = Type<std::make_unsigned<T>>;
 
+/**
+ * @ingroup meta
+ * @brief Template alias that removes all cv and ref qualifiers.
+ */
 template<typename T>
 using Unqualified = RemoveCV<RemoveRef<T>>;
 
+/**
+ * @ingroup meta
+ * @brief Template alias to check for `T::value_type`.
+ */
 template<typename T>
 using ValueType = typename Unqualified<T>::value_type;
 
+/**
+ * @ingroup meta
+ * @brief Template alias for `std::aligned_storage` with proper alignment.
+ */
 template<typename T>
 using StorageFor = Type<std::aligned_storage<sizeof(T), std::alignment_of<T>::value>>;
 } // meta
