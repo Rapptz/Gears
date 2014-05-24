@@ -22,10 +22,13 @@
 #ifndef GEARS_MATH_ALGORITHM_HPP
 #define GEARS_MATH_ALGORITHM_HPP
 
+#include <type_traits>
+
 namespace gears {
 namespace math {
-template<typename T = unsigned long long>
+template<typename T>
 inline T fibonacci(T number) {
+    static_assert(std::is_arithmetic<T>::value, "Type passed must be an integer or floating point type");
     if(number < 2)
         return number;
     T a(1);
@@ -41,18 +44,21 @@ inline T fibonacci(T number) {
     return a;
 }
 
-template<typename T = unsigned long long>
+template<typename T>
 constexpr T factorial(const T& number) {
+    static_assert(std::is_arithmetic<T>::value, "Type passed must be an integer or floating point type");
     return number == 0 ? 1 : number * factorial(number - 1);
 }
 
-template<typename T = unsigned long long>
+template<typename T>
 constexpr T gcd(const T& x, const T& y) {
+    static_assert(std::is_arithmetic<T>::value, "Type passed must be an integer or floating point type");
     return y == 0 ? x : gcd(y, x % y);
 }
 
-template<typename T = unsigned long long>
+template<typename T>
 inline T mod_pow(T base, T exponent, const T& modulus) {
+    static_assert(std::is_arithmetic<T>::value, "Type passed must be an integer or floating point type");
     T result(1);
 
     while(exponent) {
@@ -66,8 +72,9 @@ inline T mod_pow(T base, T exponent, const T& modulus) {
     return result;
 }
 
-template<typename T = unsigned long long>
+template<typename T>
 inline T sum_of_divisors(const T& number) noexcept {
+    static_assert(std::is_arithmetic<T>::value, "Type passed must be an integer or floating point type");
     T result(1);
     for(T i = 2; i * i <= number; result += number % i ? 0 : (i * i == number ? i : i + number/i), ++i);
     return result;
