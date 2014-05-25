@@ -28,6 +28,24 @@
 
 namespace gears {
 namespace string {
+/**
+ * @ingroup string
+ * @brief Returns the left portion of a string.
+ * @details Returns the left portion of a string by a given
+ * shift.
+ *
+ * If the shift provided is larger than the size, then the original
+ * string is returned.
+ *
+ * @code
+ * auto str = string::left("hello world"_s, 6);
+ * // str == "hello"
+ * @endcode
+ *
+ * @param str The string to shift left by.
+ * @param n The number of places to shift left by.
+ * @return A string shifted left.
+ */
 template<typename String>
 inline meta::Unqualified<String> left(String str, size_t n) {
     if(n >= str.size())
@@ -35,6 +53,24 @@ inline meta::Unqualified<String> left(String str, size_t n) {
     return { str.substr(0, n) };
 }
 
+/**
+ * @ingroup string
+ * @brief Returns the right portion of a string.
+ * @details Returns the right portion of a string by a given
+ * shift.
+ *
+ * If the shift provided is larger than the size, then the original
+ * string is returned.
+ *
+ * @code
+ * auto str = string::right("hello world"_s, 6);
+ * // str == "world"
+ * @endcode
+ *
+ * @param str The string to shift right by.
+ * @param n The number of places to shift right by.
+ * @return A string shifted right.
+ */
 template<typename String>
 inline meta::Unqualified<String> right(String str, size_t n) {
     if(n >= str.size())
@@ -42,6 +78,14 @@ inline meta::Unqualified<String> right(String str, size_t n) {
     return { str.substr(str.size() - n) };
 }
 
+/**
+ * @ingroup string
+ * @brief Reverses a string.
+ * @details Reverses a string.
+ *
+ * @param str The string to reverse.
+ * @return The reversed string.
+ */
 template<typename String>
 inline meta::Unqualified<String> reverse(String str) {
     auto first = str.begin();
@@ -53,6 +97,36 @@ inline meta::Unqualified<String> reverse(String str) {
     return str;
 }
 
+/**
+ * @ingroup string
+ * @brief Joins a container together with a separator.
+ * @details Joins a container together with a separator.
+ *
+ * Example:
+ *
+ * @code
+ * #include <gears/string.hpp>
+ * #include <iostream>
+ * #include <vector>
+ *
+ * namespace string = gears::string;
+ * using namespace gears::string::literals;
+ *
+ * int main() {
+ *     std::vector<int> v = { 1, 2, 3, 4, 5, 6, 7 };
+ *     std::cout << string::join(v, ", "_s);
+ * }
+ * @endcode
+ *
+ * Output:
+ * <pre>
+ * 1, 2, 3, 4, 5, 6, 7
+ * </pre>
+ *
+ * @param cont Container to join.
+ * @param sep The separator to join with.
+ * @return A string with the values of the container separated by the separator.
+ */
 template<typename String, typename Cont>
 inline meta::Unqualified<String> join(const Cont& cont, const String& sep) {
     auto first = cont.cbegin();
@@ -67,6 +141,18 @@ inline meta::Unqualified<String> join(const Cont& cont, const String& sep) {
     return { ss.str() };
 }
 
+/**
+ * @ingroup string
+ * @brief Joins a container together with a separator and a filter.
+ * @details Joins a container together with a separator when the predicate
+ * is met. If the predicate isn't met, then the value will not be in the
+ * final string.
+ *
+ * @param cont Container to join.
+ * @param sep The separator to join with.
+ * @param pred The predicate used to filter.
+ * @return A string with the filtered values and separated by the separator.
+ */
 template<typename String, typename Cont, typename UnaryPredicate>
 inline meta::Unqualified<String> join_if(const Cont& cont, const String& sep, UnaryPredicate&& pred) {
     auto first = cont.cbegin();
@@ -91,6 +177,42 @@ inline meta::Unqualified<String> join_if(const Cont& cont, const String& sep, Un
     return { ss.str() };
 }
 
+/**
+ * @ingroup string
+ * @brief Splits a string into a container.
+ * @details Splits a string into a container.
+ *
+ * Example:
+ *
+ * @code
+ * #include <gears/string.hpp>
+ * #include <gears/io/prettyprint.hpp>
+ * #include <vector>
+ * #include <iterator>
+ * #include <iostream>
+ *
+ * namespace string = gears::string;
+ * using namespace gears::string::literals;
+ * using namespace gears::io::operators;
+ *
+ * int main() {
+ *     auto str = "hello;one;two;three;four;five"_s;
+ *     std::vector<std::string> strings;
+ *     string::split(str, ";"_s, std::back_inserter(strings));
+ *     std::cout << strings;
+ * }
+ * @endcode
+ *
+ * Output:
+ * <pre>
+ * [hello, one, two, three, four, five]
+ * </pre>
+ *
+ * @param str The string to split.
+ * @param sep The substring to split against.
+ * @param it An output iterator to insert into.
+ * @return The output iterator.
+ */
 template<typename String, typename OutIt>
 inline OutIt split(const String& str, const String& sep, OutIt it) {
     size_t start = 0, end = 0;

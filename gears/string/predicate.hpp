@@ -36,7 +36,9 @@ namespace string {
  */
 template<typename CharT = char>
 struct is_any_of {
+private:
     const CharT* str;
+public:
     is_any_of(const CharT* str): str(str) {}
     bool operator()(CharT s) const {
         auto copy = str;

@@ -23,6 +23,7 @@
 #define GEARS_STRING_REPLACE_HPP
 
 #include "../meta/alias.hpp"
+#include <cstddef>
 
 namespace gears {
 namespace string {
@@ -30,7 +31,7 @@ namespace string_replace_detail {
 template<typename String>
 inline size_t nth_finder(const String& str, const String& find, size_t nth) {
     int start = 0;
-    size_t pos = str.find(find);
+    auto pos = str.find(find);
     while(start < nth && pos != String::npos) {
         pos = str.find(find, pos + find.length());
         ++start;
@@ -39,6 +40,16 @@ inline size_t nth_finder(const String& str, const String& find, size_t nth) {
 }
 } // string_replace_detail
 
+/**
+ * @ingroup string
+ * @brief Replace first occurrence of the string.
+ * @details Replace the first occurrence of the string with another.
+ *
+ * @param str The string to do the find and replacing on.
+ * @param from The string to find.
+ * @param to The string to replace with.
+ * @return A new string with the replaced occurrence.
+ */
 template<typename String>
 inline meta::Unqualified<String> replace_first(String str, const String& from, const String& to) {
     auto start_pos = str.find(from);
@@ -48,6 +59,16 @@ inline meta::Unqualified<String> replace_first(String str, const String& from, c
     return str;
 }
 
+/**
+ * @ingroup string
+ * @brief Replace last occurrence of the string.
+ * @details Replace the last occurrence of the string with another.
+ *
+ * @param str The string to do the find and replacing on.
+ * @param from The string to find.
+ * @param to The string to replace with.
+ * @return A new string with the replaced occurrence.
+ */
 template<typename String>
 inline meta::Unqualified<String> replace_last(String str, const String& from, const String& to) {
     auto start_pos = str.rfind(from);
@@ -57,6 +78,18 @@ inline meta::Unqualified<String> replace_last(String str, const String& from, co
     return str;
 }
 
+/**
+ * @ingroup string
+ * @brief Replace Nth occurrence of the string.
+ * @details Replace the Nth occurrence of the string with another.
+ * If the Nth occurrence is not found, then no replacing takes place.
+ *
+ * @param str The string to do the find and replacing on.
+ * @param nth The Nth occurrence.
+ * @param from The string to find.
+ * @param to The string to replace with.
+ * @return A new string with the replaced occurrence.
+ */
 template<typename String>
 inline meta::Unqualified<String> replace_nth(String str, size_t nth, const String& from, const String& to) {
     auto pos = string_replace_detail::nth_finder(str, from, nth);
@@ -66,6 +99,16 @@ inline meta::Unqualified<String> replace_nth(String str, size_t nth, const Strin
     return str;
 }
 
+/**
+ * @ingroup string
+ * @brief Replace all occurrences of the string.
+ * @details Replace all occurrences of the string with another.
+ *
+ * @param str The string to do the find and replacing on.
+ * @param from The string to find.
+ * @param to The string to replace with.
+ * @return A new string with the replaced occurrence.
+ */
 template<typename String>
 inline meta::Unqualified<String> replace_all(String str, const String& from, const String& to) {
     size_t start_pos = 0;
@@ -76,6 +119,17 @@ inline meta::Unqualified<String> replace_all(String str, const String& from, con
     return str;
 }
 
+/**
+ * @ingroup string
+ * @brief Erases the first occurrence of the string.
+ * @details Erases the first occurrence of the string. When
+ * erasing, the string is deleted. It is as if called with
+ * `replace` with an empty string.
+ *
+ * @param str The string to do the searching and erasing on.
+ * @param erase The string to erase.
+ * @return A new string with the erased occurrences removed.
+ */
 template<typename String>
 inline meta::Unqualified<String> erase_first(String str, const String& erase) {
     auto start_pos = str.find(erase);
@@ -85,6 +139,17 @@ inline meta::Unqualified<String> erase_first(String str, const String& erase) {
     return str;
 }
 
+/**
+ * @ingroup string
+ * @brief Erases the last occurrence of the string.
+ * @details Erases the last occurrence of the string. When
+ * erasing, the string is deleted. It is as if called with
+ * `replace` with an empty string.
+ *
+ * @param str The string to do the searching and erasing on.
+ * @param erase The string to erase.
+ * @return A new string with the erased occurrences removed.
+ */
 template<typename String>
 inline meta::Unqualified<String> erase_last(String str, const String& erase) {
     auto start_pos = str.rfind(erase);
@@ -94,6 +159,18 @@ inline meta::Unqualified<String> erase_last(String str, const String& erase) {
     return str;
 }
 
+/**
+ * @ingroup string
+ * @brief Erases the Nth occurrence of the string.
+ * @details Erases the Nth occurrence of the string. When
+ * erasing, the string is deleted. It is as if called with
+ * `replace` with an empty string.
+ *
+ * @param str The string to do the searching and erasing on.
+ * @param nth The Nth occurrence.
+ * @param erase The string to erase.
+ * @return A new string with the erased occurrences removed.
+ */
 template<typename String>
 inline meta::Unqualified<String> erase_nth(String str, size_t nth, const String& erase) {
     auto pos = string_replace_detail::nth_finder(str, erase, nth);
@@ -103,6 +180,17 @@ inline meta::Unqualified<String> erase_nth(String str, size_t nth, const String&
     return str;
 }
 
+/**
+ * @ingroup string
+ * @brief Erases all occurrences of the string.
+ * @details Erases all occurrences of the string. When
+ * erasing, the string is deleted. It is as if called with
+ * `replace` with an empty string.
+ *
+ * @param str The string to do the searching and erasing on.
+ * @param erase The string to erase.
+ * @return A new string with the erased occurrences removed.
+ */
 template<typename String>
 inline meta::Unqualified<String> erase_all(String str, const String& erase) {
     size_t start_pos = 0;
