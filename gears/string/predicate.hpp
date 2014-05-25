@@ -26,6 +26,14 @@
 
 namespace gears {
 namespace string {
+/**
+ * @ingroup string
+ * @brief Function object to check a character is any of the provided.
+ * @details A function object that checks if a character is
+ * any of the ones provided.
+ *
+ * @tparam CharT Underlying character type.
+ */
 template<typename CharT = char>
 struct is_any_of {
     const CharT* str;
@@ -40,6 +48,23 @@ struct is_any_of {
     }
 };
 
+/**
+ * @ingroup string
+ * @brief Checks if the strings are case insensitive equal.
+ * @details Checks if the strings are case insensitive equal with the
+ * locale provided.
+ *
+ * Example:
+ *
+ * @code
+ * bool t = string::iequal("HELLO"_s, "hello"_s); // true
+ * @endcode
+ *
+ * @param lhs Left hand side string to compare with.
+ * @param rhs Right hand side string to compare with.
+ * @param loc The locale to use.
+ * @return `true` if the strings are case insensitive equal, `false` otherwise.
+ */
 template<typename String>
 inline bool iequal(const String& lhs, const String& rhs, const std::locale& loc = std::locale()) {
     if(lhs.length() != rhs.length())
@@ -53,11 +78,43 @@ inline bool iequal(const String& lhs, const String& rhs, const std::locale& loc 
     return true;
 }
 
+/**
+ * @ingroup string
+ * @brief Checks if a string starts with another string.
+ * @details Checks if a string starts with another string.
+ *
+ * Example:
+ *
+ * @code
+ * bool t = string::starts_with("hello world"_s, "hello"_s); // true
+ * @endcode
+ *
+ * @param str The string to search through.
+ * @param other The string to find.
+ * @return `true` if the string starts with `other`, `false` otherwise.
+ */
 template<typename String>
 inline bool starts_with(const String& str, const String& other) {
     return str.find(other) == 0;
 }
 
+/**
+ * @ingroup string
+ * @brief Checks if a string starts with another string in a case insensitive way.
+ * @details Checks if a string starts with another string in a case insensitive way
+ * with a given locale.
+ *
+ * Example:
+ *
+ * @code
+ * bool t = string::istarts_with("hello world"_s, "HELLO"_s); // true
+ * @endcode
+ *
+ * @param str The string to search through.
+ * @param other The string to find.
+ * @param loc The locale to use.
+ * @return `true` if the string starts with `other`, `false` otherwise.
+ */
 template<typename String>
 inline bool istarts_with(const String& str, const String& other, const std::locale& loc = std::locale()) {
     if(other.length() > str.length())
@@ -69,6 +126,21 @@ inline bool istarts_with(const String& str, const String& other, const std::loca
     return true;
 }
 
+/**
+ * @ingroup string
+ * @brief Checks if a string ends with another string.
+ * @details Checks if a string ends with another string.
+ *
+ * Example:
+ *
+ * @code
+ * bool t = string::ends_with("hello world"_s, "world"_s); // true
+ * @endcode
+ *
+ * @param str The string to search through.
+ * @param other The string to find.
+ * @return `true` if the string ends with `other`, `false` otherwise.
+ */
 template<typename String>
 inline bool ends_with(const String& str, const String& other) {
     if(str.length() >= other.length())
@@ -77,6 +149,23 @@ inline bool ends_with(const String& str, const String& other) {
         return false;
 }
 
+/**
+ * @ingroup string
+ * @brief Checks if a string ends with another string in a case insensitive way.
+ * @details Checks if a string ends with another string in a case insensitive way
+ * with a given locale.
+ *
+ * Example:
+ *
+ * @code
+ * bool t = string::iends_with("HeLLo wORld"_s, "WORLD"_s); // true
+ * @endcode
+ *
+ * @param str The string to search through.
+ * @param other The string to find.
+ * @param loc The locale to use.
+ * @return `true` if the string ends with `other`, `false` otherwise.
+ */
 template<typename String>
 inline bool iends_with(const String& str, const String& other, const std::locale& loc = std::locale()) {
     if(str.length() >= other.length()) {
@@ -90,11 +179,34 @@ inline bool iends_with(const String& str, const String& other, const std::locale
         return false;
 }
 
+/**
+ * @ingroup string
+ * @brief Checks if a string is a substring of another.
+ * @details Checks if a string is a substring of another. It is
+ * a wrapper around `std::basic_string::find` except it returns
+ * a boolean rather than `std::basic_string::size_t`.
+ *
+ * @param str The string to search through.
+ * @param other The substring to find.
+ * @return `true` if the substring is found, `false` otherwise.
+ */
 template<typename String>
 inline bool contains(const String& str, const String& other) {
     return str.find(other) != String::npos;
 }
 
+/**
+ * @ingroup string
+ * @brief Checks in a case insensitive way if a string is a substring of another.
+ * @details Checks in a case insensitive way if a string is a substring of another
+ * with the locale given. It is a wrapper around `std::basic_string::find` except
+ * it returns a boolean rather than `std::basic_string::size_t`.
+ *
+ * @param str The string to search through.
+ * @param other The substring to find.
+ * @param loc The locale to use.
+ * @return `true` if the substring is found, `false` otherwise.
+ */
 template<typename String>
 inline bool icontains(const String& str, const String& other, const std::locale& loc = std::locale()) {
     auto first = str.cbegin();
@@ -113,6 +225,15 @@ inline bool icontains(const String& str, const String& other, const std::locale&
     }
 }
 
+/**
+ * @ingroup string
+ * @brief Checks if a string meets a predicate.
+ * @details Checks if a string meets a predicate.
+ *
+ * @param str The string to search through.
+ * @param pred The predicate to use.
+ * @return `true` if the string meets the predicate on every character, `false` otherwise.
+ */
 template<typename String, typename BinaryPredicate>
 inline bool all(const String& str, BinaryPredicate&& pred) {
     for(auto&& c : str) {

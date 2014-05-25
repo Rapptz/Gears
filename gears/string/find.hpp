@@ -41,6 +41,17 @@ template<typename T>
 using SizeType = typename meta::Unqualified<T>::size_type;
 } // string_find_detail
 
+/**
+ * @ingroup string
+ * @brief Find first occurrence of a predicate being met.
+ * @details Find first occurrence of a predicate being met.
+ *
+ * Predicate must have the the prototype of `bool(CharT)`.
+ *
+ * @param str String to search through.
+ * @param pred Predicate to use.
+ * @return The position found of the predicate being met. If not found, returns `String::npos`.
+ */
 template<typename String, typename UnaryPredicate>
 inline string_find_detail::SizeType<String> find_first_of(const String& str, UnaryPredicate&& pred) {
     for(unsigned i = 0; i < str.size(); ++i) {
@@ -50,11 +61,33 @@ inline string_find_detail::SizeType<String> find_first_of(const String& str, Una
     return string_find_detail::SizeType<String>(-1); // npos
 }
 
+/**
+ * @ingroup string
+ * @brief Find first occurrence of a predicate not being met.
+ * @details Find first occurrence of a predicate not being met.
+ *
+ * Predicate must have the the prototype of `bool(CharT)`.
+ *
+ * @param str String to search through.
+ * @param pred Predicate to use.
+ * @return The position found of the predicate not being met. If not found, returns `String::npos`.
+ */
 template<typename String, typename UnaryPredicate>
 inline string_find_detail::SizeType<String> find_first_not_of(const String& str, UnaryPredicate&& pred) {
     return find_first_of(str, string_find_detail::negator<UnaryPredicate>(pred));
 }
 
+/**
+ * @ingroup string
+ * @brief Find last occurrence of a predicate being met.
+ * @details Find last occurrence of a predicate being met.
+ *
+ * Predicate must have the the prototype of `bool(CharT)`.
+ *
+ * @param str String to search through.
+ * @param pred Predicate to use.
+ * @return The position found of the predicate being met. If not found, returns `String::npos`.
+ */
 template<typename String, typename UnaryPredicate>
 inline string_find_detail::SizeType<String> find_last_of(const String& str, UnaryPredicate&& pred) {
     for(unsigned i = str.size() - 1; i != 0; --i) {
@@ -64,6 +97,17 @@ inline string_find_detail::SizeType<String> find_last_of(const String& str, Unar
     return string_find_detail::SizeType<String>(-1); // npos
 }
 
+/**
+ * @ingroup string
+ * @brief Find last occurrence of a predicate not being met.
+ * @details Find last occurrence of a predicate not being met.
+ *
+ * Predicate must have the the prototype of `bool(CharT)`.
+ *
+ * @param str String to search through.
+ * @param pred Predicate to use.
+ * @return The position found of the predicate not being met. If not found, returns `String::npos`.
+ */
 template<typename String, typename UnaryPredicate>
 inline string_find_detail::SizeType<String> find_last_not_of(const String& str, UnaryPredicate&& pred) {
     return find_last_of(str, string_find_detail::negator<UnaryPredicate>(pred));
