@@ -27,6 +27,30 @@
 
 namespace gears {
 namespace utility {
+/**
+ * @ingroup utility
+ * @brief Implements a three-element tuple.
+ * @details Implements a three-element tuple. This class has
+ * `std::get`, `std::tuple_element`, and `std::tuple_size` defined for
+ * generic usage. For example:
+ *
+ * @code
+ * constexpr utility::triple<int, int, int> x = { 1, 2, 3 };
+ * static_assert(std::is_same<std::tuple_element<0, decltype(x)>::value, "...");
+ * static_assert(std::get<0>(x) == 1, "...");
+ * static_assert(std::tuple_size<decltype(x)>::value == 3, "...");
+ * @endcode
+ *
+ * `triple` is also an aggregate, so it could be created using curly bracket syntax.
+ *
+ * @code
+ * constexpr utility::triple<int, char, double> x = { 10, 'a', 12.0 };
+ * @endcode
+ *
+ * @tparam T First type of the triple.
+ * @tparam U Second type of the triple.
+ * @tparam V Third type of the triple.
+ */
 template<typename T, typename U, typename V>
 struct triple {
     using first_type  = T;
@@ -37,10 +61,12 @@ struct triple {
     U second;
     V third;
 
-    triple()              noexcept = default;
-    triple(const triple&) noexcept = default;
-    triple(triple&&)      noexcept = default;
-
+    /**
+     * @brief Swaps the three elements of the triple.
+     * @details Swaps the three elements of the triple.
+     *
+     * @param t Other triple to swap with
+     */
     void swap(triple& t) noexcept(noexcept(std::swap(first, t.first))   &&
                                   noexcept(std::swap(second, t.second)) &&
                                   noexcept(std::swap(third, t.third))) {
@@ -51,11 +77,31 @@ struct triple {
     }
 };
 
+/**
+ * @relates triple
+ * @brief Checks if two triple objects are equivalent.
+ * @details Checks if two triple objects are equivalent.
+ * In order for it to reach equivalence all members must be
+ * equal to each other.
+ *
+ * @param lhs Left hand side of the expression.
+ * @param rhs Right hand side of the expression.
+ * @return `true` if both are equal, `false` otherwise.
+ */
 template<typename T, typename U, typename V>
 constexpr bool operator==(const triple<T, U, V>& lhs, const triple<T, U, V>& rhs) {
     return lhs.first == rhs.first && lhs.second == rhs.second && lhs.third == rhs.third;
 }
 
+/**
+ * @relates triple
+ * @brief Checks if two triple objects are lexicographically less than each other.
+ * @details Checks if two triple objects are lexicographically less than each other.
+ *
+ * @param lhs Left hand side of the expression.
+ * @param rhs Right hand side of the expression.
+ * @return `true` if `lhs` is lexicographically less than `rhs`, `false` otherwise.
+ */
 template<typename T, typename U, typename V>
 constexpr bool operator<(const triple<T, U, V>& lhs, const triple<T, U, V>& rhs) {
     return   lhs.first < rhs.first  ? true  :
@@ -65,31 +111,95 @@ constexpr bool operator<(const triple<T, U, V>& lhs, const triple<T, U, V>& rhs)
              lhs.third < rhs.third;
 }
 
+/**
+ * @relates triple
+ * @brief Checks if two triple objects are not equivalent.
+ * @details Checks if two triple objects are not equivalent.
+ * This is the negation of `operator==`.
+ *
+ * @param lhs Left hand side of the expression.
+ * @param rhs Right hand side of the expression.
+ * @return `true` if they're not equal, `false` otherwise.
+ */
 template<typename T, typename U, typename V>
 constexpr bool operator!=(const triple<T, U, V>& lhs, const triple<T, U, V>& rhs) {
     return !(lhs == rhs);
 }
 
+/**
+ * @relates triple
+ * @brief Checks if two triple objects are lexicographically greater than each other.
+ * @details Checks if two triple objects are lexicographically greater than each other.
+ *
+ * @param lhs Left hand side of the expression.
+ * @param rhs Right hand side of the expression.
+ * @return `true` if `lhs` is lexicographically greater than `rhs`, `false` otherwise.
+ */
 template<typename T, typename U, typename V>
 constexpr bool operator>(const triple<T, U, V>& lhs, const triple<T, U, V>& rhs) {
     return (rhs < lhs);
 }
 
+/**
+ * @relates triple
+ * @brief Compares both triple objects to see if they're greater than or equal to each other.
+ * @details Checks if two triple objects are lexicographically greater than
+ * or equal to each other.
+ *
+ * @param lhs Left hand side of the expression.
+ * @param rhs Right hand side of the expression.
+ * @return `true` if `lhs` is lexicographically greater than or equal to `rhs`, `false` otherwise.
+ */
 template<typename T, typename U, typename V>
 constexpr bool operator>=(const triple<T, U, V>& lhs, const triple<T, U, V>& rhs) {
     return !(lhs < rhs);
 }
 
+/**
+ * @relates triple
+ * @brief Compares both triple objects to see if they're less than or equal to each other.
+ * @details Checks if two triple objects are lexicographically less than
+ * or equal to each other.
+ *
+ * @param lhs Left hand side of the expression.
+ * @param rhs Right hand side of the expression.
+ * @return `true` if `lhs` is lexicographically less than or equal to `rhs`, `false` otherwise.
+ */
 template<typename T, typename U, typename V>
 constexpr bool operator<=(const triple<T, U, V>& lhs, const triple<T, U, V>& rhs) {
     return !(rhs < lhs);
 }
 
+/**
+ * @relates triple
+ * @brief Swaps the elements of the triple objects.
+ * @details Swaps the elements of the triple objects.
+ *
+ * @param lhs Left hand side to swap with.
+ * @param rhs Right hand side to swap with.
+ */
 template<typename T, typename U, typename V>
 inline void swap(triple<T, U, V>& lhs, triple<T, U, V>& rhs) noexcept(noexcept(lhs.swap(rhs))) {
     lhs.swap(rhs);
 }
 
+/**
+ * @relates triple
+ * @brief Creates a triple object.
+ * @details Creates a triple object. The template parameters
+ * are passed through `std::decay` for storage purposes. THis function
+ * is useful for `auto` purposes, e.g.
+ *
+ * @code
+ * auto t = utility::make_triple(10, 'a', 1.f);
+ * // decltype(t) == utility::triple<int, char, float>
+ * @endcode
+ *
+ * @param t First element of the triple.
+ * @param u Second element of the triple.
+ * @param v Third element of the triple.
+ * @return A triple containing the three elements provided.
+ */
 template<typename T, typename U, typename V>
 constexpr triple<meta::Decay<T>, meta::Decay<U>, meta::Decay<V>> make_triple(T&& t, U&& u, V&& v) {
     return { std::forward<T>(t), std::forward<U>(u), std::forward<V>(v) };

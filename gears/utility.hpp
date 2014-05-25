@@ -25,4 +25,11 @@
 #include "utility/triple.hpp"
 #include "utility/maybe.hpp"
 
+/**
+ * @defgroup utility Utility module
+ * @brief Provides general purpose utilities.
+ * @details This module provides utilities that are general enough
+ * to not belong in a specific module.
+ */
+
 #endif // GEARS_UTILITY_HPP
