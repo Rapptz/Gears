@@ -68,9 +68,24 @@ public:
     any() noexcept = default;
     template<typename T>
     any(T&& actual) noexcept: obj(new(std::nothrow) object<Decayed<T>>(std::forward<T>(actual))) {}
-    any(any&)       = default;
-    any(const any&) = default;
-    any(any&&)      = default;
+    any(const any& other): obj(other.clone()) {}
+    any(any&& other): obj(std::move(other.obj)) {}
+
+    any& operator=(const any& other) {
+        if(obj == other.obj)
+            return *this;
+
+        obj = other.clone();
+        return *this;
+    }
+
+    any& operator=(any&& other) {
+        if(obj == other.obj)
+            return *this;
+
+        obj.swap(other.obj);
+        return *this;
+    }
 
     explicit operator bool() const {
         return static_cast<bool>(obj);
@@ -96,22 +111,6 @@ public:
         if(!ptr)
             throw detail::bad_any_cast();
         return ptr->value;
-    }
-
-    any& operator=(const any& other) {
-        if(obj == other.obj)
-            return *this;
-
-        obj = other.clone();
-        return *this;
-    }
-
-    any& operator=(any&& other) {
-        if(obj == other.obj)
-            return *this;
-
-        obj.swap(other.obj);
-        return *this;
     }
 };
 
