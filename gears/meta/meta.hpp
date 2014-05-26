@@ -257,41 +257,6 @@ constexpr const T& as_const(T& t) {
 }
 
 template<typename T>
-constexpr T abs(T t) {
-    return t < 0 ? -t : t;
-}
-
-template<typename T>
-constexpr T min(T&& t) {
-    return std::forward<T>(t);
-}
-
-template<typename T, typename U>
-constexpr auto min(T&& t, U&& u) -> CommonType<T,U> {
-    return t < u ? std::forward<T>(t) : std::forward<U>(u);
-}
-
-template<typename T, typename U, typename... Args>
-constexpr auto min(T&& t, U&& u, Args&&... args) -> CommonType<T,U,Args...> {
-    return min(min(std::forward<T>(t), std::forward<U>(u)), std::forward<Args>(args)...);
-}
-
-template<typename T>
-constexpr T max(T&& t) {
-    return std::forward<T>(t);
-}
-
-template<typename T, typename U>
-constexpr auto max(T&& t, U&& u) -> CommonType<T,U> {
-    return t > u ? std::forward<T>(t) : std::forward<U>(u);
-}
-
-template<typename T, typename U, typename... Args>
-constexpr auto max(T&& t, U&& u, Args&&... args) -> CommonType<T,U,Args...> {
-    return max(max(std::forward<T>(t), std::forward<U>(u)), std::forward<Args>(args)...);
-}
-
-template<typename T>
 constexpr T&& cforward(typename std::remove_reference<T>::type& t) noexcept {
     return static_cast<T&&>(t);
 }

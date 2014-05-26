@@ -23,6 +23,7 @@
 #define GEARS_MATH_ALGORITHM_HPP
 
 #include <type_traits>
+#include <utility>
 
 namespace gears {
 namespace math {
@@ -134,6 +135,88 @@ inline T sum_of_divisors(const T& number) noexcept {
     }
     return result;
 }
+
+/**
+ * @ingroup math
+ * @brief Calculates the absolute value of a number.
+ * @details Calculates the absolute value of a number.
+ * This uses the incredibly naive implementation and should
+ * only be used for its `constexpr` status, which the function
+ * in `<cmath>` lacks.
+ *
+ * @param t The number to make positive.
+ * @return The absolute value of a number.
+ */
+template<typename T>
+constexpr T abs(T t) {
+    return t < 0 ? -t : t;
+}
+
+//@{
+template<typename T>
+constexpr T min(T&& t) {
+    return std::forward<T>(t);
+}
+
+template<typename T, typename U>
+constexpr auto min(T&& t, U&& u) -> decltype(u < t ? std::forward<U>(u) : std::forward<T>(t)) {
+    return u < t ? std::forward<U>(u) : std::forward<T>(t);
+}
+
+/**
+ * @ingroup math
+ * @brief Calculates the minimum value of a list of numbers.
+ * @details Calculates the minimum value of a list of numbers.
+ * It is recommended to not mix different types when using this
+ * function as it will promote types and make it unsafe.
+ *
+ * @param t First type to compare against.
+ * @param u Second type to compare against.
+ * @param args Other types to compare against.
+ * @return The minimum value of the list of numbers.
+ */
+template<typename T, typename U, typename... Args>
+constexpr auto min(T&& t, U&& u, Args&&... args)
+#ifndef GEARS_FOR_DOXYGEN_ONLY
+-> decltype(min(min(std::forward<T>(t), std::forward<U>(u)), std::forward<Args>(args)...))
+#endif
+{
+    return min(min(std::forward<T>(t), std::forward<U>(u)), std::forward<Args>(args)...);
+}
+//@}
+
+//@{
+template<typename T>
+constexpr T max(T&& t) {
+    return std::forward<T>(t);
+}
+
+template<typename T, typename U>
+constexpr auto max(T&& t, U&& u) -> decltype(u < t ? std::forward<T>(t) : std::forward<U>(u)) {
+    return u < t ? std::forward<T>(t) : std::forward<U>(u);
+}
+
+/**
+ * @ingroup math
+ * @brief Calculates the maximum value of a list of numbers.
+ * @details Calculates the maximum value of a list of numbers.
+ * It is recommended to not mix different types when using this
+ * function as it will promote types and make it unsafe.
+ *
+ * @param t First type to compare against.
+ * @param u Second type to compare against.
+ * @param args Other types to compare against.
+ * @return The maximum value of the list of numbers.
+ */
+template<typename T, typename U, typename... Args>
+constexpr auto max(T&& t, U&& u, Args&&... args)
+#ifndef GEARS_FOR_DOXYGEN_ONLY
+-> decltype(max(max(std::forward<T>(t), std::forward<U>(u)), std::forward<Args>(args)...))
+#endif
+{
+    return max(max(std::forward<T>(t), std::forward<U>(u)), std::forward<Args>(args)...);
+}
+//@}
 } // math
 } // gears
 
