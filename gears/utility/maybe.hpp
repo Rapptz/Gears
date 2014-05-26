@@ -365,7 +365,7 @@ public:
      * @details Accesses the contained value. If the current
      * state is disengaged, an exception is thrown.
      *
-     * @throws bad_maybe_access Thrown if the current state is disengaged.
+     * @throws gears::utility::bad_maybe_access Thrown if the current state is disengaged.
      * @return Returns the a reference to the contained value.
      */
     constexpr const T& value() const {
