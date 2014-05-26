@@ -4,7 +4,7 @@ body, table, div, p, dl {
     font-family: 'Arial' sans-serif;
     font-weight: 400;
     font-size: 15px;
-    line-height: 140%;
+    /*line-height: 140%;*/
 }
 
 /* @group Heading Levels */
@@ -290,7 +290,6 @@ div.groupHeader {
 
 div.groupText {
     margin-left: 16px;
-    font-style: italic;
 }
 
 body {
@@ -1201,7 +1200,7 @@ tr.heading h2 {
     margin-bottom: 4px;
 }
 
-@media print { 
+@media print {
     #top {
         display: none
     }
@@ -1360,7 +1359,7 @@ tr.heading h2 {
 
 #nav-tree {
   padding: 0px 0px;
-  background-color: #FAFAFF; 
+  background-color: #FAFAFF;
   font-size:14px;
   overflow:auto;
 }
