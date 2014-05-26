@@ -109,6 +109,22 @@ public:
  * @details Iterates through input lines. Best used with the range-based
  * for loop.
  *
+ * Example:
+ * @code
+ * #include <gears/io/lines.hpp>
+ * #include <iostream>
+ * #include <fstream>
+ *
+ * namespace io = gears::io;
+ *
+ * int main() {
+ *     std::ifstream in("test.txt"); // could be any file
+ *     for(auto&& line : io::lines(in)) {
+ *         std::cout << line << '\n';
+ *     }
+ * }
+ * @endcode
+ *
  * @param in `std::istream` derived object to iterate through lines
  * @return `line_reader` object to iterate through.
  */
