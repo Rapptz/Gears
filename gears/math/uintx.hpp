@@ -327,6 +327,13 @@ public:
         check_bits();
     }
 
+    //@{
+    /**
+     * @brief Adds the contents of another uintx.
+     * @details Adds the contents of another uintx.
+     *
+     * @param other The left hand side to add with.
+     */
     uintx& operator+=(const uintx& other) {
         if(digits.size() < other.digits.size()) {
             digits.resize(other.digits.size());
@@ -346,6 +353,21 @@ public:
         return *this;
     }
 
+    uintx operator+(const uintx& other) const {
+        uintx result(*this);
+        return (result += other);
+    }
+    //@}
+
+    //@{
+    /**
+     * @brief Subtracts the contents of another uintx.
+     * @details Subtracts the contents of another uintx. If the
+     * result would end up being a negative value, the behaviour
+     * is undefined.
+     *
+     * @param other The left hand side to subtract with.
+     */
     uintx& operator-=(const uintx& other) {
         signed_type b = 0;
         auto it = detail::map(other.digits.begin(), other.digits.end(), digits.begin(), digits.begin(), sub_borrow(b));
@@ -355,6 +377,19 @@ public:
         return *this;
     }
 
+    uintx operator-(const uintx& other) const {
+        uintx result(*this);
+        return (result -= other);
+    }
+    //@}
+
+    //@{
+    /**
+     * @brief Multiplies the contents of another uintx.
+     * @details Multiplies the contents of another uintx.
+     *
+     * @param other The left hand side to multiply with.
+     */
     uintx& operator*=(const uintx& other) {
         const uintx* first = this;
         const uintx* second = &other;
@@ -388,6 +423,20 @@ public:
         return *this;
     }
 
+    uintx operator*(const uintx& other) const {
+        uintx result(*this);
+        return (result *= other);
+    }
+    //@}
+
+    //@{
+    /**
+     * @brief Divides the contents of another uintx.
+     * @details Divides the contents of another uintx.
+     *
+     * @throws std::logic_error Thrown when division by zero occurs.
+     * @param other The left hand side to divide with.
+     */
     uintx& operator/=(const uintx& other) {
         if(other == 0)
             throw std::logic_error("Division by zero");
@@ -411,6 +460,20 @@ public:
         return *this;
     }
 
+    uintx operator/(const uintx& other) const {
+        uintx result(*this);
+        return (result /= other);
+    }
+    //@}
+
+    //@{
+    /**
+     * @brief Implements modulo arithmetic.
+     * @details Implements modulo arithmetic.
+     *
+     * @throws std::logic_error Thrown when division by zero occurs.
+     * @param other The left hand side to use modulus on.
+     */
     uintx& operator%=(const uintx& other) {
         if(other == 0)
             throw std::logic_error("Division by zero");
@@ -428,31 +491,16 @@ public:
         return *this;
     }
 
-    uintx operator+(const uintx& other) const {
-        uintx result(*this);
-        return (result += other);
-    }
-
-    uintx operator-(const uintx& other) const {
-        uintx result(*this);
-        return (result -= other);
-    }
-
-    uintx operator*(const uintx& other) const {
-        uintx result(*this);
-        return (result *= other);
-    }
-
-    uintx operator/(const uintx& other) const {
-        uintx result(*this);
-        return (result /= other);
-    }
-
     uintx operator%(const uintx& other) const {
         uintx result(*this);
         return (result %= other);
     }
+    //@}
 
+    //@{
+    /**
+     * @brief Logically compares two uintx objects.
+     */
     bool operator==(const uintx& other) const {
         return digits == other.digits;
     }
@@ -493,7 +541,12 @@ public:
     bool operator>=(const uintx& other) const {
         return !(*this < other);
     }
+    //@}
 
+    //@{
+    /**
+     * @brief Increments a uintx object by one.
+     */
     uintx operator++(int) {
         auto copy = *this;
         *this += 1;
@@ -504,7 +557,15 @@ public:
         *this += 1;
         return *this;
     }
+    //@}
 
+    //@{
+    /**
+     * @brief Decrements a uintx by one.
+     * @details Decrements a uintx by one.
+     * If the value ends up being negative, the
+     * behaviour is undefined.
+     */
     uintx operator--(int) {
         auto copy = *this;
         *this -= 1;
@@ -515,6 +576,7 @@ public:
         *this -= 1;
         return *this;
     }
+    //@}
 
     /**
      * @brief Checks if uintx is greater than 0.
