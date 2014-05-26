@@ -24,6 +24,7 @@
 
 #include "utility/triple.hpp"
 #include "utility/maybe.hpp"
+#include "utility/any.hpp"
 
 /**
  * @defgroup utility Utility module
