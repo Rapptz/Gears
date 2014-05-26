@@ -19,8 +19,8 @@
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-#ifndef GEARS_ANY_HPP
-#define GEARS_ANY_HPP
+#ifndef GEARS_UTILITY_ANY_HPP
+#define GEARS_UTILITY_ANY_HPP
 
 #include <type_traits>
 #include <utility>
@@ -28,13 +28,14 @@
 #include <memory>
 
 namespace gears {
-namespace any_detail {
+namespace utility {
+namespace detail {
 struct bad_any_cast : public std::bad_cast {
     virtual const char* what() const noexcept {
         return "bad_any_cast";
     }
 };
-} // any_detail
+} // detail
 
 class any {
 private:
@@ -85,7 +86,7 @@ public:
     Decayed<T>& as() {
         auto ptr = dynamic_cast<object<Decayed<T>>*>(obj.get());
         if(!ptr)
-            throw any_detail::bad_any_cast();
+            throw detail::bad_any_cast();
         return ptr->value;
     }
 
@@ -93,7 +94,7 @@ public:
     const Decayed<T>& as() const {
         auto ptr = dynamic_cast<object<Decayed<T>>*>(obj.get());
         if(!ptr)
-            throw any_detail::bad_any_cast();
+            throw detail::bad_any_cast();
         return ptr->value;
     }
 
@@ -118,6 +119,7 @@ template<typename T>
 inline auto any_cast(const any& object) -> decltype(object.as<T>()) {
     return object.as<T>();
 }
+} // utility
 } // gears
 
-#endif // GEARS_ANY_HPP
+#endif // GEARS_UTILITY_ANY_HPP
