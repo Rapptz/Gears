@@ -63,7 +63,7 @@ constexpr auto invoke(Func&& f, Args&&... args) noexcept -> decltype(std::forwar
 }
 } // detail
 
-#ifndef DOXYGEN
+#ifndef GEARS_FOR_DOXYGEN_ONLY
 template<typename Deduced = meta::deduced, typename... T, typename Actual = decltype(detail::invoke(std::declval<T>()...)),
          typename Result = meta::If<meta::is_deduced<Deduced>, Actual, Deduced>,
          meta::EnableIf<meta::Any<std::is_convertible<Actual, Result>, std::is_void<Result>>> = meta::_>
