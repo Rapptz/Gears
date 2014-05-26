@@ -666,6 +666,7 @@ dl.reflist dd {
     white-space: nowrap;
     font-family: Consolas, Monaco, monospace;
     font-weight: bold;
+    padding-right: 20px;
 }
 
 .paramname em {
@@ -688,7 +689,7 @@ dl.reflist dd {
     vertical-align: top;
 }
 
-table.tparams td.paramname, table.params td.paramname {
+table.tparams td.paramname, table.params {
   padding-right: 20px;
 }
 
