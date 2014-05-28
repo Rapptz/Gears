@@ -273,6 +273,15 @@ private:
         return minimum;
     }
 
+    template<typename T>
+    typename std::enable_if<std::is_signed<T>::value, T>::type make_positive(T value) {
+        return value < 0 ? -value : value;
+    }
+
+    template<typename T>
+    typename std::enable_if<std::is_unsigned<T>::value, T>::type make_positive(T value) {
+        return value;
+    }
 public:
     static constexpr size_t digits10 = std::numeric_limits<Digit>::digits10;
     static constexpr size_t base = detail::pow(10, digits10);
@@ -287,12 +296,13 @@ public:
      * @brief Constructs from an integer.
      * @details Constructs uintx from an integer type. uintx is then
      * set to the value provided. No bit-checking is done in this constructor.
+     * If the value is negative, then it is made positive before hand.
      *
      * @param value Value to set uintx to.
      */
     template<typename Integer, gears::meta::EnableIf<std::is_integral<Integer>> = gears::meta::_>
     uintx(Integer value) {
-        value = abs(value);
+        value = make_positive(value);
         do {
             digits.push_back(value % base);
             value /= base;
