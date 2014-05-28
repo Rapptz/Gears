@@ -24,7 +24,6 @@
 
 TEST_CASE("Meta functions", "[meta]") {
     using namespace gears::meta;
-    constexpr size_t n = 10;
     REQUIRE(Bool<true>());
     REQUIRE((All<Bool<true>, Bool<true>, Bool<true>>()));
     REQUIRE((Any<Bool<false>, Bool<false>, Bool<true>>()));
