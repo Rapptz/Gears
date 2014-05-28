@@ -177,7 +177,7 @@ constexpr typename std::common_type<T, U>::type min(T&& t, U&& u) {
  */
 template<typename T, typename U, typename... Args>
 constexpr typename std::common_type<T, U, Args...>::type min(T&& t, U&& u, Args&&... args) {
-    return min(min(std::forward<T>(t), std::forward<U>(u)), std::forward<Args>(args)...);
+    return min(min(std::forward<T>(t), std::forward<U>(u)), min(std::forward<Args>(args)...));
 }
 //@}
 
@@ -206,7 +206,7 @@ constexpr typename std::common_type<T, U>::type max(T&& t, U&& u) {
  */
 template<typename T, typename U, typename... Args>
 constexpr typename std::common_type<T, U, Args...>::type max(T&& t, U&& u, Args&&... args) {
-    return max(max(std::forward<T>(t), std::forward<U>(u)), std::forward<Args>(args)...);
+    return max(max(std::forward<T>(t), std::forward<U>(u)), max(std::forward<Args>(args)...));
 }
 //@}
 } // math

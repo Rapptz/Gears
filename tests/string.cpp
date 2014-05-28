@@ -96,13 +96,3 @@ TEST_CASE("Transforms", "[trans]") {
     gears::string::split("a, b, c, d"_s, ", "_s, std::back_inserter(a));
     REQUIRE((a == expected_one)); // work around
 }
-
-TEST_CASE("String Builder", "[builder]") {
-    using namespace gears::string::literals;
-    std::string a = (gears::string::stringbuilder<>("Hello") << " World!");
-    auto b = (gears::string::stringbuilder<>() << "Hello" << " World").append('!').to_string();
-    auto c = (gears::string::stringbuilder<wchar_t>() << L"Hello").to_string();
-    REQUIRE(a == "Hello World!"_s);
-    REQUIRE(b == "Hello World!"_s);
-    REQUIRE(c == L"Hello"_s);
-}
