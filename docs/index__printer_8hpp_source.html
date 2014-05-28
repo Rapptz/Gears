@@ -81,7 +81,7 @@ $(document).ready(function(){initNavTree('index__printer_8hpp_source.html','');}
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Groups</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Groups</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -97,7 +97,7 @@ $(document).ready(function(){initNavTree('index__printer_8hpp_source.html','');}
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">// The MIT License (MIT)</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;</div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">// Copyright (c) 2012-2013 Danny Y., Rapptz</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">// Copyright (c) 2012-2014 Danny Y., Rapptz</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;</div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">// Permission is hereby granted, free of charge, to any person obtaining a copy of</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">// this software and associated documentation files (the &quot;Software&quot;), to deal in</span></div>
@@ -128,24 +128,25 @@ $(document).ready(function(){initNavTree('index__printer_8hpp_source.html','');}
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">namespace </span>gears {</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keyword">namespace </span>io {</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">namespace </span>detail {</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">template</span>&lt;<span class="keywordtype">size_t</span> N = 0, <span class="keyword">class </span>Elem, <span class="keyword">class </span>Traits, <span class="keyword">typename</span>... Args, meta::EnableIf&lt;meta::Bool&lt;(N &gt;= <span class="keyword">sizeof</span>...(Args))&gt;&gt;...&gt;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> index_printer(std::basic_ostream&lt;Elem,Traits&gt;&amp;, <span class="keyword">const</span> <span class="keywordtype">size_t</span>, <span class="keyword">const</span> std::tuple&lt;Args...&gt;&amp;) {</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordflow">throw</span> std::out_of_range(<span class="stringliteral">&quot;Index exceeds number of arguments provided&quot;</span>);</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;}</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="keyword">template</span>&lt;<span class="keywordtype">size_t</span> N = 0, <span class="keyword">class </span>Elem, <span class="keyword">class </span>Traits, <span class="keyword">typename</span>... Args, meta::EnableIf&lt;meta::Bool&lt;(N &lt; <span class="keyword">sizeof</span>...(Args))&gt;&gt;...&gt;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> index_printer(std::basic_ostream&lt;Elem,Traits&gt;&amp; out, <span class="keyword">const</span> <span class="keywordtype">size_t</span> i, <span class="keyword">const</span> std::tuple&lt;Args...&gt;&amp; tup) {</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordflow">if</span>(i != N) {</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        index_printer&lt;N+1, Elem, Traits, Args...&gt;(out, i, tup);</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    }</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    out &lt;&lt; adl::get&lt;N&gt;(tup);</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;}</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;} <span class="comment">// detail</span></div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;} <span class="comment">// io</span></div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;} <span class="comment">// gears</span></div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="preprocessor">#endif // GEARS_IO_DETAIL_INDEX_PRINTER_HPP</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">template</span>&lt;<span class="keywordtype">size_t</span> N = 0, <span class="keyword">class </span>Elem, <span class="keyword">class </span>Traits, <span class="keyword">typename</span>... Args,</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;         <a class="code" href="group__meta.html#ga8e13ceb9990c1ae7000050d4daabfdb1" title="The negation of EnableIf.">meta::DisableIf</a>&lt;<a class="code" href="group__meta.html#ga852ebc5d934b1cf8bccbe66a6781fed0" title="Template alias for std::integral_constant&lt;bool, B&gt;.">meta::Bool</a>&lt;(N &lt; <span class="keyword">sizeof</span>...(Args))&gt;&gt; = meta::_&gt;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> index_printer(std::basic_ostream&lt;Elem,Traits&gt;&amp;, <span class="keyword">const</span> <span class="keywordtype">size_t</span>, <span class="keyword">const</span> std::tuple&lt;Args...&gt;&amp;) {</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordflow">throw</span> std::out_of_range(<span class="stringliteral">&quot;Index exceeds number of arguments provided&quot;</span>);</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;}</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="keyword">template</span>&lt;<span class="keywordtype">size_t</span> N = 0, <span class="keyword">class </span>Elem, <span class="keyword">class </span>Traits, <span class="keyword">typename</span>... Args, <a class="code" href="group__meta.html#ga4a535c66f188fc9344922cef6c79d3c2" title="Template alias for std::enable_if">meta::EnableIf</a>&lt;<a class="code" href="group__meta.html#ga852ebc5d934b1cf8bccbe66a6781fed0" title="Template alias for std::integral_constant&lt;bool, B&gt;.">meta::Bool</a>&lt;(N &lt; <span class="keyword">sizeof</span>...(Args))&gt;&gt; = meta::_&gt;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> index_printer(std::basic_ostream&lt;Elem,Traits&gt;&amp; out, <span class="keyword">const</span> <span class="keywordtype">size_t</span> i, <span class="keyword">const</span> std::tuple&lt;Args...&gt;&amp; tup) {</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordflow">if</span>(i != N) {</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        index_printer&lt;N + 1&gt;(out, i, tup);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    }</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    out &lt;&lt; adl::get&lt;N&gt;(tup);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;}</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;} <span class="comment">// detail</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;} <span class="comment">// io</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;} <span class="comment">// gears</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="preprocessor">#endif // GEARS_IO_DETAIL_INDEX_PRINTER_HPP</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.3.1-->

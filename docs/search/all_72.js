@@ -1,13 +1,26 @@
 var searchData=
 [
-  ['randomaccessiterator',['RandomAccessIterator',['../structgears_1_1concepts_1_1_random_access_iterator.html',1,'gears::concepts']]],
-  ['reference',['Reference',['../structgears_1_1concepts_1_1_reference.html',1,'gears::concepts']]],
-  ['regular',['Regular',['../structgears_1_1concepts_1_1_regular.html',1,'gears::concepts']]],
-  ['require',['require',['../group__concepts.html#gac123339dbd70d43fd7526314e0bafe81',1,'gears::concepts']]],
+  ['randomaccessiterator',['RandomAccessIterator',['../structgears_1_1concepts_1_1RandomAccessIterator.html',1,'gears::concepts']]],
+  ['reference',['Reference',['../structgears_1_1concepts_1_1Reference.html',1,'gears::concepts']]],
+  ['regular',['Regular',['../structgears_1_1concepts_1_1Regular.html',1,'gears::concepts']]],
+  ['removeconst',['RemoveConst',['../group__meta.html#ga987e66104ddadd0538f95c417f62ffd6',1,'gears::meta']]],
+  ['removecv',['RemoveCV',['../group__meta.html#ga37db03649759e4d991fad9637ae949cf',1,'gears::meta']]],
+  ['removeextents',['RemoveExtents',['../group__meta.html#gaaaac21f8b699ddd1cda9539d7ec5e3ac',1,'gears::meta']]],
+  ['removepointer',['RemovePointer',['../group__meta.html#ga90375cccd5f02993b2b46f61ef4e7e07',1,'gears::meta']]],
+  ['removeref',['RemoveRef',['../group__meta.html#gaacc79938e691e12c4ad3cc85f05d3175',1,'gears::meta']]],
+  ['removevolatile',['RemoveVolatile',['../group__meta.html#ga5201e4c9a84fdb0e641796e3ea9662fb',1,'gears::meta']]],
+  ['replace_5fall',['replace_all',['../group__string.html#ga2d62febfb33db83e33cd8ebeaf33ba7e',1,'gears::string']]],
+  ['replace_5ffirst',['replace_first',['../group__string.html#ga61e4ce050ffc3245413130ddba903a75',1,'gears::string']]],
+  ['replace_5flast',['replace_last',['../group__string.html#ga274bd0633d847e11bdb3e71f0fbfe59a',1,'gears::string']]],
+  ['replace_5fnth',['replace_nth',['../group__string.html#gaeac2bd0a47111d3161c300e790bb6d5f',1,'gears::string']]],
+  ['requires',['requires',['../group__concepts.html#ga4a7c2953c98563b26ca44f72d4dd9ed8',1,'gears::concepts']]],
   ['reset',['reset',['../structgears_1_1chrono_1_1basic__stopwatch.html#a921d145a41fc7135c46d12773ed6714b',1,'gears::chrono::basic_stopwatch']]],
   ['restart',['restart',['../structgears_1_1chrono_1_1basic__stopwatch.html#af469930f80033294029cad8053ac04c5',1,'gears::chrono::basic_stopwatch']]],
-  ['reversiblecontainer',['ReversibleContainer',['../structgears_1_1concepts_1_1_reversible_container.html',1,'gears::concepts']]],
+  ['resultof',['ResultOf',['../group__meta.html#ga32663c3bd5ce8c03f6ba639485273c1a',1,'gears::meta']]],
+  ['reverse',['reverse',['../group__string.html#ga7e1a87a7e7c4850daeabcfece19fc404',1,'gears::string']]],
+  ['reversiblecontainer',['ReversibleContainer',['../structgears_1_1concepts_1_1ReversibleContainer.html',1,'gears::concepts']]],
+  ['right',['right',['../group__string.html#ga72d9013326acd8e20e2ac9ade5d77e99',1,'gears::string']]],
   ['rshift',['rshift',['../group__functional__objects.html#gad1cd96d90f9391d18ac4ce14165d2bb5',1,'gears::functional']]],
-  ['rvaluereference',['RValueReference',['../structgears_1_1concepts_1_1_r_value_reference.html',1,'gears::concepts']]],
-  ['rvalueswappable',['RValueSwappable',['../structgears_1_1concepts_1_1_r_value_swappable.html',1,'gears::concepts']]]
+  ['rvaluereference',['RValueReference',['../structgears_1_1concepts_1_1RValueReference.html',1,'gears::concepts']]],
+  ['rvalueswappable',['RValueSwappable',['../structgears_1_1concepts_1_1RValueSwappable.html',1,'gears::concepts']]]
 ];

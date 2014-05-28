@@ -81,7 +81,7 @@ $(document).ready(function(){initNavTree('meta_2alias_8hpp_source.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Groups</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Groups</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -97,7 +97,7 @@ $(document).ready(function(){initNavTree('meta_2alias_8hpp_source.html','');});
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">// The MIT License (MIT)</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;</div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">// Copyright (c) 2012-2013 Danny Y., Rapptz</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">// Copyright (c) 2012-2014 Danny Y., Rapptz</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;</div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">// Permission is hereby granted, free of charge, to any person obtaining a copy of</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">// this software and associated documentation files (the &quot;Software&quot;), to deal in</span></div>
@@ -124,72 +124,74 @@ $(document).ready(function(){initNavTree('meta_2alias_8hpp_source.html','');});
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">namespace </span>gears {</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">namespace </span>meta {</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">namespace </span>alias_detail {</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">enum class</span> enabler {};</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">enum class</span> enabler { _ };</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;} <span class="comment">// alias_detail</span></div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span>... Args&gt;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">using</span> EnableIf = Type&lt;std::enable_if&lt;All&lt;Args...&gt;::value, alias_detail::enabler&gt;&gt;;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span>... Args&gt;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="keyword">using</span> DisableIf = Type&lt;std::enable_if&lt;meta::Not&lt;All&lt;Args...&gt;&gt;::value, alias_detail::enabler&gt;&gt;;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="keyword">using</span> Decay = Type&lt;std::decay&lt;T&gt;&gt;;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keyword">using</span> RemoveRef = Type&lt;std::remove_reference&lt;T&gt;&gt;;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="keyword">using</span> RemoveCV = Type&lt;std::remove_cv&lt;T&gt;&gt;;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="keyword">using</span> RemoveConst = Type&lt;std::remove_const&lt;T&gt;&gt;;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="keyword">using</span> RemoveVolatile = Type&lt;std::remove_volatile&lt;T&gt;&gt;;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;constexpr <span class="keyword">auto</span> _ = alias_detail::enabler::_;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span>... Args&gt;</div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="code" href="group__meta.html#ga4a535c66f188fc9344922cef6c79d3c2">   52</a></span>&#160;<span class="keyword">using</span> <a class="code" href="group__meta.html#ga4a535c66f188fc9344922cef6c79d3c2" title="Template alias for std::enable_if">EnableIf</a> = Type&lt;std::enable_if&lt;<a class="code" href="structgears_1_1meta_1_1All.html" title="Logical And meta function.">All</a>&lt;Args...&gt;::value, alias_detail::enabler&gt;&gt;;</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="keyword">using</span> RemoveExtents = Type&lt;std::remove_all_extents&lt;T&gt;&gt;;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="keyword">using</span> RemovePointer = Type&lt;std::remove_pointer&lt;T&gt;&gt;;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="keyword">using</span> AddLValueRef = Type&lt;std::add_lvalue_reference&lt;T&gt;&gt;;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="keyword">using</span> AddRValueRef = Type&lt;std::add_rvalue_reference&lt;T&gt;&gt;;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="keyword">using</span> AddCV = Type&lt;std::add_cv&lt;T&gt;&gt;;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="keyword">using</span> AddConst = Type&lt;std::add_const&lt;T&gt;&gt;;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span>... Args&gt;</div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="code" href="group__meta.html#ga8e13ceb9990c1ae7000050d4daabfdb1">   59</a></span>&#160;<span class="keyword">using</span> <a class="code" href="group__meta.html#ga8e13ceb9990c1ae7000050d4daabfdb1" title="The negation of EnableIf.">DisableIf</a> = Type&lt;std::enable_if&lt;<a class="code" href="structgears_1_1meta_1_1Not.html" title="Logical Not meta function.">meta::Not</a>&lt;<a class="code" href="structgears_1_1meta_1_1All.html" title="Logical And meta function.">All</a>&lt;Args...&gt;&gt;::value, alias_detail::enabler&gt;&gt;;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00066"></a><span class="lineno"><a class="code" href="group__meta.html#gae0e6a3a188d17de87ab10266d2d7b584">   66</a></span>&#160;<span class="keyword">using</span> <a class="code" href="group__meta.html#gae0e6a3a188d17de87ab10266d2d7b584" title="Template alias for std::decay.">Decay</a> = Type&lt;std::decay&lt;T&gt;&gt;;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="keyword">using</span> AddVolatile = Type&lt;std::add_volatile&lt;T&gt;&gt;;</div>
+<div class="line"><a name="l00073"></a><span class="lineno"><a class="code" href="group__meta.html#gaacc79938e691e12c4ad3cc85f05d3175">   73</a></span>&#160;<span class="keyword">using</span> <a class="code" href="group__meta.html#gaacc79938e691e12c4ad3cc85f05d3175" title="Template alias for std::remove_reference.">RemoveRef</a> = Type&lt;std::remove_reference&lt;T&gt;&gt;;</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="keyword">using</span> AddPointer = Type&lt;std::add_pointer&lt;T&gt;&gt;;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="keyword">using</span> MakeSigned = Type&lt;std::make_signed&lt;T&gt;&gt;;</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="keyword">using</span> MakeUnsigned = Type&lt;std::make_unsigned&lt;T&gt;&gt;;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="keyword">using</span> Unqualified = RemoveCV&lt;RemoveRef&lt;T&gt;&gt;;</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="keyword">using</span> ValueType = <span class="keyword">typename</span> Unqualified&lt;T&gt;::value_type;</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="keyword">using</span> StorageFor = Type&lt;std::aligned_storage&lt;sizeof(T), std::alignment_of&lt;T&gt;::value&gt;&gt;;</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;} <span class="comment">// meta</span></div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;} <span class="comment">// gears</span></div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="preprocessor">#endif // GEARS_META_ALIAS_HPP</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00080"></a><span class="lineno"><a class="code" href="group__meta.html#ga37db03649759e4d991fad9637ae949cf">   80</a></span>&#160;<span class="keyword">using</span> <a class="code" href="group__meta.html#ga37db03649759e4d991fad9637ae949cf" title="Template alias for std::remove_cv.">RemoveCV</a> = Type&lt;std::remove_cv&lt;T&gt;&gt;;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00087"></a><span class="lineno"><a class="code" href="group__meta.html#ga987e66104ddadd0538f95c417f62ffd6">   87</a></span>&#160;<span class="keyword">using</span> <a class="code" href="group__meta.html#ga987e66104ddadd0538f95c417f62ffd6" title="Template alias for std::remove_const.">RemoveConst</a> = Type&lt;std::remove_const&lt;T&gt;&gt;;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00094"></a><span class="lineno"><a class="code" href="group__meta.html#ga5201e4c9a84fdb0e641796e3ea9662fb">   94</a></span>&#160;<span class="keyword">using</span> <a class="code" href="group__meta.html#ga5201e4c9a84fdb0e641796e3ea9662fb" title="Template alias for std::remove_volatile.">RemoveVolatile</a> = Type&lt;std::remove_volatile&lt;T&gt;&gt;;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00101"></a><span class="lineno"><a class="code" href="group__meta.html#gaaaac21f8b699ddd1cda9539d7ec5e3ac">  101</a></span>&#160;<span class="keyword">using</span> <a class="code" href="group__meta.html#gaaaac21f8b699ddd1cda9539d7ec5e3ac" title="Template alias for std::remove_all_extents.">RemoveExtents</a> = Type&lt;std::remove_all_extents&lt;T&gt;&gt;;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00108"></a><span class="lineno"><a class="code" href="group__meta.html#ga90375cccd5f02993b2b46f61ef4e7e07">  108</a></span>&#160;<span class="keyword">using</span> <a class="code" href="group__meta.html#ga90375cccd5f02993b2b46f61ef4e7e07" title="Template alias for std::remove_pointer.">RemovePointer</a> = Type&lt;std::remove_pointer&lt;T&gt;&gt;;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00115"></a><span class="lineno"><a class="code" href="group__meta.html#ga3778063b20afa3efd45e0948c00f481c">  115</a></span>&#160;<span class="keyword">using</span> <a class="code" href="group__meta.html#ga3778063b20afa3efd45e0948c00f481c" title="Template alias for std::add_lvalue_reference.">AddLValueRef</a> = Type&lt;std::add_lvalue_reference&lt;T&gt;&gt;;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00122"></a><span class="lineno"><a class="code" href="group__meta.html#ga40159117f6a09a9e133b02ed061e97c0">  122</a></span>&#160;<span class="keyword">using</span> <a class="code" href="group__meta.html#ga40159117f6a09a9e133b02ed061e97c0" title="Template alias for std::add_rvalue_reference.">AddRValueRef</a> = Type&lt;std::add_rvalue_reference&lt;T&gt;&gt;;</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00129"></a><span class="lineno"><a class="code" href="group__meta.html#ga18b95392d1ec9e2a9a10f118b389b012">  129</a></span>&#160;<span class="keyword">using</span> <a class="code" href="group__meta.html#ga18b95392d1ec9e2a9a10f118b389b012" title="Template alias for std::add_cv.">AddCV</a> = Type&lt;std::add_cv&lt;T&gt;&gt;;</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00136"></a><span class="lineno"><a class="code" href="group__meta.html#ga0d5b83a8e4a40812cedf79ae9e879916">  136</a></span>&#160;<span class="keyword">using</span> <a class="code" href="group__meta.html#ga0d5b83a8e4a40812cedf79ae9e879916" title="Template alias for std::add_const.">AddConst</a> = Type&lt;std::add_const&lt;T&gt;&gt;;</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00143"></a><span class="lineno"><a class="code" href="group__meta.html#ga80116e763c2f368a2e2b3957a0e32331">  143</a></span>&#160;<span class="keyword">using</span> <a class="code" href="group__meta.html#ga80116e763c2f368a2e2b3957a0e32331" title="Template alias for std::add_volatile.">AddVolatile</a> = Type&lt;std::add_volatile&lt;T&gt;&gt;;</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00150"></a><span class="lineno"><a class="code" href="group__meta.html#gadbd3e160ccbaa45920ba5da6036548a3">  150</a></span>&#160;<span class="keyword">using</span> <a class="code" href="group__meta.html#gadbd3e160ccbaa45920ba5da6036548a3" title="Template alias for std::add_pointer.">AddPointer</a> = Type&lt;std::add_pointer&lt;T&gt;&gt;;</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00157"></a><span class="lineno"><a class="code" href="group__meta.html#ga719c999f9a6262d7a3bb19c74f2c8f0f">  157</a></span>&#160;<span class="keyword">using</span> <a class="code" href="group__meta.html#ga719c999f9a6262d7a3bb19c74f2c8f0f" title="Template alias for std::make_signed.">MakeSigned</a> = Type&lt;std::make_signed&lt;T&gt;&gt;;</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00164"></a><span class="lineno"><a class="code" href="group__meta.html#ga045261293eabedd102c4d7447a3d1d34">  164</a></span>&#160;<span class="keyword">using</span> <a class="code" href="group__meta.html#ga045261293eabedd102c4d7447a3d1d34" title="Template alias for std::make_unsigned.">MakeUnsigned</a> = Type&lt;std::make_unsigned&lt;T&gt;&gt;;</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00171"></a><span class="lineno"><a class="code" href="group__meta.html#gab61090840d1e77d78ccd461caf025dbb">  171</a></span>&#160;<span class="keyword">using</span> <a class="code" href="group__meta.html#gab61090840d1e77d78ccd461caf025dbb" title="Template alias that removes all cv and ref qualifiers.">Unqualified</a> = <a class="code" href="group__meta.html#ga37db03649759e4d991fad9637ae949cf" title="Template alias for std::remove_cv.">RemoveCV&lt;RemoveRef&lt;T&gt;</a>&gt;;</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00178"></a><span class="lineno"><a class="code" href="group__meta.html#gada055d0960a18d966c3d1c52a1dfb5e2">  178</a></span>&#160;<span class="keyword">using</span> <a class="code" href="group__meta.html#gada055d0960a18d966c3d1c52a1dfb5e2" title="Template alias to check for T::value_type.">ValueType</a> = <span class="keyword">typename</span> <a class="code" href="group__meta.html#gab61090840d1e77d78ccd461caf025dbb" title="Template alias that removes all cv and ref qualifiers.">Unqualified&lt;T&gt;::value_type</a>;</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00185"></a><span class="lineno"><a class="code" href="group__meta.html#ga5cc74d65519ee7844970ca7d9299c3d2">  185</a></span>&#160;<span class="keyword">using</span> <a class="code" href="group__meta.html#ga5cc74d65519ee7844970ca7d9299c3d2" title="Template alias for std::aligned_storage with proper alignment.">StorageFor</a> = Type&lt;std::aligned_storage&lt;sizeof(T), std::alignment_of&lt;T&gt;::value&gt;&gt;;</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;} <span class="comment">// meta</span></div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;} <span class="comment">// gears</span></div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;<span class="preprocessor">#endif // GEARS_META_ALIAS_HPP</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.3.1-->

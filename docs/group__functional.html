@@ -81,7 +81,7 @@ $(document).ready(function(){initNavTree('group__functional.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Groups</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Groups</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -120,6 +120,10 @@ Functions</h2></td></tr>
 detail::SpecialDecay&lt; Args &gt;...&gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__functional.html#ga39169e3b53ed3bed41475b7bf7dafc6f">gears::functional::curry</a> (Function &amp;&amp;f, Args &amp;&amp;...args)</td></tr>
 <tr class="memdesc:ga39169e3b53ed3bed41475b7bf7dafc6f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Applies function currying to functions.  <a href="#ga39169e3b53ed3bed41475b7bf7dafc6f">More...</a><br/></td></tr>
 <tr class="separator:ga39169e3b53ed3bed41475b7bf7dafc6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac8bb97c43155e2866758294b81ff9661"><td class="memTemplParams" colspan="2">template&lt;typename... T&gt; </td></tr>
+<tr class="memitem:gac8bb97c43155e2866758294b81ff9661"><td class="memTemplItemLeft" align="right" valign="top">constexpr Result&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__functional.html#gac8bb97c43155e2866758294b81ff9661">gears::functional::invoke</a> (T &amp;&amp;...t) noexcept</td></tr>
+<tr class="memdesc:gac8bb97c43155e2866758294b81ff9661"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implements the <code>INVOKE</code> facility in the C++ standard.  <a href="#gac8bb97c43155e2866758294b81ff9661">More...</a><br/></td></tr>
+<tr class="separator:gac8bb97c43155e2866758294b81ff9661"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p>This module provides multiple function objects (also called functors) and operations that make working in a functional manner easier.</p>
@@ -128,12 +132,12 @@ detail::SpecialDecay&lt; Args &gt;...&gt;&#160;</td><td class="memTemplItemRight
 <p>Example usage: </p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;gears/functional.hpp&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
-<div class="line"> </div>
+<div class="line"></div>
 <div class="line"><span class="keyword">namespace </span>fn = gears::functional;</div>
 <div class="line"></div>
 <div class="line"><span class="keywordtype">int</span> main() {</div>
 <div class="line">    <span class="keyword">auto</span> f = <a class="code" href="group__functional.html#gada3fb865efe49c85347051419a758ec3" title="Function composition of functions.">fn::compose</a>(<a class="code" href="group__functional__objects.html#gae7a9884e2f575500efb405454913b172" title="Function object checking if a numeric type is even.">fn::even</a>, <a class="code" href="group__functional__objects.html#gaa854e27ff0e290779eb710d1a9cc3bc6" title="Function object performing addition.">fn::plus</a>);</div>
-<div class="line">             <span class="comment">// equivalent to </span></div>
+<div class="line">             <span class="comment">// equivalent to</span></div>
 <div class="line">             <span class="comment">// fn::even(fn::plus(...))</span></div>
 <div class="line">    std::cout &lt;&lt; f(11, 15);</div>
 <div class="line">}</div>
@@ -231,6 +235,55 @@ template&lt;typename Function , typename... Args&gt; </div>
 <dl class="section return"><dt>Returns</dt><dd>a function object that calls the curried functions </dd></dl>
 
 <p>Definition at line <a class="el" href="curry_8hpp_source.html#l00116">116</a> of file <a class="el" href="curry_8hpp_source.html">curry.hpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="gac8bb97c43155e2866758294b81ff9661"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename... T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">template&lt; typename...T &gt; auto gears::functional::invoke </td>
+          <td>(</td>
+          <td class="paramtype">T &amp;&amp;...&#160;</td>
+          <td class="paramname"><em>t</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>The <code>INVOKE</code> facility in the standard is specified in §20.8.2 as follows:</p>
+<pre>
+Define INVOKE (f, t1, t2, ..., tN) as follows:
+— (t1.*f)(t2, ..., tN) when f is a pointer to a member function
+of a class T and t1 is an object of type T or a reference to an object
+of type T or a reference to an object of a type derived from T;
+— ((*t1).*f)(t2, ..., tN) when f is a pointer to a member function
+of a class T and t1 is not one of the types described in the previous item;
+— t1.*f when N == 1 and f is a pointer to member data of a class T and
+t1 is an object of type T or a reference to an object of type T or a reference
+to an object of a type derived from T;
+— (*t1).*f when N == 1 and f is a pointer to member data of a class
+ T and t1 is not one of the types described in the previous item;
+— f(t1, t2, ..., tN) in all other cases.
+</pre><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">t</td><td>arguments to pass to <code>INVOKE</code> facility. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>generic result of the invoked call. </dd></dl>
+
+<p>Definition at line <a class="el" href="invoke_8hpp_source.html#l00073">73</a> of file <a class="el" href="invoke_8hpp_source.html">invoke.hpp</a>.</p>
 
 </div>
 </div>

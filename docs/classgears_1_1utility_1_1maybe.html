@@ -89,7 +89,7 @@ $(document).ready(function(){initNavTree('classgears_1_1utility_1_1maybe.html','
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Groups</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Groups</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -102,11 +102,15 @@ $(document).ready(function(){initNavTree('classgears_1_1utility_1_1maybe.html','
   <div class="summary">
 <a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#related">Related Functions</a> &#124;
 <a href="classgears_1_1utility_1_1maybe-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">gears::utility::maybe&lt; T &gt; Class Template Reference</div>  </div>
+<div class="title">gears::utility::maybe&lt; T &gt; Class Template Reference<div class="ingroups"><a class="el" href="group__utility.html">Utility module</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>An optional data type.  
+ <a href="classgears_1_1utility_1_1maybe.html#details">More...</a></p>
 
 <p>Inherits MaybeBase&lt; T &gt;.</p>
 <table class="memberdecls">
@@ -118,75 +122,675 @@ using&#160;</td><td class="memItemRight" valign="bottom"><b>value_type</b> = T</
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:a9073b6a9b67bb06550a49ed737beae81"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9073b6a9b67bb06550a49ed737beae81"></a>
+constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgears_1_1utility_1_1maybe.html#a9073b6a9b67bb06550a49ed737beae81">maybe</a> () noexcept</td></tr>
+<tr class="memdesc:a9073b6a9b67bb06550a49ed737beae81"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs <code>maybe</code> in a disengaged state. <br/></td></tr>
+<tr class="separator:a9073b6a9b67bb06550a49ed737beae81"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a13729236286d0f8606d526e0266185d8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a13729236286d0f8606d526e0266185d8"></a>
-constexpr&#160;</td><td class="memItemRight" valign="bottom"><b>maybe</b> (<a class="el" href="structgears_1_1utility_1_1nothing__t.html">nothing_t</a>) noexcept</td></tr>
+constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgears_1_1utility_1_1maybe.html#a13729236286d0f8606d526e0266185d8">maybe</a> (nothing_t) noexcept</td></tr>
+<tr class="memdesc:a13729236286d0f8606d526e0266185d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs <code>maybe</code> in a disengaged state. <br/></td></tr>
 <tr class="separator:a13729236286d0f8606d526e0266185d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a169e11c0882ba18fadbf18b6668b5d4e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a169e11c0882ba18fadbf18b6668b5d4e"></a>
-constexpr&#160;</td><td class="memItemRight" valign="bottom"><b>maybe</b> (const T &amp;value)</td></tr>
+constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgears_1_1utility_1_1maybe.html#a169e11c0882ba18fadbf18b6668b5d4e">maybe</a> (const T &amp;<a class="el" href="classgears_1_1utility_1_1maybe.html#ac5d2f4752ed0d9d985268dbe00fd1f39">value</a>)</td></tr>
+<tr class="memdesc:a169e11c0882ba18fadbf18b6668b5d4e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs <code>maybe</code> in an engaged state containing the value. <br/></td></tr>
 <tr class="separator:a169e11c0882ba18fadbf18b6668b5d4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac126bd9ca12fb7ca849b479504fb19a2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac126bd9ca12fb7ca849b479504fb19a2"></a>
-constexpr&#160;</td><td class="memItemRight" valign="bottom"><b>maybe</b> (T &amp;&amp;value)</td></tr>
+constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgears_1_1utility_1_1maybe.html#ac126bd9ca12fb7ca849b479504fb19a2">maybe</a> (T &amp;&amp;<a class="el" href="classgears_1_1utility_1_1maybe.html#ac5d2f4752ed0d9d985268dbe00fd1f39">value</a>)</td></tr>
+<tr class="memdesc:ac126bd9ca12fb7ca849b479504fb19a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs <code>maybe</code> in an engaged state containing the value. <br/></td></tr>
 <tr class="separator:ac126bd9ca12fb7ca849b479504fb19a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a146bb6da1e977fcd6e4a9fe4523ecc14"><td class="memTemplParams" colspan="2"><a class="anchor" id="a146bb6da1e977fcd6e4a9fe4523ecc14"></a>
-template&lt;typename... Args&gt; </td></tr>
-<tr class="memitem:a146bb6da1e977fcd6e4a9fe4523ecc14"><td class="memTemplItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memTemplItemRight" valign="bottom"><b>maybe</b> (<a class="el" href="structgears_1_1utility_1_1in__place__t.html">in_place_t</a>, Args &amp;&amp;...args)</td></tr>
+<tr class="memitem:a146bb6da1e977fcd6e4a9fe4523ecc14"><td class="memTemplParams" colspan="2">template&lt;typename... Args&gt; </td></tr>
+<tr class="memitem:a146bb6da1e977fcd6e4a9fe4523ecc14"><td class="memTemplItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classgears_1_1utility_1_1maybe.html#a146bb6da1e977fcd6e4a9fe4523ecc14">maybe</a> (in_place_t, Args &amp;&amp;...args)</td></tr>
+<tr class="memdesc:a146bb6da1e977fcd6e4a9fe4523ecc14"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs <code>maybe</code> in place.  <a href="#a146bb6da1e977fcd6e4a9fe4523ecc14">More...</a><br/></td></tr>
 <tr class="separator:a146bb6da1e977fcd6e4a9fe4523ecc14"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acfe1d884686a0d617ad1662212a484b6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acfe1d884686a0d617ad1662212a484b6"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>maybe</b> (const <a class="el" href="classgears_1_1utility_1_1maybe.html">maybe</a> &amp;rhs)</td></tr>
+<tr class="memitem:acfe1d884686a0d617ad1662212a484b6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgears_1_1utility_1_1maybe.html#acfe1d884686a0d617ad1662212a484b6">maybe</a> (const <a class="el" href="classgears_1_1utility_1_1maybe.html">maybe</a> &amp;rhs)</td></tr>
+<tr class="memdesc:acfe1d884686a0d617ad1662212a484b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy constructor.  <a href="#acfe1d884686a0d617ad1662212a484b6">More...</a><br/></td></tr>
 <tr class="separator:acfe1d884686a0d617ad1662212a484b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5339382352ab151e14e8bce643d6898c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5339382352ab151e14e8bce643d6898c"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>maybe</b> (<a class="el" href="classgears_1_1utility_1_1maybe.html">maybe</a> &amp;&amp;rhs) noexcept(std::is_nothrow_move_constructible&lt; T &gt;())</td></tr>
+<tr class="memitem:a5339382352ab151e14e8bce643d6898c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgears_1_1utility_1_1maybe.html#a5339382352ab151e14e8bce643d6898c">maybe</a> (<a class="el" href="classgears_1_1utility_1_1maybe.html">maybe</a> &amp;&amp;rhs) noexcept(std::is_nothrow_move_constructible&lt; T &gt;())</td></tr>
+<tr class="memdesc:a5339382352ab151e14e8bce643d6898c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Move constructor.  <a href="#a5339382352ab151e14e8bce643d6898c">More...</a><br/></td></tr>
 <tr class="separator:a5339382352ab151e14e8bce643d6898c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac3bf9960cefadfa97804b148376dfbea"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac3bf9960cefadfa97804b148376dfbea"></a>
-<a class="el" href="classgears_1_1utility_1_1maybe.html">maybe</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (<a class="el" href="structgears_1_1utility_1_1nothing__t.html">nothing_t</a>) noexcept</td></tr>
+<tr class="memitem:ac3bf9960cefadfa97804b148376dfbea"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgears_1_1utility_1_1maybe.html">maybe</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgears_1_1utility_1_1maybe.html#ac3bf9960cefadfa97804b148376dfbea">operator=</a> (nothing_t) noexcept</td></tr>
+<tr class="memdesc:ac3bf9960cefadfa97804b148376dfbea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assignment with <code>nothing</code>.  <a href="#ac3bf9960cefadfa97804b148376dfbea">More...</a><br/></td></tr>
 <tr class="separator:ac3bf9960cefadfa97804b148376dfbea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a66df68fcbe6638849db624c25589ea96"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a66df68fcbe6638849db624c25589ea96"></a>
-<a class="el" href="classgears_1_1utility_1_1maybe.html">maybe</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (const <a class="el" href="classgears_1_1utility_1_1maybe.html">maybe</a> &amp;rhs)</td></tr>
+<a class="el" href="classgears_1_1utility_1_1maybe.html">maybe</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgears_1_1utility_1_1maybe.html#a66df68fcbe6638849db624c25589ea96">operator=</a> (const <a class="el" href="classgears_1_1utility_1_1maybe.html">maybe</a> &amp;rhs)</td></tr>
+<tr class="memdesc:a66df68fcbe6638849db624c25589ea96"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy assignment. Behaves similar to the copy constructor. <br/></td></tr>
 <tr class="separator:a66df68fcbe6638849db624c25589ea96"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a20586414d73ddfd6161e5d5e6188dfc6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a20586414d73ddfd6161e5d5e6188dfc6"></a>
-<a class="el" href="classgears_1_1utility_1_1maybe.html">maybe</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (<a class="el" href="classgears_1_1utility_1_1maybe.html">maybe</a> &amp;&amp;rhs) noexcept(std::is_nothrow_move_assignable&lt; T &gt;()&amp;&amp;std::is_nothrow_move_constructible&lt; T &gt;())</td></tr>
+<a class="el" href="classgears_1_1utility_1_1maybe.html">maybe</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgears_1_1utility_1_1maybe.html#a20586414d73ddfd6161e5d5e6188dfc6">operator=</a> (<a class="el" href="classgears_1_1utility_1_1maybe.html">maybe</a> &amp;&amp;rhs) noexcept(std::is_nothrow_move_assignable&lt; T &gt;()&amp;&amp;std::is_nothrow_move_constructible&lt; T &gt;())</td></tr>
+<tr class="memdesc:a20586414d73ddfd6161e5d5e6188dfc6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Move assignment. Behaves similar to the move constructor. <br/></td></tr>
 <tr class="separator:a20586414d73ddfd6161e5d5e6188dfc6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a114a4b7603ddac6cd0c8de39664e18e6"><td class="memTemplParams" colspan="2"><a class="anchor" id="a114a4b7603ddac6cd0c8de39664e18e6"></a>
-template&lt;typename U , meta::EnableIf&lt; std::is_constructible&lt; T, meta::Decay&lt; U &gt;&gt;, std::is_assignable&lt; T, meta::Decay&lt; U &gt;&gt;&gt; ...&gt; </td></tr>
-<tr class="memitem:a114a4b7603ddac6cd0c8de39664e18e6"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classgears_1_1utility_1_1maybe.html">maybe</a> &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>operator=</b> (U &amp;&amp;value)</td></tr>
+<tr class="memitem:a114a4b7603ddac6cd0c8de39664e18e6"><td class="memTemplParams" colspan="2">template&lt;typename U , meta::EnableIf&lt; std::is_constructible&lt; T, meta::Decay&lt; U &gt;&gt;, std::is_assignable&lt; T, meta::Decay&lt; U &gt;&gt;&gt;  = meta::_&gt; </td></tr>
+<tr class="memitem:a114a4b7603ddac6cd0c8de39664e18e6"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classgears_1_1utility_1_1maybe.html">maybe</a> &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classgears_1_1utility_1_1maybe.html#a114a4b7603ddac6cd0c8de39664e18e6">operator=</a> (U &amp;&amp;<a class="el" href="classgears_1_1utility_1_1maybe.html#ac5d2f4752ed0d9d985268dbe00fd1f39">value</a>)</td></tr>
+<tr class="memdesc:a114a4b7603ddac6cd0c8de39664e18e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assigns <code>maybe</code> in an engaged state with the value given.  <a href="#a114a4b7603ddac6cd0c8de39664e18e6">More...</a><br/></td></tr>
 <tr class="separator:a114a4b7603ddac6cd0c8de39664e18e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af3616478258fa3f28b56a876f440e864"><td class="memTemplParams" colspan="2"><a class="anchor" id="af3616478258fa3f28b56a876f440e864"></a>
-template&lt;typename... Args&gt; </td></tr>
-<tr class="memitem:af3616478258fa3f28b56a876f440e864"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><b>emplace</b> (Args &amp;&amp;...args)</td></tr>
+<tr class="memitem:af3616478258fa3f28b56a876f440e864"><td class="memTemplParams" colspan="2">template&lt;typename... Args&gt; </td></tr>
+<tr class="memitem:af3616478258fa3f28b56a876f440e864"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classgears_1_1utility_1_1maybe.html#af3616478258fa3f28b56a876f440e864">emplace</a> (Args &amp;&amp;...args)</td></tr>
+<tr class="memdesc:af3616478258fa3f28b56a876f440e864"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs the contained value in place.  <a href="#af3616478258fa3f28b56a876f440e864">More...</a><br/></td></tr>
 <tr class="separator:af3616478258fa3f28b56a876f440e864"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaa97dc6520da2cfc34fc725430218142"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aaa97dc6520da2cfc34fc725430218142"></a>
-constexpr const T *&#160;</td><td class="memItemRight" valign="bottom"><b>operator-&gt;</b> () const </td></tr>
+<tr class="memitem:a994d984828813f06d90dd09f8a70a64d"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgears_1_1utility_1_1maybe.html#a994d984828813f06d90dd09f8a70a64d">operator bool</a> () const noexcept</td></tr>
+<tr class="memdesc:a994d984828813f06d90dd09f8a70a64d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the current state is engaged.  <a href="#a994d984828813f06d90dd09f8a70a64d">More...</a><br/></td></tr>
+<tr class="separator:a994d984828813f06d90dd09f8a70a64d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a99d41f71e1ccfa17f4ddb83b656eda53"><td class="memTemplParams" colspan="2">template&lt;typename U &gt; </td></tr>
+<tr class="memitem:a99d41f71e1ccfa17f4ddb83b656eda53"><td class="memTemplItemLeft" align="right" valign="top">constexpr T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classgears_1_1utility_1_1maybe.html#a99d41f71e1ccfa17f4ddb83b656eda53">value_or</a> (U &amp;&amp;<a class="el" href="classgears_1_1utility_1_1maybe.html#ac5d2f4752ed0d9d985268dbe00fd1f39">value</a>) const </td></tr>
+<tr class="memdesc:a99d41f71e1ccfa17f4ddb83b656eda53"><td class="mdescLeft">&#160;</td><td class="mdescRight">Accesses the contained value or a reasonable default.  <a href="#a99d41f71e1ccfa17f4ddb83b656eda53">More...</a><br/></td></tr>
+<tr class="separator:a99d41f71e1ccfa17f4ddb83b656eda53"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader"></div></td></tr>
+<tr class="memitem:aaa97dc6520da2cfc34fc725430218142"><td class="memItemLeft" align="right" valign="top">constexpr const T *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgears_1_1utility_1_1maybe.html#aaa97dc6520da2cfc34fc725430218142">operator-&gt;</a> () const </td></tr>
+<tr class="memdesc:aaa97dc6520da2cfc34fc725430218142"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a pointer to the contained value.  <a href="#aaa97dc6520da2cfc34fc725430218142">More...</a><br/></td></tr>
 <tr class="separator:aaa97dc6520da2cfc34fc725430218142"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0ab1407c9ddcca85f5727ead63cb2f2d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0ab1407c9ddcca85f5727ead63cb2f2d"></a>
 T *&#160;</td><td class="memItemRight" valign="bottom"><b>operator-&gt;</b> ()</td></tr>
 <tr class="separator:a0ab1407c9ddcca85f5727ead63cb2f2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad73fb17e9b4289bd070ad2b5fc8f92d7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad73fb17e9b4289bd070ad2b5fc8f92d7"></a>
-constexpr const T &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator*</b> () const </td></tr>
+<tr><td colspan="2"><div class="groupHeader"></div></td></tr>
+<tr class="memitem:ad73fb17e9b4289bd070ad2b5fc8f92d7"><td class="memItemLeft" align="right" valign="top">constexpr const T &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgears_1_1utility_1_1maybe.html#ad73fb17e9b4289bd070ad2b5fc8f92d7">operator*</a> () const </td></tr>
+<tr class="memdesc:ad73fb17e9b4289bd070ad2b5fc8f92d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a reference to the contained value.  <a href="#ad73fb17e9b4289bd070ad2b5fc8f92d7">More...</a><br/></td></tr>
 <tr class="separator:ad73fb17e9b4289bd070ad2b5fc8f92d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a229b3602b2c6094c1264aa46e917bb4f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a229b3602b2c6094c1264aa46e917bb4f"></a>
 T &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator*</b> ()</td></tr>
 <tr class="separator:a229b3602b2c6094c1264aa46e917bb4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac5d2f4752ed0d9d985268dbe00fd1f39"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac5d2f4752ed0d9d985268dbe00fd1f39"></a>
-constexpr const T &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>value</b> () const </td></tr>
+<tr><td colspan="2"><div class="groupHeader"></div></td></tr>
+<tr class="memitem:ac5d2f4752ed0d9d985268dbe00fd1f39"><td class="memItemLeft" align="right" valign="top">constexpr const T &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgears_1_1utility_1_1maybe.html#ac5d2f4752ed0d9d985268dbe00fd1f39">value</a> () const </td></tr>
+<tr class="memdesc:ac5d2f4752ed0d9d985268dbe00fd1f39"><td class="mdescLeft">&#160;</td><td class="mdescRight">Accesses the contained value.  <a href="#ac5d2f4752ed0d9d985268dbe00fd1f39">More...</a><br/></td></tr>
 <tr class="separator:ac5d2f4752ed0d9d985268dbe00fd1f39"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae98716ededb20222f758ba80d184faed"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae98716ededb20222f758ba80d184faed"></a>
 T &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>value</b> ()</td></tr>
 <tr class="separator:ae98716ededb20222f758ba80d184faed"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a994d984828813f06d90dd09f8a70a64d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a994d984828813f06d90dd09f8a70a64d"></a>
-constexpr&#160;</td><td class="memItemRight" valign="bottom"><b>operator bool</b> () const noexcept</td></tr>
-<tr class="separator:a994d984828813f06d90dd09f8a70a64d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a99d41f71e1ccfa17f4ddb83b656eda53"><td class="memTemplParams" colspan="2"><a class="anchor" id="a99d41f71e1ccfa17f4ddb83b656eda53"></a>
-template&lt;typename U &gt; </td></tr>
-<tr class="memitem:a99d41f71e1ccfa17f4ddb83b656eda53"><td class="memTemplItemLeft" align="right" valign="top">constexpr T&#160;</td><td class="memTemplItemRight" valign="bottom"><b>value_or</b> (U &amp;&amp;value) const </td></tr>
-<tr class="separator:a99d41f71e1ccfa17f4ddb83b656eda53"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="related"></a>
+Related Functions</h2></td></tr>
+<tr><td class="ititle" colspan="2"><p>(Note that these are not member functions.) </p>
+</td></tr>
+<tr class="memitem:a52f78f1e779b570117fbfd92ec2fb2f9"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a52f78f1e779b570117fbfd92ec2fb2f9"><td class="memTemplItemLeft" align="right" valign="top">constexpr <a class="el" href="classgears_1_1utility_1_1maybe.html">maybe</a>&lt; <a class="el" href="group__meta.html#gae0e6a3a188d17de87ab10266d2d7b584">meta::Decay</a>&lt; T &gt; &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classgears_1_1utility_1_1maybe.html#a52f78f1e779b570117fbfd92ec2fb2f9">just</a> (T &amp;&amp;t)</td></tr>
+<tr class="memdesc:a52f78f1e779b570117fbfd92ec2fb2f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper function to create an engaged <code>maybe</code> object.  <a href="#a52f78f1e779b570117fbfd92ec2fb2f9">More...</a><br/></td></tr>
+<tr class="separator:a52f78f1e779b570117fbfd92ec2fb2f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader">Comparison with maybe&lt;T&gt; and maybe&lt;T&gt;</div></td></tr>
+<tr><td colspan="2"><div class="groupText"><p>Compares the contained value of both <code>maybe&lt;T&gt;</code>s.</p>
+<p>If both <code>maybe&lt;T&gt;</code> are disengaged, then the comparison returns <code>true</code>. If only one <code>maybe&lt;T&gt;</code> is disengaged, then the comparison returns <code>false</code>. Otherwise it uses the internal comparison operator on both contained values.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">lhs</td><td>Left hand side of the comparison </td></tr>
+    <tr><td class="paramname">rhs</td><td>Right hand side of the comparison </td></tr>
+  </table>
+  </dd>
+</dl>
+</div></td></tr>
+<tr class="memitem:a633220895a85bd54731f4dfbec2d9b78"><td class="memTemplParams" colspan="2"><a class="anchor" id="a633220895a85bd54731f4dfbec2d9b78"></a>
+template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a633220895a85bd54731f4dfbec2d9b78"><td class="memTemplItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classgears_1_1utility_1_1maybe.html#a633220895a85bd54731f4dfbec2d9b78">operator==</a> (const <a class="el" href="classgears_1_1utility_1_1maybe.html">maybe</a>&lt; T &gt; &amp;lhs, const <a class="el" href="classgears_1_1utility_1_1maybe.html">maybe</a>&lt; T &gt; &amp;rhs)</td></tr>
+<tr class="memdesc:a633220895a85bd54731f4dfbec2d9b78"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if two <code>maybe&lt;T&gt;</code> are equal. <br/></td></tr>
+<tr class="separator:a633220895a85bd54731f4dfbec2d9b78"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e8cdb514402f15199611032c73b3c2c"><td class="memTemplParams" colspan="2"><a class="anchor" id="a6e8cdb514402f15199611032c73b3c2c"></a>
+template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a6e8cdb514402f15199611032c73b3c2c"><td class="memTemplItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classgears_1_1utility_1_1maybe.html#a6e8cdb514402f15199611032c73b3c2c">operator!=</a> (const <a class="el" href="classgears_1_1utility_1_1maybe.html">maybe</a>&lt; T &gt; &amp;lhs, const <a class="el" href="classgears_1_1utility_1_1maybe.html">maybe</a>&lt; T &gt; &amp;rhs)</td></tr>
+<tr class="memdesc:a6e8cdb514402f15199611032c73b3c2c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if two <code>maybe&lt;T&gt;</code> are not equal. <br/></td></tr>
+<tr class="separator:a6e8cdb514402f15199611032c73b3c2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9d54b2cea3ffe95b4cb9a26c2cbbf0d2"><td class="memTemplParams" colspan="2"><a class="anchor" id="a9d54b2cea3ffe95b4cb9a26c2cbbf0d2"></a>
+template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a9d54b2cea3ffe95b4cb9a26c2cbbf0d2"><td class="memTemplItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classgears_1_1utility_1_1maybe.html#a9d54b2cea3ffe95b4cb9a26c2cbbf0d2">operator&lt;</a> (const <a class="el" href="classgears_1_1utility_1_1maybe.html">maybe</a>&lt; T &gt; &amp;lhs, const <a class="el" href="classgears_1_1utility_1_1maybe.html">maybe</a>&lt; T &gt; &amp;rhs)</td></tr>
+<tr class="memdesc:a9d54b2cea3ffe95b4cb9a26c2cbbf0d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if one <code>maybe&lt;T&gt;</code> is less than another <code>maybe&lt;T&gt;</code>. <br/></td></tr>
+<tr class="separator:a9d54b2cea3ffe95b4cb9a26c2cbbf0d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a995f63219094a8b8734bebd65c57db35"><td class="memTemplParams" colspan="2"><a class="anchor" id="a995f63219094a8b8734bebd65c57db35"></a>
+template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a995f63219094a8b8734bebd65c57db35"><td class="memTemplItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classgears_1_1utility_1_1maybe.html#a995f63219094a8b8734bebd65c57db35">operator&gt;</a> (const <a class="el" href="classgears_1_1utility_1_1maybe.html">maybe</a>&lt; T &gt; &amp;lhs, const <a class="el" href="classgears_1_1utility_1_1maybe.html">maybe</a>&lt; T &gt; &amp;rhs)</td></tr>
+<tr class="memdesc:a995f63219094a8b8734bebd65c57db35"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if one <code>maybe&lt;T&gt;</code> is greater than another <code>maybe&lt;T&gt;</code>. <br/></td></tr>
+<tr class="separator:a995f63219094a8b8734bebd65c57db35"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0147569231298200de575a088167bafd"><td class="memTemplParams" colspan="2"><a class="anchor" id="a0147569231298200de575a088167bafd"></a>
+template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a0147569231298200de575a088167bafd"><td class="memTemplItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classgears_1_1utility_1_1maybe.html#a0147569231298200de575a088167bafd">operator&lt;=</a> (const <a class="el" href="classgears_1_1utility_1_1maybe.html">maybe</a>&lt; T &gt; &amp;lhs, const <a class="el" href="classgears_1_1utility_1_1maybe.html">maybe</a>&lt; T &gt; &amp;rhs)</td></tr>
+<tr class="memdesc:a0147569231298200de575a088167bafd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if one <code>maybe&lt;T&gt;</code> is less than or equal to another <code>maybe&lt;T&gt;</code>. <br/></td></tr>
+<tr class="separator:a0147569231298200de575a088167bafd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a7310d56e88fe44d565c7ab7df45255"><td class="memTemplParams" colspan="2"><a class="anchor" id="a7a7310d56e88fe44d565c7ab7df45255"></a>
+template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a7a7310d56e88fe44d565c7ab7df45255"><td class="memTemplItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classgears_1_1utility_1_1maybe.html#a7a7310d56e88fe44d565c7ab7df45255">operator&gt;=</a> (const <a class="el" href="classgears_1_1utility_1_1maybe.html">maybe</a>&lt; T &gt; &amp;lhs, const <a class="el" href="classgears_1_1utility_1_1maybe.html">maybe</a>&lt; T &gt; &amp;rhs)</td></tr>
+<tr class="memdesc:a7a7310d56e88fe44d565c7ab7df45255"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if one <code>maybe&lt;T&gt;</code> is greater than or equal to another <code>maybe&lt;T&gt;</code>. <br/></td></tr>
+<tr class="separator:a7a7310d56e88fe44d565c7ab7df45255"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader">Comparison with nothing.</div></td></tr>
+<tr><td colspan="2"><div class="groupText"><p>Compares <code>maybe&lt;T&gt;</code> with <code>nothing</code>.</p>
+<p>For completeness sakes, you can compare <code>nothing</code> with <code>maybe&lt;T&gt;</code>. <code>nothing</code> will always evaluate to <code>false</code>. So all comparisons are based on truth values with <code>maybe</code> converted into a boolean <code>true</code> or <code>false</code> depending on the engaged state it is at. For example:</p>
+<div class="fragment"><div class="line">my_maybe == utility::nothing;</div>
+<div class="line"><span class="comment">// bool(my_maybe) == false</span></div>
+</div><!-- fragment --><p>Where <code>bool(my_maybe)</code> is given through <a class="el" href="classgears_1_1utility_1_1maybe.html#a994d984828813f06d90dd09f8a70a64d" title="Checks if the current state is engaged.">operator bool()</a></p>
+<p>Although only one comparison is shown, all comparison operators are overloaded for both directions. </p>
+</div></td></tr>
+<tr class="memitem:a258221fb93d17be2332f4a97edda6fdc"><td class="memTemplParams" colspan="2"><a class="anchor" id="a258221fb93d17be2332f4a97edda6fdc"></a>
+template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a258221fb93d17be2332f4a97edda6fdc"><td class="memTemplItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classgears_1_1utility_1_1maybe.html#a258221fb93d17be2332f4a97edda6fdc">operator==</a> (const <a class="el" href="classgears_1_1utility_1_1maybe.html">maybe</a>&lt; T &gt; &amp;lhs, nothing_t) noexcept</td></tr>
+<tr class="memdesc:a258221fb93d17be2332f4a97edda6fdc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compares with <code>nothing</code> <br/></td></tr>
+<tr class="separator:a258221fb93d17be2332f4a97edda6fdc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader">Comparisons with other values.</div></td></tr>
+<tr><td colspan="2"><div class="groupText"><p>Compares the contained value with another value.</p>
+<p>Although both directions are not shown, both directions of operator overloads are provided. Comparison is done through the operator overloaded, i.e. the <code>operator==</code> overload would compare the contained value and the other value with their <code>operator==</code>. </p>
+</div></td></tr>
+<tr class="memitem:abfc430e807dcdf2394d0f3ae4464a0c7"><td class="memTemplParams" colspan="2"><a class="anchor" id="abfc430e807dcdf2394d0f3ae4464a0c7"></a>
+template&lt;typename T &gt; </td></tr>
+<tr class="memitem:abfc430e807dcdf2394d0f3ae4464a0c7"><td class="memTemplItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classgears_1_1utility_1_1maybe.html#abfc430e807dcdf2394d0f3ae4464a0c7">operator==</a> (const <a class="el" href="classgears_1_1utility_1_1maybe.html">maybe</a>&lt; T &gt; &amp;lhs, const T &amp;<a class="el" href="classgears_1_1utility_1_1maybe.html#ac5d2f4752ed0d9d985268dbe00fd1f39">value</a>)</td></tr>
+<tr class="memdesc:abfc430e807dcdf2394d0f3ae4464a0c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">If the current state is disengaged, returns false. Otherwise compares. <br/></td></tr>
+<tr class="separator:abfc430e807dcdf2394d0f3ae4464a0c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a27f83e0851afc003dedf9a97b40c6e9a"><td class="memTemplParams" colspan="2"><a class="anchor" id="a27f83e0851afc003dedf9a97b40c6e9a"></a>
+template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a27f83e0851afc003dedf9a97b40c6e9a"><td class="memTemplItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classgears_1_1utility_1_1maybe.html#a27f83e0851afc003dedf9a97b40c6e9a">operator!=</a> (const <a class="el" href="classgears_1_1utility_1_1maybe.html">maybe</a>&lt; T &gt; &amp;lhs, const T &amp;<a class="el" href="classgears_1_1utility_1_1maybe.html#ac5d2f4752ed0d9d985268dbe00fd1f39">value</a>)</td></tr>
+<tr class="memdesc:a27f83e0851afc003dedf9a97b40c6e9a"><td class="mdescLeft">&#160;</td><td class="mdescRight">If the current state is disengaged, returns true. Otherwise compares. <br/></td></tr>
+<tr class="separator:a27f83e0851afc003dedf9a97b40c6e9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a454d6356df2ea34484d2b03850cccf52"><td class="memTemplParams" colspan="2"><a class="anchor" id="a454d6356df2ea34484d2b03850cccf52"></a>
+template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a454d6356df2ea34484d2b03850cccf52"><td class="memTemplItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classgears_1_1utility_1_1maybe.html#a454d6356df2ea34484d2b03850cccf52">operator&lt;</a> (const <a class="el" href="classgears_1_1utility_1_1maybe.html">maybe</a>&lt; T &gt; &amp;lhs, const T &amp;<a class="el" href="classgears_1_1utility_1_1maybe.html#ac5d2f4752ed0d9d985268dbe00fd1f39">value</a>)</td></tr>
+<tr class="memdesc:a454d6356df2ea34484d2b03850cccf52"><td class="mdescLeft">&#160;</td><td class="mdescRight">If the current state is disengaged, returns true. Otherwise compares. <br/></td></tr>
+<tr class="separator:a454d6356df2ea34484d2b03850cccf52"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a52bf2bcc857f329e071a1928b5dde2f4"><td class="memTemplParams" colspan="2"><a class="anchor" id="a52bf2bcc857f329e071a1928b5dde2f4"></a>
+template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a52bf2bcc857f329e071a1928b5dde2f4"><td class="memTemplItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classgears_1_1utility_1_1maybe.html#a52bf2bcc857f329e071a1928b5dde2f4">operator&gt;</a> (const <a class="el" href="classgears_1_1utility_1_1maybe.html">maybe</a>&lt; T &gt; &amp;lhs, const T &amp;<a class="el" href="classgears_1_1utility_1_1maybe.html#ac5d2f4752ed0d9d985268dbe00fd1f39">value</a>)</td></tr>
+<tr class="memdesc:a52bf2bcc857f329e071a1928b5dde2f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">If the current state is disengaged, returns false. Otherwise compares. <br/></td></tr>
+<tr class="separator:a52bf2bcc857f329e071a1928b5dde2f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae180ba661339443e4ed2e78bf520e758"><td class="memTemplParams" colspan="2"><a class="anchor" id="ae180ba661339443e4ed2e78bf520e758"></a>
+template&lt;typename T &gt; </td></tr>
+<tr class="memitem:ae180ba661339443e4ed2e78bf520e758"><td class="memTemplItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classgears_1_1utility_1_1maybe.html#ae180ba661339443e4ed2e78bf520e758">operator&gt;=</a> (const <a class="el" href="classgears_1_1utility_1_1maybe.html">maybe</a>&lt; T &gt; &amp;lhs, const T &amp;<a class="el" href="classgears_1_1utility_1_1maybe.html#ac5d2f4752ed0d9d985268dbe00fd1f39">value</a>)</td></tr>
+<tr class="memdesc:ae180ba661339443e4ed2e78bf520e758"><td class="mdescLeft">&#160;</td><td class="mdescRight">If the current state is disengaged, returns false. Otherwise compares. <br/></td></tr>
+<tr class="separator:ae180ba661339443e4ed2e78bf520e758"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6c060f9771ad4b21bd157ade94bcc4a4"><td class="memTemplParams" colspan="2"><a class="anchor" id="a6c060f9771ad4b21bd157ade94bcc4a4"></a>
+template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a6c060f9771ad4b21bd157ade94bcc4a4"><td class="memTemplItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classgears_1_1utility_1_1maybe.html#a6c060f9771ad4b21bd157ade94bcc4a4">operator&lt;=</a> (const <a class="el" href="classgears_1_1utility_1_1maybe.html">maybe</a>&lt; T &gt; &amp;lhs, const T &amp;<a class="el" href="classgears_1_1utility_1_1maybe.html#ac5d2f4752ed0d9d985268dbe00fd1f39">value</a>)</td></tr>
+<tr class="memdesc:a6c060f9771ad4b21bd157ade94bcc4a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">If the current state is disengaged, returns true. Otherwise compares. <br/></td></tr>
+<tr class="separator:a6c060f9771ad4b21bd157ade94bcc4a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><h3>template&lt;typename T&gt;<br/>
 class gears::utility::maybe&lt; T &gt;</h3>
 
+<p>Implements an optional data type, similar to Haskell's <code>Maybe</code> monad and Boost's <code>boost::optional</code>. It manages a value that might not be there, similar to a pointer being possibly null. A lot of effort to make <code>maybe&lt;T&gt;</code> be a possible constant expression was made. As a result of this, you can make <code>maybe</code> be a <code>constexpr</code> variable if needed.</p>
+<p>The type to manage must not be <code>nothing_t</code>, <code>in_place_t</code>, a reference, or another <code>maybe</code>. This might change in the future, but for now this is the restriction in place.</p>
+<p><code>maybe</code> has two states &ndash; disengaged and engaged states. A disengaged state is when <code>maybe</code> does not contain a value, i.e. it contains <code>nothing</code>. An engaged state is when <code>maybe</code> does contain a value to manage.</p>
+<p>Example: </p>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;gears/utility.hpp&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"></div>
+<div class="line"><span class="keyword">namespace </span>util = gears::utility;</div>
+<div class="line"></div>
+<div class="line">util::maybe&lt;int&gt; special(<span class="keywordtype">int</span> x) {</div>
+<div class="line">    <span class="keywordflow">return</span> x &gt; 10 ? util::just(x * 10) : util::nothing;</div>
+<div class="line">}</div>
+<div class="line"></div>
+<div class="line"><span class="keywordtype">int</span> main() {</div>
+<div class="line">    <span class="keyword">auto</span> x = special(8);</div>
+<div class="line">    <span class="keyword">auto</span> y = special(25);</div>
+<div class="line"></div>
+<div class="line">    <span class="keywordflow">if</span>(x) {</div>
+<div class="line">        std::cout &lt;&lt; <span class="stringliteral">&quot;x has a value\n&quot;</span>;</div>
+<div class="line">    }</div>
+<div class="line"></div>
+<div class="line">    <span class="keywordflow">if</span>(y) {</div>
+<div class="line">        std::cout &lt;&lt; <span class="stringliteral">&quot;y has a value\n&quot;</span>;</div>
+<div class="line">    }</div>
+<div class="line"></div>
+<div class="line">    std::cout &lt;&lt; x.value_or(20) &lt;&lt; <span class="charliteral">&#39;\n&#39;</span> &lt;&lt; y.value_or(10) &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
+<div class="line">}</div>
+</div><!-- fragment --><p>Output: </p>
+<pre>
+y has a value
+20
+250
+</pre><dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>Underlying type to manage. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p>Definition at line <a class="el" href="traits_8hpp_source.html#l00053">53</a> of file <a class="el" href="traits_8hpp_source.html">traits.hpp</a>.</p>
-</div></div><!-- contents -->
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="a146bb6da1e977fcd6e4a9fe4523ecc14"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<div class="memtemplate">
+template&lt;typename... Args&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr <a class="el" href="classgears_1_1utility_1_1maybe.html">gears::utility::maybe</a>&lt; T &gt;::<a class="el" href="classgears_1_1utility_1_1maybe.html">maybe</a> </td>
+          <td>(</td>
+          <td class="paramtype">in_place_t&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Args &amp;&amp;...&#160;</td>
+          <td class="paramname"><em>args</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Constructs <code>maybe</code> in place with the <code>in_place</code> tag.</p>
+<p>Example: </p>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;gears/utility.hpp&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"></div>
+<div class="line"><span class="keyword">namespace </span>util = gears::utility;</div>
+<div class="line"></div>
+<div class="line"><span class="keyword">struct </span>my_class {</div>
+<div class="line"><span class="keyword">private</span>:</div>
+<div class="line">    std::string name;</div>
+<div class="line"><span class="keyword">public</span>:</div>
+<div class="line">    my_class(std::string name): name(std::move(name)) {</div>
+<div class="line">        std::cout &lt;&lt; <span class="stringliteral">&quot;constructed\n&quot;</span>;</div>
+<div class="line">    }</div>
+<div class="line">    my_class(my_class&amp;&amp; o): name(std::move(o.name)) {</div>
+<div class="line">        std::cout &lt;&lt; <span class="stringliteral">&quot;moved\n&quot;</span>;</div>
+<div class="line">    }</div>
+<div class="line">};</div>
+<div class="line"></div>
+<div class="line"><span class="keywordtype">int</span> main() {</div>
+<div class="line">    util::maybe&lt;my_class&gt; x(my_class{<span class="stringliteral">&quot;Bob&quot;</span>});</div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;---\n&quot;</span>;</div>
+<div class="line">    util::maybe&lt;my_class&gt; y(util::in_place, <span class="stringliteral">&quot;Bob&quot;</span>);</div>
+<div class="line">}</div>
+</div><!-- fragment --><p>Output: </p>
+<pre>
+constructed
+moved
+---
+constructed
+</pre><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Args</td><td>Parameters to forward to the constructor. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="maybe_8hpp_source.html#l00203">203</a> of file <a class="el" href="maybe_8hpp_source.html">maybe.hpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="acfe1d884686a0d617ad1662212a484b6"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classgears_1_1utility_1_1maybe.html">gears::utility::maybe</a>&lt; T &gt;::<a class="el" href="classgears_1_1utility_1_1maybe.html">maybe</a> </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classgears_1_1utility_1_1maybe.html">maybe</a>&lt; T &gt; &amp;&#160;</td>
+          <td class="paramname"><em>rhs</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Copy constructs <code>maybe</code>. If <code>rhs</code> is disengaged, then the class is constructed as disengaged. Otherwise, the class is constructed as engaged.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">rhs</td><td>Other maybe to copy from. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="maybe_8hpp_source.html#l00213">213</a> of file <a class="el" href="maybe_8hpp_source.html">maybe.hpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a5339382352ab151e14e8bce643d6898c"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classgears_1_1utility_1_1maybe.html">gears::utility::maybe</a>&lt; T &gt;::<a class="el" href="classgears_1_1utility_1_1maybe.html">maybe</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classgears_1_1utility_1_1maybe.html">maybe</a>&lt; T &gt; &amp;&amp;&#160;</td>
+          <td class="paramname"><em>rhs</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Move constructs <code>maybe</code>. If <code>rhs</code> is disengaged, then the class is constructed as disengaged. Otherwise, the class is constructed as engaged. The move constructor of the internal class should not throw.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">rhs</td><td>Other maybe to move from. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="maybe_8hpp_source.html#l00228">228</a> of file <a class="el" href="maybe_8hpp_source.html">maybe.hpp</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="af3616478258fa3f28b56a876f440e864"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<div class="memtemplate">
+template&lt;typename... Args&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classgears_1_1utility_1_1maybe.html">gears::utility::maybe</a>&lt; T &gt;::emplace </td>
+          <td>(</td>
+          <td class="paramtype">Args &amp;&amp;...&#160;</td>
+          <td class="paramname"><em>args</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Constructs the contained value in place. If the current state is engaged, then it is replaced with the newly constructed value. When replaced, then the destructor of the managed type is called. This works similar to the <code>in_place_t</code> constructor.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">args</td><td>Parameter to forward to the managed type's constructor. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="maybe_8hpp_source.html#l00316">316</a> of file <a class="el" href="maybe_8hpp_source.html">maybe.hpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a994d984828813f06d90dd09f8a70a64d"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr <a class="el" href="classgears_1_1utility_1_1maybe.html">gears::utility::maybe</a>&lt; T &gt;::operator bool </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">explicit</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Checks if the current state is engaged. </p>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if the current state is engaged, <code>false</code> otherwise. </dd></dl>
+
+<p>Definition at line <a class="el" href="maybe_8hpp_source.html#l00385">385</a> of file <a class="el" href="maybe_8hpp_source.html">maybe.hpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ad73fb17e9b4289bd070ad2b5fc8f92d7"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr const T&amp; <a class="el" href="classgears_1_1utility_1_1maybe.html">gears::utility::maybe</a>&lt; T &gt;::operator* </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Returns a reference to the contained value. If the current state is disengaged, then the behaviour is undefined. </p>
+
+<p>Definition at line <a class="el" href="maybe_8hpp_source.html#l00353">353</a> of file <a class="el" href="maybe_8hpp_source.html">maybe.hpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aaa97dc6520da2cfc34fc725430218142"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr const T* <a class="el" href="classgears_1_1utility_1_1maybe.html">gears::utility::maybe</a>&lt; T &gt;::operator-&gt; </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Returns a pointer to the contained value. If the current state is disengaged, then the behaviour is undefined. This is should only be used for accessing member functions of the internal value.</p>
+<div class="fragment"><div class="line"><span class="keyword">struct </span>my_class { <span class="keywordtype">int</span> x; };</div>
+<div class="line">utility::maybe&lt;my_class&gt; stuff({ 10 });</div>
+<div class="line"><span class="comment">// access my_class::x</span></div>
+<div class="line">std::cout &lt;&lt; stuff-&gt;x;</div>
+</div><!-- fragment --> 
+<p>Definition at line <a class="el" href="maybe_8hpp_source.html#l00337">337</a> of file <a class="el" href="maybe_8hpp_source.html">maybe.hpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ac3bf9960cefadfa97804b148376dfbea"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classgears_1_1utility_1_1maybe.html">maybe</a>&amp; <a class="el" href="classgears_1_1utility_1_1maybe.html">gears::utility::maybe</a>&lt; T &gt;::operator= </td>
+          <td>(</td>
+          <td class="paramtype">nothing_t&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Assigns the internal data with <code>nothing</code>. This results in a disengaged state.</p>
+<div class="fragment"><div class="line">utility::maybe&lt;int&gt; x(4);</div>
+<div class="line">x = utility::nothing;</div>
+</div><!-- fragment --> 
+<p>Definition at line <a class="el" href="maybe_8hpp_source.html#l00246">246</a> of file <a class="el" href="maybe_8hpp_source.html">maybe.hpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a114a4b7603ddac6cd0c8de39664e18e6"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<div class="memtemplate">
+template&lt;typename U , meta::EnableIf&lt; std::is_constructible&lt; T, meta::Decay&lt; U &gt;&gt;, std::is_assignable&lt; T, meta::Decay&lt; U &gt;&gt;&gt;  = meta::_&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classgears_1_1utility_1_1maybe.html">maybe</a>&amp; <a class="el" href="classgears_1_1utility_1_1maybe.html">gears::utility::maybe</a>&lt; T &gt;::operator= </td>
+          <td>(</td>
+          <td class="paramtype">U &amp;&amp;&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Assigns <code>maybe</code> in an engaged state with the value given. If current state is engaged, then the value is replaced with the one given, when replaced then the destructor of the managed type is called.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>The value to assign to <code>maybe</code>. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="maybe_8hpp_source.html#l00295">295</a> of file <a class="el" href="maybe_8hpp_source.html">maybe.hpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ac5d2f4752ed0d9d985268dbe00fd1f39"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr const T&amp; <a class="el" href="classgears_1_1utility_1_1maybe.html">gears::utility::maybe</a>&lt; T &gt;::value </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Accesses the contained value. If the current state is disengaged, an exception is thrown.</p>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">gears::utility::bad_maybe_access</td><td>Thrown if the current state is disengaged. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Returns the a reference to the contained value. </dd></dl>
+
+<p>Definition at line <a class="el" href="maybe_8hpp_source.html#l00371">371</a> of file <a class="el" href="maybe_8hpp_source.html">maybe.hpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a99d41f71e1ccfa17f4ddb83b656eda53"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<div class="memtemplate">
+template&lt;typename U &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr T <a class="el" href="classgears_1_1utility_1_1maybe.html">gears::utility::maybe</a>&lt; T &gt;::value_or </td>
+          <td>(</td>
+          <td class="paramtype">U &amp;&amp;&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Accesses the contained value of a reasonable default. Unlike <a class="el" href="classgears_1_1utility_1_1maybe.html#ac5d2f4752ed0d9d985268dbe00fd1f39" title="Accesses the contained value.">value</a> and <a class="el" href="classgears_1_1utility_1_1maybe.html#ad73fb17e9b4289bd070ad2b5fc8f92d7" title="Returns a reference to the contained value.">operator*</a> this does not return a reference but a copy.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>The default value if the current state is disengaged. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The contained value or a default if current state is disengaged. </dd></dl>
+
+<p>Definition at line <a class="el" href="maybe_8hpp_source.html#l00399">399</a> of file <a class="el" href="maybe_8hpp_source.html">maybe.hpp</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Friends And Related Function Documentation</h2>
+<a class="anchor" id="a52f78f1e779b570117fbfd92ec2fb2f9"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr <a class="el" href="classgears_1_1utility_1_1maybe.html">maybe</a>&lt; <a class="el" href="group__meta.html#gae0e6a3a188d17de87ab10266d2d7b584">meta::Decay</a>&lt; T &gt; &gt; just </td>
+          <td>(</td>
+          <td class="paramtype">T &amp;&amp;&#160;</td>
+          <td class="paramname"><em>t</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">related</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Helper function to create an engaged <code>maybe</code> object. This typically moves or copies and does not create the contained value in place.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">t</td><td>Value for the contained value. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A new <code>maybe</code> object that is engaged with the value. </dd></dl>
+
+<p>Definition at line <a class="el" href="maybe_8hpp_source.html#l00415">415</a> of file <a class="el" href="maybe_8hpp_source.html">maybe.hpp</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.3.1-->
 <!-- start footer part -->

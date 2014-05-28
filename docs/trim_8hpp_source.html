@@ -81,7 +81,7 @@ $(document).ready(function(){initNavTree('trim_8hpp_source.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Groups</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Groups</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -97,7 +97,7 @@ $(document).ready(function(){initNavTree('trim_8hpp_source.html','');});
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">// The MIT License (MIT)</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;</div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">// Copyright (c) 2012-2013 Danny Y., Rapptz</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">// Copyright (c) 2012-2014 Danny Y., Rapptz</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;</div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">// Permission is hereby granted, free of charge, to any person obtaining a copy of</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">// this software and associated documentation files (the &quot;Software&quot;), to deal in</span></div>
@@ -124,47 +124,47 @@ $(document).ready(function(){initNavTree('trim_8hpp_source.html','');});
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">namespace </span>gears {</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">namespace </span>string {</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> String, <span class="keyword">typename</span> UnaryPredicate&gt;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">inline</span> meta::Unqualified&lt;String&gt; trim_left_if(String&amp;&amp; str, UnaryPredicate&amp;&amp; pred) {</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keyword">auto</span> pos = find_first_not_of(std::forward&lt;String&gt;(str), std::forward&lt;UnaryPredicate&gt;(pred));</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordflow">if</span>(pos != meta::Unqualified&lt;String&gt;::npos) {</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="keywordflow">return</span> { str.substr(pos) };</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    }</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordflow">return</span> { };</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;}</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> String, <span class="keyword">typename</span> UnaryPredicate&gt;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="keyword">inline</span> meta::Unqualified&lt;String&gt; trim_right_if(String&amp;&amp; str, UnaryPredicate&amp;&amp; pred) {</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keyword">auto</span> pos = find_last_not_of(std::forward&lt;String&gt;(str), std::forward&lt;UnaryPredicate&gt;(pred));</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordflow">if</span>(pos != meta::Unqualified&lt;String&gt;::npos) {</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <span class="keywordflow">return</span> { str.substr(0, pos + 1) };</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    }</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordflow">return</span> { };</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;}</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> String, <span class="keyword">typename</span> UnaryPredicate&gt;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="keyword">inline</span> meta::Unqualified&lt;String&gt; trim_if(String&amp;&amp; str, UnaryPredicate&amp;&amp; pred) {</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordflow">return</span> trim_left_if(trim_right_if(std::forward&lt;String&gt;(str), pred), pred);</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;}</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> String&gt;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="keyword">inline</span> meta::Unqualified&lt;String&gt; trim_left(String&amp;&amp; str, <span class="keyword">const</span> std::locale&amp; loc = std::locale()) {</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordflow">return</span> trim_left_if(std::forward&lt;String&gt;(str), is_space(loc));</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> String, <span class="keyword">typename</span> UnaryPredicate&gt;</div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="code" href="group__string.html#ga2c32734b6266e457da05dc51f329b5f3">   50</a></span>&#160;<span class="keyword">inline</span> <a class="code" href="group__meta.html#gab61090840d1e77d78ccd461caf025dbb" title="Template alias that removes all cv and ref qualifiers.">meta::Unqualified&lt;String&gt;</a> <a class="code" href="group__string.html#ga2c32734b6266e457da05dc51f329b5f3" title="Removes the left part of the string until the predicate is met.">trim_left_if</a>(String str, UnaryPredicate&amp;&amp; pred) {</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keyword">auto</span> pos = <a class="code" href="group__string.html#ga360406115452a9bcc13e49fdba657b92" title="Find first occurrence of a predicate not being met.">find_first_not_of</a>(str, std::forward&lt;UnaryPredicate&gt;(pred));</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordflow">if</span>(pos != <a class="code" href="group__meta.html#gab61090840d1e77d78ccd461caf025dbb" title="Template alias that removes all cv and ref qualifiers.">meta::Unqualified&lt;String&gt;::npos</a>) {</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <span class="keywordflow">return</span> { str.substr(pos) };</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    }</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordflow">return</span> str;</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;}</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> String&gt;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="keyword">inline</span> meta::Unqualified&lt;String&gt; trim_right(String&amp;&amp; str, <span class="keyword">const</span> std::locale&amp; loc = std::locale()) {</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordflow">return</span> trim_right_if(std::forward&lt;String&gt;(str), is_space(loc));</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;}</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> String&gt;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="keyword">inline</span> meta::Unqualified&lt;String&gt; trim(String&amp;&amp; str, <span class="keyword">const</span> std::locale&amp; loc = std::locale()) {</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordflow">return</span> trim_left(trim_right(std::forward&lt;String&gt;(str), loc), loc);</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;}</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;} <span class="comment">// string</span></div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;} <span class="comment">// gears</span></div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="preprocessor">#endif // GEARS_STRING_TRIM_HPP</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> String, <span class="keyword">typename</span> UnaryPredicate&gt;</div>
+<div class="line"><a name="l00078"></a><span class="lineno"><a class="code" href="group__string.html#ga608e4af1546a143f9bd58c29cfdd90cf">   78</a></span>&#160;<span class="keyword">inline</span> <a class="code" href="group__meta.html#gab61090840d1e77d78ccd461caf025dbb" title="Template alias that removes all cv and ref qualifiers.">meta::Unqualified&lt;String&gt;</a> <a class="code" href="group__string.html#ga608e4af1546a143f9bd58c29cfdd90cf" title="Removes the right part of the string until the predicate is met.">trim_right_if</a>(String str, UnaryPredicate&amp;&amp; pred) {</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keyword">auto</span> pos = <a class="code" href="group__string.html#gad6184853efe4241596ab279d5f73f874" title="Find last occurrence of a predicate not being met.">find_last_not_of</a>(str, std::forward&lt;UnaryPredicate&gt;(pred));</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keywordflow">if</span>(pos != <a class="code" href="group__meta.html#gab61090840d1e77d78ccd461caf025dbb" title="Template alias that removes all cv and ref qualifiers.">meta::Unqualified&lt;String&gt;::npos</a>) {</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        <span class="keywordflow">return</span> { str.substr(0, pos + 1) };</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    }</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="keywordflow">return</span> str;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;}</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> String, <span class="keyword">typename</span> UnaryPredicate&gt;</div>
+<div class="line"><a name="l00104"></a><span class="lineno"><a class="code" href="group__string.html#ga477e08fd61eee442eb19ba6dfc8ef958">  104</a></span>&#160;<span class="keyword">inline</span> <a class="code" href="group__meta.html#gab61090840d1e77d78ccd461caf025dbb" title="Template alias that removes all cv and ref qualifiers.">meta::Unqualified&lt;String&gt;</a> <a class="code" href="group__string.html#ga477e08fd61eee442eb19ba6dfc8ef958" title="Removes both the left and the right part of the string given a predicate.">trim_if</a>(String&amp;&amp; str, UnaryPredicate&amp;&amp; pred) {</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="group__string.html#ga2c32734b6266e457da05dc51f329b5f3" title="Removes the left part of the string until the predicate is met.">trim_left_if</a>(<a class="code" href="group__string.html#ga608e4af1546a143f9bd58c29cfdd90cf" title="Removes the right part of the string until the predicate is met.">trim_right_if</a>(std::forward&lt;String&gt;(str), pred), pred);</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;}</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> String&gt;</div>
+<div class="line"><a name="l00119"></a><span class="lineno"><a class="code" href="group__string.html#gad4fd98b4500ef52d848431179cf7bfd4">  119</a></span>&#160;<span class="keyword">inline</span> <a class="code" href="group__meta.html#gab61090840d1e77d78ccd461caf025dbb" title="Template alias that removes all cv and ref qualifiers.">meta::Unqualified&lt;String&gt;</a> <a class="code" href="group__string.html#gad4fd98b4500ef52d848431179cf7bfd4" title="Removes the space characters from the left of the string.">trim_left</a>(String&amp;&amp; str, <span class="keyword">const</span> std::locale&amp; loc = std::locale()) {</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="group__string.html#ga2c32734b6266e457da05dc51f329b5f3" title="Removes the left part of the string until the predicate is met.">trim_left_if</a>(std::forward&lt;String&gt;(str), <a class="code" href="structgears_1_1string_1_1is__space.html" title="Checks if a character is a space.">is_space</a>(loc));</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;}</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> String&gt;</div>
+<div class="line"><a name="l00134"></a><span class="lineno"><a class="code" href="group__string.html#gaa1bacfce21ffe7cb30105dba2658786f">  134</a></span>&#160;<span class="keyword">inline</span> <a class="code" href="group__meta.html#gab61090840d1e77d78ccd461caf025dbb" title="Template alias that removes all cv and ref qualifiers.">meta::Unqualified&lt;String&gt;</a> <a class="code" href="group__string.html#gaa1bacfce21ffe7cb30105dba2658786f" title="Removes the space characters from the right of the string.">trim_right</a>(String&amp;&amp; str, <span class="keyword">const</span> std::locale&amp; loc = std::locale()) {</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="group__string.html#ga608e4af1546a143f9bd58c29cfdd90cf" title="Removes the right part of the string until the predicate is met.">trim_right_if</a>(std::forward&lt;String&gt;(str), <a class="code" href="structgears_1_1string_1_1is__space.html" title="Checks if a character is a space.">is_space</a>(loc));</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;}</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> String&gt;</div>
+<div class="line"><a name="l00149"></a><span class="lineno"><a class="code" href="group__string.html#ga0a378178af4654b2d053e2e89ad43f36">  149</a></span>&#160;<span class="keyword">inline</span> <a class="code" href="group__meta.html#gab61090840d1e77d78ccd461caf025dbb" title="Template alias that removes all cv and ref qualifiers.">meta::Unqualified&lt;String&gt;</a> <a class="code" href="group__string.html#ga0a378178af4654b2d053e2e89ad43f36" title="Removes the space characters from both the left and right of the string.">trim</a>(String&amp;&amp; str, <span class="keyword">const</span> std::locale&amp; loc = std::locale()) {</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="group__string.html#gad4fd98b4500ef52d848431179cf7bfd4" title="Removes the space characters from the left of the string.">trim_left</a>(<a class="code" href="group__string.html#gaa1bacfce21ffe7cb30105dba2658786f" title="Removes the space characters from the right of the string.">trim_right</a>(std::forward&lt;String&gt;(str), loc), loc);</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;}</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;} <span class="comment">// string</span></div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;} <span class="comment">// gears</span></div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;<span class="preprocessor">#endif // GEARS_STRING_TRIM_HPP</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.3.1-->

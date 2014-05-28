@@ -89,7 +89,7 @@ $(document).ready(function(){initNavTree('structgears_1_1io_1_1line__iterator.ht
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Groups</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Groups</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -103,9 +103,12 @@ $(document).ready(function(){initNavTree('structgears_1_1io_1_1line__iterator.ht
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="structgears_1_1io_1_1line__iterator-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">gears::io::line_iterator&lt; CharT, Traits &gt; Struct Template Reference</div>  </div>
+<div class="title">gears::io::line_iterator&lt; CharT, Traits &gt; Struct Template Reference<div class="ingroups"><a class="el" href="group__io.html">Input/Output module</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Iterator that iterates through stdin lines.  
+ <a href="structgears_1_1io_1_1line__iterator.html#details">More...</a></p>
 
 <p>Inherits iterator&lt; std::input_iterator_tag, std::basic_string&lt; CharT, Traits &gt; &gt;.</p>
 <table class="memberdecls">
@@ -137,8 +140,16 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator!=</b> (const
 <div class="textblock"><h3>template&lt;typename CharT = char, typename Traits = std::char_traits&lt;CharT&gt;&gt;<br/>
 struct gears::io::line_iterator&lt; CharT, Traits &gt;</h3>
 
+<p>An iterator that iterates through lines given by stdin such as <code>std::cin</code>, <code>std::ifstream</code>, and <code>std::istringstream</code>. This iterator is basically a wrapper around <code>std::getline</code> and <code>std::istream</code>. This should not be used directly.</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">CharT</td><td>Underlying character type of the string. </td></tr>
+    <tr><td class="paramname">Traits</td><td>Underlying <code>std::char_traits</code>-like of the string. </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p>Definition at line <a class="el" href="lines_8hpp_source.html#l00032">32</a> of file <a class="el" href="lines_8hpp_source.html">lines.hpp</a>.</p>
+<p>Definition at line <a class="el" href="lines_8hpp_source.html#l00042">42</a> of file <a class="el" href="lines_8hpp_source.html">lines.hpp</a>.</p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.3.1-->

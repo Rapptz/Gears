@@ -89,7 +89,7 @@ $(document).ready(function(){initNavTree('structgears_1_1string_1_1is__upper.htm
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Groups</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Groups</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -103,14 +103,18 @@ $(document).ready(function(){initNavTree('structgears_1_1string_1_1is__upper.htm
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="structgears_1_1string_1_1is__upper-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">gears::string::is_upper Struct Reference</div>  </div>
+<div class="title">gears::string::is_upper Struct Reference<div class="ingroups"><a class="el" href="group__string__function__objects.html">String classification function objects</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Checks if a character is upper case.  
+ <a href="structgears_1_1string_1_1is__upper.html#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a139528f0155ff35418ab800cf3884e1e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a139528f0155ff35418ab800cf3884e1e"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>is_upper</b> (const std::locale &amp;loc=std::locale())</td></tr>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgears_1_1string_1_1is__upper.html#a139528f0155ff35418ab800cf3884e1e">is_upper</a> (const std::locale &amp;loc=std::locale())</td></tr>
+<tr class="memdesc:a139528f0155ff35418ab800cf3884e1e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs the function object with the given locale. <br/></td></tr>
 <tr class="separator:a139528f0155ff35418ab800cf3884e1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a867bdc42cf187cd7d9230ae368ee572a"><td class="memTemplParams" colspan="2"><a class="anchor" id="a867bdc42cf187cd7d9230ae368ee572a"></a>
 template&lt;typename CharT &gt; </td></tr>
@@ -118,8 +122,9 @@ template&lt;typename CharT &gt; </td></tr>
 <tr class="separator:a867bdc42cf187cd7d9230ae368ee572a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p>Definition at line <a class="el" href="classification_8hpp_source.html#l00040">40</a> of file <a class="el" href="classification_8hpp_source.html">classification.hpp</a>.</p>
+<div class="textblock"><p>Checks if a character is upper case given a locale. This is a wrapper around <code>std::isupper(CharT, std::locale)</code> </p>
+
+<p>Definition at line <a class="el" href="classification_8hpp_source.html#l00062">62</a> of file <a class="el" href="classification_8hpp_source.html">classification.hpp</a>.</p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.3.1-->

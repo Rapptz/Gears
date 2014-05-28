@@ -89,7 +89,7 @@ $(document).ready(function(){initNavTree('structgears_1_1io_1_1line__reader.html
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Groups</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Groups</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -103,28 +103,39 @@ $(document).ready(function(){initNavTree('structgears_1_1io_1_1line__reader.html
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="structgears_1_1io_1_1line__reader-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">gears::io::line_reader&lt; CharT, Traits &gt; Struct Template Reference</div>  </div>
+<div class="title">gears::io::line_reader&lt; CharT, Traits &gt; Struct Template Reference<div class="ingroups"><a class="el" href="group__io.html">Input/Output module</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>A range object that returns line_iterators.  
+ <a href="structgears_1_1io_1_1line__reader.html#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a81a1fd422f10576ebd2b25e740fda380"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a81a1fd422f10576ebd2b25e740fda380"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>line_reader</b> (std::basic_istream&lt; CharT, Traits &gt; &amp;in) noexcept</td></tr>
 <tr class="separator:a81a1fd422f10576ebd2b25e740fda380"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a53ac45317469c0d358678a876cefe68a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a53ac45317469c0d358678a876cefe68a"></a>
-auto&#160;</td><td class="memItemRight" valign="bottom"><b>begin</b> () noexcept-&gt; decltype(first)</td></tr>
-<tr class="separator:a53ac45317469c0d358678a876cefe68a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a97f04f5a1f9e2d34d293cbd6dd38abaf"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a97f04f5a1f9e2d34d293cbd6dd38abaf"></a>
-auto&#160;</td><td class="memItemRight" valign="bottom"><b>end</b> () noexcept-&gt; decltype(last)</td></tr>
-<tr class="separator:a97f04f5a1f9e2d34d293cbd6dd38abaf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af5cd7bc93eabef7f5464274f8558f2ba"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af5cd7bc93eabef7f5464274f8558f2ba"></a>
+<a class="el" href="structgears_1_1io_1_1line__iterator.html">line_iterator</a>&lt; CharT, Traits &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>begin</b> () noexcept</td></tr>
+<tr class="separator:af5cd7bc93eabef7f5464274f8558f2ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a89c40e6290bcd41836c2bd0488597230"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a89c40e6290bcd41836c2bd0488597230"></a>
+<a class="el" href="structgears_1_1io_1_1line__iterator.html">line_iterator</a>&lt; CharT, Traits &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>end</b> () noexcept</td></tr>
+<tr class="separator:a89c40e6290bcd41836c2bd0488597230"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><h3>template&lt;typename CharT, typename Traits&gt;<br/>
 struct gears::io::line_reader&lt; CharT, Traits &gt;</h3>
 
+<p>A range object that returns line_iterators. This shouldn't be used directly and instead should be used with <code>lines</code>.</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">CharT</td><td>Underlying character type. </td></tr>
+    <tr><td class="paramname">Traits</td><td>Underlying character traits type. </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p>Definition at line <a class="el" href="lines_8hpp_source.html#l00072">72</a> of file <a class="el" href="lines_8hpp_source.html">lines.hpp</a>.</p>
+<p>Definition at line <a class="el" href="lines_8hpp_source.html#l00091">91</a> of file <a class="el" href="lines_8hpp_source.html">lines.hpp</a>.</p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.3.1-->

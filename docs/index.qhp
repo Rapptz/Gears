@@ -1,0 +1,499 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QtHelpProject version="1.0">
+  <namespace>org.rapptz.gears</namespace>
+  <virtualFolder>gears-v1.0</virtualFolder>
+  <filterSection>
+    <filterAttribute>doxygen</filterAttribute>
+    <toc>
+      <section title="Gears" ref="index.html">
+        <section title="Welcome" ref="index.html#welcome" />
+        <section title="What is Gears?" ref="index.html#whatisgears" />
+        <section title="Compiler Support" ref="index.html#compilersupport" />
+        <section title="Modules" ref="modules.html">
+          <section title="ADL module" ref="group__adl.html">
+            <section title="begin" ref="group__adl.html#gae45d09ea0dd3b0d25a2c1446a75ae86e" />
+            <section title="end" ref="group__adl.html#ga0749da1b684fb75081f785e580c168c1" />
+            <section title="get" ref="group__adl.html#ga6f49a37a364444c9fd177626a33f563a" />
+            <section title="swap" ref="group__adl.html#gafe9c69f1aec1503f154338c7b5da7db9" />
+          </section>
+          <section title="Chrono module" ref="group__chrono.html">
+            <section title="basic_stopwatch" ref="structgears_1_1chrono_1_1basic__stopwatch.html">
+              <section title="duration" ref="structgears_1_1chrono_1_1basic__stopwatch.html#a88432355fe8c52c40959bf7a14e41797" />
+              <section title="period" ref="structgears_1_1chrono_1_1basic__stopwatch.html#a789858adfacfd43af6a2b9363fdbff1a" />
+              <section title="rep" ref="structgears_1_1chrono_1_1basic__stopwatch.html#a544529db0feebaa3f2be88376b9c0550" />
+              <section title="time_point" ref="structgears_1_1chrono_1_1basic__stopwatch.html#aa6408d6942d10992dec50188f91a0ceb" />
+              <section title="basic_stopwatch" ref="structgears_1_1chrono_1_1basic__stopwatch.html#a171cfc9f8e31459ef09e3ae5bc54d1ca" />
+              <section title="elapsed" ref="structgears_1_1chrono_1_1basic__stopwatch.html#a8a221c5610f4825bd1ce4bef493ef731" />
+              <section title="is_running" ref="structgears_1_1chrono_1_1basic__stopwatch.html#ad45463cad34dc0e822947bd842b48d16" />
+              <section title="reset" ref="structgears_1_1chrono_1_1basic__stopwatch.html#a921d145a41fc7135c46d12773ed6714b" />
+              <section title="restart" ref="structgears_1_1chrono_1_1basic__stopwatch.html#af469930f80033294029cad8053ac04c5" />
+              <section title="start" ref="structgears_1_1chrono_1_1basic__stopwatch.html#a552f74e2f6d12f9f87c35987d8985902" />
+              <section title="stop" ref="structgears_1_1chrono_1_1basic__stopwatch.html#ab6d9c72d67329952a48c79c7246f023f" />
+            </section>
+          </section>
+          <section title="Concepts module" ref="group__concepts.html">
+            <section title="Basic concepts submodule" ref="group__basic__concepts.html">
+              <section title="DefaultConstructible" ref="structgears_1_1concepts_1_1_default_constructible.html" />
+              <section title="MoveConstructible" ref="structgears_1_1concepts_1_1_move_constructible.html" />
+              <section title="CopyConstructible" ref="structgears_1_1concepts_1_1_copy_constructible.html" />
+              <section title="MoveAssignable" ref="structgears_1_1concepts_1_1_move_assignable.html" />
+              <section title="CopyAssignable" ref="structgears_1_1concepts_1_1_copy_assignable.html" />
+              <section title="Movable" ref="structgears_1_1concepts_1_1_movable.html" />
+              <section title="Copyable" ref="structgears_1_1concepts_1_1_copyable.html" />
+              <section title="Assignable" ref="structgears_1_1concepts_1_1_assignable.html" />
+              <section title="Destructible" ref="structgears_1_1concepts_1_1_destructible.html" />
+              <section title="Constructible" ref="structgears_1_1concepts_1_1_constructible.html" />
+              <section title="StandardLayout" ref="structgears_1_1concepts_1_1_standard_layout.html" />
+              <section title="POD" ref="structgears_1_1concepts_1_1_p_o_d.html" />
+              <section title="Semiregular" ref="structgears_1_1concepts_1_1_semiregular.html" />
+              <section title="LValueSwappable" ref="structgears_1_1concepts_1_1_l_value_swappable.html" />
+              <section title="RValueSwappable" ref="structgears_1_1concepts_1_1_r_value_swappable.html" />
+              <section title="Swappable" ref="structgears_1_1concepts_1_1_swappable.html" />
+              <section title="ContextualBool" ref="structgears_1_1concepts_1_1_contextual_bool.html" />
+              <section title="Integral" ref="structgears_1_1concepts_1_1_integral.html" />
+              <section title="FloatingPoint" ref="structgears_1_1concepts_1_1_floating_point.html" />
+              <section title="Signed" ref="structgears_1_1concepts_1_1_signed.html" />
+              <section title="Unsigned" ref="structgears_1_1concepts_1_1_unsigned.html" />
+              <section title="Arithmetic" ref="structgears_1_1concepts_1_1_arithmetic.html" />
+              <section title="Fundamental" ref="structgears_1_1concepts_1_1_fundamental.html" />
+              <section title="Compound" ref="structgears_1_1concepts_1_1_compound.html" />
+              <section title="Pointer" ref="structgears_1_1concepts_1_1_pointer.html" />
+              <section title="LValueReference" ref="structgears_1_1concepts_1_1_l_value_reference.html" />
+              <section title="RValueReference" ref="structgears_1_1concepts_1_1_r_value_reference.html" />
+              <section title="Reference" ref="structgears_1_1concepts_1_1_reference.html" />
+              <section title="LessThanComparable" ref="structgears_1_1concepts_1_1_less_than_comparable.html" />
+              <section title="EqualityComparable" ref="structgears_1_1concepts_1_1_equality_comparable.html" />
+              <section title="Regular" ref="structgears_1_1concepts_1_1_regular.html" />
+              <section title="Comparable" ref="structgears_1_1concepts_1_1_comparable.html" />
+              <section title="NullablePointer" ref="structgears_1_1concepts_1_1_nullable_pointer.html" />
+              <section title="Incrementable" ref="structgears_1_1concepts_1_1_incrementable.html" />
+              <section title="Decrementable" ref="structgears_1_1concepts_1_1_decrementable.html" />
+              <section title="Dereferenceable" ref="structgears_1_1concepts_1_1_dereferenceable.html" />
+            </section>
+            <section title="Container concepts submodule" ref="group__container__concepts.html">
+              <section title="Container" ref="structgears_1_1concepts_1_1_container.html" />
+              <section title="ReversibleContainer" ref="structgears_1_1concepts_1_1_reversible_container.html" />
+              <section title="AllocatorAwareContainer" ref="structgears_1_1concepts_1_1_allocator_aware_container.html" />
+              <section title="SequenceContainer" ref="structgears_1_1concepts_1_1_sequence_container.html" />
+              <section title="AssociativeContainer" ref="structgears_1_1concepts_1_1_associative_container.html" />
+            </section>
+            <section title="Function concepts submodule" ref="group__function__concepts.html">
+              <section title="Callable" ref="structgears_1_1concepts_1_1_callable.html" />
+              <section title="Generator" ref="structgears_1_1concepts_1_1_generator.html" />
+              <section title="Function" ref="structgears_1_1concepts_1_1_function.html" />
+            </section>
+            <section title="Iterator concepts submodule" ref="group__iterator__concepts.html">
+              <section title="Iterator" ref="structgears_1_1concepts_1_1_iterator.html" />
+              <section title="InputIterator" ref="structgears_1_1concepts_1_1_input_iterator.html" />
+              <section title="OutputIterator" ref="structgears_1_1concepts_1_1_output_iterator.html" />
+              <section title="ForwardIterator" ref="structgears_1_1concepts_1_1_forward_iterator.html" />
+              <section title="MutableForwardIterator" ref="structgears_1_1concepts_1_1_mutable_forward_iterator.html" />
+              <section title="BidirectionalIterator" ref="structgears_1_1concepts_1_1_bidirectional_iterator.html" />
+              <section title="MutableBidirectionalIterator" ref="structgears_1_1concepts_1_1_mutable_bidirectional_iterator.html" />
+              <section title="RandomAccessIterator" ref="structgears_1_1concepts_1_1_random_access_iterator.html" />
+              <section title="MutableRandomAccessIterator" ref="structgears_1_1concepts_1_1_mutable_random_access_iterator.html" />
+            </section>
+            <section title="require" ref="group__concepts.html#gac123339dbd70d43fd7526314e0bafe81" />
+          </section>
+          <section title="Functional module" ref="group__functional.html">
+            <section title="Function objects submodule" ref="group__functional__objects.html">
+              <section title="bit_and" ref="group__functional__objects.html#gad79bfd076c1fd3e6f2daf0ef26e0cd6e" />
+              <section title="bit_not" ref="group__functional__objects.html#gab39f0a8af4b56f7492c42477cb470b97" />
+              <section title="bit_or" ref="group__functional__objects.html#ga6149b74ba49c0a3c791b6c142fa84984" />
+              <section title="bit_xor" ref="group__functional__objects.html#gac415335c627bd65e7c610bf71feb1aca" />
+              <section title="divides" ref="group__functional__objects.html#gad82e74fafbb63c689bfbed50425a94bb" />
+              <section title="equal_to" ref="group__functional__objects.html#gac2b5ad0562d420ead57411affeaa4b81" />
+              <section title="even" ref="group__functional__objects.html#gae7a9884e2f575500efb405454913b172" />
+              <section title="greater" ref="group__functional__objects.html#gad76bffd0137b8f60ec3bca7da0943b0f" />
+              <section title="greater_equal" ref="group__functional__objects.html#gae532b5887a5493a18055d37b2ae8ad07" />
+              <section title="less" ref="group__functional__objects.html#ga32bec54e0f90699bf72052a5bb8c2059" />
+              <section title="less_equal" ref="group__functional__objects.html#gab0c5dc30813e357127c00bf48d34745d" />
+              <section title="logical_and" ref="group__functional__objects.html#ga21cbb386cab89de7a4919fba74022225" />
+              <section title="logical_not" ref="group__functional__objects.html#ga780e8689a83cf485780f1797fd358cd2" />
+              <section title="logical_or" ref="group__functional__objects.html#ga79dd18f286bcc26b4b5299468018e425" />
+              <section title="lshift" ref="group__functional__objects.html#ga790c536a69abb27e48e1347564de3a10" />
+              <section title="minus" ref="group__functional__objects.html#ga5e36bbd7c36bc0ce956d19a3f3e0a6e9" />
+              <section title="modulus" ref="group__functional__objects.html#gaf16d21c632b7f34f686406bb7f029331" />
+              <section title="multiplies" ref="group__functional__objects.html#gac5484073a5a431c37c00631f4504cd7c" />
+              <section title="not_equal_to" ref="group__functional__objects.html#gae10bceefef5c7348385a315a70284a68" />
+              <section title="odd" ref="group__functional__objects.html#gadfd049f1007abb37e2d0c69cc799b6a3" />
+              <section title="plus" ref="group__functional__objects.html#gaa854e27ff0e290779eb710d1a9cc3bc6" />
+              <section title="rshift" ref="group__functional__objects.html#gad1cd96d90f9391d18ac4ce14165d2bb5" />
+            </section>
+            <section title="compose" ref="group__functional.html#gada3fb865efe49c85347051419a758ec3" />
+            <section title="curry" ref="group__functional.html#ga39169e3b53ed3bed41475b7bf7dafc6f" />
+            <section title="invoke" ref="group__functional.html#gac8bb97c43155e2866758294b81ff9661" />
+          </section>
+        </section>
+        <section title="Classes">
+          <section title="Class List" ref="annotated.html">
+            <section title="gears">
+              <section title="chrono">
+                <section title="basic_stopwatch" ref="structgears_1_1chrono_1_1basic__stopwatch.html">
+                  <section title="duration" ref="structgears_1_1chrono_1_1basic__stopwatch.html#a88432355fe8c52c40959bf7a14e41797" />
+                  <section title="period" ref="structgears_1_1chrono_1_1basic__stopwatch.html#a789858adfacfd43af6a2b9363fdbff1a" />
+                  <section title="rep" ref="structgears_1_1chrono_1_1basic__stopwatch.html#a544529db0feebaa3f2be88376b9c0550" />
+                  <section title="time_point" ref="structgears_1_1chrono_1_1basic__stopwatch.html#aa6408d6942d10992dec50188f91a0ceb" />
+                  <section title="basic_stopwatch" ref="structgears_1_1chrono_1_1basic__stopwatch.html#a171cfc9f8e31459ef09e3ae5bc54d1ca" />
+                  <section title="elapsed" ref="structgears_1_1chrono_1_1basic__stopwatch.html#a8a221c5610f4825bd1ce4bef493ef731" />
+                  <section title="is_running" ref="structgears_1_1chrono_1_1basic__stopwatch.html#ad45463cad34dc0e822947bd842b48d16" />
+                  <section title="reset" ref="structgears_1_1chrono_1_1basic__stopwatch.html#a921d145a41fc7135c46d12773ed6714b" />
+                  <section title="restart" ref="structgears_1_1chrono_1_1basic__stopwatch.html#af469930f80033294029cad8053ac04c5" />
+                  <section title="start" ref="structgears_1_1chrono_1_1basic__stopwatch.html#a552f74e2f6d12f9f87c35987d8985902" />
+                  <section title="stop" ref="structgears_1_1chrono_1_1basic__stopwatch.html#ab6d9c72d67329952a48c79c7246f023f" />
+                </section>
+              </section>
+              <section title="concepts">
+                <section title="DefaultConstructible" ref="structgears_1_1concepts_1_1_default_constructible.html" />
+                <section title="MoveConstructible" ref="structgears_1_1concepts_1_1_move_constructible.html" />
+                <section title="CopyConstructible" ref="structgears_1_1concepts_1_1_copy_constructible.html" />
+                <section title="MoveAssignable" ref="structgears_1_1concepts_1_1_move_assignable.html" />
+                <section title="CopyAssignable" ref="structgears_1_1concepts_1_1_copy_assignable.html" />
+                <section title="Movable" ref="structgears_1_1concepts_1_1_movable.html" />
+                <section title="Copyable" ref="structgears_1_1concepts_1_1_copyable.html" />
+                <section title="Assignable" ref="structgears_1_1concepts_1_1_assignable.html" />
+                <section title="Destructible" ref="structgears_1_1concepts_1_1_destructible.html" />
+                <section title="Constructible" ref="structgears_1_1concepts_1_1_constructible.html" />
+                <section title="StandardLayout" ref="structgears_1_1concepts_1_1_standard_layout.html" />
+                <section title="POD" ref="structgears_1_1concepts_1_1_p_o_d.html" />
+                <section title="Semiregular" ref="structgears_1_1concepts_1_1_semiregular.html" />
+                <section title="LValueSwappable" ref="structgears_1_1concepts_1_1_l_value_swappable.html" />
+                <section title="RValueSwappable" ref="structgears_1_1concepts_1_1_r_value_swappable.html" />
+                <section title="Swappable" ref="structgears_1_1concepts_1_1_swappable.html" />
+                <section title="ContextualBool" ref="structgears_1_1concepts_1_1_contextual_bool.html" />
+                <section title="Integral" ref="structgears_1_1concepts_1_1_integral.html" />
+                <section title="FloatingPoint" ref="structgears_1_1concepts_1_1_floating_point.html" />
+                <section title="Signed" ref="structgears_1_1concepts_1_1_signed.html" />
+                <section title="Unsigned" ref="structgears_1_1concepts_1_1_unsigned.html" />
+                <section title="Arithmetic" ref="structgears_1_1concepts_1_1_arithmetic.html" />
+                <section title="Fundamental" ref="structgears_1_1concepts_1_1_fundamental.html" />
+                <section title="Compound" ref="structgears_1_1concepts_1_1_compound.html" />
+                <section title="Pointer" ref="structgears_1_1concepts_1_1_pointer.html" />
+                <section title="LValueReference" ref="structgears_1_1concepts_1_1_l_value_reference.html" />
+                <section title="RValueReference" ref="structgears_1_1concepts_1_1_r_value_reference.html" />
+                <section title="Reference" ref="structgears_1_1concepts_1_1_reference.html" />
+                <section title="LessThanComparable" ref="structgears_1_1concepts_1_1_less_than_comparable.html" />
+                <section title="EqualityComparable" ref="structgears_1_1concepts_1_1_equality_comparable.html" />
+                <section title="Regular" ref="structgears_1_1concepts_1_1_regular.html" />
+                <section title="Comparable" ref="structgears_1_1concepts_1_1_comparable.html" />
+                <section title="NullablePointer" ref="structgears_1_1concepts_1_1_nullable_pointer.html" />
+                <section title="Incrementable" ref="structgears_1_1concepts_1_1_incrementable.html" />
+                <section title="Decrementable" ref="structgears_1_1concepts_1_1_decrementable.html" />
+                <section title="Dereferenceable" ref="structgears_1_1concepts_1_1_dereferenceable.html" />
+                <section title="Container" ref="structgears_1_1concepts_1_1_container.html" />
+                <section title="ReversibleContainer" ref="structgears_1_1concepts_1_1_reversible_container.html" />
+                <section title="AllocatorAwareContainer" ref="structgears_1_1concepts_1_1_allocator_aware_container.html" />
+                <section title="SequenceContainer" ref="structgears_1_1concepts_1_1_sequence_container.html" />
+                <section title="AssociativeContainer" ref="structgears_1_1concepts_1_1_associative_container.html" />
+                <section title="Callable" ref="structgears_1_1concepts_1_1_callable.html" />
+                <section title="Generator" ref="structgears_1_1concepts_1_1_generator.html" />
+                <section title="Function" ref="structgears_1_1concepts_1_1_function.html" />
+                <section title="Iterator" ref="structgears_1_1concepts_1_1_iterator.html" />
+                <section title="InputIterator" ref="structgears_1_1concepts_1_1_input_iterator.html" />
+                <section title="OutputIterator" ref="structgears_1_1concepts_1_1_output_iterator.html" />
+                <section title="ForwardIterator" ref="structgears_1_1concepts_1_1_forward_iterator.html" />
+                <section title="MutableForwardIterator" ref="structgears_1_1concepts_1_1_mutable_forward_iterator.html" />
+                <section title="BidirectionalIterator" ref="structgears_1_1concepts_1_1_bidirectional_iterator.html" />
+                <section title="MutableBidirectionalIterator" ref="structgears_1_1concepts_1_1_mutable_bidirectional_iterator.html" />
+                <section title="RandomAccessIterator" ref="structgears_1_1concepts_1_1_random_access_iterator.html" />
+                <section title="MutableRandomAccessIterator" ref="structgears_1_1concepts_1_1_mutable_random_access_iterator.html" />
+              </section>
+            </section>
+          </section>
+          <section title="Class Index" ref="classes.html" />
+          <section title="Class Members" ref="functions.html">
+            <section title="All" ref="functions.html" />
+            <section title="Functions" ref="functions_func.html" />
+          </section>
+        </section>
+      </section>
+    </toc>
+    <keywords>
+      <keyword name="ADL module" id="ADL module" ref="group__adl.html" />
+      <keyword name="get" id="adl::get" ref="group__adl.html#ga6f49a37a364444c9fd177626a33f563a" />
+      <keyword name="begin" id="adl::begin" ref="group__adl.html#gae45d09ea0dd3b0d25a2c1446a75ae86e" />
+      <keyword name="end" id="adl::end" ref="group__adl.html#ga0749da1b684fb75081f785e580c168c1" />
+      <keyword name="swap" id="adl::swap" ref="group__adl.html#gafe9c69f1aec1503f154338c7b5da7db9" />
+      <keyword name="Chrono module" id="Chrono module" ref="group__chrono.html" />
+      <keyword name="Basic concepts submodule" id="Basic concepts submodule" ref="group__basic__concepts.html" />
+      <keyword name="Container concepts submodule" id="Container concepts submodule" ref="group__container__concepts.html" />
+      <keyword name="Function concepts submodule" id="Function concepts submodule" ref="group__function__concepts.html" />
+      <keyword name="Iterator concepts submodule" id="Iterator concepts submodule" ref="group__iterator__concepts.html" />
+      <keyword name="Concepts module" id="Concepts module" ref="group__concepts.html" />
+      <keyword name="require" id="concepts::require" ref="group__concepts.html#gac123339dbd70d43fd7526314e0bafe81" />
+      <keyword name="Functional module" id="Functional module" ref="group__functional.html" />
+      <keyword name="compose" id="functional::compose" ref="group__functional.html#gada3fb865efe49c85347051419a758ec3" />
+      <keyword name="curry" id="functional::curry" ref="group__functional.html#ga39169e3b53ed3bed41475b7bf7dafc6f" />
+      <keyword name="invoke" id="functional::invoke" ref="group__functional.html#gac8bb97c43155e2866758294b81ff9661" />
+      <keyword name="Function objects submodule" id="Function objects submodule" ref="group__functional__objects.html" />
+      <keyword name="plus" id="functional_objects::plus" ref="group__functional__objects.html#gaa854e27ff0e290779eb710d1a9cc3bc6" />
+      <keyword name="minus" id="functional_objects::minus" ref="group__functional__objects.html#ga5e36bbd7c36bc0ce956d19a3f3e0a6e9" />
+      <keyword name="multiplies" id="functional_objects::multiplies" ref="group__functional__objects.html#gac5484073a5a431c37c00631f4504cd7c" />
+      <keyword name="divides" id="functional_objects::divides" ref="group__functional__objects.html#gad82e74fafbb63c689bfbed50425a94bb" />
+      <keyword name="modulus" id="functional_objects::modulus" ref="group__functional__objects.html#gaf16d21c632b7f34f686406bb7f029331" />
+      <keyword name="bit_and" id="functional_objects::bit_and" ref="group__functional__objects.html#gad79bfd076c1fd3e6f2daf0ef26e0cd6e" />
+      <keyword name="bit_or" id="functional_objects::bit_or" ref="group__functional__objects.html#ga6149b74ba49c0a3c791b6c142fa84984" />
+      <keyword name="bit_xor" id="functional_objects::bit_xor" ref="group__functional__objects.html#gac415335c627bd65e7c610bf71feb1aca" />
+      <keyword name="bit_not" id="functional_objects::bit_not" ref="group__functional__objects.html#gab39f0a8af4b56f7492c42477cb470b97" />
+      <keyword name="lshift" id="functional_objects::lshift" ref="group__functional__objects.html#ga790c536a69abb27e48e1347564de3a10" />
+      <keyword name="rshift" id="functional_objects::rshift" ref="group__functional__objects.html#gad1cd96d90f9391d18ac4ce14165d2bb5" />
+      <keyword name="equal_to" id="functional_objects::equal_to" ref="group__functional__objects.html#gac2b5ad0562d420ead57411affeaa4b81" />
+      <keyword name="not_equal_to" id="functional_objects::not_equal_to" ref="group__functional__objects.html#gae10bceefef5c7348385a315a70284a68" />
+      <keyword name="greater" id="functional_objects::greater" ref="group__functional__objects.html#gad76bffd0137b8f60ec3bca7da0943b0f" />
+      <keyword name="less" id="functional_objects::less" ref="group__functional__objects.html#ga32bec54e0f90699bf72052a5bb8c2059" />
+      <keyword name="greater_equal" id="functional_objects::greater_equal" ref="group__functional__objects.html#gae532b5887a5493a18055d37b2ae8ad07" />
+      <keyword name="less_equal" id="functional_objects::less_equal" ref="group__functional__objects.html#gab0c5dc30813e357127c00bf48d34745d" />
+      <keyword name="logical_and" id="functional_objects::logical_and" ref="group__functional__objects.html#ga21cbb386cab89de7a4919fba74022225" />
+      <keyword name="logical_or" id="functional_objects::logical_or" ref="group__functional__objects.html#ga79dd18f286bcc26b4b5299468018e425" />
+      <keyword name="logical_not" id="functional_objects::logical_not" ref="group__functional__objects.html#ga780e8689a83cf485780f1797fd358cd2" />
+      <keyword name="even" id="functional_objects::even" ref="group__functional__objects.html#gae7a9884e2f575500efb405454913b172" />
+      <keyword name="odd" id="functional_objects::odd" ref="group__functional__objects.html#gadfd049f1007abb37e2d0c69cc799b6a3" />
+      <keyword name="gears::chrono::basic_stopwatch" id="gears::chrono::basic_stopwatch" ref="structgears_1_1chrono_1_1basic__stopwatch.html" />
+      <keyword name="time_point" id="gears::chrono::basic_stopwatch::time_point" ref="structgears_1_1chrono_1_1basic__stopwatch.html#aa6408d6942d10992dec50188f91a0ceb" />
+      <keyword name="duration" id="gears::chrono::basic_stopwatch::duration" ref="structgears_1_1chrono_1_1basic__stopwatch.html#a88432355fe8c52c40959bf7a14e41797" />
+      <keyword name="rep" id="gears::chrono::basic_stopwatch::rep" ref="structgears_1_1chrono_1_1basic__stopwatch.html#a544529db0feebaa3f2be88376b9c0550" />
+      <keyword name="period" id="gears::chrono::basic_stopwatch::period" ref="structgears_1_1chrono_1_1basic__stopwatch.html#a789858adfacfd43af6a2b9363fdbff1a" />
+      <keyword name="start" id="gears::chrono::basic_stopwatch::start" ref="structgears_1_1chrono_1_1basic__stopwatch.html#a552f74e2f6d12f9f87c35987d8985902" />
+      <keyword name="stop" id="gears::chrono::basic_stopwatch::stop" ref="structgears_1_1chrono_1_1basic__stopwatch.html#ab6d9c72d67329952a48c79c7246f023f" />
+      <keyword name="reset" id="gears::chrono::basic_stopwatch::reset" ref="structgears_1_1chrono_1_1basic__stopwatch.html#a921d145a41fc7135c46d12773ed6714b" />
+      <keyword name="restart" id="gears::chrono::basic_stopwatch::restart" ref="structgears_1_1chrono_1_1basic__stopwatch.html#af469930f80033294029cad8053ac04c5" />
+      <keyword name="elapsed" id="gears::chrono::basic_stopwatch::elapsed" ref="structgears_1_1chrono_1_1basic__stopwatch.html#a8a221c5610f4825bd1ce4bef493ef731" />
+      <keyword name="is_running" id="gears::chrono::basic_stopwatch::is_running" ref="structgears_1_1chrono_1_1basic__stopwatch.html#ad45463cad34dc0e822947bd842b48d16" />
+      <keyword name="gears::concepts::DefaultConstructible" id="gears::concepts::DefaultConstructible" ref="structgears_1_1concepts_1_1_default_constructible.html" />
+      <keyword name="gears::concepts::MoveConstructible" id="gears::concepts::MoveConstructible" ref="structgears_1_1concepts_1_1_move_constructible.html" />
+      <keyword name="gears::concepts::CopyConstructible" id="gears::concepts::CopyConstructible" ref="structgears_1_1concepts_1_1_copy_constructible.html" />
+      <keyword name="gears::concepts::MoveAssignable" id="gears::concepts::MoveAssignable" ref="structgears_1_1concepts_1_1_move_assignable.html" />
+      <keyword name="gears::concepts::CopyAssignable" id="gears::concepts::CopyAssignable" ref="structgears_1_1concepts_1_1_copy_assignable.html" />
+      <keyword name="gears::concepts::Movable" id="gears::concepts::Movable" ref="structgears_1_1concepts_1_1_movable.html" />
+      <keyword name="gears::concepts::Copyable" id="gears::concepts::Copyable" ref="structgears_1_1concepts_1_1_copyable.html" />
+      <keyword name="gears::concepts::Assignable" id="gears::concepts::Assignable" ref="structgears_1_1concepts_1_1_assignable.html" />
+      <keyword name="gears::concepts::Destructible" id="gears::concepts::Destructible" ref="structgears_1_1concepts_1_1_destructible.html" />
+      <keyword name="gears::concepts::Constructible" id="gears::concepts::Constructible" ref="structgears_1_1concepts_1_1_constructible.html" />
+      <keyword name="gears::concepts::StandardLayout" id="gears::concepts::StandardLayout" ref="structgears_1_1concepts_1_1_standard_layout.html" />
+      <keyword name="gears::concepts::POD" id="gears::concepts::POD" ref="structgears_1_1concepts_1_1_p_o_d.html" />
+      <keyword name="gears::concepts::Semiregular" id="gears::concepts::Semiregular" ref="structgears_1_1concepts_1_1_semiregular.html" />
+      <keyword name="gears::concepts::LValueSwappable" id="gears::concepts::LValueSwappable" ref="structgears_1_1concepts_1_1_l_value_swappable.html" />
+      <keyword name="gears::concepts::RValueSwappable" id="gears::concepts::RValueSwappable" ref="structgears_1_1concepts_1_1_r_value_swappable.html" />
+      <keyword name="gears::concepts::Swappable" id="gears::concepts::Swappable" ref="structgears_1_1concepts_1_1_swappable.html" />
+      <keyword name="gears::concepts::ContextualBool" id="gears::concepts::ContextualBool" ref="structgears_1_1concepts_1_1_contextual_bool.html" />
+      <keyword name="gears::concepts::Integral" id="gears::concepts::Integral" ref="structgears_1_1concepts_1_1_integral.html" />
+      <keyword name="gears::concepts::FloatingPoint" id="gears::concepts::FloatingPoint" ref="structgears_1_1concepts_1_1_floating_point.html" />
+      <keyword name="gears::concepts::Signed" id="gears::concepts::Signed" ref="structgears_1_1concepts_1_1_signed.html" />
+      <keyword name="gears::concepts::Unsigned" id="gears::concepts::Unsigned" ref="structgears_1_1concepts_1_1_unsigned.html" />
+      <keyword name="gears::concepts::Arithmetic" id="gears::concepts::Arithmetic" ref="structgears_1_1concepts_1_1_arithmetic.html" />
+      <keyword name="gears::concepts::Fundamental" id="gears::concepts::Fundamental" ref="structgears_1_1concepts_1_1_fundamental.html" />
+      <keyword name="gears::concepts::Compound" id="gears::concepts::Compound" ref="structgears_1_1concepts_1_1_compound.html" />
+      <keyword name="gears::concepts::Pointer" id="gears::concepts::Pointer" ref="structgears_1_1concepts_1_1_pointer.html" />
+      <keyword name="gears::concepts::LValueReference" id="gears::concepts::LValueReference" ref="structgears_1_1concepts_1_1_l_value_reference.html" />
+      <keyword name="gears::concepts::RValueReference" id="gears::concepts::RValueReference" ref="structgears_1_1concepts_1_1_r_value_reference.html" />
+      <keyword name="gears::concepts::Reference" id="gears::concepts::Reference" ref="structgears_1_1concepts_1_1_reference.html" />
+      <keyword name="gears::concepts::LessThanComparable" id="gears::concepts::LessThanComparable" ref="structgears_1_1concepts_1_1_less_than_comparable.html" />
+      <keyword name="gears::concepts::EqualityComparable" id="gears::concepts::EqualityComparable" ref="structgears_1_1concepts_1_1_equality_comparable.html" />
+      <keyword name="gears::concepts::Regular" id="gears::concepts::Regular" ref="structgears_1_1concepts_1_1_regular.html" />
+      <keyword name="gears::concepts::Comparable" id="gears::concepts::Comparable" ref="structgears_1_1concepts_1_1_comparable.html" />
+      <keyword name="gears::concepts::NullablePointer" id="gears::concepts::NullablePointer" ref="structgears_1_1concepts_1_1_nullable_pointer.html" />
+      <keyword name="gears::concepts::Incrementable" id="gears::concepts::Incrementable" ref="structgears_1_1concepts_1_1_incrementable.html" />
+      <keyword name="gears::concepts::Decrementable" id="gears::concepts::Decrementable" ref="structgears_1_1concepts_1_1_decrementable.html" />
+      <keyword name="gears::concepts::Dereferenceable" id="gears::concepts::Dereferenceable" ref="structgears_1_1concepts_1_1_dereferenceable.html" />
+      <keyword name="gears::concepts::Container" id="gears::concepts::Container" ref="structgears_1_1concepts_1_1_container.html" />
+      <keyword name="gears::concepts::ReversibleContainer" id="gears::concepts::ReversibleContainer" ref="structgears_1_1concepts_1_1_reversible_container.html" />
+      <keyword name="gears::concepts::AllocatorAwareContainer" id="gears::concepts::AllocatorAwareContainer" ref="structgears_1_1concepts_1_1_allocator_aware_container.html" />
+      <keyword name="gears::concepts::SequenceContainer" id="gears::concepts::SequenceContainer" ref="structgears_1_1concepts_1_1_sequence_container.html" />
+      <keyword name="gears::concepts::AssociativeContainer" id="gears::concepts::AssociativeContainer" ref="structgears_1_1concepts_1_1_associative_container.html" />
+      <keyword name="gears::concepts::Callable" id="gears::concepts::Callable" ref="structgears_1_1concepts_1_1_callable.html" />
+      <keyword name="gears::concepts::Generator" id="gears::concepts::Generator" ref="structgears_1_1concepts_1_1_generator.html" />
+      <keyword name="gears::concepts::Function" id="gears::concepts::Function" ref="structgears_1_1concepts_1_1_function.html" />
+      <keyword name="gears::concepts::Iterator" id="gears::concepts::Iterator" ref="structgears_1_1concepts_1_1_iterator.html" />
+      <keyword name="gears::concepts::InputIterator" id="gears::concepts::InputIterator" ref="structgears_1_1concepts_1_1_input_iterator.html" />
+      <keyword name="gears::concepts::OutputIterator" id="gears::concepts::OutputIterator" ref="structgears_1_1concepts_1_1_output_iterator.html" />
+      <keyword name="gears::concepts::ForwardIterator" id="gears::concepts::ForwardIterator" ref="structgears_1_1concepts_1_1_forward_iterator.html" />
+      <keyword name="gears::concepts::MutableForwardIterator" id="gears::concepts::MutableForwardIterator" ref="structgears_1_1concepts_1_1_mutable_forward_iterator.html" />
+      <keyword name="gears::concepts::BidirectionalIterator" id="gears::concepts::BidirectionalIterator" ref="structgears_1_1concepts_1_1_bidirectional_iterator.html" />
+      <keyword name="gears::concepts::MutableBidirectionalIterator" id="gears::concepts::MutableBidirectionalIterator" ref="structgears_1_1concepts_1_1_mutable_bidirectional_iterator.html" />
+      <keyword name="gears::concepts::RandomAccessIterator" id="gears::concepts::RandomAccessIterator" ref="structgears_1_1concepts_1_1_random_access_iterator.html" />
+      <keyword name="gears::concepts::MutableRandomAccessIterator" id="gears::concepts::MutableRandomAccessIterator" ref="structgears_1_1concepts_1_1_mutable_random_access_iterator.html" />
+    </keywords>
+    <files>
+      <file>tabs.css</file>
+      <file>tab_a.png</file>
+      <file>tab_b.png</file>
+      <file>tab_h.png</file>
+      <file>tab_s.png</file>
+      <file>nav_h.png</file>
+      <file>nav_f.png</file>
+      <file>bc_s.png</file>
+      <file>doxygen.png</file>
+      <file>closed.png</file>
+      <file>open.png</file>
+      <file>bdwn.png</file>
+      <file>sync_on.png</file>
+      <file>sync_off.png</file>
+      <file>gears.png</file>
+      <file>ftv2blank.png</file>
+      <file>ftv2doc.png</file>
+      <file>ftv2folderclosed.png</file>
+      <file>ftv2folderopen.png</file>
+      <file>ftv2ns.png</file>
+      <file>ftv2mo.png</file>
+      <file>ftv2cl.png</file>
+      <file>ftv2lastnode.png</file>
+      <file>ftv2link.png</file>
+      <file>ftv2mlastnode.png</file>
+      <file>ftv2mnode.png</file>
+      <file>ftv2node.png</file>
+      <file>ftv2plastnode.png</file>
+      <file>ftv2pnode.png</file>
+      <file>ftv2vertline.png</file>
+      <file>ftv2splitbar.png</file>
+      <file>doxygen.css</file>
+      <file>/search/mag_sel.png</file>
+      <file>/search/search_l.png</file>
+      <file>/search/search_m.png</file>
+      <file>/search/search_r.png</file>
+      <file>/search/close.png</file>
+      <file>search/search.css</file>
+      <file>search/search.js</file>
+      <file>adl_8hpp_source.html</file>
+      <file>algorithm_8hpp_source.html</file>
+      <file>concepts_2alias_8hpp_source.html</file>
+      <file>meta_2alias_8hpp_source.html</file>
+      <file>any_8hpp_source.html</file>
+      <file>arithmetic__operators_8hpp_source.html</file>
+      <file>base_8hpp_source.html</file>
+      <file>basic_8hpp_source.html</file>
+      <file>bitwise__operators_8hpp_source.html</file>
+      <file>builder_8hpp_source.html</file>
+      <file>case_8hpp_source.html</file>
+      <file>chrono_8hpp_source.html</file>
+      <file>classification_8hpp_source.html</file>
+      <file>comparison__operators_8hpp_source.html</file>
+      <file>compose_8hpp_source.html</file>
+      <file>concepts_8hpp_source.html</file>
+      <file>container_8hpp_source.html</file>
+      <file>curry_8hpp_source.html</file>
+      <file>expand_8hpp_source.html</file>
+      <file>find_8hpp_source.html</file>
+      <file>flags_8hpp_source.html</file>
+      <file>fprint_8hpp_source.html</file>
+      <file>function_8hpp_source.html</file>
+      <file>functional_8hpp_source.html</file>
+      <file>get_8hpp_source.html</file>
+      <file>getline_8hpp_source.html</file>
+      <file>index__printer_8hpp_source.html</file>
+      <file>indices_8hpp_source.html</file>
+      <file>invoke_8hpp_source.html</file>
+      <file>io_8hpp_source.html</file>
+      <file>adl_2iterator_8hpp_source.html</file>
+      <file>concepts_2iterator_8hpp_source.html</file>
+      <file>lines_8hpp_source.html</file>
+      <file>chrono_2literals_8hpp_source.html</file>
+      <file>string_2literals_8hpp_source.html</file>
+      <file>logical__operators_8hpp_source.html</file>
+      <file>mainpage_8hpp_source.html</file>
+      <file>math_8hpp_source.html</file>
+      <file>maybe_8hpp_source.html</file>
+      <file>meta_2meta_8hpp_source.html</file>
+      <file>meta_8hpp_source.html</file>
+      <file>numeric__properties_8hpp_source.html</file>
+      <file>predicate_8hpp_source.html</file>
+      <file>prettyprint_8hpp_source.html</file>
+      <file>print_8hpp_source.html</file>
+      <file>replace_8hpp_source.html</file>
+      <file>sprint_8hpp_source.html</file>
+      <file>stopwatch_8hpp_source.html</file>
+      <file>storage_8hpp_source.html</file>
+      <file>string_8hpp_source.html</file>
+      <file>swap_8hpp_source.html</file>
+      <file>tags_8hpp_source.html</file>
+      <file>traits_8hpp_source.html</file>
+      <file>transforms_8hpp_source.html</file>
+      <file>trim_8hpp_source.html</file>
+      <file>triple_8hpp_source.html</file>
+      <file>uintx_8hpp_source.html</file>
+      <file>utility_8hpp_source.html</file>
+      <file>group__adl.html</file>
+      <file>group__chrono.html</file>
+      <file>group__basic__concepts.html</file>
+      <file>group__container__concepts.html</file>
+      <file>group__function__concepts.html</file>
+      <file>group__iterator__concepts.html</file>
+      <file>group__concepts.html</file>
+      <file>group__functional.html</file>
+      <file>group__functional__objects.html</file>
+      <file>structgears_1_1chrono_1_1basic__stopwatch.html</file>
+      <file>structgears_1_1chrono_1_1basic__stopwatch-members.html</file>
+      <file>structgears_1_1concepts_1_1_default_constructible.html</file>
+      <file>structgears_1_1concepts_1_1_move_constructible.html</file>
+      <file>structgears_1_1concepts_1_1_copy_constructible.html</file>
+      <file>structgears_1_1concepts_1_1_move_assignable.html</file>
+      <file>structgears_1_1concepts_1_1_copy_assignable.html</file>
+      <file>structgears_1_1concepts_1_1_movable.html</file>
+      <file>structgears_1_1concepts_1_1_copyable.html</file>
+      <file>structgears_1_1concepts_1_1_assignable.html</file>
+      <file>structgears_1_1concepts_1_1_destructible.html</file>
+      <file>structgears_1_1concepts_1_1_constructible.html</file>
+      <file>structgears_1_1concepts_1_1_standard_layout.html</file>
+      <file>structgears_1_1concepts_1_1_p_o_d.html</file>
+      <file>structgears_1_1concepts_1_1_semiregular.html</file>
+      <file>structgears_1_1concepts_1_1_l_value_swappable.html</file>
+      <file>structgears_1_1concepts_1_1_r_value_swappable.html</file>
+      <file>structgears_1_1concepts_1_1_swappable.html</file>
+      <file>structgears_1_1concepts_1_1_contextual_bool.html</file>
+      <file>structgears_1_1concepts_1_1_integral.html</file>
+      <file>structgears_1_1concepts_1_1_floating_point.html</file>
+      <file>structgears_1_1concepts_1_1_signed.html</file>
+      <file>structgears_1_1concepts_1_1_unsigned.html</file>
+      <file>structgears_1_1concepts_1_1_arithmetic.html</file>
+      <file>structgears_1_1concepts_1_1_fundamental.html</file>
+      <file>structgears_1_1concepts_1_1_compound.html</file>
+      <file>structgears_1_1concepts_1_1_pointer.html</file>
+      <file>structgears_1_1concepts_1_1_l_value_reference.html</file>
+      <file>structgears_1_1concepts_1_1_r_value_reference.html</file>
+      <file>structgears_1_1concepts_1_1_reference.html</file>
+      <file>structgears_1_1concepts_1_1_less_than_comparable.html</file>
+      <file>structgears_1_1concepts_1_1_equality_comparable.html</file>
+      <file>structgears_1_1concepts_1_1_regular.html</file>
+      <file>structgears_1_1concepts_1_1_comparable.html</file>
+      <file>structgears_1_1concepts_1_1_nullable_pointer.html</file>
+      <file>structgears_1_1concepts_1_1_incrementable.html</file>
+      <file>structgears_1_1concepts_1_1_decrementable.html</file>
+      <file>structgears_1_1concepts_1_1_dereferenceable.html</file>
+      <file>structgears_1_1concepts_1_1_container.html</file>
+      <file>structgears_1_1concepts_1_1_reversible_container.html</file>
+      <file>structgears_1_1concepts_1_1_allocator_aware_container.html</file>
+      <file>structgears_1_1concepts_1_1_sequence_container.html</file>
+      <file>structgears_1_1concepts_1_1_associative_container.html</file>
+      <file>structgears_1_1concepts_1_1_callable.html</file>
+      <file>structgears_1_1concepts_1_1_generator.html</file>
+      <file>structgears_1_1concepts_1_1_function.html</file>
+      <file>structgears_1_1concepts_1_1_iterator.html</file>
+      <file>structgears_1_1concepts_1_1_input_iterator.html</file>
+      <file>structgears_1_1concepts_1_1_output_iterator.html</file>
+      <file>structgears_1_1concepts_1_1_forward_iterator.html</file>
+      <file>structgears_1_1concepts_1_1_mutable_forward_iterator.html</file>
+      <file>structgears_1_1concepts_1_1_bidirectional_iterator.html</file>
+      <file>structgears_1_1concepts_1_1_mutable_bidirectional_iterator.html</file>
+      <file>structgears_1_1concepts_1_1_random_access_iterator.html</file>
+      <file>structgears_1_1concepts_1_1_mutable_random_access_iterator.html</file>
+      <file>dir_cde7da3f310f54de964449a0e70213f5.html</file>
+      <file>dir_63a1f70c3c028a287e4837932e7ea4f8.html</file>
+      <file>dir_27d96621f6e8496afeb2cac13181a30d.html</file>
+      <file>dir_c92a8af26fef865a839af6fb2732f9ab.html</file>
+      <file>dir_49e56c817e5e54854c35e136979f97ca.html</file>
+      <file>dir_10e1495847b12e683a14bba9b108eef4.html</file>
+      <file>dir_a7c8c433f7bd061456788128d15cc8bf.html</file>
+      <file>dir_b6cd7f82d03f2d53c36797375e543c60.html</file>
+      <file>dir_eec1c21e23f27db62305706b24b10836.html</file>
+      <file>dir_8e75c8afa4783c835649bbc11f6bcb94.html</file>
+      <file>dir_a11c57bb708a5c136056cc448155e637.html</file>
+      <file>dir_5baeb76de81c00d2f0e1b753b731ef18.html</file>
+      <file>dir_0bfac4f57e3dcd847987c30ba2510126.html</file>
+      <file>index.html</file>
+      <file>modules.html</file>
+      <file>annotated.html</file>
+      <file>classes.html</file>
+      <file>functions.html</file>
+      <file>functions_func.html</file>
+    </files>
+  </filterSection>
+</QtHelpProject>

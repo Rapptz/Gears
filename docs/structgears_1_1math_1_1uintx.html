@@ -89,7 +89,7 @@ $(document).ready(function(){initNavTree('structgears_1_1math_1_1uintx.html','')
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Groups</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Groups</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -100,57 +100,72 @@ $(document).ready(function(){initNavTree('structgears_1_1math_1_1uintx.html','')
 
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="#friends">Friends</a> &#124;
 <a href="structgears_1_1math_1_1uintx-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">gears::math::uintx&lt; Bits, Digit, Digits &gt; Struct Template Reference</div>  </div>
+<div class="title">gears::math::uintx&lt; Bits, Digit, Digits &gt; Struct Template Reference<div class="ingroups"><a class="el" href="group__math.html">Math module</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Multi-precision unsigned integer.  
+ <a href="structgears_1_1math_1_1uintx.html#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:af945a5238100315a8eef1c03d323900c"><td class="memTemplParams" colspan="2"><a class="anchor" id="af945a5238100315a8eef1c03d323900c"></a>
-template&lt;typename Integer , gears::meta::EnableIf&lt; std::is_integral&lt; Integer &gt;&gt; ...&gt; </td></tr>
-<tr class="memitem:af945a5238100315a8eef1c03d323900c"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><b>uintx</b> (Integer value)</td></tr>
+<tr class="memitem:ade0ff23e7706e959c1716d0b41007280"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgears_1_1math_1_1uintx.html#ade0ff23e7706e959c1716d0b41007280">uintx</a> ()</td></tr>
+<tr class="memdesc:ade0ff23e7706e959c1716d0b41007280"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor.  <a href="#ade0ff23e7706e959c1716d0b41007280">More...</a><br/></td></tr>
+<tr class="separator:ade0ff23e7706e959c1716d0b41007280"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af945a5238100315a8eef1c03d323900c"><td class="memTemplParams" colspan="2">template&lt;typename Integer , gears::meta::EnableIf&lt; std::is_integral&lt; Integer &gt;&gt;  = gears::meta::_&gt; </td></tr>
+<tr class="memitem:af945a5238100315a8eef1c03d323900c"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structgears_1_1math_1_1uintx.html#af945a5238100315a8eef1c03d323900c">uintx</a> (Integer value)</td></tr>
+<tr class="memdesc:af945a5238100315a8eef1c03d323900c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs from an integer.  <a href="#af945a5238100315a8eef1c03d323900c">More...</a><br/></td></tr>
 <tr class="separator:af945a5238100315a8eef1c03d323900c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a24bfaff9b262e2639a2823fa1b1c4118"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a24bfaff9b262e2639a2823fa1b1c4118"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>uintx</b> (const std::string &amp;s)</td></tr>
+<tr class="memitem:a24bfaff9b262e2639a2823fa1b1c4118"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgears_1_1math_1_1uintx.html#a24bfaff9b262e2639a2823fa1b1c4118">uintx</a> (const std::string &amp;s)</td></tr>
+<tr class="memdesc:a24bfaff9b262e2639a2823fa1b1c4118"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs from a string.  <a href="#a24bfaff9b262e2639a2823fa1b1c4118">More...</a><br/></td></tr>
 <tr class="separator:a24bfaff9b262e2639a2823fa1b1c4118"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ada9ce08f52ccdfd834c4f503f3bca529"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ada9ce08f52ccdfd834c4f503f3bca529"></a>
-<a class="el" href="structgears_1_1math_1_1uintx.html">uintx</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator+=</b> (const <a class="el" href="structgears_1_1math_1_1uintx.html">uintx</a> &amp;other)</td></tr>
+<tr class="memitem:a472de2f6ff50bc4667c0d8039ab1fb84"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgears_1_1math_1_1uintx.html#a472de2f6ff50bc4667c0d8039ab1fb84">operator bool</a> () const noexcept</td></tr>
+<tr class="memdesc:a472de2f6ff50bc4667c0d8039ab1fb84"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if uintx is greater than 0.  <a href="#a472de2f6ff50bc4667c0d8039ab1fb84">More...</a><br/></td></tr>
+<tr class="separator:a472de2f6ff50bc4667c0d8039ab1fb84"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader"></div></td></tr>
+<tr class="memitem:ada9ce08f52ccdfd834c4f503f3bca529"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structgears_1_1math_1_1uintx.html">uintx</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgears_1_1math_1_1uintx.html#ada9ce08f52ccdfd834c4f503f3bca529">operator+=</a> (const <a class="el" href="structgears_1_1math_1_1uintx.html">uintx</a> &amp;other)</td></tr>
+<tr class="memdesc:ada9ce08f52ccdfd834c4f503f3bca529"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds the contents of another uintx.  <a href="#ada9ce08f52ccdfd834c4f503f3bca529">More...</a><br/></td></tr>
 <tr class="separator:ada9ce08f52ccdfd834c4f503f3bca529"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afff40b239f7af28530339332fde4b669"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afff40b239f7af28530339332fde4b669"></a>
-<a class="el" href="structgears_1_1math_1_1uintx.html">uintx</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator-=</b> (const <a class="el" href="structgears_1_1math_1_1uintx.html">uintx</a> &amp;other)</td></tr>
-<tr class="separator:afff40b239f7af28530339332fde4b669"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a180110a137ec7f7bf23ba6397f10902b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a180110a137ec7f7bf23ba6397f10902b"></a>
-<a class="el" href="structgears_1_1math_1_1uintx.html">uintx</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator*=</b> (const <a class="el" href="structgears_1_1math_1_1uintx.html">uintx</a> &amp;other)</td></tr>
-<tr class="separator:a180110a137ec7f7bf23ba6397f10902b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab58e91c292da819b2f47573e3760cd89"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab58e91c292da819b2f47573e3760cd89"></a>
-<a class="el" href="structgears_1_1math_1_1uintx.html">uintx</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator/=</b> (const <a class="el" href="structgears_1_1math_1_1uintx.html">uintx</a> &amp;other)</td></tr>
-<tr class="separator:ab58e91c292da819b2f47573e3760cd89"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac6d1faf27e8c066580f9b0af4e54ce17"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac6d1faf27e8c066580f9b0af4e54ce17"></a>
-<a class="el" href="structgears_1_1math_1_1uintx.html">uintx</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator%=</b> (const <a class="el" href="structgears_1_1math_1_1uintx.html">uintx</a> &amp;other)</td></tr>
-<tr class="separator:ac6d1faf27e8c066580f9b0af4e54ce17"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7410dc3f2c070876b8efe8583f4b2217"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7410dc3f2c070876b8efe8583f4b2217"></a>
 <a class="el" href="structgears_1_1math_1_1uintx.html">uintx</a>&#160;</td><td class="memItemRight" valign="bottom"><b>operator+</b> (const <a class="el" href="structgears_1_1math_1_1uintx.html">uintx</a> &amp;other) const </td></tr>
 <tr class="separator:a7410dc3f2c070876b8efe8583f4b2217"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader"></div></td></tr>
+<tr class="memitem:afff40b239f7af28530339332fde4b669"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structgears_1_1math_1_1uintx.html">uintx</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgears_1_1math_1_1uintx.html#afff40b239f7af28530339332fde4b669">operator-=</a> (const <a class="el" href="structgears_1_1math_1_1uintx.html">uintx</a> &amp;other)</td></tr>
+<tr class="memdesc:afff40b239f7af28530339332fde4b669"><td class="mdescLeft">&#160;</td><td class="mdescRight">Subtracts the contents of another uintx.  <a href="#afff40b239f7af28530339332fde4b669">More...</a><br/></td></tr>
+<tr class="separator:afff40b239f7af28530339332fde4b669"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7260c2a6216299aed8cc8085e0e3b591"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7260c2a6216299aed8cc8085e0e3b591"></a>
 <a class="el" href="structgears_1_1math_1_1uintx.html">uintx</a>&#160;</td><td class="memItemRight" valign="bottom"><b>operator-</b> (const <a class="el" href="structgears_1_1math_1_1uintx.html">uintx</a> &amp;other) const </td></tr>
 <tr class="separator:a7260c2a6216299aed8cc8085e0e3b591"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader"></div></td></tr>
+<tr class="memitem:a180110a137ec7f7bf23ba6397f10902b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structgears_1_1math_1_1uintx.html">uintx</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgears_1_1math_1_1uintx.html#a180110a137ec7f7bf23ba6397f10902b">operator*=</a> (const <a class="el" href="structgears_1_1math_1_1uintx.html">uintx</a> &amp;other)</td></tr>
+<tr class="memdesc:a180110a137ec7f7bf23ba6397f10902b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Multiplies the contents of another uintx.  <a href="#a180110a137ec7f7bf23ba6397f10902b">More...</a><br/></td></tr>
+<tr class="separator:a180110a137ec7f7bf23ba6397f10902b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad083b517f4a69486fdb0c671acaa51c4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad083b517f4a69486fdb0c671acaa51c4"></a>
 <a class="el" href="structgears_1_1math_1_1uintx.html">uintx</a>&#160;</td><td class="memItemRight" valign="bottom"><b>operator*</b> (const <a class="el" href="structgears_1_1math_1_1uintx.html">uintx</a> &amp;other) const </td></tr>
 <tr class="separator:ad083b517f4a69486fdb0c671acaa51c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader"></div></td></tr>
+<tr class="memitem:ab58e91c292da819b2f47573e3760cd89"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structgears_1_1math_1_1uintx.html">uintx</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgears_1_1math_1_1uintx.html#ab58e91c292da819b2f47573e3760cd89">operator/=</a> (const <a class="el" href="structgears_1_1math_1_1uintx.html">uintx</a> &amp;other)</td></tr>
+<tr class="memdesc:ab58e91c292da819b2f47573e3760cd89"><td class="mdescLeft">&#160;</td><td class="mdescRight">Divides the contents of another uintx.  <a href="#ab58e91c292da819b2f47573e3760cd89">More...</a><br/></td></tr>
+<tr class="separator:ab58e91c292da819b2f47573e3760cd89"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6722ac4dcc8d626e3bb252d23ac83a3e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6722ac4dcc8d626e3bb252d23ac83a3e"></a>
 <a class="el" href="structgears_1_1math_1_1uintx.html">uintx</a>&#160;</td><td class="memItemRight" valign="bottom"><b>operator/</b> (const <a class="el" href="structgears_1_1math_1_1uintx.html">uintx</a> &amp;other) const </td></tr>
 <tr class="separator:a6722ac4dcc8d626e3bb252d23ac83a3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader"></div></td></tr>
+<tr class="memitem:ac6d1faf27e8c066580f9b0af4e54ce17"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structgears_1_1math_1_1uintx.html">uintx</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgears_1_1math_1_1uintx.html#ac6d1faf27e8c066580f9b0af4e54ce17">operator%=</a> (const <a class="el" href="structgears_1_1math_1_1uintx.html">uintx</a> &amp;other)</td></tr>
+<tr class="memdesc:ac6d1faf27e8c066580f9b0af4e54ce17"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implements modulo arithmetic.  <a href="#ac6d1faf27e8c066580f9b0af4e54ce17">More...</a><br/></td></tr>
+<tr class="separator:ac6d1faf27e8c066580f9b0af4e54ce17"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a405864f6f5506db382d80959d9970b99"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a405864f6f5506db382d80959d9970b99"></a>
 <a class="el" href="structgears_1_1math_1_1uintx.html">uintx</a>&#160;</td><td class="memItemRight" valign="bottom"><b>operator%</b> (const <a class="el" href="structgears_1_1math_1_1uintx.html">uintx</a> &amp;other) const </td></tr>
 <tr class="separator:a405864f6f5506db382d80959d9970b99"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader"></div></td></tr>
 <tr class="memitem:aca80439fa29ce297e51ec8be9d1d709c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aca80439fa29ce297e51ec8be9d1d709c"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator==</b> (const <a class="el" href="structgears_1_1math_1_1uintx.html">uintx</a> &amp;other) const </td></tr>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgears_1_1math_1_1uintx.html#aca80439fa29ce297e51ec8be9d1d709c">operator==</a> (const <a class="el" href="structgears_1_1math_1_1uintx.html">uintx</a> &amp;other) const </td></tr>
+<tr class="memdesc:aca80439fa29ce297e51ec8be9d1d709c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Logically compares two uintx objects. <br/></td></tr>
 <tr class="separator:aca80439fa29ce297e51ec8be9d1d709c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af94decf866a2237d39f5b618e46d0493"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af94decf866a2237d39f5b618e46d0493"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator!=</b> (const <a class="el" href="structgears_1_1math_1_1uintx.html">uintx</a> &amp;other) const </td></tr>
@@ -167,21 +182,21 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator&lt;=</b> (co
 <tr class="memitem:aff5aceb03ce51e2202138804ffeaf7b8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aff5aceb03ce51e2202138804ffeaf7b8"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator&gt;=</b> (const <a class="el" href="structgears_1_1math_1_1uintx.html">uintx</a> &amp;other) const </td></tr>
 <tr class="separator:aff5aceb03ce51e2202138804ffeaf7b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader"></div></td></tr>
 <tr class="memitem:a4880a058eb70151c858b962bff88d0e9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4880a058eb70151c858b962bff88d0e9"></a>
-<a class="el" href="structgears_1_1math_1_1uintx.html">uintx</a>&#160;</td><td class="memItemRight" valign="bottom"><b>operator++</b> (int)</td></tr>
+<a class="el" href="structgears_1_1math_1_1uintx.html">uintx</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgears_1_1math_1_1uintx.html#a4880a058eb70151c858b962bff88d0e9">operator++</a> (int)</td></tr>
+<tr class="memdesc:a4880a058eb70151c858b962bff88d0e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Increments a uintx object by one. <br/></td></tr>
 <tr class="separator:a4880a058eb70151c858b962bff88d0e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7b3310941c760f2d8527b3d4dcb28244"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7b3310941c760f2d8527b3d4dcb28244"></a>
 const <a class="el" href="structgears_1_1math_1_1uintx.html">uintx</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator++</b> ()</td></tr>
 <tr class="separator:a7b3310941c760f2d8527b3d4dcb28244"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abaccaff5a70e48e4390a4f35e523cad7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abaccaff5a70e48e4390a4f35e523cad7"></a>
-<a class="el" href="structgears_1_1math_1_1uintx.html">uintx</a>&#160;</td><td class="memItemRight" valign="bottom"><b>operator--</b> (int)</td></tr>
+<tr><td colspan="2"><div class="groupHeader"></div></td></tr>
+<tr class="memitem:abaccaff5a70e48e4390a4f35e523cad7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structgears_1_1math_1_1uintx.html">uintx</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgears_1_1math_1_1uintx.html#abaccaff5a70e48e4390a4f35e523cad7">operator--</a> (int)</td></tr>
+<tr class="memdesc:abaccaff5a70e48e4390a4f35e523cad7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Decrements a uintx by one.  <a href="#abaccaff5a70e48e4390a4f35e523cad7">More...</a><br/></td></tr>
 <tr class="separator:abaccaff5a70e48e4390a4f35e523cad7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9893754423c6eebfbcef8ae481fbab3f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9893754423c6eebfbcef8ae481fbab3f"></a>
 const <a class="el" href="structgears_1_1math_1_1uintx.html">uintx</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator--</b> ()</td></tr>
 <tr class="separator:a9893754423c6eebfbcef8ae481fbab3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a472de2f6ff50bc4667c0d8039ab1fb84"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a472de2f6ff50bc4667c0d8039ab1fb84"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>operator bool</b> () const noexcept</td></tr>
-<tr class="separator:a472de2f6ff50bc4667c0d8039ab1fb84"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
@@ -204,18 +219,426 @@ template&lt;typename Elem , typename Traits &gt; </td></tr>
 <tr class="memitem:afddd730ddde49aa5cd4869c346fda42c"><td class="memTemplItemLeft" align="right" valign="top">std::basic_istream&lt; Elem, <br class="typebreak"/>
 Traits &gt; &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>operator&gt;&gt;</b> (std::basic_istream&lt; Elem, Traits &gt; &amp;in, <a class="el" href="structgears_1_1math_1_1uintx.html">uintx</a> &amp;n)</td></tr>
 <tr class="separator:afddd730ddde49aa5cd4869c346fda42c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4ce14163b32539d8c693e73fe817a515"><td class="memTemplParams" colspan="2"><a class="anchor" id="a4ce14163b32539d8c693e73fe817a515"></a>
-template&lt;typename T , size_t N, typename U , typename V &gt; </td></tr>
-<tr class="memitem:a4ce14163b32539d8c693e73fe817a515"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><b>uintx_cast</b> (const <a class="el" href="structgears_1_1math_1_1uintx.html">uintx</a>&lt; N, U, V &gt; &amp;obj)</td></tr>
+<tr class="memitem:a4ce14163b32539d8c693e73fe817a515"><td class="memTemplParams" colspan="2">template&lt;typename T , size_t N, typename U , typename V &gt; </td></tr>
+<tr class="memitem:a4ce14163b32539d8c693e73fe817a515"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structgears_1_1math_1_1uintx.html#a4ce14163b32539d8c693e73fe817a515">uintx_cast</a> (const <a class="el" href="structgears_1_1math_1_1uintx.html">uintx</a>&lt; N, U, V &gt; &amp;obj)</td></tr>
+<tr class="memdesc:a4ce14163b32539d8c693e73fe817a515"><td class="mdescLeft">&#160;</td><td class="mdescRight">Casts a uintx to another type.  <a href="#a4ce14163b32539d8c693e73fe817a515">More...</a><br/></td></tr>
 <tr class="separator:a4ce14163b32539d8c693e73fe817a515"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><h3>template&lt;size_t Bits = -1, typename Digit = unsigned int, typename Digits = unsigned long long&gt;<br/>
+<div class="textblock"><h3>template&lt;size_t Bits = static_cast&lt;size_t&gt;(-1), typename Digit = unsigned int, typename Digits = unsigned long long&gt;<br/>
 struct gears::math::uintx&lt; Bits, Digit, Digits &gt;</h3>
 
+<p>Multi-precision unsigned integer. Basic usage does not need to modify the Digit or Digits template parameters, those are there for memory optimisations on rare cases when necessary. Both types should be unsigned if provided.</p>
+<p>This multi-precision integer overloads all mathematical operators except the bitwise operators. The streaming operators <code>operator&lt;&lt;</code> and <code>operator&gt;&gt;</code> are provided as well. In order to disable the streaming operators, define <code>GEARS_NO_IOSTREAM</code> before including the file.</p>
+<p>All operations do a "bit-check" after their operations to see if the result fits in the bits provided. The "bit-check" in reality just truncates the result to however many digits can fit under <code>Bits / (sizeof(Digit) * 8)</code>. It is unclear if this behaviour should change at the moment although it might in the future. A Bits parameter of <code>-1</code> will avoid the "bit-check".</p>
+<p>There are two user-defined literals provided under <code>gears::math::literals</code> help with the construction of a <code>uintx&lt;&gt;</code>. An example is provided below.</p>
+<div class="fragment"><div class="line"><span class="keyword">using namespace </span>gears::math::literals; <span class="comment">// required</span></div>
+<div class="line"></div>
+<div class="line"><span class="keyword">auto</span> one = 1902748734897198347123_x; <span class="comment">// recommended way</span></div>
+<div class="line"><span class="keyword">auto</span> two = <span class="stringliteral">&quot;89374128732819928123&quot;</span>_x; <span class="comment">// also provided</span></div>
+</div><!-- fragment --><dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Bits</td><td>Bits of precision needed. Defaults to -1 for "infinite" precision. </td></tr>
+    <tr><td class="paramname">Digit</td><td>Underlying type to store its bit properties. </td></tr>
+    <tr><td class="paramname">Digits</td><td>Underlying type to store its numeric properties. </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p>Definition at line <a class="el" href="uintx_8hpp_source.html#l00103">103</a> of file <a class="el" href="uintx_8hpp_source.html">uintx.hpp</a>.</p>
-</div></div><!-- contents -->
+<p>Definition at line <a class="el" href="uintx_8hpp_source.html#l00136">136</a> of file <a class="el" href="uintx_8hpp_source.html">uintx.hpp</a>.</p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="ade0ff23e7706e959c1716d0b41007280"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;size_t Bits = static_cast&lt;size_t&gt;(-1), typename Digit = unsigned int, typename Digits = unsigned long long&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structgears_1_1math_1_1uintx.html">gears::math::uintx</a>&lt; Bits, Digit, Digits &gt;::<a class="el" href="structgears_1_1math_1_1uintx.html">uintx</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Sets uintx to 0. </p>
+
+<p>Definition at line <a class="el" href="uintx_8hpp_source.html#l00293">293</a> of file <a class="el" href="uintx_8hpp_source.html">uintx.hpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="af945a5238100315a8eef1c03d323900c"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;size_t Bits = static_cast&lt;size_t&gt;(-1), typename Digit = unsigned int, typename Digits = unsigned long long&gt; </div>
+<div class="memtemplate">
+template&lt;typename Integer , gears::meta::EnableIf&lt; std::is_integral&lt; Integer &gt;&gt;  = gears::meta::_&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structgears_1_1math_1_1uintx.html">gears::math::uintx</a>&lt; Bits, Digit, Digits &gt;::<a class="el" href="structgears_1_1math_1_1uintx.html">uintx</a> </td>
+          <td>(</td>
+          <td class="paramtype">Integer&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Constructs uintx from an integer type. uintx is then set to the value provided. No bit-checking is done in this constructor. If the value is negative, then it is made positive before hand.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>Value to set uintx to. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="uintx_8hpp_source.html#l00304">304</a> of file <a class="el" href="uintx_8hpp_source.html">uintx.hpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a24bfaff9b262e2639a2823fa1b1c4118"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;size_t Bits = static_cast&lt;size_t&gt;(-1), typename Digit = unsigned int, typename Digits = unsigned long long&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structgears_1_1math_1_1uintx.html">gears::math::uintx</a>&lt; Bits, Digit, Digits &gt;::<a class="el" href="structgears_1_1math_1_1uintx.html">uintx</a> </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>s</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Constructs uintx from a string type. uintx is then set to the value provided from the string. If the string contains letters or special characters, the behaviour is undefined. The string must not represent a negative integer. Bit-checking is done in this constructor.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">s</td><td>String to set the uintx to. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="uintx_8hpp_source.html#l00323">323</a> of file <a class="el" href="uintx_8hpp_source.html">uintx.hpp</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a472de2f6ff50bc4667c0d8039ab1fb84"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;size_t Bits = static_cast&lt;size_t&gt;(-1), typename Digit = unsigned int, typename Digits = unsigned long long&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structgears_1_1math_1_1uintx.html">gears::math::uintx</a>&lt; Bits, Digit, Digits &gt;::operator bool </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">explicit</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Checks if uintx is greater than 0. </p>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if the internal value is greater than 0, <code>false</code> otherwise. </dd></dl>
+
+<p>Definition at line <a class="el" href="uintx_8hpp_source.html#l00596">596</a> of file <a class="el" href="uintx_8hpp_source.html">uintx.hpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ac6d1faf27e8c066580f9b0af4e54ce17"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;size_t Bits = static_cast&lt;size_t&gt;(-1), typename Digit = unsigned int, typename Digits = unsigned long long&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structgears_1_1math_1_1uintx.html">uintx</a>&amp; <a class="el" href="structgears_1_1math_1_1uintx.html">gears::math::uintx</a>&lt; Bits, Digit, Digits &gt;::operator%= </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structgears_1_1math_1_1uintx.html">uintx</a>&lt; Bits, Digit, Digits &gt; &amp;&#160;</td>
+          <td class="paramname"><em>other</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Implements modulo arithmetic.</p>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::logic_error</td><td>Thrown when division by zero occurs. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">other</td><td>The left hand side to use modulus on. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="uintx_8hpp_source.html#l00487">487</a> of file <a class="el" href="uintx_8hpp_source.html">uintx.hpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a180110a137ec7f7bf23ba6397f10902b"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;size_t Bits = static_cast&lt;size_t&gt;(-1), typename Digit = unsigned int, typename Digits = unsigned long long&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structgears_1_1math_1_1uintx.html">uintx</a>&amp; <a class="el" href="structgears_1_1math_1_1uintx.html">gears::math::uintx</a>&lt; Bits, Digit, Digits &gt;::operator*= </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structgears_1_1math_1_1uintx.html">uintx</a>&lt; Bits, Digit, Digits &gt; &amp;&#160;</td>
+          <td class="paramname"><em>other</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Multiplies the contents of another uintx.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">other</td><td>The left hand side to multiply with. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="uintx_8hpp_source.html#l00403">403</a> of file <a class="el" href="uintx_8hpp_source.html">uintx.hpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ada9ce08f52ccdfd834c4f503f3bca529"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;size_t Bits = static_cast&lt;size_t&gt;(-1), typename Digit = unsigned int, typename Digits = unsigned long long&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structgears_1_1math_1_1uintx.html">uintx</a>&amp; <a class="el" href="structgears_1_1math_1_1uintx.html">gears::math::uintx</a>&lt; Bits, Digit, Digits &gt;::operator+= </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structgears_1_1math_1_1uintx.html">uintx</a>&lt; Bits, Digit, Digits &gt; &amp;&#160;</td>
+          <td class="paramname"><em>other</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Adds the contents of another uintx.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">other</td><td>The left hand side to add with. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="uintx_8hpp_source.html#l00347">347</a> of file <a class="el" href="uintx_8hpp_source.html">uintx.hpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="abaccaff5a70e48e4390a4f35e523cad7"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;size_t Bits = static_cast&lt;size_t&gt;(-1), typename Digit = unsigned int, typename Digits = unsigned long long&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structgears_1_1math_1_1uintx.html">uintx</a> <a class="el" href="structgears_1_1math_1_1uintx.html">gears::math::uintx</a>&lt; Bits, Digit, Digits &gt;::operator-- </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Decrements a uintx by one. If the value ends up being negative, the behaviour is undefined. </p>
+
+<p>Definition at line <a class="el" href="uintx_8hpp_source.html#l00579">579</a> of file <a class="el" href="uintx_8hpp_source.html">uintx.hpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="afff40b239f7af28530339332fde4b669"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;size_t Bits = static_cast&lt;size_t&gt;(-1), typename Digit = unsigned int, typename Digits = unsigned long long&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structgears_1_1math_1_1uintx.html">uintx</a>&amp; <a class="el" href="structgears_1_1math_1_1uintx.html">gears::math::uintx</a>&lt; Bits, Digit, Digits &gt;::operator-= </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structgears_1_1math_1_1uintx.html">uintx</a>&lt; Bits, Digit, Digits &gt; &amp;&#160;</td>
+          <td class="paramname"><em>other</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Subtracts the contents of another uintx. If the result would end up being a negative value, the behaviour is undefined.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">other</td><td>The left hand side to subtract with. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="uintx_8hpp_source.html#l00381">381</a> of file <a class="el" href="uintx_8hpp_source.html">uintx.hpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ab58e91c292da819b2f47573e3760cd89"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;size_t Bits = static_cast&lt;size_t&gt;(-1), typename Digit = unsigned int, typename Digits = unsigned long long&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structgears_1_1math_1_1uintx.html">uintx</a>&amp; <a class="el" href="structgears_1_1math_1_1uintx.html">gears::math::uintx</a>&lt; Bits, Digit, Digits &gt;::operator/= </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structgears_1_1math_1_1uintx.html">uintx</a>&lt; Bits, Digit, Digits &gt; &amp;&#160;</td>
+          <td class="paramname"><em>other</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Divides the contents of another uintx.</p>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::logic_error</td><td>Thrown when division by zero occurs. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">other</td><td>The left hand side to divide with. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="uintx_8hpp_source.html#l00450">450</a> of file <a class="el" href="uintx_8hpp_source.html">uintx.hpp</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Friends And Related Function Documentation</h2>
+<a class="anchor" id="a4ce14163b32539d8c693e73fe817a515"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;size_t Bits = static_cast&lt;size_t&gt;(-1), typename Digit = unsigned int, typename Digits = unsigned long long&gt; </div>
+<div class="memtemplate">
+template&lt;typename T , size_t N, typename U , typename V &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">T uintx_cast </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structgears_1_1math_1_1uintx.html">uintx</a>&lt; N, U, V &gt; &amp;&#160;</td>
+          <td class="paramname"><em>obj</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Casts a uintx to another type. This type can be an integer type or a string type. To cast to a string, <code>uintx_cast&lt;std::string&gt;</code> must be used. If the underlying value of <code>uintx</code> does not fit in the type casted, then the behaviour is undefined.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">obj</td><td>Object to cast. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>Type to cast to. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Casted value. </dd></dl>
+
+<p>Definition at line <a class="el" href="uintx_8hpp_source.html#l00641">641</a> of file <a class="el" href="uintx_8hpp_source.html">uintx.hpp</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.3.1-->
 <!-- start footer part -->

@@ -21,5 +21,19 @@ var classgears_1_1utility_1_1maybe =
     [ "operator=", "classgears_1_1utility_1_1maybe.html#a114a4b7603ddac6cd0c8de39664e18e6", null ],
     [ "value", "classgears_1_1utility_1_1maybe.html#ac5d2f4752ed0d9d985268dbe00fd1f39", null ],
     [ "value", "classgears_1_1utility_1_1maybe.html#ae98716ededb20222f758ba80d184faed", null ],
-    [ "value_or", "classgears_1_1utility_1_1maybe.html#a99d41f71e1ccfa17f4ddb83b656eda53", null ]
+    [ "value_or", "classgears_1_1utility_1_1maybe.html#a99d41f71e1ccfa17f4ddb83b656eda53", null ],
+    [ "just", "classgears_1_1utility_1_1maybe.html#a52f78f1e779b570117fbfd92ec2fb2f9", null ],
+    [ "operator!=", "classgears_1_1utility_1_1maybe.html#a6e8cdb514402f15199611032c73b3c2c", null ],
+    [ "operator!=", "classgears_1_1utility_1_1maybe.html#a27f83e0851afc003dedf9a97b40c6e9a", null ],
+    [ "operator<", "classgears_1_1utility_1_1maybe.html#a9d54b2cea3ffe95b4cb9a26c2cbbf0d2", null ],
+    [ "operator<", "classgears_1_1utility_1_1maybe.html#a454d6356df2ea34484d2b03850cccf52", null ],
+    [ "operator<=", "classgears_1_1utility_1_1maybe.html#a0147569231298200de575a088167bafd", null ],
+    [ "operator<=", "classgears_1_1utility_1_1maybe.html#a6c060f9771ad4b21bd157ade94bcc4a4", null ],
+    [ "operator==", "classgears_1_1utility_1_1maybe.html#a633220895a85bd54731f4dfbec2d9b78", null ],
+    [ "operator==", "classgears_1_1utility_1_1maybe.html#a258221fb93d17be2332f4a97edda6fdc", null ],
+    [ "operator==", "classgears_1_1utility_1_1maybe.html#abfc430e807dcdf2394d0f3ae4464a0c7", null ],
+    [ "operator>", "classgears_1_1utility_1_1maybe.html#a995f63219094a8b8734bebd65c57db35", null ],
+    [ "operator>", "classgears_1_1utility_1_1maybe.html#a52bf2bcc857f329e071a1928b5dde2f4", null ],
+    [ "operator>=", "classgears_1_1utility_1_1maybe.html#a7a7310d56e88fe44d565c7ab7df45255", null ],
+    [ "operator>=", "classgears_1_1utility_1_1maybe.html#ae180ba661339443e4ed2e78bf520e758", null ]
 ];

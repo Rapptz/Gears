@@ -89,7 +89,7 @@ $(document).ready(function(){initNavTree('structgears_1_1string_1_1is__any__of.h
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Groups</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Groups</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -101,12 +101,14 @@ $(document).ready(function(){initNavTree('structgears_1_1string_1_1is__any__of.h
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="structgears_1_1string_1_1is__any__of-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">gears::string::is_any_of&lt; CharT &gt; Struct Template Reference</div>  </div>
+<div class="title">gears::string::is_any_of&lt; CharT &gt; Struct Template Reference<div class="ingroups"><a class="el" href="group__string.html">String module</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Function object to check a character is any of the provided.  
+ <a href="structgears_1_1string_1_1is__any__of.html#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -116,19 +118,20 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a482c8af7e98898d3a6341abd6f00e078"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a482c8af7e98898d3a6341abd6f00e078"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator()</b> (CharT s) const </td></tr>
 <tr class="separator:a482c8af7e98898d3a6341abd6f00e078"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
-Public Attributes</h2></td></tr>
-<tr class="memitem:af6339b804fc1e4bf72a7eb3c72b01946"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af6339b804fc1e4bf72a7eb3c72b01946"></a>
-const CharT *&#160;</td><td class="memItemRight" valign="bottom"><b>str</b></td></tr>
-<tr class="separator:af6339b804fc1e4bf72a7eb3c72b01946"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><h3>template&lt;typename CharT = char&gt;<br/>
 struct gears::string::is_any_of&lt; CharT &gt;</h3>
 
+<p>A function object that checks if a character is any of the ones provided.</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">CharT</td><td>Underlying character type. </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p>Definition at line <a class="el" href="predicate_8hpp_source.html#l00030">30</a> of file <a class="el" href="predicate_8hpp_source.html">predicate.hpp</a>.</p>
+<p>Definition at line <a class="el" href="predicate_8hpp_source.html#l00038">38</a> of file <a class="el" href="predicate_8hpp_source.html">predicate.hpp</a>.</p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.3.1-->

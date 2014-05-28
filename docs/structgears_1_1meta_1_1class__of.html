@@ -89,7 +89,7 @@ $(document).ready(function(){initNavTree('structgears_1_1meta_1_1class__of.html'
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Groups</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Groups</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -100,15 +100,34 @@ $(document).ready(function(){initNavTree('structgears_1_1meta_1_1class__of.html'
 
 <div class="header">
   <div class="headertitle">
-<div class="title">gears::meta::class_of&lt; T &gt; Struct Template Reference</div>  </div>
+<div class="title">gears::meta::class_of&lt; T &gt; Struct Template Reference<div class="ingroups"><a class="el" href="group__meta.html">Meta module</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Class of meta function.  
+ <a href="structgears_1_1meta_1_1class__of.html#details">More...</a></p>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><h3>template&lt;typename T&gt;<br/>
 struct gears::meta::class_of&lt; T &gt;</h3>
 
-
-<p>Definition at line <a class="el" href="meta_2meta_8hpp_source.html#l00099">99</a> of file <a class="el" href="meta_2meta_8hpp_source.html">meta/meta.hpp</a>.</p>
+<p>Class of meta function. Evaluates the underlying class of a member function pointer.</p>
+<p>Example:</p>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;gears/meta.hpp&gt;</span></div>
+<div class="line"></div>
+<div class="line"><span class="keyword">namespace </span>meta = gears::meta;</div>
+<div class="line"></div>
+<div class="line"><span class="keyword">struct </span>f {</div>
+<div class="line">    <span class="keywordtype">int</span> g() {</div>
+<div class="line">        <span class="keywordflow">return</span> 10;</div>
+<div class="line">    }</div>
+<div class="line">};</div>
+<div class="line"></div>
+<div class="line"><span class="keywordtype">int</span> main() {</div>
+<div class="line">    <span class="comment">// passes static_assert</span></div>
+<div class="line">    static_assert(std::is_same&lt;<a class="code" href="group__meta.html#ga8600f6ca7168635374717ac15ed84b6b" title="Template alias for class_of meta function.">meta::ClassOf</a>&lt;decltype(&amp;f::g)&gt;, f&gt;::value, <span class="stringliteral">&quot;...&quot;</span>);</div>
+<div class="line">}</div>
+</div><!-- fragment --> 
+<p>Definition at line <a class="el" href="meta_2meta_8hpp_source.html#l00235">235</a> of file <a class="el" href="meta_2meta_8hpp_source.html">meta/meta.hpp</a>.</p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.3.1-->

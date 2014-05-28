@@ -89,7 +89,7 @@ $(document).ready(function(){initNavTree('structgears_1_1utility_1_1triple.html'
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Groups</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Groups</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -103,11 +103,15 @@ $(document).ready(function(){initNavTree('structgears_1_1utility_1_1triple.html'
 <a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="#related">Related Functions</a> &#124;
 <a href="structgears_1_1utility_1_1triple-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">gears::utility::triple&lt; T, U, V &gt; Struct Template Reference</div>  </div>
+<div class="title">gears::utility::triple&lt; T, U, V &gt; Struct Template Reference<div class="ingroups"><a class="el" href="group__utility.html">Utility module</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Implements a three-element tuple.  
+ <a href="structgears_1_1utility_1_1triple.html#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
@@ -123,14 +127,8 @@ using&#160;</td><td class="memItemRight" valign="bottom"><b>third_type</b> = V</
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a71fd88cc6a9576b4d9992acf809dccea"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a71fd88cc6a9576b4d9992acf809dccea"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>triple</b> (const <a class="el" href="structgears_1_1utility_1_1triple.html">triple</a> &amp;) noexcept=default</td></tr>
-<tr class="separator:a71fd88cc6a9576b4d9992acf809dccea"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad9ae109cc6ebd2f1b7b1b16079cf20bb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad9ae109cc6ebd2f1b7b1b16079cf20bb"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>triple</b> (<a class="el" href="structgears_1_1utility_1_1triple.html">triple</a> &amp;&amp;) noexcept=default</td></tr>
-<tr class="separator:ad9ae109cc6ebd2f1b7b1b16079cf20bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7da087ab5aa5dc9402c1b9851160ab5f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7da087ab5aa5dc9402c1b9851160ab5f"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>swap</b> (<a class="el" href="structgears_1_1utility_1_1triple.html">triple</a> &amp;t) noexcept(noexcept(std::swap(first, t.first))&amp;&amp;noexcept(std::swap(second, t.second))&amp;&amp;noexcept(std::swap(third, t.third)))</td></tr>
+<tr class="memitem:a7da087ab5aa5dc9402c1b9851160ab5f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgears_1_1utility_1_1triple.html#a7da087ab5aa5dc9402c1b9851160ab5f">swap</a> (<a class="el" href="structgears_1_1utility_1_1triple.html">triple</a> &amp;t) noexcept(noexcept(std::swap(first, t.first))&amp;&amp;noexcept(std::swap(second, t.second))&amp;&amp;noexcept(std::swap(third, t.third)))</td></tr>
+<tr class="memdesc:a7da087ab5aa5dc9402c1b9851160ab5f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Swaps the three elements of the triple.  <a href="#a7da087ab5aa5dc9402c1b9851160ab5f">More...</a><br/></td></tr>
 <tr class="separator:a7da087ab5aa5dc9402c1b9851160ab5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
@@ -144,14 +142,489 @@ U&#160;</td><td class="memItemRight" valign="bottom"><b>second</b></td></tr>
 <tr class="memitem:a18cd97cc06894e27d8b912f47107f4a3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a18cd97cc06894e27d8b912f47107f4a3"></a>
 V&#160;</td><td class="memItemRight" valign="bottom"><b>third</b></td></tr>
 <tr class="separator:a18cd97cc06894e27d8b912f47107f4a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="related"></a>
+Related Functions</h2></td></tr>
+<tr><td class="ititle" colspan="2"><p>(Note that these are not member functions.) </p>
+</td></tr>
+<tr class="memitem:a36b76f890d7e1d78c32d079e0d75685a"><td class="memTemplParams" colspan="2">template&lt;typename T , typename U , typename V &gt; </td></tr>
+<tr class="memitem:a36b76f890d7e1d78c32d079e0d75685a"><td class="memTemplItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structgears_1_1utility_1_1triple.html#a36b76f890d7e1d78c32d079e0d75685a">operator==</a> (const <a class="el" href="structgears_1_1utility_1_1triple.html">triple</a>&lt; T, U, V &gt; &amp;lhs, const <a class="el" href="structgears_1_1utility_1_1triple.html">triple</a>&lt; T, U, V &gt; &amp;rhs)</td></tr>
+<tr class="memdesc:a36b76f890d7e1d78c32d079e0d75685a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if two triple objects are equivalent.  <a href="#a36b76f890d7e1d78c32d079e0d75685a">More...</a><br/></td></tr>
+<tr class="separator:a36b76f890d7e1d78c32d079e0d75685a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3fa18cfcb7d982a65d92a4c48b19a021"><td class="memTemplParams" colspan="2">template&lt;typename T , typename U , typename V &gt; </td></tr>
+<tr class="memitem:a3fa18cfcb7d982a65d92a4c48b19a021"><td class="memTemplItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structgears_1_1utility_1_1triple.html#a3fa18cfcb7d982a65d92a4c48b19a021">operator&lt;</a> (const <a class="el" href="structgears_1_1utility_1_1triple.html">triple</a>&lt; T, U, V &gt; &amp;lhs, const <a class="el" href="structgears_1_1utility_1_1triple.html">triple</a>&lt; T, U, V &gt; &amp;rhs)</td></tr>
+<tr class="memdesc:a3fa18cfcb7d982a65d92a4c48b19a021"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if two triple objects are lexicographically less than each other.  <a href="#a3fa18cfcb7d982a65d92a4c48b19a021">More...</a><br/></td></tr>
+<tr class="separator:a3fa18cfcb7d982a65d92a4c48b19a021"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa2f9539982fda7b6c0ef351ed3156fee"><td class="memTemplParams" colspan="2">template&lt;typename T , typename U , typename V &gt; </td></tr>
+<tr class="memitem:aa2f9539982fda7b6c0ef351ed3156fee"><td class="memTemplItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structgears_1_1utility_1_1triple.html#aa2f9539982fda7b6c0ef351ed3156fee">operator!=</a> (const <a class="el" href="structgears_1_1utility_1_1triple.html">triple</a>&lt; T, U, V &gt; &amp;lhs, const <a class="el" href="structgears_1_1utility_1_1triple.html">triple</a>&lt; T, U, V &gt; &amp;rhs)</td></tr>
+<tr class="memdesc:aa2f9539982fda7b6c0ef351ed3156fee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if two triple objects are not equivalent.  <a href="#aa2f9539982fda7b6c0ef351ed3156fee">More...</a><br/></td></tr>
+<tr class="separator:aa2f9539982fda7b6c0ef351ed3156fee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad380592c1f3be5f1dd204e81a9e16146"><td class="memTemplParams" colspan="2">template&lt;typename T , typename U , typename V &gt; </td></tr>
+<tr class="memitem:ad380592c1f3be5f1dd204e81a9e16146"><td class="memTemplItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structgears_1_1utility_1_1triple.html#ad380592c1f3be5f1dd204e81a9e16146">operator&gt;</a> (const <a class="el" href="structgears_1_1utility_1_1triple.html">triple</a>&lt; T, U, V &gt; &amp;lhs, const <a class="el" href="structgears_1_1utility_1_1triple.html">triple</a>&lt; T, U, V &gt; &amp;rhs)</td></tr>
+<tr class="memdesc:ad380592c1f3be5f1dd204e81a9e16146"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if two triple objects are lexicographically greater than each other.  <a href="#ad380592c1f3be5f1dd204e81a9e16146">More...</a><br/></td></tr>
+<tr class="separator:ad380592c1f3be5f1dd204e81a9e16146"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1081a60264fc6dd4fb41b353ac4ff77b"><td class="memTemplParams" colspan="2">template&lt;typename T , typename U , typename V &gt; </td></tr>
+<tr class="memitem:a1081a60264fc6dd4fb41b353ac4ff77b"><td class="memTemplItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structgears_1_1utility_1_1triple.html#a1081a60264fc6dd4fb41b353ac4ff77b">operator&gt;=</a> (const <a class="el" href="structgears_1_1utility_1_1triple.html">triple</a>&lt; T, U, V &gt; &amp;lhs, const <a class="el" href="structgears_1_1utility_1_1triple.html">triple</a>&lt; T, U, V &gt; &amp;rhs)</td></tr>
+<tr class="memdesc:a1081a60264fc6dd4fb41b353ac4ff77b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compares both triple objects to see if they're greater than or equal to each other.  <a href="#a1081a60264fc6dd4fb41b353ac4ff77b">More...</a><br/></td></tr>
+<tr class="separator:a1081a60264fc6dd4fb41b353ac4ff77b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5cef97e7dd9805b2036f319b857cb4fa"><td class="memTemplParams" colspan="2">template&lt;typename T , typename U , typename V &gt; </td></tr>
+<tr class="memitem:a5cef97e7dd9805b2036f319b857cb4fa"><td class="memTemplItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structgears_1_1utility_1_1triple.html#a5cef97e7dd9805b2036f319b857cb4fa">operator&lt;=</a> (const <a class="el" href="structgears_1_1utility_1_1triple.html">triple</a>&lt; T, U, V &gt; &amp;lhs, const <a class="el" href="structgears_1_1utility_1_1triple.html">triple</a>&lt; T, U, V &gt; &amp;rhs)</td></tr>
+<tr class="memdesc:a5cef97e7dd9805b2036f319b857cb4fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compares both triple objects to see if they're less than or equal to each other.  <a href="#a5cef97e7dd9805b2036f319b857cb4fa">More...</a><br/></td></tr>
+<tr class="separator:a5cef97e7dd9805b2036f319b857cb4fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af62c18d1765bd16644b267b6acbea33b"><td class="memTemplParams" colspan="2">template&lt;typename T , typename U , typename V &gt; </td></tr>
+<tr class="memitem:af62c18d1765bd16644b267b6acbea33b"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structgears_1_1utility_1_1triple.html#af62c18d1765bd16644b267b6acbea33b">swap</a> (<a class="el" href="structgears_1_1utility_1_1triple.html">triple</a>&lt; T, U, V &gt; &amp;lhs, <a class="el" href="structgears_1_1utility_1_1triple.html">triple</a>&lt; T, U, V &gt; &amp;rhs) noexcept(noexcept(lhs.swap(rhs)))</td></tr>
+<tr class="memdesc:af62c18d1765bd16644b267b6acbea33b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Swaps the elements of the triple objects.  <a href="#af62c18d1765bd16644b267b6acbea33b">More...</a><br/></td></tr>
+<tr class="separator:af62c18d1765bd16644b267b6acbea33b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af0a382b571ac8cc1ec8a1b8068854526"><td class="memTemplParams" colspan="2">template&lt;typename T , typename U , typename V &gt; </td></tr>
+<tr class="memitem:af0a382b571ac8cc1ec8a1b8068854526"><td class="memTemplItemLeft" align="right" valign="top">constexpr <a class="el" href="structgears_1_1utility_1_1triple.html">triple</a>&lt; <a class="el" href="group__meta.html#gae0e6a3a188d17de87ab10266d2d7b584">meta::Decay</a><br class="typebreak"/>
+&lt; T &gt;, <a class="el" href="group__meta.html#gae0e6a3a188d17de87ab10266d2d7b584">meta::Decay</a>&lt; U &gt;<br class="typebreak"/>
+, <a class="el" href="group__meta.html#gae0e6a3a188d17de87ab10266d2d7b584">meta::Decay</a>&lt; V &gt; &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structgears_1_1utility_1_1triple.html#af0a382b571ac8cc1ec8a1b8068854526">make_triple</a> (T &amp;&amp;t, U &amp;&amp;u, V &amp;&amp;v)</td></tr>
+<tr class="memdesc:af0a382b571ac8cc1ec8a1b8068854526"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a triple object.  <a href="#af0a382b571ac8cc1ec8a1b8068854526">More...</a><br/></td></tr>
+<tr class="separator:af0a382b571ac8cc1ec8a1b8068854526"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><h3>template&lt;typename T, typename U, typename V&gt;<br/>
 struct gears::utility::triple&lt; T, U, V &gt;</h3>
 
+<p>Implements a three-element tuple. This class has <code>std::get</code>, <code>std::tuple_element</code>, and <code>std::tuple_size</code> defined for generic usage. For example:</p>
+<div class="fragment"><div class="line">constexpr utility::triple&lt;int, int, int&gt; x = { 1, 2, 3 };</div>
+<div class="line">static_assert(std::is_same&lt;std::tuple_element&lt;0, decltype(x)&gt;::value, <span class="stringliteral">&quot;...&quot;</span>);</div>
+<div class="line">static_assert(std::get&lt;0&gt;(x) == 1, <span class="stringliteral">&quot;...&quot;</span>);</div>
+<div class="line">static_assert(std::tuple_size&lt;decltype(x)&gt;::value == 3, <span class="stringliteral">&quot;...&quot;</span>);</div>
+</div><!-- fragment --><p><code>triple</code> is also an aggregate, so it could be created using curly bracket syntax.</p>
+<div class="fragment"><div class="line">constexpr utility::triple&lt;int, char, double&gt; x = { 10, <span class="charliteral">&#39;a&#39;</span>, 12.0 };</div>
+</div><!-- fragment --><dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>First type of the triple. </td></tr>
+    <tr><td class="paramname">U</td><td>Second type of the triple. </td></tr>
+    <tr><td class="paramname">V</td><td>Third type of the triple. </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p>Definition at line <a class="el" href="triple_8hpp_source.html#l00031">31</a> of file <a class="el" href="triple_8hpp_source.html">triple.hpp</a>.</p>
-</div></div><!-- contents -->
+<p>Definition at line <a class="el" href="triple_8hpp_source.html#l00055">55</a> of file <a class="el" href="triple_8hpp_source.html">triple.hpp</a>.</p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a7da087ab5aa5dc9402c1b9851160ab5f"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T, typename U, typename V&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="structgears_1_1utility_1_1triple.html">gears::utility::triple</a>&lt; T, U, V &gt;::swap </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgears_1_1utility_1_1triple.html">triple</a>&lt; T, U, V &gt; &amp;&#160;</td>
+          <td class="paramname"><em>t</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Swaps the three elements of the triple.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">t</td><td>Other triple to swap with </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="triple_8hpp_source.html#l00070">70</a> of file <a class="el" href="triple_8hpp_source.html">triple.hpp</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Friends And Related Function Documentation</h2>
+<a class="anchor" id="af0a382b571ac8cc1ec8a1b8068854526"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T , typename U , typename V &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr <a class="el" href="structgears_1_1utility_1_1triple.html">triple</a>&lt; <a class="el" href="group__meta.html#gae0e6a3a188d17de87ab10266d2d7b584">meta::Decay</a>&lt; T &gt;, <a class="el" href="group__meta.html#gae0e6a3a188d17de87ab10266d2d7b584">meta::Decay</a>&lt; U &gt;, <a class="el" href="group__meta.html#gae0e6a3a188d17de87ab10266d2d7b584">meta::Decay</a>&lt; V &gt; &gt; make_triple </td>
+          <td>(</td>
+          <td class="paramtype">T &amp;&amp;&#160;</td>
+          <td class="paramname"><em>t</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">U &amp;&amp;&#160;</td>
+          <td class="paramname"><em>u</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">V &amp;&amp;&#160;</td>
+          <td class="paramname"><em>v</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">related</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Creates a triple object. The template parameters are passed through <code>std::decay</code> for storage purposes. THis function is useful for <code>auto</code> purposes, e.g.</p>
+<div class="fragment"><div class="line"><span class="keyword">auto</span> t = utility::make_triple(10, <span class="charliteral">&#39;a&#39;</span>, 1.f);</div>
+<div class="line"><span class="comment">// decltype(t) == utility::triple&lt;int, char, float&gt;</span></div>
+</div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">t</td><td>First element of the triple. </td></tr>
+    <tr><td class="paramname">u</td><td>Second element of the triple. </td></tr>
+    <tr><td class="paramname">v</td><td>Third element of the triple. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A triple containing the three elements provided. </dd></dl>
+
+<p>Definition at line <a class="el" href="triple_8hpp_source.html#l00204">204</a> of file <a class="el" href="triple_8hpp_source.html">triple.hpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aa2f9539982fda7b6c0ef351ed3156fee"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T , typename U , typename V &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr bool operator!= </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structgears_1_1utility_1_1triple.html">triple</a>&lt; T, U, V &gt; &amp;&#160;</td>
+          <td class="paramname"><em>lhs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structgears_1_1utility_1_1triple.html">triple</a>&lt; T, U, V &gt; &amp;&#160;</td>
+          <td class="paramname"><em>rhs</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">related</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Checks if two triple objects are not equivalent. This is the negation of <code>operator==</code>.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">lhs</td><td>Left hand side of the expression. </td></tr>
+    <tr><td class="paramname">rhs</td><td>Right hand side of the expression. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if they're not equal, <code>false</code> otherwise. </dd></dl>
+
+<p>Definition at line <a class="el" href="triple_8hpp_source.html#l00125">125</a> of file <a class="el" href="triple_8hpp_source.html">triple.hpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a3fa18cfcb7d982a65d92a4c48b19a021"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T , typename U , typename V &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr bool operator&lt; </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structgears_1_1utility_1_1triple.html">triple</a>&lt; T, U, V &gt; &amp;&#160;</td>
+          <td class="paramname"><em>lhs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structgears_1_1utility_1_1triple.html">triple</a>&lt; T, U, V &gt; &amp;&#160;</td>
+          <td class="paramname"><em>rhs</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">related</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Checks if two triple objects are lexicographically less than each other.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">lhs</td><td>Left hand side of the expression. </td></tr>
+    <tr><td class="paramname">rhs</td><td>Right hand side of the expression. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if <code>lhs</code> is lexicographically less than <code>rhs</code>, <code>false</code> otherwise. </dd></dl>
+
+<p>Definition at line <a class="el" href="triple_8hpp_source.html#l00106">106</a> of file <a class="el" href="triple_8hpp_source.html">triple.hpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a5cef97e7dd9805b2036f319b857cb4fa"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T , typename U , typename V &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr bool operator&lt;= </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structgears_1_1utility_1_1triple.html">triple</a>&lt; T, U, V &gt; &amp;&#160;</td>
+          <td class="paramname"><em>lhs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structgears_1_1utility_1_1triple.html">triple</a>&lt; T, U, V &gt; &amp;&#160;</td>
+          <td class="paramname"><em>rhs</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">related</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Checks if two triple objects are lexicographically less than or equal to each other.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">lhs</td><td>Left hand side of the expression. </td></tr>
+    <tr><td class="paramname">rhs</td><td>Right hand side of the expression. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if <code>lhs</code> is lexicographically less than or equal to <code>rhs</code>, <code>false</code> otherwise. </dd></dl>
+
+<p>Definition at line <a class="el" href="triple_8hpp_source.html#l00169">169</a> of file <a class="el" href="triple_8hpp_source.html">triple.hpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a36b76f890d7e1d78c32d079e0d75685a"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T , typename U , typename V &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr bool operator== </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structgears_1_1utility_1_1triple.html">triple</a>&lt; T, U, V &gt; &amp;&#160;</td>
+          <td class="paramname"><em>lhs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structgears_1_1utility_1_1triple.html">triple</a>&lt; T, U, V &gt; &amp;&#160;</td>
+          <td class="paramname"><em>rhs</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">related</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Checks if two triple objects are equivalent. In order for it to reach equivalence all members must be equal to each other.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">lhs</td><td>Left hand side of the expression. </td></tr>
+    <tr><td class="paramname">rhs</td><td>Right hand side of the expression. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if both are equal, <code>false</code> otherwise. </dd></dl>
+
+<p>Definition at line <a class="el" href="triple_8hpp_source.html#l00092">92</a> of file <a class="el" href="triple_8hpp_source.html">triple.hpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ad380592c1f3be5f1dd204e81a9e16146"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T , typename U , typename V &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr bool operator&gt; </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structgears_1_1utility_1_1triple.html">triple</a>&lt; T, U, V &gt; &amp;&#160;</td>
+          <td class="paramname"><em>lhs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structgears_1_1utility_1_1triple.html">triple</a>&lt; T, U, V &gt; &amp;&#160;</td>
+          <td class="paramname"><em>rhs</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">related</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Checks if two triple objects are lexicographically greater than each other.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">lhs</td><td>Left hand side of the expression. </td></tr>
+    <tr><td class="paramname">rhs</td><td>Right hand side of the expression. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if <code>lhs</code> is lexicographically greater than <code>rhs</code>, <code>false</code> otherwise. </dd></dl>
+
+<p>Definition at line <a class="el" href="triple_8hpp_source.html#l00139">139</a> of file <a class="el" href="triple_8hpp_source.html">triple.hpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a1081a60264fc6dd4fb41b353ac4ff77b"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T , typename U , typename V &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr bool operator&gt;= </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structgears_1_1utility_1_1triple.html">triple</a>&lt; T, U, V &gt; &amp;&#160;</td>
+          <td class="paramname"><em>lhs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structgears_1_1utility_1_1triple.html">triple</a>&lt; T, U, V &gt; &amp;&#160;</td>
+          <td class="paramname"><em>rhs</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">related</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Checks if two triple objects are lexicographically greater than or equal to each other.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">lhs</td><td>Left hand side of the expression. </td></tr>
+    <tr><td class="paramname">rhs</td><td>Right hand side of the expression. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if <code>lhs</code> is lexicographically greater than or equal to <code>rhs</code>, <code>false</code> otherwise. </dd></dl>
+
+<p>Definition at line <a class="el" href="triple_8hpp_source.html#l00154">154</a> of file <a class="el" href="triple_8hpp_source.html">triple.hpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="af62c18d1765bd16644b267b6acbea33b"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T , typename U , typename V &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void swap </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgears_1_1utility_1_1triple.html">triple</a>&lt; T, U, V &gt; &amp;&#160;</td>
+          <td class="paramname"><em>lhs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structgears_1_1utility_1_1triple.html">triple</a>&lt; T, U, V &gt; &amp;&#160;</td>
+          <td class="paramname"><em>rhs</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">related</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Swaps the elements of the triple objects.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">lhs</td><td>Left hand side to swap with. </td></tr>
+    <tr><td class="paramname">rhs</td><td>Right hand side to swap with. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="triple_8hpp_source.html#l00182">182</a> of file <a class="el" href="triple_8hpp_source.html">triple.hpp</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.3.1-->
 <!-- start footer part -->

@@ -81,7 +81,7 @@ $(document).ready(function(){initNavTree('meta_2meta_8hpp_source.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Groups</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Groups</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -97,7 +97,7 @@ $(document).ready(function(){initNavTree('meta_2meta_8hpp_source.html','');});
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">// The MIT License (MIT)</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;</div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">// Copyright (c) 2012-2013 Danny Y., Rapptz</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">// Copyright (c) 2012-2014 Danny Y., Rapptz</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;</div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">// Permission is hereby granted, free of charge, to any person obtaining a copy of</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">// this software and associated documentation files (the &quot;Software&quot;), to deal in</span></div>
@@ -124,142 +124,110 @@ $(document).ready(function(){initNavTree('meta_2meta_8hpp_source.html','');});
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">namespace </span>gears {</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">namespace </span>meta {</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">using</span> Type = <span class="keyword">typename</span> T::type;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span>... Args&gt;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">using</span> CommonType = Type&lt;std::common_type&lt;Args...&gt;&gt;;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">using</span> Type = <span class="keyword">typename</span> T::type;</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="keyword">using</span> UnderlyingType = Type&lt;std::underlying_type&lt;T&gt;&gt;;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, T t&gt;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="keyword">using</span> Const = std::integral_constant&lt;T,t&gt;;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="keyword">template</span>&lt;<span class="keywordtype">int</span> i&gt;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keyword">using</span> Integer = Const&lt;int,i&gt;;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="keyword">struct </span>deduced {};</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="keyword">using</span> is_deduced = std::is_same&lt;T, deduced&gt;;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="keyword">struct </span>identity {</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keyword">using</span> type = T;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;};</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span>...&gt;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="keyword">struct </span>void_ { </div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keyword">using</span> type = void;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;};</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span>... Args&gt;</div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="code" href="group__meta.html#ga585a97c044dc4b4c5ceb9ac4e8021f04">   41</a></span>&#160;<span class="keyword">using</span> <a class="code" href="group__meta.html#ga585a97c044dc4b4c5ceb9ac4e8021f04" title="Template alias for std::common_type.">CommonType</a> = Type&lt;std::common_type&lt;Args...&gt;&gt;;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="code" href="group__meta.html#ga951db82222f4a454d7c0aecd05fdfbd3">   49</a></span>&#160;<span class="keyword">using</span> <a class="code" href="group__meta.html#ga951db82222f4a454d7c0aecd05fdfbd3" title="Template alias for std::underlying_type.">UnderlyingType</a> = Type&lt;std::underlying_type&lt;T&gt;&gt;;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, T t&gt;</div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="code" href="group__meta.html#ga1381e28221e23b8aa5a15b27f4abe6d5">   57</a></span>&#160;<span class="keyword">using</span> <a class="code" href="group__meta.html#ga1381e28221e23b8aa5a15b27f4abe6d5" title="Template alias for std::integral_constant.">Const</a> = std::integral_constant&lt;T,t&gt;;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span>... T&gt;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="keyword">using</span> Void = Type&lt;void_&lt;T...&gt;&gt;;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="keyword">template</span>&lt;<span class="keywordtype">bool</span> I&gt;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="keyword">using</span> Bool = Const&lt;bool, I&gt;;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="keyword">template</span>&lt;<span class="keywordtype">int</span> i&gt;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="keyword">using</span> Integer = <a class="code" href="group__meta.html#ga1381e28221e23b8aa5a15b27f4abe6d5" title="Template alias for std::integral_constant.">Const&lt;int,i&gt;</a>;</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> Condition, <span class="keyword">typename</span> Then, <span class="keyword">typename</span> Else&gt;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="keyword">using</span> If = Type&lt;std::conditional&lt;Condition::value, Then, Else&gt;&gt;;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> Condition, <span class="keyword">typename</span> Then, <span class="keyword">typename</span> Else&gt;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="keyword">using</span> TypeIf = Type&lt;If&lt;Condition, Then, Else&gt;&gt;;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="keyword">using</span> Not = Bool&lt;!T::value&gt;;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span>... Args&gt;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="keyword">struct </span>Any : Bool&lt;false&gt; {};</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span>... Args&gt;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="keyword">struct </span>Any&lt;T, Args...&gt; : If&lt;T, Bool&lt;true&gt;, Any&lt;Args...&gt;&gt; {};</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span>... Args&gt;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="keyword">struct </span>All : Bool&lt;true&gt; {};</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="keyword">struct </span>deduced {};</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="keyword">using</span> is_deduced = std::is_same&lt;T, deduced&gt;;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00080"></a><span class="lineno"><a class="code" href="structgears_1_1meta_1_1identity.html">   80</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structgears_1_1meta_1_1identity.html" title="Identity meta function.">identity</a> {</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keyword">using</span> type = T;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;};</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span>... Args&gt;</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="keyword">struct </span>All&lt;T, Args...&gt; : If&lt;T, All&lt;Args...&gt;, Bool&lt;false&gt;&gt; {};</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> Signature, <span class="keyword">typename</span> Anon = <span class="keywordtype">void</span>&gt;</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="keyword">struct </span>result_of_impl {};</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> Function, <span class="keyword">typename</span>... Args&gt;</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="keyword">struct </span>result_of_impl&lt;Function(Args...), Void&lt;decltype(std::declval&lt;Function&gt;()(std::declval&lt;Args&gt;()...))&gt;&gt; {</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="keyword">using</span> type = decltype(std::declval&lt;Function&gt;()(std::declval&lt;Args&gt;()...));</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;};</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> Signature&gt;</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="keyword">using</span> ResultOf = Type&lt;result_of_impl&lt;Signature&gt;&gt;;</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="keyword">struct </span>class_of {};</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> Signature, <span class="keyword">typename</span> Class&gt;</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="keyword">struct </span>class_of&lt;Signature Class::*&gt; : identity&lt;Class&gt; {};</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="keyword">using</span> ClassOf = Type&lt;class_of&lt;T&gt;&gt;;</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;constexpr <span class="keyword">const</span> T&amp; as_const(T&amp; t) {</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    <span class="keywordflow">return</span> t;</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;}</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;constexpr T abs(T t) {</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    <span class="keywordflow">return</span> t &lt; 0 ? -t : t;</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;}</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;constexpr T min(T&amp;&amp; t) {</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    <span class="keywordflow">return</span> std::forward&lt;T&gt;(t);</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;}</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span> U&gt;</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;constexpr <span class="keyword">auto</span> min(T&amp;&amp; t, U&amp;&amp; u) -&gt; CommonType&lt;T,U&gt; {</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    <span class="keywordflow">return</span> t &lt; u ? std::forward&lt;T&gt;(t) : std::forward&lt;U&gt;(u);</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;}</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span> U, <span class="keyword">typename</span>... Args&gt;</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;constexpr <span class="keyword">auto</span> min(T&amp;&amp; t, U&amp;&amp; u, Args&amp;&amp;... args) -&gt; CommonType&lt;T,U,Args...&gt; {</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    <span class="keywordflow">return</span> min(min(std::forward&lt;T&gt;(t), std::forward&lt;U&gt;(u)), std::forward&lt;Args&gt;(args)...);</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;}</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;constexpr T max(T&amp;&amp; t) {</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    <span class="keywordflow">return</span> std::forward&lt;T&gt;(t);</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;}</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span> U&gt;</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;constexpr <span class="keyword">auto</span> max(T&amp;&amp; t, U&amp;&amp; u) -&gt; CommonType&lt;T,U&gt; {</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    <span class="keywordflow">return</span> t &gt; u ? std::forward&lt;T&gt;(t) : std::forward&lt;U&gt;(u);</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;}</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span> U, <span class="keyword">typename</span>... Args&gt;</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;constexpr <span class="keyword">auto</span> max(T&amp;&amp; t, U&amp;&amp; u, Args&amp;&amp;... args) -&gt; CommonType&lt;T,U,Args...&gt; {</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;    <span class="keywordflow">return</span> max(max(std::forward&lt;T&gt;(t), std::forward&lt;U&gt;(u)), std::forward&lt;Args&gt;(args)...);</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;}</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;constexpr T&amp;&amp; cforward(<span class="keyword">typename</span> std::remove_reference&lt;T&gt;::type&amp; t) noexcept {</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>T&amp;&amp;<span class="keyword">&gt;</span>(t);</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;}</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span>...&gt;</div>
+<div class="line"><a name="l00092"></a><span class="lineno"><a class="code" href="structgears_1_1meta_1_1void__.html">   92</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structgears_1_1meta_1_1void__.html" title="Void meta function.">void_</a> {</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <span class="keyword">using</span> type = void;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;};</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span>... T&gt;</div>
+<div class="line"><a name="l00101"></a><span class="lineno"><a class="code" href="group__meta.html#ga8b77c31888ec4ccb5c3051f1079668d9">  101</a></span>&#160;<span class="keyword">using</span> <a class="code" href="group__meta.html#ga8b77c31888ec4ccb5c3051f1079668d9" title="Template alias for void meta function.">Void</a> = Type&lt;<a class="code" href="structgears_1_1meta_1_1void__.html" title="Void meta function.">void_</a>&lt;T...&gt;&gt;;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="keyword">template</span>&lt;<span class="keywordtype">bool</span> B&gt;</div>
+<div class="line"><a name="l00108"></a><span class="lineno"><a class="code" href="group__meta.html#ga852ebc5d934b1cf8bccbe66a6781fed0">  108</a></span>&#160;<span class="keyword">using</span> <a class="code" href="group__meta.html#ga852ebc5d934b1cf8bccbe66a6781fed0" title="Template alias for std::integral_constant&lt;bool, B&gt;.">Bool</a> = <a class="code" href="group__meta.html#ga1381e28221e23b8aa5a15b27f4abe6d5" title="Template alias for std::integral_constant.">Const&lt;bool, B&gt;</a>;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> Condition, <span class="keyword">typename</span> Then, <span class="keyword">typename</span> Else&gt;</div>
+<div class="line"><a name="l00124"></a><span class="lineno"><a class="code" href="group__meta.html#ga1d6d6bac1cd5af167f4257125cc0603f">  124</a></span>&#160;<span class="keyword">using</span> <a class="code" href="group__meta.html#ga1d6d6bac1cd5af167f4257125cc0603f" title="Template alias for std::conditional.">If</a> = Type&lt;std::conditional&lt;Condition::value, Then, Else&gt;&gt;;</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> Condition, <span class="keyword">typename</span> Then, <span class="keyword">typename</span> Else&gt;</div>
+<div class="line"><a name="l00131"></a><span class="lineno"><a class="code" href="group__meta.html#gaf23eceb80a350516ffa47d905089b485">  131</a></span>&#160;<span class="keyword">using</span> <a class="code" href="group__meta.html#gaf23eceb80a350516ffa47d905089b485" title="Lazy evaluation of If">TypeIf</a> = Type&lt;If&lt;Condition, Then, Else&gt;&gt;;</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00150"></a><span class="lineno"><a class="code" href="structgears_1_1meta_1_1Not.html">  150</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structgears_1_1meta_1_1Not.html" title="Logical Not meta function.">Not</a> : <a class="code" href="group__meta.html#ga852ebc5d934b1cf8bccbe66a6781fed0" title="Template alias for std::integral_constant&lt;bool, B&gt;.">Bool</a>&lt;!T::value&gt; {};</div>
 <div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;constexpr T&amp;&amp; cforward(<span class="keyword">typename</span> std::remove_reference&lt;T&gt;::type&amp;&amp; t) noexcept {</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    static_assert(!std::is_lvalue_reference&lt;T&gt;(), <span class="stringliteral">&quot;error&quot;</span>);</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>T&amp;&amp;<span class="keyword">&gt;</span>(t);</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;}</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;constexpr <span class="keyword">typename</span> std::remove_reference&lt;T&gt;::type&amp;&amp; cmove(T&amp;&amp; t) noexcept {</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>typename std::remove_reference&lt;T&gt;::type&amp;&amp;<span class="keyword">&gt;</span>(t);</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;}</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;} <span class="comment">// meta</span></div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;} <span class="comment">// gears</span></div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;<span class="preprocessor">#endif // GEARS_META_META_HPP</span></div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span>... Args&gt;</div>
+<div class="line"><a name="l00168"></a><span class="lineno"><a class="code" href="structgears_1_1meta_1_1Any.html">  168</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structgears_1_1meta_1_1Any.html" title="Logical Or meta function.">Any</a> : <a class="code" href="group__meta.html#ga852ebc5d934b1cf8bccbe66a6781fed0" title="Template alias for std::integral_constant&lt;bool, B&gt;.">Bool</a>&lt;false&gt; {};</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span>... Args&gt;</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;<span class="keyword">struct </span><a class="code" href="structgears_1_1meta_1_1Any.html" title="Logical Or meta function.">Any</a>&lt;T, Args...&gt; : <a class="code" href="group__meta.html#ga1d6d6bac1cd5af167f4257125cc0603f" title="Template alias for std::conditional.">If</a>&lt;T, Bool&lt;true&gt;, Any&lt;Args...&gt;&gt; {};</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span>... Args&gt;</div>
+<div class="line"><a name="l00189"></a><span class="lineno"><a class="code" href="structgears_1_1meta_1_1All.html">  189</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structgears_1_1meta_1_1All.html" title="Logical And meta function.">All</a> : <a class="code" href="group__meta.html#ga852ebc5d934b1cf8bccbe66a6781fed0" title="Template alias for std::integral_constant&lt;bool, B&gt;.">Bool</a>&lt;true&gt; {};</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span>... Args&gt;</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;<span class="keyword">struct </span><a class="code" href="structgears_1_1meta_1_1All.html" title="Logical And meta function.">All</a>&lt;T, Args...&gt; : <a class="code" href="group__meta.html#ga1d6d6bac1cd5af167f4257125cc0603f" title="Template alias for std::conditional.">If</a>&lt;T, All&lt;Args...&gt;, Bool&lt;false&gt;&gt; {};</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> Signature, <span class="keyword">typename</span> Anon = <span class="keywordtype">void</span>&gt;</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;<span class="keyword">struct </span>result_of_impl {};</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> Function, <span class="keyword">typename</span>... Args&gt;</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;<span class="keyword">struct </span>result_of_impl&lt;Function(Args...), <a class="code" href="group__meta.html#ga8b77c31888ec4ccb5c3051f1079668d9" title="Template alias for void meta function.">Void</a>&lt;decltype(std::declval&lt;Function&gt;()(std::declval&lt;Args&gt;()...))&gt;&gt; {</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;    <span class="keyword">using</span> type = decltype(std::declval&lt;Function&gt;()(std::declval&lt;Args&gt;()...));</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;};</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> Signature&gt;</div>
+<div class="line"><a name="l00207"></a><span class="lineno"><a class="code" href="group__meta.html#ga32663c3bd5ce8c03f6ba639485273c1a">  207</a></span>&#160;<span class="keyword">using</span> <a class="code" href="group__meta.html#ga32663c3bd5ce8c03f6ba639485273c1a" title="SFINAE-safe std::result_of alternative.">ResultOf</a> = Type&lt;result_of_impl&lt;Signature&gt;&gt;;</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00235"></a><span class="lineno"><a class="code" href="structgears_1_1meta_1_1class__of.html">  235</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structgears_1_1meta_1_1class__of.html" title="Class of meta function.">class_of</a> {};</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> Signature, <span class="keyword">typename</span> Class&gt;</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;<span class="keyword">struct </span><a class="code" href="structgears_1_1meta_1_1class__of.html" title="Class of meta function.">class_of</a>&lt;Signature Class::*&gt; : <a class="code" href="structgears_1_1meta_1_1identity.html" title="Identity meta function.">identity</a>&lt;Class&gt; {};</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00245"></a><span class="lineno"><a class="code" href="group__meta.html#ga8600f6ca7168635374717ac15ed84b6b">  245</a></span>&#160;<span class="keyword">using</span> <a class="code" href="group__meta.html#ga8600f6ca7168635374717ac15ed84b6b" title="Template alias for class_of meta function.">ClassOf</a> = Type&lt;class_of&lt;T&gt;&gt;;</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00255"></a><span class="lineno"><a class="code" href="group__meta.html#gaec64b5c09d6f437bcaa84c8ccb678905">  255</a></span>&#160;constexpr <span class="keyword">const</span> T&amp; <a class="code" href="group__meta.html#gaec64b5c09d6f437bcaa84c8ccb678905" title="Returns a non-const lvalue reference as a const lvalue reference.">as_const</a>(T&amp; t) {</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;    <span class="keywordflow">return</span> t;</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;}</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;constexpr T&amp;&amp; <a class="code" href="group__meta.html#ga2d45ad88b3b8e36130bb3e9819d7cb23" title="constexpr enabled alternative to std::forward.">cforward</a>(<span class="keyword">typename</span> std::remove_reference&lt;T&gt;::type&amp; t) noexcept {</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>T&amp;&amp;<span class="keyword">&gt;</span>(t);</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;}</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00273"></a><span class="lineno"><a class="code" href="group__meta.html#ga2d45ad88b3b8e36130bb3e9819d7cb23">  273</a></span>&#160;constexpr T&amp;&amp; <a class="code" href="group__meta.html#ga2d45ad88b3b8e36130bb3e9819d7cb23" title="constexpr enabled alternative to std::forward.">cforward</a>(<span class="keyword">typename</span> std::remove_reference&lt;T&gt;::type&amp;&amp; t) noexcept {</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;    static_assert(!std::is_lvalue_reference&lt;T&gt;(), <span class="stringliteral">&quot;error&quot;</span>);</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>T&amp;&amp;<span class="keyword">&gt;</span>(t);</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;}</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00287"></a><span class="lineno"><a class="code" href="group__meta.html#ga736fb9655071daeabbc91bb34046f130">  287</a></span>&#160;constexpr <span class="keyword">typename</span> std::remove_reference&lt;T&gt;::type&amp;&amp; <a class="code" href="group__meta.html#ga736fb9655071daeabbc91bb34046f130" title="constexpr enabled alternative to std::move.">cmove</a>(T&amp;&amp; t) noexcept {</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>typename std::remove_reference&lt;T&gt;::type&amp;&amp;<span class="keyword">&gt;</span>(t);</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;}</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;} <span class="comment">// meta</span></div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;} <span class="comment">// gears</span></div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;<span class="preprocessor">#endif // GEARS_META_META_HPP</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.3.1-->

@@ -81,7 +81,7 @@ $(document).ready(function(){initNavTree('base_8hpp_source.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Groups</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Groups</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -97,7 +97,7 @@ $(document).ready(function(){initNavTree('base_8hpp_source.html','');});
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">// The MIT License (MIT)</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;</div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">// Copyright (c) 2012-2013 Danny Y., Rapptz</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">// Copyright (c) 2012-2014 Danny Y., Rapptz</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;</div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">// Permission is hereby granted, free of charge, to any person obtaining a copy of</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">// this software and associated documentation files (the &quot;Software&quot;), to deal in</span></div>
@@ -132,10 +132,10 @@ $(document).ready(function(){initNavTree('base_8hpp_source.html','');});
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    constexpr maybe_base() noexcept: valid(false), storage(default_init) {}</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    constexpr <span class="keyword">explicit</span> maybe_base(regular_init_t, <span class="keywordtype">bool</span> valid) noexcept: valid(valid), storage(default_init) {}</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    constexpr <span class="keyword">explicit</span> maybe_base(<span class="keyword">const</span> T&amp; value): valid(true), storage(value) {}</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    constexpr <span class="keyword">explicit</span> maybe_base(T&amp;&amp; value): valid(true), storage(meta::cmove(value)) {}</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    constexpr <span class="keyword">explicit</span> maybe_base(T&amp;&amp; value): valid(true), storage(meta::<a class="code" href="group__meta.html#ga736fb9655071daeabbc91bb34046f130" title="constexpr enabled alternative to std::move.">cmove</a>(value)) {}</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keyword">template</span>&lt;<span class="keyword">typename</span>... Args&gt;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keyword">explicit</span> maybe_base(in_place_t, Args&amp;&amp;... args): valid(true), storage(meta::cforward&lt;Args&gt;(args)...) {}</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keyword">explicit</span> maybe_base(in_place_t, Args&amp;&amp;... args): valid(true), storage(meta::<a class="code" href="group__meta.html#ga2d45ad88b3b8e36130bb3e9819d7cb23" title="constexpr enabled alternative to std::forward.">cforward</a>&lt;Args&gt;(args)...) {}</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    ~maybe_base() {</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="keywordflow">if</span>(valid) {</div>
@@ -152,10 +152,10 @@ $(document).ready(function(){initNavTree('base_8hpp_source.html','');});
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    constexpr cmaybe_base() noexcept: valid(false), storage(default_init) {}</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    constexpr <span class="keyword">explicit</span> cmaybe_base(regular_init_t, <span class="keywordtype">bool</span> valid) noexcept: valid(valid), storage(default_init) {}</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    constexpr <span class="keyword">explicit</span> cmaybe_base(<span class="keyword">const</span> T&amp; value): valid(true), storage(value) {}</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    constexpr <span class="keyword">explicit</span> cmaybe_base(T&amp;&amp; value): valid(true), storage(meta::cmove(value)) {}</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    constexpr <span class="keyword">explicit</span> cmaybe_base(T&amp;&amp; value): valid(true), storage(meta::<a class="code" href="group__meta.html#ga736fb9655071daeabbc91bb34046f130" title="constexpr enabled alternative to std::move.">cmove</a>(value)) {}</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keyword">template</span>&lt;<span class="keyword">typename</span>... Args&gt;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    constexpr <span class="keyword">explicit</span> cmaybe_base(in_place_t, Args&amp;&amp;... args): valid(true), storage(meta::cforward&lt;Args&gt;(args)...) {}</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    constexpr <span class="keyword">explicit</span> cmaybe_base(in_place_t, Args&amp;&amp;... args): valid(true), storage(meta::<a class="code" href="group__meta.html#ga2d45ad88b3b8e36130bb3e9819d7cb23" title="constexpr enabled alternative to std::forward.">cforward</a>&lt;Args&gt;(args)...) {}</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    ~cmaybe_base() = <span class="keywordflow">default</span>;</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;};</div>
