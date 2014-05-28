@@ -1,0 +1,35 @@
+{
+	"folders":
+	[
+		{
+			"follow_symlinks": true,
+			"path": ".",
+            "folder_exclude_patterns": ["bin", "obj"]
+		}
+	],
+
+    "settings":
+    {
+        "sublimegdb_workingdir": "${folder:${project_path:dev}}",
+        "sublimegdb_commandline": "gdb --interpreter=mi ./dev"
+    },
+
+    "build_systems":
+    [
+        {
+            "name": "gears single file",
+            "shell_cmd": "g++ -O3 -g -Wall -Wextra -pedantic -std=c++11 -I. ${file} -o ${file_base_name}",
+            "working_dir": "${file_path}",
+
+            "variants": [
+                {
+                    "name": "Run",
+                    "windows": {
+                        "shell_cmd": "\"${file_path}\\${file_base_name}.exe\""
+                    },
+                    "shell_cmd": "\"${file_path}/${file_base_name}\""
+                }
+            ]
+        }
+    ]
+}

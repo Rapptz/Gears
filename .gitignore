@@ -31,7 +31,7 @@ dev*
 .tags*
 
 # Sublime cruft
-*.sublime*
+*.sublime-workspace
 
 # Documentation
 docs/html/*
