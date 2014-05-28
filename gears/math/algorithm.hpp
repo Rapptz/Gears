@@ -159,7 +159,7 @@ constexpr T min(T&& t) {
 }
 
 template<typename T, typename U>
-constexpr auto min(T&& t, U&& u) -> decltype(u < t ? std::forward<U>(u) : std::forward<T>(t)) {
+constexpr typename std::common_type<T, U>::type min(T&& t, U&& u) {
     return u < t ? std::forward<U>(u) : std::forward<T>(t);
 }
 
@@ -176,11 +176,7 @@ constexpr auto min(T&& t, U&& u) -> decltype(u < t ? std::forward<U>(u) : std::f
  * @return The minimum value of the list of numbers.
  */
 template<typename T, typename U, typename... Args>
-constexpr auto min(T&& t, U&& u, Args&&... args)
-#ifndef GEARS_FOR_DOXYGEN_ONLY
--> decltype(min(min(std::forward<T>(t), std::forward<U>(u)), std::forward<Args>(args)...))
-#endif
-{
+constexpr typename std::common_type<T, U, Args...>::type min(T&& t, U&& u, Args&&... args) {
     return min(min(std::forward<T>(t), std::forward<U>(u)), std::forward<Args>(args)...);
 }
 //@}
@@ -192,7 +188,7 @@ constexpr T max(T&& t) {
 }
 
 template<typename T, typename U>
-constexpr auto max(T&& t, U&& u) -> decltype(u < t ? std::forward<T>(t) : std::forward<U>(u)) {
+constexpr typename std::common_type<T, U>::type max(T&& t, U&& u) {
     return u < t ? std::forward<T>(t) : std::forward<U>(u);
 }
 
@@ -209,11 +205,7 @@ constexpr auto max(T&& t, U&& u) -> decltype(u < t ? std::forward<T>(t) : std::f
  * @return The maximum value of the list of numbers.
  */
 template<typename T, typename U, typename... Args>
-constexpr auto max(T&& t, U&& u, Args&&... args)
-#ifndef GEARS_FOR_DOXYGEN_ONLY
--> decltype(max(max(std::forward<T>(t), std::forward<U>(u)), std::forward<Args>(args)...))
-#endif
-{
+constexpr typename std::common_type<T, U, Args...>::type max(T&& t, U&& u, Args&&... args) {
     return max(max(std::forward<T>(t), std::forward<U>(u)), std::forward<Args>(args)...);
 }
 //@}
