@@ -39,13 +39,15 @@ namespace math {
 template<typename T>
 inline T fibonacci(T number) {
     static_assert(std::is_integral<T>::value, "Type passed must be an integral type");
-    if(number < 2)
+    if(number < 2) {
         return number;
+    }
+
     T a(1);
     T b(0);
     T c(0);
 
-    while(number--) {
+    while(--number) {
         c = b;
         b = a;
         a = b + c;
