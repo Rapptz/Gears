@@ -25,10 +25,6 @@
 TEST_CASE("Meta functions", "[meta]") {
     using namespace gears::meta;
     constexpr size_t n = 10;
-    REQUIRE(min(1,2,3,4,5,6) == 1);
-    REQUIRE(max(5,11,9,14,19,192) == 192);
-    REQUIRE((std::is_same<decltype(max(10,1)), int>()));
-    REQUIRE(n == max(10,9,1,4));
     REQUIRE(Bool<true>());
     REQUIRE((All<Bool<true>, Bool<true>, Bool<true>>()));
     REQUIRE((Any<Bool<false>, Bool<false>, Bool<true>>()));

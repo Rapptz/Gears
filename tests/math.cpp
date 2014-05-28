@@ -79,4 +79,8 @@ TEST_CASE("Basic Algorithms", "[math-basic-algo]") {
     REQUIRE(gears::math::factorial(10) == 3628800);
     REQUIRE(gears::math::fibonacci(20) == 6765);
     REQUIRE(gears::math::gcd(252, 105) == 21);
+    REQUIRE(gears::math::min(1,2,3,4,5,6) == 1);
+    REQUIRE(gears::math::max(5,11,9,14,19,192) == 192);
+    REQUIRE((std::is_same<decltype(gears::math::max(10,1)), int>()));
+    REQUIRE(n == gears::math::max(10,9,1,4));
 }
