@@ -26,7 +26,6 @@
 
 namespace gears {
 namespace concepts {
-/// @internal
 template<typename T>
 using Bare = typename std::remove_cv<typename std::remove_reference<T>::type>::type;
 
@@ -68,8 +67,6 @@ using TrueIf = typename std::enable_if<And<Concepts...>::value, concept_checker_
 template<typename... Concepts>
 using Requires = typename requires_checker<Concepts...>::type;
 
-/// @endinternal
-
 /**
  * @ingroup concepts
  * @brief Asserts that a type meets concepts provided.
@@ -88,7 +85,7 @@ using Requires = typename requires_checker<Concepts...>::type;
  * Consider using the `Requires` statement instead:
  *
  * @code
- * template<typename T, Requires<Assinable<T>>...>
+ * template<typename T, typename = Requires<Assignable<T>>
  * struct my_type {};
  * @endcode
  *
