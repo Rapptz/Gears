@@ -65,11 +65,11 @@ TEST_CASE("Replacing", "[replace]") {
 
 TEST_CASE("Finding", "[find]") {
     using namespace gears::string::literals;
-    REQUIRE(gears::string::find_first_of("Hello"_s, gears::string::is_any_of<>("lo")) == 2);
+    REQUIRE(gears::string::find_first_of("Hello"_s, gears::string::is_any_of<>("lo")) == 2u);
     REQUIRE(gears::string::find_first_of("Hello"_s, gears::string::is_any_of<>("a")) == std::string::npos);
-    REQUIRE(gears::string::find_first_not_of("Hello There"_s, gears::string::is_any_of<>("HeloThr")) == 5);
-    REQUIRE(gears::string::find_last_of("Hello"_s, gears::string::is_any_of<>("l")) == 3);
-    REQUIRE(gears::string::find_last_not_of(" Hello "_s, gears::string::is_any_of<>(" ")) == 5);
+    REQUIRE(gears::string::find_first_not_of("Hello There"_s, gears::string::is_any_of<>("HeloThr")) == 5u);
+    REQUIRE(gears::string::find_last_of("Hello"_s, gears::string::is_any_of<>("l")) == 3u);
+    REQUIRE(gears::string::find_last_not_of(" Hello "_s, gears::string::is_any_of<>(" ")) == 5u);
 }
 
 TEST_CASE("Trim", "[trim]") {

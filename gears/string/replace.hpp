@@ -30,7 +30,7 @@ namespace string {
 namespace string_replace_detail {
 template<typename String>
 inline size_t nth_finder(const String& str, const String& find, size_t nth) {
-    int start = 0;
+    size_t start = 0;
     auto pos = str.find(find);
     while(start < nth && pos != String::npos) {
         pos = str.find(find, pos + find.length());
