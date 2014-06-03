@@ -236,8 +236,8 @@ inline bool icontains(const String& str, const String& other, const std::locale&
  * @param pred The predicate to use.
  * @return `true` if the string meets the predicate on every character, `false` otherwise.
  */
-template<typename String, typename BinaryPredicate>
-inline bool all(const String& str, BinaryPredicate&& pred) {
+template<typename String, typename UnaryPredicate>
+inline bool all(const String& str, UnaryPredicate&& pred) {
     for(auto&& c : str) {
         if(!pred(c))
             return false;
