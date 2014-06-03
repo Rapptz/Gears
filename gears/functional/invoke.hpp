@@ -27,58 +27,70 @@
 namespace gears {
 namespace functional {
 namespace detail {
-template<typename Func, typename Obj, typename... Args,
-         meta::EnableIf<std::is_member_function_pointer<meta::Unqualified<Func>>,
-                        std::is_base_of<meta::ClassOf<meta::Unqualified<Func>>, meta::Unqualified<Obj>>> = meta::_,
-         typename R = decltype((std::declval<Obj>().*std::declval<Func>())(std::declval<Args>()...))>
-constexpr R invoke(Func&& f, Obj&& obj, Args&&... args) noexcept {
-    return (std::forward<Obj>(obj).*std::forward<Func>(f))(std::forward<Args>(args)...);
+using namespace gears::meta;
+template <typename Fun, typename Obj, typename... Args,
+          typename Result = decltype((std::declval<Obj>().*std::declval<Fun>())(std::declval<Args>()...)),
+          bool NoExcept = noexcept((std::declval<Obj>().*std::declval<Fun>())(std::declval<Args>()...)),
+          EnableIf<std::is_member_function_pointer<Unqualified<Fun>>,
+                   std::is_base_of<ClassOf<Unqualified<Fun>>, Unqualified<Obj>>> = _>
+constexpr Result invoke(Fun&& fun, Obj&& obj, Args&&... args) noexcept(NoExcept) {
+    return (std::forward<Obj>(obj).*std::forward<Fun>(fun))(std::forward<Args>(args)...);
 }
 
-template<typename Func, typename Obj, typename... Args,
-         meta::EnableIf<std::is_member_function_pointer<meta::Unqualified<Func>>,
-                        meta::Not<std::is_base_of<meta::ClassOf<meta::Unqualified<Func>>, meta::Unqualified<Obj>>>> = meta::_,
-         typename R = decltype((*std::declval<Obj>().*std::declval<Func>())(std::declval<Args>()...))>
-constexpr R invoke(Func&& f, Obj&& obj, Args&&... args) noexcept {
-    return (*std::forward<Obj>(obj).*std::forward<Func>(f))(std::forward<Args>(args)...);
+template <typename Fun, typename Obj, typename... Args,
+          typename Result = decltype(((*std::declval<Obj>()).*std::declval<Fun>())(std::declval<Args>()...)),
+          bool NoExcept = noexcept(((*std::declval<Obj>()).*std::declval<Fun>())(std::declval<Args>()...)),
+          EnableIf<std::is_member_function_pointer<Unqualified<Fun>>,
+                   Not<std::is_base_of<ClassOf<Unqualified<Fun>>, Unqualified<Obj>>>> = _>
+constexpr Result invoke(Fun&& fun, Obj&& obj, Args&&... args) noexcept(NoExcept) {
+    return ((*std::forward<Obj>(obj)).*std::forward<Fun>(fun))(std::forward<Args>(args)...);
 }
 
-template<typename Func, typename Obj,
-         meta::EnableIf<std::is_member_function_pointer<meta::Unqualified<Func>>,
-                        std::is_base_of<meta::ClassOf<meta::Unqualified<Func>>, meta::Unqualified<Obj>>> = meta::_>
-constexpr auto invoke(Func&& f, Obj&& obj) noexcept -> decltype(std::forward<Obj>(obj).*std::forward<Func>(f)) {
-    return std::forward<Obj>(obj).*std::forward<Func>(f);
+template <typename Fun, typename Obj,
+          typename Result = decltype(std::declval<Obj>().*std::declval<Fun>()),
+          bool NoExcept = noexcept(std::declval<Obj>().*std::declval<Fun>()),
+          EnableIf<std::is_member_object_pointer<Unqualified<Fun>>,
+                   std::is_base_of<ClassOf<Unqualified<Fun>>, Unqualified<Obj>>> = _>
+constexpr Result invoke(Fun&& fun, Obj&& obj) noexcept(NoExcept) {
+    return std::forward<Obj>(obj).*std::forward<Fun>(fun);
 }
 
-template<typename Func, typename Obj,
-         meta::EnableIf<std::is_member_function_pointer<meta::Unqualified<Func>>,
-                        meta::Not<std::is_base_of<meta::ClassOf<meta::Unqualified<Func>>, meta::Unqualified<Obj>>>> = meta::_>
-constexpr auto invoke(Func&& f, Obj&& obj) noexcept -> decltype(*(std::forward<Obj>(obj)).*std::forward<Func>(f)) {
-    return (*std::forward<Obj>(obj)).*std::forward<Func>(f);
+template <typename Fun, typename Obj,
+          typename Result = decltype((*std::declval<Obj>()).*std::declval<Fun>()),
+          bool NoExcept = noexcept((*std::declval<Obj>()).*std::declval<Fun>()),
+          EnableIf<std::is_member_object_pointer<Unqualified<Fun>>,
+                   Not<std::is_base_of<ClassOf<Unqualified<Fun>>, Unqualified<Obj>>>> = _>
+constexpr Result invoke(Fun&& fun, Obj&& obj) noexcept(NoExcept) {
+    return (*std::forward<Obj>(obj)).*std::forward<Fun>(fun);
 }
 
-template<typename Func, typename... Args, meta::DisableIf<std::is_member_function_pointer<meta::Unqualified<Func>>> = meta::_>
-constexpr auto invoke(Func&& f, Args&&... args) noexcept -> decltype(std::forward<Func>(f)(std::forward<Args>(args)...)) {
-    return std::forward<Func>(f)(std::forward<Args>(args)...);
+template <typename Fun, typename... Args,
+          typename Result = decltype(std::declval<Fun>()(std::declval<Args>()...)),
+          bool NoExcept = noexcept(std::declval<Fun>()(std::declval<Args>()...)),
+          DisableIf<std::is_member_pointer<Unqualified<Fun>>> = _>
+constexpr Result invoke(Fun&& fun, Args&&... args) noexcept(NoExcept) {
+    return std::forward<Fun>(fun)(std::forward<Args>(args)...);
 }
-} // detail
+} // namespace detail
 
 #ifndef GEARS_FOR_DOXYGEN_ONLY
-template<typename Deduced = meta::deduced, typename... T, typename Actual = decltype(detail::invoke(std::declval<T>()...)),
-         typename Result = meta::If<meta::is_deduced<Deduced>, Actual, Deduced>,
-         meta::EnableIf<meta::Any<std::is_convertible<Actual, Result>, std::is_void<Result>>> = meta::_>
+template <typename Deduced = meta::deduced, typename... Args,
+          typename Expected = decltype(detail::invoke(std::declval<Args>()...)),
+          typename Result = meta::If<meta::is_deduced<Deduced>, Expected, Deduced>,
+          bool NoExcept = noexcept(detail::invoke(std::declval<Args>()...)),
+          meta::EnableIf<meta::Any<std::is_convertible<Expected, Result>, std::is_void<Result>>> = meta::_>
 #else
-template<typename... T>
+template<typename... Args>
 #endif
-constexpr Result invoke(T&&... t) noexcept {
-    return Result(detail::invoke(std::forward<T>(t)...));
+constexpr Result invoke(Args&&... args) noexcept(NoExcept) {
+    return detail::invoke(std::forward<Args>(args)...);
 }
 } // functional
 } // gears
 
 /**
  * @ingroup functional
- * @fn template<typename... T> auto gears::functional::invoke(T&&... t);
+ * @fn template<typename... Args> auto gears::functional::invoke(Args&&... t);
  * @brief Implements the `INVOKE` facility in the C++ standard.
  * @details The `INVOKE` facility in the standard is specified in
  * §20.8.2 as follows:
