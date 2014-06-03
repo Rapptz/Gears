@@ -63,10 +63,10 @@
  * template<typename Cont, typename T>
  * void compare_and_insert(Cont& c, const T& first, const T& second) {
  *     // first < second must be well defined.
- *     requires<T, LessThanComparable>();
+ *     require<T, LessThanComparable>();
  *
  *     // Cont must be a sequence container
- *     requires<Cont, SequenceContainer>();
+ *     require<Cont, SequenceContainer>();
  *
  *     if(first < second) {
  *         c.push_back(first);

@@ -65,7 +65,7 @@ template<typename... Concepts>
 using TrueIf = typename std::enable_if<And<Concepts...>::value, concept_checker_t>::type;
 
 template<typename... Concepts>
-using Requires = typename requires_checker<Concepts...>::type;
+using Require = typename requires_checker<Concepts...>::type;
 
 /**
  * @ingroup concepts
@@ -82,10 +82,10 @@ using Requires = typename requires_checker<Concepts...>::type;
  * @endcode
  *
  * This is because this function returns a boolean.
- * Consider using the `Requires` statement instead:
+ * Consider using the `Require` statement instead:
  *
  * @code
- * template<typename T, typename = Requires<Assignable<T>>
+ * template<typename T, typename = Require<Assignable<T>>
  * struct my_type {};
  * @endcode
  *
@@ -94,7 +94,7 @@ using Requires = typename requires_checker<Concepts...>::type;
  *
  */
 template<typename T, template<typename...> class... Concepts>
-constexpr bool requires() {
+constexpr bool require() {
     static_assert(And<Concepts<T>...>(), "Concept Violation");
     return true;
 }
