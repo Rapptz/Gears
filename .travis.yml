@@ -14,6 +14,7 @@ before_install:
     - sudo apt-get --yes install ninja-build
 
 before_script:
+    - chmod 777 ./bootstrap.py
     - ./bootstrap.py --cxx=g++-4.8
 
 script: ninja
