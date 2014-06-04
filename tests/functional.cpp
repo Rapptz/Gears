@@ -31,7 +31,7 @@ struct functional_test {
     }
 
     template<typename T, typename U, typename V>
-    constexpr auto operator()(T&& t, U&& u, V&& v) const noexcept 
+    constexpr auto operator()(T&& t, U&& u, V&& v) const noexcept
     -> decltype((std::forward<T>(t) + std::forward<U>(u)) * std::forward<V>(v)) {
         return (std::forward<T>(t) + std::forward<U>(u)) * std::forward<V>(v);
     }
