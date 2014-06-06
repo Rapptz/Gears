@@ -38,7 +38,9 @@ namespace io {
  *
  * Example:
  * @code
- * io::fprint(std::cout, "{0} {1} {0}", 1, 2);
+ * io::fprint(std::cout, std::string("{0} {1} {0}"), 1, 2);
+ * // could be shortened to:
+ * io::print("{0} {1} {0}", 1, 2);
  * @endcode
  *
  * would print 1 2 1, with 1 being index 0 and 2 being index 1.

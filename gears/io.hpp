@@ -25,7 +25,6 @@
 #include "io/prettyprint.hpp"
 #include "io/print.hpp"
 #include "io/flags.hpp"
-#include "io/sprint.hpp"
 #include "io/lines.hpp"
 
 /**

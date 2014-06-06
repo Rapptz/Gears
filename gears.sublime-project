@@ -19,6 +19,7 @@
         {
             "name": "run tests",
             "shell_cmd": "${project_path}/bootstrap.py --cxx=g++ && ninja run",
+            "working_dir": "${project_path}",
             "windows": {
                 "shell_cmd": "${project_path}\\bootstrap.py --cxx=g++ && ninja run"
             }
