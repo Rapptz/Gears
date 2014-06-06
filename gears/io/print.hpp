@@ -22,19 +22,27 @@
 #ifndef GEARS_IO_PRINT_HPP
 #define GEARS_IO_PRINT_HPP
 
-#include <iostream>
 #include "fprint.hpp"
+#include <iostream>
+#include <sstream>
 
 namespace gears {
 namespace io {
-template<size_t N, typename... Args>
-inline void print(const char (&str)[N], Args&&... args) {
+template<typename... Args>
+inline void print(const std::string& str, Args&&... args) {
     fprint(std::cout, str, std::forward<Args>(args)...);
 }
 
-template<size_t N, typename... Args>
-inline void print(const wchar_t (&str)[N], Args&&... args) {
+template<typename... Args>
+inline void print(const std::wstring& str, Args&&... args) {
     fprint(std::wcout, str, std::forward<Args>(args)...);
+}
+
+template<typename Elem, typename Traits, typename... Args>
+inline std::basic_string<Elem, Traits> sprint(const std::basic_string<Elem, Traits>& str, Args&&... args) {
+    std::basic_ostringstream<Elem, Traits> out;
+    fprint(out, str, std::forward<Args>(args)...);
+    return out.str();
 }
 } // io
 } // gears

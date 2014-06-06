@@ -24,6 +24,7 @@
 
 #include "detail/index_printer.hpp"
 #include "../string/classification.hpp"
+#include <string>
 
 namespace gears {
 namespace io {
@@ -54,17 +55,18 @@ namespace io {
  * @param arguments args to print
  * @throws std::out_of_range index in the format string is out of bounds
  */
-template<class Elem, class Traits, size_t N, typename... Args>
-inline void fprint(std::basic_ostream<Elem, Traits>& out, const Elem (&str)[N], Args&&... arguments) {
+template<class Elem, class Traits, typename... Args>
+inline void fprint(std::basic_ostream<Elem, Traits>& out, const std::basic_string<Elem, Traits>& str, Args&&... arguments) {
     if(sizeof...(arguments) < 1) {
         out << str;
         return;
     }
+
     auto args = std::make_tuple(std::forward<Args>(arguments)...);
 
     string::is_digit cmp;
 
-    auto first = str;
+    auto first = str.begin();
     size_t index = 0;
 
     while(*first) {
