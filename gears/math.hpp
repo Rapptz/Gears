@@ -23,7 +23,7 @@
 #define GEARS_MATH_HPP
 
 #include "math/uintx.hpp"
-#include "math/algorithm.hpp"
+#include "math/generator.hpp"
 
 /**
  * @defgroup math Math module

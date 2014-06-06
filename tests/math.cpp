@@ -21,6 +21,8 @@
 
 #include <catch.hpp>
 #include <gears/math.hpp>
+#include <tuple>
+#include <algorithm>
 
 TEST_CASE("Higher Precision Integer", "[uintx]") {
     using namespace gears::math::literals;
@@ -84,4 +86,22 @@ TEST_CASE("Basic Algorithms", "[math-basic-algo]") {
     REQUIRE(gears::math::max(5,11,9,14,19,192) == 192);
     REQUIRE((std::is_same<decltype(gears::math::max(10,1)), int>()));
     REQUIRE(n == gears::math::max(10,9,1,4));
+}
+
+TEST_CASE("Generators", "[math-generator]") {
+    using namespace gears;
+    std::vector<int> primes;
+    math::primes(100, primes);
+    REQUIRE(primes.size() == 25);
+    REQUIRE(primes.back() == 97);
+    REQUIRE(primes.front() == 2);
+    REQUIRE(std::accumulate(std::begin(primes), std::end(primes), 0) == 1060);
+    std::vector<std::tuple<int, int, int>> triples;
+    math::pythagorean_triples(100, triples);
+    REQUIRE(triples.size() == 16);
+    int a, b, c;
+    for(auto&& triple : triples) {
+        std::tie(a, b, c) = triple;
+        REQUIRE((a * a + b * b) == c * c);
+    }
 }
