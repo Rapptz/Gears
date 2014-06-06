@@ -23,6 +23,6 @@ No extraneous libraries are required to use Gears, only the standard library.
 
 
 [orig]: https://bitbucket.org/Rapptz/gears
-[issue]: https://github.com/Rapptz/Gears/issues?milestone=1&state=open
+[issues]: https://github.com/Rapptz/Gears/issues?milestone=1&state=open
 [docs]: http://rapptz.github.io/Gears/docs/
 [ninja]: https://github.com/martine/ninja
