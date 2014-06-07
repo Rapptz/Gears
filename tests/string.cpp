@@ -23,76 +23,85 @@
 #include <vector>
 #include <iterator>
 #include <gears/string.hpp>
+#include <limits>
+
+using namespace gears::string::literals;
+using namespace gears;
 
 TEST_CASE("Case convert", "[case]") {
-    using namespace gears::string::literals;
-    REQUIRE(gears::string::to_lower("HELLO wOrLD"_s) == "hello world");
-    REQUIRE(gears::string::to_upper("hello world"_s) == "HELLO WORLD");
-    REQUIRE(gears::string::is_all_lower("hello world"_s));
-    REQUIRE(gears::string::is_all_upper("HELLO WORLD"_s));
+    REQUIRE(string::to_lower("HELLO wOrLD"_s) == "hello world");
+    REQUIRE(string::to_upper("hello world"_s) == "HELLO WORLD");
+    REQUIRE(string::is_all_lower("hello world"_s));
+    REQUIRE(string::is_all_upper("HELLO WORLD"_s));
 }
 
 TEST_CASE("Predicates", "[pred]") {
-    using namespace gears::string::literals;
-    REQUIRE(gears::string::iequal("hello"_s, "HELLO"_s));
-    REQUIRE(gears::string::starts_with("Hello World"_s, "Hello"_s));
-    REQUIRE(gears::string::istarts_with("HELLO world"_s, "hello"_s));
-    REQUIRE(gears::string::ends_with("Hello World"_s, "World"_s));
-    REQUIRE(gears::string::iends_with("Hello World"_s, "WoRLd"_s));
-    REQUIRE(gears::string::contains("Hello World"_s, "World"_s));
-    REQUIRE(gears::string::icontains("Hello World"_s, "Lo WoRL"_s));
-    REQUIRE(gears::string::all("i3aa34"_s, gears::string::is_any_of<>("i3a4")));
+    REQUIRE(string::iequal("hello"_s, "HELLO"_s));
+    REQUIRE(string::starts_with("Hello World"_s, "Hello"_s));
+    REQUIRE(string::istarts_with("HELLO world"_s, "hello"_s));
+    REQUIRE(string::ends_with("Hello World"_s, "World"_s));
+    REQUIRE(string::iends_with("Hello World"_s, "WoRLd"_s));
+    REQUIRE(string::contains("Hello World"_s, "World"_s));
+    REQUIRE(string::icontains("Hello World"_s, "Lo WoRL"_s));
+    REQUIRE(string::all("i3aa34"_s, string::is_any_of<>("i3a4")));
 }
 
 TEST_CASE("Replacing", "[replace]") {
-    using namespace gears::string::literals;
     std::string test("Hello Hello Hello");
 
     SECTION("Replace Algorithms", "[replace-algo]") {
-        REQUIRE(gears::string::replace_first(test, "Hello"_s, "Bye"_s) == "Bye Hello Hello");
-        REQUIRE(gears::string::replace_last(test, "Hello"_s, "Bye"_s) == "Hello Hello Bye");
-        REQUIRE(gears::string::replace_nth(test, 1, "Hello"_s, "Bye"_s) == "Hello Bye Hello");
-        REQUIRE(gears::string::replace_all(test, "Hello"_s, "Bye"_s) == "Bye Bye Bye");
+        REQUIRE(string::replace_first(test, "Hello"_s, "Bye"_s) == "Bye Hello Hello");
+        REQUIRE(string::replace_last(test, "Hello"_s, "Bye"_s) == "Hello Hello Bye");
+        REQUIRE(string::replace_nth(test, 1, "Hello"_s, "Bye"_s) == "Hello Bye Hello");
+        REQUIRE(string::replace_all(test, "Hello"_s, "Bye"_s) == "Bye Bye Bye");
     }
 
     SECTION("Erase Algorithms", "[erase-algo]") {
-        REQUIRE(gears::string::erase_first(test, "Hello"_s) == " Hello Hello");
-        REQUIRE(gears::string::erase_last(test, "Hello"_s) == "Hello Hello ");
-        REQUIRE(gears::string::erase_nth(test, 1, "Hello"_s) == "Hello  Hello");
-        REQUIRE(gears::string::erase_all(test, "Hello"_s) == "  ");
+        REQUIRE(string::erase_first(test, "Hello"_s) == " Hello Hello");
+        REQUIRE(string::erase_last(test, "Hello"_s) == "Hello Hello ");
+        REQUIRE(string::erase_nth(test, 1, "Hello"_s) == "Hello  Hello");
+        REQUIRE(string::erase_all(test, "Hello"_s) == "  ");
     }
 }
 
 TEST_CASE("Finding", "[find]") {
-    using namespace gears::string::literals;
-    REQUIRE(gears::string::find_first_of("Hello"_s, gears::string::is_any_of<>("lo")) == 2u);
-    REQUIRE(gears::string::find_first_of("Hello"_s, gears::string::is_any_of<>("a")) == std::string::npos);
-    REQUIRE(gears::string::find_first_not_of("Hello There"_s, gears::string::is_any_of<>("HeloThr")) == 5u);
-    REQUIRE(gears::string::find_last_of("Hello"_s, gears::string::is_any_of<>("l")) == 3u);
-    REQUIRE(gears::string::find_last_not_of(" Hello "_s, gears::string::is_any_of<>(" ")) == 5u);
+    REQUIRE(string::find_first_of("Hello"_s, string::is_any_of<>("lo")) == 2u);
+    REQUIRE(string::find_first_of("Hello"_s, string::is_any_of<>("a")) == std::string::npos);
+    REQUIRE(string::find_first_not_of("Hello There"_s, string::is_any_of<>("HeloThr")) == 5u);
+    REQUIRE(string::find_last_of("Hello"_s, string::is_any_of<>("l")) == 3u);
+    REQUIRE(string::find_last_not_of(" Hello "_s, string::is_any_of<>(" ")) == 5u);
 }
 
 TEST_CASE("Trim", "[trim]") {
-    using namespace gears::string::literals;
     std::string test("  Hello  ");
-    REQUIRE(gears::string::trim_left(test) == "Hello  ");
-    REQUIRE(gears::string::trim_right(test) == "  Hello");
-    REQUIRE(gears::string::trim(test) == "Hello");
+    REQUIRE(string::trim_left(test) == "Hello  ");
+    REQUIRE(string::trim_right(test) == "  Hello");
+    REQUIRE(string::trim(test) == "Hello");
     REQUIRE(test == "  Hello  ");
 }
 
 TEST_CASE("Transforms", "[trans]") {
-    using namespace gears::string::literals;
     std::vector<int> v = {1,2,3,4,5};
     std::vector<std::string> a;
     std::vector<std::string> expected_one = {"a", "b", "c", "d"};
-    REQUIRE(gears::string::right("abcdef"_s, 4) == "cdef");
-    REQUIRE(gears::string::right("abcdef"_s, 10) == "abcdef");
-    REQUIRE(gears::string::left("abcdef"_s, 4) == "abcd");
-    REQUIRE(gears::string::left("abcdef"_s, 10) == "abcdef");
-    REQUIRE(gears::string::reverse("abcdef"_s) == "fedcba");
-    REQUIRE(gears::string::join(v, ", "_s) == "1, 2, 3, 4, 5");
-    REQUIRE(gears::string::join_if(v, ", "_s, [](int x) { return x < 3; }) == "1, 2");
-    gears::string::split("a, b, c, d"_s, ", "_s, std::back_inserter(a));
+    REQUIRE(string::right("abcdef"_s, 4) == "cdef");
+    REQUIRE(string::right("abcdef"_s, 10) == "abcdef");
+    REQUIRE(string::left("abcdef"_s, 4) == "abcd");
+    REQUIRE(string::left("abcdef"_s, 10) == "abcdef");
+    REQUIRE(string::reverse("abcdef"_s) == "fedcba");
+    REQUIRE(string::join(v, ", "_s) == "1, 2, 3, 4, 5");
+    REQUIRE(string::join_if(v, ", "_s, [](int x) { return x < 3; }) == "1, 2");
+    string::split("a, b, c, d"_s, ", "_s, std::back_inserter(a));
     REQUIRE((a == expected_one)); // work around
+}
+
+
+TEST_CASE("Lexical Cast", "[lexical-cast]") {
+    REQUIRE(string::lexical_cast<int>("100"_s) == 100);
+    REQUIRE(string::lexical_cast<double>("3.14"_s) == 3.14);
+    REQUIRE(string::lexical_cast<std::string>("300"_s) == "300");
+    constexpr int max = std::numeric_limits<int>::max();
+    constexpr int min = std::numeric_limits<int>::min();
+    REQUIRE(string::lexical_cast<int>(std::to_string(max)) == max);
+    REQUIRE(string::lexical_cast<int>(std::to_string(min)) == std::numeric_limits<int>::min());
 }

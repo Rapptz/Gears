@@ -28,6 +28,7 @@
 #include "string/replace.hpp"
 #include "string/trim.hpp"
 #include "string/transforms.hpp"
+#include "string/lexical_cast.hpp"
 
 /**
  * @defgroup string String module
