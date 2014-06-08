@@ -67,38 +67,46 @@ inline void fprint(std::basic_ostream<Elem, Traits>& out, const std::basic_strin
     auto args = std::make_tuple(std::forward<Args>(arguments)...);
 
     string::is_digit cmp;
-
-    auto first = str.begin();
-    size_t index = 0;
-
-    while(*first) {
-        if(*first != out.widen('{')) {
-            out << *first++;
+    const auto length = str.size();
+    for(decltype(str.size()) i = 0; i < length; ++i) {
+        auto&& c = str[i];
+        // doesn't start with { so just print it and continue
+        if(c != out.widen('{')) {
+            out << c;
             continue;
         }
 
-        auto check = first;
-
-        // Handle special cases
-        if(!*(++check) || *check == out.widen('}')) {
-            out << *first++;
-            continue;
+        // at this point, the character c points to {
+        // check if we're done printing
+        if(i + 1 > length) {
+            out << c;
+            break;
         }
 
-        index = 0;
-        while(*check && cmp(*check)) {
-            index = (index * 10) + (*check++ - out.widen('0'));
-        }
+        // now we're at a sane point where we can work with the format string
+        auto j = i + 1;
+        unsigned index = 0;
 
-        if(*check == out.widen('}')) {
-            detail::index_printer(out, index, args);
-            ++check;
+        // check if the next character is a digit
+        if(cmp(str[j])) {
+            do {
+                // since it is, multiply the index
+                index = (index * 10) + (str[j++] - out.widen('0'));
+            }
+            while(j < length && cmp(str[j]));
         }
         else {
-            out << *check;
+            // since it isn't a digit, it doesn't match our format string
+            out << str[i];
+            continue;
         }
 
-        first = check;
+        // now that we're done processing, handle the results
+        if(str[j] == out.widen('}')) {
+            detail::index_printer(out, index, args);
+        }
+
+        i = j;
     }
 }
 } // io
