@@ -30,12 +30,12 @@ TEST_CASE("Input/Output", "[io]") {
     SECTION("Basics", "[io-basic]") {
         REQUIRE(io::sprint("{0} {1} {0}"_s, 1, 2) == "1 2 1");
         REQUIRE(io::sprint("{0} + {0} = {1}"_s, 1, 2) == "1 + 1 = 2");
-        REQUIRE(io::sprint("{{0}} {{1}}"_s, 'a', 'b') == "{a} {b}");
+        REQUIRE(io::sprint("{{{0}} {{{1}}"_s, 'a', 'b') == "{a} {b}");
         auto&& longer = io::sprint("{0}{1}{2}{3}{4}{5}{6}{7}{8}{9}{10}{11}"_s, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12);
         REQUIRE(longer == "123456789101112");
-        REQUIRE(io::sprint("{{{{{0}"_s, 1) == "{{{{1");
-        REQUIRE(io::sprint("{{{{{0}{{"_s, 1) == "{{{{1{{");
-        REQUIRE(io::sprint("{{{{{0}{{}{}"_s, 1) == "{{{{1{{}{}");
+        REQUIRE(io::sprint("{{{{{0}"_s, 1) == "{{1");
+        REQUIRE(io::sprint("{{{{{0}{{"_s, 1) == "{{1{");
+        REQUIRE(io::sprint("{{{{{0}{{}{{}"_s, 1) == "{{1{}{}");
         REQUIRE(io::sprint(true ? "[{0}]" : "{{0}}"_s, 10) == "[10]");
     }
 

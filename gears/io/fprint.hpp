@@ -41,6 +41,8 @@ namespace io {
  * io::fprint(std::cout, std::string("{0} {1} {0}"), 1, 2);
  * // could be shortened to:
  * io::print("{0} {1} {0}", 1, 2);
+ * // or
+ * io::fprint(std::cout, "{0} {1} {0}"_s, 1, 2);
  * @endcode
  *
  * would print 1 2 1, with 1 being index 0 and 2 being index 1.
@@ -50,12 +52,25 @@ namespace io {
  * function, `io::print` and `io::sprint`. `io::print` is the equivalent of
  * `fprint(std::cout, ...)` or `fprint(std::wcout, ...)` depending on the
  * format string passed. io::sprint delegates the output stream to a
- * `std::stringstream` object to return a string, similar to `sprintf`
+ * `std::stringstream` object to return a string, similar to `sprintf`.
+ *
+ * The format string is currently `{index}` where `index` is a positional
+ * argument that starts with 0. In order to escape the `{` character, you
+ * have to insert another one. So for example:
+ *
+ * @code
+ * io:print("{{0}", 1);
+ * // prints {0}
+ * @endcode
+ *
+ * There is no need to escape the `}` character as it is not used to delimit
+ * anything.
  *
  * @param out stream to print to
  * @param str format string
  * @param arguments args to print
  * @throws std::out_of_range index in the format string is out of bounds
+ * @throws std::runtime_error invalid format string
  */
 template<class Elem, class Traits, typename... Args>
 inline void fprint(std::basic_ostream<Elem, Traits>& out, const std::basic_string<Elem, Traits>& str, Args&&... arguments) {
@@ -83,10 +98,18 @@ inline void fprint(std::basic_ostream<Elem, Traits>& out, const std::basic_strin
             break;
         }
 
-        // now we're at a sane point where we can work with the format string
+        // check the next characters
         auto j = i + 1;
         unsigned index = 0;
 
+        // escaped character
+        if(str[j] == out.widen('{')) {
+            out << str[i];
+            i = j;
+            continue;
+        }
+
+        // now we're at a sane point where we can work with the format string
         // check if the next character is a digit
         if(cmp(str[j])) {
             do {
@@ -97,8 +120,7 @@ inline void fprint(std::basic_ostream<Elem, Traits>& out, const std::basic_strin
         }
         else {
             // since it isn't a digit, it doesn't match our format string
-            out << str[i];
-            continue;
+            throw std::runtime_error("invalid format string specified");
         }
 
         // now that we're done processing, handle the results

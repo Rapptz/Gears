@@ -19,6 +19,7 @@
         {
             "name": "run tests",
             "shell_cmd": "${project_path}/bootstrap.py --cxx=g++ && ninja run",
+            "file_regex": "^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$",
             "working_dir": "${project_path}",
             "windows": {
                 "shell_cmd": "${project_path}\\bootstrap.py --cxx=g++ && ninja run"
@@ -27,6 +28,7 @@
         {
             "name": "gears single file debug",
             "shell_cmd": "g++ -O0 -g -Wall -Wextra -pedantic -std=c++11 -I. ${file} -o ${file_base_name}",
+            "file_regex": "^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$",
             "working_dir": "${file_path}",
 
             "variants": [
@@ -42,6 +44,7 @@
         {
             "name": "gears single file",
             "shell_cmd": "g++ -O3 -DNDEBUG -Wall -Wextra -pedantic -std=c++11 -I. ${file} -o ${file_base_name}",
+            "file_regex": "^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$",
             "working_dir": "${file_path}",
 
             "variants": [
