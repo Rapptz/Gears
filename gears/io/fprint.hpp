@@ -55,8 +55,9 @@ namespace io {
  * `std::stringstream` object to return a string, similar to `sprintf`.
  *
  * The format string is currently:
+ *
  * @code
- * {index[,alignment]}
+ * {index[,alignment][:format]}
  * @endcode
  *
  * Where:
@@ -70,6 +71,27 @@ namespace io {
  * `std::left` and a positive value will align right as if calling
  * `std::right`. The comma is required to specify the alignment, e.g.
  * `{0,-10}` or `{0,10}`.
+ *
+ * `format` is an optional format specifier that dictates how to format
+ * the string. The format specifier has the syntax of `:CN` where `C` is
+ * a character dictating the format and `N` is the precision. The `C`
+ * argument of the format specifier is required to use the `N`
+ * argument. The N argument is the equivalent of `std::setprecision(N)`.
+ *
+ * The format specifiers and their equivalences are as follows:
+ *
+ *
+ * | Specifier | Equivalent        | Notes                            |
+ * |:---------:|:------------------|:---------------------------------|
+ * | F         | `std::fixed`      |                                  |
+ * | E         | `std::scientific` | `std::uppercase is enabled       |
+ * | e         | `std::scientific` | `std::uppercase is disabled      |
+ * | O         | `std::oct`        |                                  |
+ * | X         | `std::hex`        | `std::uppercase` is enabled      |
+ * | x         | `std::hex`        | `std::uppercase` is disabled     |
+ * | B         | `std::boolalpha`  |                                  |
+ * | S         | `std::showpos`    |                                  |
+ *
  *
  * In order to escape the `{` character, you have to insert another
  * one. So for example:
@@ -101,6 +123,7 @@ inline void fprint(std::basic_ostream<Elem, Traits>& out, const std::basic_strin
     auto&& length = str.size();
     auto&& original_width = out.width();
     std::ios_base::fmtflags original_format = out.flags();
+    auto&& original_precision = out.precision();
 
     for(decltype(str.size()) i = 0; i < length; ++i) {
         auto&& c = str[i];
@@ -121,6 +144,7 @@ inline void fprint(std::basic_ostream<Elem, Traits>& out, const std::basic_strin
         auto j = i + 1;
         unsigned index = 0;
         decltype(out.width()) width = 0;
+        decltype(out.precision()) precision = 0;
         auto format = original_format;
 
         // escaped character
@@ -174,13 +198,61 @@ inline void fprint(std::basic_ostream<Elem, Traits>& out, const std::basic_strin
             }
         }
 
+        // check if format specifier exists
+        if(str[j] == out.widen(':')) {
+            // check if the character is valid
+            if(j + 1 < length) {
+                auto&& specifier = str[j + 1];
+                switch(specifier) {
+                case 'F':
+                    format |= out.fixed;
+                    break;
+                case 'O':
+                    format = (format & ~out.basefield) | out.oct;
+                    break;
+                case 'x':
+                    format = (format & ~out.basefield) | out.hex;
+                    break;
+                case 'X':
+                    format = (format & ~out.basefield) | out.hex | out.uppercase;
+                    break;
+                case 'E':
+                    format |= out.scientific | out.uppercase;
+                    break;
+                case 'e':
+                    format |= out.scientific;
+                    break;
+                case 'B':
+                    format |= out.boolalpha;
+                    break;
+                case 'S':
+                    format |= out.showpos;
+                    break;
+                default:
+                    throw std::runtime_error("no such format specifier found");
+                    break;
+                }
+                j += 2;
+
+                // handle precision specifier
+                if(j < length && cmp(str[j])) {
+                    do {
+                        precision = (precision * 10) + (str[j++] - out.widen('0'));
+                    }
+                    while(j < length && cmp(str[j]));
+                }
+            }
+        }
+
         // now that we're done processing, handle the results
         if(str[j] == out.widen('}')) {
             out.flags(format);
             out.width(width);
+            out.precision(precision);
             detail::index_printer(out, index, args);
             out.width(original_width);
             out.flags(original_format);
+            out.precision(original_precision);
             i = j;
         }
     }

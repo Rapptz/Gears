@@ -46,6 +46,16 @@ TEST_CASE("Input/Output", "[io]") {
         REQUIRE(io::sprint(".{0,10}.\n.{0,-10}.\n.{0,10}."_s, "Hello") == ".     Hello.\n.Hello     .\n.     Hello.");
     }
 
+    SECTION("Format", "[io-format]") {
+        REQUIRE(io::sprint("{0:F2}"_s, 2.142134) == "2.14");
+        REQUIRE(io::sprint("{0:S} {1:S}"_s, -1, 1) == "-1 +1");
+        REQUIRE(io::sprint("0x{0:X} 0x{0:x}"_s, 1001) == "0x3E9 0x3e9");
+        REQUIRE(io::sprint("{0:e} {0:E}"_s, 6e+100) == "6e+100 6E+100");
+        REQUIRE(io::sprint("{0:e3} {0:E3}"_s, 6.1232e+100) == "6.123e+100 6.123E+100");
+        REQUIRE(io::sprint("0{0:O}"_s, 100) == "0144");
+        REQUIRE(io::sprint("{0:B} {1:B}"_s, true, false) == "true false");
+    }
+
     SECTION("Lines", "[io-lines]") {
         std::istringstream iss("10\n11\n12\n13\n14\n15");
         unsigned number_of_lines = 0;
