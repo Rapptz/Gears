@@ -36,7 +36,14 @@ TEST_CASE("Input/Output", "[io]") {
         REQUIRE(io::sprint("{{{{{0}"_s, 1) == "{{1");
         REQUIRE(io::sprint("{{{{{0}{{"_s, 1) == "{{1{");
         REQUIRE(io::sprint("{{{{{0}{{}{{}"_s, 1) == "{{1{}{}");
-        REQUIRE(io::sprint(true ? "[{0}]" : "{{0}}"_s, 10) == "[10]");
+        REQUIRE(io::sprint(true ? "[{0}]"_s : "{{0}}"_s, 10) == "[10]");
+    }
+
+    SECTION("Alignment", "[io-align]") {
+        REQUIRE(io::sprint("{0,10}"_s, "Hello") == "     Hello");
+        REQUIRE(io::sprint("{0,-10}"_s, "Hello") == "Hello     ");
+        REQUIRE(io::sprint("{{0,-10}"_s, 10) == "{0,-10}");
+        REQUIRE(io::sprint(".{0,10}.\n.{0,-10}.\n.{0,10}."_s, "Hello") == ".     Hello.\n.Hello     .\n.     Hello.");
     }
 
     SECTION("Lines", "[io-lines]") {

@@ -54,9 +54,25 @@ namespace io {
  * format string passed. io::sprint delegates the output stream to a
  * `std::stringstream` object to return a string, similar to `sprintf`.
  *
- * The format string is currently `{index}` where `index` is a positional
- * argument that starts with 0. In order to escape the `{` character, you
- * have to insert another one. So for example:
+ * The format string is currently:
+ * @code
+ * {index[,alignment]}
+ * @endcode
+ *
+ * Where:
+ *
+ * `index` is the required positional argument of the string.
+ * If the positional argument is not found, then an exception is
+ * thrown.
+ *
+ * `alignment` is an optional signed integer that dictates whether to
+ * align left or right. A negative value aligns left, as if calling
+ * `std::left` and a positive value will align right as if calling
+ * `std::right`. The comma is required to specify the alignment, e.g.
+ * `{0,-10}` or `{0,10}`.
+ *
+ * In order to escape the `{` character, you have to insert another
+ * one. So for example:
  *
  * @code
  * io:print("{{0}", 1);
@@ -82,7 +98,10 @@ inline void fprint(std::basic_ostream<Elem, Traits>& out, const std::basic_strin
     auto args = std::make_tuple(std::forward<Args>(arguments)...);
 
     string::is_digit cmp;
-    const auto length = str.size();
+    auto&& length = str.size();
+    auto&& original_width = out.width();
+    std::ios_base::fmtflags original_format = out.flags();
+
     for(decltype(str.size()) i = 0; i < length; ++i) {
         auto&& c = str[i];
         // doesn't start with { so just print it and continue
@@ -101,6 +120,8 @@ inline void fprint(std::basic_ostream<Elem, Traits>& out, const std::basic_strin
         // check the next characters
         auto j = i + 1;
         unsigned index = 0;
+        decltype(out.width()) width = 0;
+        auto format = original_format;
 
         // escaped character
         if(str[j] == out.widen('{')) {
@@ -123,12 +144,45 @@ inline void fprint(std::basic_ostream<Elem, Traits>& out, const std::basic_strin
             throw std::runtime_error("invalid format string specified");
         }
 
-        // now that we're done processing, handle the results
-        if(str[j] == out.widen('}')) {
-            detail::index_printer(out, index, args);
+        // check if alignment argument exists
+        if(str[j] == out.widen(',')) {
+            // check if the next character is valid
+            if(j + 1 < length) {
+                // check if the alignment is left or right
+                if(str[j + 1] == out.widen('-')) {
+                    format |= out.left;
+                    // increment by two to get to the numerical section
+                    j += 2;
+                }
+                else {
+                    format |= out.right;
+                    ++j;
+                }
+                // check if the next character is a digit
+                if(j < length && cmp(str[j])) {
+                    do {
+                        // since it is, multiply the width
+                        width = (width * 10) + (str[j++] - out.widen('0'));
+                    }
+                    while(j < length && cmp(str[j]));
+                }
+                else {
+                    // invalid format string found
+                    throw std::runtime_error("invalid format string specified");
+                }
+
+            }
         }
 
-        i = j;
+        // now that we're done processing, handle the results
+        if(str[j] == out.widen('}')) {
+            out.flags(format);
+            out.width(width);
+            detail::index_printer(out, index, args);
+            out.width(original_width);
+            out.flags(original_format);
+            i = j;
+        }
     }
 }
 } // io
