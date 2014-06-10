@@ -19,19 +19,38 @@
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-#ifndef GEARS_UTILITY_HPP
-#define GEARS_UTILITY_HPP
+#ifndef GEARS_UTILITY_HELPERS_HPP
+#define GEARS_UTILITY_HELPERS_HPP
 
-#include "utility/triple.hpp"
-#include "utility/maybe.hpp"
-#include "utility/any.hpp"
-#include "utility/helpers.hpp"
+#include <array>
+#include <utility>
+#include <type_traits>
 
+namespace gears {
+namespace utility {
 /**
- * @defgroup utility Utility module
- * @brief Provides general purpose utilities.
- * @details This module provides utilities that are general enough
- * to not belong in a specific module.
+ * @ingroup utility
+ * @brief Constructs an std::array instance.
+ * @details Constructs an `std::array` instance from the
+ * arguments provided of type T. This allows for quick generation
+ * of `std::array` instances similar to raw C arrays.
+ *
+ * @code
+ * auto arr = utility::make_array<int>(1, 2, 3, 4, 5, 6, 7, 8);
+ * // same as
+ * // int arr[] = { 1, 2, 3, 4, 5, 6, 7, 8 };
+ * @endcode
+ *
+ * @param args Arguments to store into the array.
+ * @tparam T The type of the array.
+ * @return An `std::array` containing the elements provided.
  */
+template<typename T, typename... Args>
+constexpr std::array<T, sizeof...(Args)> make_array(Args&&... args) {
+    return std::array<T, sizeof...(Args)>{{ std::forward<Args>(args)... }};
+}
+} // utility
+} // gears
 
-#endif // GEARS_UTILITY_HPP
+#endif // GEARS_UTILITY_HELPERS_HPP
+
