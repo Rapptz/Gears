@@ -26,6 +26,7 @@
 #include "utility/maybe.hpp"
 #include "utility/any.hpp"
 #include "utility/helpers.hpp"
+#include "utility/base64.hpp"
 
 /**
  * @defgroup utility Utility module

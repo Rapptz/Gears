@@ -36,3 +36,6 @@ dev*
 
 # Documentation
 docs/html/*
+
+# Ninja files
+*.ninja
