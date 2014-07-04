@@ -55,6 +55,7 @@ ninja.rule('compile', command = '$cxx -MMD -MF $out.d -c $cxxflags $in -o $out',
                       description = 'Compiling $in to $out')
 ninja.rule('link', command = '$cxx $cxxflags $in -o $out', description = 'Creating $out')
 ninja.rule('runner', command = tests)
+ninja.rule('documentation', command = 'doxygen $in', description = 'Generating documentation')
 
 # builds
 ninja.build('build.ninja', 'bootstrap', implicit = sys.argv[0])
@@ -68,4 +69,6 @@ for f in glob.glob('tests/*.cpp'):
 ninja.build(tests, 'link', inputs = object_files)
 ninja.build('install', 'phony', inputs = tests)
 ninja.build('run', 'runner', implicit = 'install')
+ninja.build('doxy', 'documentation', inputs = 'Doxyfile')
+ninja.build('docs', 'phony', 'doxy')
 ninja.default('run')
