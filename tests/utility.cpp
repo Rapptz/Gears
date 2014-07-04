@@ -57,3 +57,93 @@ TEST_CASE("Utility", "[utility]") {
         REQUIRE(util::base64::decode("YW55IGNhcm5hbCBwbGVhc3VyZQ==") == "any carnal pleasure");
     }
 }
+
+#define GEARS_REQUIRE_TRUE(...) \
+    REQUIRE(is_true(__VA_ARGS__)); \
+    REQUIRE(!is_indeterminate(__VA_ARGS__)); \
+    REQUIRE(!is_false(__VA_ARGS__));
+
+#define GEARS_REQUIRE_FALSE(...) \
+    REQUIRE(is_false(__VA_ARGS__)); \
+    REQUIRE(!is_indeterminate(__VA_ARGS__)); \
+    REQUIRE(!is_true(__VA_ARGS__));
+
+#define GEARS_REQUIRE_INDETERMINATE(...) \
+    REQUIRE(!is_false(__VA_ARGS__)); \
+    REQUIRE(is_indeterminate(__VA_ARGS__)); \
+    REQUIRE(!is_true(__VA_ARGS__));
+
+TEST_CASE("tribool", "[utility-tribool]") {
+    using namespace gears::utility;
+
+    SECTION("indeterminate") {
+        tribool x;
+        GEARS_REQUIRE_INDETERMINATE(x);
+        GEARS_REQUIRE_INDETERMINATE(x == indeterminate);
+        GEARS_REQUIRE_INDETERMINATE(!x == indeterminate);
+
+        x = indeterminate;
+        GEARS_REQUIRE_INDETERMINATE(x);
+        GEARS_REQUIRE_INDETERMINATE(x == indeterminate);
+        GEARS_REQUIRE_INDETERMINATE(!x == indeterminate);
+        GEARS_REQUIRE_INDETERMINATE(x != true);
+        GEARS_REQUIRE_INDETERMINATE(x != false);
+        GEARS_REQUIRE_INDETERMINATE(x == x);
+        GEARS_REQUIRE_INDETERMINATE(!(x != x));
+    }
+
+    SECTION("true") {
+        tribool x = true;
+        GEARS_REQUIRE_TRUE(x);
+        GEARS_REQUIRE_TRUE(x == true);
+        GEARS_REQUIRE_TRUE(x);
+        GEARS_REQUIRE_TRUE(x != false);
+        GEARS_REQUIRE_INDETERMINATE(x != indeterminate);
+        GEARS_REQUIRE_TRUE(!x == false);
+        GEARS_REQUIRE_TRUE(x == x);
+        GEARS_REQUIRE_TRUE(!(x != x));
+    }
+
+    SECTION("false") {
+        tribool x = false;
+        GEARS_REQUIRE_FALSE(x);
+        GEARS_REQUIRE_TRUE(x == false);
+        GEARS_REQUIRE_TRUE(!x);
+        GEARS_REQUIRE_TRUE(x != true);
+        GEARS_REQUIRE_INDETERMINATE(x != indeterminate);
+        GEARS_REQUIRE_TRUE(x == x);
+        GEARS_REQUIRE_TRUE(!(x != x));
+    }
+
+    SECTION("logical and") {
+        tribool x = false;
+        tribool y = true;
+        tribool z;
+
+        REQUIRE(is_true(y && y));
+        REQUIRE(is_false(y && x));
+        REQUIRE(is_indeterminate(y && z));
+        REQUIRE(is_false(x && y));
+        REQUIRE(is_false(x && x));
+        REQUIRE(is_false(x && z));
+        REQUIRE(is_indeterminate(z && y));
+        REQUIRE(is_false(z && x));
+        REQUIRE(is_indeterminate(z && z));
+    }
+
+    SECTION("logical or") {
+        tribool x = false;
+        tribool y = true;
+        tribool z;
+
+        REQUIRE(is_true(y || y));
+        REQUIRE(is_true(y || z));
+        REQUIRE(is_true(y || x));
+        REQUIRE(is_true(x || y));
+        REQUIRE(is_false(x || x));
+        REQUIRE(is_indeterminate(x || z));
+        REQUIRE(is_true(z || y));
+        REQUIRE(is_indeterminate(z || z));
+        REQUIRE(is_indeterminate(z || x));
+    }
+}

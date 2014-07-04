@@ -27,6 +27,7 @@
 #include "utility/any.hpp"
 #include "utility/helpers.hpp"
 #include "utility/base64.hpp"
+#include "utility/tribool.hpp"
 
 /**
  * @defgroup utility Utility module
