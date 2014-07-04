@@ -17,32 +17,34 @@
     "build_systems":
     [
         {
-            "name": "run tests",
-            "shell_cmd": "${project_path}/bootstrap.py --cxx=g++ && ninja run",
+            "name": "Tests",
+            "shell_cmd": "ninja install",
             "file_regex": "^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$",
             "working_dir": "${project_path}",
-            "windows": {
-                "shell_cmd": "${project_path}\\bootstrap.py --cxx=g++ && ninja run"
-            }
-        },
-        {
-            "name": "gears single file debug",
-            "shell_cmd": "g++ -O0 -g -Wall -Wextra -pedantic -std=c++11 -I. ${file} -o ${file_base_name}",
-            "file_regex": "^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$",
-            "working_dir": "${file_path}",
 
             "variants": [
                 {
                     "name": "Run",
+                    "shell_cmd": "ninja run"
+                },
+                {
+                    "name": "Debug",
+                    "file_regex": "^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$",
+                    "working_dir": "${project_path}",
+                    "shell_cmd": "./bootstrap.py --debug && ninja install && ./bootstrap.py",
                     "windows": {
-                        "shell_cmd": "\"${file_path}\\\\${file_base_name}.exe\""
-                    },
-                    "shell_cmd": "\"${file_path}/${file_base_name}\""
+                        "shell_cmd": "bootstrap.py --debug && ninja install && bootstrap.py"
+                    }
+                },
+                {
+                    "name": "Doxygen",
+                    "working_dir": "${project_path}",
+                    "shell_cmd": "ninja docs"
                 }
             ]
         },
         {
-            "name": "gears single file",
+            "name": "Single File",
             "shell_cmd": "g++ -O3 -DNDEBUG -Wall -Wextra -pedantic -std=c++11 -I. ${file} -o ${file_base_name}",
             "file_regex": "^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$",
             "working_dir": "${file_path}",
@@ -54,6 +56,12 @@
                         "shell_cmd": "\"${file_path}\\\\${file_base_name}.exe\""
                     },
                     "shell_cmd": "\"${file_path}/${file_base_name}\""
+                },
+                {
+                    "name": "Debug",
+                    "shell_cmd": "g++ -Og -g -Wall -Wextra -pedantic -std=c++11 -I. ${file} -o ${file_base_name}",
+                    "file_regex": "^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$",
+                    "working_dir": "${file_path}"
                 }
             ]
         }
