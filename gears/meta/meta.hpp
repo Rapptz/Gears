@@ -29,6 +29,7 @@ namespace gears {
 namespace meta {
 /**
  * @ingroup meta
+ * @brief Template alias for getting the type
  */
 template<typename T>
 using Type = typename T::type;
@@ -59,6 +60,7 @@ using Const = std::integral_constant<T,t>;
 
 /**
  * @ingroup meta
+ * @brief Template alias for integer `std::integral_constant`.
  */
 template<int i>
 using Integer = Const<int,i>;
@@ -154,7 +156,7 @@ struct Not : Bool<!T::value> {};
  * @brief Logical Or meta function
  * @details The equivalent of `operator||` for bools
  * except for meta functions. Evaluates it based on the
- * argument's `::value`. Returns `std::true_type` or
+ * argument's `value`. Returns `std::true_type` or
  * `std::false_type`.
  *
  * @code
@@ -175,7 +177,7 @@ struct Any<T, Args...> : If<T, Bool<true>, Any<Args...>> {};
  * @brief Logical And meta function
  * @details The equivalent of `operator&&` for bools
  * except for meta functions. Evaluates it based on the
- * argument's `::value`. Returns `std::true_type` or
+ * argument's `value`. Returns `std::true_type` or
  * `std::false_type`.
  *
  * @code

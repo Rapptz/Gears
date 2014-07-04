@@ -84,8 +84,8 @@ namespace io {
  * | Specifier | Equivalent        | Notes                            |
  * |:---------:|:------------------|:---------------------------------|
  * | F         | `std::fixed`      |                                  |
- * | E         | `std::scientific` | `std::uppercase is enabled       |
- * | e         | `std::scientific` | `std::uppercase is disabled      |
+ * | E         | `std::scientific` | `std::uppercase` is enabled      |
+ * | e         | `std::scientific` | `std::uppercase` is disabled     |
  * | O         | `std::oct`        |                                  |
  * | X         | `std::hex`        | `std::uppercase` is enabled      |
  * | x         | `std::hex`        | `std::uppercase` is disabled     |

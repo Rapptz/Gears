@@ -197,7 +197,7 @@ public:
      * constructed
      * </pre>
      *
-     * @param Args Parameters to forward to the constructor.
+     * @param args Parameters to forward to the constructor.
      */
     template<typename... Args>
     constexpr explicit maybe(in_place_t, Args&&... args): MaybeBase<T>(in_place, meta::cforward<Args>(args)...) {}
@@ -333,6 +333,7 @@ public:
      * std::cout << stuff->x;
      * @endcode
      *
+     * @return Pointer to contained value.
      */
     constexpr const T* operator->() const {
         return data();
@@ -349,6 +350,7 @@ public:
      * @details Returns a reference to the contained value.
      * If the current state is disengaged, then the behaviour
      * is undefined.
+     * @return Reference to the contained value.
      */
     constexpr const T& operator*() const {
         return internal();

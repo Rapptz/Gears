@@ -91,7 +91,8 @@ using Require = typename requires_checker<Concepts...>::type;
  *
  * @tparam T Type to check concepts for
  * @tparam Concepts... Unary concepts to assert.
- *
+ * @return `true`, this value should probably be ignored as it is only
+ * there for `constexpr` status.
  */
 template<typename T, template<typename...> class... Concepts>
 constexpr bool require() {
