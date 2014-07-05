@@ -22,6 +22,7 @@
 #include <catch.hpp>
 #include <gears/utility.hpp>
 #include <type_traits>
+#include <sstream>
 
 namespace util = gears::utility;
 
@@ -145,5 +146,61 @@ TEST_CASE("tribool", "[utility-tribool]") {
         REQUIRE(is_true(z || y));
         REQUIRE(is_indeterminate(z || z));
         REQUIRE(is_indeterminate(z || x));
+    }
+
+    SECTION("output") {
+        tribool x = true;
+        std::ostringstream out;
+        out << x;
+        REQUIRE(out.str() == "1");
+        x = false;
+        out << x;
+        REQUIRE(out.str() == "10");
+        x = indeterminate;
+        out << x;
+        REQUIRE(out.str() == "102");
+        out.str("");
+
+        out << std::boolalpha << x;
+        REQUIRE(out.str() == "indeterminate");
+        out.str("");
+        x = true;
+        out << std::boolalpha << x;
+        REQUIRE(out.str() == "true");
+        x = false;
+        out.str("");
+        out << std::boolalpha << x;
+        REQUIRE(out.str() == "false");
+
+        // custom name facet
+        indeterminate_t null{};
+        out.str("");
+        out.imbue(std::locale(out.getloc(), new indeterminate_name<char>("null")));
+        x = null;
+        out << std::boolalpha << x;
+        REQUIRE(out.str() == "null");
+    }
+
+    SECTION("input") {
+        tribool x, y, z;
+        std::istringstream ss("0 1 2");
+        REQUIRE((ss >> x >> y >> z));
+        GEARS_REQUIRE_FALSE(x);
+        GEARS_REQUIRE_TRUE(y);
+        GEARS_REQUIRE_INDETERMINATE(z);
+
+        ss.str("false true indeterminate");
+        ss.clear();
+        REQUIRE((ss >> std::boolalpha >> x >> y >> z));
+        GEARS_REQUIRE_FALSE(x);
+        GEARS_REQUIRE_TRUE(y);
+        GEARS_REQUIRE_INDETERMINATE(z);
+
+        // custom name facet
+        ss.str("null");
+        ss.clear();
+        ss.imbue(std::locale(ss.getloc(), new indeterminate_name<char>("null")));
+        REQUIRE((ss >> std::boolalpha >> x));
+        GEARS_REQUIRE_INDETERMINATE(x);
     }
 }
