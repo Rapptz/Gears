@@ -17,6 +17,6 @@ var group__io =
     ] ],
     [ "flags", "group__io.html#ga246ba0ef8f6f242274595c04298d20d9", null ],
     [ "flags", "group__io.html#gacd0ea53decb51365f10f11409a17cb97", null ],
-    [ "fprint", "group__io.html#ga7179c18b997ee114239f28b9a785677f", null ],
+    [ "fprint", "group__io.html#gac26a01b50d8417af5e9cd652ef693595", null ],
     [ "lines", "group__io.html#ga5bdfb1fec3ca3283e5984bfc8d68e046", null ]
 ];

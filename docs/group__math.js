@@ -38,5 +38,7 @@ var group__math =
     [ "max", "group__math.html#ga57defb757d911c751135b5cf7035caf2", null ],
     [ "min", "group__math.html#ga38b8ad00a9e5fdcb39b17c168e311e8c", null ],
     [ "mod_pow", "group__math.html#ga292dbc5139c31286c440c2c9e01dd524", null ],
+    [ "primes", "group__math.html#ga104347ced0c4198fc6463793f1f33315", null ],
+    [ "pythagorean_triples", "group__math.html#gab7790a41e25fd76fa5720b01b90ae775", null ],
     [ "sum_of_divisors", "group__math.html#gad8b0beb0e045fb275fbf777c8b30027b", null ]
 ];

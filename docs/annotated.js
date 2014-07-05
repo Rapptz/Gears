@@ -92,7 +92,10 @@ var annotated =
       ] ],
       [ "utility", null, [
         [ "any", "classgears_1_1utility_1_1any.html", "classgears_1_1utility_1_1any" ],
+        [ "invalid_base64", "classgears_1_1utility_1_1invalid__base64.html", "classgears_1_1utility_1_1invalid__base64" ],
         [ "maybe", "classgears_1_1utility_1_1maybe.html", "classgears_1_1utility_1_1maybe" ],
+        [ "tribool", "structgears_1_1utility_1_1tribool.html", "structgears_1_1utility_1_1tribool" ],
+        [ "indeterminate_name", "structgears_1_1utility_1_1indeterminate__name.html", "structgears_1_1utility_1_1indeterminate__name" ],
         [ "triple", "structgears_1_1utility_1_1triple.html", "structgears_1_1utility_1_1triple" ]
       ] ]
     ] ]

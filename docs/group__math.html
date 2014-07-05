@@ -134,6 +134,14 @@ Functions</h2></td></tr>
 <tr class="memitem:gaa309e2d7e560dfbfc611cc2a0986f902"><td class="memTemplItemLeft" align="right" valign="top">constexpr T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__math.html#gaa309e2d7e560dfbfc611cc2a0986f902">gears::math::abs</a> (T t)</td></tr>
 <tr class="memdesc:gaa309e2d7e560dfbfc611cc2a0986f902"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the absolute value of a number.  <a href="#gaa309e2d7e560dfbfc611cc2a0986f902">More...</a><br/></td></tr>
 <tr class="separator:gaa309e2d7e560dfbfc611cc2a0986f902"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga104347ced0c4198fc6463793f1f33315"><td class="memTemplParams" colspan="2">template&lt;typename Container , typename Value  = typename Container::value_type&gt; </td></tr>
+<tr class="memitem:ga104347ced0c4198fc6463793f1f33315"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__math.html#ga104347ced0c4198fc6463793f1f33315">gears::math::primes</a> (Value limit, Container &amp;cont)</td></tr>
+<tr class="memdesc:ga104347ced0c4198fc6463793f1f33315"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates primes using a modified Sieve of Eratosthenes.  <a href="#ga104347ced0c4198fc6463793f1f33315">More...</a><br/></td></tr>
+<tr class="separator:ga104347ced0c4198fc6463793f1f33315"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab7790a41e25fd76fa5720b01b90ae775"><td class="memTemplParams" colspan="2">template&lt;typename Container , typename Integral &gt; </td></tr>
+<tr class="memitem:gab7790a41e25fd76fa5720b01b90ae775"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__math.html#gab7790a41e25fd76fa5720b01b90ae775">gears::math::pythagorean_triples</a> (Integral limit, Container &amp;cont)</td></tr>
+<tr class="memdesc:gab7790a41e25fd76fa5720b01b90ae775"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates Pythagorean triples.  <a href="#gab7790a41e25fd76fa5720b01b90ae775">More...</a><br/></td></tr>
+<tr class="separator:gab7790a41e25fd76fa5720b01b90ae775"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga38b8ad00a9e5fdcb39b17c168e311e8c"><td class="memTemplParams" colspan="2">template&lt;typename T , typename U , typename... Args&gt; </td></tr>
 <tr class="memitem:ga38b8ad00a9e5fdcb39b17c168e311e8c"><td class="memTemplItemLeft" align="right" valign="top">constexpr std::common_type&lt; T, <br class="typebreak"/>
 U, Args...&gt;::type&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__math.html#ga38b8ad00a9e5fdcb39b17c168e311e8c">gears::math::min</a> (T &amp;&amp;t, U &amp;&amp;u, Args &amp;&amp;...args)</td></tr>
@@ -441,6 +449,99 @@ template&lt;typename T &gt; </div>
 <dl class="section return"><dt>Returns</dt><dd><code>(base ** exponent) % modulus</code>. </dd></dl>
 
 <p>Definition at line <a class="el" href="algorithm_8hpp_source.html#l00105">105</a> of file <a class="el" href="algorithm_8hpp_source.html">algorithm.hpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ga104347ced0c4198fc6463793f1f33315"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Container , typename Value  = typename Container::value_type&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void gears::math::primes </td>
+          <td>(</td>
+          <td class="paramtype">Value&#160;</td>
+          <td class="paramname"><em>limit</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Container &amp;&#160;</td>
+          <td class="paramname"><em>cont</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Generates primes using a modified Sieve of Eratosthenes. The function will generate primes up to the limit provided. e.g. if limit is 100, then the last prime generated would be 97. The container must have an integral <code>value_type</code> for best results. Currently this function only works on containers that provide the <code>push_back</code> function. This might be changed in the future. The first two primes (2 and 3) are always provided regardless of the limit given.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">limit</td><td>The upper limit of primes to generate. </td></tr>
+    <tr><td class="paramname">cont</td><td>The container to insert the primes to. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="generator_8hpp_source.html#l00047">47</a> of file <a class="el" href="generator_8hpp_source.html">generator.hpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="gab7790a41e25fd76fa5720b01b90ae775"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Container , typename Integral &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void gears::math::pythagorean_triples </td>
+          <td>(</td>
+          <td class="paramtype">Integral&#160;</td>
+          <td class="paramname"><em>limit</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Container &amp;&#160;</td>
+          <td class="paramname"><em>cont</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Generates Pythagorean triples and puts the results into a container provided. The results are added to the container as if calling:</p>
+<div class="fragment"><div class="line">cont.emplace_back(x, y, z)</div>
+</div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">limit</td><td>The upper limit of Pythagorean triples to generate. </td></tr>
+    <tr><td class="paramname">cont</td><td>The container to emplace the Pythagorean triples. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="generator_8hpp_source.html#l00092">92</a> of file <a class="el" href="generator_8hpp_source.html">generator.hpp</a>.</p>
 
 </div>
 </div>

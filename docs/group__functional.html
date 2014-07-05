@@ -120,10 +120,10 @@ Functions</h2></td></tr>
 detail::SpecialDecay&lt; Args &gt;...&gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__functional.html#ga39169e3b53ed3bed41475b7bf7dafc6f">gears::functional::curry</a> (Function &amp;&amp;f, Args &amp;&amp;...args)</td></tr>
 <tr class="memdesc:ga39169e3b53ed3bed41475b7bf7dafc6f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Applies function currying to functions.  <a href="#ga39169e3b53ed3bed41475b7bf7dafc6f">More...</a><br/></td></tr>
 <tr class="separator:ga39169e3b53ed3bed41475b7bf7dafc6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gac8bb97c43155e2866758294b81ff9661"><td class="memTemplParams" colspan="2">template&lt;typename... T&gt; </td></tr>
-<tr class="memitem:gac8bb97c43155e2866758294b81ff9661"><td class="memTemplItemLeft" align="right" valign="top">constexpr Result&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__functional.html#gac8bb97c43155e2866758294b81ff9661">gears::functional::invoke</a> (T &amp;&amp;...t) noexcept</td></tr>
-<tr class="memdesc:gac8bb97c43155e2866758294b81ff9661"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implements the <code>INVOKE</code> facility in the C++ standard.  <a href="#gac8bb97c43155e2866758294b81ff9661">More...</a><br/></td></tr>
-<tr class="separator:gac8bb97c43155e2866758294b81ff9661"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga760ed60ecfdabc7f503ebaa8d4116852"><td class="memTemplParams" colspan="2">template&lt;typename... Args&gt; </td></tr>
+<tr class="memitem:ga760ed60ecfdabc7f503ebaa8d4116852"><td class="memTemplItemLeft" align="right" valign="top">constexpr Result&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__functional.html#ga760ed60ecfdabc7f503ebaa8d4116852">gears::functional::invoke</a> (Args &amp;&amp;...args) noexcept(NoExcept)</td></tr>
+<tr class="memdesc:ga760ed60ecfdabc7f503ebaa8d4116852"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implements the <code>INVOKE</code> facility in the C++ standard.  <a href="#ga760ed60ecfdabc7f503ebaa8d4116852">More...</a><br/></td></tr>
+<tr class="separator:ga760ed60ecfdabc7f503ebaa8d4116852"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p>This module provides multiple function objects (also called functors) and operations that make working in a functional manner easier.</p>
@@ -238,19 +238,19 @@ template&lt;typename Function , typename... Args&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="gac8bb97c43155e2866758294b81ff9661"></a>
+<a class="anchor" id="ga760ed60ecfdabc7f503ebaa8d4116852"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename... T&gt; </div>
+template&lt;typename... Args&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">template&lt; typename...T &gt; auto gears::functional::invoke </td>
+          <td class="memname">template&lt; typename...Args &gt; auto gears::functional::invoke </td>
           <td>(</td>
-          <td class="paramtype">T &amp;&amp;...&#160;</td>
+          <td class="paramtype">Args &amp;&amp;...&#160;</td>
           <td class="paramname"><em>t</em></td><td>)</td>
           <td></td>
         </tr>
@@ -283,7 +283,7 @@ to an object of a type derived from T;
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>generic result of the invoked call. </dd></dl>
 
-<p>Definition at line <a class="el" href="invoke_8hpp_source.html#l00073">73</a> of file <a class="el" href="invoke_8hpp_source.html">invoke.hpp</a>.</p>
+<p>Definition at line <a class="el" href="invoke_8hpp_source.html#l00085">85</a> of file <a class="el" href="invoke_8hpp_source.html">invoke.hpp</a>.</p>
 
 </div>
 </div>

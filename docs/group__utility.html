@@ -92,7 +92,9 @@ $(document).ready(function(){initNavTree('group__utility.html','');});
 
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a>  </div>
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">Utility module</div>  </div>
 </div><!--header-->
@@ -106,15 +108,154 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgears_1_1utility_1_1any.html">gears::utility::any</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A class that contains a type erased value.  <a href="classgears_1_1utility_1_1any.html#details">More...</a><br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgears_1_1utility_1_1invalid__base64.html">gears::utility::invalid_base64</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Exception thrown when input string is invalid base64.  <a href="classgears_1_1utility_1_1invalid__base64.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgears_1_1utility_1_1maybe.html">gears::utility::maybe&lt; T &gt;</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">An optional data type.  <a href="classgears_1_1utility_1_1maybe.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgears_1_1utility_1_1tribool.html">gears::utility::tribool</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implements Kleene's logic for three-state booleans.  <a href="structgears_1_1utility_1_1tribool.html#details">More...</a><br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgears_1_1utility_1_1triple.html">gears::utility::triple&lt; T, U, V &gt;</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implements a three-element tuple.  <a href="structgears_1_1utility_1_1triple.html#details">More...</a><br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:gaf745f6eab99ce77026b613ab42ca038a"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__utility.html#gaf745f6eab99ce77026b613ab42ca038a">gears::utility::base64::encode</a> (const std::string &amp;str)</td></tr>
+<tr class="memdesc:gaf745f6eab99ce77026b613ab42ca038a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Encodes a string to base64.  <a href="#gaf745f6eab99ce77026b613ab42ca038a">More...</a><br/></td></tr>
+<tr class="separator:gaf745f6eab99ce77026b613ab42ca038a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaeb08c4ef993da3a96e801fb425470e84"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__utility.html#gaeb08c4ef993da3a96e801fb425470e84">gears::utility::base64::decode</a> (const std::string &amp;str)</td></tr>
+<tr class="memdesc:gaeb08c4ef993da3a96e801fb425470e84"><td class="mdescLeft">&#160;</td><td class="mdescRight">Decodes a string from base64.  <a href="#gaeb08c4ef993da3a96e801fb425470e84">More...</a><br/></td></tr>
+<tr class="separator:gaeb08c4ef993da3a96e801fb425470e84"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab190981e6beccb6fbb1892af239c78d7"><td class="memTemplParams" colspan="2">template&lt;typename T , typename... Args&gt; </td></tr>
+<tr class="memitem:gab190981e6beccb6fbb1892af239c78d7"><td class="memTemplItemLeft" align="right" valign="top">constexpr std::array&lt; T, <br class="typebreak"/>
+sizeof...(Args)&gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__utility.html#gab190981e6beccb6fbb1892af239c78d7">gears::utility::make_array</a> (Args &amp;&amp;...args)</td></tr>
+<tr class="memdesc:gab190981e6beccb6fbb1892af239c78d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs an std::array instance.  <a href="#gab190981e6beccb6fbb1892af239c78d7">More...</a><br/></td></tr>
+<tr class="separator:gab190981e6beccb6fbb1892af239c78d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:ga47d972b5f07ee8d5de2ed71f86fd1cdd"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga47d972b5f07ee8d5de2ed71f86fd1cdd"></a>
+constexpr indeterminate_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__utility.html#ga47d972b5f07ee8d5de2ed71f86fd1cdd">gears::utility::indeterminate</a> {}</td></tr>
+<tr class="memdesc:ga47d972b5f07ee8d5de2ed71f86fd1cdd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents an indeterminate tribool value. <br/></td></tr>
+<tr class="separator:ga47d972b5f07ee8d5de2ed71f86fd1cdd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p>This module provides utilities that are general enough to not belong in a specific module. </p>
+<h2 class="groupheader">Function Documentation</h2>
+<a class="anchor" id="gaeb08c4ef993da3a96e801fb425470e84"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string gears::utility::base64::decode </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>str</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Decodes a string from base64. If the input string is not in base64 then a <code><a class="el" href="classgears_1_1utility_1_1invalid__base64.html" title="Exception thrown when input string is invalid base64.">gears::utility::invalid_base64</a></code> exception is thrown.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">str</td><td>The base64 string to decode. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"><a class="el" href="classgears_1_1utility_1_1invalid__base64.html" title="Exception thrown when input string is invalid base64.">gears::utility::invalid_base64</a></td><td>Thrown when the input string is invalid. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The decoded string </dd></dl>
+
+<p>Definition at line <a class="el" href="base64_8hpp_source.html#l00121">121</a> of file <a class="el" href="base64_8hpp_source.html">base64.hpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="gaf745f6eab99ce77026b613ab42ca038a"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string gears::utility::base64::encode </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>str</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Encodes a string to base64. The string to encode is done byte by byte. Padding is done through character <code>=</code>. The character for the 62nd index is + and the index for the 63rd index is /. There is no line limit imposed.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">str</td><td>The string to encode. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>base64 encoded string. </dd></dl>
+
+<p>Definition at line <a class="el" href="base64_8hpp_source.html#l00062">62</a> of file <a class="el" href="base64_8hpp_source.html">base64.hpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="gab190981e6beccb6fbb1892af239c78d7"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T , typename... Args&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr std::array&lt;T, sizeof...(Args)&gt; gears::utility::make_array </td>
+          <td>(</td>
+          <td class="paramtype">Args &amp;&amp;...&#160;</td>
+          <td class="paramname"><em>args</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Constructs an <code>std::array</code> instance from the arguments provided of type T. This allows for quick generation of <code>std::array</code> instances similar to raw C arrays.</p>
+<div class="fragment"><div class="line"><span class="keyword">auto</span> arr = utility::make_array&lt;int&gt;(1, 2, 3, 4, 5, 6, 7, 8);</div>
+<div class="line"><span class="comment">// same as</span></div>
+<div class="line"><span class="comment">// int arr[] = { 1, 2, 3, 4, 5, 6, 7, 8 };</span></div>
+</div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">args</td><td>Arguments to store into the array. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>The type of the array. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>An <code>std::array</code> containing the elements provided. </dd></dl>
+
+<p>Definition at line <a class="el" href="helpers_8hpp_source.html#l00049">49</a> of file <a class="el" href="helpers_8hpp_source.html">helpers.hpp</a>.</p>
+
+</div>
+</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.3.1-->

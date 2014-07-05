@@ -240,7 +240,8 @@ template&lt;typename T &gt; </td></tr>
 <tr class="separator:ga5cc74d65519ee7844970ca7d9299c3d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gad9fc2327157d66483dcdadbc1e5079d0"><td class="memTemplParams" colspan="2"><a class="anchor" id="gad9fc2327157d66483dcdadbc1e5079d0"></a>
 template&lt;typename T &gt; </td></tr>
-<tr class="memitem:gad9fc2327157d66483dcdadbc1e5079d0"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><b>gears::meta::Type</b> = typename T::type</td></tr>
+<tr class="memitem:gad9fc2327157d66483dcdadbc1e5079d0"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__meta.html#gad9fc2327157d66483dcdadbc1e5079d0">gears::meta::Type</a> = typename T::type</td></tr>
+<tr class="memdesc:gad9fc2327157d66483dcdadbc1e5079d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Template alias for getting the type. <br/></td></tr>
 <tr class="separator:gad9fc2327157d66483dcdadbc1e5079d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga585a97c044dc4b4c5ceb9ac4e8021f04"><td class="memTemplParams" colspan="2"><a class="anchor" id="ga585a97c044dc4b4c5ceb9ac4e8021f04"></a>
 template&lt;typename... Args&gt; </td></tr>
@@ -259,7 +260,8 @@ template&lt;typename T , T t&gt; </td></tr>
 <tr class="separator:ga1381e28221e23b8aa5a15b27f4abe6d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gae01fe3560967547108a011380527bfbb"><td class="memTemplParams" colspan="2"><a class="anchor" id="gae01fe3560967547108a011380527bfbb"></a>
 template&lt;int i&gt; </td></tr>
-<tr class="memitem:gae01fe3560967547108a011380527bfbb"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><b>gears::meta::Integer</b> = Const&lt; int, i &gt;</td></tr>
+<tr class="memitem:gae01fe3560967547108a011380527bfbb"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__meta.html#gae01fe3560967547108a011380527bfbb">gears::meta::Integer</a> = Const&lt; int, i &gt;</td></tr>
+<tr class="memdesc:gae01fe3560967547108a011380527bfbb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Template alias for integer <code>std::integral_constant</code>. <br/></td></tr>
 <tr class="separator:gae01fe3560967547108a011380527bfbb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga8b77c31888ec4ccb5c3051f1079668d9"><td class="memTemplParams" colspan="2"><a class="anchor" id="ga8b77c31888ec4ccb5c3051f1079668d9"></a>
 template&lt;typename... T&gt; </td></tr>
@@ -376,7 +378,7 @@ template&lt;typename Condition , typename Then , typename Else &gt; </div>
 <div class="fragment"><div class="line"><span class="comment">// passes the static_assert</span></div>
 <div class="line">static_assert(std::is_same&lt;<a class="code" href="group__meta.html#ga1d6d6bac1cd5af167f4257125cc0603f" title="Template alias for std::conditional.">meta::If</a>&lt;std::is_integral&lt;int&gt;, <span class="keywordtype">double</span>&amp;, <span class="keywordtype">int</span>&amp;&gt;, <span class="keywordtype">double</span>&amp;&gt;::value, <span class="stringliteral">&quot;...&quot;</span>);</div>
 </div><!-- fragment --> 
-<p>Definition at line <a class="el" href="meta_2meta_8hpp_source.html#l00124">124</a> of file <a class="el" href="meta_2meta_8hpp_source.html">meta/meta.hpp</a>.</p>
+<p>Definition at line <a class="el" href="meta_2meta_8hpp_source.html#l00126">126</a> of file <a class="el" href="meta_2meta_8hpp_source.html">meta/meta.hpp</a>.</p>
 
 </div>
 </div>
@@ -404,7 +406,7 @@ template&lt;typename T &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>const lvalue reference. </dd></dl>
 
-<p>Definition at line <a class="el" href="meta_2meta_8hpp_source.html#l00255">255</a> of file <a class="el" href="meta_2meta_8hpp_source.html">meta/meta.hpp</a>.</p>
+<p>Definition at line <a class="el" href="meta_2meta_8hpp_source.html#l00257">257</a> of file <a class="el" href="meta_2meta_8hpp_source.html">meta/meta.hpp</a>.</p>
 
 </div>
 </div>
@@ -445,7 +447,7 @@ template&lt;typename T &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><code>static_cast&lt;T&amp;&amp;&gt;(t)</code>. </dd></dl>
 
-<p>Definition at line <a class="el" href="meta_2meta_8hpp_source.html#l00273">273</a> of file <a class="el" href="meta_2meta_8hpp_source.html">meta/meta.hpp</a>.</p>
+<p>Definition at line <a class="el" href="meta_2meta_8hpp_source.html#l00275">275</a> of file <a class="el" href="meta_2meta_8hpp_source.html">meta/meta.hpp</a>.</p>
 
 </div>
 </div>
@@ -486,7 +488,7 @@ template&lt;typename T &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><code>static_cast&lt;RemoveRef&lt;T&gt;&amp;&amp;&gt;(t)</code>. </dd></dl>
 
-<p>Definition at line <a class="el" href="meta_2meta_8hpp_source.html#l00287">287</a> of file <a class="el" href="meta_2meta_8hpp_source.html">meta/meta.hpp</a>.</p>
+<p>Definition at line <a class="el" href="meta_2meta_8hpp_source.html#l00289">289</a> of file <a class="el" href="meta_2meta_8hpp_source.html">meta/meta.hpp</a>.</p>
 
 </div>
 </div>

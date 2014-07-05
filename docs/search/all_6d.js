@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['make_5farray',['make_array',['../group__utility.html#gab190981e6beccb6fbb1892af239c78d7',1,'gears::utility']]],
   ['make_5ftriple',['make_triple',['../structgears_1_1utility_1_1triple.html#af0a382b571ac8cc1ec8a1b8068854526',1,'gears::utility::triple']]],
   ['makesigned',['MakeSigned',['../group__meta.html#ga719c999f9a6262d7a3bb19c74f2c8f0f',1,'gears::meta']]],
   ['makeunsigned',['MakeUnsigned',['../group__meta.html#ga045261293eabedd102c4d7447a3d1d34',1,'gears::meta']]],

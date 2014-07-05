@@ -122,10 +122,10 @@ Functions</h2></td></tr>
 Flags...&gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__io.html#gacd0ea53decb51365f10f11409a17cb97">gears::io::flags</a> (T &amp;&amp;t, Flags &amp;&amp;...flags)</td></tr>
 <tr class="memdesc:gacd0ea53decb51365f10f11409a17cb97"><td class="mdescLeft">&#160;</td><td class="mdescRight">A flag that is persistent.  <a href="#gacd0ea53decb51365f10f11409a17cb97">More...</a><br/></td></tr>
 <tr class="separator:gacd0ea53decb51365f10f11409a17cb97"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga7179c18b997ee114239f28b9a785677f"><td class="memTemplParams" colspan="2">template&lt;class Elem , class Traits , size_t N, typename... Args&gt; </td></tr>
-<tr class="memitem:ga7179c18b997ee114239f28b9a785677f"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__io.html#ga7179c18b997ee114239f28b9a785677f">gears::io::fprint</a> (std::basic_ostream&lt; Elem, Traits &gt; &amp;out, const Elem(&amp;str)[N], Args &amp;&amp;...arguments)</td></tr>
-<tr class="memdesc:ga7179c18b997ee114239f28b9a785677f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type-safe iostream alternative to printf.  <a href="#ga7179c18b997ee114239f28b9a785677f">More...</a><br/></td></tr>
-<tr class="separator:ga7179c18b997ee114239f28b9a785677f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac26a01b50d8417af5e9cd652ef693595"><td class="memTemplParams" colspan="2">template&lt;class Elem , class Traits , typename... Args&gt; </td></tr>
+<tr class="memitem:gac26a01b50d8417af5e9cd652ef693595"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__io.html#gac26a01b50d8417af5e9cd652ef693595">gears::io::fprint</a> (std::basic_ostream&lt; Elem, Traits &gt; &amp;out, const std::basic_string&lt; Elem, Traits &gt; &amp;str, Args &amp;&amp;...arguments)</td></tr>
+<tr class="memdesc:gac26a01b50d8417af5e9cd652ef693595"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type-safe iostream alternative to printf.  <a href="#gac26a01b50d8417af5e9cd652ef693595">More...</a><br/></td></tr>
+<tr class="separator:gac26a01b50d8417af5e9cd652ef693595"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga5bdfb1fec3ca3283e5984bfc8d68e046"><td class="memTemplParams" colspan="2">template&lt;typename CharT , typename Traits &gt; </td></tr>
 <tr class="memitem:ga5bdfb1fec3ca3283e5984bfc8d68e046"><td class="memTemplItemLeft" align="right" valign="top">line_reader&lt; CharT, Traits &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__io.html#ga5bdfb1fec3ca3283e5984bfc8d68e046">gears::io::lines</a> (std::basic_istream&lt; CharT, Traits &gt; &amp;in)</td></tr>
 <tr class="memdesc:ga5bdfb1fec3ca3283e5984bfc8d68e046"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a range object to iterate through input lines.  <a href="#ga5bdfb1fec3ca3283e5984bfc8d68e046">More...</a><br/></td></tr>
@@ -259,11 +259,11 @@ template&lt;typename T , typename... Flags&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="ga7179c18b997ee114239f28b9a785677f"></a>
+<a class="anchor" id="gac26a01b50d8417af5e9cd652ef693595"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Elem , class Traits , size_t N, typename... Args&gt; </div>
+template&lt;class Elem , class Traits , typename... Args&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -277,8 +277,8 @@ template&lt;class Elem , class Traits , size_t N, typename... Args&gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const Elem(&amp;)&#160;</td>
-          <td class="paramname"><em>str</em>[N], </td>
+          <td class="paramtype">const std::basic_string&lt; Elem, Traits &gt; &amp;&#160;</td>
+          <td class="paramname"><em>str</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -300,9 +300,44 @@ template&lt;class Elem , class Traits , size_t N, typename... Args&gt; </div>
 </div><div class="memdoc">
 <p><code>fprint</code> is the type-safe and iostream alternative to <code>fprintf</code>. It accepts any ostream type and uses positional arguments rather than format specifiers. Index starts at 0.</p>
 <p>Example: </p>
-<div class="fragment"><div class="line"><a class="code" href="group__io.html#ga7179c18b997ee114239f28b9a785677f" title="Type-safe iostream alternative to printf.">io::fprint</a>(std::cout, <span class="stringliteral">&quot;{0} {1} {0}&quot;</span>, 1, 2);</div>
+<div class="fragment"><div class="line"><a class="code" href="group__io.html#gac26a01b50d8417af5e9cd652ef693595" title="Type-safe iostream alternative to printf.">io::fprint</a>(std::cout, std::string(<span class="stringliteral">&quot;{0} {1} {0}&quot;</span>), 1, 2);</div>
+<div class="line"><span class="comment">// could be shortened to:</span></div>
+<div class="line">io::print(<span class="stringliteral">&quot;{0} {1} {0}&quot;</span>, 1, 2);</div>
+<div class="line"><span class="comment">// or</span></div>
+<div class="line"><a class="code" href="group__io.html#gac26a01b50d8417af5e9cd652ef693595" title="Type-safe iostream alternative to printf.">io::fprint</a>(std::cout, <span class="stringliteral">&quot;{0} {1} {0}&quot;</span>_s, 1, 2);</div>
 </div><!-- fragment --><p>would print 1 2 1, with 1 being index 0 and 2 being index 1.</p>
-<p>If the argument is out of bounds, the function will throw std::out_of_range. There are two specialisations provided for this function, <code>io::print</code> and <code>io::sprint</code>. <code>io::print</code> is the equivalent of <code>fprint(std::cout, ...)</code> or <code>fprint(std::wcout, ...)</code> depending on the format string passed. io::sprint delegates the output stream to a <code>std::stringstream</code> object to return a string, similar to <code>sprintf</code></p>
+<p>If the argument is out of bounds, the function will throw std::out_of_range. There are two specialisations provided for this function, <code>io::print</code> and <code>io::sprint</code>. <code>io::print</code> is the equivalent of <code>fprint(std::cout, ...)</code> or <code>fprint(std::wcout, ...)</code> depending on the format string passed. io::sprint delegates the output stream to a <code>std::stringstream</code> object to return a string, similar to <code>sprintf</code>.</p>
+<p>The format string is currently:</p>
+<div class="fragment"><div class="line">{index[,alignment][:format]}</div>
+</div><!-- fragment --><p>Where:</p>
+<p><code>index</code> is the required positional argument of the string. If the positional argument is not found, then an exception is thrown.</p>
+<p><code>alignment</code> is an optional signed integer that dictates whether to align left or right. A negative value aligns left, as if calling <code>std::left</code> and a positive value will align right as if calling <code>std::right</code>. The comma is required to specify the alignment, e.g. <code>{0,-10}</code> or <code>{0,10}</code>.</p>
+<p><code>format</code> is an optional format specifier that dictates how to format the string. The format specifier has the syntax of <code>:CN</code> where <code>C</code> is a character dictating the format and <code>N</code> is the precision. The <code>C</code> argument of the format specifier is required to use the <code>N</code> argument. The N argument is the equivalent of <code>std::setprecision(N)</code>.</p>
+<p>The format specifiers and their equivalences are as follows:</p>
+<table class="doxtable">
+<tr>
+<th align="center">Specifier </th><th align="left">Equivalent </th><th align="left">Notes </th></tr>
+<tr>
+<td align="center">F </td><td align="left"><code>std::fixed</code> </td><td align="left"></td></tr>
+<tr>
+<td align="center">E </td><td align="left"><code>std::scientific</code> </td><td align="left"><code>std::uppercase</code> is enabled </td></tr>
+<tr>
+<td align="center">e </td><td align="left"><code>std::scientific</code> </td><td align="left"><code>std::uppercase</code> is disabled </td></tr>
+<tr>
+<td align="center">O </td><td align="left"><code>std::oct</code> </td><td align="left"></td></tr>
+<tr>
+<td align="center">X </td><td align="left"><code>std::hex</code> </td><td align="left"><code>std::uppercase</code> is enabled </td></tr>
+<tr>
+<td align="center">x </td><td align="left"><code>std::hex</code> </td><td align="left"><code>std::uppercase</code> is disabled </td></tr>
+<tr>
+<td align="center">B </td><td align="left"><code>std::boolalpha</code> </td><td align="left"></td></tr>
+<tr>
+<td align="center">S </td><td align="left"><code>std::showpos</code> </td><td align="left"></td></tr>
+</table>
+<p>In order to escape the <code>{</code> character, you have to insert another one. So for example:</p>
+<div class="fragment"><div class="line">io:print(<span class="stringliteral">&quot;{{0}&quot;</span>, 1);</div>
+<div class="line"><span class="comment">// prints {0}</span></div>
+</div><!-- fragment --><p>There is no need to escape the <code>}</code> character as it is not used to delimit anything.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">out</td><td>stream to print to </td></tr>
@@ -314,11 +349,12 @@ template&lt;class Elem , class Traits , size_t N, typename... Args&gt; </div>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
     <tr><td class="paramname">std::out_of_range</td><td>index in the format string is out of bounds </td></tr>
+    <tr><td class="paramname">std::runtime_error</td><td>invalid format string </td></tr>
   </table>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="fprint_8hpp_source.html#l00058">58</a> of file <a class="el" href="fprint_8hpp_source.html">fprint.hpp</a>.</p>
+<p>Definition at line <a class="el" href="fprint_8hpp_source.html#l00114">114</a> of file <a class="el" href="fprint_8hpp_source.html">fprint.hpp</a>.</p>
 
 </div>
 </div>

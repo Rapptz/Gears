@@ -112,7 +112,7 @@ $(document).ready(function(){initNavTree('structgears_1_1meta_1_1Any.html','');}
 <div class="textblock"><h3>template&lt;typename... Args&gt;<br/>
 struct gears::meta::Any&lt; Args &gt;</h3>
 
-<p>The equivalent of <code>operator||</code> for bools except for meta functions. Evaluates it based on the argument's <code>::value</code>. Returns <code>std::true_type</code> or <code>std::false_type</code>.</p>
+<p>The equivalent of <code>operator||</code> for bools except for meta functions. Evaluates it based on the argument's <code>value</code>. Returns <code>std::true_type</code> or <code>std::false_type</code>.</p>
 <div class="fragment"><div class="line"><span class="comment">// passes the static_assert</span></div>
 <div class="line">static_assert(meta::Any&lt;std::is_integral&lt;int&gt;, std::is_const&lt;float&gt;, std::is_function&lt;int&gt;&gt;::value, <span class="stringliteral">&quot;...&quot;</span>);</div>
 </div><!-- fragment --><dl class="tparams"><dt>Template Parameters</dt><dd>
@@ -122,7 +122,7 @@ struct gears::meta::Any&lt; Args &gt;</h3>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="meta_2meta_8hpp_source.html#l00168">168</a> of file <a class="el" href="meta_2meta_8hpp_source.html">meta/meta.hpp</a>.</p>
+<p>Definition at line <a class="el" href="meta_2meta_8hpp_source.html#l00170">170</a> of file <a class="el" href="meta_2meta_8hpp_source.html">meta/meta.hpp</a>.</p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.3.1-->

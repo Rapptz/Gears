@@ -162,17 +162,17 @@ $(document).ready(function(){initNavTree('concepts_2alias_8hpp_source.html','');
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="keyword">using</span> TrueIf = <span class="keyword">typename</span> std::enable_if&lt;And&lt;Concepts...&gt;::value, concept_checker_t&gt;::type;</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span>... Concepts&gt;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="keyword">using</span> Requires = <span class="keyword">typename</span> requires_checker&lt;Concepts...&gt;::type;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="keyword">using</span> Require = <span class="keyword">typename</span> requires_checker&lt;Concepts...&gt;::type;</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, <span class="keyword">template</span>&lt;<span class="keyword">typename</span>...&gt; <span class="keyword">class</span>... Concepts&gt;</div>
-<div class="line"><a name="l00097"></a><span class="lineno"><a class="code" href="group__concepts.html#ga4a7c2953c98563b26ca44f72d4dd9ed8">   97</a></span>&#160;constexpr <span class="keywordtype">bool</span> <a class="code" href="group__concepts.html#ga4a7c2953c98563b26ca44f72d4dd9ed8" title="Asserts that a type meets concepts provided.">requires</a>() {</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    static_assert(And&lt;Concepts&lt;T&gt;...&gt;(), <span class="stringliteral">&quot;Concept Violation&quot;</span>);</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;}</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;} <span class="comment">// concepts</span></div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;} <span class="comment">// gears</span></div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="preprocessor">#endif // GEARS_CONCEPTS_ALIAS_HPP</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, <span class="keyword">template</span>&lt;<span class="keyword">typename</span>...&gt; <span class="keyword">class</span>... Concepts&gt;</div>
+<div class="line"><a name="l00098"></a><span class="lineno"><a class="code" href="group__concepts.html#gac123339dbd70d43fd7526314e0bafe81">   98</a></span>&#160;constexpr <span class="keywordtype">bool</span> <a class="code" href="group__concepts.html#gac123339dbd70d43fd7526314e0bafe81" title="Asserts that a type meets concepts provided.">require</a>() {</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    static_assert(And&lt;Concepts&lt;T&gt;...&gt;(), <span class="stringliteral">&quot;Concept Violation&quot;</span>);</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;}</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;} <span class="comment">// concepts</span></div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;} <span class="comment">// gears</span></div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="preprocessor">#endif // GEARS_CONCEPTS_ALIAS_HPP</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.3.1-->

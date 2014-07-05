@@ -406,7 +406,7 @@ moved
 constructed
 </pre><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">Args</td><td>Parameters to forward to the constructor. </td></tr>
+    <tr><td class="paramname">args</td><td>Parameters to forward to the constructor. </td></tr>
   </table>
   </dd>
 </dl>
@@ -548,7 +548,7 @@ template&lt;typename T &gt; </div>
 <p>Checks if the current state is engaged. </p>
 <dl class="section return"><dt>Returns</dt><dd><code>true</code> if the current state is engaged, <code>false</code> otherwise. </dd></dl>
 
-<p>Definition at line <a class="el" href="maybe_8hpp_source.html#l00385">385</a> of file <a class="el" href="maybe_8hpp_source.html">maybe.hpp</a>.</p>
+<p>Definition at line <a class="el" href="maybe_8hpp_source.html#l00387">387</a> of file <a class="el" href="maybe_8hpp_source.html">maybe.hpp</a>.</p>
 
 </div>
 </div>
@@ -575,8 +575,9 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 <p>Returns a reference to the contained value. If the current state is disengaged, then the behaviour is undefined. </p>
+<dl class="section return"><dt>Returns</dt><dd>Reference to the contained value. </dd></dl>
 
-<p>Definition at line <a class="el" href="maybe_8hpp_source.html#l00353">353</a> of file <a class="el" href="maybe_8hpp_source.html">maybe.hpp</a>.</p>
+<p>Definition at line <a class="el" href="maybe_8hpp_source.html#l00355">355</a> of file <a class="el" href="maybe_8hpp_source.html">maybe.hpp</a>.</p>
 
 </div>
 </div>
@@ -607,8 +608,9 @@ template&lt;typename T &gt; </div>
 <div class="line">utility::maybe&lt;my_class&gt; stuff({ 10 });</div>
 <div class="line"><span class="comment">// access my_class::x</span></div>
 <div class="line">std::cout &lt;&lt; stuff-&gt;x;</div>
-</div><!-- fragment --> 
-<p>Definition at line <a class="el" href="maybe_8hpp_source.html#l00337">337</a> of file <a class="el" href="maybe_8hpp_source.html">maybe.hpp</a>.</p>
+</div><!-- fragment --><dl class="section return"><dt>Returns</dt><dd>Pointer to contained value. </dd></dl>
+
+<p>Definition at line <a class="el" href="maybe_8hpp_source.html#l00338">338</a> of file <a class="el" href="maybe_8hpp_source.html">maybe.hpp</a>.</p>
 
 </div>
 </div>
@@ -711,7 +713,7 @@ template&lt;typename T &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Returns the a reference to the contained value. </dd></dl>
 
-<p>Definition at line <a class="el" href="maybe_8hpp_source.html#l00371">371</a> of file <a class="el" href="maybe_8hpp_source.html">maybe.hpp</a>.</p>
+<p>Definition at line <a class="el" href="maybe_8hpp_source.html#l00373">373</a> of file <a class="el" href="maybe_8hpp_source.html">maybe.hpp</a>.</p>
 
 </div>
 </div>
@@ -749,7 +751,7 @@ template&lt;typename U &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The contained value or a default if current state is disengaged. </dd></dl>
 
-<p>Definition at line <a class="el" href="maybe_8hpp_source.html#l00399">399</a> of file <a class="el" href="maybe_8hpp_source.html">maybe.hpp</a>.</p>
+<p>Definition at line <a class="el" href="maybe_8hpp_source.html#l00401">401</a> of file <a class="el" href="maybe_8hpp_source.html">maybe.hpp</a>.</p>
 
 </div>
 </div>
@@ -786,7 +788,7 @@ template&lt;typename T &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A new <code>maybe</code> object that is engaged with the value. </dd></dl>
 
-<p>Definition at line <a class="el" href="maybe_8hpp_source.html#l00415">415</a> of file <a class="el" href="maybe_8hpp_source.html">maybe.hpp</a>.</p>
+<p>Definition at line <a class="el" href="maybe_8hpp_source.html#l00417">417</a> of file <a class="el" href="maybe_8hpp_source.html">maybe.hpp</a>.</p>
 
 </div>
 </div>

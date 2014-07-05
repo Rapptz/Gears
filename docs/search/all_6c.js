@@ -4,6 +4,7 @@ var searchData=
   ['less',['less',['../group__functional__objects.html#ga32bec54e0f90699bf72052a5bb8c2059',1,'gears::functional']]],
   ['less_5fequal',['less_equal',['../group__functional__objects.html#gab0c5dc30813e357127c00bf48d34745d',1,'gears::functional']]],
   ['lessthancomparable',['LessThanComparable',['../structgears_1_1concepts_1_1LessThanComparable.html',1,'gears::concepts']]],
+  ['lexical_5fcast',['lexical_cast',['../group__string.html#ga06d29a505f3ca9d53b7003776b18ad1c',1,'gears::string']]],
   ['line_5fiterator',['line_iterator',['../structgears_1_1io_1_1line__iterator.html',1,'gears::io']]],
   ['line_5freader',['line_reader',['../structgears_1_1io_1_1line__reader.html',1,'gears::io']]],
   ['lines',['lines',['../group__io.html#ga5bdfb1fec3ca3283e5984bfc8d68e046',1,'gears::io']]],
