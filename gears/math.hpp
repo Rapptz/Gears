@@ -24,6 +24,7 @@
 
 #include "math/uintx.hpp"
 #include "math/generator.hpp"
+#include "math/constants.hpp"
 
 /**
  * @defgroup math Math module
