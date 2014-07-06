@@ -38,7 +38,6 @@ namespace math {
  */
 template<typename T>
 inline T fibonacci(T number) {
-    static_assert(std::is_integral<T>::value, "Type passed must be an integral type");
     if(number < 2) {
         return number;
     }
@@ -68,7 +67,6 @@ inline T fibonacci(T number) {
  */
 template<typename T>
 constexpr T factorial(const T& number) {
-    static_assert(std::is_integral<T>::value, "Type passed must be an integral type");
     return number == 0 ? 1 : number * factorial(number - 1);
 }
 
@@ -84,7 +82,6 @@ constexpr T factorial(const T& number) {
  */
 template<typename T>
 constexpr T gcd(const T& x, const T& y) {
-    static_assert(std::is_integral<T>::value, "Type passed must be an integral type");
     return y == 0 ? x : gcd(y, x % y);
 }
 
@@ -103,7 +100,6 @@ constexpr T gcd(const T& x, const T& y) {
  */
 template<typename T>
 inline T mod_pow(T base, T exponent, const T& modulus) {
-    static_assert(std::is_integral<T>::value, "Type passed must be an integral type");
     T result(1);
 
     while(exponent) {
@@ -130,7 +126,6 @@ inline T mod_pow(T base, T exponent, const T& modulus) {
  */
 template<typename T>
 inline T sum_of_divisors(const T& number) noexcept {
-    static_assert(std::is_integral<T>::value, "Type passed must be an integral type");
     T result(0);
     for(T i(1); i * i <= number; ++i) {
         result += (number % i) ? 0 : ((i * i == number) ? i : i + number / i);
