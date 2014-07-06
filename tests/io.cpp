@@ -22,6 +22,7 @@
 #include <catch.hpp>
 #include <gears/string/literals.hpp>
 #include <gears/io.hpp>
+#include <cctype>
 
 namespace io = gears::io;
 using namespace gears::string::literals;
@@ -64,5 +65,12 @@ TEST_CASE("Input/Output", "[io]") {
             ++number_of_lines;
         }
         REQUIRE(number_of_lines == 6);
+    }
+
+    SECTION("Getline", "[io-getlines]") {
+        std::istringstream iss("1234567890abcdef");
+        std::string str;
+        REQUIRE((io::getline_until(iss, str, [](char c) { return !isdigit(c); })));
+        REQUIRE(str == "1234567890");
     }
 }

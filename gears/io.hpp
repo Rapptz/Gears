@@ -26,6 +26,7 @@
 #include "io/print.hpp"
 #include "io/flags.hpp"
 #include "io/lines.hpp"
+#include "io/getline.hpp"
 
 /**
  * @defgroup io Input/Output module
