@@ -135,6 +135,49 @@ inline T sum_of_divisors(const T& number) noexcept {
 
 /**
  * @ingroup math
+ * @brief Checks if a number is prime.
+ * @details Checks if a number is prime using the
+ * AKS primality test. This function is pretty slow for
+ * numbers that are relatively large.
+ *
+ * @param number Number to test for primality.
+ * @return `true` is number is prime, `false` otherwise.
+ */
+template<typename T>
+inline bool is_prime(const T& number) noexcept {
+    if(number == 1) {
+        return false;
+    }
+
+    if(number < 4) {
+        return true;
+    }
+
+    if(number % 2 == 0) {
+        return false;
+    }
+
+    if(number < 9) {
+        return true;
+    }
+
+    if(number % 3 == 0) {
+        return false;
+    }
+
+    const T r(std::sqrt(number));
+    T f(5);
+    while(f <= r) {
+        if(number % f == 0 || number % (f + 2) == 0) {
+            return false;
+        }
+        f += 6;
+    }
+    return true;
+}
+
+/**
+ * @ingroup math
  * @brief Calculates the absolute value of a number.
  * @details Calculates the absolute value of a number.
  * This uses the incredibly naive implementation and should

@@ -54,7 +54,7 @@ inline void primes(Value limit, Container& cont) {
     Value n = wheels[limit % 6];
     std::vector<bool> sieve(n / 3, true);
     sieve[0] = false;
-    for(Value i = 0, upper = std::sqrt(n)/3; i != upper; ++i) {
+    for(Value i = 0, upper = static_cast<Value>(std::sqrt(n))/3; i <= upper; ++i) {
         if(sieve[i]) {
             k = (3 * i + 1) | 1;
             for(Value j = (k * k) / 3; j < n / 3; j += 2 * k) {

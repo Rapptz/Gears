@@ -104,4 +104,21 @@ TEST_CASE("Generators", "[math-generator]") {
         std::tie(a, b, c) = triple;
         REQUIRE((a * a + b * b) == c * c);
     }
+
+    SECTION("primality test") {
+        std::vector<int> more_primes;
+        math::primes(2000, more_primes);
+        REQUIRE(more_primes.size() == 303);
+        REQUIRE(more_primes.back() == 1999);
+        REQUIRE(more_primes.front() == 2);
+
+        for(auto&& prime : more_primes) {
+            if(math::is_prime(prime)) {
+                REQUIRE(true);
+            }
+            else {
+                REQUIRE(std::to_string(prime) == "");
+            }
+        }
+    }
 }
