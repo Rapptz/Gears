@@ -10,7 +10,7 @@
 
     "settings":
     {
-        "sublimegdb_workingdir": "${folder:${project_path:dev}}",
+        "sublimegdb_workingdir": "${folder:${project_path:dev.cpp}}",
         "sublimegdb_commandline": "gdb --interpreter=mi ./dev"
     },
 
