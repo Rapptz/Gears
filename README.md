@@ -14,6 +14,20 @@ Python is used to generate the ninja file so just invoke:
 
     ./bootstrap.py --cxx=g++ && ninja
 
+## Single Headers
+
+Sometimes a single header is a bit more helpful to have than a tightly coupled library directory. This makes dependency
+handling a lot easier to work with since you'd only need a single file to include and you'd be good to go. A python script
+has been provided for convenience to perform this exact use-case. In order to generate a single header file of a module just
+invoke it with the following:
+
+```
+./single.py io
+```
+
+This would generate the entire io module and all its dependencies into a single file for ease of use. You can see more
+options with `./single.py --help`.
+
 ## Compiler Support
 
 Currently Gears targets compilers that have good support of C++11 features, at the moment these include Clang 3.4 and GCC 4.8
