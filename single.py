@@ -11,8 +11,7 @@ try:
 except ImportError:
     import io.StringIO as sstream
 
-program_description = """
-Converts a gears module into a single file for convenience. To
+program_description = """Converts a gears module into a single file for convenience. To
 get a list of modules, run ".{}single.py list".
 """.format(os.sep)
 
@@ -41,8 +40,7 @@ if args.module == 'list':
 if args.module not in valid_modules:
     parser.error('invalid module given')
 
-intro = """
-// The MIT License (MIT)
+intro = """// The MIT License (MIT)
 
 // Copyright (c) 2012-2014 Danny Y., Rapptz
 
@@ -158,7 +156,14 @@ if not args.quiet:
 
 module_file = '{}.hpp'.format(args.module)
 
-destination_path = os.path.normpath(os.path.join(working_dir, args.output if args.output else '.', module_file))
+output_path = '.'
+
+if args.output:
+    output_path = os.path.normpath(os.path.join(working_dir, args.output))
+    if not os.path.exists(output_path):
+        os.makedirs(output_path)
+
+destination_path = os.path.join(output_path, module_file)
 
 result = ''
 
