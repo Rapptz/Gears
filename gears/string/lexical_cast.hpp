@@ -28,6 +28,118 @@
 
 namespace gears {
 namespace string {
+namespace detail {
+template<typename Target>
+struct lexical_caster {
+    template<typename CharT>
+    static inline Target cast(const std::basic_string<CharT>& str) {
+        std::basic_istringstream<CharT> ss(str);
+        Target result;
+        if((ss >> result).fail() || !(ss >> std::ws).eof()) {
+            throw std::invalid_argument("lexical_cast failed");
+        }
+        return result;
+    }
+};
+
+template<typename CharT>
+struct lexical_caster<std::basic_string<CharT>> {
+    static inline std::basic_string<CharT> cast(const std::basic_string<CharT>& str) {
+        return str;
+    }
+};
+
+template<>
+struct lexical_caster<int> {
+    template<typename CharT>
+    static inline int cast(const std::basic_string<CharT>& str) {
+        return std::stoi(str);
+    }
+};
+
+template<>
+struct lexical_caster<long> {
+    template<typename CharT>
+    static inline long cast(const std::basic_string<CharT>& str) {
+        return std::stol(str);
+    }
+};
+
+
+template<>
+struct lexical_caster<long long> {
+    template<typename CharT>
+    static inline long long cast(const std::basic_string<CharT>& str) {
+        return std::stoll(str);
+    }
+};
+
+template<>
+struct lexical_caster<float> {
+    template<typename CharT>
+    static inline float cast(const std::basic_string<CharT>& str) {
+        return std::stof(str);
+    }
+};
+
+template<>
+struct lexical_caster<double> {
+    template<typename CharT>
+    static inline double cast(const std::basic_string<CharT>& str) {
+        return std::stod(str);
+    }
+};
+
+template<>
+struct lexical_caster<long double> {
+    template<typename CharT>
+    static inline long double cast(const std::basic_string<CharT>& str) {
+        return std::stold(str);
+    }
+};
+
+template<>
+struct lexical_caster<unsigned long> {
+    template<typename CharT>
+    static inline unsigned long cast(const std::basic_string<CharT>& str) {
+        return std::stoul(str);
+    }
+};
+
+template<>
+struct lexical_caster<unsigned long long> {
+    template<typename CharT>
+    static inline unsigned long long cast(const std::basic_string<CharT>& str) {
+        return std::stoull(str);
+    }
+};
+
+template<typename T>
+struct remove_const {
+    using type = T;
+};
+
+template<typename T>
+struct remove_const<const T> {
+    using type = T;
+};
+
+template<typename T>
+struct remove_volatile {
+    using type = T;
+};
+
+template<typename T>
+struct remove_volatile<volatile T> {
+    using type = T;
+};
+
+template<typename T>
+struct remove_cv {
+    using type = typename std::remove_volatile<typename std::remove_const<T>::type>::type;
+};
+} // detail
+
 /**
  * @ingroup string
  * @brief Converts a string to its integral representation.
@@ -36,66 +148,17 @@ namespace string {
  * If the conversion fails, throws `std::invalid_argument`. If a
  * specialisation isn't picked, the function falls back to using
  * `std::basic_istringstream`. The type to convert to must be
- * `DefaultConstructible`.
+ * `DefaultConstructible`. All cv-qualifiers are removed from
+ * the type before casting.
  *
  * @param str String to convert from.
- * @tparam T Type to convert to.
+ * @tparam Target Type to convert to.
  * @throws std::invalid_argument thrown whenever conversion fails.
  * @return The arithmetic representation of the string.
  */
-template<typename T>
-inline T lexical_cast(const std::string& str) {
-    std::istringstream ss(str);
-    T result;
-    if((ss >> result).fail() || !(ss >> std::ws).eof()) {
-        throw std::invalid_argument("lexical_cast failed");
-    }
-    return result;
-}
-
-template<>
-inline int lexical_cast<int>(const std::string& str) {
-    return std::stoi(str);
-}
-
-template<>
-inline long lexical_cast<long>(const std::string& str) {
-    return std::stol(str);
-}
-
-template<>
-inline long long lexical_cast<long long>(const std::string& str) {
-    return std::stoll(str);
-}
-
-template<>
-inline float lexical_cast<float>(const std::string& str) {
-    return std::stof(str);
-}
-
-template<>
-inline double lexical_cast<double>(const std::string& str) {
-    return std::stod(str);
-}
-
-template<>
-inline long double lexical_cast<long double>(const std::string& str) {
-    return std::stold(str);
-}
-
-template<>
-inline unsigned long lexical_cast<unsigned long>(const std::string& str) {
-    return std::stoul(str);
-}
-
-template<>
-inline unsigned long long lexical_cast<unsigned long long>(const std::string& str) {
-    return std::stoull(str);
-}
-
-template<>
-inline std::string lexical_cast<std::string>(const std::string& str) {
-    return str;
+template<typename Target, typename CharT>
+inline Target lexical_cast(const std::basic_string<CharT>& str) {
+    return detail::lexical_caster<typename detail::remove_cv<Target>::type>::cast(str);
 }
 } // string
 } // gears
