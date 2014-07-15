@@ -23,6 +23,7 @@
 #include <gears/utility.hpp>
 #include <type_traits>
 #include <sstream>
+#include <string>
 
 namespace util = gears::utility;
 
@@ -33,6 +34,24 @@ TEST_CASE("Utility", "[utility]") {
         REQUIRE(arr.size() == 10);
         REQUIRE(arr.front() == 1);
         REQUIRE(arr.back() == 10);
+    }
+
+    SECTION("unique_ptr creation", "[utility-unique-ptr]") {
+        // regular ptrs
+        auto ptr1 = util::make_unique<int>(10);
+        REQUIRE(ptr1 != nullptr);
+        REQUIRE(*ptr1 == 10);
+        auto ptr2 = util::make_unique<std::string>(10, 'a');
+        REQUIRE(ptr2 != nullptr);
+        REQUIRE(*ptr2 == "aaaaaaaaaa");
+
+        // arrays
+        auto ptr3 = util::make_unique<int[]>(10);
+        REQUIRE(ptr3 != nullptr);
+
+        for(unsigned i = 0; i < 10; ++i) {
+            REQUIRE(ptr3[i] == 0);
+        }
     }
 
     SECTION("base64", "[utility-base64]") {
