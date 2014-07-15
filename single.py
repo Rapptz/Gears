@@ -11,12 +11,14 @@ try:
 except ImportError:
     import io.StringIO as sstream
 
-program_description = """Converts a gears module into a single file for convenience. To
-get a list of modules, run ".{}single.py list".
-""".format(os.sep)
+description = "Converts a gears module to a single file for convenience."
+epilogue = """To get a list of modules, run ".{sep}single.py list". To receive a
+sub-module you could use a period to delimit the sub-module. For example, to get maybe
+from the utility module you would run ".{sep}single.py utility.maybe"
+""".format(sep=os.sep)
 
 # command line parser
-parser = argparse.ArgumentParser(usage='%(prog)s [options...] module', description=program_description)
+parser = argparse.ArgumentParser(usage='%(prog)s [options...] module', description=description, epilog=epilogue)
 parser.add_argument('module', help='module to convert to single file', metavar='module')
 parser.add_argument('--output', '-o', help='output directory to place file in', metavar='dir')
 parser.add_argument('--quiet', help='suppress all output', action='store_true')
@@ -37,7 +39,7 @@ if args.module == 'list':
     print('\n'.join(valid_modules))
     parser.exit(0)
 
-if args.module not in valid_modules:
+if args.module.split('.')[0] not in valid_modules:
     parser.error('invalid module given')
 
 intro = """// The MIT License (MIT)
@@ -147,14 +149,14 @@ def process_file(filename, out):
 
 version = get_version()
 revision = get_revision()
-include_guard = 'GEARS_SINGLE_INCLUDE_{module}_HPP'.format(module = args.module.upper())
+include_guard = 'GEARS_SINGLE_INCLUDE_{module}_HPP'.format(module = args.module.upper().replace('.', '_'))
 
 if not args.quiet:
     print('Creating single header for module {}.'.format(args.module))
     print('Current version: {version} (revision {revision})\n'.format(version = version, revision = revision))
 
 
-module_file = '{}.hpp'.format(args.module)
+module_file = '{}.hpp'.format(args.module.replace('.', os.sep))
 
 output_path = '.'
 
@@ -163,7 +165,11 @@ if args.output:
     if not os.path.exists(output_path):
         os.makedirs(output_path)
 
-destination_path = os.path.join(output_path, module_file)
+output_file = os.path.join(output_path, module_file)
+
+if '.' in args.module:
+    submodule = args.module.split('.')[1]
+    output_file = os.path.join(output_path, '{}.hpp'.format(submodule))
 
 result = ''
 
@@ -177,6 +183,6 @@ ss.close()
 if args.strip:
     result = re.sub(r'\/\*\*.*?\*\/', '', result, flags=re.DOTALL)
 
-with open(destination_path, 'w') as f:
+with open(output_file, 'w') as f:
     f.write(result)
 
