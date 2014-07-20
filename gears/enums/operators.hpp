@@ -22,7 +22,7 @@
 #ifndef GEARS_ENUMS_OPERATORS_HPP
 #define GEARS_ENUMS_OPERATORS_HPP
 
-#include "underlying.hpp"
+#include "helpers.hpp"
 
 namespace gears {
 namespace enums {
@@ -33,7 +33,7 @@ namespace operators {
  */
 template<typename Enum, typename std::enable_if<std::is_enum<Enum>::value, int>::type = 0>
 constexpr Enum operator~(const Enum& x) {
-    return static_cast<Enum>(~static_cast<U>(x));
+    return static_cast<Enum>(~ to_underlying(x));
 }
 
 /**
@@ -42,7 +42,7 @@ constexpr Enum operator~(const Enum& x) {
  */
 template<typename Enum, typename std::enable_if<std::is_enum<Enum>::value, int>::type = 0>
 constexpr Enum operator|(const Enum& lhs, const Enum& rhs) {
-    return static_cast<Enum>(static_cast<U>(lhs) | static_cast<U>(rhs));
+    return static_cast<Enum>(to_underlying(lhs) | to_underlying(rhs));
 }
 
 /**
@@ -51,7 +51,7 @@ constexpr Enum operator|(const Enum& lhs, const Enum& rhs) {
  */
 template<typename Enum, typename std::enable_if<std::is_enum<Enum>::value, int>::type = 0>
 constexpr Enum operator&(const Enum& lhs, const Enum& rhs) {
-    return static_cast<Enum>(static_cast<U>(lhs) & static_cast<U>(rhs));
+    return static_cast<Enum>(to_underlying(lhs) & to_underlying(rhs));
 }
 
 /**
@@ -60,7 +60,7 @@ constexpr Enum operator&(const Enum& lhs, const Enum& rhs) {
  */
 template<typename Enum, typename std::enable_if<std::is_enum<Enum>::value, int>::type = 0>
 constexpr Enum operator^(const Enum& lhs, const Enum& rhs) {
-    return static_cast<Enum>(static_cast<U>(lhs) ^ static_cast<U>(rhs));
+    return static_cast<Enum>(to_underlying(lhs) ^ to_underlying(rhs));
 }
 
 /**
@@ -69,7 +69,7 @@ constexpr Enum operator^(const Enum& lhs, const Enum& rhs) {
  */
 template<typename Enum, typename std::enable_if<std::is_enum<Enum>::value, int>::type = 0>
 inline Enum& operator|=(Enum& lhs, const Enum& rhs) {
-    return lhs = static_cast<U>(lhs) | static_cast<U>(rhs);
+    return lhs = to_underlying(lhs) | to_underlying(rhs);
 }
 
 /**
@@ -78,7 +78,7 @@ inline Enum& operator|=(Enum& lhs, const Enum& rhs) {
  */
 template<typename Enum, typename std::enable_if<std::is_enum<Enum>::value, int>::type = 0>
 inline Enum& operator&=(Enum& lhs, const Enum& rhs) {
-    return lhs = static_cast<U>(lhs) & static_cast<U>(rhs);
+    return lhs = to_underlying(lhs) & to_underlying(rhs);
 }
 
 /**
@@ -87,7 +87,7 @@ inline Enum& operator&=(Enum& lhs, const Enum& rhs) {
  */
 template<typename Enum, typename std::enable_if<std::is_enum<Enum>::value, int>::type = 0>
 inline Enum& operator^=(Enum& lhs, const Enum& rhs) {
-    return lhs = static_cast<U>(lhs) ^ static_cast<U>(rhs);
+    return lhs = to_underlying(lhs) ^ to_underlying(rhs);
 }
 } // operators
 } // enums
