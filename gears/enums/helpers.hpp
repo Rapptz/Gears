@@ -61,12 +61,12 @@ constexpr Underlying to_underlying(Enum x) noexcept {
 
 //@{
 template<typename Enum, detail::EnableIfEnum<Enum> = true>
-constexpr Enum combine_flags(const Enum& flag) noexcept {
+constexpr Enum activate_flags(const Enum& flag) noexcept {
     return flag;
 }
 
 template<typename Enum, detail::EnableIfEnum<Enum> = true>
-constexpr Enum combine_flags(const Enum& first, const Enum& second) noexcept {
+constexpr Enum activate_flags(const Enum& first, const Enum& second) noexcept {
     return static_cast<Enum>(to_underlying(first) | to_underlying(second));
 }
 
@@ -83,8 +83,8 @@ constexpr Enum combine_flags(const Enum& first, const Enum& second) noexcept {
  * @return An enum with all the argument flags activated.
  */
 template<typename Enum, typename... Enums, detail::EnableIfEnum<Enum, Enums...> = true>
-constexpr Enum combine_flags(const Enum& first, const Enum& second, Enums&&... rest) noexcept {
-    return static_cast<Enum>(to_underlying(combine_flags(first, second)) | to_underlying(combine_flags(rest...)));
+constexpr Enum activate_flags(const Enum& first, const Enum& second, Enums&&... rest) noexcept {
+    return static_cast<Enum>(to_underlying(activate_flags(first, second)) | to_underlying(activate_flags(rest...)));
 }
 //@}
 
@@ -100,7 +100,7 @@ constexpr Enum combine_flags(const Enum& first, const Enum& second, Enums&&... r
  */
 template<typename Enum, typename... Enums, detail::EnableIfEnum<Enum, Enums...> = true>
 inline Enum& set_flags(Enum& flags, Enums&&... args) noexcept {
-    return flags = combine_flags(flags, args...);
+    return flags = activate_flags(flags, args...);
 }
 
 /**
@@ -115,7 +115,7 @@ inline Enum& set_flags(Enum& flags, Enums&&... args) noexcept {
  */
 template<typename Enum, typename... Enums, detail::EnableIfEnum<Enum, Enums...> = true>
 inline Enum& remove_flags(Enum& flags, Enums&&... args) noexcept {
-    return flags = static_cast<Enum>(to_underlying(flags) & (~to_underlying(combine_flags(args...))));
+    return flags = static_cast<Enum>(to_underlying(flags) & (~to_underlying(activate_flags(args...))));
 }
 
 /**
@@ -132,7 +132,7 @@ inline Enum& remove_flags(Enum& flags, Enums&&... args) noexcept {
  */
 template<typename Enum, typename... Enums, detail::EnableIfEnum<Enum, Enums...> = true>
 constexpr bool has_flags(const Enum& flags, Enums&&... args) noexcept {
-    return (to_underlying(flags) & to_underlying(combine_flags(args...))) == to_underlying(combine_flags(args...));
+    return (to_underlying(flags) & to_underlying(activate_flags(args...))) == to_underlying(activate_flags(args...));
 }
 } // enums
 } // gears

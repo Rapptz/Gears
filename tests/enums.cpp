@@ -45,7 +45,7 @@ TEST_CASE("enums", "[enums]") {
     };
 
     // test constexpr status
-    constexpr test flags = enums::combine_flags(test::a, test::b, test::e);
+    constexpr test flags = enums::activate_flags(test::a, test::b, test::e);
     static_assert(enums::has_flags(flags, test::b), "...");
     static_assert(enums::has_flags(flags, test::a), "...");
     static_assert(enums::has_flags(flags, test::e), "...");
@@ -68,4 +68,41 @@ TEST_CASE("enums", "[enums]") {
     REQUIRE(enums::has_flags(flags_two, test::c));
     REQUIRE(!enums::has_flags(flags_two, test::a, test::b, test::c));
     REQUIRE(enums::has_flags(flags_two, test::a, test::c));
+}
+
+TEST_CASE("enum operators", "[enums-operators]") {
+    using namespace gears::enums::operators;
+
+    enum class test : int {
+        none = 0,
+        a = 1 << 0,
+        b = 1 << 1,
+        c = 1 << 2,
+        d = 1 << 3,
+        e = 1 << 4
+    };
+
+    // test constexpr status
+    constexpr test compile = test::a | test::b | test::c;
+    static_assert((compile & test::b) != 0, "...");
+    static_assert((compile & test::a) != 0, "...");
+    static_assert((compile & test::c) != 0, "...");
+    static_assert((compile & (test::a | test::b | test::c)) == compile, "...");
+
+    // normal tests
+    test flags = test::none;
+
+    flags |= test::a | test::b | test::c;
+    REQUIRE(((flags & test::b) != 0));
+    REQUIRE(((flags & test::a) != 0));
+    REQUIRE(((flags & test::e) == 0));
+    REQUIRE(((flags & test::d) == 0));
+    REQUIRE(((flags & test::c) != 0));
+    REQUIRE(((flags & (test::a | test::b | test::c)) == flags));
+
+    // unset flags
+    flags &= ~test::b;
+    REQUIRE(((flags & test::b) == 0));
+    REQUIRE(((flags & test::a) != 0));
+    REQUIRE(((flags & test::c) != 0));
 }
