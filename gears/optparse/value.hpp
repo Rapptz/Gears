@@ -23,9 +23,9 @@
 #define GEARS_OPTPARSE_VALUE_HPP
 
 #include "actions.hpp"
+#include "../utility/helpers.hpp"
 #include <string>
 #include <functional>
-#include <memory>
 
 namespace gears {
 namespace optparse {
@@ -37,6 +37,7 @@ struct value_base {
     virtual ~value_base() = default;
     virtual void parse(const std::string&, const std::string&) = 0;
     virtual bool is_active() const noexcept = 0;
+    virtual std::unique_ptr<value_base> clone() const = 0;
 };
 
 /**
@@ -67,6 +68,14 @@ private:
             value.reset(new T(result));
             active = true;
         }
+    }
+
+    std::unique_ptr<value_base> clone() const override {
+        auto&& ptr = utility::make_unique<typed_value<T>>();
+        ptr->reference = reference;
+        ptr->active = active;
+        ptr->action_ = action_;
+        return std::unique_ptr<value_base>{std::move(ptr)};
     }
 public:
     /**

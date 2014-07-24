@@ -61,6 +61,39 @@ public:
         ptr(std::move(value)), help(std::move(help)), alias(alias) {}
 
     /**
+     * @brief Copy constructor
+     */
+    option(const option& other):
+        ptr(other.ptr == nullptr ? nullptr : other.ptr->clone()),
+        name(other.name), help(other.help), alias(other.alias) {}
+
+    /**
+     * @brief Copy assignment
+     */
+    option& operator=(const option& other) {
+        ptr = other.ptr == nullptr ? nullptr : other.ptr->clone();
+        name = other.name;
+        help = other.help;
+        alias = other.alias;
+        return *this;
+    }
+
+    /**
+     * @brief Move constructor
+     */
+    option(option&&) = default;
+
+    /**
+     * @brief Move assignment
+     */
+    option& operator=(option&&) = default;
+
+    /**
+     * @brief Destructor
+     */
+    ~option() = default;
+
+    /**
      * @brief Checks if the option accepts a value.
      */
     bool takes_value() const noexcept {
@@ -76,6 +109,36 @@ public:
     size_t nargs() const noexcept {
         return takes_value() ? ptr->nargs : 0;
     }
+
+    //@{
+    /**
+     * @brief Checks if the option is represented by a long or short option.
+     * @details Checks if the option is represented by a long or short option.
+     * This function is typically used to avoid code repetition when handling
+     * predicates dealing with checking for a long name or short name. This
+     * is a member function rather than an `operator==` or `operator!=` to
+     * disallow obfuscation and code duplication (e.g. `"help" == op` vs `op == "help"`).
+     *
+     * Example usage:
+     *
+     * @code
+     * optparse::option x = { "help", 'h', "show message" };
+     * x.is("help");    // true
+     * x.is('h');       // true
+     * x.is("stuff");   // false
+     * @endcode
+     *
+     * @param arg Long or short option to check for.
+     * @return `true` if the option can be represented by arg.
+     */
+    bool is(char arg) const noexcept {
+        return alias == arg;
+    }
+
+    bool is(const std::string& arg) const noexcept {
+        return name == arg;
+    }
+    //@}
 };
 } // optparse
 } // gears
