@@ -142,6 +142,17 @@ public:
         return *this;
     }
 
+    /**
+     * @brief Gets a value stored by an option.
+     * @details Gets a value stored by an option. The option
+     * is found as if calling option::is on the `arg` parameter.
+     * If the option is not found an exception is thrown. This
+     * function is the equivalent of calling option::get.
+     *
+     * @throws std::invalid_argument Thrown if the option is not found.
+     * @param arg Long or short option to retrieve value of.
+     * @return The internal value stored by an option.
+     */
     template<typename T, typename Argument>
     const T& get(const Argument& arg) const {
         auto&& it = std::find_if(options.begin(), options.end(), [&arg](const option& opt) {
@@ -153,6 +164,46 @@ public:
         }
 
         return it->template get<T>();
+    }
+
+    /**
+     * @brief Gets a value stored by an option or a reasonable default.
+     * @details Gets a value stored by an option or a reasonable default.
+     * The option is found as if calling option::is on the `arg` parameter.
+     * If the option is not found, then the default is returned.
+     *
+     * @param arg Long or short option to retrieve value of.
+     * @return The internal value stored by an option or a reasonable default.
+     */
+    template<typename T, typename Argument>
+    const T& get_or(const Argument& arg, const typename std::remove_reference<T>::type& def) const noexcept {
+        auto&& it = std::find_if(options.begin(), options.end(), [&arg](const option& opt) {
+            return opt.is(arg);
+        });
+
+        if(it == options.end()) {
+            return def;
+        }
+
+        return it->template get_or<T>(def);
+    }
+
+    /**
+     * @brief Checks if an option's value has been parsed.
+     * @details Checks if an option's value has been parsed. The option
+     * is found as if calling option::is on the `arg` parameter. This
+     * function is the equivalent of calling option::is_active.
+     *
+     * @param arg Long or short option to retrieve value of.
+     * @return `true` if the option's value has been parsed, `false` otherwise.
+     */
+    template<typename Argument>
+    bool is_active(const Argument& arg) const noexcept {
+        auto&& it = std::find_if(options.begin(), options.end(), [&arg](const option& opt) {
+            return opt.is(arg);
+        });
+
+        return it != options.end() && it->is_active();
     }
 
     /**

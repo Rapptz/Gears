@@ -141,6 +141,24 @@ public:
         }
         return *value;
     }
+
+    /**
+     * @brief Retrieves the parsed value or a reasonable default.
+     * @details Retrieves the parsed value or a reasonable default
+     * if the value hasn't gone through parsing.
+     *
+     * @param def The default value if #is_active is false.
+     * @return The parsed value or `def`.
+     */
+    const T& get_or(const T& def) const noexcept {
+        if(is_active()) {
+            if(reference != nullptr) {
+                return *reference;
+            }
+            return *value;
+        }
+        return def;
+    }
 };
 
 /**
@@ -165,7 +183,7 @@ public:
 template<typename T, typename Action = store<T>>
 inline std::unique_ptr<value_base> bind_to(T& t, Action action = Action{}) {
     auto&& ptr = utility::make_unique<typed_value<T>>(t);
-    ptr->action(action);
+    ptr->action(std::move(action));
     return std::unique_ptr<value_base>{std::move(ptr)};
 }
 
@@ -186,6 +204,22 @@ inline std::unique_ptr<value_base> constant(const T& t) {
     auto&& ptr = utility::make_unique<typed_value<T>>();
     ptr->action(store_const<T>{t});
     ptr->nargs = 0;
+    return std::unique_ptr<value_base>{std::move(ptr)};
+}
+
+/**
+ * @brief Returns a regular typed_value.
+ * @details Returns a regular typed_value. If a command line
+ * value is required for your interface, this is the recommended
+ * way of creating values.
+ *
+ * @param action The action used to parse values. If not provided, defaults to optparse::store.
+ * @return A polymorphic `typed_value` to use with optparse::option.
+ */
+template<typename T, typename Action = store<T>>
+inline std::unique_ptr<value_base> value(Action action = Action{}) {
+    auto&& ptr = utility::make_unique<typed_value<T>>();
+    ptr->action(std::move(action));
     return std::unique_ptr<value_base>{std::move(ptr)};
 }
 } // optparse

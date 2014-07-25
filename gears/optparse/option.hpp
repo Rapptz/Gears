@@ -155,12 +155,37 @@ public:
         if(ptr == nullptr) {
             throw std::invalid_argument("option does not take value");
         }
-        auto value_ptr = dynamic_cast<typed_value<T>*>(ptr.get());
+        auto val = dynamic_cast<typed_value<T>*>(ptr.get());
 
-        if(value_ptr == nullptr) {
+        if(val == nullptr) {
             throw std::invalid_argument("invalid cast for option");
         }
-        return value_ptr->get();
+        return val->get();
+    }
+
+    /**
+     * @brief Retrieves the internal value of the option or a reasonable default.
+     * @details Retrieves the internal value of the option or a reasonable default.
+     * If the option has no value then the default is returned. If the type is not
+     * a valid cast then the default is returned.
+     *
+     * @return The internal value or a reasonable default.
+     */
+    template<typename T>
+    const T& get_or(const typename std::remove_reference<T>::type& def) const noexcept {
+        if(ptr == nullptr) {
+            return def;
+        }
+
+        auto val = dynamic_cast<typed_value<T>*>(ptr.get());
+        return val == nullptr ? def : val->get_or(def);
+    }
+
+    /**
+     * @brief Checks if the option has gone through parsing.
+     */
+    bool is_active() const noexcept {
+        return ptr != nullptr && ptr->is_active();
     }
 };
 } // optparse
