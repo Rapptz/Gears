@@ -24,8 +24,6 @@
 
 #include "actions.hpp"
 #include "../utility/helpers.hpp"
-#include <string>
-#include <functional>
 
 namespace gears {
 namespace optparse {
@@ -55,7 +53,7 @@ struct typed_value : public value_base {
 private:
     T* reference = nullptr;
     std::unique_ptr<T> value;
-    std::function<T(const std::string&, const std::string&)> action_ = store<T>{};
+    std::function<T(const std::string&, const std::string&)> action_;
     bool active = false;
 
     void parse(const std::string& key, const std::string& val) override {
@@ -81,7 +79,7 @@ public:
     /**
      * @brief Default constructor.
      */
-    typed_value() = default;
+    typed_value(): action_(store<T>{}) {}
     /**
      * @brief Constructs a typed_value storing its result to a variable.
      * @details Constructs a typed_value with an l-value variable. This
@@ -141,6 +139,52 @@ public:
         return *value;
     }
 };
+
+/**
+ * @ingroup optparse
+ * @brief Returns a typed_value that binds the result to a variable.
+ * @details Returns a typed_value that when parsed, binds the result
+ * to an l-value variable. For example, having an option being
+ * declared like so:
+ *
+ * @code
+ * int x;
+ * opt::option test = { "test", 't', "tests something", opt::bind_to(x) };
+ * @endcode
+ *
+ * When the command line is parsed with `10` as a value, e.g. `--test=10`
+ * then the variable x will contain the value `10`.
+ *
+ * @param t The variable to bind the result to.
+ * @param action The action to use for parsing the value. Defaults to optparse::store.
+ * @return A polymorphic `typed_value` to use with optparse::option.
+ */
+template<typename T, typename Action = store<T>>
+inline std::unique_ptr<value_base> bind_to(T& t, Action action = Action{}) {
+    auto&& ptr = utility::make_unique<typed_value<T>>(t);
+    ptr->action(action);
+    return std::unique_ptr<value_base>{std::move(ptr)};
+}
+
+/**
+ * @ingroup optparse
+ * @brief Returns a typed_value that returns a constant value.
+ * @details Returns a typed_value that returns a constant value.
+ * This is a wrapper around creating a typed_value and setting the
+ * action to optparse::store_const. Note that if this is used, then the
+ * option object technically takes no value. So having, for example,
+ * `--stuff=val` in the command line throws an error.
+ *
+ * @param t The constant value to return when the option is active.
+ * @return A polymorphic `typed_value` to use with optparse::option.
+ */
+template<typename T>
+inline std::unique_ptr<value_base> constant(const T& t) {
+    auto&& ptr = utility::make_unique<typed_value<T>>();
+    ptr->action(store_const<T>{t});
+    ptr->nargs = 0;
+    return std::unique_ptr<value_base>{std::move(ptr)};
+}
 } // optparse
 } // gears
 

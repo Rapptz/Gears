@@ -23,6 +23,7 @@
 #define GEARS_OPTPAESE_ACTIONS_HPP
 
 #include "../string/lexical_cast.hpp"
+#include <functional>
 
 namespace gears {
 namespace optparse {
@@ -96,7 +97,38 @@ struct store<bool> {
     }
 };
 
+/**
+ * @ingroup optparse_actions
+ * @brief An action used to store constant values.
+ * @details An action used to store constant values. The type
+ * provided must be copyable. When an option value is parsed,
+ * the value provided is *always* returned. Usually used in
+ * conjunction with the optparse::constant factory function.
+ *
+ * @tparam T The type of contant to store.
+ */
+template<typename T>
+struct store_const {
+private:
+    T value;
+public:
+    /**
+     * @brief Constructs with the value provided.
+     */
+    store_const(T val): value(std::move(val)) {}
 
+    /**
+     * @brief The operator doing the heavy lifting.
+     * @details The operator doing the heavy lifting. The value
+     * provided in the constructor is the one that is always returned
+     * regardless of the key or value matched.
+     *
+     * @return The internal value held.
+     */
+    T operator()(const std::string&, const std::string&) const {
+        return value;
+    }
+};
 } // optparse
 } // gears
 

@@ -98,7 +98,7 @@ public:
      * @brief Checks if the option accepts a value.
      */
     bool takes_value() const noexcept {
-        return ptr != nullptr;
+        return ptr != nullptr && ptr->nargs > 0;
     }
 
     /**

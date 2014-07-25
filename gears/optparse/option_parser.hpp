@@ -85,7 +85,11 @@ private:
     }
 
     template<typename ForwardIt>
-    ForwardIt process_subcommand(ForwardIt begin) {
+    ForwardIt process_subcommand(ForwardIt begin, ForwardIt end) {
+        if(begin == end) {
+            return begin;
+        }
+
         std::string arg = *begin;
         if(arg.empty()) {
             return begin;
@@ -97,7 +101,7 @@ private:
 
         if(it != subcommands.end()) {
             active_subcommand_index = std::distance(subcommands.begin(), it);
-            active_options = &(*it);
+            active_options = &(it->options);
             ++begin;
             return begin;
         }
@@ -124,7 +128,7 @@ private:
 
         // check if the argument exists
         auto&& it = std::find_if(active_options->begin(), active_options->end(), [&key](const option& opt) {
-            return opt.is(key);
+            return opt.is(key.substr(2));
         });
 
         if(it == active_options->end()) {
@@ -313,7 +317,7 @@ public:
         }
 
         // check if argv[1] is a subcommand
-        begin = process_subcommand(begin);
+        begin = process_subcommand(begin, end);
 
         // begin parsing command line arguments
         for(; begin != end; ++begin) {
