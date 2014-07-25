@@ -38,6 +38,7 @@ struct option {
 private:
     using value_type = std::unique_ptr<value_base>;
     value_type ptr = nullptr;
+    friend struct option_parser;
 public:
     std::string name;   ///< The long name of the option, e.g. "help"
     std::string help;   ///< The description used for the help output

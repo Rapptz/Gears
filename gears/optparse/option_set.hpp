@@ -53,20 +53,36 @@ private:
     std::vector<option> options;
 public:
     /**
-     * @brief Default constructor.
+     * @brief Constructs an option_set
+     * @details Constructs an option_set with a help option automatically
+     * provided if wanted. The help option automatically provided is
+     * `--help` with a short option `-h`. The description is
+     * `"shows this message and exits"`.
+     *
+     * @param help Determines if help option should be automatically added.
      */
-    option_set() = default;
+    option_set(bool help = true) {
+        if(help) {
+            options.emplace_back("help", 'h', "shows this message and exits");
+            cache.insert(options.back());
+        }
+    }
 
     /**
      * @brief Constructs the option_set through std::initializer_list.
      * @details Constructs the option_set through std::initializer_list.
-     * All duplicates are removed. Only the first duplicate is kept. For example,
-     * inserting `{"help", 'c'}` and `{"help", 'h'}` only the first one is kept,
-     * i.e. `{"help", 'c'}`.
+     * All duplicates are removed. Only the first duplicate is kept. A
+     * duplicate is determined by having the same long name and short-name.
+     * A help option is automatically provided. If the help option is
+     * unwanted then a call to #remove with `"help"` as a parameter will
+     * remove it.
      *
      * @param l The std::initializer_list to construct with.
      */
     option_set(std::initializer_list<option> l) {
+        options.emplace_back("help", 'h', "shows this message and exits");
+        cache.insert(options.back());
+
         for(auto&& i : l) {
             if(cache.count(i)) {
                 continue;
@@ -101,6 +117,29 @@ public:
 
         cache.insert(options.back());
         return options.back();
+    }
+
+    /**
+     * @brief Removes an option from the option_set
+     * @details Removes an option from the option_set by
+     * the argument long or short name. For example, if you want
+     * to remove `--help` then `remove("help")` would remove it.
+     * If the option is not found then this function has no effect.
+     *
+     * @param arg Long or short name to remove.
+     * @return A reference to the option_set
+     */
+    template<typename Argument>
+    option_set& remove(const Argument& arg) {
+        auto&& it = std::find_if(options.begin(), options.end(), [&arg](const option& opt) {
+            return opt.is(arg);
+        });
+
+        if(it != options.end()) {
+            cache.erase(*it);
+            options.erase(it);
+        }
+        return *this;
     }
 
     /**
