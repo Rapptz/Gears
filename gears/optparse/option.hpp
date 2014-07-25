@@ -140,6 +140,28 @@ public:
         return name == arg;
     }
     //@}
+
+    /**
+     * @brief Retrieves the internal value of the option.
+     * @details Retrieves the internal value of the option.
+     * If the option has no value then an exception is thrown.
+     *
+     * @throws std::runtime_error Thrown if the option has not been parsed.
+     * @throws std::invalid_argument Thrown for invalid casting or if the option has no value.
+     * @return The internal value.
+     */
+    template<typename T>
+    const T& get() const {
+        if(ptr == nullptr) {
+            throw std::invalid_argument("option does not take value");
+        }
+        auto value_ptr = dynamic_cast<typed_value<T>*>(ptr.get());
+
+        if(value_ptr == nullptr) {
+            throw std::invalid_argument("invalid cast for option");
+        }
+        return value_ptr->get();
+    }
 };
 } // optparse
 } // gears

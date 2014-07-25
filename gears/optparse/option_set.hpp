@@ -142,6 +142,19 @@ public:
         return *this;
     }
 
+    template<typename T, typename Argument>
+    const T& get(const Argument& arg) const {
+        auto&& it = std::find_if(options.begin(), options.end(), [&arg](const option& opt) {
+            return opt.is(arg);
+        });
+
+        if(it == options.end()) {
+            throw std::invalid_argument("option not found");
+        }
+
+        return it->template get<T>();
+    }
+
     /**
      * @brief Returns the number of elements the option_set has.
      */

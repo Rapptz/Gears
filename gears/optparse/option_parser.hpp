@@ -200,6 +200,10 @@ private:
             auto&& opt = *it;
             size_t argc = std::distance(begin, end);
 
+            if(has_explicit_value && !opt.takes_value()) {
+                throw option_takes_no_value(program_name, key);
+            }
+
             // check for -o stuff
             if(opt.takes_value() && !has_explicit_value) {
                 // note that -ostuff doesn't work due to ambiguity.

@@ -73,6 +73,9 @@ private:
         ptr->reference = reference;
         ptr->active = active;
         ptr->action_ = action_;
+        ptr->nargs = nargs;
+        ptr->metavar = metavar;
+        ptr->required = required;
         return std::unique_ptr<value_base>{std::move(ptr)};
     }
 public:
