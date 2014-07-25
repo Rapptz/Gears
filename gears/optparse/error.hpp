@@ -39,6 +39,8 @@ namespace optparse {
  */
 class error : public std::runtime_error {
 public:
+    std::string program_name;
+    std::string option_name;
     /**
      * @brief Constructs an exception.
      * @details Constructs an exception with the string
@@ -47,8 +49,10 @@ public:
      *
      * @param name The name of the program.
      * @param str The error string.
+     * @param opt The option passed
      */
-    error(const std::string& name, const std::string& str): std::runtime_error(name + ": error: " + str) {}
+    error(const std::string& name, const std::string& str, const std::string& op):
+        std::runtime_error(name + ": error: " + str), program_name(name), option_name(op) {}
 };
 
 /**
@@ -66,7 +70,7 @@ public:
      * @param op The option passed.
      */
     unrecognised_option(const std::string& name, const std::string& op):
-    error(name, "unrecognised option '" + op + '\'') {}
+    error(name, "unrecognised option '" + op + '\'', op) {}
 };
 
 /**
@@ -84,7 +88,7 @@ public:
      * @param op The option passed.
      */
     missing_required_option(const std::string& name, const std::string& op):
-    error(name, "missing required option '" + op + '\'') {}
+    error(name, "missing required option '" + op + '\'', op) {}
 };
 
 /**
@@ -109,7 +113,7 @@ public:
     missing_required_value(const std::string& name, const std::string& op, size_t nargs):
     error(name, nargs == 1 ?
                 "option '" + op + "' requires an argument" :
-                "option '" + op + "' requires " + std::to_string(nargs) + " arguments") {}
+                "option '" + op + "' requires " + std::to_string(nargs) + " arguments", op) {}
 };
 
 /**
@@ -127,7 +131,7 @@ public:
      * @param op The option passed.
      */
     option_takes_no_value(const std::string& name, const std::string& op):
-    error(name, "option '" + op + "' does not take a value") {}
+    error(name, "option '" + op + "' does not take a value", op) {}
 };
 } // optparse
 } // gears

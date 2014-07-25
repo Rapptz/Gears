@@ -103,7 +103,7 @@ private:
         }
 
         if(!is_option(arg)) {
-            throw error(program_name, arg + " is not a valid subcommand");
+            throw error(program_name, arg + " is not a valid subcommand", arg);
         }
 
         return begin;
@@ -200,7 +200,7 @@ private:
             if(opt.takes_value() && !has_explicit_value) {
                 // note that -ostuff doesn't work due to ambiguity.
                 if(j + 1 != arg.size()) {
-                    throw error(program_name, "short option \'" + key + "\' and value must not be combined");
+                    throw error(program_name, "short option \'" + key + "\' and value must not be combined", arg);
                 }
 
                 if(argc - 1 < opt.nargs()) {
@@ -281,6 +281,24 @@ public:
         return *this;
     }
 
+    /**
+     * @brief Parses command line arguments without handling errors.
+     * @details Parses command line arguments without handling errors.
+     * Exceptions derived by optparse::error are thrown when an error is
+     * spotted and all parsing stops. The following assumptions are made:
+     *
+     * - The first element is the program name.
+     * - The second element is the subcommand if available. Skipped if unavailable.
+     * - Dereferencing the iterators is implicitly convertible to `std::string`.
+     *
+     * Along with not checking for errors, this function does not check if
+     * required arguments are present. This function should only be used if
+     * you want to provide your own error handling mechanism.
+     *
+     * @param begin A ForwardIterator pointing to the first element to parse.
+     * @param end A ForwardIterator pointing to one past the last element to parse.
+     * @return An optparse::arguments object storing the result.
+     */
     template<typename ForwardIt>
     arguments raw_parse(ForwardIt begin, ForwardIt end) {
         static_assert(std::is_constructible<std::string, decltype(*begin)>{},
