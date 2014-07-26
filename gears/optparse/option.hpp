@@ -187,6 +187,16 @@ public:
     bool is_active() const noexcept {
         return ptr != nullptr && ptr->is_active();
     }
+
+    /**
+     * @brief Retrieves the internal option's metavar member.
+     * @details Retrieves the internal value's metavar member. If
+     * #takes_value returns false, then an empty string is returned.
+     * @return The internal value's metavar member.
+     */
+    std::string metavar() const noexcept {
+        return takes_value() ? ptr->metavar : "";
+    }
 };
 } // optparse
 } // gears

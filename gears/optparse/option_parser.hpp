@@ -23,48 +23,10 @@
 #define GEARS_OPTPARSE_OPTION_PARSER_HPP
 
 #include "error.hpp"
-#include "option_set.hpp"
+#include "formatter.hpp"
 
 namespace gears {
 namespace optparse {
-/**
- * @ingroup optparse
- * @brief Represents a command line subcommand.
- * @details A subcommand is typically the first
- * argument provided in the command line. Examples include
- * things like `svn checkout`, `git commit`, `git add`, and more.
- */
-struct subcommand {
-    std::string name;        ///< The name of the subcommand.
-    std::string description; ///< A brief paragraph giving an overview of the subcommand
-    std::string epilogue;    ///< A paragraph usually printed after the help message
-    option_set options;      ///< The options the subcommand contains.
-
-    /**
-     * @brief Default constructor
-     */
-    subcommand() = default;
-
-    /**
-     * @brief Constructs from a name and an option.
-     */
-    subcommand(std::string name, option_set options): name(std::move(name)), options(std::move(options)) {}
-};
-
-/**
- * @ingroup optparse
- * @brief Represents the parsed results of option_parser.
- * @details Represents the parsed results of option_parser. These
- * include the current active option set, the name of the subcommand
- * that is active (or an empty string if not active) and a list of
- * positional arguments that are left over.
- */
-struct arguments {
-    const option_set& options;              ///< The current option_set
-    std::vector<std::string> positional;    ///< The positional arguments
-    std::string subcommand;                 ///< The active subcommand name
-};
-
 /**
  * @ingroup optparse
  * @brief Handles command line parsing.
@@ -77,6 +39,7 @@ struct option_parser {
 private:
     std::vector<subcommand> subcommands;
     option_set options;
+    std::unique_ptr<formatter> format = utility::make_unique<formatter>();
     option_set* active_options = &options;
     std::ptrdiff_t active_subcommand_index = -1;
 
@@ -243,9 +206,10 @@ private:
         return { *active_options, std::vector<std::string>(begin, end), sub.name };
     }
 public:
-    std::string description;      ///< A brief paragraph giving an overview of the program
-    std::string epilogue;         ///< A paragraph printed after the help message
-    std::string program_name;     ///< The program name, if not provided it's argv[0]
+    std::string description;              ///< A brief paragraph giving an overview of the program
+    std::string epilogue;                 ///< A paragraph printed after the help message
+    std::string program_name;             ///< The program name, if not provided it's argv[0]
+    std::string usage = "[options...]";   ///< The usage string
 
     /**
      * @brief Default constructor
@@ -287,6 +251,17 @@ public:
     option_parser& add_subcommand(subcommand sub) {
         subcommands.push_back(std::move(sub));
         return *this;
+    }
+
+    /**
+     * @brief Sets the help formatter of the parser.
+     * @details Sets the help formatter of the parser.
+     * The formatter must inherit from optparse::formatter.
+     *
+     * @param form The formatter to use.
+     */
+    void help_formatter(const formatter& form) {
+        format = utility::make_unique<formatter>(form.column);
     }
 
     /**
@@ -351,6 +326,83 @@ public:
         }
 
         return make_args(begin, end);
+    }
+
+    /**
+     * @brief Returns the formatted description message.
+     * @details Returns the formatted description message. This delegates
+     * the work to the optparse::formatter currently active.
+     * @return The formatted message.
+     */
+    std::string format_description() const noexcept {
+        return format->description(description);
+    }
+
+    /**
+     * @brief Returns the formatted epilogue message.
+     * @details Returns the formatted epilogue message. This delegates
+     * the work to the optparse::formatter currently active.
+     * @return The formatted message.
+     */
+    std::string format_epilogue() const noexcept {
+        return format->epilogue(epilogue);
+    }
+
+    /**
+     * @brief Returns the formatted usage message.
+     * @details Returns the formatted usage message. This delegates
+     * the work to the optparse::formatter currently active.
+     * @return The formatted message.
+     */
+    std::string format_usage() const noexcept {
+        return format->usage(program_name, usage,
+                             active_subcommand_index == -1 ? "" : subcommands[active_subcommand_index].name);
+    }
+
+    /**
+     * @brief Returns the formatted subcommands message.
+     * @details Returns the formatted subcommands message. This delegates
+     * the work to the optparse::formatter currently active.
+     * @return The formatted message.
+     */
+    std::string format_subcommands() const noexcept {
+        return format->subcommands(subcommands);
+    }
+
+    /**
+     * @brief Returns the formatted options message.
+     * @details Returns the formatted options message. This delegates
+     * the work to the optparse::formatter currently active. Note that this
+     * passes the current option_set that is currently active.
+     * @return The formatted message.
+     */
+    std::string format_options() const noexcept {
+        return format->options(*active_options);
+    }
+
+    /**
+     * @brief Returns the formatted help message.
+     * @details Returns the formatted help message. The help message is
+     * done as if calling the formatter's member functions in the following
+     * order:
+     *
+     * - usage
+     * - description
+     * - subcommands
+     * - options
+     * - epilogue
+     *
+     * If a different order is needed, you may call the
+     * individual member functions that handle the formatting, i.e.
+     * the `format_*` functions.
+     *
+     * @return The help message.
+     */
+    std::string format_help() const noexcept {
+        std::string result = format_usage();
+        result.append(format_description()).append(format_subcommands());
+        result.append(format_options()).append(format_epilogue());
+        return result;
     }
 };
 } // optparse

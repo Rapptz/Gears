@@ -213,6 +213,13 @@ public:
         return options.size();
     }
 
+    /**
+     * @brief Checks if the option_set is empty.
+     */
+    bool empty() const noexcept {
+        return options.empty();
+    }
+
     //@{
     /**
      * @brief Returns an iterator pointing to the first option.
