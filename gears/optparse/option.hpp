@@ -37,7 +37,7 @@ namespace optparse {
 struct option {
 private:
     using value_type = std::unique_ptr<value_base>;
-    value_type ptr = nullptr;
+    value_type ptr;
     friend struct option_parser;
 public:
     std::string name;   ///< The long name of the option, e.g. "help"
@@ -45,20 +45,20 @@ public:
     char alias = '\0';  ///< The short name of the option, e.g. 'h'
 
     /**
-     * @brief Constructs an option from a long name, a description, and a value
+     * @brief Constructs an option from a long name, a description, and a value.
      */
-    option(std::string name, std::string help = "", value_type value = nullptr):
+    option(std::string name, std::string help = "", value_type value = constant(true)):
         ptr(std::move(value)), name(std::move(name)), help(std::move(help)) {}
     /**
      * @brief Constructs an option from a long name, short name, a description, and a value.
      */
-    option(std::string name, char alias, std::string help = "", value_type value = nullptr):
+    option(std::string name, char alias, std::string help = "", value_type value = constant(true)):
         ptr(std::move(value)), name(std::move(name)), help(std::move(help)), alias(alias) {}
 
     /**
      * @brief Constructs an option from a short name, description and value.
      */
-    option(char alias, std::string help = "", value_type value = nullptr):
+    option(char alias, std::string help = "", value_type value = constant(true)):
         ptr(std::move(value)), help(std::move(help)), alias(alias) {}
 
     /**
