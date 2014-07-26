@@ -24,6 +24,8 @@
 
 #include "error.hpp"
 #include "formatter.hpp"
+#include <iostream>
+#include <cstdlib>
 
 namespace gears {
 namespace optparse {
@@ -326,6 +328,50 @@ public:
         }
 
         return make_args(begin, end);
+    }
+
+    /**
+     * @brief Parses the command line arguments while handling errors.
+     * @details Parses the command line arguments while handling errors. All
+     * exceptions are thrown and sent to the error stream provided. If the help
+     * command line option is active, then the help message is sent to the output
+     * stream provided. Required arguments are checked and the thrown exceptions are
+     * also caught and output to the error stream. The assumptions of the arguments
+     * are the same as the ones provided by #raw_parse. If exceptions are caught
+     * then the program exits as if calling `std::exit(EXIT_FAILURE)`. If the help
+     * message is active while no errors are spotted, then the program exits as if
+     * calling `std::exit(EXIT_SUCCESS)`. The help message is output as if calling
+     * #format_help.
+     *
+     * @param begin A ForwardIterator pointing to the first element to parse.
+     * @param end A ForwardIterator pointing to one past the last element to parse.
+     * @param out The output stream to output the help message to.
+     * @param err The error stream to output the errors to.
+     * @return An optparse::argument object storing the result.
+     */
+    template<typename ForwardIt>
+    arguments parse(ForwardIt begin, ForwardIt end, std::ostream& out = std::cout, std::ostream& err = std::cerr) {
+        try {
+            auto&& args = raw_parse(begin, end);
+
+            if(args.options.is_active("help")) {
+                out << format_help();
+                std::exit(EXIT_SUCCESS);
+            }
+
+            return args;
+        }
+        catch(const std::exception& e) {
+            err << format_usage() << '\n' << e.what() << '\n';
+            if(active_options->is_active("help")) {
+                out << format_description()
+                    << format_subcommands()
+                    << format_options()
+                    << format_epilogue();
+            }
+
+            std::exit(EXIT_FAILURE);
+        }
     }
 
     /**
