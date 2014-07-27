@@ -118,11 +118,11 @@ private:
             // get the arguments needed
             for(size_t i = 0; i < opt.nargs(); ++i) {
                 value += *(++begin);
-                value.push_back(' ');
+                value.push_back('\n');
             }
 
-            // remove extraneous space
-            if(!value.empty() && value.back() == ' ') {
+            // remove extraneous newline
+            if(!value.empty() && value.back() == '\n') {
                 value.pop_back();
             }
         }
@@ -182,11 +182,11 @@ private:
 
                 for(size_t i = 0; i < opt.nargs(); ++i) {
                     value += *(++begin);
-                    value.push_back(' ');
+                    value.push_back('\n');
                 }
 
-                // remove extraneous space
-                if(!value.empty() && value.back() == ' ') {
+                // remove extraneous newline
+                if(!value.empty() && value.back() == '\n') {
                     value.pop_back();
                 }
             }

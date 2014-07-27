@@ -24,6 +24,7 @@
 
 #include "../string/lexical_cast.hpp"
 #include <functional>
+#include <iterator>
 
 namespace gears {
 namespace optparse {
@@ -127,6 +128,90 @@ public:
      */
     T operator()(const std::string&, const std::string&) const {
         return value;
+    }
+};
+
+/**
+ * @ingroup optparse_actions
+ * @brief An action used to parse a list of values.
+ * @details An action used to parse a list of values. The
+ * parsing is done through continuous concatenation of the
+ * values parsed with the action. By default, the action used
+ * to parse and retrieve the values is optparse::store.
+ *
+ * @tparam Container The internal container to hold the list on.
+ * @tparam Action The action used to parse the values. Defaults to store.
+ */
+template<typename Container, typename Action = store<typename Container::value_type>>
+struct store_list {
+    static_assert(std::is_convertible<decltype(std::declval<Action>()("","")), typename Container::value_type>::value,
+                  "The action must return a type convertible to the container's value type");
+private:
+    Action action;
+public:
+    /**
+     * @brief Constructs a store_list from an action.
+     */
+    store_list(Action action): action(std::move(action)) {}
+    /**
+     * @brief The operator that does the heavy lifting.
+     * @details The operator that does the heavy lifting. The values
+     * are retrieved as if splitting by the newline character, `'\n'`.
+     * They are inserted into the container as if using
+     * `c.insert(c.back(), action(key, split_value))`
+     *
+     * @param key The key of the command line option.
+     * @param value The value of the command line option, delimited by newlines.
+     * @return The container with the parsed values.
+     */
+    Container operator()(const std::string& key, const std::string& value) const {
+        Container result;
+        std::istringstream ss(value);
+        std::insert_iterator<Container> it(result, result.end());
+        for(std::string str; std::getline(ss, str); ) {
+            *it = action(key, str);
+        }
+        return result;
+    }
+};
+
+
+/**
+ * @ingroup argparse_actions
+ * @brief An action used to store a list.
+ * @details An action used to store a list. Every time the argument
+ * is called, it is parsed to the specific type using the action
+ * provided. This should not be used directly, instead it is used
+ * in conjunction with optparse::compose factory function.
+ *
+ * @tparam Container The internal container to hold the list on.
+ */
+template<typename Container>
+struct append {
+private:
+    using value_type = typename Container::value_type;
+    std::function<value_type(const std::string&, const std::string&)> action;
+    Container cont;
+public:
+    template<typename Action>
+    append(Action action): action(std::move(action)) {}
+
+    /**
+     * @brief The operator doing the heavy lifting.
+     * @details The operator doing the heavy lifting. The
+     * arguments are delegated to the action provided. The result
+     * of the parsing is added to a list keeping track of the elements.
+     * The result is inserted to the container by calling
+     * `c.insert(c.end(), action(key, value))`. The container
+     * is returned and move semantics take over from then.
+     *
+     * @param key The key of the command line argument.
+     * @param value The value of the command line option.
+     * @return The container in its current state.
+     */
+    Container operator()(const std::string& key, const std::string& value) {
+        cont.insert(cont.end(), action(key, value));
+        return cont;
     }
 };
 } // optparse

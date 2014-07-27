@@ -23,8 +23,8 @@
 #define GEARS_OPTPARSE_OPTION_SET_HPP
 
 #include "option.hpp"
-#include <vector>
 #include <set>
+#include <vector>
 #include <algorithm>
 
 namespace gears {

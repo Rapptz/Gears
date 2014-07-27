@@ -58,21 +58,19 @@ private:
 
     void parse(const std::string& key, const std::string& val) override {
         auto&& result = action_(key, val);
+        active = true;
         if(reference != nullptr) {
-            *reference = result;
-            active = true;
+            *reference = std::move(result);
         }
         else {
-            value.reset(new T(result));
-            active = true;
+            value.reset(new T(std::move(result)));
         }
     }
 
     std::unique_ptr<value_base> clone() const override {
-        auto&& ptr = utility::make_unique<typed_value<T>>();
+        auto&& ptr = utility::make_unique<typed_value<T>>(action_);
         ptr->reference = reference;
         ptr->active = active;
-        ptr->action_ = action_;
         ptr->nargs = nargs;
         ptr->metavar = metavar;
         ptr->required = required;
@@ -80,9 +78,11 @@ private:
     }
 public:
     /**
-     * @brief Default constructor.
+     * @brief Constructs from an action.
      */
-    typed_value(): action_(store<T>{}) {}
+    template<typename Action>
+    typed_value(Action action): action_(std::move(action)) {}
+
     /**
      * @brief Constructs a typed_value storing its result to a variable.
      * @details Constructs a typed_value with an l-value variable. This
@@ -92,6 +92,7 @@ public:
      * @param object The object to bind the result of parsing to.
      */
     typed_value(T& object): reference(&object) {}
+
 
     /**
      * @brief Checks if the typed_value has gone through parsing.
@@ -162,6 +163,23 @@ public:
 };
 
 /**
+ * @brief Returns a typed_value for composed values.
+ * @details Returns a typed_value for composed values.
+ * Composed values return a list of all the elements concatenated.
+ * For example, having a composed optparse::option would allow things
+ * like `--test=10 --test=20 --test=30` to produce a list of
+ * `[10, 20, 30]`.
+ *
+ * @param action The internal action to parse the values to.
+ * @return A polymorphic `typed_value` to use with optparse::option.
+ */
+template<typename Container, typename Action = store<typename Container::value_type>>
+inline std::unique_ptr<value_base> compose(Action action = Action{}) {
+    auto&& ptr = utility::make_unique<typed_value<Container>>(append<Container>{action});
+    return std::unique_ptr<value_base>{std::move(ptr)};
+}
+
+/**
  * @ingroup optparse
  * @brief Returns a typed_value that binds the result to a variable.
  * @details Returns a typed_value that when parsed, binds the result
@@ -201,8 +219,7 @@ inline std::unique_ptr<value_base> bind_to(T& t, Action action = Action{}) {
  */
 template<typename T>
 inline std::unique_ptr<value_base> constant(const T& t) {
-    auto&& ptr = utility::make_unique<typed_value<T>>();
-    ptr->action(store_const<T>{t});
+    auto&& ptr = utility::make_unique<typed_value<T>>(store_const<T>{t});
     ptr->nargs = 0;
     return std::unique_ptr<value_base>{std::move(ptr)};
 }
@@ -213,13 +230,31 @@ inline std::unique_ptr<value_base> constant(const T& t) {
  * value is required for your interface, this is the recommended
  * way of creating values.
  *
+ * @tparam T The type of value to store.
  * @param action The action used to parse values. If not provided, defaults to optparse::store.
  * @return A polymorphic `typed_value` to use with optparse::option.
  */
 template<typename T, typename Action = store<T>>
 inline std::unique_ptr<value_base> value(Action action = Action{}) {
-    auto&& ptr = utility::make_unique<typed_value<T>>();
-    ptr->action(std::move(action));
+    auto&& ptr = utility::make_unique<typed_value<T>>(action);
+    return std::unique_ptr<value_base>{std::move(ptr)};
+}
+
+/**
+ * @brief Returns a typed_value that handles a list of values.
+ * @details Returns a typed_value that handles a list of values.
+ *
+ * @tparam Container The internal container to hold values. Must meet the Container concept.
+ * @param arguments The number of elements to store in the list.
+ * @param action The action to use for parsing. If not provided, defaults to optparse::store.
+ * @return A polymorphic `typed_value` to use with optparse::option.
+ */
+template<typename Container, typename Action = store<typename Container::value_type>>
+inline std::unique_ptr<value_base> list(size_t arguments, Action action = Action{}) {
+    static_assert(std::is_convertible<decltype(action("", "")), typename Container::value_type>::value,
+                  "The action must return a type convertible to the container's value type");
+    auto&& ptr = utility::make_unique<typed_value<Container>>(store_list<Container, Action>{action});
+    ptr->nargs = arguments;
     return std::unique_ptr<value_base>{std::move(ptr)};
 }
 } // optparse
