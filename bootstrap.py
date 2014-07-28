@@ -14,7 +14,7 @@ args = parser.parse_args()
 # general variables
 include = [ '.', 'gears' ]
 depends = ['tests']
-cxxflags = [ '-Wall', '-Werror', '-Wextra', '-pedantic', '-std=c++11' ]
+cxxflags = [ '-Wall', '-Wextra', '-pedantic', '-std=c++11' ]
 
 if args.debug:
     cxxflags.extend(['-g', '-O0', '-DDEBUG'])

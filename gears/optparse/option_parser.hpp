@@ -231,17 +231,11 @@ public:
      * specified.
      *
      * @param args The arguments to pass to option_set::add.
-     * @return The return value of option_set::add.
      */
-    #ifndef GEARS_FOR_DOXYGEN_ONLY
     template<typename... Args>
-    auto add(Args&&... args) -> decltype(options.add(std::forward<Args>(args)...)) {
-        return options.add(std::forward<Args>(args)...);
+    void add(Args&&... args) {
+        options.add(std::forward<Args>(args)...);
     }
-    #else
-    template<typename... Args>
-    auto add(Args&&... args);
-    #endif // GEARS_FOR_DOXYGEN_ONLY
 
     /**
      * @brief Registers a subcommand for parsing.

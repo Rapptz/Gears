@@ -101,10 +101,9 @@ public:
      * they're constructed in-place.
      *
      * @param args Arguments to pass to the #option constructor.
-     * @returns A reference to the option created or the duplicate.
      */
     template<typename... Args>
-    option& add(Args&&... args) {
+    void add(Args&&... args) {
         // emplace it to the vector
         options.emplace_back(std::forward<Args>(args)...);
 
@@ -112,11 +111,9 @@ public:
         auto&& it = cache.find(options.back());
         if(it != cache.end()) {
             options.pop_back();
-            return *it;
         }
 
         cache.insert(options.back());
-        return options.back();
     }
 
     /**
