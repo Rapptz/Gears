@@ -23,16 +23,32 @@
 #define GEARS_OPTPARSE_OPTION_HPP
 
 #include "value.hpp"
+#include "../enums/operators.hpp"
+
+using namespace gears::enums::operators;
 
 namespace gears {
 namespace optparse {
+/**
+ * @ingroup optparse
+ * @brief List of traits that modify an option's behaviour.
+ * @details List of traits that modify an option's behaviour.
+ * This allows you to set whether an option should be required
+ * or hidden. These are bit flags so they should be used similar
+ * to any other type of bit flag such as, e.g., `std::ios_base`.
+ */
+enum class trait : char {
+    none     = 0,        ///< Represents no traits being set.
+    required = 1 << 0,   ///< The option is required to appear, or an error is thrown.
+    hidden   = 1 << 1    ///< The option is suppressed from the default --help output.
+};
+
 /**
  * @ingroup optparse
  * @brief Represents a command line option.
  * @details A class that represents a command line option. A command line
  * option is a command line argument used to specify information to the
  * program.
- *
  */
 struct option {
 private:
@@ -42,31 +58,32 @@ private:
 public:
     std::string name;   ///< The long name of the option, e.g. "help"
     std::string help;   ///< The description used for the help output
+    trait flags;       ///< The trait flags to modify the option's behaviour
     char alias = '\0';  ///< The short name of the option, e.g. 'h'
 
     /**
-     * @brief Constructs an option from a long name, a description, and a value.
+     * @brief Constructs an option from a long name, a description, a value, and trait.
      */
-    option(std::string name, std::string help = "", value_type value = constant(true)):
-        ptr(std::move(value)), name(std::move(name)), help(std::move(help)) {}
+    option(std::string name, std::string help = "", value_type value = constant(true), trait flags = trait::none):
+        ptr(std::move(value)), name(std::move(name)), help(std::move(help)), flags(std::move(flags)) {}
     /**
-     * @brief Constructs an option from a long name, short name, a description, and a value.
+     * @brief Constructs an option from a long name, short name, a description, a value, and trait.
      */
-    option(std::string name, char alias, std::string help = "", value_type value = constant(true)):
-        ptr(std::move(value)), name(std::move(name)), help(std::move(help)), alias(alias) {}
+    option(std::string name, char alias, std::string help = "", value_type value = constant(true), trait flags = trait::none):
+        ptr(std::move(value)), name(std::move(name)), help(std::move(help)), flags(std::move(flags)), alias(alias) {}
 
     /**
-     * @brief Constructs an option from a short name, description and value.
+     * @brief Constructs an option from a short name, description, a value, and traits.
      */
-    option(char alias, std::string help = "", value_type value = constant(true)):
-        ptr(std::move(value)), help(std::move(help)), alias(alias) {}
+    option(char alias, std::string help = "", value_type value = constant(true), trait flags = trait::none):
+        ptr(std::move(value)), help(std::move(help)), flags(std::move(flags)), alias(alias) {}
 
     /**
      * @brief Copy constructor
      */
     option(const option& other):
         ptr(other.ptr == nullptr ? nullptr : other.ptr->clone()),
-        name(other.name), help(other.help), alias(other.alias) {}
+        name(other.name), help(other.help), flags(other.flags), alias(other.alias) {}
 
     /**
      * @brief Copy assignment
@@ -75,6 +92,7 @@ public:
         ptr = other.ptr == nullptr ? nullptr : other.ptr->clone();
         name = other.name;
         help = other.help;
+        flags = other.flags;
         alias = other.alias;
         return *this;
     }

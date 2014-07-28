@@ -231,6 +231,10 @@ struct formatter {
         }
 
         for(auto&& opt : opts) {
+            if((opt.flags & trait::hidden) == trait::hidden) {
+                continue;
+            }
+
             size_t indent = max_indent;
             const bool has_long_option  = !opt.name.empty();
             const bool has_short_option = opt.alias != '\0';

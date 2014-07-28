@@ -30,7 +30,6 @@ namespace optparse {
 struct value_base {
     std::string metavar;     ///< The value name to use in help messages
     size_t nargs = 1;        ///< Number of arguments to expect.
-    bool required = false;
 
     virtual ~value_base() = default;
     virtual void parse(const std::string&, const std::string&) = 0;
@@ -73,7 +72,6 @@ private:
         ptr->active = active;
         ptr->nargs = nargs;
         ptr->metavar = metavar;
-        ptr->required = required;
         return std::unique_ptr<value_base>{std::move(ptr)};
     }
 public:

@@ -64,7 +64,7 @@
                 },
                 {
                     "name": "Debug",
-                    "shell_cmd": "g++ -Og -g -Wall -Wextra -pedantic -std=c++11 -I. ${file} -o ${file_base_name}",
+                    "shell_cmd": "g++ -O0 -g -Wall -Wextra -pedantic -std=c++11 -I. ${file} -o ${file_base_name}",
                     "file_regex": "^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$",
                     "working_dir": "${file_path}"
                 }
