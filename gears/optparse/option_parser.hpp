@@ -288,6 +288,7 @@ public:
     arguments raw_parse(ForwardIt begin, ForwardIt end) {
         static_assert(std::is_constructible<std::string, decltype(*begin)>{},
                       "Iterator must return type convertible to std::string");
+
         if(begin == end) {
             return {*active_options, {}, ""};
         }
@@ -295,6 +296,9 @@ public:
         // assign program name to argv[0] if it isn't provided
         if(program_name.empty()) {
             program_name = *begin++;
+        }
+        else {
+            ++begin;
         }
 
         // check if argv[1] is a subcommand
