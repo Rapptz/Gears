@@ -329,17 +329,40 @@ public:
     }
 
     /**
+     * @brief Checks if required arguments are active.
+     * @details Checks if required arguments are active.
+     * If a required option is not active then an exception
+     * is thrown. Otherwise nothing is thrown. Note that this
+     * only checks for required arguments in the active option_set.
+     * For example, if a non-subcommand option_set has required options
+     * but a subcommand is used and active then this function will check
+     * the option_set of the underlying subcommand for required options and
+     * skip the required options of the non-subcommand option_set.
+     *
+     * @throws missing_required_option Thrown when a required option is inactive.
+     */
+    void notify() {
+        for(auto&& opt : *active_options) {
+            if((opt.flags & trait::required) == trait::required && !opt.is_active()) {
+                throw missing_required_option(program_name, opt.name.empty() ? std::string("-").append(1, opt.alias)
+                                                                             : "--" + opt.name);
+            }
+        }
+    }
+
+    /**
      * @brief Parses the command line arguments while handling errors.
      * @details Parses the command line arguments while handling errors. All
      * exceptions are thrown and sent to the error stream provided. If the help
      * command line option is active, then the help message is sent to the output
-     * stream provided. Required arguments are checked and the thrown exceptions are
+     * stream provided. Required options are checked and the thrown exceptions are
      * also caught and output to the error stream. The assumptions of the arguments
      * are the same as the ones provided by #raw_parse. If exceptions are caught
      * then the program exits as if calling `std::exit(EXIT_FAILURE)`. If the help
      * message is active while no errors are spotted, then the program exits as if
      * calling `std::exit(EXIT_SUCCESS)`. The help message is output as if calling
-     * #format_help.
+     * #format_help. Required options are checked after checking for the existence
+     * of the help option.
      *
      * @param begin A ForwardIterator pointing to the first element to parse.
      * @param end A ForwardIterator pointing to one past the last element to parse.
@@ -356,6 +379,8 @@ public:
                 out << format_help();
                 std::exit(EXIT_SUCCESS);
             }
+
+            notify();
 
             return args;
         }
