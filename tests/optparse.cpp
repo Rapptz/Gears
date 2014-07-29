@@ -212,6 +212,17 @@ TEST_CASE("optparse", "[optparse]") {
         REQUIRE(count == 42);
         REQUIRE(args.options.get<int>("custom") == count);
     }
+
+    SECTION("required") {
+        parser.add("req", 'r', "required", opt::value<int>(), opt::trait::required);
+        std::vector<std::string> argv = { "dev" };
+        REQUIRE_NOTHROW(parser.raw_parse(argv.begin(), argv.end()));
+        REQUIRE_THROWS(parser.notify());
+
+        argv = { "dev", "--req", "10" };
+        REQUIRE_NOTHROW(parser.raw_parse(argv.begin(), argv.end()));
+        REQUIRE_NOTHROW(parser.notify());
+    }
 }
 
 TEST_CASE("optparse subcommand", "[optparse-sub]") {
@@ -227,20 +238,28 @@ TEST_CASE("optparse subcommand", "[optparse-sub]") {
             { "boolean", 'b', "tests" },
             { "compose", 'c', "compose", opt::compose<std::vector<int>>() },
             { "list",    'l', "lists", opt::list<std::vector<int>>(4) },
-            { "bind",    'e', "binds", opt::bind_to(lol) }
+            { "bind",    'e', "binds", opt::bind_to(lol) },
+            { "req",     'r', "required", opt::value<int>(), opt::trait::required }
         }}
     });
 
     std::vector<std::string> argv = { "dev", "--stuff", "10" };
     REQUIRE_NOTHROW(parser.raw_parse(argv.begin(), argv.end()));
+    REQUIRE_NOTHROW(parser.notify());
     argv = { "dev", "--version" };
     REQUIRE_NOTHROW(parser.raw_parse(argv.begin(), argv.end()));
+    REQUIRE_NOTHROW(parser.notify());
     argv = { "dev", "test", "--boolean" };
     REQUIRE_NOTHROW(parser.raw_parse(argv.begin(), argv.end()));
+    REQUIRE_THROWS(parser.notify());
     argv = { "dev", "lol", "--boolean" };
     REQUIRE_THROWS(parser.raw_parse(argv.begin(), argv.end()));
     argv = { "dev", "test", "--boolean", "--testing=10" };
     REQUIRE_NOTHROW(parser.raw_parse(argv.begin(), argv.end()));
+    REQUIRE_THROWS(parser.notify());
+    argv = { "dev", "test", "--req", "10", "--boolean", "--testing=10" };
+    REQUIRE_NOTHROW(parser.raw_parse(argv.begin(), argv.end()));
+    REQUIRE_NOTHROW(parser.notify());
     auto&& args = parser.raw_parse(argv.begin(), argv.end());
 
     REQUIRE(args.subcommand == "test");
@@ -248,6 +267,7 @@ TEST_CASE("optparse subcommand", "[optparse-sub]") {
     REQUIRE(!args.options.is_active("stuff"));
     REQUIRE(args.options.is_active("testing"));
     REQUIRE(args.options.is_active("boolean"));
+    REQUIRE(args.options.is_active("req"));
     REQUIRE(!args.options.is_active("compose"));
     REQUIRE(!args.options.is_active("list"));
     REQUIRE(!args.options.is_active("bind"));
@@ -258,6 +278,8 @@ TEST_CASE("optparse subcommand", "[optparse-sub]") {
     REQUIRE_NOTHROW(args.options.get_or<int>("bind", 10));
     REQUIRE(args.options.get_or<int>("bind", 10) == 10);
     REQUIRE_NOTHROW(args.options.get<bool>("boolean"));
+    REQUIRE_NOTHROW(args.options.get<int>("req"));
+    REQUIRE(args.options.get<int>("req") == 10);
     REQUIRE(args.options.get<bool>("boolean"));
     REQUIRE(args.positional.empty());
 
