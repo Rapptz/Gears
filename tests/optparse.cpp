@@ -213,3 +213,82 @@ TEST_CASE("optparse", "[optparse]") {
         REQUIRE(args.options.get<int>("custom") == count);
     }
 }
+
+TEST_CASE("optparse subcommand", "[optparse-sub]") {
+    int lol = 0;
+    opt::option_parser parser = {{
+        { "version", 'v', "boolean flag" },
+        { "stuff", "tests things", opt::value<int>() }
+    }};
+
+    parser.add_subcommand({
+        "test", {{
+            { "testing", 't', "tests other things", opt::value<int>() },
+            { "boolean", 'b', "tests" },
+            { "compose", 'c', "compose", opt::compose<std::vector<int>>() },
+            { "list",    'l', "lists", opt::list<std::vector<int>>(4) },
+            { "bind",    'e', "binds", opt::bind_to(lol) }
+        }}
+    });
+
+    std::vector<std::string> argv = { "dev", "--stuff", "10" };
+    REQUIRE_NOTHROW(parser.raw_parse(argv.begin(), argv.end()));
+    argv = { "dev", "--version" };
+    REQUIRE_NOTHROW(parser.raw_parse(argv.begin(), argv.end()));
+    argv = { "dev", "test", "--boolean" };
+    REQUIRE_NOTHROW(parser.raw_parse(argv.begin(), argv.end()));
+    argv = { "dev", "lol", "--boolean" };
+    REQUIRE_THROWS(parser.raw_parse(argv.begin(), argv.end()));
+    argv = { "dev", "test", "--boolean", "--testing=10" };
+    REQUIRE_NOTHROW(parser.raw_parse(argv.begin(), argv.end()));
+    auto&& args = parser.raw_parse(argv.begin(), argv.end());
+
+    REQUIRE(args.subcommand == "test");
+    REQUIRE(!args.options.is_active("version"));
+    REQUIRE(!args.options.is_active("stuff"));
+    REQUIRE(args.options.is_active("testing"));
+    REQUIRE(args.options.is_active("boolean"));
+    REQUIRE(!args.options.is_active("compose"));
+    REQUIRE(!args.options.is_active("list"));
+    REQUIRE(!args.options.is_active("bind"));
+
+    REQUIRE_NOTHROW(args.options.get<int>("testing"));
+    REQUIRE(args.options.get<int>("testing") == 10);
+    REQUIRE_THROWS(args.options.get<int>("bind"));
+    REQUIRE_NOTHROW(args.options.get_or<int>("bind", 10));
+    REQUIRE(args.options.get_or<int>("bind", 10) == 10);
+    REQUIRE_NOTHROW(args.options.get<bool>("boolean"));
+    REQUIRE(args.options.get<bool>("boolean"));
+    REQUIRE(args.positional.empty());
+
+    SECTION("complex command line") {
+        argv = { "dev", "test", "-b", "-t", "10", "-c", "1", "--list", "1", "2", "3", "4", "-c=2", "-e=20", "-c", "3", "1", "2", "3" };
+        auto&& arg = parser.raw_parse(argv.begin(), argv.end());
+
+        REQUIRE(arg.subcommand == "test");
+        REQUIRE(!arg.options.is_active("version"));
+        REQUIRE(!arg.options.is_active("stuff"));
+        REQUIRE(arg.options.is_active("testing"));
+        REQUIRE(arg.options.is_active("boolean"));
+        REQUIRE(arg.options.is_active("compose"));
+        REQUIRE(arg.options.is_active("list"));
+        REQUIRE(arg.options.is_active("bind"));
+
+        REQUIRE_NOTHROW(arg.options.get<bool>('b'));
+        REQUIRE_NOTHROW(arg.options.get<int>('t'));
+        REQUIRE_NOTHROW(arg.options.get<std::vector<int>>('l'));
+        REQUIRE_NOTHROW(arg.options.get<std::vector<int>>('c'));
+        REQUIRE_NOTHROW(arg.options.get<int>('e'));
+
+        REQUIRE(arg.options.get<bool>('b'));
+        REQUIRE(arg.options.get<int>('t') == 10);
+        REQUIRE((arg.options.get<std::vector<int>>('l') == std::vector<int>{1, 2, 3, 4}));
+        REQUIRE((arg.options.get<std::vector<int>>('c') == std::vector<int>{1, 2, 3}));
+        REQUIRE(arg.options.get<int>('e') == 20);
+        REQUIRE(lol == 20);
+
+        REQUIRE(!arg.positional.empty());
+        REQUIRE(arg.positional.size() == 3);
+        REQUIRE((arg.positional == std::vector<std::string>{"1", "2", "3"}));
+    }
+}
