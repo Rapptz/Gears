@@ -71,10 +71,6 @@ private:
             return begin;
         }
 
-        if(!is_option(arg)) {
-            throw optparse::error(program_name, arg + " is not a valid subcommand", arg);
-        }
-
         return begin;
     }
 

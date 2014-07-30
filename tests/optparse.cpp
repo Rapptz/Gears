@@ -252,8 +252,6 @@ TEST_CASE("optparse subcommand", "[optparse-sub]") {
     argv = { "dev", "test", "--boolean" };
     REQUIRE_NOTHROW(parser.raw_parse(argv.begin(), argv.end()));
     REQUIRE_THROWS(parser.notify());
-    argv = { "dev", "lol", "--boolean" };
-    REQUIRE_THROWS(parser.raw_parse(argv.begin(), argv.end()));
     argv = { "dev", "test", "--boolean", "--testing=10" };
     REQUIRE_NOTHROW(parser.raw_parse(argv.begin(), argv.end()));
     REQUIRE_THROWS(parser.notify());
