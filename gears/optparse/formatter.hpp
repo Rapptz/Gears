@@ -109,6 +109,7 @@ struct formatter {
             result.push_back(' ');
             result += command;
         }
+        result.push_back(' ');
         result += str;
         return wrap(result);
     }

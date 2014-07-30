@@ -72,7 +72,7 @@ private:
         }
 
         if(!is_option(arg)) {
-            throw error(program_name, arg + " is not a valid subcommand", arg);
+            throw optparse::error(program_name, arg + " is not a valid subcommand", arg);
         }
 
         return begin;
@@ -173,7 +173,7 @@ private:
             if(opt.takes_value() && !has_explicit_value) {
                 // note that -ostuff doesn't work due to ambiguity.
                 if(j + 1 != arg.size()) {
-                    throw error(program_name, "short option \'" + key + "\' and value must not be combined", arg);
+                    throw optparse::error(program_name, "short option \'" + key + "\' and value must not be combined", arg);
                 }
 
                 if(argc - 1 < opt.nargs()) {
@@ -429,8 +429,9 @@ public:
      * @return The formatted message.
      */
     std::string format_usage() const noexcept {
-        return format->usage(program_name, usage,
-                             active_subcommand_index == -1 ? "" : subcommands[active_subcommand_index].name);
+        return format->usage(program_name,
+                             active_subcommand_index == -1 ? "" : subcommands[active_subcommand_index].name,
+                             usage);
     }
 
     /**
@@ -474,9 +475,28 @@ public:
      */
     std::string format_help() const noexcept {
         std::string result = format_usage();
-        result.append(format_description()).append(format_subcommands());
+        result.append(1, '\n').append(format_description()).append(format_subcommands());
+
+        if(!subcommands.empty()) {
+            result.push_back('\n');
+        }
+
         result.append(format_options()).append(format_epilogue());
         return result;
+    }
+
+    /**
+     * @brief Utility to show a formatted error message.
+     * @details Utility to show a formatted error message.
+     * The error string shows the formatted usage message first
+     * and the string `"{program}: error: {message}"` wrapped using
+     * the current formatter's wrap member function. The function
+     * exits the program with `std::exit(EXIT_FAILURE)`.
+     */
+    void error(const std::string& message, std::ostream& err = std::cerr) {
+        err << format_usage();
+        err << format->wrap(program_name + ": error: " + message);
+        std::exit(EXIT_FAILURE);
     }
 };
 } // optparse
