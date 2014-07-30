@@ -30,7 +30,7 @@ using namespace gears::enums::operators;
 namespace gears {
 namespace optparse {
 /**
- * @ingroup optparse
+ * @relates option
  * @brief List of traits that modify an option's behaviour.
  * @details List of traits that modify an option's behaviour.
  * This allows you to set whether an option should be required

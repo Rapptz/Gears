@@ -161,7 +161,7 @@ public:
 };
 
 /**
- * @ingroup optparse
+ * @relates typed_value
  * @brief Returns a typed_value for composed values.
  * @details Returns a typed_value for composed values.
  * Composed values return a list of all the elements concatenated.
@@ -181,7 +181,7 @@ inline std::unique_ptr<value_base> compose(std::string metavar = "", Action acti
 }
 
 /**
- * @ingroup optparse
+ * @relates typed_value
  * @brief Returns a typed_value that binds the result to a variable.
  * @details Returns a typed_value that when parsed, binds the result
  * to an l-value variable. For example, having an option being
@@ -209,7 +209,7 @@ inline std::unique_ptr<value_base> bind_to(T& t, std::string metavar = "", Actio
 }
 
 /**
- * @ingroup optparse
+ * @relates typed_value
  * @brief Returns a typed_value that returns a constant value.
  * @details Returns a typed_value that returns a constant value.
  * This is a wrapper around creating a typed_value and setting the
@@ -228,7 +228,7 @@ inline std::unique_ptr<value_base> constant(const T& t) {
 }
 
 /**
- * @ingroup optparse
+ * @relates typed_value
  * @brief Returns a regular typed_value.
  * @details Returns a regular typed_value. If a command line
  * value is required for your interface, this is the recommended
@@ -248,7 +248,7 @@ inline std::unique_ptr<value_base> value(std::string metavar = "", Action action
 }
 
 /**
- * @ingroup optparse
+ * @relates typed_value
  * @brief Returns a typed_value with a custom action.
  * @details Returns a typed_value with a custom action. This is
  * typically used if you want to just specify a custom action parser.
@@ -269,7 +269,7 @@ inline std::unique_ptr<value_base> custom(Action action, std::string metavar = "
 }
 
 /**
- * @ingroup optparse
+ * @relates typed_value
  * @brief Returns a typed_value that handles a list of values.
  * @details Returns a typed_value that handles a list of values.
  *
