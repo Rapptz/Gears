@@ -45,6 +45,16 @@ struct subcommand {
     subcommand() = default;
 
     /**
+     * @brief Constructs from a name.
+     */
+    subcommand(std::string name): name(std::move(name)) {}
+
+    /**
+     * @brief Constructs from a name and a list of options.
+     */
+    subcommand(std::string name, std::initializer_list<option> options): name(std::move(name)), options(std::move(options)) {}
+
+    /**
      * @brief Constructs from a name and an option.
      */
     subcommand(std::string name, option_set options): name(std::move(name)), options(std::move(options)) {}

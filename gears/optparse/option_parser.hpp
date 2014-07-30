@@ -224,6 +224,11 @@ public:
     option_parser(option_set options): options(std::move(options)) {}
 
     /**
+     * @brief Constructs an option_parser from a list of options
+     */
+    option_parser(std::initializer_list<option> options): options(std::move(options)) {}
+
+    /**
      * @brief Adds an option to the option_parser.
      * @details Adds an option to the option_parser. This
      * function is equivalent to the option_set::add function. The
