@@ -188,7 +188,7 @@ TEST_CASE("optparse", "[optparse]") {
 
     SECTION("custom") {
         int count = 0;
-        parser.add("custom", "custom stuff", opt::value<int>([&count](const std::string&, const std::string& value) {
+        parser.add("custom", "custom stuff", opt::custom<int>([&count](const std::string&, const std::string& value) {
             count += std::stoi(value);
             return count;
         }));

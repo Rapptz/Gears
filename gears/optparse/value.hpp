@@ -161,6 +161,7 @@ public:
 };
 
 /**
+ * @ingroup optparse
  * @brief Returns a typed_value for composed values.
  * @details Returns a typed_value for composed values.
  * Composed values return a list of all the elements concatenated.
@@ -168,12 +169,14 @@ public:
  * like `--test=10 --test=20 --test=30` to produce a list of
  * `[10, 20, 30]`.
  *
+ * @param metavar The metavar variable to assign to the optparse::value.
  * @param action The internal action to parse the values to.
  * @return A polymorphic `typed_value` to use with optparse::option.
  */
 template<typename Container, typename Action = store<typename Container::value_type>>
-inline std::unique_ptr<value_base> compose(Action action = Action{}) {
+inline std::unique_ptr<value_base> compose(std::string metavar = "", Action action = Action{}) {
     auto&& ptr = utility::make_unique<typed_value<Container>>(append<Container>{action});
+    ptr->metavar = std::move(metavar);
     return std::unique_ptr<value_base>{std::move(ptr)};
 }
 
@@ -193,13 +196,15 @@ inline std::unique_ptr<value_base> compose(Action action = Action{}) {
  * then the variable x will contain the value `10`.
  *
  * @param t The variable to bind the result to.
+ * @param metavar The metavar variable to assign to the optparse::value.
  * @param action The action to use for parsing the value. Defaults to optparse::store.
  * @return A polymorphic `typed_value` to use with optparse::option.
  */
 template<typename T, typename Action = store<T>>
-inline std::unique_ptr<value_base> bind_to(T& t, Action action = Action{}) {
+inline std::unique_ptr<value_base> bind_to(T& t, std::string metavar = "", Action action = Action{}) {
     auto&& ptr = utility::make_unique<typed_value<T>>(t);
     ptr->action(std::move(action));
+    ptr->metavar = std::move(metavar);
     return std::unique_ptr<value_base>{std::move(ptr)};
 }
 
@@ -223,36 +228,64 @@ inline std::unique_ptr<value_base> constant(const T& t) {
 }
 
 /**
+ * @ingroup optparse
  * @brief Returns a regular typed_value.
  * @details Returns a regular typed_value. If a command line
  * value is required for your interface, this is the recommended
- * way of creating values.
+ * way of creating values. If you prefer the parameters to be
+ * (action, metavar) then optparse::custom implements this order.
  *
  * @tparam T The type of value to store.
+ * @param metavar The metavar variable to assign to the optparse::value.
  * @param action The action used to parse values. If not provided, defaults to optparse::store.
  * @return A polymorphic `typed_value` to use with optparse::option.
  */
 template<typename T, typename Action = store<T>>
-inline std::unique_ptr<value_base> value(Action action = Action{}) {
+inline std::unique_ptr<value_base> value(std::string metavar = "", Action action = Action{}) {
     auto&& ptr = utility::make_unique<typed_value<T>>(action);
+    ptr->metavar = std::move(metavar);
     return std::unique_ptr<value_base>{std::move(ptr)};
 }
 
 /**
+ * @ingroup optparse
+ * @brief Returns a typed_value with a custom action.
+ * @details Returns a typed_value with a custom action. This is
+ * typically used if you want to just specify a custom action parser.
+ * Every other factory function provides an action parameter to handle
+ * inputting custom actions, so this one is provided to switch the
+ * parameter list of optparse::value.
+ *
+ * @tparam T The type of value to store.
+ * @param action The action used to parse values.
+ * @param metavar The metavar variable to assign to the optparse::value.
+ * @return A polymorphic `typed_value` to use with optparse::option.
+ */
+template<typename T, typename Action>
+inline std::unique_ptr<value_base> custom(Action action, std::string metavar = "") {
+    auto&& ptr = utility::make_unique<typed_value<T>>(action);
+    ptr->metavar = std::move(metavar);
+    return std::unique_ptr<value_base>{std::move(ptr)};
+}
+
+/**
+ * @ingroup optparse
  * @brief Returns a typed_value that handles a list of values.
  * @details Returns a typed_value that handles a list of values.
  *
  * @tparam Container The internal container to hold values. Must meet the Container concept.
  * @param arguments The number of elements to store in the list.
+ * @param metavar The metavar variable to assign to the optparse::value.
  * @param action The action to use for parsing. If not provided, defaults to optparse::store.
  * @return A polymorphic `typed_value` to use with optparse::option.
  */
 template<typename Container, typename Action = store<typename Container::value_type>>
-inline std::unique_ptr<value_base> list(size_t arguments, Action action = Action{}) {
+inline std::unique_ptr<value_base> list(size_t arguments, std::string metavar = "", Action action = Action{}) {
     static_assert(std::is_convertible<decltype(action("", "")), typename Container::value_type>::value,
                   "The action must return a type convertible to the container's value type");
     auto&& ptr = utility::make_unique<typed_value<Container>>(store_list<Container, Action>{action});
     ptr->nargs = arguments;
+    ptr->metavar = std::move(metavar);
     return std::unique_ptr<value_base>{std::move(ptr)};
 }
 } // optparse
