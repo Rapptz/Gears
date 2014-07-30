@@ -386,7 +386,7 @@ public:
             return args;
         }
         catch(const std::exception& e) {
-            err << format_usage() << '\n' << e.what() << '\n';
+            err << format_usage() << e.what() << '\n';
             if(active_options->is_active("help")) {
                 out << format_description()
                     << format_subcommands()
