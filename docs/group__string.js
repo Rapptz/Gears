@@ -25,7 +25,7 @@ var group__string =
     [ "join", "group__string.html#gaad8300dd462be084a9ca5b7621309fdd", null ],
     [ "join_if", "group__string.html#gaa9be13ce4116293a1f1c849845be5549", null ],
     [ "left", "group__string.html#gabb9831335ab48a15377e120039532ad5", null ],
-    [ "lexical_cast", "group__string.html#ga06d29a505f3ca9d53b7003776b18ad1c", null ],
+    [ "lexical_cast", "group__string.html#ga8d8b46236c2a64ad7f553f094574e7db", null ],
     [ "replace_all", "group__string.html#ga2d62febfb33db83e33cd8ebeaf33ba7e", null ],
     [ "replace_first", "group__string.html#ga61e4ce050ffc3245413130ddba903a75", null ],
     [ "replace_last", "group__string.html#ga274bd0633d847e11bdb3e71f0fbfe59a", null ],

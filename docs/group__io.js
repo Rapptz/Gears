@@ -15,8 +15,7 @@ var group__io =
       [ "begin", "structgears_1_1io_1_1line__reader.html#af5cd7bc93eabef7f5464274f8558f2ba", null ],
       [ "end", "structgears_1_1io_1_1line__reader.html#a89c40e6290bcd41836c2bd0488597230", null ]
     ] ],
-    [ "flags", "group__io.html#ga246ba0ef8f6f242274595c04298d20d9", null ],
-    [ "flags", "group__io.html#gacd0ea53decb51365f10f11409a17cb97", null ],
     [ "fprint", "group__io.html#gac26a01b50d8417af5e9cd652ef693595", null ],
+    [ "getline_until", "group__io.html#gaa15ed74f081b7d5cac2b79eb1b836063", null ],
     [ "lines", "group__io.html#ga5bdfb1fec3ca3283e5984bfc8d68e046", null ]
 ];

@@ -6,12 +6,14 @@ var searchData=
   ['class_5fof',['class_of',['../structgears_1_1meta_1_1class__of.html',1,'gears::meta']]],
   ['classof',['ClassOf',['../group__meta.html#ga8600f6ca7168635374717ac15ed84b6b',1,'gears::meta']]],
   ['cmove',['cmove',['../group__meta.html#ga736fb9655071daeabbc91bb34046f130',1,'gears::meta']]],
+  ['column',['column',['../structgears_1_1optparse_1_1formatter.html#aa58553af9da54d34a3dd1adb383550e7',1,'gears::optparse::formatter']]],
   ['commontype',['CommonType',['../group__meta.html#ga585a97c044dc4b4c5ceb9ac4e8021f04',1,'gears::meta']]],
   ['comparable',['Comparable',['../structgears_1_1concepts_1_1Comparable.html',1,'gears::concepts']]],
-  ['compose',['compose',['../group__functional.html#gada3fb865efe49c85347051419a758ec3',1,'gears::functional']]],
+  ['compose',['compose',['../structgears_1_1optparse_1_1typed__value.html#a3d08a86549e40dad80433a14090b0651',1,'gears::optparse::typed_value::compose()'],['../group__functional.html#gada3fb865efe49c85347051419a758ec3',1,'gears::functional::compose()']]],
   ['compound',['Compound',['../structgears_1_1concepts_1_1Compound.html',1,'gears::concepts']]],
   ['concepts_20module',['Concepts module',['../group__concepts.html',1,'']]],
   ['const',['Const',['../group__meta.html#ga1381e28221e23b8aa5a15b27f4abe6d5',1,'gears::meta']]],
+  ['constant',['constant',['../structgears_1_1optparse_1_1typed__value.html#abcb16808fae424d82f6bd08fa91e073b',1,'gears::optparse::typed_value']]],
   ['constructible',['Constructible',['../structgears_1_1concepts_1_1Constructible.html',1,'gears::concepts']]],
   ['container',['Container',['../structgears_1_1concepts_1_1Container.html',1,'gears::concepts']]],
   ['container_20concepts_20submodule',['Container concepts submodule',['../group__container__concepts.html',1,'']]],
@@ -20,5 +22,6 @@ var searchData=
   ['copyable',['Copyable',['../structgears_1_1concepts_1_1Copyable.html',1,'gears::concepts']]],
   ['copyassignable',['CopyAssignable',['../structgears_1_1concepts_1_1CopyAssignable.html',1,'gears::concepts']]],
   ['copyconstructible',['CopyConstructible',['../structgears_1_1concepts_1_1CopyConstructible.html',1,'gears::concepts']]],
-  ['curry',['curry',['../group__functional.html#ga39169e3b53ed3bed41475b7bf7dafc6f',1,'gears::functional']]]
+  ['curry',['curry',['../group__functional.html#ga39169e3b53ed3bed41475b7bf7dafc6f',1,'gears::functional']]],
+  ['custom',['custom',['../structgears_1_1optparse_1_1typed__value.html#ad43b350e5d30f376a91839ae7704ff00',1,'gears::optparse::typed_value']]]
 ];

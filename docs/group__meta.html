@@ -41,6 +41,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="modules.html"><span>Modules</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li>
@@ -81,7 +82,7 @@ $(document).ready(function(){initNavTree('group__meta.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Groups</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Groups</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -140,12 +141,12 @@ Macros</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
 <tr class="memitem:ga4a535c66f188fc9344922cef6c79d3c2"><td class="memTemplParams" colspan="2">template&lt;typename... Args&gt; </td></tr>
-<tr class="memitem:ga4a535c66f188fc9344922cef6c79d3c2"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__meta.html#ga4a535c66f188fc9344922cef6c79d3c2">gears::meta::EnableIf</a> = Type&lt; std::enable_if&lt; All&lt; Args...&gt;::value, alias_detail::enabler &gt;&gt;</td></tr>
+<tr class="memitem:ga4a535c66f188fc9344922cef6c79d3c2"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__meta.html#ga4a535c66f188fc9344922cef6c79d3c2">gears::meta::EnableIf</a> = Type&lt; std::enable_if&lt; All&lt; Args...&gt;::<a class="el" href="structgears_1_1optparse_1_1typed__value.html#a9635ddb6c2f2c18fc40c35cf22ba9d3a">value</a>, alias_detail::enabler &gt;&gt;</td></tr>
 <tr class="memdesc:ga4a535c66f188fc9344922cef6c79d3c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Template alias for <code>std::enable_if</code>  <a href="#ga4a535c66f188fc9344922cef6c79d3c2">More...</a><br/></td></tr>
 <tr class="separator:ga4a535c66f188fc9344922cef6c79d3c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga8e13ceb9990c1ae7000050d4daabfdb1"><td class="memTemplParams" colspan="2"><a class="anchor" id="ga8e13ceb9990c1ae7000050d4daabfdb1"></a>
 template&lt;typename... Args&gt; </td></tr>
-<tr class="memitem:ga8e13ceb9990c1ae7000050d4daabfdb1"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__meta.html#ga8e13ceb9990c1ae7000050d4daabfdb1">gears::meta::DisableIf</a> = Type&lt; std::enable_if&lt; meta::Not&lt; All&lt; Args...&gt;&gt;::value, alias_detail::enabler &gt;&gt;</td></tr>
+<tr class="memitem:ga8e13ceb9990c1ae7000050d4daabfdb1"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__meta.html#ga8e13ceb9990c1ae7000050d4daabfdb1">gears::meta::DisableIf</a> = Type&lt; std::enable_if&lt; meta::Not&lt; All&lt; Args...&gt;&gt;::<a class="el" href="structgears_1_1optparse_1_1typed__value.html#a9635ddb6c2f2c18fc40c35cf22ba9d3a">value</a>, alias_detail::enabler &gt;&gt;</td></tr>
 <tr class="memdesc:ga8e13ceb9990c1ae7000050d4daabfdb1"><td class="mdescLeft">&#160;</td><td class="mdescRight">The negation of <code>EnableIf</code>. <br/></td></tr>
 <tr class="separator:ga8e13ceb9990c1ae7000050d4daabfdb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gae0e6a3a188d17de87ab10266d2d7b584"><td class="memTemplParams" colspan="2"><a class="anchor" id="gae0e6a3a188d17de87ab10266d2d7b584"></a>
@@ -235,7 +236,7 @@ template&lt;typename T &gt; </td></tr>
 <tr class="separator:gada055d0960a18d966c3d1c52a1dfb5e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga5cc74d65519ee7844970ca7d9299c3d2"><td class="memTemplParams" colspan="2"><a class="anchor" id="ga5cc74d65519ee7844970ca7d9299c3d2"></a>
 template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ga5cc74d65519ee7844970ca7d9299c3d2"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__meta.html#ga5cc74d65519ee7844970ca7d9299c3d2">gears::meta::StorageFor</a> = Type&lt; std::aligned_storage&lt; sizeof(T), std::alignment_of&lt; T &gt;::value &gt;&gt;</td></tr>
+<tr class="memitem:ga5cc74d65519ee7844970ca7d9299c3d2"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__meta.html#ga5cc74d65519ee7844970ca7d9299c3d2">gears::meta::StorageFor</a> = Type&lt; std::aligned_storage&lt; sizeof(T), std::alignment_of&lt; T &gt;::<a class="el" href="structgears_1_1optparse_1_1typed__value.html#a9635ddb6c2f2c18fc40c35cf22ba9d3a">value</a> &gt;&gt;</td></tr>
 <tr class="memdesc:ga5cc74d65519ee7844970ca7d9299c3d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Template alias for <code>std::aligned_storage</code> with proper alignment. <br/></td></tr>
 <tr class="separator:ga5cc74d65519ee7844970ca7d9299c3d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gad9fc2327157d66483dcdadbc1e5079d0"><td class="memTemplParams" colspan="2"><a class="anchor" id="gad9fc2327157d66483dcdadbc1e5079d0"></a>
@@ -350,7 +351,7 @@ std::remove_reference&lt; T &gt;<br class="typebreak"/>
 template&lt;typename... Args&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="group__meta.html#ga4a535c66f188fc9344922cef6c79d3c2">gears::meta::EnableIf</a> = typedef Type&lt;std::enable_if&lt;All&lt;Args...&gt;::value, alias_detail::enabler&gt;&gt;</td>
+          <td class="memname">using <a class="el" href="group__meta.html#ga4a535c66f188fc9344922cef6c79d3c2">gears::meta::EnableIf</a> = typedef Type&lt;std::enable_if&lt;All&lt;Args...&gt;::<a class="el" href="structgears_1_1optparse_1_1typed__value.html#a9635ddb6c2f2c18fc40c35cf22ba9d3a">value</a>, alias_detail::enabler&gt;&gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">

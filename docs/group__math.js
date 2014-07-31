@@ -1,5 +1,6 @@
 var group__math =
 [
+    [ "Mathematical Constants", "group__math__constants.html", "group__math__constants" ],
     [ "uintx", "structgears_1_1math_1_1uintx.html", [
       [ "uintx", "structgears_1_1math_1_1uintx.html#ade0ff23e7706e959c1716d0b41007280", null ],
       [ "uintx", "structgears_1_1math_1_1uintx.html#af945a5238100315a8eef1c03d323900c", null ],
@@ -35,6 +36,7 @@ var group__math =
     [ "factorial", "group__math.html#gad81ec97e5d09b8ada64c3a3a2c4b453c", null ],
     [ "fibonacci", "group__math.html#gaae183425c07ebd9916f81e7ab4009b55", null ],
     [ "gcd", "group__math.html#gad71aa8b025dc65b171dac7c10fdae68e", null ],
+    [ "is_prime", "group__math.html#gac534c8d020e1228b3021c55d4124d30e", null ],
     [ "max", "group__math.html#ga57defb757d911c751135b5cf7035caf2", null ],
     [ "min", "group__math.html#ga38b8ad00a9e5fdcb39b17c168e311e8c", null ],
     [ "mod_pow", "group__math.html#ga292dbc5139c31286c440c2c9e01dd524", null ],

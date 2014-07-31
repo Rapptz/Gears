@@ -4,6 +4,7 @@ var NAVTREE =
     [ "Welcome", "index.html#welcome", null ],
     [ "What is Gears?", "index.html#whatisgears", null ],
     [ "Compiler Support", "index.html#compilersupport", null ],
+    [ "Tutorials", "tutorials.html", "tutorials" ],
     [ "Modules", "modules.html", "modules" ],
     [ "Classes", null, [
       [ "Class List", "annotated.html", "annotated" ],
@@ -12,6 +13,9 @@ var NAVTREE =
       [ "Class Members", "functions.html", [
         [ "All", "functions.html", null ],
         [ "Functions", "functions_func.html", null ],
+        [ "Variables", "functions_vars.html", null ],
+        [ "Enumerations", "functions_enum.html", null ],
+        [ "Enumerator", "functions_eval.html", null ],
         [ "Related Functions", "functions_rela.html", null ]
       ] ]
     ] ]
@@ -21,7 +25,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 ".html",
-"structgears_1_1concepts_1_1Movable.html"
+"group__string.html#gad4fd98b4500ef52d848431179cf7bfd4",
+"structgears_1_1optparse_1_1typed__value.html#a4ac4c6e184eae94c4722936ddeedddb8"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

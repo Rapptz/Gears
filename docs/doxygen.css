@@ -106,6 +106,18 @@ div.navtab {
     margin-right: 15px
 }
 
+/* hacks for 'no syntax highlighting' block */
+
+div.cmd span {
+    color: black;
+}
+
+div.cmd a.code {
+    color: black;
+    pointer-events: none;
+    cursor: default;
+}
+
 /* @group Link Styling */
 
 a {
@@ -236,14 +248,17 @@ span.lineno a:hover {
 }
 
 code, tt {
-    margin: 0 2px;
-    padding: 0 5px;
+    background-color: #f8f8f8;
+    border: 1px solid #cccccc;
+    color: black;
     white-space: nowrap;
     font-family: Consolas, Monaco, monospace;
-    border: 1px solid #eaeaea;
-    background-color: #f8f8f8;
+    font-size: 13px;
+    line-height: 19px;
+    overflow: auto;
+    margin: 0px 2px;
+    padding: 1px 5px;
     border-radius: 3px;
-    color: #d14;
 }
 
 pre code {

@@ -41,6 +41,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="modules.html"><span>Modules</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li>
@@ -81,7 +82,7 @@ $(document).ready(function(){initNavTree('group__math.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Groups</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Groups</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -92,6 +93,7 @@ $(document).ready(function(){initNavTree('group__math.html','');});
 
 <div class="header">
   <div class="summary">
+<a href="#groups">Modules</a> &#124;
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
@@ -102,6 +104,12 @@ $(document).ready(function(){initNavTree('group__math.html','');});
 <p>Provides utilities to help with mathematics.  
 <a href="#details">More...</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="groups"></a>
+Modules</h2></td></tr>
+<tr class="memitem:group__math__constants"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__math__constants.html">Mathematical Constants</a></td></tr>
+<tr class="memdesc:group__math__constants"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines mathematical constants commonly in use. <br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgears_1_1math_1_1uintx.html">gears::math::uintx&lt; Bits, Digit, Digits &gt;</a></td></tr>
@@ -130,6 +138,10 @@ Functions</h2></td></tr>
 <tr class="memitem:gad8b0beb0e045fb275fbf777c8b30027b"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__math.html#gad8b0beb0e045fb275fbf777c8b30027b">gears::math::sum_of_divisors</a> (const T &amp;number) noexcept</td></tr>
 <tr class="memdesc:gad8b0beb0e045fb275fbf777c8b30027b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the sum of divisors function.  <a href="#gad8b0beb0e045fb275fbf777c8b30027b">More...</a><br/></td></tr>
 <tr class="separator:gad8b0beb0e045fb275fbf777c8b30027b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac534c8d020e1228b3021c55d4124d30e"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:gac534c8d020e1228b3021c55d4124d30e"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__math.html#gac534c8d020e1228b3021c55d4124d30e">gears::math::is_prime</a> (const T &amp;number) noexcept</td></tr>
+<tr class="memdesc:gac534c8d020e1228b3021c55d4124d30e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a number is prime.  <a href="#gac534c8d020e1228b3021c55d4124d30e">More...</a><br/></td></tr>
+<tr class="separator:gac534c8d020e1228b3021c55d4124d30e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaa309e2d7e560dfbfc611cc2a0986f902"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:gaa309e2d7e560dfbfc611cc2a0986f902"><td class="memTemplItemLeft" align="right" valign="top">constexpr T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__math.html#gaa309e2d7e560dfbfc611cc2a0986f902">gears::math::abs</a> (T t)</td></tr>
 <tr class="memdesc:gaa309e2d7e560dfbfc611cc2a0986f902"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the absolute value of a number.  <a href="#gaa309e2d7e560dfbfc611cc2a0986f902">More...</a><br/></td></tr>
@@ -199,7 +211,7 @@ template&lt;typename T &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The absolute value of a number. </dd></dl>
 
-<p>Definition at line <a class="el" href="algorithm_8hpp_source.html#l00153">153</a> of file <a class="el" href="algorithm_8hpp_source.html">algorithm.hpp</a>.</p>
+<p>Definition at line <a class="el" href="algorithm_8hpp_source.html#l00191">191</a> of file <a class="el" href="algorithm_8hpp_source.html">algorithm.hpp</a>.</p>
 
 </div>
 </div>
@@ -227,7 +239,7 @@ template&lt;typename T &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Nth factorial number. </dd></dl>
 
-<p>Definition at line <a class="el" href="algorithm_8hpp_source.html#l00070">70</a> of file <a class="el" href="algorithm_8hpp_source.html">algorithm.hpp</a>.</p>
+<p>Definition at line <a class="el" href="algorithm_8hpp_source.html#l00069">69</a> of file <a class="el" href="algorithm_8hpp_source.html">algorithm.hpp</a>.</p>
 
 </div>
 </div>
@@ -302,7 +314,43 @@ template&lt;typename T &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The greatest common divisor between the numbers. </dd></dl>
 
-<p>Definition at line <a class="el" href="algorithm_8hpp_source.html#l00086">86</a> of file <a class="el" href="algorithm_8hpp_source.html">algorithm.hpp</a>.</p>
+<p>Definition at line <a class="el" href="algorithm_8hpp_source.html#l00084">84</a> of file <a class="el" href="algorithm_8hpp_source.html">algorithm.hpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="gac534c8d020e1228b3021c55d4124d30e"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool gears::math::is_prime </td>
+          <td>(</td>
+          <td class="paramtype">const T &amp;&#160;</td>
+          <td class="paramname"><em>number</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Checks if a number is prime using the AKS primality test. This function is pretty slow for numbers that are relatively large.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">number</td><td>Number to test for primality. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> is number is prime, <code>false</code> otherwise. </dd></dl>
+
+<p>Definition at line <a class="el" href="algorithm_8hpp_source.html#l00147">147</a> of file <a class="el" href="algorithm_8hpp_source.html">algorithm.hpp</a>.</p>
 
 </div>
 </div>
@@ -348,7 +396,7 @@ template&lt;typename T , typename U , typename... Args&gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The maximum value of the list of numbers. </dd></dl>
 
-<p>Definition at line <a class="el" href="algorithm_8hpp_source.html#l00210">210</a> of file <a class="el" href="algorithm_8hpp_source.html">algorithm.hpp</a>.</p>
+<p>Definition at line <a class="el" href="algorithm_8hpp_source.html#l00248">248</a> of file <a class="el" href="algorithm_8hpp_source.html">algorithm.hpp</a>.</p>
 
 </div>
 </div>
@@ -394,7 +442,7 @@ template&lt;typename T , typename U , typename... Args&gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The minimum value of the list of numbers. </dd></dl>
 
-<p>Definition at line <a class="el" href="algorithm_8hpp_source.html#l00181">181</a> of file <a class="el" href="algorithm_8hpp_source.html">algorithm.hpp</a>.</p>
+<p>Definition at line <a class="el" href="algorithm_8hpp_source.html#l00219">219</a> of file <a class="el" href="algorithm_8hpp_source.html">algorithm.hpp</a>.</p>
 
 </div>
 </div>
@@ -448,7 +496,7 @@ template&lt;typename T &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><code>(base ** exponent) % modulus</code>. </dd></dl>
 
-<p>Definition at line <a class="el" href="algorithm_8hpp_source.html#l00105">105</a> of file <a class="el" href="algorithm_8hpp_source.html">algorithm.hpp</a>.</p>
+<p>Definition at line <a class="el" href="algorithm_8hpp_source.html#l00102">102</a> of file <a class="el" href="algorithm_8hpp_source.html">algorithm.hpp</a>.</p>
 
 </div>
 </div>
@@ -577,7 +625,7 @@ template&lt;typename T &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The sum of the number's divisors. </dd></dl>
 
-<p>Definition at line <a class="el" href="algorithm_8hpp_source.html#l00132">132</a> of file <a class="el" href="algorithm_8hpp_source.html">algorithm.hpp</a>.</p>
+<p>Definition at line <a class="el" href="algorithm_8hpp_source.html#l00128">128</a> of file <a class="el" href="algorithm_8hpp_source.html">algorithm.hpp</a>.</p>
 
 </div>
 </div>

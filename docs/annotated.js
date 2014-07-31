@@ -76,6 +76,24 @@ var annotated =
         [ "All", "structgears_1_1meta_1_1All.html", null ],
         [ "class_of", "structgears_1_1meta_1_1class__of.html", null ]
       ] ],
+      [ "optparse", null, [
+        [ "store", "structgears_1_1optparse_1_1store.html", "structgears_1_1optparse_1_1store" ],
+        [ "store_const", "structgears_1_1optparse_1_1store__const.html", "structgears_1_1optparse_1_1store__const" ],
+        [ "store_list", "structgears_1_1optparse_1_1store__list.html", "structgears_1_1optparse_1_1store__list" ],
+        [ "append", "structgears_1_1optparse_1_1append.html", "structgears_1_1optparse_1_1append" ],
+        [ "error", "classgears_1_1optparse_1_1error.html", "classgears_1_1optparse_1_1error" ],
+        [ "unrecognised_option", "classgears_1_1optparse_1_1unrecognised__option.html", "classgears_1_1optparse_1_1unrecognised__option" ],
+        [ "missing_required_option", "classgears_1_1optparse_1_1missing__required__option.html", "classgears_1_1optparse_1_1missing__required__option" ],
+        [ "missing_required_value", "classgears_1_1optparse_1_1missing__required__value.html", "classgears_1_1optparse_1_1missing__required__value" ],
+        [ "option_takes_no_value", "classgears_1_1optparse_1_1option__takes__no__value.html", "classgears_1_1optparse_1_1option__takes__no__value" ],
+        [ "formatter", "structgears_1_1optparse_1_1formatter.html", "structgears_1_1optparse_1_1formatter" ],
+        [ "option", "structgears_1_1optparse_1_1option.html", "structgears_1_1optparse_1_1option" ],
+        [ "option_parser", "structgears_1_1optparse_1_1option__parser.html", "structgears_1_1optparse_1_1option__parser" ],
+        [ "option_set", "structgears_1_1optparse_1_1option__set.html", "structgears_1_1optparse_1_1option__set" ],
+        [ "subcommand", "structgears_1_1optparse_1_1subcommand.html", "structgears_1_1optparse_1_1subcommand" ],
+        [ "arguments", "structgears_1_1optparse_1_1arguments.html", "structgears_1_1optparse_1_1arguments" ],
+        [ "typed_value", "structgears_1_1optparse_1_1typed__value.html", "structgears_1_1optparse_1_1typed__value" ]
+      ] ],
       [ "string", null, [
         [ "is_lower", "structgears_1_1string_1_1is__lower.html", "structgears_1_1string_1_1is__lower" ],
         [ "is_upper", "structgears_1_1string_1_1is__upper.html", "structgears_1_1string_1_1is__upper" ],

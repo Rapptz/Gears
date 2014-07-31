@@ -92,5 +92,7 @@ var group__utility =
     [ "decode", "group__utility.html#gaeb08c4ef993da3a96e801fb425470e84", null ],
     [ "encode", "group__utility.html#gaf745f6eab99ce77026b613ab42ca038a", null ],
     [ "make_array", "group__utility.html#gab190981e6beccb6fbb1892af239c78d7", null ],
+    [ "make_unique", "group__utility.html#gac91db206f8235d42114d9e519e0f7323", null ],
+    [ "make_unique", "group__utility.html#gabe822964a627f6ea9224c438989c2b4a", null ],
     [ "indeterminate", "group__utility.html#ga47d972b5f07ee8d5de2ed71f86fd1cdd", null ]
 ];

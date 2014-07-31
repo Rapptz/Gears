@@ -5,6 +5,9 @@ var searchData=
   ['uintx_5fcast',['uintx_cast',['../structgears_1_1math_1_1uintx.html#a4ce14163b32539d8c693e73fe817a515',1,'gears::math::uintx']]],
   ['underlyingtype',['UnderlyingType',['../group__meta.html#ga951db82222f4a454d7c0aecd05fdfbd3',1,'gears::meta']]],
   ['unqualified',['Unqualified',['../group__meta.html#gab61090840d1e77d78ccd461caf025dbb',1,'gears::meta']]],
+  ['unrecognised_5foption',['unrecognised_option',['../classgears_1_1optparse_1_1unrecognised__option.html',1,'gears::optparse']]],
+  ['unrecognised_5foption',['unrecognised_option',['../classgears_1_1optparse_1_1unrecognised__option.html#a080c54df3aee8a4b7b80eff440e24fea',1,'gears::optparse::unrecognised_option']]],
   ['unsigned',['Unsigned',['../structgears_1_1concepts_1_1Unsigned.html',1,'gears::concepts']]],
+  ['usage',['usage',['../structgears_1_1optparse_1_1option__parser.html#a354368b33ae1f98b31093853ff39caab',1,'gears::optparse::option_parser::usage()'],['../structgears_1_1optparse_1_1subcommand.html#ab0e650ccce41b78f9a963ea57a0e1769',1,'gears::optparse::subcommand::usage()'],['../structgears_1_1optparse_1_1formatter.html#a0885ef187daa6b77bfac5c6b34ef903a',1,'gears::optparse::formatter::usage()']]],
   ['utility_20module',['Utility module',['../group__utility.html',1,'']]]
 ];

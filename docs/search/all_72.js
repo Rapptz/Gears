@@ -1,8 +1,11 @@
 var searchData=
 [
   ['randomaccessiterator',['RandomAccessIterator',['../structgears_1_1concepts_1_1RandomAccessIterator.html',1,'gears::concepts']]],
+  ['raw_5fparse',['raw_parse',['../structgears_1_1optparse_1_1option__parser.html#a13c96ca1d7af369f034aeb5d51e149af',1,'gears::optparse::option_parser']]],
   ['reference',['Reference',['../structgears_1_1concepts_1_1Reference.html',1,'gears::concepts']]],
   ['regular',['Regular',['../structgears_1_1concepts_1_1Regular.html',1,'gears::concepts']]],
+  ['remove',['remove',['../structgears_1_1optparse_1_1option__set.html#a157c88ff2d54cda4a0608c944762bd65',1,'gears::optparse::option_set']]],
+  ['remove_5fflags',['remove_flags',['../group__enums.html#ga97d3eac91f0dbf0e2825ef3b90d988cc',1,'gears::enums']]],
   ['removeconst',['RemoveConst',['../group__meta.html#ga987e66104ddadd0538f95c417f62ffd6',1,'gears::meta']]],
   ['removecv',['RemoveCV',['../group__meta.html#ga37db03649759e4d991fad9637ae949cf',1,'gears::meta']]],
   ['removeextents',['RemoveExtents',['../group__meta.html#gaaaac21f8b699ddd1cda9539d7ec5e3ac',1,'gears::meta']]],
@@ -14,12 +17,14 @@ var searchData=
   ['replace_5flast',['replace_last',['../group__string.html#ga274bd0633d847e11bdb3e71f0fbfe59a',1,'gears::string']]],
   ['replace_5fnth',['replace_nth',['../group__string.html#gaeac2bd0a47111d3161c300e790bb6d5f',1,'gears::string']]],
   ['require',['require',['../group__concepts.html#gac123339dbd70d43fd7526314e0bafe81',1,'gears::concepts']]],
+  ['required',['required',['../structgears_1_1optparse_1_1option.html#a947cf50e81530632beab876f76d73dcaaac67ede5a84eb5a1add7ff4440e9a485',1,'gears::optparse']]],
   ['reset',['reset',['../structgears_1_1chrono_1_1basic__stopwatch.html#a921d145a41fc7135c46d12773ed6714b',1,'gears::chrono::basic_stopwatch']]],
   ['restart',['restart',['../structgears_1_1chrono_1_1basic__stopwatch.html#af469930f80033294029cad8053ac04c5',1,'gears::chrono::basic_stopwatch']]],
   ['resultof',['ResultOf',['../group__meta.html#ga32663c3bd5ce8c03f6ba639485273c1a',1,'gears::meta']]],
   ['reverse',['reverse',['../group__string.html#ga7e1a87a7e7c4850daeabcfece19fc404',1,'gears::string']]],
   ['reversiblecontainer',['ReversibleContainer',['../structgears_1_1concepts_1_1ReversibleContainer.html',1,'gears::concepts']]],
   ['right',['right',['../group__string.html#ga72d9013326acd8e20e2ac9ade5d77e99',1,'gears::string']]],
+  ['root_5ftwo',['root_two',['../group__math__constants.html#gadca0eec1e73c8b5bddde1939fbdb9eb0',1,'gears::math']]],
   ['rshift',['rshift',['../group__functional__objects.html#gad1cd96d90f9391d18ac4ce14165d2bb5',1,'gears::functional']]],
   ['rvaluereference',['RValueReference',['../structgears_1_1concepts_1_1RValueReference.html',1,'gears::concepts']]],
   ['rvalueswappable',['RValueSwappable',['../structgears_1_1concepts_1_1RValueSwappable.html',1,'gears::concepts']]]

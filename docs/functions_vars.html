@@ -41,6 +41,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="modules.html"><span>Modules</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li>
@@ -74,6 +75,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="functions.html"><span>All</span></a></li>
       <li><a href="functions_func.html"><span>Functions</span></a></li>
       <li class="current"><a href="functions_vars.html"><span>Variables</span></a></li>
+      <li><a href="functions_enum.html"><span>Enumerations</span></a></li>
+      <li><a href="functions_eval.html"><span>Enumerator</span></a></li>
       <li><a href="functions_rela.html"><span>Related&#160;Functions</span></a></li>
     </ul>
   </div>
@@ -97,7 +100,7 @@ $(document).ready(function(){initNavTree('functions_vars.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Groups</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Groups</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -108,8 +111,47 @@ $(document).ready(function(){initNavTree('functions_vars.html','');});
 
 <div class="contents">
 &#160;<ul>
-<li>indeterminate
-: <a class="el" href="structgears_1_1utility_1_1tribool.html#aa8efba18823e850ac680b7bc13e9022b">gears::utility::tribool</a>
+<li>alias
+: <a class="el" href="structgears_1_1optparse_1_1option.html#a73869042ed1a53b52a793339fe27171e">gears::optparse::option</a>
+</li>
+<li>column
+: <a class="el" href="structgears_1_1optparse_1_1formatter.html#aa58553af9da54d34a3dd1adb383550e7">gears::optparse::formatter</a>
+</li>
+<li>description
+: <a class="el" href="structgears_1_1optparse_1_1option__parser.html#a60ef99107c02867d569fab0f3ec9ee6d">gears::optparse::option_parser</a>
+, <a class="el" href="structgears_1_1optparse_1_1subcommand.html#a16e63c2b87a2ec71565e665f1651d6ae">gears::optparse::subcommand</a>
+</li>
+<li>epilogue
+: <a class="el" href="structgears_1_1optparse_1_1option__parser.html#a70c447ab85ba2c0780c5eb9306314597">gears::optparse::option_parser</a>
+, <a class="el" href="structgears_1_1optparse_1_1subcommand.html#aed9d8c2f22135f3e4f3a3828504e7ff5">gears::optparse::subcommand</a>
+</li>
+<li>flags
+: <a class="el" href="structgears_1_1optparse_1_1option.html#aad98ce8c6c53008b1d974031691d410b">gears::optparse::option</a>
+</li>
+<li>help
+: <a class="el" href="structgears_1_1optparse_1_1option.html#a4a6842687d83bbfb2f614392de21348c">gears::optparse::option</a>
+, <a class="el" href="structgears_1_1optparse_1_1subcommand.html#a80f39202dbf2aad3d68e34b508e33466">gears::optparse::subcommand</a>
+</li>
+<li>name
+: <a class="el" href="structgears_1_1optparse_1_1option.html#a0c6e8c8db82a707612f792aadb049025">gears::optparse::option</a>
+, <a class="el" href="structgears_1_1optparse_1_1subcommand.html#a4f78eab2c47d79291a92efdcf6c99ef3">gears::optparse::subcommand</a>
+</li>
+<li>options
+: <a class="el" href="structgears_1_1optparse_1_1subcommand.html#aca1a6470b276478071a194cf0eaccdf8">gears::optparse::subcommand</a>
+, <a class="el" href="structgears_1_1optparse_1_1arguments.html#aad78537a7cdf1f6d1cd0c34bad50eca0">gears::optparse::arguments</a>
+</li>
+<li>positional
+: <a class="el" href="structgears_1_1optparse_1_1arguments.html#a5ce18f99ba07a284076466ac4737310d">gears::optparse::arguments</a>
+</li>
+<li>program_name
+: <a class="el" href="structgears_1_1optparse_1_1option__parser.html#aa8ba51996083f167b8f8eb955b0f29d6">gears::optparse::option_parser</a>
+</li>
+<li>subcommand
+: <a class="el" href="structgears_1_1optparse_1_1arguments.html#a11c70d2fc33a00220978ba94fc55f063">gears::optparse::arguments</a>
+</li>
+<li>usage
+: <a class="el" href="structgears_1_1optparse_1_1option__parser.html#a354368b33ae1f98b31093853ff39caab">gears::optparse::option_parser</a>
+, <a class="el" href="structgears_1_1optparse_1_1subcommand.html#ab0e650ccce41b78f9a963ea57a0e1769">gears::optparse::subcommand</a>
 </li>
 </ul>
 </div><!-- contents -->

@@ -1,6 +1,10 @@
 var searchData=
 [
   ['abs',['abs',['../group__math.html#gaa309e2d7e560dfbfc611cc2a0986f902',1,'gears::math']]],
+  ['action',['action',['../structgears_1_1optparse_1_1typed__value.html#ac33aea0670a7eb10d26a42dd64945543',1,'gears::optparse::typed_value']]],
+  ['activate_5fflags',['activate_flags',['../group__enums.html#ga1a796ff4c62c032557bf9a5c703d5726',1,'gears::enums']]],
+  ['add',['add',['../structgears_1_1optparse_1_1option__parser.html#ab2e19344651e8433063f362b83bfdef4',1,'gears::optparse::option_parser::add()'],['../structgears_1_1optparse_1_1option__set.html#af7e8b10977092368cba57c83f4690d9e',1,'gears::optparse::option_set::add()']]],
+  ['add_5fsubcommand',['add_subcommand',['../structgears_1_1optparse_1_1option__parser.html#a654bc41e5605f257753473760482ef70',1,'gears::optparse::option_parser']]],
   ['all',['all',['../group__string.html#ga80469e90b2e42fa0b812e7515fc70085',1,'gears::string']]],
   ['any',['any',['../classgears_1_1utility_1_1any.html#aeaf61373ef2d0e96cea5e406d3fd4ebf',1,'gears::utility::any::any() noexcept=default'],['../classgears_1_1utility_1_1any.html#a6fc64566473a74598df20888b1f3454e',1,'gears::utility::any::any(T &amp;&amp;actual) noexcept'],['../classgears_1_1utility_1_1any.html#aab0ebc3b135cc501b85a965ab3ac4ea6',1,'gears::utility::any::any(const any &amp;other)'],['../classgears_1_1utility_1_1any.html#a19ff973e0e4e4a1a2ed558dda0f40b09',1,'gears::utility::any::any(any &amp;&amp;other)']]],
   ['any_5fcast',['any_cast',['../classgears_1_1utility_1_1any.html#a6427d44d43d5f3ed11c34be8f4521776',1,'gears::utility::any']]],

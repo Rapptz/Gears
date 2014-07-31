@@ -41,6 +41,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="modules.html"><span>Modules</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li>
@@ -81,7 +82,7 @@ $(document).ready(function(){initNavTree('group__string.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Groups</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Groups</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -153,10 +154,10 @@ Functions</h2></td></tr>
 &lt; String &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__string.html#gad6184853efe4241596ab279d5f73f874">gears::string::find_last_not_of</a> (const String &amp;str, UnaryPredicate &amp;&amp;pred)</td></tr>
 <tr class="memdesc:gad6184853efe4241596ab279d5f73f874"><td class="mdescLeft">&#160;</td><td class="mdescRight">Find last occurrence of a predicate not being met.  <a href="#gad6184853efe4241596ab279d5f73f874">More...</a><br/></td></tr>
 <tr class="separator:gad6184853efe4241596ab279d5f73f874"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga06d29a505f3ca9d53b7003776b18ad1c"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ga06d29a505f3ca9d53b7003776b18ad1c"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__string.html#ga06d29a505f3ca9d53b7003776b18ad1c">gears::string::lexical_cast</a> (const std::string &amp;str)</td></tr>
-<tr class="memdesc:ga06d29a505f3ca9d53b7003776b18ad1c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a string to its integral representation.  <a href="#ga06d29a505f3ca9d53b7003776b18ad1c">More...</a><br/></td></tr>
-<tr class="separator:ga06d29a505f3ca9d53b7003776b18ad1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8d8b46236c2a64ad7f553f094574e7db"><td class="memTemplParams" colspan="2">template&lt;typename Target , typename CharT &gt; </td></tr>
+<tr class="memitem:ga8d8b46236c2a64ad7f553f094574e7db"><td class="memTemplItemLeft" align="right" valign="top">Target&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__string.html#ga8d8b46236c2a64ad7f553f094574e7db">gears::string::lexical_cast</a> (const std::basic_string&lt; CharT &gt; &amp;str)</td></tr>
+<tr class="memdesc:ga8d8b46236c2a64ad7f553f094574e7db"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a string to its integral representation.  <a href="#ga8d8b46236c2a64ad7f553f094574e7db">More...</a><br/></td></tr>
+<tr class="separator:ga8d8b46236c2a64ad7f553f094574e7db"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga28b99c67bdef679d41836f8ae8e30f1a"><td class="memTemplParams" colspan="2">template&lt;typename String &gt; </td></tr>
 <tr class="memitem:ga28b99c67bdef679d41836f8ae8e30f1a"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__string.html#ga28b99c67bdef679d41836f8ae8e30f1a">gears::string::iequal</a> (const String &amp;lhs, const String &amp;rhs, const std::locale &amp;loc=std::locale())</td></tr>
 <tr class="memdesc:ga28b99c67bdef679d41836f8ae8e30f1a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the strings are case insensitive equal.  <a href="#ga28b99c67bdef679d41836f8ae8e30f1a">More...</a><br/></td></tr>
@@ -1288,19 +1289,19 @@ template&lt;typename String &gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="ga06d29a505f3ca9d53b7003776b18ad1c"></a>
+<a class="anchor" id="ga8d8b46236c2a64ad7f553f094574e7db"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename T &gt; </div>
+template&lt;typename Target , typename CharT &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">T gears::string::lexical_cast </td>
+          <td class="memname">Target gears::string::lexical_cast </td>
           <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramtype">const std::basic_string&lt; CharT &gt; &amp;&#160;</td>
           <td class="paramname"><em>str</em></td><td>)</td>
           <td></td>
         </tr>
@@ -1311,7 +1312,7 @@ template&lt;typename T &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Converts a string to its arithmetic representation. A generic way of handling the standard library's std::sto* functions. If the conversion fails, throws <code>std::invalid_argument</code>. If a specialisation isn't picked, the function falls back to using <code>std::basic_istringstream</code>. The type to convert to must be <code>DefaultConstructible</code>.</p>
+<p>Converts a string to its arithmetic representation. A generic way of handling the standard library's std::sto* functions. If the conversion fails, throws <code>std::invalid_argument</code>. If a specialisation isn't picked, the function falls back to using <code>std::basic_istringstream</code>. The type to convert to must be <code>DefaultConstructible</code>. All cv-qualifiers are removed from the type before casting.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">str</td><td>String to convert from. </td></tr>
@@ -1320,7 +1321,7 @@ template&lt;typename T &gt; </div>
 </dl>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
-    <tr><td class="paramname">T</td><td>Type to convert to. </td></tr>
+    <tr><td class="paramname">Target</td><td>Type to convert to. </td></tr>
   </table>
   </dd>
 </dl>
@@ -1332,7 +1333,7 @@ template&lt;typename T &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The arithmetic representation of the string. </dd></dl>
 
-<p>Definition at line <a class="el" href="lexical__cast_8hpp_source.html#l00047">47</a> of file <a class="el" href="lexical__cast_8hpp_source.html">lexical_cast.hpp</a>.</p>
+<p>Definition at line <a class="el" href="lexical__cast_8hpp_source.html#l00160">160</a> of file <a class="el" href="lexical__cast_8hpp_source.html">lexical_cast.hpp</a>.</p>
 
 </div>
 </div>
