@@ -101,7 +101,7 @@ inline typename detail::unique_type<T>::array make_unique(size_t size) {
 }
 
 template<typename T, typename... Args>
-inline typename detail::unique_type<T>::unknown make_unique(Args&&... args) = delete;
+inline typename detail::unique_type<T>::unknown make_unique(Args&&...) = delete;
 } // utility
 } // gears
 

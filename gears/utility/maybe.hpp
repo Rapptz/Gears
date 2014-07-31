@@ -528,7 +528,7 @@ constexpr bool operator!=(nothing_t, const maybe<T>& rhs) noexcept {
 }
 
 template<typename T>
-constexpr bool operator<(const maybe<T>& lhs, nothing_t) noexcept {
+constexpr bool operator<(const maybe<T>&, nothing_t) noexcept {
     return false;
 }
 

@@ -15,11 +15,15 @@ args = parser.parse_args()
 include = [ '.', 'gears' ]
 depends = ['tests']
 cxxflags = [ '-Wall', '-Wextra', '-pedantic', '-std=c++11' ]
+ignored_warnings = ['mismatched-tags', 'switch']
 
 if args.debug:
     cxxflags.extend(['-g', '-O0', '-DDEBUG'])
 else:
     cxxflags.extend(['-DNDEBUG', '-O3'])
+
+if args.cxx == 'clang++':
+    ignored_warnings.append('constexpr-not-const')
 
 builddir = 'bin'
 objdir = 'obj'
@@ -31,6 +35,9 @@ def flags(*args):
 
 def includes(l):
     return ['-I"{}"'.format(x) for x in l]
+
+def ignored(l):
+    return ['-Wno-{}'.format(x) for x in l]
 
 def dependencies(l):
     return ['-isystem "{}"'.format(x) for x in l]
@@ -46,7 +53,7 @@ ninja = ninja_syntax.Writer(open('build.ninja', 'w'))
 ninja.variable('ninja_required_version', '1.3')
 ninja.variable('builddir', 'bin')
 ninja.variable('cxx', args.cxx)
-ninja.variable('cxxflags', flags(cxxflags + includes(include) + dependencies(depends)))
+ninja.variable('cxxflags', flags(cxxflags + includes(include) + dependencies(depends) + ignored(ignored_warnings)))
 
 # rules
 ninja.rule('bootstrap', command = ' '.join(['python'] + sys.argv), generator = True)
