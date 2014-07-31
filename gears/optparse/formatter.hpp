@@ -177,10 +177,15 @@ struct formatter {
         for(auto&& i : subs) {
             out.append(4, ' ').append(i.name);
             size_t current = indent - 4 - i.name.size();
-            out.append(current, ' ').append(wrap(i.description, current));
+            out.append(current, ' ');
+            if(!i.description.empty()) {
+                out.append(wrap(i.description, current));
+            }
+            else {
+                out.push_back('\n');
+            }
         }
 
-        out.push_back('\n');
         return out;
     }
 

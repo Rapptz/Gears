@@ -471,11 +471,16 @@ public:
      */
     std::string format_help() const noexcept {
         std::string result = format_usage();
-        result.append(1, '\n').append(format_description()).append(format_subcommands());
+        result.append(1, '\n').append(format_description());
 
-        if(!subcommands.empty()) {
-            result.push_back('\n');
+        if(active_options == &options) {
+            result.append(format_subcommands());
+
+            if(!subcommands.empty()) {
+                result.push_back('\n');
+            }
         }
+
 
         result.append(format_options()).append(format_epilogue());
         return result;
