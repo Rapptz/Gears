@@ -257,8 +257,10 @@ public:
      *
      * @param form The formatter to use.
      */
-    void help_formatter(const formatter& form) {
-        format = utility::make_unique<formatter>(form.column);
+    template<typename Formatter>
+    void help_formatter(const Formatter& form) {
+        static_assert(std::is_base_of<formatter, Formatter>::value, "Must derive from formatter");
+        format = utility::make_unique<Formatter>(form);
     }
 
     /**
