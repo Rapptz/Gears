@@ -43,7 +43,7 @@ private:
     option_set options;
     std::unique_ptr<formatter> format = utility::make_unique<formatter>();
     option_set* active_options = &options;
-    std::ptrdiff_t active_subcommand_index = -1;
+    std::ptrdiff_t index = -1;
 
     bool is_option(const std::string& arg) const noexcept {
         return arg.size() >= 2 && arg.front() == '-';
@@ -65,7 +65,7 @@ private:
         });
 
         if(it != subcommands.end()) {
-            active_subcommand_index = std::distance(subcommands.begin(), it);
+            index = std::distance(subcommands.begin(), it);
             active_options = &(it->options);
             ++begin;
             return begin;
@@ -197,10 +197,10 @@ private:
 
     template<typename It>
     arguments make_args(It begin, It end) const {
-        if(active_subcommand_index == -1) {
+        if(index == -1) {
             return { *active_options, std::vector<std::string>(begin, end), "" };
         }
-        auto&& sub = subcommands[active_subcommand_index];
+        auto&& sub = subcommands[index];
         return { *active_options, std::vector<std::string>(begin, end), sub.name };
     }
 public:
@@ -405,7 +405,7 @@ public:
      * @return The formatted message.
      */
     std::string format_description() const noexcept {
-        return format->description(description);
+        return format->description(index == -1 ? epilogue : subcommands[index].epilogue);
     }
 
     /**
@@ -415,7 +415,7 @@ public:
      * @return The formatted message.
      */
     std::string format_epilogue() const noexcept {
-        return format->epilogue(epilogue);
+        return format->epilogue(index == -1 ? epilogue : subcommands[index].epilogue);
     }
 
     /**
@@ -426,8 +426,8 @@ public:
      */
     std::string format_usage() const noexcept {
         return format->usage(program_name,
-                             active_subcommand_index == -1 ? "" : subcommands[active_subcommand_index].name,
-                             usage);
+                             index == -1 ? "" : subcommands[index].name,
+                             index == -1 ? usage : subcommands[index].usage);
     }
 
     /**

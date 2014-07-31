@@ -178,8 +178,8 @@ struct formatter {
             out.append(4, ' ').append(i.name);
             size_t current = indent - 4 - i.name.size();
             out.append(current, ' ');
-            if(!i.description.empty()) {
-                out.append(wrap(i.description, current));
+            if(!i.help.empty()) {
+                out.append(wrap(i.help, current));
             }
             else {
                 out.push_back('\n');

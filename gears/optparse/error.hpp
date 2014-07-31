@@ -41,6 +41,7 @@ class error : public std::runtime_error {
 public:
     std::string program_name;
     std::string option_name;
+    std::string error_string;
     /**
      * @brief Constructs an exception.
      * @details Constructs an exception with the string
@@ -52,7 +53,7 @@ public:
      * @param opt The option passed
      */
     error(const std::string& name, const std::string& str, const std::string& op):
-        std::runtime_error(name + ": error: " + str), program_name(name), option_name(op) {}
+        std::runtime_error(name + ": error: " + str), program_name(name), option_name(op), error_string(str) {}
 };
 
 /**

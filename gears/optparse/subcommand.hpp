@@ -34,10 +34,12 @@ namespace optparse {
  * things like `svn checkout`, `git commit`, `git add`, and more.
  */
 struct subcommand {
-    std::string name;        ///< The name of the subcommand.
-    std::string description; ///< A brief paragraph giving an overview of the subcommand
-    std::string epilogue;    ///< A paragraph usually printed after the help message
-    option_set options;      ///< The options the subcommand contains.
+    std::string name;                   ///< The name of the subcommand.
+    std::string description;            ///< A brief paragraph giving an overview of the subcommand
+    std::string help;                   ///< A sentence explaining the subcommand. Shown in the help message
+    std::string usage = "[options..]";  ///< The usage message for the subcommand
+    std::string epilogue;               ///< A paragraph usually printed after the help message
+    option_set options;                 ///< The options the subcommand contains.
 
     /**
      * @brief Default constructor
@@ -55,7 +57,20 @@ struct subcommand {
     subcommand(std::string name, std::initializer_list<option> options): name(std::move(name)), options(std::move(options)) {}
 
     /**
-     * @brief Constructs from a name and an option.
+     * @brief Constructs from a name, a help message and a list of options.
+     */
+    subcommand(std::string name, std::string help, std::initializer_list<option> options):
+        name(std::move(name)), help(std::move(help)), options(std::move(options)) {}
+
+    /**
+     * @brief Constructs from a name, a help message and an option set.
+     */
+    subcommand(std::string name, std::string help, option_set options):
+        name(std::move(name)), help(std::move(help)), options(std::move(options)) {}
+
+
+    /**
+     * @brief Constructs from a name and an option set.
      */
     subcommand(std::string name, option_set options): name(std::move(name)), options(std::move(options)) {}
 };
