@@ -128,8 +128,18 @@ def process_file(filename, out):
 
             # get relative directory
             base_path = os.path.dirname(filename)
+
+            # check if it's a standard file
+            std = standard_include.search(line)
+            if std:
+                std_file = os.path.join('std', std.group(0))
+                if std_file in includes:
+                    continue
+                includes.add(std_file)
+
             # see if it's an include file
             name = get_include(line, base_path)
+
             if name:
                 process_file(name, out)
                 continue
