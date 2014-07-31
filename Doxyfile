@@ -767,7 +767,8 @@ WARN_LOGFILE           = doxygen_stderr.txt
 # Note: If this tag is empty the current directory is searched.
 
 INPUT                  = ./gears \
-                         ./docs/mainpage.hpp
+                         ./docs/mainpage.hpp \
+                         ./docs/tutorial
 
 # This tag can be used to specify the character encoding of the source files
 # that doxygen parses. Internally doxygen uses the UTF-8 encoding. Doxygen uses

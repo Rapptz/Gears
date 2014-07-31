@@ -33,7 +33,8 @@
  * way of parsing command line options compared to rolling your own by hand.
  * This module has built-in support for subcommands so you could make your own
  * git-like programs with e.g. `git commit` and `git add`. This module is mainly
- * inspired by Python's `optparse` library and Boost.ProgramOptions.
+ * inspired by Python's `optparse` library and Boost.ProgramOptions. A more
+ * in-depth tutorial can be found @ref optparse_tut "here".
  *
  * # Simple Example
  *
