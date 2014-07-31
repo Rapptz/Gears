@@ -387,17 +387,21 @@ public:
 
             return args;
         }
-        catch(const std::exception& e) {
+        catch(const optparse::error& e) {
             err << format_usage() << e.what() << '\n';
-            if(active_options->is_active("help")) {
-                out << format_description()
-                    << format_subcommands()
-                    << format_options()
-                    << format_epilogue();
-            }
-
-            std::exit(EXIT_FAILURE);
         }
+        catch(const std::exception& e) {
+            err << format_usage() << program_name << ": error: " << e.what() << '\n';
+        }
+
+        if(active_options->is_active("help")) {
+            out << format_description()
+                << format_subcommands()
+                << format_options()
+                << format_epilogue();
+        }
+
+        std::exit(EXIT_FAILURE);
     }
 
     /**
