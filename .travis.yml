@@ -1,10 +1,15 @@
 language: cpp
-compiler:
-    - gcc
+matrix:
+    include:
+        - cpp: gcc
+          env: CXX=g++-4.8
+        - cpp: clang
+          env: CXX=clang++
 
 branches:
     only:
         - master
+        - develop
 
 before_install:
     - sudo add-apt-repository --yes ppa:ubuntu-toolchain-r/test
@@ -13,8 +18,4 @@ before_install:
     - sudo apt-get --yes install g++-4.8
     - sudo apt-get --yes install ninja-build
 
-before_script:
-    - chmod 777 ./bootstrap.py
-    - ./bootstrap.py --cxx=g++-4.8
-
-script: ninja
+script: ./bootstrap.py --cxx=$CXX && ninja
