@@ -34,6 +34,13 @@ TEST_CASE("Utility", "[utility]") {
         REQUIRE(arr.size() == 10);
         REQUIRE(arr.front() == 1);
         REQUIRE(arr.back() == 10);
+
+        auto str = util::make_array("hello");
+        static_assert(std::is_same<decltype(str), std::array<char, 6>>::value, "oops");
+        REQUIRE(str.size() == 6);
+        REQUIRE(str.front() == 'h');
+        REQUIRE(str.back() == '\0');
+        REQUIRE(str[4] == 'o');
     }
 
     SECTION("unique_ptr creation", "[utility-unique-ptr]") {

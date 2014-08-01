@@ -22,6 +22,7 @@
 #ifndef GEARS_UTILITY_HELPERS_HPP
 #define GEARS_UTILITY_HELPERS_HPP
 
+#include "../meta/indices.hpp"
 #include <array>
 #include <utility>
 #include <memory>
@@ -44,6 +45,11 @@ template<typename T, size_t N>
 struct unique_type<T[N]> {
     using unknown = void;
 };
+
+template<typename CharT, size_t N, size_t... Indices>
+constexpr std::array<CharT, N> literal_to_array(const CharT (&arr)[N], meta::indices<Indices...>) {
+    return std::array<CharT, N>{{ arr[Indices]... }};
+}
 } // detail
 
 /**
@@ -66,6 +72,31 @@ struct unique_type<T[N]> {
 template<typename T, typename... Args>
 constexpr std::array<T, sizeof...(Args)> make_array(Args&&... args) {
     return std::array<T, sizeof...(Args)>{{ std::forward<Args>(args)... }};
+}
+
+/**
+ * @ingroup utility
+ * @brief Constructs an std::array instance from a string literal.
+ * @details Constructs an std::array instance from a string literal.
+ * This works similar to the other make_array function but with
+ * strings instead. C arrays have a special case for string literals
+ * to allow you to automatically get the size through `sizeof`. This
+ * just emulates the special behaviour:
+ *
+ * @code
+ * auto str = utility::make_array("hello");
+ * // same as
+ * // char str[] = "hello";
+ * @endcode
+ *
+ * Note that this means the null character is the last character.
+ *
+ * @param str The string literal to construct the array with.
+ * @return An `std::array` containing the characters of the string.
+ */
+template<typename CharT, size_t N>
+constexpr std::array<CharT, N> make_array(const CharT (&str)[N]) {
+    return detail::literal_to_array(str, meta::build_indices<N>{});
 }
 
 /**
