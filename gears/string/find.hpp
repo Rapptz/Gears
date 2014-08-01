@@ -22,7 +22,7 @@
 #ifndef GEARS_STRING_FIND_HPP
 #define GEARS_STRING_FIND_HPP
 
-#include "../meta/alias.hpp"
+#include "../meta/qualifiers.hpp"
 
 namespace gears {
 namespace string {

@@ -23,7 +23,7 @@
 #define GEARS_IO_PRETTYPRINT_HPP
 
 #include "../meta/indices.hpp"
-#include "../meta/alias.hpp"
+#include "../meta/enable_if.hpp"
 #include "../meta/expand.hpp"
 #include "../adl/get.hpp"
 #include "../adl/iterator.hpp"

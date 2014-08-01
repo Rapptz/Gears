@@ -22,7 +22,7 @@
 #ifndef GEARS_STRING_REPLACE_HPP
 #define GEARS_STRING_REPLACE_HPP
 
-#include "../meta/alias.hpp"
+#include "../meta/qualifiers.hpp"
 #include <cstddef>
 
 namespace gears {

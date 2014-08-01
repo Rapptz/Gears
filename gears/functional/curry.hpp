@@ -24,7 +24,8 @@
 
 #include "../adl/get.hpp"
 #include "../meta/indices.hpp"
-#include "../meta/meta.hpp"
+#include "../meta/conditional.hpp"
+#include "../meta/qualifiers.hpp"
 
 namespace gears {
 namespace functional {
@@ -61,7 +62,7 @@ struct unref {
 
 template<typename T>
 struct special_decay {
-    using type = meta::TypeIf<is_reference_wrapper<T>, unref<T>, meta::identity<T>>;
+    using type = meta::LazyIf<is_reference_wrapper<T>, unref<T>, meta::identity<T>>;
 };
 
 template<typename T>

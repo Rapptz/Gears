@@ -23,7 +23,9 @@
 #define GEARS_UTILITY_MAYBE_STORAGE_HPP
 
 #include "tags.hpp"
-#include "../../meta/meta.hpp"
+#include "../../meta/utility.hpp"
+#include "../../meta/enable_if.hpp"
+#include "../../meta/qualifiers.hpp"
 
 namespace gears {
 namespace utility {

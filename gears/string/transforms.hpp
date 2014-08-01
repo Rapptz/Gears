@@ -24,7 +24,7 @@
 
 #include <string>
 #include <sstream>
-#include "../meta/alias.hpp"
+#include "../meta/qualifiers.hpp"
 
 namespace gears {
 namespace string {
@@ -131,7 +131,7 @@ template<typename String, typename Cont>
 inline meta::Unqualified<String> join(const Cont& cont, const String& sep) {
     auto first = cont.cbegin();
     auto last = cont.cend();
-    std::basic_ostringstream<meta::ValueType<String>> ss;
+    std::basic_ostringstream<typename String::value_type> ss;
     if(first != last) {
         ss << *first++;
     }
@@ -157,7 +157,7 @@ template<typename String, typename Cont, typename UnaryPredicate>
 inline meta::Unqualified<String> join_if(const Cont& cont, const String& sep, UnaryPredicate&& pred) {
     auto first = cont.cbegin();
     auto last = cont.cend();
-    std::basic_ostringstream<meta::ValueType<String>> ss;
+    std::basic_ostringstream<typename String::value_type> ss;
 
     // Increase first until predicate is met
     while(!pred(*first)) ++first;

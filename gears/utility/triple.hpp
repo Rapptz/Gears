@@ -22,7 +22,7 @@
 #ifndef GEARS_UTILITY_TRIPLE_HPP
 #define GEARS_UTILITY_TRIPLE_HPP
 
-#include "../meta/alias.hpp"
+#include "../meta/qualifiers.hpp"
 #include <cstddef>
 
 namespace gears {

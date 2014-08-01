@@ -27,7 +27,7 @@
 #include <vector>
 #include <string>
 #include <stdexcept>
-#include "../meta/alias.hpp"
+#include "../meta/enable_if.hpp"
 
 #ifndef GEARS_NO_IOSTREAM
 #include <iosfwd>
@@ -35,7 +35,6 @@
 
 namespace gears {
 namespace math {
-using namespace gears::meta; // workaround for extremely strange bug
 namespace detail {
 constexpr size_t pow(size_t base, size_t exponent) {
     return exponent == 0 ? 1 : (base * pow(base, exponent - 1));

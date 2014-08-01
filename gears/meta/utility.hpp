@@ -19,48 +19,57 @@
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-#ifndef GEARS_UTILITY_MAYBE_TRAITS_HPP
-#define GEARS_UTILITY_MAYBE_TRAITS_HPP
+#ifndef GEARS_META_UTILITY_HPP
+#define GEARS_META_UTILITY_HPP
 
-#include "../../meta/enable_if.hpp"
-#include <memory> // addressof
+#include <type_traits>
 
 namespace gears {
-namespace utility {
-namespace detail {
-struct has_overloaded_address_of_impl {
-    template<typename T>
-    static auto test(int) -> decltype(std::declval<T&>().operator&(), std::true_type{}) {}
-    template<typename...>
-    static std::false_type test(...);
-};
-
+namespace meta {
+/**
+ * @ingroup meta
+ * @brief Returns a non-const lvalue reference as a const lvalue reference.
+ *
+ * @param t lvalue reference to turn to const lvalue reference.
+ * @return const lvalue reference.
+ */
 template<typename T>
-struct has_overloaded_address_of : decltype(has_overloaded_address_of_impl::test<T>(0)) {};
-
-template<typename T, meta::DisableIf<has_overloaded_address_of<T>> = meta::_>
-constexpr T* address_of(T& t) noexcept {
-    return &t;
+constexpr const T& as_const(T& t) {
+    return t;
 }
 
-template<typename T, meta::EnableIf<has_overloaded_address_of<T>> = meta::_>
-T* address_of(T& t) noexcept {
-    return std::addressof(t);
+template<typename T>
+constexpr T&& cforward(typename std::remove_reference<T>::type& t) noexcept {
+    return static_cast<T&&>(t);
 }
-} // detail
 
+/**
+ * @ingroup meta
+ * @brief constexpr enabled alternative to `std::forward`.
+ *
+ * @param t variable to forward
+ * @tparam T Type of parameter being forwarded.
+ * @return `static_cast<T&&>(t)`.
+ */
 template<typename T>
-class maybe;
+constexpr T&& cforward(typename std::remove_reference<T>::type&& t) noexcept {
+    static_assert(!std::is_lvalue_reference<T>(), "error");
+    return static_cast<T&&>(t);
+}
 
+/**
+ * @ingroup meta
+ * @brief constexpr enabled alternative to `std::move`.
+ *
+ * @param t variable to move
+ * @tparam T Type of parameter being enabled to be moved.
+ * @return `static_cast<RemoveRef<T>&&>(t)`.
+ */
 template<typename T>
-class maybe<T&>;
-
-template<typename T>
-struct is_maybe : std::false_type {};
-
-template<typename T>
-struct is_maybe<maybe<T>> : std::true_type {};
-} // utility
+constexpr typename std::remove_reference<T>::type&& cmove(T&& t) noexcept {
+    return static_cast<typename std::remove_reference<T>::type&&>(t);
+}
+} // meta
 } // gears
 
-#endif // GEARS_UTILITY_MAYBE_TRAITS_HPP
+#endif // GEARS_META_UTILITY_HPP

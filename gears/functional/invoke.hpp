@@ -22,7 +22,9 @@
 #ifndef GEARS_FUNCTIONAL_INVOKE_HPP
 #define GEARS_FUNCTIONAL_INVOKE_HPP
 
-#include "../meta/alias.hpp"
+#include "../meta/enable_if.hpp"
+#include "../meta/qualifiers.hpp"
+#include "../meta/traits.hpp"
 
 namespace gears {
 namespace functional {

@@ -22,7 +22,10 @@
 #ifndef GEARS_META_HPP
 #define GEARS_META_HPP
 
-#include "meta/alias.hpp"
+#include "meta/enable_if.hpp"
+#include "meta/qualifiers.hpp"
+#include "meta/utility.hpp"
+#include "meta/traits.hpp"
 #include "meta/expand.hpp"
 #include "meta/indices.hpp"
 
