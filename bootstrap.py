@@ -5,17 +5,24 @@ import os, sys, glob
 import itertools
 import argparse
 
+install_dir = os.path.join('/usr', 'include') if 'linux' in sys.platform else 'include'
+
 # command line stuff
 parser = argparse.ArgumentParser()
 parser.add_argument('--debug', action='store_true', help='compile with debug flags')
 parser.add_argument('--cxx', metavar='<compiler>', help='compiler name to use (default: g++)', default='g++')
+parser.add_argument('--install-dir', metavar='<dir>', help='install directory (default: {})'.format(install_dir), default=install_dir)
 args = parser.parse_args()
+
+script_directory = os.path.dirname(os.path.realpath(sys.argv[0]))
+os.chdir(script_directory)
 
 # general variables
 include = [ '.', 'gears' ]
 depends = ['tests']
 cxxflags = [ '-Wall', '-Wextra', '-pedantic', '-std=c++11' ]
 ignored_warnings = ['mismatched-tags', 'switch']
+copy_command = 'xcopy /E /C /H /R /K /O /Y /I gears $in' if sys.platform == 'win32' else 'cp -rf gears $in'
 
 if args.debug:
     cxxflags.extend(['-g', '-O0', '-DDEBUG'])
@@ -63,6 +70,7 @@ ninja.rule('compile', command = '$cxx -MMD -MF $out.d -c $cxxflags $in -o $out',
 ninja.rule('link', command = '$cxx $cxxflags $in -o $out', description = 'Creating $out')
 ninja.rule('runner', command = tests)
 ninja.rule('documentation', command = 'doxygen $in', description = 'Generating documentation')
+ninja.rule('installer', command = copy_command)
 
 # builds
 ninja.build('build.ninja', 'bootstrap', implicit = sys.argv[0])
@@ -74,8 +82,9 @@ for f in glob.glob('tests/*.cpp'):
     ninja.build(obj, 'compile', inputs = f)
 
 ninja.build(tests, 'link', inputs = object_files)
-ninja.build('install', 'phony', inputs = tests)
-ninja.build('run', 'runner', implicit = 'install')
+ninja.build('tests', 'phony', inputs = tests)
+ninja.build('install', 'installer', inputs = args.install_dir)
+ninja.build('run', 'runner', implicit = 'tests')
 ninja.build('doxy', 'documentation', inputs = 'Doxyfile')
 ninja.build('docs', 'phony', 'doxy')
 ninja.default('run')
