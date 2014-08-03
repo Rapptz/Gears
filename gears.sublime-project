@@ -18,7 +18,7 @@
     [
         {
             "name": "Tests",
-            "shell_cmd": "ninja install",
+            "shell_cmd": "ninja tests",
             "file_regex": "^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$",
             "working_dir": "${project_path}",
 
@@ -31,9 +31,9 @@
                     "name": "Debug",
                     "file_regex": "^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$",
                     "working_dir": "${project_path}",
-                    "shell_cmd": "./bootstrap.py --debug && ninja install && ./bootstrap.py",
+                    "shell_cmd": "./bootstrap.py --debug && ninja tests && ./bootstrap.py",
                     "windows": {
-                        "shell_cmd": "bootstrap.py --debug && ninja install && bootstrap.py"
+                        "shell_cmd": "bootstrap.py --debug && ninja tests && bootstrap.py"
                     }
                 },
                 {
