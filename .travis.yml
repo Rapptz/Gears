@@ -1,10 +1,7 @@
 language: cpp
-matrix:
-    include:
-        - cpp: gcc
-          env: COMPILER=g++-4.8
-        - cpp: clang
-          env: COMPILER=clang++
+compiler:
+    - gcc
+    - clang
 
 branches:
     only:
@@ -16,6 +13,7 @@ before_install:
     - sudo add-apt-repository -y ppa:saiarcot895/chromium-beta
     - sudo apt-get --yes update
     - sudo apt-get --yes install g++-4.8
+    - if [ "$CXX" == "g++" ]; then export CXX=g++-4.8; fi
     - sudo apt-get --yes install ninja-build
 
-script: ./bootstrap.py --cxx=$COMPILER && ninja
+script: ./bootstrap.py --cxx=$CXX && ninja
