@@ -5,16 +5,21 @@ import os, sys, glob
 import itertools
 import argparse
 
-install_dir = os.path.join('/usr', 'include') if 'linux' in sys.platform else 'include'
+install_dir =  'include' if sys.platform == 'win32' else os.path.join('/usr', 'include')
 
 # command line stuff
 parser = argparse.ArgumentParser()
 parser.add_argument('--debug', action='store_true', help='compile with debug flags')
 parser.add_argument('--cxx', metavar='<compiler>', help='compiler name to use (default: g++)', default='g++')
-parser.add_argument('--install-dir', metavar='<dir>', help='install directory (default: {})'.format(install_dir), default=install_dir)
+parser.add_argument('--install-dir', metavar='<dir>', help='directory to install the headers to', default=install_dir)
+parser.epilog = """In order to install gears, administrative privileges might be required.
+Note that installation is done through the 'ninja install' command. To uninstall, the
+command used is 'ninja uninstall'. The default installation directory for this
+system is {}""".format(install_dir)
 args = parser.parse_args()
 
 script_directory = os.path.dirname(os.path.realpath(sys.argv[0]))
+gears_path = os.path.join(script_directory, 'gears')
 os.chdir(script_directory)
 
 # general variables
@@ -22,7 +27,10 @@ include = [ '.', 'gears' ]
 depends = ['tests']
 cxxflags = [ '-Wall', '-Wextra', '-pedantic', '-std=c++11' ]
 ignored_warnings = ['mismatched-tags', 'switch']
-copy_command = 'xcopy /E /C /H /R /K /O /Y /I gears $in' if sys.platform == 'win32' else 'cp -rf gears $in'
+copy_command = 'robocopy /COPYALL /E {dir} $in' if sys.platform == 'win32' else 'cp -rf {dir} $in'
+remove_command = 'rmdir /S /Q {dir}' if sys.platform == 'win32' else 'rm -rf {dir}'
+copy_command = copy_command.format(dir=gears_path)
+remove_command = remove_command.format(dir=os.path.join(args.install_dir, 'gears'))
 
 if args.debug:
     cxxflags.extend(['-g', '-O0', '-DDEBUG'])
@@ -30,7 +38,7 @@ else:
     cxxflags.extend(['-DNDEBUG', '-O3'])
 
 if args.cxx == 'clang++':
-    ignored_warnings.append('constexpr-not-const')
+    ignored_warnings.extend(['constexpr-not-const', 'unused-value'])
 
 builddir = 'bin'
 objdir = 'obj'
@@ -71,6 +79,7 @@ ninja.rule('link', command = '$cxx $cxxflags $in -o $out', description = 'Creati
 ninja.rule('runner', command = tests)
 ninja.rule('documentation', command = 'doxygen $in', description = 'Generating documentation')
 ninja.rule('installer', command = copy_command)
+ninja.rule('uninstaller', command = remove_command)
 
 # builds
 ninja.build('build.ninja', 'bootstrap', implicit = sys.argv[0])
@@ -84,7 +93,8 @@ for f in glob.glob('tests/*.cpp'):
 ninja.build(tests, 'link', inputs = object_files)
 ninja.build('tests', 'phony', inputs = tests)
 ninja.build('install', 'installer', inputs = args.install_dir)
+ninja.build('uninstall', 'uninstaller')
 ninja.build('run', 'runner', implicit = 'tests')
-ninja.build('doxy', 'documentation', inputs = 'Doxyfile')
-ninja.build('docs', 'phony', 'doxy')
+ninja.build('doxygen', 'documentation', inputs = 'Doxyfile')
+ninja.build('docs', 'phony', 'doxygen')
 ninja.default('run')
