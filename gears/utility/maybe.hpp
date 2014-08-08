@@ -27,14 +27,11 @@
 #include <exception>
 
 namespace gears {
-namespace utility {
-namespace detail {
 struct bad_maybe_access : std::exception {
     virtual const char* what() const noexcept {
         return "bad maybe access";
     }
 };
-} // detail
 
 template<typename T>
 using MaybeBase = meta::If<std::is_trivially_destructible<T>, detail::cmaybe_base<T>, detail::maybe_base<T>>;
@@ -63,10 +60,8 @@ using MaybeBase = meta::If<std::is_trivially_destructible<T>, detail::cmaybe_bas
  * #include <gears/utility.hpp>
  * #include <iostream>
  *
- * namespace util = gears::utility;
- *
- * util::maybe<int> special(int x) {
- *     return x > 10 ? util::just(x * 10) : util::nothing;
+ * gears::maybe<int> special(int x) {
+ *     return x > 10 ? gears::just(x * 10) : gears::nothing;
  * }
  *
  * int main() {
@@ -168,8 +163,6 @@ public:
      * #include <iostream>
      * #include <string>
      *
-     * namespace util = gears::utility;
-     *
      * struct my_class {
      * private:
      *     std::string name;
@@ -183,9 +176,9 @@ public:
      * };
      *
      * int main() {
-     *     util::maybe<my_class> x(my_class{"Bob"});
+     *     gears::maybe<my_class> x(my_class{"Bob"});
      *     std::cout << "---\n";
-     *     util::maybe<my_class> y(util::in_place, "Bob");
+     *     gears::maybe<my_class> y(gears::in_place, "Bob");
      * }
      * @endcode
      *
@@ -239,8 +232,8 @@ public:
      * This results in a disengaged state.
      *
      * @code
-     * utility::maybe<int> x(4);
-     * x = utility::nothing;
+     * maybe<int> x(4);
+     * x = nothing;
      * @endcode
      */
     maybe& operator=(nothing_t) noexcept {
@@ -328,7 +321,7 @@ public:
      *
      * @code
      * struct my_class { int x; };
-     * utility::maybe<my_class> stuff({ 10 });
+     * maybe<my_class> stuff({ 10 });
      * // access my_class::x
      * std::cout << stuff->x;
      * @endcode
@@ -367,15 +360,15 @@ public:
      * @details Accesses the contained value. If the current
      * state is disengaged, an exception is thrown.
      *
-     * @throws gears::utility::bad_maybe_access Thrown if the current state is disengaged.
+     * @throws gears::bad_maybe_access Thrown if the current state is disengaged.
      * @return Returns the a reference to the contained value.
      */
     constexpr const T& value() const {
-        return is_valid() ? internal() : (throw detail::bad_maybe_access(), internal());
+        return is_valid() ? internal() : (throw bad_maybe_access(), internal());
     }
 
     T& value() {
-        return is_valid() ? internal() : (throw detail::bad_maybe_access(), internal());
+        return is_valid() ? internal() : (throw bad_maybe_access(), internal());
     }
     //@}
 
@@ -493,7 +486,7 @@ constexpr bool operator>=(const maybe<T>& lhs, const maybe<T>& rhs) {
  * on the engaged state it is at. For example:
  *
  * @code
- * my_maybe == utility::nothing;
+ * my_maybe == nothing;
  * // bool(my_maybe) == false
  * @endcode
  *
@@ -656,7 +649,6 @@ constexpr bool operator>=(const T& value, const maybe<T>& rhs) {
     return static_cast<bool>(rhs) ? value >= *rhs : true;
 }
 //@}
-} // utility
 } // gears
 
 #endif // GEARS_UTILITY_MAYBE_HPP

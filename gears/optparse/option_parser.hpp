@@ -41,7 +41,7 @@ struct option_parser {
 private:
     std::vector<subcommand> subcommands;
     option_set options;
-    std::unique_ptr<formatter> format = utility::make_unique<formatter>();
+    std::unique_ptr<formatter> format = make_unique<formatter>();
     option_set* active_options = &options;
     std::ptrdiff_t index = -1;
 
@@ -260,7 +260,7 @@ public:
     template<typename Formatter>
     void help_formatter(const Formatter& form) {
         static_assert(std::is_base_of<formatter, Formatter>::value, "Must derive from formatter");
-        format = utility::make_unique<Formatter>(form);
+        format = make_unique<Formatter>(form);
     }
 
     /**

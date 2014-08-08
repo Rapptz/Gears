@@ -26,7 +26,7 @@
 #include <cstddef>
 
 namespace gears {
-namespace utility {
+
 /**
  * @ingroup utility
  * @brief Implements a three-element tuple.
@@ -35,7 +35,7 @@ namespace utility {
  * generic usage. For example:
  *
  * @code
- * constexpr utility::triple<int, int, int> x = { 1, 2, 3 };
+ * constexpr triple<int, int, int> x = { 1, 2, 3 };
  * static_assert(std::is_same<std::tuple_element<0, decltype(x)>::value, "...");
  * static_assert(std::get<0>(x) == 1, "...");
  * static_assert(std::tuple_size<decltype(x)>::value == 3, "...");
@@ -44,7 +44,7 @@ namespace utility {
  * `triple` is also an aggregate, so it could be created using curly bracket syntax.
  *
  * @code
- * constexpr utility::triple<int, char, double> x = { 10, 'a', 12.0 };
+ * constexpr triple<int, char, double> x = { 10, 'a', 12.0 };
  * @endcode
  *
  * @tparam T First type of the triple.
@@ -191,8 +191,8 @@ inline void swap(triple<T, U, V>& lhs, triple<T, U, V>& rhs) noexcept(noexcept(l
  * is useful for `auto` purposes, e.g.
  *
  * @code
- * auto t = utility::make_triple(10, 'a', 1.f);
- * // decltype(t) == utility::triple<int, char, float>
+ * auto t = make_triple(10, 'a', 1.f);
+ * // decltype(t) == triple<int, char, float>
  * @endcode
  *
  * @param t First element of the triple.
@@ -204,7 +204,7 @@ template<typename T, typename U, typename V>
 constexpr triple<meta::Decay<T>, meta::Decay<U>, meta::Decay<V>> make_triple(T&& t, U&& u, V&& v) {
     return { std::forward<T>(t), std::forward<U>(u), std::forward<V>(v) };
 }
-} // utility
+
 } // gears
 
 namespace triple_detail {
@@ -213,17 +213,17 @@ template<size_t N> struct triple_get;
 template<>
 struct triple_get<0> {
     template<typename T, typename U, typename V>
-    static constexpr T& get(gears::utility::triple<T, U, V>& t) noexcept {
+    static constexpr T& get(gears::triple<T, U, V>& t) noexcept {
         return t.first;
     }
 
     template<typename T, typename U, typename V>
-    static constexpr const T& const_get(const gears::utility::triple<T, U, V>& t) noexcept {
+    static constexpr const T& const_get(const gears::triple<T, U, V>& t) noexcept {
         return t.first;
     }
 
     template<typename T, typename U, typename V>
-    static constexpr T&& move_get(gears::utility::triple<T, U, V>&& t) noexcept {
+    static constexpr T&& move_get(gears::triple<T, U, V>&& t) noexcept {
         return std::forward<T>(t.first);
     }
 };
@@ -231,17 +231,17 @@ struct triple_get<0> {
 template<>
 struct triple_get<1> {
     template<typename T, typename U, typename V>
-    static constexpr U& get(gears::utility::triple<T, U, V>& t) noexcept {
+    static constexpr U& get(gears::triple<T, U, V>& t) noexcept {
         return t.second;
     }
 
     template<typename T, typename U, typename V>
-    static constexpr const U& const_get(const gears::utility::triple<T, U, V>& t) noexcept {
+    static constexpr const U& const_get(const gears::triple<T, U, V>& t) noexcept {
         return t.second;
     }
 
     template<typename T, typename U, typename V>
-    static constexpr U&& move_get(gears::utility::triple<T, U, V>&& t) noexcept {
+    static constexpr U&& move_get(gears::triple<T, U, V>&& t) noexcept {
         return std::forward<U>(t.second);
     }
 };
@@ -249,17 +249,17 @@ struct triple_get<1> {
 template<>
 struct triple_get<2> {
     template<typename T, typename U, typename V>
-    static constexpr V& get(gears::utility::triple<T, U, V>& t) noexcept {
+    static constexpr V& get(gears::triple<T, U, V>& t) noexcept {
         return t.third;
     }
 
     template<typename T, typename U, typename V>
-    static constexpr const V& const_get(const gears::utility::triple<T, U, V>& t) noexcept {
+    static constexpr const V& const_get(const gears::triple<T, U, V>& t) noexcept {
         return t.third;
     }
 
     template<typename T, typename U, typename V>
-    static constexpr V&& move_get(gears::utility::triple<T, U, V>&& t) noexcept {
+    static constexpr V&& move_get(gears::triple<T, U, V>&& t) noexcept {
         return std::forward<V>(t.third);
     }
 };
@@ -270,26 +270,26 @@ template<typename T> struct tuple_size;
 template<size_t N, typename T> struct tuple_element;
 
 template<typename T, typename U, typename V>
-struct tuple_size<gears::utility::triple<T, U, V>> : gears::meta::Const<size_t, 3> {};
+struct tuple_size<gears::triple<T, U, V>> : gears::meta::Const<size_t, 3> {};
 
 template<typename T, typename U, typename V>
-struct tuple_element<0, gears::utility::triple<T, U, V>> {
+struct tuple_element<0, gears::triple<T, U, V>> {
     using type = T;
 };
 
 template<typename T, typename U, typename V>
-struct tuple_element<1, gears::utility::triple<T, U, V>> {
+struct tuple_element<1, gears::triple<T, U, V>> {
     using type = U;
 };
 
 template<typename T, typename U, typename V>
-struct tuple_element<2, gears::utility::triple<T, U, V>> {
+struct tuple_element<2, gears::triple<T, U, V>> {
     using type = V;
 };
 } // std
 
 namespace gears {
-namespace utility {
+
 template<size_t N, typename T, typename U, typename V>
 constexpr gears::meta::Type<std::tuple_element<N, triple<T, U, V>>>& get(triple<T, U, V>& t) noexcept {
     return triple_detail::triple_get<N>::get(t);
@@ -304,7 +304,6 @@ template<size_t N, typename T, typename U, typename V>
 constexpr gears::meta::Type<std::tuple_element<N, triple<T, U, V>>>&& get(triple<T, U, V>&& t) noexcept {
     return triple_detail::triple_get<N>::move_get(std::move(t));
 }
-} // utility
 } // gears
 
 #endif // GEARS_UTILITY_TRIPLE_HPP

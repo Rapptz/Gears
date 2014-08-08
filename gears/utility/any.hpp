@@ -28,14 +28,11 @@
 #include <memory>
 
 namespace gears {
-namespace utility {
-namespace detail {
 struct bad_any_cast : public std::bad_cast {
     virtual const char* what() const noexcept {
         return "bad_any_cast";
     }
 };
-} // detail
 
 /**
  * @ingroup utility
@@ -53,10 +50,8 @@ struct bad_any_cast : public std::bad_cast {
  * #include <iostream>
  * #include <vector>
  *
- * namespace util = gears::utility;
- *
  * int main() {
- *      std::vector<util::any> stuff = { "hello", "world", '!', 1.0f, 200.0, 10 };
+ *      std::vector<gears::any> stuff = { "hello", "world", '!', 1.0f, 200.0, 10 };
  *      for(auto&& i : stuff) {
  *          if(i.is<const char*>()) {
  *              std::cout << i.as<const char*>() << ' ';
@@ -193,14 +188,14 @@ public:
      * check if the type is valid use #is.
      *
      * @tparam T Type to cast to.
-     * @throws gears::utility::bad_any_cast Thrown if the type is invalid.
+     * @throws gears::bad_any_cast Thrown if the type is invalid.
      * @return The value contained if they type is valid.
      */
     template<typename T>
     const Decayed<T>& as() const {
         auto ptr = dynamic_cast<object<Decayed<T>>*>(obj.get());
         if(!ptr)
-            throw detail::bad_any_cast();
+            throw bad_any_cast();
         return ptr->value;
     }
 
@@ -208,7 +203,7 @@ public:
     Decayed<T>& as() {
         auto ptr = dynamic_cast<object<Decayed<T>>*>(obj.get());
         if(!ptr)
-            throw detail::bad_any_cast();
+            throw bad_any_cast();
         return ptr->value;
     }
     //@}
@@ -221,14 +216,13 @@ public:
  *
  * @param object The object to cast.
  * @tparam T The type to cast to.
- * @throws gears::utility::bad_any_cast Thrown if the type is invalid.
+ * @throws gears::bad_any_cast Thrown if the type is invalid.
  * @return The value contained in the object if the type is valid.
  */
 template<typename T>
 inline auto any_cast(const any& object) -> decltype(object.as<T>()) {
     return object.as<T>();
 }
-} // utility
 } // gears
 
 #endif // GEARS_UTILITY_ANY_HPP

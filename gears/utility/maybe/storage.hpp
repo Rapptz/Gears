@@ -28,7 +28,6 @@
 #include "../../meta/qualifiers.hpp"
 
 namespace gears {
-namespace utility {
 namespace detail {
 template<typename T>
 union maybe_storage {
@@ -52,7 +51,6 @@ union cmaybe_storage {
     ~cmaybe_storage() = default;
 };
 } // detail
-} // utility
 } // gears
 
 #endif // GEARS_UTILITY_MAYBE_STORAGE_HPP

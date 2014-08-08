@@ -30,7 +30,6 @@
 #endif // GEARS_NO_IOSTREAM
 
 namespace gears {
-namespace utility {
 struct indeterminate_t {
     constexpr indeterminate_t() {}
 };
@@ -45,15 +44,14 @@ constexpr indeterminate_t indeterminate{};
  * @ingroup utility
  * @brief Implements Kleene's logic for three-state booleans.
  * @details Implements Kleene's logic for three-state booleans. This
- * class should be preferred to `gears::utility::maybe<bool>` as it implements
+ * class should be preferred to `gears::maybe<bool>` as it implements
  * true three-state logic. The three states for the boolean are `true`, `false`,
  * and `indeterminate`. So for example all three are valid:
  *
  * @code
- * namespace util = gears::utility;
- * util::tribool x = true;
+ * gears::tribool x = true;
  * x = false;
- * x = util::indeterminate;
+ * x = gears::indeterminate;
  * @endcode
  *
  * The input and output operators are supported by default. In order to disable
@@ -64,8 +62,7 @@ constexpr indeterminate_t indeterminate{};
  * "indeterminate". For example:
  *
  * @code
- * namespace util = gears::utility;
- * util::tribool x = util::indeterminate;
+ * gears::tribool x = gears::indeterminate;
  * std::cout << std::boolalpha << x << '\n';
  * @endcode
  *
@@ -79,12 +76,11 @@ constexpr indeterminate_t indeterminate{};
  * written through the use of the `indeterminate_name` facet. For example:
  *
  * @code
- * namespace util = gears::utility;
- * constexpr util::indeterminate_t null{};
- * util::tribool x = null; // defined our own "keyword"
+ * constexpr gears::indeterminate_t null{};
+ * gears::tribool x = null; // defined our own "keyword"
  *
  * // change the default string to null
- * std::locale myloc(std::cout.getloc(), new util::indeterminate_name<char>("null"));
+ * std::locale myloc(std::cout.getloc(), new gears::indeterminate_name<char>("null"));
  * std::cout.imbue(myloc);
  *
  * std::cout << std::boolalpha << x << '\n';
@@ -473,7 +469,6 @@ inline auto operator>>(std::basic_istream<CharT, Traits>& in, tribool& tri) -> d
 }
 
 #endif // GEARS_NO_IOSTREAM
-} // utility
 } // gears
 
 #endif // GEARS_UTILITY_TRIBOOL_HPP

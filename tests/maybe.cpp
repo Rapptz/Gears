@@ -22,8 +22,6 @@
 #include <catch.hpp>
 #include <gears/utility/maybe.hpp>
 
-namespace gu = gears::utility;
-
 struct maybe_test {
     int x, y, z;
     maybe_test(int x, int y, int z): x(x), y(y), z(z) {}
@@ -32,25 +30,25 @@ struct maybe_test {
 TEST_CASE("maybe<T>", "[maybe-util]") {
 
     SECTION("Literal type", "[maybe-lit]") {
-        constexpr gu::maybe<int> f;
-        static_assert(f == gu::nothing, "...");
+        constexpr gears::maybe<int> f;
+        static_assert(f == gears::nothing, "...");
         static_assert(f.value_or(40) == 40, "...");
-        REQUIRE(f == gu::nothing);
+        REQUIRE(f == gears::nothing);
         REQUIRE(f.value_or(40) == 40);
     }
 
     SECTION("nothing", "[maybe-nothing]") {
-        gu::maybe<int> g;
-        REQUIRE(g == gu::nothing);
+        gears::maybe<int> g;
+        REQUIRE(g == gears::nothing);
         REQUIRE(g.value_or(20) == 20);
         REQUIRE_THROWS(g.value());
     }
 
     SECTION("with value", "[maybe-value]") {
-        auto g = gu::just(10);
+        auto g = gears::just(10);
 
         REQUIRE(g == 10);
-        REQUIRE(g != gu::nothing);
+        REQUIRE(g != gears::nothing);
         REQUIRE_NOTHROW(g.value());
         REQUIRE(g > 9);
         REQUIRE(g < 200);
@@ -58,44 +56,44 @@ TEST_CASE("maybe<T>", "[maybe-util]") {
         REQUIRE(g.value() < 90);
         REQUIRE(g.value_or(10) > 4);
         REQUIRE((g)); // explicit bool
-        REQUIRE(g == gu::just(10));
+        REQUIRE(g == gears::just(10));
     }
 
     SECTION("emplacing", "[maybe-emplace]") {
-        gu::maybe<maybe_test> x;
+        gears::maybe<maybe_test> x;
 
-        REQUIRE(x == gu::nothing);
+        REQUIRE(x == gears::nothing);
         REQUIRE_THROWS(x.value());
-        REQUIRE(!(x > gu::nothing));
-        REQUIRE(!(gu::nothing < x));
+        REQUIRE(!(x > gears::nothing));
+        REQUIRE(!(gears::nothing < x));
 
         x.emplace(10, 11, 12);
 
         REQUIRE(x->x == 10);
         REQUIRE(x->y == 11);
         REQUIRE(x->z == 12);
-        REQUIRE(x != gu::nothing);
+        REQUIRE(x != gears::nothing);
         REQUIRE_NOTHROW(x.value());
 
-        x = gu::nothing;
-        REQUIRE(x == gu::nothing);
+        x = gears::nothing;
+        REQUIRE(x == gears::nothing);
         REQUIRE_THROWS(x.value());
     }
 
     SECTION("in-place", "[maybe-inplace]") {
-        gu::maybe<maybe_test> x(gu::in_place, 10, 11, 12);
+        gears::maybe<maybe_test> x(gears::in_place, 10, 11, 12);
 
-        REQUIRE(x != gu::nothing);
+        REQUIRE(x != gears::nothing);
         REQUIRE(x->x == 10);
         REQUIRE(x->y == 11);
         REQUIRE(x->z == 12);
         REQUIRE_NOTHROW(x.value());
-        REQUIRE(x > gu::nothing);
-        REQUIRE(gu::nothing < x);
+        REQUIRE(x > gears::nothing);
+        REQUIRE(gears::nothing < x);
 
-        x = gu::nothing;
+        x = gears::nothing;
 
-        REQUIRE(x == gu::nothing);
+        REQUIRE(x == gears::nothing);
         REQUIRE_THROWS(x.value());
     }
 }

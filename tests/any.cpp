@@ -24,25 +24,25 @@
 
 TEST_CASE("Any", "[any]") {
     SECTION("Basic", "[any-basic]") {
-        gears::utility::any x, y;
+        gears::any x, y;
         y = x;
         REQUIRE(!x);
         REQUIRE(!y);
     }
 
     SECTION("Basic II", "[any-basic-two]") {
-        gears::utility::any x, y;
+        gears::any x, y;
         x = 10;
         REQUIRE(x);
         REQUIRE(x.is<int>());
         REQUIRE_NOTHROW(x.as<int>());
-        REQUIRE_NOTHROW(gears::utility::any_cast<int>(x));
+        REQUIRE_NOTHROW(gears::any_cast<int>(x));
         int test = x.as<int>();
         REQUIRE(test == 10);
     }
 
     SECTION("Copy/Move", "[any-cm]") {
-        gears::utility::any x, y;
+        gears::any x, y;
         x = 871286126121ULL;
         y = x;
         using ullong = unsigned long long;
@@ -51,18 +51,18 @@ TEST_CASE("Any", "[any]") {
         REQUIRE(y.is<ullong>());
         REQUIRE_NOTHROW(x.as<ullong>());
         REQUIRE_NOTHROW(y.as<ullong>());
-        REQUIRE_NOTHROW(gears::utility::any_cast<ullong>(x));
-        REQUIRE_NOTHROW(gears::utility::any_cast<ullong>(y));
+        REQUIRE_NOTHROW(gears::any_cast<ullong>(x));
+        REQUIRE_NOTHROW(gears::any_cast<ullong>(y));
         ullong one = x.as<ullong>();
         ullong two = y.as<ullong>();
         REQUIRE(one == two);
     }
 
     SECTION("Error Handling", "[any-error]") {
-        gears::utility::any x = "Hello";
+        gears::any x = "Hello";
         REQUIRE(x.is<const char*>());
         REQUIRE(!x.is<int>());
         REQUIRE_THROWS(x.as<float>());
-        REQUIRE_THROWS(gears::utility::any_cast<int>(x));
+        REQUIRE_THROWS(gears::any_cast<int>(x));
     }
 }

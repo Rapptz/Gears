@@ -25,7 +25,6 @@
 #include "storage.hpp"
 
 namespace gears {
-namespace utility {
 namespace detail {
 template<typename T>
 struct maybe_base {
@@ -63,7 +62,6 @@ struct cmaybe_base {
     ~cmaybe_base() = default;
 };
 } // detail
-} // utility
 } // gears
 
 #endif // GEARS_UTILITY_MAYBE_BASE_HPP

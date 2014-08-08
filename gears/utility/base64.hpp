@@ -28,7 +28,6 @@
 #include <exception>
 
 namespace gears {
-namespace utility {
 
 /**
  * @ingroup utility
@@ -111,11 +110,11 @@ inline std::string encode(const std::string& str) {
  * @ingroup utility
  * @brief Decodes a string from base64.
  * @details Decodes a string from base64. If the input
- * string is not in base64 then a `gears::utility::invalid_base64`
+ * string is not in base64 then a `gears::invalid_base64`
  * exception is thrown.
  *
  * @param str The base64 string to decode.
- * @throws gears::utility::invalid_base64 Thrown when the input string is invalid.
+ * @throws gears::invalid_base64 Thrown when the input string is invalid.
  * @return The decoded string
  */
 inline std::string decode(const std::string& str) {
@@ -185,7 +184,6 @@ inline std::string decode(const std::string& str) {
     return result;
 }
 } // base64
-} // utility
 } // gears
 
 #endif // GEARS_UTILITY_BASE64_HPP

@@ -33,7 +33,8 @@
  * @defgroup utility Utility module
  * @brief Provides general purpose utilities.
  * @details This module provides utilities that are general enough
- * to not belong in a specific module.
+ * to not belong in a specific module. Unlike other modules, there
+ * is no subnamespacing involved. They reside in the `gears` namespace.
  */
 
 #endif // GEARS_UTILITY_HPP

@@ -29,7 +29,6 @@
 #include <type_traits>
 
 namespace gears {
-namespace utility {
 namespace detail {
 template<typename T>
 struct unique_type {
@@ -60,7 +59,7 @@ constexpr std::array<CharT, N> literal_to_array(const CharT (&arr)[N], meta::ind
  * of `std::array` instances similar to raw C arrays.
  *
  * @code
- * auto arr = utility::make_array<int>(1, 2, 3, 4, 5, 6, 7, 8);
+ * auto arr = make_array<int>(1, 2, 3, 4, 5, 6, 7, 8);
  * // same as
  * // int arr[] = { 1, 2, 3, 4, 5, 6, 7, 8 };
  * @endcode
@@ -84,7 +83,7 @@ constexpr std::array<T, sizeof...(Args)> make_array(Args&&... args) {
  * just emulates the special behaviour:
  *
  * @code
- * auto str = utility::make_array("hello");
+ * auto str = make_array("hello");
  * // same as
  * // char str[] = "hello";
  * @endcode
@@ -119,7 +118,7 @@ inline typename detail::unique_type<T>::single make_unique(Args&&... args) {
 
 /**
  * @ingroup utility
- * @copydoc gears::utility::make_unique
+ * @copydoc gears::make_unique
  *
  * @param size The size of the array to construct.
  * @tparam T Type to construct.
@@ -133,7 +132,6 @@ inline typename detail::unique_type<T>::array make_unique(size_t size) {
 
 template<typename T, typename... Args>
 inline typename detail::unique_type<T>::unknown make_unique(Args&&...) = delete;
-} // utility
 } // gears
 
 #endif // GEARS_UTILITY_HELPERS_HPP

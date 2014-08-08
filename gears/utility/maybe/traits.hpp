@@ -26,7 +26,6 @@
 #include <memory> // addressof
 
 namespace gears {
-namespace utility {
 namespace detail {
 struct has_overloaded_address_of_impl {
     template<typename T>
@@ -60,7 +59,6 @@ struct is_maybe : std::false_type {};
 
 template<typename T>
 struct is_maybe<maybe<T>> : std::true_type {};
-} // utility
 } // gears
 
 #endif // GEARS_UTILITY_MAYBE_TRAITS_HPP

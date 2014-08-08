@@ -25,17 +25,15 @@
 #include <sstream>
 #include <string>
 
-namespace util = gears::utility;
-
 TEST_CASE("Utility", "[utility]") {
     SECTION("array creation", "[utility-array]") {
-        auto arr = util::make_array<int>(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+        auto arr = gears::make_array<int>(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
         static_assert(std::is_same<decltype(arr), std::array<int, 10>>::value, "oops");
         REQUIRE(arr.size() == 10);
         REQUIRE(arr.front() == 1);
         REQUIRE(arr.back() == 10);
 
-        auto str = util::make_array("hello");
+        auto str = gears::make_array("hello");
         static_assert(std::is_same<decltype(str), std::array<char, 6>>::value, "oops");
         REQUIRE(str.size() == 6);
         REQUIRE(str.front() == 'h');
@@ -45,15 +43,15 @@ TEST_CASE("Utility", "[utility]") {
 
     SECTION("unique_ptr creation", "[utility-unique-ptr]") {
         // regular ptrs
-        auto ptr1 = util::make_unique<int>(10);
+        auto ptr1 = gears::make_unique<int>(10);
         REQUIRE(ptr1 != nullptr);
         REQUIRE(*ptr1 == 10);
-        auto ptr2 = util::make_unique<std::string>(10, 'a');
+        auto ptr2 = gears::make_unique<std::string>(10, 'a');
         REQUIRE(ptr2 != nullptr);
         REQUIRE(*ptr2 == "aaaaaaaaaa");
 
         // arrays
-        auto ptr3 = util::make_unique<int[]>(10);
+        auto ptr3 = gears::make_unique<int[]>(10);
         REQUIRE(ptr3 != nullptr);
 
         for(unsigned i = 0; i < 10; ++i) {
@@ -62,26 +60,26 @@ TEST_CASE("Utility", "[utility]") {
     }
 
     SECTION("base64", "[utility-base64]") {
-        REQUIRE(util::base64::encode("Hello") == "SGVsbG8=");
-        REQUIRE(util::base64::encode("Hello World") == "SGVsbG8gV29ybGQ=");
-        REQUIRE(util::base64::encode("pleasure.") == "cGxlYXN1cmUu");
-        REQUIRE(util::base64::encode("leasure.") == "bGVhc3VyZS4=");
-        REQUIRE(util::base64::encode("easure.") == "ZWFzdXJlLg==");
-        REQUIRE(util::base64::encode("asure.") == "YXN1cmUu");
-        REQUIRE(util::base64::encode("sure.") == "c3VyZS4=");
-        REQUIRE(util::base64::encode("any carnal pleasure.") == "YW55IGNhcm5hbCBwbGVhc3VyZS4=" );
-        REQUIRE(util::base64::encode("any carnal pleasure") == "YW55IGNhcm5hbCBwbGVhc3VyZQ==");
-        REQUIRE(util::base64::encode("any carnal pleasur") == "YW55IGNhcm5hbCBwbGVhc3Vy");
-        REQUIRE(util::base64::encode("any carnal pleasu") == "YW55IGNhcm5hbCBwbGVhc3U=" );
-        REQUIRE(util::base64::encode("any carnal pleas") == "YW55IGNhcm5hbCBwbGVhcw==");
+        REQUIRE(gears::base64::encode("Hello") == "SGVsbG8=");
+        REQUIRE(gears::base64::encode("Hello World") == "SGVsbG8gV29ybGQ=");
+        REQUIRE(gears::base64::encode("pleasure.") == "cGxlYXN1cmUu");
+        REQUIRE(gears::base64::encode("leasure.") == "bGVhc3VyZS4=");
+        REQUIRE(gears::base64::encode("easure.") == "ZWFzdXJlLg==");
+        REQUIRE(gears::base64::encode("asure.") == "YXN1cmUu");
+        REQUIRE(gears::base64::encode("sure.") == "c3VyZS4=");
+        REQUIRE(gears::base64::encode("any carnal pleasure.") == "YW55IGNhcm5hbCBwbGVhc3VyZS4=" );
+        REQUIRE(gears::base64::encode("any carnal pleasure") == "YW55IGNhcm5hbCBwbGVhc3VyZQ==");
+        REQUIRE(gears::base64::encode("any carnal pleasur") == "YW55IGNhcm5hbCBwbGVhc3Vy");
+        REQUIRE(gears::base64::encode("any carnal pleasu") == "YW55IGNhcm5hbCBwbGVhc3U=" );
+        REQUIRE(gears::base64::encode("any carnal pleas") == "YW55IGNhcm5hbCBwbGVhcw==");
 
-        REQUIRE(util::base64::decode("SGVsbG8=") == "Hello");
-        REQUIRE(util::base64::decode("SGVsbG8gV29ybGQ=") == "Hello World");
-        REQUIRE(util::base64::decode("cGxlYXN1cmUu") == "pleasure.");
-        REQUIRE(util::base64::decode("c3VyZS4=") == "sure.");
-        REQUIRE(util::base64::decode("YW55IGNhcm5hbCBwbGVhcw==") == "any carnal pleas");
-        REQUIRE(util::base64::decode("YW55IGNhcm5hbCBwbGVhc3U=") == "any carnal pleasu");
-        REQUIRE(util::base64::decode("YW55IGNhcm5hbCBwbGVhc3VyZQ==") == "any carnal pleasure");
+        REQUIRE(gears::base64::decode("SGVsbG8=") == "Hello");
+        REQUIRE(gears::base64::decode("SGVsbG8gV29ybGQ=") == "Hello World");
+        REQUIRE(gears::base64::decode("cGxlYXN1cmUu") == "pleasure.");
+        REQUIRE(gears::base64::decode("c3VyZS4=") == "sure.");
+        REQUIRE(gears::base64::decode("YW55IGNhcm5hbCBwbGVhcw==") == "any carnal pleas");
+        REQUIRE(gears::base64::decode("YW55IGNhcm5hbCBwbGVhc3U=") == "any carnal pleasu");
+        REQUIRE(gears::base64::decode("YW55IGNhcm5hbCBwbGVhc3VyZQ==") == "any carnal pleasure");
     }
 }
 
@@ -101,7 +99,7 @@ TEST_CASE("Utility", "[utility]") {
     REQUIRE(!is_true(__VA_ARGS__));
 
 TEST_CASE("tribool", "[utility-tribool]") {
-    using namespace gears::utility;
+    using namespace gears;
 
     SECTION("indeterminate") {
         tribool x;
