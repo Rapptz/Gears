@@ -24,6 +24,12 @@
 
 #include <type_traits>
 
+// macros for C++14 detection
+#ifndef GEARS_META_HAS_CPP14
+#define GEARS_META_CLANG defined(__clang__) && ((__clang_major__ > 3) || (__clang_major__ == 3) && (__clang_minor__ >= 4))
+#define GEARS_META_HAS_CPP14 GEARS_META_CLANG
+#endif
+
 namespace gears {
 namespace meta {
 /**
