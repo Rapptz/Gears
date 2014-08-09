@@ -71,17 +71,35 @@ private:
                       i + pos : find_character(c, pos, i + 1);
     }
 
+    constexpr size_t rfind_character(CharT c, size_t i) const noexcept {
+        return i == 0 ?
+               npos : Traits::eq(str[i], c) ?
+                      i : rfind_character(c, i - 1);
+    }
+
     template<size_t M>
     constexpr bool cmp(const basic_string<CharT, M, Traits>& s, size_t pos, size_t i = 0) const noexcept {
         return i >= s.size() ?
                true : Traits::eq(str[pos + i], s[i]) ?
                       cmp(s, pos, i + 1) : false;
     }
+
+    constexpr size_t min(size_t x, size_t y) const noexcept {
+        return y < x ? y : x;
+    }
+
     template<size_t M>
     constexpr size_t find_substr(const basic_string<CharT, M, Traits>& s, size_t pos) const noexcept {
         return pos > size() - s.size() ?
                npos : Traits::eq(str[pos], s[0]) && cmp(s, pos) ?
                       pos : find_substr(s, pos + 1);
+    }
+
+    template<size_t M>
+    constexpr size_t rfind_substr(const basic_string<CharT, M, Traits>& s, size_t pos) const noexcept {
+        return pos == 0 ?
+               npos : cmp(s, pos) ?
+                      pos : rfind_substr(s, pos - 1);
     }
 public:
     using traits_type     = Traits;
@@ -280,6 +298,38 @@ public:
     constexpr size_type find(const basic_string<CharT, M, Traits>& s, size_type pos = 0) const noexcept {
         return s.empty() && pos <= size() ?
                pos : find_substr(s, pos);
+    }
+
+    /**
+     * @brief Finds the last character in the string.
+     * @details Finds the last character in the string. This
+     * function finds the last occurrence of the character.
+     * If the character is not found, #npos is returned.
+     *
+     * @param c The character to look for.
+     * @param pos The position to start the search at.
+     * @return The position of the character found.
+     */
+    constexpr size_type rfind(CharT c, size_type pos = npos) const noexcept {
+        return !empty() && size() - 1 > pos ?
+               rfind_character(c, pos + 1) : rfind_character(c, size());
+    }
+
+    /**
+     * @brief Finds the last substring in a string.
+     * @details Finds the last substring in the string. This function
+     * finds the last occurrence of the substring. If the substring
+     * is not found, #npos is returned.
+     *
+     * @param s The substring to look for.
+     * @param pos The position to start the search at.
+     * @return The position of the substring.
+     */
+    template<size_t M>
+    constexpr size_type rfind(const basic_string<CharT, M, Traits>& s, size_type pos = npos) const noexcept {
+        return s.size() > size() ?
+               npos : cmp(s, min(size() - s.size(), pos)) ?
+                      min(size() - s.size(), pos) : rfind_substr(s, min(size() - s.size(), pos));
     }
 };
 
