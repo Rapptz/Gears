@@ -2,16 +2,18 @@
 
 import ninja_syntax
 import os, sys, glob
+from distutils.spawn import find_executable
 import itertools
 import argparse
 
 install_dir =  'include' if sys.platform == 'win32' else os.path.join('/usr', 'include')
 
 # command line stuff
-parser = argparse.ArgumentParser()
+parser = argparse.ArgumentParser(usage='%(prog)s [options...]')
 parser.add_argument('--debug', action='store_true', help='compile with debug flags')
 parser.add_argument('--cxx', metavar='<compiler>', help='compiler name to use (default: g++)', default='g++')
 parser.add_argument('--install-dir', metavar='<dir>', help='directory to install the headers to', default=install_dir)
+parser.add_argument('--quiet', '-q', action='store_true', help='suppress warning output')
 parser.epilog = """In order to install gears, administrative privileges might be required.
 Note that installation is done through the 'ninja install' command. To uninstall, the
 command used is 'ninja uninstall'. The default installation directory for this
@@ -21,6 +23,18 @@ args = parser.parse_args()
 script_directory = os.path.dirname(os.path.realpath(sys.argv[0]))
 gears_path = os.path.join(script_directory, 'gears')
 os.chdir(script_directory)
+
+def warning(string):
+    if not args.quiet:
+        print('warning: {}'.format(string))
+
+# configuration
+doxygen_path = find_executable('doxygen')
+if doxygen_path == None:
+    warning('doxygen executable not found')
+
+if find_executable(args.cxx) == None:
+    parser.error('compiler {} not found'.format(args.cxx))
 
 # general variables
 include = [ '.', 'gears' ]
@@ -77,7 +91,10 @@ ninja.rule('compile', command = '$cxx -MMD -MF $out.d -c $cxxflags $in -o $out',
                       description = 'Compiling $in to $out')
 ninja.rule('link', command = '$cxx $cxxflags $in -o $out', description = 'Creating $out')
 ninja.rule('runner', command = tests)
-ninja.rule('documentation', command = 'doxygen $in', description = 'Generating documentation')
+
+if doxygen_path:
+    ninja.rule('documentation', command = '{} $in'.format(doxygen_path), description = 'Generating documentation')
+
 ninja.rule('installer', command = copy_command)
 ninja.rule('uninstaller', command = remove_command)
 
@@ -95,6 +112,9 @@ ninja.build('tests', 'phony', inputs = tests)
 ninja.build('install', 'installer', inputs = args.install_dir)
 ninja.build('uninstall', 'uninstaller')
 ninja.build('run', 'runner', implicit = 'tests')
-ninja.build('doxygen', 'documentation', inputs = 'Doxyfile')
-ninja.build('docs', 'phony', 'doxygen')
+
+if doxygen_path:
+    ninja.build('doxygen', 'documentation', inputs = os.path.join(script_directory, 'Doxyfile'))
+    ninja.build('docs', 'phony', 'doxygen')
+
 ninja.default('run')
