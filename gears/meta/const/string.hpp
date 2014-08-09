@@ -150,7 +150,7 @@ public:
     constexpr size_type length() const noexcept {
         return N - 1;
     }
-    //}
+    //@}
 
     /**
      * @brief Checks if the string is empty.
@@ -231,7 +231,7 @@ public:
         return str[size() - 1];
     }
 
-#ifdef GEARS_META_HAS_CPP14
+#if defined(GEARS_META_HAS_CPP14) || defined(GEARS_FOR_DOXYGEN_ONLY)
     /**
      * @name C++14 Only
      * These are member functions that are only provided
@@ -470,6 +470,98 @@ public:
                npos : find_last_not_tail(s, min(size() - 1, pos));
     }
 };
+
+namespace detail {
+template<typename CharT, typename Traits, size_t N, size_t M>
+constexpr bool eq(const basic_string<CharT, N, Traits>& lhs, const basic_string<CharT, M, Traits>& rhs, size_t i = 0) noexcept {
+    return N != M ?
+           false : i == lhs.size() ?
+                   true : !Traits::eq(lhs[i], rhs[i]) ?
+                          false : eq(lhs, rhs, i + 1);
+}
+
+template<typename CharT, typename Traits, size_t N, size_t M>
+constexpr bool lt(const basic_string<CharT, N, Traits>& lhs, const basic_string<CharT, M, Traits>& rhs, size_t i = 0) noexcept {
+    return i == lhs.size() || i == rhs.size() ?
+           false : Traits::lt(lhs[i], rhs[i]) ?
+                   true : lt(lhs, rhs, i + 1);
+}
+} // detail
+
+/**
+ * @name Equality Comparison
+ * @relates basic_string
+ * @brief Compares two strings based on equality.
+ * @details Compares two strings if they're equal or
+ * not equal. This uses `Traits::eq` to do the equality
+ * comparison.
+ *
+ * @param lhs The left hand side of the expression
+ * @param rhs The right hand side of the expression
+ */
+//@{
+/**
+ * @brief Checks if two strings are equal.
+ */
+template<typename CharT, typename Traits, size_t N, size_t M>
+constexpr bool operator==(const basic_string<CharT, N, Traits>& lhs, const basic_string<CharT, M, Traits>& rhs) noexcept {
+    return detail::eq(lhs, rhs);
+}
+
+/**
+ * @brief Checks if two strings are not equal.
+ */
+template<typename CharT, typename Traits, size_t N, size_t M>
+constexpr bool operator!=(const basic_string<CharT, N, Traits>& lhs, const basic_string<CharT, M, Traits>& rhs) noexcept {
+    return !detail::eq(lhs, rhs);
+}
+//@}
+
+/**
+ * @name Lexicographical Comparison
+ * @relates basic_string
+ * @brief Lexicographically compares two strings.
+ * @details Compares two strings as if using
+ * `std::lexicographical_compare`. The comparison is done
+ * with `Traits::lt`.
+ *
+ * @param lhs The left hand side of the expression
+ * @param rhs The right hand side of the expression
+ */
+//@{
+
+/**
+ * @brief Checks if lhs is less than rhs.
+ */
+template<typename CharT, typename Traits, size_t N, size_t M>
+constexpr bool operator<(const basic_string<CharT, N, Traits>& lhs, const basic_string<CharT, M, Traits>& rhs) noexcept {
+    return detail::lt(lhs, rhs);
+}
+
+/**
+ * @brief Checks if lhs is greater than rhs.
+ */
+template<typename CharT, typename Traits, size_t N, size_t M>
+constexpr bool operator>(const basic_string<CharT, N, Traits>& lhs, const basic_string<CharT, M, Traits>& rhs) noexcept {
+    return detail::lt(rhs, lhs);
+}
+
+/**
+ * @brief Checks if lhs is greater than or equal to rhs.
+ */
+template<typename CharT, typename Traits, size_t N, size_t M>
+constexpr bool operator>=(const basic_string<CharT, N, Traits>& lhs, const basic_string<CharT, M, Traits>& rhs) noexcept {
+    return !(lhs < rhs);
+}
+
+/**
+ * @brief Checks if lhs is less than or equal to rhs.
+ */
+template<typename CharT, typename Traits, size_t N, size_t M>
+constexpr bool operator<=(const basic_string<CharT, N, Traits>& lhs, const basic_string<CharT, M, Traits>& rhs) noexcept {
+    return !(rhs < lhs);
+}
+//@}
 
 /**
  * @relates basic_string
