@@ -66,7 +66,7 @@ private:
     constexpr basic_string(const CharT (&arr)[N], indices<Indices...>): str{ arr[Indices]... } {}
 
     constexpr size_t rfind_character(CharT c, size_t i) const noexcept {
-        return i == 0 ?
+        return i == 0 && !Traits::eq(str[i], c) ?
                npos : Traits::eq(str[i], c) ?
                       i : rfind_character(c, i - 1);
     }
@@ -406,10 +406,9 @@ public:
      */
     template<size_t M>
     constexpr size_type find_first_not_of(const basic_string<CharT, M, Traits>& s, size_type pos = 0) const noexcept {
-        return s.empty() ?
-               npos : pos >= size() ?
-                      npos : s.find(str[pos]) == npos ?
-                             pos : find_first_not_of(s, pos + 1);
+        return pos >= size() ?
+               npos : s.find(str[pos]) == npos ?
+                      pos : find_first_not_of(s, pos + 1);
     }
 
     /**
@@ -435,7 +434,7 @@ public:
     template<size_t M>
     constexpr size_type find_last_of(const basic_string<CharT, M, Traits>& s, size_type pos = npos) const noexcept {
         return s.empty() ?
-               npos :  find_last_tail(min(size() - 1, pos));
+               npos :  find_last_tail(s, min(size() - 1, pos));
     }
 
     /**
@@ -472,19 +471,25 @@ public:
 };
 
 namespace detail {
-template<typename CharT, typename Traits, size_t N, size_t M>
-constexpr bool eq(const basic_string<CharT, N, Traits>& lhs, const basic_string<CharT, M, Traits>& rhs, size_t i = 0) noexcept {
+template<typename C, typename T, size_t N, size_t M>
+constexpr bool eq(const basic_string<C, N, T>& lhs, const basic_string<C, M, T>& rhs, size_t i = 0) noexcept {
     return N != M ?
            false : i == lhs.size() ?
-                   true : !Traits::eq(lhs[i], rhs[i]) ?
+                   true : !T::eq(lhs[i], rhs[i]) ?
                           false : eq(lhs, rhs, i + 1);
 }
 
-template<typename CharT, typename Traits, size_t N, size_t M>
-constexpr bool lt(const basic_string<CharT, N, Traits>& lhs, const basic_string<CharT, M, Traits>& rhs, size_t i = 0) noexcept {
+template<typename C, typename T, size_t N, size_t M>
+constexpr bool lt(const basic_string<C, N, T>& lhs, const basic_string<C, M, T>& rhs, size_t i = 0) noexcept {
     return i == lhs.size() || i == rhs.size() ?
-           false : Traits::lt(lhs[i], rhs[i]) ?
+           false : T::lt(lhs[i], rhs[i]) ?
                    true : lt(lhs, rhs, i + 1);
+}
+
+template<typename C, typename T, size_t N, size_t M, size_t... Indices1, size_t... Indices2>
+constexpr basic_string<C, N + M - 1, T> append(const basic_string<C, N, T>& lhs, const basic_string<C, M, T>& rhs,
+                                               indices<Indices1...>, indices<Indices2...>) noexcept {
+    return {{ lhs[Indices1]..., rhs[Indices2]...,  T::to_char_type(0) }};
 }
 } // detail
 
@@ -562,6 +567,22 @@ constexpr bool operator<=(const basic_string<CharT, N, Traits>& lhs, const basic
     return !(rhs < lhs);
 }
 //@}
+
+/**
+ * @relates basic_string
+ * @brief Appends two strings together.
+ * @details Appends two strings together. The resulting
+ * string ends in a null terminator as if calling
+ * `Traits::to_char_type(0)`.
+ *
+ * @param lhs The left hand side of the expression.
+ * @param rhs The right hand side of the expression.
+ * @return The concatenated string.
+ */
+template<typename CharT, typename Traits, size_t N, size_t M, typename Result = basic_string<CharT, N + M - 1, Traits>>
+constexpr Result operator+(const basic_string<CharT, N, Traits>& lhs, const basic_string<CharT, M, Traits>& rhs) noexcept {
+    return detail::append(lhs, rhs, build_indices<N - 1>{}, build_indices<M - 1>{});
+}
 
 /**
  * @relates basic_string

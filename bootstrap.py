@@ -1,7 +1,8 @@
 #!/usr/bin/env python
 
 import ninja_syntax
-import os, sys, glob
+import os, sys
+import fnmatch
 from distutils.spawn import find_executable
 import itertools
 import argparse
@@ -35,6 +36,9 @@ if doxygen_path == None:
 
 if find_executable(args.cxx) == None:
     parser.error('compiler {} not found'.format(args.cxx))
+
+if 'g++' not in args.cxx and 'clang++' not in args.cxx:
+    warning('compiler not explicitly supported: {}'.format(args.cxx))
 
 # general variables
 include = [ '.', 'gears' ]
@@ -71,6 +75,12 @@ def ignored(l):
 def dependencies(l):
     return ['-isystem "{}"'.format(x) for x in l]
 
+def get_files(directory, pattern):
+    for root, directories, files in os.walk(directory):
+        for f in files:
+            if fnmatch.fnmatch(f, pattern):
+                yield os.path.join(root, f)
+
 def object_file(f):
     (root, ext) = os.path.splitext(f)
     return os.path.join(objdir, root + '.o')
@@ -101,11 +111,10 @@ ninja.rule('uninstaller', command = remove_command)
 # builds
 ninja.build('build.ninja', 'bootstrap', implicit = sys.argv[0])
 
-object_files = []
-for f in glob.glob('tests/*.cpp'):
-    obj = object_file(f)
-    object_files.append(obj)
-    ninja.build(obj, 'compile', inputs = f)
+source_files = list(get_files('tests', '*.cpp'))
+object_files = [object_file(f) for f in source_files]
+for f in source_files:
+    ninja.build(object_file(f), 'compile', inputs = f)
 
 ninja.build(tests, 'link', inputs = object_files)
 ninja.build('tests', 'phony', inputs = tests)
