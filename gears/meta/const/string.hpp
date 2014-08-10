@@ -115,6 +115,16 @@ private:
                npos : s.find(str[pos]) == npos ?
                       pos : find_last_not_tail(s, pos - 1);
     }
+
+    template<size_t M>
+    constexpr int compare_impl(const basic_string<CharT, M, Traits>& s, size_t pos) const noexcept {
+        return pos == size() && pos == s.size() ?
+               0 : pos == size() ?
+                   -1 : pos == s.size() ?
+                        +1 : Traits::eq(str[pos], s[pos]) ?
+                             compare_impl(s, pos + 1) : Traits::lt(str[pos], s[pos]) ?
+                                                        -1 : +1;
+    }
 public:
     using traits_type     = Traits;
     using value_type      = typename Traits::char_type;
@@ -448,7 +458,7 @@ public:
      * @param pos The position to start the search at.
      * @return The position of the first character not equal to `c`.
      */
-    constexpr size_type find_last_not_of(CharT c, size_type pos = 0) const noexcept {
+    constexpr size_type find_last_not_of(CharT c, size_type pos = npos) const noexcept {
         return find_last_not_character(c, min(size() - 1, pos));
     }
 
@@ -464,28 +474,34 @@ public:
      * @return The position of the first absent character.
      */
     template<size_t M>
-    constexpr size_type find_last_not_of(const basic_string<CharT, M, Traits>& s, size_type pos = 0) const noexcept {
-        return s.empty() ?
+    constexpr size_type find_last_not_of(const basic_string<CharT, M, Traits>& s, size_type pos = npos) const noexcept {
+        return empty() ?
                npos : find_last_not_tail(s, min(size() - 1, pos));
+    }
+
+    /**
+     * @brief Compares two strings together.
+     * @details Compares two strings together. Note that
+     * this does not use `Traits::compare`, but `Traits::eq`
+     * and `Traits::lt`. The results are as follows, assuming
+     * `str` is the current string:
+     *
+     * | Expression  | Result |
+     * |:-----------:|:------:|
+     * | str < s     | -1     |
+     * | str > s     | +1     |
+     * | str == s    |  0     |
+     *
+     * @param s The other string to compare against.
+     * @return The result of the table above.
+     */
+    template<size_t M>
+    constexpr int compare(const basic_string<CharT, M, Traits>& s) const noexcept {
+        return compare_impl(s, 0);
     }
 };
 
 namespace detail {
-template<typename C, typename T, size_t N, size_t M>
-constexpr bool eq(const basic_string<C, N, T>& lhs, const basic_string<C, M, T>& rhs, size_t i = 0) noexcept {
-    return N != M ?
-           false : i == lhs.size() ?
-                   true : !T::eq(lhs[i], rhs[i]) ?
-                          false : eq(lhs, rhs, i + 1);
-}
-
-template<typename C, typename T, size_t N, size_t M>
-constexpr bool lt(const basic_string<C, N, T>& lhs, const basic_string<C, M, T>& rhs, size_t i = 0) noexcept {
-    return i == lhs.size() || i == rhs.size() ?
-           false : T::lt(lhs[i], rhs[i]) ?
-                   true : lt(lhs, rhs, i + 1);
-}
-
 template<typename C, typename T, size_t N, size_t M, size_t... Indices1, size_t... Indices2>
 constexpr basic_string<C, N + M - 1, T> append(const basic_string<C, N, T>& lhs, const basic_string<C, M, T>& rhs,
                                                indices<Indices1...>, indices<Indices2...>) noexcept {
@@ -510,7 +526,7 @@ constexpr basic_string<C, N + M - 1, T> append(const basic_string<C, N, T>& lhs,
  */
 template<typename CharT, typename Traits, size_t N, size_t M>
 constexpr bool operator==(const basic_string<CharT, N, Traits>& lhs, const basic_string<CharT, M, Traits>& rhs) noexcept {
-    return detail::eq(lhs, rhs);
+    return lhs.compare(rhs) == 0;
 }
 
 /**
@@ -518,7 +534,7 @@ constexpr bool operator==(const basic_string<CharT, N, Traits>& lhs, const basic
  */
 template<typename CharT, typename Traits, size_t N, size_t M>
 constexpr bool operator!=(const basic_string<CharT, N, Traits>& lhs, const basic_string<CharT, M, Traits>& rhs) noexcept {
-    return !detail::eq(lhs, rhs);
+    return lhs.compare(rhs) != 0;
 }
 //@}
 
@@ -540,7 +556,7 @@ constexpr bool operator!=(const basic_string<CharT, N, Traits>& lhs, const basic
  */
 template<typename CharT, typename Traits, size_t N, size_t M>
 constexpr bool operator<(const basic_string<CharT, N, Traits>& lhs, const basic_string<CharT, M, Traits>& rhs) noexcept {
-    return detail::lt(lhs, rhs);
+    return lhs.compare(rhs) < 0;
 }
 
 /**
@@ -548,7 +564,7 @@ constexpr bool operator<(const basic_string<CharT, N, Traits>& lhs, const basic_
  */
 template<typename CharT, typename Traits, size_t N, size_t M>
 constexpr bool operator>(const basic_string<CharT, N, Traits>& lhs, const basic_string<CharT, M, Traits>& rhs) noexcept {
-    return detail::lt(rhs, lhs);
+    return lhs.compare(rhs) > 0;
 }
 
 /**
@@ -583,6 +599,22 @@ template<typename CharT, typename Traits, size_t N, size_t M, typename Result = 
 constexpr Result operator+(const basic_string<CharT, N, Traits>& lhs, const basic_string<CharT, M, Traits>& rhs) noexcept {
     return detail::append(lhs, rhs, build_indices<N - 1>{}, build_indices<M - 1>{});
 }
+
+//@{
+/**
+ * @relates basic_string
+ * @brief Appends a character to a string
+ */
+template<typename CharT, typename Traits, size_t N>
+constexpr basic_string<CharT, N + 1, Traits> operator+(const basic_string<CharT, N, Traits>& lhs, CharT rhs) noexcept {
+    return lhs + basic_string<CharT, 2, Traits>{{ rhs, Traits::to_char_type(0) }};
+}
+
+template<typename CharT, typename Traits, size_t N>
+constexpr basic_string<CharT, N + 1, Traits> operator+(CharT lhs, const basic_string<CharT, N, Traits>& rhs) noexcept {
+    return basic_string<CharT, 2, Traits>{{ lhs, Traits::to_char_type(0) }} + rhs;
+}
+//@}
 
 /**
  * @relates basic_string
