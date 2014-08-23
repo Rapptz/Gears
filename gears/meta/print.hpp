@@ -19,24 +19,30 @@
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-#ifndef GEARS_META_HPP
-#define GEARS_META_HPP
+#ifndef GEARS_META_PRINT_HPP
+#define GEARS_META_PRINT_HPP
 
-#include "meta/enable_if.hpp"
-#include "meta/qualifiers.hpp"
-#include "meta/utility.hpp"
-#include "meta/traits.hpp"
-#include "meta/expand.hpp"
-#include "meta/indices.hpp"
-#include "meta/print.hpp"
-#include "meta/const.hpp"
-
+namespace gears {
+namespace meta {
 /**
- * @defgroup meta Meta module
- * @brief Provides utilities to aid template metaprogramming.
- * @details This module provides metafunctions and other meta
- * utilities that aid with template metaprogramming such as
- * typedefs that help reduce the verbosity of working with templates.
+ * @ingroup meta
+ * @brief Prints the type of T fully expanded through a warning trigger.
+ * @details Prints the type of T fully expanded through a warning trigger.
+ * This is compiler specific and so far has only been tested on GCC and Clang.
+ * You should use `-Wall` flag to make this work.
+ *
+ * @tparam T The type to fully expand.
  */
+template<typename T>
+struct print {
+    using type = T;
+#ifdef __clang__
+    const int x = 1 / (sizeof(T) - sizeof(T));
+#else
+    enum { x = sizeof(T) > -1 };
+#endif
+};
+} // meta
+} // gears
 
-#endif // GEARS_META_HPP
+#endif // GEARS_META_PRINT_HPP

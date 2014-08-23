@@ -96,7 +96,7 @@ constexpr bool is_digit(const char c) {
 template<typename Integral>
 constexpr Integral atoi(const char* str, Integral value) {
     return *str == '\0' ?
-            value : is_digit(*str) ?
+            value : !is_digit(*str) ?
                     (throw std::invalid_argument("invalid string"), value) : atoi(str + 1, (*str - '0') * 10);
 }
 } // detail
@@ -107,7 +107,10 @@ constexpr Integral atoi(const char* str, Integral value) {
  * @details Converts a null terminated string to an integer type.
  * The string must be all digits (i.e. in the range of '0' and '9'). If
  * the string isn't full of digits, then an exception is thrown which
- * is a compile time error if used in a constant expression.
+ * is a compile time error if used in a constant expression. If the number
+ * starts with +, then the string is processed as a positive number. If the
+ * number string starts with - however, then the result of the conversion will
+ * be multiplied with `static_cast<Integral>(-1)`.
  *
  * @param str The numeric string to convert to a digit.
  * @tparam Integral The integral type to convert to. Must not be a floating point.
@@ -116,7 +119,9 @@ constexpr Integral atoi(const char* str, Integral value) {
 template<typename Integral>
 constexpr Integral atoi(const char* str) {
     static_assert(!std::is_floating_point<Integral>::value, "Type to cast must not be a floating point");
-    return detail::atoi(str, static_cast<Integral>(0));
+    return *str != '-' ?
+           detail::atoi(str + (*str == '+'), static_cast<Integral>(0)) :
+           static_cast<Integral>(-1) * detail::atoi(str + 1, static_cast<Integral>(0));
 }
 } // meta
 } // gears
