@@ -23,6 +23,7 @@
 #define GEARS_META_CONST_HPP
 
 #include "const/string.hpp"
+#include "const/cstdlib.hpp"
 
 /**
  * @defgroup constexpr Constexpr Utilities

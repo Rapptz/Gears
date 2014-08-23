@@ -28,6 +28,7 @@
 #include "meta/traits.hpp"
 #include "meta/expand.hpp"
 #include "meta/indices.hpp"
+#include "meta/const.hpp"
 
 /**
  * @defgroup meta Meta module
