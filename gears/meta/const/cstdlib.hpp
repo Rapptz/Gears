@@ -97,7 +97,7 @@ template<typename Integral>
 constexpr Integral atoi(const char* str, Integral value) {
     return *str == '\0' ?
             value : !is_digit(*str) ?
-                    (throw std::invalid_argument("invalid string"), value) : atoi(str + 1, (*str - '0') * 10);
+                    (throw std::invalid_argument("invalid string"), value) : atoi(str + 1, (*str - '0') + value * 10);
 }
 } // detail
 
