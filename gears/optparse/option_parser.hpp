@@ -411,7 +411,7 @@ public:
      * @return The formatted message.
      */
     std::string format_description() const noexcept {
-        return format->description(index == -1 ? epilogue : subcommands[index].epilogue);
+        return format->description(index == -1 ? description : subcommands[index].description);
     }
 
     /**
