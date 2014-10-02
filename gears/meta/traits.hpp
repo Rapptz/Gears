@@ -52,7 +52,7 @@ struct result_of<Function(Args...), void_t<decltype(std::declval<Function>()(std
  * @brief Template alias for SFINAE-safe `result_of`.
  */
 template<typename Signature>
-using ResultOf = eval<result_of<Signature>>;
+using result_of_t = eval<result_of<Signature>>;
 
 /**
  * @ingroup meta_traits
@@ -75,7 +75,7 @@ using ResultOf = eval<result_of<Signature>>;
  *
  * int main() {
  *     // passes static_assert
- *     static_assert(std::is_same<meta::ClassOf<decltype(&f::g)>, f>::value, "...");
+ *     static_assert(std::is_same<meta::class_of_t<decltype(&f::g)>, f>::value, "...");
  * }
  * @endcode
  */
@@ -90,7 +90,7 @@ struct class_of<Signature Class::*> : identity<Class> {};
  * @brief Template alias for `class_of` meta function.
  */
 template<typename T>
-using ClassOf = eval<class_of<T>>;
+using class_of_t = eval<class_of<T>>;
 } // meta
 } // gears
 

@@ -36,13 +36,13 @@ enum class enabler { _ };
  * @brief Provides metafunctions that help with the usage of SFINAE.
  * @details The collection of meta functions provided in here are essentially
  * there to help make the usage of `enable_if` easier. A convenience alias
- * named `DisableIf` is also provided, along with its counterpart metafunction
+ * named `disable_if_t` is also provided, along with its counterpart metafunction
  * `disable_if`.
  */
 
 /**
  * @ingroup meta_enable_if
- * @brief An unspecified value to assign EnableIf with.
+ * @brief An unspecified value to assign enable_if_t with.
  */
 constexpr auto _ = detail::enabler::_;
 
@@ -59,18 +59,18 @@ constexpr auto _ = detail::enabler::_;
  * Example:
  *
  * @code
- * template<typename T, meta::EnableIf<std::is_integral<T>> = meta::_>
+ * template<typename T, meta::enable_if_t<std::is_integral<T>> = meta::_>
  * @endcode
  */
 template<typename... Args>
-using EnableIf = eval<std::enable_if<All<Args...>::value, detail::enabler>>;
+using enable_if_t = eval<std::enable_if<All<Args...>::value, detail::enabler>>;
 
 /**
  * @ingroup meta_enable_if
- * @brief The negation of `EnableIf`.
+ * @brief The negation of `enable_if_t`.
  */
 template<typename... Args>
-using DisableIf = eval<std::enable_if<Not<All<Args...>>::value, detail::enabler>>;
+using disable_if_t = eval<std::enable_if<Not<All<Args...>>::value, detail::enabler>>;
 
 /**
  * @ingroup meta_enable_if

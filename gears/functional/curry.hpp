@@ -66,7 +66,7 @@ struct special_decay {
 };
 
 template<typename T>
-using SpecialDecay = meta::eval<special_decay<meta::Decay<T>>>;
+using SpecialDecay = meta::eval<special_decay<meta::decay_t<T>>>;
 } // detail
 
 template<typename Function, typename... Args>

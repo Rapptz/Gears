@@ -47,7 +47,7 @@ namespace string {
  * @return A string shifted left.
  */
 template<typename String>
-inline meta::Unqualified<String> left(String str, size_t n) {
+inline meta::unqualified_t<String> left(String str, size_t n) {
     if(n >= str.size())
         return str;
     return { str.substr(0, n) };
@@ -72,7 +72,7 @@ inline meta::Unqualified<String> left(String str, size_t n) {
  * @return A string shifted right.
  */
 template<typename String>
-inline meta::Unqualified<String> right(String str, size_t n) {
+inline meta::unqualified_t<String> right(String str, size_t n) {
     if(n >= str.size())
         return str;
     return { str.substr(str.size() - n) };
@@ -87,7 +87,7 @@ inline meta::Unqualified<String> right(String str, size_t n) {
  * @return The reversed string.
  */
 template<typename String>
-inline meta::Unqualified<String> reverse(String str) {
+inline meta::unqualified_t<String> reverse(String str) {
     auto first = str.begin();
     auto last = str.end();
     while((first != last) && (first != --last)) {
@@ -128,7 +128,7 @@ inline meta::Unqualified<String> reverse(String str) {
  * @return A string with the values of the container separated by the separator.
  */
 template<typename String, typename Cont>
-inline meta::Unqualified<String> join(const Cont& cont, const String& sep) {
+inline meta::unqualified_t<String> join(const Cont& cont, const String& sep) {
     auto first = cont.cbegin();
     auto last = cont.cend();
     std::basic_ostringstream<typename String::value_type> ss;
@@ -154,7 +154,7 @@ inline meta::Unqualified<String> join(const Cont& cont, const String& sep) {
  * @return A string with the filtered values and separated by the separator.
  */
 template<typename String, typename Cont, typename UnaryPredicate>
-inline meta::Unqualified<String> join_if(const Cont& cont, const String& sep, UnaryPredicate&& pred) {
+inline meta::unqualified_t<String> join_if(const Cont& cont, const String& sep, UnaryPredicate&& pred) {
     auto first = cont.cbegin();
     auto last = cont.cend();
     std::basic_ostringstream<typename String::value_type> ss;

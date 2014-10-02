@@ -47,9 +47,9 @@ namespace string {
  * @return A string with the left part removed.
  */
 template<typename String, typename UnaryPredicate>
-inline meta::Unqualified<String> trim_left_if(String str, UnaryPredicate&& pred) {
+inline meta::unqualified_t<String> trim_left_if(String str, UnaryPredicate&& pred) {
     auto pos = find_first_not_of(str, std::forward<UnaryPredicate>(pred));
-    if(pos != meta::Unqualified<String>::npos) {
+    if(pos != meta::unqualified_t<String>::npos) {
         return { str.substr(pos) };
     }
     return str;
@@ -75,9 +75,9 @@ inline meta::Unqualified<String> trim_left_if(String str, UnaryPredicate&& pred)
  * @return A string with the right part removed.
  */
 template<typename String, typename UnaryPredicate>
-inline meta::Unqualified<String> trim_right_if(String str, UnaryPredicate&& pred) {
+inline meta::unqualified_t<String> trim_right_if(String str, UnaryPredicate&& pred) {
     auto pos = find_last_not_of(str, std::forward<UnaryPredicate>(pred));
-    if(pos != meta::Unqualified<String>::npos) {
+    if(pos != meta::unqualified_t<String>::npos) {
         return { str.substr(0, pos + 1) };
     }
     return str;
@@ -101,7 +101,7 @@ inline meta::Unqualified<String> trim_right_if(String str, UnaryPredicate&& pred
  * @return A string with the right and left part removed.
  */
 template<typename String, typename UnaryPredicate>
-inline meta::Unqualified<String> trim_if(String&& str, UnaryPredicate&& pred) {
+inline meta::unqualified_t<String> trim_if(String&& str, UnaryPredicate&& pred) {
     return trim_left_if(trim_right_if(std::forward<String>(str), pred), pred);
 }
 
@@ -116,7 +116,7 @@ inline meta::Unqualified<String> trim_if(String&& str, UnaryPredicate&& pred) {
  * @return A string with the left spaces removed.
  */
 template<typename String>
-inline meta::Unqualified<String> trim_left(String&& str, const std::locale& loc = std::locale()) {
+inline meta::unqualified_t<String> trim_left(String&& str, const std::locale& loc = std::locale()) {
     return trim_left_if(std::forward<String>(str), is_space(loc));
 }
 
@@ -131,7 +131,7 @@ inline meta::Unqualified<String> trim_left(String&& str, const std::locale& loc 
  * @return A string with the right spaces removed.
  */
 template<typename String>
-inline meta::Unqualified<String> trim_right(String&& str, const std::locale& loc = std::locale()) {
+inline meta::unqualified_t<String> trim_right(String&& str, const std::locale& loc = std::locale()) {
     return trim_right_if(std::forward<String>(str), is_space(loc));
 }
 
@@ -146,7 +146,7 @@ inline meta::Unqualified<String> trim_right(String&& str, const std::locale& loc
  * @return A string with both the left and right spaces removed.
  */
 template<typename String>
-inline meta::Unqualified<String> trim(String&& str, const std::locale& loc = std::locale()) {
+inline meta::unqualified_t<String> trim(String&& str, const std::locale& loc = std::locale()) {
     return trim_left(trim_right(std::forward<String>(str), loc), loc);
 }
 } // string

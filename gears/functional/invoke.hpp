@@ -33,8 +33,8 @@ using namespace gears::meta;
 template <typename Fun, typename Obj, typename... Args,
           typename Result = decltype((std::declval<Obj>().*std::declval<Fun>())(std::declval<Args>()...)),
           bool NoExcept = noexcept((std::declval<Obj>().*std::declval<Fun>())(std::declval<Args>()...)),
-          EnableIf<std::is_member_function_pointer<Unqualified<Fun>>,
-                   std::is_base_of<ClassOf<Unqualified<Fun>>, Unqualified<Obj>>> = _>
+          enable_if_t<std::is_member_function_pointer<unqualified_t<Fun>>,
+                   std::is_base_of<class_of_t<unqualified_t<Fun>>, unqualified_t<Obj>>> = _>
 constexpr Result invoke(Fun&& fun, Obj&& obj, Args&&... args) noexcept(NoExcept) {
     return (std::forward<Obj>(obj).*std::forward<Fun>(fun))(std::forward<Args>(args)...);
 }
@@ -42,8 +42,8 @@ constexpr Result invoke(Fun&& fun, Obj&& obj, Args&&... args) noexcept(NoExcept)
 template <typename Fun, typename Obj, typename... Args,
           typename Result = decltype(((*std::declval<Obj>()).*std::declval<Fun>())(std::declval<Args>()...)),
           bool NoExcept = noexcept(((*std::declval<Obj>()).*std::declval<Fun>())(std::declval<Args>()...)),
-          EnableIf<std::is_member_function_pointer<Unqualified<Fun>>,
-                   Not<std::is_base_of<ClassOf<Unqualified<Fun>>, Unqualified<Obj>>>> = _>
+          enable_if_t<std::is_member_function_pointer<unqualified_t<Fun>>,
+                   Not<std::is_base_of<class_of_t<unqualified_t<Fun>>, unqualified_t<Obj>>>> = _>
 constexpr Result invoke(Fun&& fun, Obj&& obj, Args&&... args) noexcept(NoExcept) {
     return ((*std::forward<Obj>(obj)).*std::forward<Fun>(fun))(std::forward<Args>(args)...);
 }
@@ -51,8 +51,8 @@ constexpr Result invoke(Fun&& fun, Obj&& obj, Args&&... args) noexcept(NoExcept)
 template <typename Fun, typename Obj,
           typename Result = decltype(std::declval<Obj>().*std::declval<Fun>()),
           bool NoExcept = noexcept(std::declval<Obj>().*std::declval<Fun>()),
-          EnableIf<std::is_member_object_pointer<Unqualified<Fun>>,
-                   std::is_base_of<ClassOf<Unqualified<Fun>>, Unqualified<Obj>>> = _>
+          enable_if_t<std::is_member_object_pointer<unqualified_t<Fun>>,
+                   std::is_base_of<class_of_t<unqualified_t<Fun>>, unqualified_t<Obj>>> = _>
 constexpr Result invoke(Fun&& fun, Obj&& obj) noexcept(NoExcept) {
     return std::forward<Obj>(obj).*std::forward<Fun>(fun);
 }
@@ -60,8 +60,8 @@ constexpr Result invoke(Fun&& fun, Obj&& obj) noexcept(NoExcept) {
 template <typename Fun, typename Obj,
           typename Result = decltype((*std::declval<Obj>()).*std::declval<Fun>()),
           bool NoExcept = noexcept((*std::declval<Obj>()).*std::declval<Fun>()),
-          EnableIf<std::is_member_object_pointer<Unqualified<Fun>>,
-                   Not<std::is_base_of<ClassOf<Unqualified<Fun>>, Unqualified<Obj>>>> = _>
+          enable_if_t<std::is_member_object_pointer<unqualified_t<Fun>>,
+                   Not<std::is_base_of<class_of_t<unqualified_t<Fun>>, unqualified_t<Obj>>>> = _>
 constexpr Result invoke(Fun&& fun, Obj&& obj) noexcept(NoExcept) {
     return (*std::forward<Obj>(obj)).*std::forward<Fun>(fun);
 }
@@ -69,7 +69,7 @@ constexpr Result invoke(Fun&& fun, Obj&& obj) noexcept(NoExcept) {
 template <typename Fun, typename... Args,
           typename Result = decltype(std::declval<Fun>()(std::declval<Args>()...)),
           bool NoExcept = noexcept(std::declval<Fun>()(std::declval<Args>()...)),
-          DisableIf<std::is_member_pointer<Unqualified<Fun>>> = _>
+          disable_if_t<std::is_member_pointer<unqualified_t<Fun>>> = _>
 constexpr Result invoke(Fun&& fun, Args&&... args) noexcept(NoExcept) {
     return std::forward<Fun>(fun)(std::forward<Args>(args)...);
 }
@@ -80,7 +80,7 @@ template <typename Deduced = meta::deduced, typename... Args,
           typename Expected = decltype(detail::invoke(std::declval<Args>()...)),
           typename Result = meta::If<meta::is_deduced<Deduced>, Expected, Deduced>,
           bool NoExcept = noexcept(detail::invoke(std::declval<Args>()...)),
-          meta::EnableIf<meta::Any<std::is_convertible<Expected, Result>, std::is_void<Result>>> = meta::_>
+          meta::enable_if_t<meta::Any<std::is_convertible<Expected, Result>, std::is_void<Result>>> = meta::_>
 #else
 template<typename... Args>
 #endif

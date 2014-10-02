@@ -37,7 +37,7 @@ namespace string {
  * @return the lower case string
  */
 template<typename String>
-inline meta::Unqualified<String> to_lower(String str, const std::locale& loc = std::locale()) {
+inline meta::unqualified_t<String> to_lower(String str, const std::locale& loc = std::locale()) {
     for(auto&& c : str) {
         c = std::tolower(c, loc);
     }
@@ -54,7 +54,7 @@ inline meta::Unqualified<String> to_lower(String str, const std::locale& loc = s
  * @return the upper case string
  */
 template<typename String>
-inline meta::Unqualified<String> to_upper(String str, const std::locale& loc = std::locale()) {
+inline meta::unqualified_t<String> to_upper(String str, const std::locale& loc = std::locale()) {
     for(auto&& c : str) {
         c = std::toupper(c, loc);
     }

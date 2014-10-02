@@ -108,6 +108,15 @@ using boolean = constant<bool, B>;
 
 /**
  * @ingroup meta
+ * @brief Removes all cv and ref qualifiers from a type.
+ */
+template<typename T>
+struct unqualified {
+    using type = typename std::remove_cv<typename std::remove_reference<T>::type>::type;
+};
+
+/**
+ * @ingroup meta
  * @brief Template alias for `std::aligned_storage` with proper alignment.
  */
 template<typename T>

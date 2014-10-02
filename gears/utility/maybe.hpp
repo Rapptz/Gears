@@ -92,8 +92,8 @@ using MaybeBase = meta::If<std::is_trivially_destructible<T>, detail::cmaybe_bas
 template<typename T>
 class maybe : private MaybeBase<T> {
 private:
-    static_assert(!std::is_same<meta::Decay<T>, nothing_t>(), "Invalid type. Must not be nothing");
-    static_assert(!std::is_same<meta::Decay<T>, in_place_t>(), "Invalid type. Must not be in_place tag");
+    static_assert(!std::is_same<meta::decay_t<T>, nothing_t>(), "Invalid type. Must not be nothing");
+    static_assert(!std::is_same<meta::decay_t<T>, in_place_t>(), "Invalid type. Must not be in_place tag");
     static_assert(!std::is_reference<T>(), "Invalid type. Must not be a reference type");
     static_assert(!is_maybe<T>(), "Invalid type. Must not be a maybe type");
 
@@ -284,7 +284,7 @@ public:
      *
      * @param value The value to assign to `maybe`.
      */
-    template<typename U, meta::EnableIf<std::is_constructible<T, meta::Decay<U>>, std::is_assignable<T, meta::Decay<U>>> = meta::_>
+    template<typename U, meta::enable_if_t<std::is_constructible<T, meta::decay_t<U>>, std::is_assignable<T, meta::decay_t<U>>> = meta::_>
     maybe& operator=(U&& value) {
         if(is_valid()) {
             internal() = std::forward<U>(value);
@@ -407,7 +407,7 @@ public:
  * @return A new `maybe` object that is engaged with the value.
  */
 template<typename T>
-constexpr maybe<meta::Decay<T>> just(T&& t) {
+constexpr maybe<meta::decay_t<T>> just(T&& t) {
     return { meta::cforward<T>(t) };
 }
 

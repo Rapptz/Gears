@@ -51,7 +51,7 @@ inline size_t nth_finder(const String& str, const String& find, size_t nth) {
  * @return A new string with the replaced occurrence.
  */
 template<typename String>
-inline meta::Unqualified<String> replace_first(String str, const String& from, const String& to) {
+inline meta::unqualified_t<String> replace_first(String str, const String& from, const String& to) {
     auto start_pos = str.find(from);
     if(start_pos == String::npos)
         return str;
@@ -70,7 +70,7 @@ inline meta::Unqualified<String> replace_first(String str, const String& from, c
  * @return A new string with the replaced occurrence.
  */
 template<typename String>
-inline meta::Unqualified<String> replace_last(String str, const String& from, const String& to) {
+inline meta::unqualified_t<String> replace_last(String str, const String& from, const String& to) {
     auto start_pos = str.rfind(from);
     if(start_pos == String::npos)
         return str;
@@ -91,7 +91,7 @@ inline meta::Unqualified<String> replace_last(String str, const String& from, co
  * @return A new string with the replaced occurrence.
  */
 template<typename String>
-inline meta::Unqualified<String> replace_nth(String str, size_t nth, const String& from, const String& to) {
+inline meta::unqualified_t<String> replace_nth(String str, size_t nth, const String& from, const String& to) {
     auto pos = string_replace_detail::nth_finder(str, from, nth);
     if(pos == String::npos)
         return str;
@@ -110,7 +110,7 @@ inline meta::Unqualified<String> replace_nth(String str, size_t nth, const Strin
  * @return A new string with the replaced occurrence.
  */
 template<typename String>
-inline meta::Unqualified<String> replace_all(String str, const String& from, const String& to) {
+inline meta::unqualified_t<String> replace_all(String str, const String& from, const String& to) {
     size_t start_pos = 0;
     while((start_pos = str.find(from, start_pos)) != String::npos) {
         str.replace(start_pos, from.length(), to);
@@ -131,7 +131,7 @@ inline meta::Unqualified<String> replace_all(String str, const String& from, con
  * @return A new string with the erased occurrences removed.
  */
 template<typename String>
-inline meta::Unqualified<String> erase_first(String str, const String& erase) {
+inline meta::unqualified_t<String> erase_first(String str, const String& erase) {
     auto start_pos = str.find(erase);
     if(start_pos == String::npos)
         return str;
@@ -151,7 +151,7 @@ inline meta::Unqualified<String> erase_first(String str, const String& erase) {
  * @return A new string with the erased occurrences removed.
  */
 template<typename String>
-inline meta::Unqualified<String> erase_last(String str, const String& erase) {
+inline meta::unqualified_t<String> erase_last(String str, const String& erase) {
     auto start_pos = str.rfind(erase);
     if(start_pos == String::npos)
         return str;
@@ -172,7 +172,7 @@ inline meta::Unqualified<String> erase_last(String str, const String& erase) {
  * @return A new string with the erased occurrences removed.
  */
 template<typename String>
-inline meta::Unqualified<String> erase_nth(String str, size_t nth, const String& erase) {
+inline meta::unqualified_t<String> erase_nth(String str, size_t nth, const String& erase) {
     auto pos = string_replace_detail::nth_finder(str, erase, nth);
     if(pos == String::npos)
         return str;
@@ -192,7 +192,7 @@ inline meta::Unqualified<String> erase_nth(String str, size_t nth, const String&
  * @return A new string with the erased occurrences removed.
  */
 template<typename String>
-inline meta::Unqualified<String> erase_all(String str, const String& erase) {
+inline meta::unqualified_t<String> erase_all(String str, const String& erase) {
     size_t start_pos = 0;
     while((start_pos = str.find(erase, start_pos)) != String::npos) {
         str.replace(start_pos, erase.length(), "");

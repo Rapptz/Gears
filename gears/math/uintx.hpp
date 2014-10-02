@@ -299,7 +299,7 @@ public:
      *
      * @param value Value to set uintx to.
      */
-    template<typename Integer, gears::meta::EnableIf<std::is_integral<Integer>> = gears::meta::_>
+    template<typename Integer, gears::meta::enable_if_t<std::is_integral<Integer>> = gears::meta::_>
     uintx(Integer value) {
         value = make_positive(value);
         do {

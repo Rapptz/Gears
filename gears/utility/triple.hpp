@@ -201,7 +201,7 @@ inline void swap(triple<T, U, V>& lhs, triple<T, U, V>& rhs) noexcept(noexcept(l
  * @return A triple containing the three elements provided.
  */
 template<typename T, typename U, typename V>
-constexpr triple<meta::Decay<T>, meta::Decay<U>, meta::Decay<V>> make_triple(T&& t, U&& u, V&& v) {
+constexpr triple<meta::decay_t<T>, meta::decay_t<U>, meta::decay_t<V>> make_triple(T&& t, U&& u, V&& v) {
     return { std::forward<T>(t), std::forward<U>(u), std::forward<V>(v) };
 }
 

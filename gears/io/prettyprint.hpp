@@ -61,7 +61,7 @@ void print_expander(std::basic_ostream<Elem, Traits>& out, const Tuple& t, meta:
 
 namespace operators {
 template<typename Elem, typename Traits, typename Tuple,
-         meta::EnableIf<detail::has_get<Tuple>, meta::Not<detail::has_begin_end<Tuple>>> = meta::_>
+         meta::enable_if_t<detail::has_get<Tuple>, meta::Not<detail::has_begin_end<Tuple>>> = meta::_>
 inline auto operator<<(std::basic_ostream<Elem, Traits>& out, const Tuple& t) -> decltype(out) {
     out << "(";
     detail::print_expander(out, t, meta::build_indices<std::tuple_size<Tuple>::value>{});
@@ -69,7 +69,7 @@ inline auto operator<<(std::basic_ostream<Elem, Traits>& out, const Tuple& t) ->
     return out;
 }
 
-template<typename Elem, typename Traits, typename Cont, meta::EnableIf<detail::has_begin_end<Cont>> = meta::_>
+template<typename Elem, typename Traits, typename Cont, meta::enable_if_t<detail::has_begin_end<Cont>> = meta::_>
 inline auto operator<<(std::basic_ostream<Elem, Traits>& out, const Cont& cont) -> decltype(out) {
     auto first = adl::begin(cont);
     auto last = adl::end(cont);
