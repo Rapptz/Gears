@@ -32,8 +32,7 @@ namespace meta {
  * @brief Provides metafunctions that deal with addition or removal of type qualifiers.
  * @details The collection of meta functions are mainly there to provide the removal
  * of type qualifiers. Which in this case include `const`, `volatile`, pointers,
- * references, and `signed` or `unsigned`. All the meta functions here are implemented
- * as type aliases, which means they are in `CamelCase` instead of `snake_case`.
+ * references, and `signed` or `unsigned`.
  */
 
 /**

@@ -78,7 +78,7 @@ constexpr Result invoke(Fun&& fun, Args&&... args) noexcept(NoExcept) {
 #ifndef GEARS_FOR_DOXYGEN_ONLY
 template <typename Deduced = meta::deduced, typename... Args,
           typename Expected = decltype(detail::invoke(std::declval<Args>()...)),
-          typename Result = meta::if_<meta::is_deduced<Deduced>, Expected, Deduced>,
+          typename Result = meta::iif<meta::is_deduced<Deduced>, Expected, Deduced>,
           bool NoExcept = noexcept(detail::invoke(std::declval<Args>()...)),
           meta::enable_if_t<meta::any<std::is_convertible<Expected, Result>, std::is_void<Result>>> = meta::_>
 #else

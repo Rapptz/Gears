@@ -28,20 +28,55 @@ namespace gears {
 namespace meta {
 /**
  * @ingroup meta
- * @brief Represents an index sequence.
- * @details Represents an index sequence. Used for
- * iterating over template parameters.
+ * @brief Represents a compile-time integer sequence.
+ * @details Typically used for iterating over template
+ * parameters, tuples, tuple-like objects, etc.
  *
- * @tparam Ns The indices.
+ * A template alias, `index_sequence` is provided for
+ * `size_t` integer_sequences.
+ *
+ * @tparam T The integral type to use.
+ * @tparam Integers The sequence.
  */
-template<size_t... Ns>
-struct indices {};
+template<typename T, T... Integers>
+struct integer_sequence {
+    using value_type = T;
 
+    /**
+     * @brief Returns the size of the sequence.
+     */
+    static constexpr size_t size() noexcept {
+        return sizeof...(Integers);
+    }
+};
+
+namespace detail {
+template<size_t... I>
+struct indices {
+    using type = indices;
+};
+
+template<size_t N, size_t... Ns>
+struct build_indices : build_indices<N-1, N-1, Ns...> {};
+
+template<size_t... Ns>
+struct build_indices<0, Ns...> : indices<Ns...> {};
+
+template<typename T, T N, typename X = typename build_indices<N>::type>
+struct generator;
+
+template<typename T, T N, size_t... Indices>
+struct generator<T, N, indices<Indices...>> {
+    static_assert(N >= 0, "integer sequence must be positive");
+    using type = integer_sequence<T, static_cast<T>(Indices)...>;
+};
+} // detail
+
+//@{
 /**
  * @ingroup meta
- * @brief Creates an index sequence.
- * @details Creates an index sequence. `build_indices<N>` would
- * create `indices<0, 1, 2, ..., N - 1>`.
+ * @brief Creates an integer sequence.
+ * @details Creates an integer sequence.
  *
  * Example:
  *
@@ -56,13 +91,13 @@ struct indices {};
  *
  * // turns f(std::tuple<Args...>) to f(Args...)
  * template<typename Function, typename... Args, size_t... Indices>
- * auto apply(Function f, const std::tuple<Args...>& t, indices<Indices...>) -> decltype(f(adl::get<Indices>(t)...)) {
+ * auto apply(Function f, const std::tuple<Args...>& t, index_sequence<Indices...>) -> decltype(f(adl::get<Indices>(t)...)) {
  *     return f(adl::get<Indices>(t)...);
  * }
  *
  * template<typename Function, typename... Args>
- * auto apply(Function f, const std::tuple<Args...>& t) -> decltype(apply(f, t, build_indices<sizeof...(Args)>{})) {
- *     return apply(f, t, build_indices<sizeof...(Args)>{});
+ * auto apply(Function f, const std::tuple<Args...>& t) -> decltype(apply(f, t, index_sequence_for<Args...>{})) {
+ *     return apply(f, t, index_sequence_for<Args...>{});
  * }
  *
  * int f(int x, int y, int z) {
@@ -82,11 +117,18 @@ struct indices {};
  *
  * @tparam N Length of the index.
  */
-template<size_t N, size_t... Ns>
-struct build_indices : build_indices<N-1, N-1, Ns...> {};
+template<typename T, T Max>
+using make_integer_sequence = typename detail::generator<T, Max>::type;
 
-template<size_t... Ns>
-struct build_indices<0, Ns...> : indices<Ns...> {};
+template<size_t Max>
+using make_index_sequence = typename detail::generator<size_t, Max>::type;
+
+template<typename... Args>
+using index_sequence_for = make_index_sequence<sizeof...(Args)>;
+//@}
+
+template<size_t... Indices>
+using index_sequence = integer_sequence<size_t, Indices...>;
 } // meta
 } // gears
 

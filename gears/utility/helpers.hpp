@@ -46,7 +46,7 @@ struct unique_type<T[N]> {
 };
 
 template<typename CharT, size_t N, size_t... Indices>
-constexpr std::array<CharT, N> literal_to_array(const CharT (&arr)[N], meta::indices<Indices...>) {
+constexpr std::array<CharT, N> literal_to_array(const CharT (&arr)[N], meta::index_sequence<Indices...>) {
     return std::array<CharT, N>{{ arr[Indices]... }};
 }
 } // detail
@@ -95,7 +95,7 @@ constexpr std::array<T, sizeof...(Args)> make_array(Args&&... args) {
  */
 template<typename CharT, size_t N>
 constexpr std::array<CharT, N> make_array(const CharT (&str)[N]) {
-    return detail::literal_to_array(str, meta::build_indices<N>{});
+    return detail::literal_to_array(str, meta::make_index_sequence<N>{});
 }
 
 /**

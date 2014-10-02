@@ -31,11 +31,11 @@ namespace gears {
 namespace functional {
 namespace detail {
 template<typename Tuple>
-using IndicesFor = meta::build_indices<std::tuple_size<Tuple>::value>;
+using IndicesFor = meta::make_index_sequence<std::tuple_size<Tuple>::value>;
 
 template<typename F, typename Tuple, size_t... Indices,
          typename Return = decltype(std::declval<F>()(adl::get<Indices>(std::declval<Tuple>())...))>
-constexpr Return invoke_impl(F&& f, Tuple&& t, meta::indices<Indices...>) {
+constexpr Return invoke_impl(F&& f, Tuple&& t, meta::index_sequence<Indices...>) {
     return std::forward<F>(f)(adl::get<Indices>(std::forward<Tuple>(t))...);
 }
 

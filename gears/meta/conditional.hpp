@@ -45,15 +45,15 @@ namespace meta {
  *
  * @code
  * // passes the static_assert
- * static_assert(std::is_same<meta::if_<std::is_integral<int>, double&, int&>, double&>::value, "...");
+ * static_assert(std::is_same<meta::iif<std::is_integral<int>, double&, int&>, double&>::value, "...");
  * @endcode
  */
 template<typename Condition, typename Then, typename Else>
-using if_ = eval<std::conditional<Condition::value, Then, Else>>;
+using iif = eval<std::conditional<Condition::value, Then, Else>>;
 
 /**
  * @ingroup meta_conditional
- * @brief Lazy evaluation of `if_`.
+ * @brief Lazy evaluation of `iif`.
  * @details Sometimes lazy evaluation is wanted for certain
  * things. The use of meta::identity with LazyIf typically
  * forces evaluation to be called at a later point.
@@ -79,7 +79,7 @@ using if_ = eval<std::conditional<Condition::value, Then, Else>>;
  * `typename int::const_iterator` is invalid due to the lazy nature of this metafunction.
  */
 template<typename Condition, typename Then, typename Else>
-using lazy_if = eval<if_<Condition, Then, Else>>;
+using lazy_if = eval<iif<Condition, Then, Else>>;
 
 /**
  * @ingroup meta_conditional
@@ -119,7 +119,7 @@ template<typename... Args>
 struct any : boolean<false> {};
 
 template<typename T, typename... Args>
-struct any<T, Args...> : if_<T, boolean<true>, any<Args...>> {};
+struct any<T, Args...> : iif<T, boolean<true>, any<Args...>> {};
 
 /**
  * @ingroup meta_conditional
@@ -140,7 +140,7 @@ template<typename... Args>
 struct all : boolean<true> {};
 
 template<typename T, typename... Args>
-struct all<T, Args...> : if_<T, all<Args...>, boolean<false>> {};
+struct all<T, Args...> : iif<T, all<Args...>, boolean<false>> {};
 } // meta
 } // gears
 

@@ -54,7 +54,7 @@ template<typename T>
 struct has_get : decltype(has_get_impl::test<T>(0)) {};
 
 template<typename Elem, typename Traits, typename Tuple, size_t... Indices>
-void print_expander(std::basic_ostream<Elem, Traits>& out, const Tuple& t, meta::indices<Indices...>) noexcept {
+void print_expander(std::basic_ostream<Elem, Traits>& out, const Tuple& t, meta::index_sequence<Indices...>) noexcept {
     GEARS_EXPAND(out << (!Indices ? "" : ", ") << adl::get<Indices>(t));
 }
 } // detail
@@ -64,7 +64,7 @@ template<typename Elem, typename Traits, typename Tuple,
          meta::enable_if_t<detail::has_get<Tuple>, meta::negate<detail::has_begin_end<Tuple>>> = meta::_>
 inline auto operator<<(std::basic_ostream<Elem, Traits>& out, const Tuple& t) -> decltype(out) {
     out << "(";
-    detail::print_expander(out, t, meta::build_indices<std::tuple_size<Tuple>::value>{});
+    detail::print_expander(out, t, meta::make_index_sequence<std::tuple_size<Tuple>::value>{});
     out << ")";
     return out;
 }
