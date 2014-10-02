@@ -49,7 +49,7 @@ namespace meta {
  * @endcode
  */
 template<typename Condition, typename Then, typename Else>
-using If = Type<std::conditional<Condition::value, Then, Else>>;
+using If = eval<std::conditional<Condition::value, Then, Else>>;
 
 /**
  * @ingroup meta_conditional
@@ -79,7 +79,7 @@ using If = Type<std::conditional<Condition::value, Then, Else>>;
  * `typename int::const_iterator` is invalid due to the lazy nature of this metafunction.
  */
 template<typename Condition, typename Then, typename Else>
-using LazyIf = Type<If<Condition, Then, Else>>;
+using LazyIf = eval<If<Condition, Then, Else>>;
 
 /**
  * @ingroup meta_conditional
@@ -98,7 +98,7 @@ using LazyIf = Type<If<Condition, Then, Else>>;
  * @tparam T Meta function to use logical not on.
  */
 template<typename T>
-struct Not : Bool<!T::value> {};
+struct Not : boolean<!T::value> {};
 
 /**
  * @ingroup meta_conditional
@@ -116,10 +116,10 @@ struct Not : Bool<!T::value> {};
  * @tparam Args Meta functions to use logical or on.
  */
 template<typename... Args>
-struct Any : Bool<false> {};
+struct Any : boolean<false> {};
 
 template<typename T, typename... Args>
-struct Any<T, Args...> : If<T, Bool<true>, Any<Args...>> {};
+struct Any<T, Args...> : If<T, boolean<true>, Any<Args...>> {};
 
 /**
  * @ingroup meta_conditional
@@ -137,10 +137,10 @@ struct Any<T, Args...> : If<T, Bool<true>, Any<Args...>> {};
  * @tparam Args Meta functions to use logical and on.
  */
 template<typename... Args>
-struct All : Bool<true> {};
+struct All : boolean<true> {};
 
 template<typename T, typename... Args>
-struct All<T, Args...> : If<T, All<Args...>, Bool<false>> {};
+struct All<T, Args...> : If<T, All<Args...>, boolean<false>> {};
 } // meta
 } // gears
 

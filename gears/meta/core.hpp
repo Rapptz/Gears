@@ -37,14 +37,14 @@ namespace meta {
  * @brief Template alias for getting the type
  */
 template<typename T>
-using Type = typename T::type;
+using eval = typename T::type;
 
 /**
  * @ingroup meta
  * @brief Template alias for `std::integral_constant`.
  */
 template<typename T, T t>
-using Const = std::integral_constant<T,t>;
+using constant = std::integral_constant<T, t>;
 
 
 /**
@@ -52,7 +52,7 @@ using Const = std::integral_constant<T,t>;
  * @brief Template alias for integer `std::integral_constant`.
  */
 template<int i>
-using Integer = Const<int,i>;
+using integer = constant<int, i>;
 
 /**
  * @ingroup meta
@@ -97,21 +97,21 @@ struct void_ {
  * @brief Template alias for void meta function.
  */
 template<typename... T>
-using Void = Type<void_<T...>>;
+using void_t = eval<void_<T...>>;
 
 /**
  * @ingroup meta
  * @brief Template alias for `std::integral_constant<bool, B>`.
  */
 template<bool B>
-using Bool = Const<bool, B>;
+using boolean = constant<bool, B>;
 
 /**
  * @ingroup meta
  * @brief Template alias for `std::aligned_storage` with proper alignment.
  */
 template<typename T>
-using StorageFor = Type<std::aligned_storage<sizeof(T), std::alignment_of<T>::value>>;
+using storage_for = eval<std::aligned_storage<sizeof(T), std::alignment_of<T>::value>>;
 } // meta
 } // gears
 

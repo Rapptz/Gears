@@ -41,105 +41,105 @@ namespace meta {
  * @brief Template alias for `std::decay`.
  */
 template<typename T>
-using Decay = Type<std::decay<T>>;
+using Decay = eval<std::decay<T>>;
 
 /**
  * @ingroup meta_qualifiers
  * @brief Template alias for `std::remove_reference`.
  */
 template<typename T>
-using RemoveRef = Type<std::remove_reference<T>>;
+using RemoveRef = eval<std::remove_reference<T>>;
 
 /**
  * @ingroup meta_qualifiers
  * @brief Template alias for `std::remove_cv`.
  */
 template<typename T>
-using RemoveCV = Type<std::remove_cv<T>>;
+using RemoveCV = eval<std::remove_cv<T>>;
 
 /**
  * @ingroup meta_qualifiers
  * @brief Template alias for `std::remove_const`.
  */
 template<typename T>
-using RemoveConst = Type<std::remove_const<T>>;
+using RemoveConst = eval<std::remove_const<T>>;
 
 /**
  * @ingroup meta_qualifiers
  * @brief Template alias for `std::remove_volatile`.
  */
 template<typename T>
-using RemoveVolatile = Type<std::remove_volatile<T>>;
+using RemoveVolatile = eval<std::remove_volatile<T>>;
 
 /**
  * @ingroup meta_qualifiers
  * @brief Template alias for `std::remove_all_extents`.
  */
 template<typename T>
-using RemoveExtents = Type<std::remove_all_extents<T>>;
+using RemoveExtents = eval<std::remove_all_extents<T>>;
 
 /**
  * @ingroup meta_qualifiers
  * @brief Template alias for `std::remove_pointer`.
  */
 template<typename T>
-using RemovePointer = Type<std::remove_pointer<T>>;
+using RemovePointer = eval<std::remove_pointer<T>>;
 
 /**
  * @ingroup meta_qualifiers
  * @brief Template alias for `std::add_lvalue_reference`.
  */
 template<typename T>
-using AddLValueRef = Type<std::add_lvalue_reference<T>>;
+using AddLValueRef = eval<std::add_lvalue_reference<T>>;
 
 /**
  * @ingroup meta_qualifiers
  * @brief Template alias for `std::add_rvalue_reference`.
  */
 template<typename T>
-using AddRValueRef = Type<std::add_rvalue_reference<T>>;
+using AddRValueRef = eval<std::add_rvalue_reference<T>>;
 
 /**
  * @ingroup meta_qualifiers
  * @brief Template alias for `std::add_cv`.
  */
 template<typename T>
-using AddCV = Type<std::add_cv<T>>;
+using AddCV = eval<std::add_cv<T>>;
 
 /**
  * @ingroup meta_qualifiers
  * @brief Template alias for `std::add_const`.
  */
 template<typename T>
-using AddConst = Type<std::add_const<T>>;
+using AddConst = eval<std::add_const<T>>;
 
 /**
  * @ingroup meta_qualifiers
  * @brief Template alias for `std::add_volatile`.
  */
 template<typename T>
-using AddVolatile = Type<std::add_volatile<T>>;
+using AddVolatile = eval<std::add_volatile<T>>;
 
 /**
  * @ingroup meta_qualifiers
  * @brief Template alias for `std::add_pointer`.
  */
 template<typename T>
-using AddPointer = Type<std::add_pointer<T>>;
+using AddPointer = eval<std::add_pointer<T>>;
 
 /**
  * @ingroup meta_qualifiers
  * @brief Template alias for `std::make_signed`.
  */
 template<typename T>
-using MakeSigned = Type<std::make_signed<T>>;
+using MakeSigned = eval<std::make_signed<T>>;
 
 /**
  * @ingroup meta_qualifiers
  * @brief Template alias for `std::make_unsigned`.
  */
 template<typename T>
-using MakeUnsigned = Type<std::make_unsigned<T>>;
+using MakeUnsigned = eval<std::make_unsigned<T>>;
 
 /**
  * @ingroup meta_qualifiers

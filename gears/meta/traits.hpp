@@ -43,7 +43,7 @@ template<typename Signature, typename Anon = void>
 struct result_of {};
 
 template<typename Function, typename... Args>
-struct result_of<Function(Args...), Void<decltype(std::declval<Function>()(std::declval<Args>()...))>> {
+struct result_of<Function(Args...), void_t<decltype(std::declval<Function>()(std::declval<Args>()...))>> {
     using type = decltype(std::declval<Function>()(std::declval<Args>()...));
 };
 
@@ -52,7 +52,7 @@ struct result_of<Function(Args...), Void<decltype(std::declval<Function>()(std::
  * @brief Template alias for SFINAE-safe `result_of`.
  */
 template<typename Signature>
-using ResultOf = Type<result_of<Signature>>;
+using ResultOf = eval<result_of<Signature>>;
 
 /**
  * @ingroup meta_traits
@@ -90,7 +90,7 @@ struct class_of<Signature Class::*> : identity<Class> {};
  * @brief Template alias for `class_of` meta function.
  */
 template<typename T>
-using ClassOf = Type<class_of<T>>;
+using ClassOf = eval<class_of<T>>;
 } // meta
 } // gears
 

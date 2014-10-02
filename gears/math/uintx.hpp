@@ -134,7 +134,7 @@ struct partial_cast<std::string> {
 template<size_t Bits = static_cast<size_t>(-1), typename Digit = unsigned int, typename Digits = unsigned long long>
 struct uintx {
 private:
-    using signed_type = gears::meta::Type<std::make_signed<Digits>>;
+    using signed_type = gears::meta::eval<std::make_signed<Digits>>;
     static constexpr size_t digit_bits = sizeof(Digits) * 8;
     static constexpr size_t digit_count = Bits == size_t(-1) ? size_t(-1) : (Bits / digit_bits);
     static_assert(digit_count, "Invalid bits parameter. Note: Use -1 for \"infinite\" precision");

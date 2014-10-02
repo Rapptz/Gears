@@ -270,7 +270,7 @@ template<typename T> struct tuple_size;
 template<size_t N, typename T> struct tuple_element;
 
 template<typename T, typename U, typename V>
-struct tuple_size<gears::triple<T, U, V>> : gears::meta::Const<size_t, 3> {};
+struct tuple_size<gears::triple<T, U, V>> : gears::meta::constant<size_t, 3> {};
 
 template<typename T, typename U, typename V>
 struct tuple_element<0, gears::triple<T, U, V>> {
@@ -291,17 +291,17 @@ struct tuple_element<2, gears::triple<T, U, V>> {
 namespace gears {
 
 template<size_t N, typename T, typename U, typename V>
-constexpr gears::meta::Type<std::tuple_element<N, triple<T, U, V>>>& get(triple<T, U, V>& t) noexcept {
+constexpr gears::meta::eval<std::tuple_element<N, triple<T, U, V>>>& get(triple<T, U, V>& t) noexcept {
     return triple_detail::triple_get<N>::get(t);
 }
 
 template<size_t N, typename T, typename U, typename V>
-constexpr const gears::meta::Type<std::tuple_element<N, triple<T, U, V>>>& get(const triple<T, U, V>& t) noexcept {
+constexpr const gears::meta::eval<std::tuple_element<N, triple<T, U, V>>>& get(const triple<T, U, V>& t) noexcept {
     return triple_detail::triple_get<N>::const_get(t);
 }
 
 template<size_t N, typename T, typename U, typename V>
-constexpr gears::meta::Type<std::tuple_element<N, triple<T, U, V>>>&& get(triple<T, U, V>&& t) noexcept {
+constexpr gears::meta::eval<std::tuple_element<N, triple<T, U, V>>>&& get(triple<T, U, V>&& t) noexcept {
     return triple_detail::triple_get<N>::move_get(std::move(t));
 }
 } // gears
