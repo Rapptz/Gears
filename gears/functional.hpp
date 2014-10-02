@@ -28,7 +28,7 @@
 #include "functional/comparison_operators.hpp"
 #include "functional/numeric_properties.hpp"
 #include "functional/invoke.hpp"
-#include "functional/curry.hpp"
+#include "functional/partial.hpp"
 #include "functional/compose.hpp"
 
 /**
@@ -43,8 +43,8 @@
  * with the other components of the module easier. It also allows the user to use the
  * function objects just like a regular function.
  *
- * There's also basic support for currying and composition. More support for other
- * things are coming soon.
+ * There's also basic support for partial function application and composition.
+ * More support for other things are coming soon.
  *
  * Example usage:
  * @code

@@ -19,8 +19,8 @@
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-#ifndef GEARS_FUNCTIONAL_CURRY_HPP
-#define GEARS_FUNCTIONAL_CURRY_HPP
+#ifndef GEARS_FUNCTIONAL_PARTIAL_HPP
+#define GEARS_FUNCTIONAL_PARTIAL_HPP
 
 #include "../adl/get.hpp"
 #include "../meta/indices.hpp"
@@ -70,13 +70,13 @@ using SpecialDecay = meta::eval<special_decay<meta::decay_t<T>>>;
 } // detail
 
 template<typename Function, typename... Args>
-struct curry_type {
+struct partial_type {
     using tuple_type = std::tuple<Args...>;
 private:
     Function func;
     tuple_type args;
 public:
-    constexpr curry_type(Function&& f, tuple_type n) noexcept: func(std::forward<Function>(f)), args(std::move(n)) {}
+    constexpr partial_type(Function&& f, tuple_type n) noexcept: func(std::forward<Function>(f)), args(std::move(n)) {}
 
     template<typename... T>
     constexpr auto operator()(T&&... t) -> decltype(detail::invoke_tup(func, std::tuple_cat(std::move(args), std::make_tuple(t...)))) {
@@ -86,9 +86,10 @@ public:
 
 /**
  * @ingroup functional
- * @brief Applies function currying to functions.
- * @details Curries functions together. More info on what currying is can be
- * found [here](http://en.wikipedia.org/wiki/Function_currying).
+ * @brief Applies partial application to a function.
+ * @details Partially applies functions. More info on what partial function application is can be
+ * found [here](http://en.wikipedia.org/wiki/Partial_application). The shorter form of explaining
+ * partial function application is essentially `std::bind` but without the use of `std::placeholder`.
  *
  * Example:
  *
@@ -99,7 +100,7 @@ public:
  * namespace fn = gears::functional;
  *
  * int main() {
- *     auto add_five = fn::curry(fn::plus, 5);
+ *     auto add_five = fn::partial(fn::plus, 5);
  *     std::cout << add_five(10) << ' ' << add_five(15);
  * }
  * @endcode
@@ -109,15 +110,15 @@ public:
  * 15 20
  * </pre>
  *
- * @param f First function to curry
- * @param args Rest of the functions to curry
+ * @param f First function to partial
+ * @param args Rest of the functions to partial
  * @return a function object that calls the curried functions
  */
 template<typename Function, typename... Args>
-constexpr curry_type<Function, detail::SpecialDecay<Args>...> curry(Function&& f, Args&&... args) {
+constexpr partial_type<Function, detail::SpecialDecay<Args>...> partial(Function&& f, Args&&... args) {
     return { std::forward<Function>(f), std::make_tuple(args...) };
 }
 } // functional
 } // gears
 
-#endif // GEARS_FUNCTIONAL_CURRY_HPP
+#endif // GEARS_FUNCTIONAL_PARTIAL_HPP

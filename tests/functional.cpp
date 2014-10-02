@@ -129,21 +129,21 @@ TEST_CASE("Functional", "[functional]") {
         REQUIRE(gf::compose(d, c, b, a)() == "1000 is valid");
     }
 
-    SECTION("Function Currying", "[curry-funct]") {
-        static_assert(gf::curry(gf::plus, 10)(100) == 110, "...");
-        static_assert(gf::curry(functional_test{}, 10)(1) == 11, "...");
-        static_assert(gf::curry(functional_test{}, 50)(90, 90) == 12600, "...");
+    SECTION("Partial Function Application", "[apply-funct]") {
+        static_assert(gf::partial(gf::plus, 10)(100) == 110, "...");
+        static_assert(gf::partial(functional_test{}, 10)(1) == 11, "...");
+        static_assert(gf::partial(functional_test{}, 50)(90, 90) == 12600, "...");
 
         int x = 100;
-        REQUIRE(gf::curry(gf::multiplies, x)(10) == 1000);
-        REQUIRE(gf::curry(functional_test{}, x)(10, 90) == 9900);
-        REQUIRE(gf::curry(functional_test{}, x, 100)(5) == 1000);
+        REQUIRE(gf::partial(gf::multiplies, x)(10) == 1000);
+        REQUIRE(gf::partial(functional_test{}, x)(10, 90) == 9900);
+        REQUIRE(gf::partial(functional_test{}, x, 100)(5) == 1000);
         REQUIRE(x == 100);
-        gf::curry(functional_test{}, std::ref(x))(10, 11, 200);
+        gf::partial(functional_test{}, std::ref(x))(10, 11, 200);
 
         REQUIRE(x == 22100);
 
-        REQUIRE(gf::curry([](int x, int y) { return x * x * y * y; }, 10)(4) == 1600);
+        REQUIRE(gf::partial([](int x, int y) { return x * x * y * y; }, 10)(4) == 1600);
     }
 
     SECTION("Invoke", "[invoke-funct]") {
