@@ -62,7 +62,7 @@ struct unref {
 
 template<typename T>
 struct special_decay {
-    using type = meta::LazyIf<is_reference_wrapper<T>, unref<T>, meta::identity<T>>;
+    using type = meta::lazy_if<is_reference_wrapper<T>, unref<T>, meta::identity<T>>;
 };
 
 template<typename T>

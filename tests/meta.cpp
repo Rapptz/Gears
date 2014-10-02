@@ -25,7 +25,7 @@
 TEST_CASE("Meta functions", "[meta]") {
     using namespace gears::meta;
     REQUIRE(boolean<true>());
-    REQUIRE((All<boolean<true>, boolean<true>, boolean<true>>()));
-    REQUIRE((Any<boolean<false>, boolean<false>, boolean<true>>()));
-    REQUIRE(Not<boolean<false>>());
+    REQUIRE((all<boolean<true>, boolean<true>, boolean<true>>()));
+    REQUIRE((any<boolean<false>, boolean<false>, boolean<true>>()));
+    REQUIRE(negate<boolean<false>>());
 }

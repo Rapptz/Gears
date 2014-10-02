@@ -43,7 +43,7 @@ template <typename Fun, typename Obj, typename... Args,
           typename Result = decltype(((*std::declval<Obj>()).*std::declval<Fun>())(std::declval<Args>()...)),
           bool NoExcept = noexcept(((*std::declval<Obj>()).*std::declval<Fun>())(std::declval<Args>()...)),
           enable_if_t<std::is_member_function_pointer<unqualified_t<Fun>>,
-                   Not<std::is_base_of<class_of_t<unqualified_t<Fun>>, unqualified_t<Obj>>>> = _>
+                   negate<std::is_base_of<class_of_t<unqualified_t<Fun>>, unqualified_t<Obj>>>> = _>
 constexpr Result invoke(Fun&& fun, Obj&& obj, Args&&... args) noexcept(NoExcept) {
     return ((*std::forward<Obj>(obj)).*std::forward<Fun>(fun))(std::forward<Args>(args)...);
 }
@@ -61,7 +61,7 @@ template <typename Fun, typename Obj,
           typename Result = decltype((*std::declval<Obj>()).*std::declval<Fun>()),
           bool NoExcept = noexcept((*std::declval<Obj>()).*std::declval<Fun>()),
           enable_if_t<std::is_member_object_pointer<unqualified_t<Fun>>,
-                   Not<std::is_base_of<class_of_t<unqualified_t<Fun>>, unqualified_t<Obj>>>> = _>
+                   negate<std::is_base_of<class_of_t<unqualified_t<Fun>>, unqualified_t<Obj>>>> = _>
 constexpr Result invoke(Fun&& fun, Obj&& obj) noexcept(NoExcept) {
     return (*std::forward<Obj>(obj)).*std::forward<Fun>(fun);
 }
@@ -78,9 +78,9 @@ constexpr Result invoke(Fun&& fun, Args&&... args) noexcept(NoExcept) {
 #ifndef GEARS_FOR_DOXYGEN_ONLY
 template <typename Deduced = meta::deduced, typename... Args,
           typename Expected = decltype(detail::invoke(std::declval<Args>()...)),
-          typename Result = meta::If<meta::is_deduced<Deduced>, Expected, Deduced>,
+          typename Result = meta::if_<meta::is_deduced<Deduced>, Expected, Deduced>,
           bool NoExcept = noexcept(detail::invoke(std::declval<Args>()...)),
-          meta::enable_if_t<meta::Any<std::is_convertible<Expected, Result>, std::is_void<Result>>> = meta::_>
+          meta::enable_if_t<meta::any<std::is_convertible<Expected, Result>, std::is_void<Result>>> = meta::_>
 #else
 template<typename... Args>
 #endif

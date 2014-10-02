@@ -63,14 +63,14 @@ constexpr auto _ = detail::enabler::_;
  * @endcode
  */
 template<typename... Args>
-using enable_if_t = eval<std::enable_if<All<Args...>::value, detail::enabler>>;
+using enable_if_t = eval<std::enable_if<all<Args...>::value, detail::enabler>>;
 
 /**
  * @ingroup meta_enable_if
  * @brief The negation of `enable_if_t`.
  */
 template<typename... Args>
-using disable_if_t = eval<std::enable_if<Not<All<Args...>>::value, detail::enabler>>;
+using disable_if_t = eval<std::enable_if<negate<all<Args...>>::value, detail::enabler>>;
 
 /**
  * @ingroup meta_enable_if

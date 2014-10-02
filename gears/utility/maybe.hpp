@@ -34,7 +34,7 @@ struct bad_maybe_access : std::exception {
 };
 
 template<typename T>
-using MaybeBase = meta::If<std::is_trivially_destructible<T>, detail::cmaybe_base<T>, detail::maybe_base<T>>;
+using MaybeBase = meta::if_<std::is_trivially_destructible<T>, detail::cmaybe_base<T>, detail::maybe_base<T>>;
 
 /**
  * @ingroup utility

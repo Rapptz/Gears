@@ -45,15 +45,15 @@ namespace meta {
  *
  * @code
  * // passes the static_assert
- * static_assert(std::is_same<meta::If<std::is_integral<int>, double&, int&>, double&>::value, "...");
+ * static_assert(std::is_same<meta::if_<std::is_integral<int>, double&, int&>, double&>::value, "...");
  * @endcode
  */
 template<typename Condition, typename Then, typename Else>
-using If = eval<std::conditional<Condition::value, Then, Else>>;
+using if_ = eval<std::conditional<Condition::value, Then, Else>>;
 
 /**
  * @ingroup meta_conditional
- * @brief Lazy evaluation of `If`.
+ * @brief Lazy evaluation of `if_`.
  * @details Sometimes lazy evaluation is wanted for certain
  * things. The use of meta::identity with LazyIf typically
  * forces evaluation to be called at a later point.
@@ -67,7 +67,7 @@ using If = eval<std::conditional<Condition::value, Then, Else>>;
  *
  * template<typename T>
  * struct const_iterator_or_type {
- *     using type = LazyIf<has_const_iterator<T>,
+ *     using type = lazy_if<has_const_iterator<T>,
  *                         identity<typename T::const_iterator>,
  *                         identity<T>>;
  * };
@@ -79,7 +79,7 @@ using If = eval<std::conditional<Condition::value, Then, Else>>;
  * `typename int::const_iterator` is invalid due to the lazy nature of this metafunction.
  */
 template<typename Condition, typename Then, typename Else>
-using LazyIf = eval<If<Condition, Then, Else>>;
+using lazy_if = eval<if_<Condition, Then, Else>>;
 
 /**
  * @ingroup meta_conditional
@@ -92,13 +92,13 @@ using LazyIf = eval<If<Condition, Then, Else>>;
  *
  * @code
  * // passes the static_assert
- * static_assert(meta::Not<std::is_integral<float>>::value, "...");
+ * static_assert(meta::negate<std::is_integral<float>>::value, "...");
  * @endcode
  *
  * @tparam T Meta function to use logical not on.
  */
 template<typename T>
-struct Not : boolean<!T::value> {};
+struct negate : boolean<!T::value> {};
 
 /**
  * @ingroup meta_conditional
@@ -110,16 +110,16 @@ struct Not : boolean<!T::value> {};
  *
  * @code
  * // passes the static_assert
- * static_assert(meta::Any<std::is_integral<int>, std::is_const<float>, std::is_function<int>>::value, "...");
+ * static_assert(meta::any<std::is_integral<int>, std::is_const<float>, std::is_function<int>>::value, "...");
  * @endcode
  *
  * @tparam Args Meta functions to use logical or on.
  */
 template<typename... Args>
-struct Any : boolean<false> {};
+struct any : boolean<false> {};
 
 template<typename T, typename... Args>
-struct Any<T, Args...> : If<T, boolean<true>, Any<Args...>> {};
+struct any<T, Args...> : if_<T, boolean<true>, any<Args...>> {};
 
 /**
  * @ingroup meta_conditional
@@ -131,16 +131,16 @@ struct Any<T, Args...> : If<T, boolean<true>, Any<Args...>> {};
  *
  * @code
  * // fails the static_assert
- * static_assert(meta::All<std::is_integral<int>, std::is_const<float>, std::is_function<int>>::value, "...");
+ * static_assert(meta::all<std::is_integral<int>, std::is_const<float>, std::is_function<int>>::value, "...");
  * @endcode
  *
  * @tparam Args Meta functions to use logical and on.
  */
 template<typename... Args>
-struct All : boolean<true> {};
+struct all : boolean<true> {};
 
 template<typename T, typename... Args>
-struct All<T, Args...> : If<T, All<Args...>, boolean<false>> {};
+struct all<T, Args...> : if_<T, all<Args...>, boolean<false>> {};
 } // meta
 } // gears
 
