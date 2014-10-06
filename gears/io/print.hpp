@@ -22,7 +22,7 @@
 #ifndef GEARS_IO_PRINT_HPP
 #define GEARS_IO_PRINT_HPP
 
-#include "fprint.hpp"
+#include <gears/io/fprint.hpp>
 #include <iostream>
 #include <sstream>
 

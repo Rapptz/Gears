@@ -22,8 +22,8 @@
 #ifndef GEARS_UTILITY_MAYBE_HPP
 #define GEARS_UTILITY_MAYBE_HPP
 
-#include "maybe/traits.hpp"
-#include "maybe/base.hpp"
+#include <gears/utility/maybe/traits.hpp>
+#include <gears/utility/maybe/base.hpp>
 #include <exception>
 
 namespace gears {

@@ -22,14 +22,14 @@
 #ifndef GEARS_FUNCTIONAL_HPP
 #define GEARS_FUNCTIONAL_HPP
 
-#include "functional/arithmetic_operators.hpp"
-#include "functional/bitwise_operators.hpp"
-#include "functional/logical_operators.hpp"
-#include "functional/comparison_operators.hpp"
-#include "functional/numeric_properties.hpp"
-#include "functional/invoke.hpp"
-#include "functional/partial.hpp"
-#include "functional/compose.hpp"
+#include <gears/functional/arithmetic_operators.hpp>
+#include <gears/functional/bitwise_operators.hpp>
+#include <gears/functional/logical_operators.hpp>
+#include <gears/functional/comparison_operators.hpp>
+#include <gears/functional/numeric_properties.hpp>
+#include <gears/functional/invoke.hpp>
+#include <gears/functional/partial.hpp>
+#include <gears/functional/compose.hpp>
 
 /**
  * @defgroup functional Functional module

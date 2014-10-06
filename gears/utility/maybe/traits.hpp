@@ -22,7 +22,7 @@
 #ifndef GEARS_UTILITY_MAYBE_TRAITS_HPP
 #define GEARS_UTILITY_MAYBE_TRAITS_HPP
 
-#include "../../meta/enable_if.hpp"
+#include <gears/meta/enable_if.hpp>
 #include <memory> // addressof
 
 namespace gears {

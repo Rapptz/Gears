@@ -22,7 +22,7 @@
 #ifndef GEARS_ENUMS_OPERATORS_HPP
 #define GEARS_ENUMS_OPERATORS_HPP
 
-#include "helpers.hpp"
+#include <gears/enums/helpers.hpp>
 
 namespace gears {
 namespace enums {

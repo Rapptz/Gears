@@ -22,9 +22,9 @@
 #ifndef GEARS_ADL_HPP
 #define GEARS_ADL_HPP
 
-#include "adl/get.hpp"
-#include "adl/iterator.hpp"
-#include "adl/swap.hpp"
+#include <gears/adl/get.hpp>
+#include <gears/adl/iterator.hpp>
+#include <gears/adl/swap.hpp>
 
 /**
  * @defgroup adl ADL module

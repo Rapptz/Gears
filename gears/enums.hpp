@@ -22,7 +22,7 @@
 #ifndef GEARS_ENUMS_HPP
 #define GEARS_ENUMS_HPP
 
-#include "enums/operators.hpp"
+#include <gears/enums/operators.hpp>
 
 /**
  * @defgroup enums Enums module

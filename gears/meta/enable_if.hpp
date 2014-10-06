@@ -22,7 +22,7 @@
 #ifndef GEARS_META_ENABLE_IF_HPP
 #define GEARS_META_ENABLE_IF_HPP
 
-#include "conditional.hpp"
+#include <gears/meta/conditional.hpp>
 
 namespace gears {
 namespace meta {

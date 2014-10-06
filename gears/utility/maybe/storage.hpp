@@ -22,10 +22,10 @@
 #ifndef GEARS_UTILITY_MAYBE_STORAGE_HPP
 #define GEARS_UTILITY_MAYBE_STORAGE_HPP
 
-#include "tags.hpp"
-#include "../../meta/utility.hpp"
-#include "../../meta/enable_if.hpp"
-#include "../../meta/qualifiers.hpp"
+#include <gears/utility/maybe/tags.hpp>
+#include <gears/meta/utility.hpp>
+#include <gears/meta/enable_if.hpp>
+#include <gears/meta/qualifiers.hpp>
 
 namespace gears {
 namespace detail {

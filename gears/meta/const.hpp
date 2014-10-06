@@ -22,8 +22,8 @@
 #ifndef GEARS_META_CONST_HPP
 #define GEARS_META_CONST_HPP
 
-#include "const/string.hpp"
-#include "const/cstdlib.hpp"
+#include <gears/meta/const/string.hpp>
+#include <gears/meta/const/cstdlib.hpp>
 
 /**
  * @defgroup constexpr Constexpr Utilities

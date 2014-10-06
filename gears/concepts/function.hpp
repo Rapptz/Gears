@@ -22,7 +22,7 @@
 #ifndef GEARS_CONCEPTS_FUNCTION_HPP
 #define GEARS_CONCEPTS_FUNCTION_HPP
 
-#include "alias.hpp"
+#include <gears/concepts/alias.hpp>
 #include <utility>
 
 namespace gears {

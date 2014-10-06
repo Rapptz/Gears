@@ -22,7 +22,7 @@
 #ifndef GEARS_UTILITY_MAYBE_BASE_HPP
 #define GEARS_UTILITY_MAYBE_BASE_HPP
 
-#include "storage.hpp"
+#include <gears/utility/maybe/storage.hpp>
 
 namespace gears {
 namespace detail {

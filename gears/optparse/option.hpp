@@ -22,8 +22,8 @@
 #ifndef GEARS_OPTPARSE_OPTION_HPP
 #define GEARS_OPTPARSE_OPTION_HPP
 
-#include "value.hpp"
-#include "../enums/operators.hpp"
+#include <gears/optparse/value.hpp>
+#include <gears/enums/operators.hpp>
 
 using namespace gears::enums::operators;
 

@@ -22,7 +22,7 @@
 #ifndef GEARS_OPTPARSE_HPP
 #define GEARS_OPTPARSE_HPP
 
-#include "optparse/option_parser.hpp"
+#include <gears/optparse/option_parser.hpp>
 
 /**
  * @defgroup optparse Option parsing module

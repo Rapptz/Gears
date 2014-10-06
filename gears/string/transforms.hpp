@@ -24,7 +24,7 @@
 
 #include <string>
 #include <sstream>
-#include "../meta/qualifiers.hpp"
+#include <gears/meta/qualifiers.hpp>
 
 namespace gears {
 namespace string {

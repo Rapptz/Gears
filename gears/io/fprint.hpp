@@ -22,8 +22,8 @@
 #ifndef GEARS_IO_FPRINT_HPP
 #define GEARS_IO_FPRINT_HPP
 
-#include "detail/index_printer.hpp"
-#include "../string/classification.hpp"
+#include <gears/io/detail/index_printer.hpp>
+#include <gears/string/classification.hpp>
 #include <string>
 
 namespace gears {

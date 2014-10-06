@@ -22,7 +22,7 @@
 #ifndef GEARS_OPTPAESE_ACTIONS_HPP
 #define GEARS_OPTPAESE_ACTIONS_HPP
 
-#include "../string/lexical_cast.hpp"
+#include <gears/string/lexical_cast.hpp>
 #include <functional>
 #include <iterator>
 

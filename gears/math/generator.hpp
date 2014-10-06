@@ -25,7 +25,7 @@
 #include <vector>
 #include <iterator>
 #include <cmath>
-#include "algorithm.hpp"
+#include <gears/math/algorithm.hpp>
 
 namespace gears {
 namespace math {

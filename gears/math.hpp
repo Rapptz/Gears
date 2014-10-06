@@ -22,9 +22,9 @@
 #ifndef GEARS_MATH_HPP
 #define GEARS_MATH_HPP
 
-#include "math/uintx.hpp"
-#include "math/generator.hpp"
-#include "math/constants.hpp"
+#include <gears/math/uintx.hpp>
+#include <gears/math/generator.hpp>
+#include <gears/math/constants.hpp>
 
 /**
  * @defgroup math Math module

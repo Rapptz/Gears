@@ -22,10 +22,10 @@
 #ifndef GEARS_FUNCTIONAL_PARTIAL_HPP
 #define GEARS_FUNCTIONAL_PARTIAL_HPP
 
-#include "../adl/get.hpp"
-#include "../meta/indices.hpp"
-#include "../meta/conditional.hpp"
-#include "../meta/qualifiers.hpp"
+#include <gears/adl/get.hpp>
+#include <gears/meta/indices.hpp>
+#include <gears/meta/conditional.hpp>
+#include <gears/meta/qualifiers.hpp>
 
 namespace gears {
 namespace functional {

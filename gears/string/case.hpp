@@ -23,7 +23,7 @@
 #define GEARS_STRING_CASE_HPP
 
 #include <locale>
-#include "../meta/qualifiers.hpp"
+#include <gears/meta/qualifiers.hpp>
 
 namespace gears {
 namespace string {

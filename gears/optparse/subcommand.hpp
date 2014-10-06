@@ -22,7 +22,7 @@
 #ifndef GEARS_OPTPARSE_SUBCOMMAND_HPP
 #define GEARS_OPTPARSE_SUBCOMMAND_HPP
 
-#include "option_set.hpp"
+#include <gears/optparse/option_set.hpp>
 
 namespace gears {
 namespace optparse {

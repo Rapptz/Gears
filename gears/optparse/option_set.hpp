@@ -22,7 +22,7 @@
 #ifndef GEARS_OPTPARSE_OPTION_SET_HPP
 #define GEARS_OPTPARSE_OPTION_SET_HPP
 
-#include "option.hpp"
+#include <gears/optparse/option.hpp>
 #include <set>
 #include <vector>
 #include <algorithm>

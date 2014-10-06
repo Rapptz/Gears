@@ -22,7 +22,7 @@
 #ifndef GEARS_META_QUALIFIERS_HPP
 #define GEARS_META_QUALIFIERS_HPP
 
-#include "core.hpp"
+#include <gears/meta/core.hpp>
 
 namespace gears {
 namespace meta {

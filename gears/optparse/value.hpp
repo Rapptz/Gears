@@ -22,8 +22,8 @@
 #ifndef GEARS_OPTPARSE_VALUE_HPP
 #define GEARS_OPTPARSE_VALUE_HPP
 
-#include "actions.hpp"
-#include "../utility/helpers.hpp"
+#include <gears/optparse/actions.hpp>
+#include <gears/utility/helpers.hpp>
 
 namespace gears {
 namespace optparse {

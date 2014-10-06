@@ -22,7 +22,7 @@
 #ifndef GEARS_CONCEPTS_CONTAINER_HPP
 #define GEARS_CONCEPTS_CONTAINER_HPP
 
-#include "iterator.hpp"
+#include <gears/concepts/iterator.hpp>
 
 namespace gears {
 namespace concepts {

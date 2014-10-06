@@ -22,10 +22,10 @@
 #ifndef GEARS_IO_HPP
 #define GEARS_IO_HPP
 
-#include "io/prettyprint.hpp"
-#include "io/print.hpp"
-#include "io/lines.hpp"
-#include "io/getline.hpp"
+#include <gears/io/prettyprint.hpp>
+#include <gears/io/print.hpp>
+#include <gears/io/lines.hpp>
+#include <gears/io/getline.hpp>
 
 /**
  * @defgroup io Input/Output module

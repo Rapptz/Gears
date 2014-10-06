@@ -22,13 +22,13 @@
 #ifndef GEARS_STRING_HPP
 #define GEARS_STRING_HPP
 
-#include "string/case.hpp"
-#include "string/predicate.hpp"
-#include "string/literals.hpp"
-#include "string/replace.hpp"
-#include "string/trim.hpp"
-#include "string/transforms.hpp"
-#include "string/lexical_cast.hpp"
+#include <gears/string/case.hpp>
+#include <gears/string/predicate.hpp>
+#include <gears/string/literals.hpp>
+#include <gears/string/replace.hpp>
+#include <gears/string/trim.hpp>
+#include <gears/string/transforms.hpp>
+#include <gears/string/lexical_cast.hpp>
 
 /**
  * @defgroup string String module

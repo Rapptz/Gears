@@ -25,8 +25,8 @@
 #include <iosfwd>
 #include <cstddef>
 #include <stdexcept>
-#include "../../meta/enable_if.hpp"
-#include "../../adl/get.hpp"
+#include <gears/meta/enable_if.hpp>
+#include <gears/adl/get.hpp>
 
 namespace gears {
 namespace io {

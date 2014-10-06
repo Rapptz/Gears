@@ -22,8 +22,8 @@
 #ifndef GEARS_STRING_TRIM_HPP
 #define GEARS_STRING_TRIM_HPP
 
-#include "find.hpp"
-#include "classification.hpp"
+#include <gears/string/find.hpp>
+#include <gears/string/classification.hpp>
 
 namespace gears {
 namespace string {

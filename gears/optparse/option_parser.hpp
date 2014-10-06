@@ -22,8 +22,8 @@
 #ifndef GEARS_OPTPARSE_OPTION_PARSER_HPP
 #define GEARS_OPTPARSE_OPTION_PARSER_HPP
 
-#include "error.hpp"
-#include "formatter.hpp"
+#include <gears/optparse/error.hpp>
+#include <gears/optparse/formatter.hpp>
 #include <iostream>
 #include <cstdlib>
 

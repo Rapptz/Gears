@@ -27,7 +27,7 @@
 #include <vector>
 #include <string>
 #include <stdexcept>
-#include "../meta/enable_if.hpp"
+#include <gears/meta/enable_if.hpp>
 
 #ifndef GEARS_NO_IOSTREAM
 #include <iosfwd>

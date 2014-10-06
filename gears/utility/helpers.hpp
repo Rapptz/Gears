@@ -22,7 +22,7 @@
 #ifndef GEARS_UTILITY_HELPERS_HPP
 #define GEARS_UTILITY_HELPERS_HPP
 
-#include "../meta/indices.hpp"
+#include <gears/meta/indices.hpp>
 #include <array>
 #include <utility>
 #include <memory>

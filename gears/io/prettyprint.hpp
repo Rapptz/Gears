@@ -22,11 +22,11 @@
 #ifndef GEARS_IO_PRETTYPRINT_HPP
 #define GEARS_IO_PRETTYPRINT_HPP
 
-#include "../meta/indices.hpp"
-#include "../meta/enable_if.hpp"
-#include "../meta/expand.hpp"
-#include "../adl/get.hpp"
-#include "../adl/iterator.hpp"
+#include <gears/meta/indices.hpp>
+#include <gears/meta/enable_if.hpp>
+#include <gears/meta/expand.hpp>
+#include <gears/adl/get.hpp>
+#include <gears/adl/iterator.hpp>
 #include <iosfwd>
 
 namespace gears {

@@ -22,8 +22,8 @@
 #ifndef GEARS_CHRONO_HPP
 #define GEARS_CHRONO_HPP
 
-#include "chrono/literals.hpp"
-#include "chrono/stopwatch.hpp"
+#include <gears/chrono/literals.hpp>
+#include <gears/chrono/stopwatch.hpp>
 
 /**
  * @defgroup chrono Chrono module

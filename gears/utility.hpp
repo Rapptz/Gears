@@ -22,12 +22,12 @@
 #ifndef GEARS_UTILITY_HPP
 #define GEARS_UTILITY_HPP
 
-#include "utility/triple.hpp"
-#include "utility/maybe.hpp"
-#include "utility/any.hpp"
-#include "utility/helpers.hpp"
-#include "utility/base64.hpp"
-#include "utility/tribool.hpp"
+#include <gears/utility/triple.hpp>
+#include <gears/utility/maybe.hpp>
+#include <gears/utility/any.hpp>
+#include <gears/utility/helpers.hpp>
+#include <gears/utility/base64.hpp>
+#include <gears/utility/tribool.hpp>
 
 /**
  * @defgroup utility Utility module

@@ -22,8 +22,8 @@
 #ifndef GEARS_META_CONST_STRING_HPP
 #define GEARS_META_CONST_STRING_HPP
 
-#include "../core.hpp"
-#include "../indices.hpp"
+#include <gears/meta/core.hpp>
+#include <gears/meta/indices.hpp>
 #include <string>
 #include <stdexcept>
 

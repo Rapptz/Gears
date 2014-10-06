@@ -22,8 +22,8 @@
 #ifndef GEARS_CONCEPTS_HPP
 #define GEARS_CONCEPTS_HPP
 
-#include "concepts/container.hpp"
-#include "concepts/function.hpp"
+#include <gears/concepts/container.hpp>
+#include <gears/concepts/function.hpp>
 
 /**
  * @defgroup concepts Concepts module

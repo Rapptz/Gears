@@ -22,14 +22,14 @@
 #ifndef GEARS_META_HPP
 #define GEARS_META_HPP
 
-#include "meta/enable_if.hpp"
-#include "meta/qualifiers.hpp"
-#include "meta/utility.hpp"
-#include "meta/traits.hpp"
-#include "meta/expand.hpp"
-#include "meta/indices.hpp"
-#include "meta/print.hpp"
-#include "meta/const.hpp"
+#include <gears/meta/enable_if.hpp>
+#include <gears/meta/qualifiers.hpp>
+#include <gears/meta/utility.hpp>
+#include <gears/meta/traits.hpp>
+#include <gears/meta/expand.hpp>
+#include <gears/meta/indices.hpp>
+#include <gears/meta/print.hpp>
+#include <gears/meta/const.hpp>
 
 /**
  * @defgroup meta Meta module
