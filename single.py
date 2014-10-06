@@ -23,6 +23,7 @@ parser.add_argument('module', help='module to convert to single file', metavar='
 parser.add_argument('--output', '-o', help='output directory to place file in', metavar='dir')
 parser.add_argument('--quiet', help='suppress all output', action='store_true')
 parser.add_argument('--strip', '-s', help='strip all doc comments from output', action='store_true')
+parser.add_argument('--lf-only', help='writes LF instead of CRLF on Windows', action='store_true')
 args = parser.parse_args()
 
 script_path = os.path.dirname(os.path.realpath(__file__))
@@ -77,17 +78,16 @@ intro = """// The MIT License (MIT)
 module_path = os.path.join('gears', args.module)
 
 includes = set([])
-standard_include = re.compile(r'#include <(.*?)>')
-local_include = re.compile(r'#include "(.*?)"')
+include = re.compile(r'#include <gears/(.*?)>')
 ifndef_cpp = re.compile(r'#ifndef GEARS_.*?_HPP')
 define_cpp = re.compile(r'#define GEARS_.*?_HPP')
 endif_cpp = re.compile(r'#endif // GEARS_.*?_HPP')
 
-def get_include(line, base_path):
-    local_match = local_include.match(line)
-    if local_match:
+def get_include(line):
+    match = include.match(line)
+    if match:
         # local include found
-        full_path = os.path.normpath(os.path.join(base_path, local_match.group(1))).replace('\\', '/')
+        full_path = os.path.join('gears', match.group(1))
         return full_path
 
     return None
@@ -126,11 +126,8 @@ def process_file(filename, out):
             if is_include_guard(line):
                 continue
 
-            # get relative directory
-            base_path = os.path.dirname(filename)
-
             # see if it's an include file
-            name = get_include(line, base_path)
+            name = get_include(line)
 
             if name:
                 process_file(name, out)
@@ -185,6 +182,8 @@ ss.close()
 if args.strip:
     result = re.sub(r'\/\*\*.*?\*\/', '', result, flags=re.DOTALL)
 
-with open(output_file, 'w') as f:
+write_mode = 'w' if not args.lf_only else 'wb'
+
+with open(output_file, write_mode) as f:
     f.write(result)
 
