@@ -37,6 +37,10 @@ class invalid_base64 : public std::exception {
 public:
     invalid_base64() = default;
 
+    /**
+     * @brief Returns the description string.
+     * @details The description string is "base64 string provided is invalid".
+     */
     const char* what() const noexcept override {
         return "base64 string provided is invalid";
     }

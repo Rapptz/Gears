@@ -524,7 +524,7 @@
  * member function also checks for required arguments not being present, which has
  * to be checked through a different member function called `notify`.
  *
- * The following example shows how to handle errors using `raw_pars` and a try-catch
+ * The following example shows how to handle errors using `raw_parse` and a try-catch
  * block. Note that all errors are derived from `optparse::error`.
  *
  * @code
@@ -605,4 +605,5 @@
  * options:
  *     -h      -a      -b      -c
  * @endcmd
+ * </br>
  */
