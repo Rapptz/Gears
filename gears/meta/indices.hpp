@@ -56,11 +56,20 @@ struct indices {
     using type = indices;
 };
 
-template<size_t N, size_t... Ns>
-struct build_indices : build_indices<N-1, N-1, Ns...> {};
+template<typename Left, typename Right>
+struct concat;
 
-template<size_t... Ns>
-struct build_indices<0, Ns...> : indices<Ns...> {};
+template<size_t... I, size_t... J>
+struct concat<indices<I...>, indices<J...>> : indices<I..., (J + sizeof...(I))...> {};
+
+template<size_t N>
+struct build_indices : concat<typename build_indices<N / 2>::type, typename build_indices<N - N / 2>::type> {};
+
+template<>
+struct build_indices<0> : indices<> {};
+
+template<>
+struct build_indices<1> : indices<0> {};
 
 template<typename T, T N, typename X = typename build_indices<N>::type>
 struct generator;
