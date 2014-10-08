@@ -19,25 +19,26 @@
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-#ifndef GEARS_META_HPP
-#define GEARS_META_HPP
+#ifndef GEARS_META_LIST_HPP
+#define GEARS_META_LIST_HPP
 
-#include <gears/meta/enable_if.hpp>
-#include <gears/meta/qualifiers.hpp>
-#include <gears/meta/utility.hpp>
-#include <gears/meta/traits.hpp>
-#include <gears/meta/expand.hpp>
-#include <gears/meta/indices.hpp>
-#include <gears/meta/print.hpp>
-#include <gears/meta/const.hpp>
-#include <gears/meta/list.hpp>
-
+namespace gears {
+namespace meta {
 /**
- * @defgroup meta Meta module
- * @brief Provides utilities to aid template metaprogramming.
- * @details This module provides metafunctions and other meta
- * utilities that aid with template metaprogramming such as
- * typedefs that help reduce the verbosity of working with templates.
+ * @ingroup meta
+ * @brief Represents a type list.
+ * @details Represents a type list. Rather than using `std::tuple`
+ * as a poor man's type list, this class is dedicated for that purpose.
+ * This class is meant to be used with the algorithms in the meta.algorithms
+ * submodule.
+ *
+ * @tparam Args The types to store in the type list.
  */
+template<typename... Args>
+struct list {
+    using type = list;
+};
+} // meta
+} // gears
 
-#endif // GEARS_META_HPP
+#endif // GEARS_META_LIST_HPP
