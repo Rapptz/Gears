@@ -1,6 +1,6 @@
 .. default-domain:: cpp
 .. highlight:: cpp
-.. namespace:: gears
+.. namespace:: gears::adl
 .. _gears-modules-adl:
 
 ADL Module
@@ -52,10 +52,10 @@ Output:
 
 .. _gears-modules-adl-api:
 
-API Reference
+Functions
 ---------------
 
-.. function:: constexpr auto adl::get<N>(T&& t)
+.. function:: constexpr auto get<N>(T&& t)
 
     ADL enabled ``get`` function for tuple-like classes. Allows for argument
     dependent lookup of ``std::get`` and overloaded specialisations of ``get``.
@@ -76,7 +76,7 @@ API Reference
     :returns: The automatically deduced return type of ``get<N>(t);``
     :subinclude: get.hpp
 
-.. function:: constexpr auto adl::begin(T&& t)
+.. function:: constexpr auto begin(T&& t)
 
     ADL enabled ``begin`` that allows for retrieval of ``std::begin`` and specialisations
     of ``begin`` through argument dependent lookup.
@@ -93,7 +93,7 @@ API Reference
     :returns: The automatically deduced return value of ``begin(t);``
     :subinclude: iterator.hpp
 
-.. function:: constexpr auto adl::end(T&& t)
+.. function:: constexpr auto end(T&& t)
 
     ADL enabled ``end`` that allows for retrieval of ``std::end`` and specialisations
     of ``end`` through argument dependent lookup.
@@ -110,7 +110,7 @@ API Reference
     :returns: The automatically deduced return value of ``end(t);``
     :subinclude: iterator.hpp
 
-.. function:: constexpr auto adl::swap(T&& t, U&& u) noexcept
+.. function:: constexpr auto swap(T&& t, U&& u) noexcept
 
     ADL-enabled ``swap`` that allows for ADL of `std::swap`.
 

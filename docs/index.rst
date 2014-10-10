@@ -17,7 +17,7 @@ What is Gears?
 
 Gears is a collection of utilities (henceforth now called "modules") that are helpful to C++11 programmers.
 These include a large collection of modules ranging from the string module to the functional module. You can
-consider Gears to be similar to Boost -- that is, a bunch of things that are there to help the general public
+consider Gears to be similar to Boost -- that is, a bunch of things that are there to help the typical programmer
 with the repetitive things in C++.
 
 Using Gears
@@ -34,5 +34,3 @@ Compiler Support
 Since Gears makes heavy use of C++11 features, only the compilers with the most support for C++11 are supported. At the
 time of this writing, this only includes GCC 4.8.1 or higher and Clang 3.4 or higher. Visual Studio 2012 or lower are
 not supported at all, and you might get lucky with some modules on Visual Studio 2013 although not explicitly supported.
-
-
