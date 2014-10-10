@@ -1,0 +1,129 @@
+.. default-domain:: cpp
+.. highlight:: cpp
+.. namespace:: gears
+.. _gears-modules-adl:
+
+ADL Module
+==============
+
+This module is very simple, allowing for an ADL-enabled function calls.
+This is useful because it allows you to write generic code that relies on certain functions
+without actually having to specify the ``using`` statement for every function in every line.
+For more information about ADL (or Argument Dependent Lookup), see
+`here <http://en.wikipedia.org/wiki/Argument-dependent_name_lookup>`_.
+
+To include this module, use::
+
+    #include <gears/adl.hpp>
+
+Example usage:
+
+.. code-block:: cpp
+
+    #include <gears/adl/get.hpp>
+    #include <tuple>
+    #include <iostream>
+
+    namespace adl = gears::adl;
+
+    namespace my {
+    struct get_example {
+        int x;
+        int y;
+    };
+
+    template<size_t N>
+    constexpr int get(const get_example& g) {
+        return N == 0 ? g.x : g.y;
+    }
+    } // my
+
+    int main() {
+        auto tup = std::make_tuple("hello", 3.14);
+        my::get_example f = {10, 11};
+        std::cout << adl::get<0>(tup) << ' ' << adl::get<0>(f);
+    }
+
+Output:
+
+.. code-block:: none
+
+    hello 10
+
+.. _gears-modules-adl-api:
+
+API Reference
+---------------
+
+.. function:: constexpr auto adl::get<N>(T&& t)
+
+    ADL enabled ``get`` function for tuple-like classes. Allows for argument
+    dependent lookup of ``std::get`` and overloaded specialisations of ``get``.
+
+    This is equivalent to the following code::
+
+        using std::get;
+        auto&& r = get<N>(t);
+
+    **Parameters:**
+
+    * **t**: The tuple-like class to access.
+
+    **Template Parameters:**
+
+    * ``size_t N``: The index of the element to retrieve.
+
+    :returns: The automatically deduced return type of ``get<N>(t);``
+    :subinclude: get.hpp
+
+.. function:: constexpr auto adl::begin(T&& t)
+
+    ADL enabled ``begin`` that allows for retrieval of ``std::begin`` and specialisations
+    of ``begin`` through argument dependent lookup.
+
+    Equivalent to doing the following:::
+
+        using std::begin;
+        begin(t);
+
+    **Parameters:**
+
+    * **t**: Object with ``begin`` interface
+
+    :returns: The automatically deduced return value of ``begin(t);``
+    :subinclude: iterator.hpp
+
+.. function:: constexpr auto adl::end(T&& t)
+
+    ADL enabled ``end`` that allows for retrieval of ``std::end`` and specialisations
+    of ``end`` through argument dependent lookup.
+
+    Equivalent to doing the following:::
+
+        using std::end;
+        end(t);
+
+    **Parameters:**
+
+    * **t**: Object with ``end`` interface
+
+    :returns: The automatically deduced return value of ``end(t);``
+    :subinclude: iterator.hpp
+
+.. function:: constexpr auto adl::swap(T&& t, U&& u) noexcept
+
+    ADL-enabled ``swap`` that allows for ADL of `std::swap`.
+
+    Equivalent to the following::
+
+        using std::swap;
+        swap(t, u);
+
+    **Parameters:**
+
+    * **t**: First element to swap.
+    * **u**: Second element to swap.
+
+    :returns: The automatically deduced return value of ``swap(t, u)``.
+    :noexcept: Conditional ``noexcept`` based on the expression ``swap(t, u)``.
+    :subinclude: swap.hpp

@@ -30,10 +30,6 @@ def warning(string):
         print('warning: {}'.format(string))
 
 # configuration
-doxygen_path = find_executable('doxygen')
-if doxygen_path == None:
-    warning('doxygen executable not found')
-
 if find_executable(args.cxx) == None:
     parser.error('compiler {} not found'.format(args.cxx))
 
@@ -101,10 +97,6 @@ ninja.rule('compile', command = '$cxx -MMD -MF $out.d -c $cxxflags $in -o $out',
                       description = 'Compiling $in to $out')
 ninja.rule('link', command = '$cxx $cxxflags $in -o $out', description = 'Creating $out')
 ninja.rule('runner', command = tests)
-
-if doxygen_path:
-    ninja.rule('documentation', command = '{} $in'.format(doxygen_path), description = 'Generating documentation')
-
 ninja.rule('installer', command = copy_command)
 ninja.rule('uninstaller', command = remove_command)
 
@@ -121,9 +113,5 @@ ninja.build('tests', 'phony', inputs = tests)
 ninja.build('install', 'installer', inputs = args.install_dir)
 ninja.build('uninstall', 'uninstaller')
 ninja.build('run', 'runner', implicit = 'tests')
-
-if doxygen_path:
-    ninja.build('doxygen', 'documentation', inputs = os.path.join(script_directory, 'Doxyfile'))
-    ninja.build('docs', 'phony', 'doxygen')
 
 ninja.default('run')

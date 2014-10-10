@@ -42,41 +42,11 @@ constexpr auto adl_end(T&& t) -> decltype(end(std::declval<T>())) {
 }
 } // detail
 
-/**
- * @ingroup adl
- * @brief ADL-enabled begin
- * @details Allows for retrieval of `std::begin` and specialisations
- * of `begin` through argument dependent lookup.
- * Equivalent to doing the following:
- *
- * @code
- * using std::begin;
- * begin(t);
- * @endcode
- *
- * @param t Object with `begin` interface
- * @return automatically deduced return value of `begin(t)`
- */
 template<typename T>
 constexpr auto begin(T&& t) -> decltype(detail::adl_begin(std::declval<T>())) {
     return detail::adl_begin(std::forward<T>(t));
 }
 
-/**
- * @ingroup adl
- * @brief ADL-enabled end
- * @details Allows for retrieval of `std::end` and specialisations
- * of `end` through argument dependent lookup.
- * Equivalent to doing the following:
- *
- * @code
- * using std::end;
- * end(t);
- * @endcode
- *
- * @param t Object with `end` interface
- * @return automatically deduced return value of `end(t)`
- */
 template<typename T>
 constexpr auto end(T&& t) -> decltype(detail::adl_end(std::declval<T>())) {
     return detail::adl_end(std::forward<T>(t));

@@ -37,6 +37,7 @@ dev*
 # Documentation
 docs/html/*
 doxygen_stderr.txt
+docs/_*/
 
 # Ninja files
 *.ninja
