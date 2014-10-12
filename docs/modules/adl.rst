@@ -6,15 +6,13 @@
 ADL Module
 ==============
 
+*Included through* ``<gears/adl.hpp>``
+
 This module is very simple, allowing for an ADL-enabled function calls.
 This is useful because it allows you to write generic code that relies on certain functions
 without actually having to specify the ``using`` statement for every function in every line.
 For more information about ADL (or Argument Dependent Lookup), see
 `here <http://en.wikipedia.org/wiki/Argument-dependent_name_lookup>`_.
-
-To include this module, use::
-
-    #include <gears/adl.hpp>
 
 Example usage:
 
@@ -65,14 +63,8 @@ Functions
         using std::get;
         auto&& r = get<N>(t);
 
-    **Parameters:**
-
-    * **t**: The tuple-like class to access.
-
-    **Template Parameters:**
-
-    * ``size_t N``: The index of the element to retrieve.
-
+    :param t: The tuple-like class to access.
+    :tparam N: The index of the element to retrieve.
     :returns: The automatically deduced return type of ``get<N>(t);``
     :subinclude: get.hpp
 
@@ -86,10 +78,7 @@ Functions
         using std::begin;
         begin(t);
 
-    **Parameters:**
-
-    * **t**: Object with ``begin`` interface
-
+    :param t: Object with ``begin`` interface
     :returns: The automatically deduced return value of ``begin(t);``
     :subinclude: iterator.hpp
 
@@ -103,10 +92,7 @@ Functions
         using std::end;
         end(t);
 
-    **Parameters:**
-
-    * **t**: Object with ``end`` interface
-
+    :param t: Object with ``end`` interface
     :returns: The automatically deduced return value of ``end(t);``
     :subinclude: iterator.hpp
 
@@ -119,11 +105,8 @@ Functions
         using std::swap;
         swap(t, u);
 
-    **Parameters:**
-
-    * **t**: First element to swap.
-    * **u**: Second element to swap.
-
+    :param t: First element to swap.
+    :param u: Second element to swap.
     :returns: The automatically deduced return value of ``swap(t, u)``.
     :noexcept: Conditional ``noexcept`` based on the expression ``swap(t, u)``.
     :subinclude: swap.hpp

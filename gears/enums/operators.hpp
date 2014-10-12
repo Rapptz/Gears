@@ -32,74 +32,41 @@ template<typename Enum>
 using Underlying = typename std::underlying_type<Enum>::type;
 } // detail
 
-/**
- * @ingroup enums
- * @brief Implements ~x on enums.
- */
 template<typename Enum, typename std::enable_if<std::is_enum<Enum>::value, int>::type = 0>
 constexpr Enum operator~(const Enum& x) noexcept {
     return static_cast<Enum>(~ to_underlying(x));
 }
 
-/**
- * @ingroup enums
- * @brief Implements lhs | rhs on enums.
- */
 template<typename Enum, typename std::enable_if<std::is_enum<Enum>::value, int>::type = 0>
 constexpr Enum operator|(const Enum& lhs, const Enum& rhs) noexcept {
     return static_cast<Enum>(to_underlying(lhs) | to_underlying(rhs));
 }
 
-/**
- * @ingroup enums
- * @brief Implements lhs & rhs on enums.
- */
 template<typename Enum, typename std::enable_if<std::is_enum<Enum>::value, int>::type = 0>
 constexpr Enum operator&(const Enum& lhs, const Enum& rhs) noexcept {
     return static_cast<Enum>(to_underlying(lhs) & to_underlying(rhs));
 }
 
-/**
- * @ingroup enums
- * @brief Implements lhs ^ rhs on enums.
- */
 template<typename Enum, typename std::enable_if<std::is_enum<Enum>::value, int>::type = 0>
 constexpr Enum operator^(const Enum& lhs, const Enum& rhs) noexcept {
     return static_cast<Enum>(to_underlying(lhs) ^ to_underlying(rhs));
 }
 
-/**
- * @ingroup enums
- * @brief Implements lhs |= rhs on enums.
- */
 template<typename Enum, typename std::enable_if<std::is_enum<Enum>::value, int>::type = 0>
 inline Enum& operator|=(Enum& lhs, const Enum& rhs) noexcept {
     return lhs = static_cast<Enum>(to_underlying(lhs) | to_underlying(rhs));
 }
 
-/**
- * @ingroup enums
- * @brief Implements lhs &= rhs on enums.
- */
 template<typename Enum, typename std::enable_if<std::is_enum<Enum>::value, int>::type = 0>
 inline Enum& operator&=(Enum& lhs, const Enum& rhs) noexcept {
     return lhs = static_cast<Enum>(to_underlying(lhs) & to_underlying(rhs));
 }
 
-/**
- * @ingroup enums
- * @brief Implements lhs ^= rhs on enums.
- */
 template<typename Enum, typename std::enable_if<std::is_enum<Enum>::value, int>::type = 0>
 inline Enum& operator^=(Enum& lhs, const Enum& rhs) noexcept {
     return lhs = static_cast<Enum>(to_underlying(lhs) ^ to_underlying(rhs));
 }
 
-//@{
-/**
- * @ingroup enums
- * @brief Implements lhs != rhs
- */
 template<typename Enum, typename std::enable_if<std::is_enum<Enum>::value, int>::type = 0>
 constexpr bool operator!=(const Enum& lhs, const Enum& rhs) noexcept {
     return to_underlying(lhs) != to_underlying(rhs);
@@ -114,13 +81,7 @@ template<typename Enum, typename std::enable_if<std::is_enum<Enum>::value, int>:
 constexpr bool operator!=(const detail::Underlying<Enum>& lhs, const Enum& rhs) noexcept {
     return lhs != to_underlying(rhs);
 }
-//@}
 
-//@{
-/**
- * @ingroup enums
- * @brief Implements lhs == rhs
- */
 template<typename Enum, typename std::enable_if<std::is_enum<Enum>::value, int>::type = 0>
 constexpr bool operator==(const Enum& lhs, const Enum& rhs) noexcept {
     return to_underlying(lhs) == to_underlying(rhs);
@@ -135,7 +96,6 @@ template<typename Enum, typename std::enable_if<std::is_enum<Enum>::value, int>:
 constexpr bool operator==(const detail::Underlying<Enum>& lhs, const Enum& rhs) noexcept {
     return lhs == to_underlying(rhs);
 }
-//@}
 } // operators
 } // enums
 } // gears

@@ -6,6 +6,8 @@
 Chrono Module
 ==================
 
+*Included through* ``<gears/chrono.hpp>``
+
 This module defines utilities that make working with the ``<chrono>`` header
 easier and adds new tools for it as well.
 
@@ -23,11 +25,8 @@ using the new C++11 user defined literal feature. The table below specifies the 
  \_ns         nanoseconds
 ==========  ================
 
-All of these have ``unsigned long long`` and ``long double`` overloads. To include this module, use::
-
-    #include <gears/chrono/literals.hpp> // for literals only
-    #include <gears/chrono.hpp>          // for the entire module
-
+All of these have ``unsigned long long`` and ``long double`` overloads. It's available through the subinclude
+``literals.hpp``.
 
 Example usage can be found below.
 
@@ -50,10 +49,15 @@ Example usage can be found below.
         std::cout << "\nDone!";
     }
 
-.. _gears-modules-chrono-stopwatch:
+.. _gears-modules-chrono-classes:
+
+Classes
+----------
+
+.. _gears-modules-chrono-classes-stopwatch:
 
 Stopwatch
-------------
+~~~~~~~~~~~
 
 .. class:: basic_stopwatch<Clock>
 
@@ -61,10 +65,7 @@ Stopwatch
     the most basic stopwatch representation that could have its internal
     clock configured to give you the flexibility you desire.
 
-    **Template Parameters:**
-
-        * **Clock**: The internal clock used to calculate time.
-
+    :tparam Clock: The internal clock used to calculate time.
 
     .. type:: time_point
     .. type:: duration
@@ -105,9 +106,7 @@ Stopwatch
 
             This function does not stop the watch. Use :func:`stop` before hand to do so.
 
-        **Template Parameters:**
-
-            * **Duration**: The duration to cast the elapsed time to. Defaults to ``std::chrono::milliseconds``.
+        :tparam Duration: The duration to cast the elapsed time to. Defaults to ``std::chrono::milliseconds``.
 
     .. function:: is_running() const
 

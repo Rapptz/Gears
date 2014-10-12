@@ -33,7 +33,15 @@ extensions = [
     'sphinx.ext.todo',
     'sphinx.ext.pngmath',
     'sphinx.ext.ifconfig',
+    'sphinx.ext.viewcode',
+    'sphinx.ext.extlinks'
 ]
+
+# short links
+extlinks = {
+    'issue': ('https://github.com/Rapptz/Gears/issues/%s', 'issue #'),
+    'cpp': ('http://en.cppreference.com/w/cpp/%s', '')
+}
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
