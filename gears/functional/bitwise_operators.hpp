@@ -68,93 +68,16 @@ struct rshift_type {
     }
 };
 
-
-/**
- * @ingroup functional_objects
- * @brief Function object performing bitwise and.
- *
- * @details Effectively calls `operator&` on two variables in a
- * generic manner. This is an instance of a function object and
- * could be called just like a regular function.
- *
- * @param t left parameter to bit and
- * @param u right parameter to bit and
- * @return the generic result of `t & u`
- */
 constexpr bit_and_type bit_and{};
 
-
-/**
- * @ingroup functional_objects
- * @brief Function object performing bitwise or.
- *
- * @details Effectively calls `operator|` on two variables in a
- * generic manner. This is an instance of a function object and
- * could be called just like a regular function.
- *
- * @param t left parameter to bit or
- * @param u right parameter to bit or
- * @return the generic result of `t | u`
- */
 constexpr bit_or_type bit_or{};
 
-
-/**
- * @ingroup functional_objects
- * @brief Function object performing bitwise xor.
- *
- * @details Effectively calls `operator^` on two variables in a
- * generic manner. This is an instance of a function object and
- * could be called just like a regular function.
- *
- * @param t left parameter to xor
- * @param u right parameter to xor
- * @return the generic result of `t ^ u`
- */
 constexpr bit_xor_type bit_xor{};
 
-
-/**
- * @ingroup functional_objects
- * @brief Function object performing bitwise not.
- *
- * @details Effectively calls `operator~` on a variable in a
- * generic manner. This is an instance of a function object and
- * could be called just like a regular function.
- *
- * @param t parameter to bit not
- * @return the generic result of `~t`
- */
 constexpr bit_not_type bit_not{};
 
-
-/**
- * @ingroup functional_objects
- * @brief Function object performing bitwise left shift.
- *
- * @details Effectively calls `operator<<` on two variables in a
- * generic manner. This is an instance of a function object and
- * could be called just like a regular function.
- *
- * @param t left parameter to left shift
- * @param u right parameter to left shift
- * @return the generic result of `t << u`
- */
 constexpr lshift_type lshift{};
 
-
-/**
- * @ingroup functional_objects
- * @brief Function object performing bitwise right shift.
- *
- * @details Effectively calls `operator>>` on two variables in a
- * generic manner. This is an instance of a function object and
- * could be called just like a regular function.
- *
- * @param t left parameter to right shift
- * @param u right parameter to right shift
- * @return the generic result of `t >> u`
- */
 constexpr rshift_type rshift{};
 } // functional
 } // gears

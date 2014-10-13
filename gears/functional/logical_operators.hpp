@@ -47,49 +47,10 @@ struct logical_not_type {
     }
 };
 
-/**
- * @ingroup functional_objects
- * @brief Function object performing logical and.
- *
- * @details Effectively calls `operator&&` on two variables in a
- * generic manner. This is an instance of a function object and
- * could be called just like a regular function.
- *
- * Note that this does **not** short circuit.
- *
- * @param t left side to check
- * @param u right side to check
- * @return the generic result of `t && u`
- */
 constexpr logical_and_type logical_and{};
 
-/**
- * @ingroup functional_objects
- * @brief Function object performing logical or.
- *
- * @details Effectively calls `operator||` on two variables in a
- * generic manner. This is an instance of a function object and
- * could be called just like a regular function.
- *
- * Note that this does **not** short circuit.
- *
- * @param t left side to check
- * @param u right side to check
- * @return the generic result of `t || u`
- */
 constexpr logical_or_type logical_or{};
 
-/**
- * @ingroup functional_objects
- * @brief Function object performing logical not.
- *
- * @details Effectively calls `operator!` on a variable in a
- * generic manner. This is an instance of a function object and
- * could be called just like a regular function.
- *
- * @param t object to logically negate
- * @return the generic result of `!t`
- */
 constexpr logical_not_type logical_not{};
 } // functional
 } // gears

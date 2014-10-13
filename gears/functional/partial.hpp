@@ -84,36 +84,6 @@ public:
     }
 };
 
-/**
- * @ingroup functional
- * @brief Applies partial application to a function.
- * @details Partially applies functions. More info on what partial function application is can be
- * found [here](http://en.wikipedia.org/wiki/Partial_application). The shorter form of explaining
- * partial function application is essentially `std::bind` but without the use of `std::placeholder`.
- *
- * Example:
- *
- * @code
- * #include <gears/functional.hpp>
- * #include <iostream>
- *
- * namespace fn = gears::functional;
- *
- * int main() {
- *     auto add_five = fn::partial(fn::plus, 5);
- *     std::cout << add_five(10) << ' ' << add_five(15);
- * }
- * @endcode
- *
- * Output
- * <pre>
- * 15 20
- * </pre>
- *
- * @param f First function to partial
- * @param args Rest of the functions to partial
- * @return a function object that calls the curried functions
- */
 template<typename Function, typename... Args>
 constexpr partial_type<Function, detail::SpecialDecay<Args>...> partial(Function&& f, Args&&... args) {
     return { std::forward<Function>(f), std::make_tuple(args...) };

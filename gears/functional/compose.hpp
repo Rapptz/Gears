@@ -62,22 +62,6 @@ constexpr detail::Decayed<Function> compose(Function&& f) {
     return std::forward<Function>(f);
 }
 
-/**
- * @ingroup functional
- * @brief Function composition of functions
- * @details Enables function composition of multiple functions.
- * Note that the syntax goes left to right, so for example:
- *
- * @code
- * compose(f, g, h);
- * @endcode
- *
- * would be equivalent to `f(g(h()))`
- *
- * @param f First function to compose
- * @param args Rest of the functions to compose
- * @return A function object that allows you to call the composed function.
- */
 template<typename First, typename... Rest>
 constexpr detail::Composer<First, Rest...> compose(First&& f, Rest&&... args) {
     return detail::Composer<First, Rest...>(std::forward<First>(f), compose(std::forward<Rest>(args)...));

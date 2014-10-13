@@ -75,45 +75,15 @@ constexpr Result invoke(Fun&& fun, Args&&... args) noexcept(NoExcept) {
 }
 } // namespace detail
 
-#ifndef GEARS_FOR_DOXYGEN_ONLY
 template <typename Deduced = meta::deduced, typename... Args,
           typename Expected = decltype(detail::invoke(std::declval<Args>()...)),
           typename Result = meta::iif<meta::is_deduced<Deduced>, Expected, Deduced>,
           bool NoExcept = noexcept(detail::invoke(std::declval<Args>()...)),
           meta::enable_if_t<meta::any<std::is_convertible<Expected, Result>, std::is_void<Result>>> = meta::_>
-#else
-template<typename... Args>
-#endif
 constexpr Result invoke(Args&&... args) noexcept(NoExcept) {
     return detail::invoke(std::forward<Args>(args)...);
 }
 } // functional
 } // gears
-
-/**
- * @ingroup functional
- * @fn template<typename... Args> auto gears::functional::invoke(Args&&... t);
- * @brief Implements the `INVOKE` facility in the C++ standard.
- * @details The `INVOKE` facility in the standard is specified in
- * §20.8.2 as follows:
- *
- * <pre>
- * Define INVOKE (f, t1, t2, ..., tN) as follows:
- * — (t1.*f)(t2, ..., tN) when f is a pointer to a member function
- * of a class T and t1 is an object of type T or a reference to an object
- * of type T or a reference to an object of a type derived from T;
- * — ((*t1).*f)(t2, ..., tN) when f is a pointer to a member function
- * of a class T and t1 is not one of the types described in the previous item;
- * — t1.*f when N == 1 and f is a pointer to member data of a class T and
- * t1 is an object of type T or a reference to an object of type T or a reference
- * to an object of a type derived from T;
- * — (*t1).*f when N == 1 and f is a pointer to member data of a class
- *  T and t1 is not one of the types described in the previous item;
- * — f(t1, t2, ..., tN) in all other cases.
- * </pre>
- *
- * @param t arguments to pass to `INVOKE` facility.
- * @return generic result of the invoked call.
- */
 
 #endif // GEARS_FUNCTIONAL_INVOKE_HPP
