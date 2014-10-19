@@ -51,6 +51,6 @@ using expander = int[];
  * @endcode
  *
  */
-#define GEARS_EXPAND(...) void(::gears::meta::expand_detail::expander{((__VA_ARGS__), 0)...})
+#define GEARS_EXPAND(...) void(::gears::meta::expand_detail::expander{((__VA_ARGS__), void(), 0)...})
 
 #endif // GEARS_META_EXPAND_HPP
