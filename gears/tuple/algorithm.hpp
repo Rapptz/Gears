@@ -47,13 +47,13 @@ constexpr auto invoke(Function&& f, const Tuple& tuple, meta::index_sequence<Ind
 
 template<typename Tuple, typename Function>
 constexpr decltype(nullptr) for_each(const Tuple& tuple, Function&& f) {
-    return detail::for_each(tuple, std::forward<Function>(f), indices_for<Tuple>{});
+    return detail::for_each(tuple, std::forward<Function>(f), detail::indices_for<Tuple>{});
 }
 
 template<typename Function, typename Tuple>
 constexpr auto invoke(Function&& f, const Tuple& tuple)
--> decltype(detail::invoke(std::forward<Function>(f), tuple, indices_for<Tuple>{})) {
-    return detail::invoke(std::forward<Function>(f), tuple, indices_for<Tuple>{});
+-> decltype(detail::invoke(std::forward<Function>(f), tuple, detail::indices_for<Tuple>{})) {
+    return detail::invoke(std::forward<Function>(f), tuple, detail::indices_for<Tuple>{});
 }
 } // tuple
 } // gears
