@@ -29,19 +29,36 @@
 namespace gears {
 namespace io {
 template<typename... Args>
-inline void print(const std::string& str, Args&&... args) {
-    fprint(std::cout, str, std::forward<Args>(args)...);
+inline void print(const std::string& str, const Args&... args) {
+    detail::fprint(std::cout, str.c_str(), args...);
 }
 
 template<typename... Args>
-inline void print(const std::wstring& str, Args&&... args) {
-    fprint(std::wcout, str, std::forward<Args>(args)...);
+inline void print(const char* str, const Args&... args) {
+    detail::fprint(std::cout, str, args...);
 }
 
-template<typename Elem, typename Traits, typename... Args>
-inline std::basic_string<Elem, Traits> sprint(const std::basic_string<Elem, Traits>& str, Args&&... args) {
-    std::basic_ostringstream<Elem, Traits> out;
-    fprint(out, str, std::forward<Args>(args)...);
+template<typename... Args>
+inline void print(const std::wstring& str, const Args&... args) {
+    detail::fprint(std::wcout, str.c_str(), args...);
+}
+
+template<typename... Args>
+inline void print(const wchar_t* str, const Args&... args) {
+    detail::fprint(std::wcout, str, args...);
+}
+
+template<typename Char, typename Trait, typename... Args>
+inline std::basic_string<Char, Trait> sprint(const std::basic_string<Char, Trait>& str, const Args&... args) {
+    std::basic_ostringstream<Char, Trait> out;
+    detail::fprint(out, str.c_str(), args...);
+    return out.str();
+}
+
+template<typename Char, typename... Args>
+inline std::basic_string<Char> sprint(const Char* str, const Args&... args) {
+    std::basic_ostringstream<Char> out;
+    detail::fprint(out, str, args...);
     return out.str();
 }
 } // io

@@ -22,240 +22,214 @@
 #ifndef GEARS_IO_FPRINT_HPP
 #define GEARS_IO_FPRINT_HPP
 
-#include <gears/io/detail/index_printer.hpp>
-#include <gears/string/classification.hpp>
+#include <gears/io/detail/stream_state.hpp>
+#include <gears/io/detail/tuple.hpp>
 #include <string>
 
 namespace gears {
 namespace io {
-
-/**
- * @ingroup io
- * @brief Type-safe iostream alternative to printf
- * @details `fprint` is the type-safe and iostream alternative
- * to `fprintf`. It accepts any ostream type and uses positional
- * arguments rather than format specifiers. Index starts at 0.
- *
- * Example:
- * @code
- * io::fprint(std::cout, std::string("{0} {1} {0}"), 1, 2);
- * // could be shortened to:
- * io::print("{0} {1} {0}", 1, 2);
- * // or
- * io::fprint(std::cout, "{0} {1} {0}"_s, 1, 2);
- * @endcode
- *
- * would print 1 2 1, with 1 being index 0 and 2 being index 1.
- *
- * If the argument is out of bounds, the function will throw
- * std::out_of_range. There are two specialisations provided for this
- * function, `io::print` and `io::sprint`. `io::print` is the equivalent of
- * `fprint(std::cout, ...)` or `fprint(std::wcout, ...)` depending on the
- * format string passed. io::sprint delegates the output stream to a
- * `std::stringstream` object to return a string, similar to `sprintf`.
- *
- * The format string is currently:
- *
- * @code
- * {index[,alignment][:format]}
- * @endcode
- *
- * Where:
- *
- * `index` is the required positional argument of the string.
- * If the positional argument is not found, then an exception is
- * thrown.
- *
- * `alignment` is an optional signed integer that dictates whether to
- * align left or right. A negative value aligns left, as if calling
- * `std::left` and a positive value will align right as if calling
- * `std::right`. The comma is required to specify the alignment, e.g.
- * `{0,-10}` or `{0,10}`.
- *
- * `format` is an optional format specifier that dictates how to format
- * the string. The format specifier has the syntax of `:CN` where `C` is
- * a character dictating the format and `N` is the precision. The `C`
- * argument of the format specifier is required to use the `N`
- * argument. The N argument is the equivalent of `std::setprecision(N)`.
- *
- * The format specifiers and their equivalences are as follows:
- *
- *
- * | Specifier | Equivalent        | Notes                            |
- * |:---------:|:------------------|:---------------------------------|
- * | F         | `std::fixed`      |                                  |
- * | E         | `std::scientific` | `std::uppercase` is enabled      |
- * | e         | `std::scientific` | `std::uppercase` is disabled     |
- * | O         | `std::oct`        |                                  |
- * | X         | `std::hex`        | `std::uppercase` is enabled      |
- * | x         | `std::hex`        | `std::uppercase` is disabled     |
- * | B         | `std::boolalpha`  |                                  |
- * | S         | `std::showpos`    |                                  |
- *
- *
- * In order to escape the `{` character, you have to insert another
- * one. So for example:
- *
- * @code
- * io:print("{{0}", 1);
- * // prints {0}
- * @endcode
- *
- * There is no need to escape the `}` character as it is not used to delimit
- * anything.
- *
- * @param out stream to print to
- * @param str format string
- * @param arguments args to print
- * @throws std::out_of_range index in the format string is out of bounds
- * @throws std::runtime_error invalid format string
- */
-template<class Elem, class Traits, typename... Args>
-inline void fprint(std::basic_ostream<Elem, Traits>& out, const std::basic_string<Elem, Traits>& str, Args&&... arguments) {
-    if(sizeof...(arguments) < 1) {
-        out << str;
-        return;
+namespace detail {
+template<typename Char>
+inline std::tuple<size_t, bool> parse_integer(const Char*& str, const Char zero) {
+    size_t result = 0;
+    bool b = false;
+    //             checks if a character is a digit
+    while(*str && (*str >= zero && *str <= zero + 9)) {
+        b = true;
+        result = (result * 10) + (*str++ - zero);
     }
+    return std::make_tuple(result, b);
+}
 
-    auto args = std::make_tuple(std::forward<Args>(arguments)...);
+// optimisation for when sizeof...(Args) == 0
+template<typename Char, typename Trait>
+inline void fprint(std::basic_ostream<Char, Trait>& out, const Char* str) {
+    out << str;
+}
 
-    string::is_digit cmp;
-    auto&& length = str.size();
-    auto&& original_width = out.width();
-    std::ios_base::fmtflags original_format = out.flags();
-    auto&& original_precision = out.precision();
+template<typename Char, typename Trait, typename... Args>
+inline void fprint(std::basic_ostream<Char, Trait>& out, const Char* str, const Args&... arguments) {
+    // format-string ::= "|" <`parameter`> [":" `format-spec`] "|"
+    // parameter     ::= <integer>
+    // format-spec   ::= [`fill`][`align`][`width`]["." `precision`][`verb`]*
+    // fill          ::= "'" <any character>
+    // align         ::= "<" | ">" | "^"
+    // width         ::= <integer> | "*" <integer>
+    // precision     ::= <integer> | "*" <integer>
+    // verb          ::= "f" | "e" | "g" | "x" | "b" | "o" | "d" | "u" | "p" | "t"
+    auto args = std::tie(arguments...);
+    stream_state<Char, Trait> original{out};
+    stream_state<Char, Trait> changed;
+    auto&& original_flags = out.flags();
+    auto func = make_printer(out);
+    const Char pipe = out.widen('|');
+    const Char zero = out.widen('0');
+    size_t position = 0;
+    size_t temp_pos = 0;
+    bool has_integer = false;
 
-    for(decltype(str.size()) i = 0; i < length; ++i) {
-        auto&& c = str[i];
-        // doesn't start with { so just print it and continue
-        if(c != out.widen('{')) {
-            out << c;
+    while(*str != 0) {
+        // not a |
+        if(!Trait::eq(*str, pipe)) {
+            out << *str++;
             continue;
         }
 
-        // at this point, the character c points to {
-        // check if we're done printing
-        if(i + 1 > length) {
-            out << c;
-            break;
-        }
+        // at this point -- *str == '|'
+        // so just increment it to get to the format-spec
+        ++str;
 
-        // check the next characters
-        auto j = i + 1;
-        unsigned index = 0;
-        decltype(out.width()) width = 0;
-        decltype(out.precision()) precision = 0;
-        auto format = original_format;
-
-        // escaped character
-        if(str[j] == out.widen('{')) {
-            out << str[i];
-            i = j;
+        // escaped | so format-spec is over
+        if(*str && Trait::eq(*str, pipe)) {
+            out << pipe;
+            ++str;
             continue;
         }
 
-        // now we're at a sane point where we can work with the format string
-        // check if the next character is a digit
-        if(cmp(str[j])) {
-            do {
-                // since it is, multiply the index
-                index = (index * 10) + (str[j++] - out.widen('0'));
+        // actual beginning of format-spec
+        changed = original;
+        has_integer = false;
+
+        // retrieve parameter
+        std::tie(position, has_integer) = parse_integer(str, zero);
+
+        if(!has_integer) {
+            throw std::runtime_error("numeric parameter expected");
+        }
+
+        // check if format spec exists
+        if(*str && Trait::eq(*str, out.widen(':'))) {
+            ++str;
+
+            // check for [fill]
+            if(Trait::eq(*str, out.widen('\'')) && *(str + 1)) {
+                ++str;
+                changed.fill = *str;
+                ++str;
             }
-            while(j < length && cmp(str[j]));
+
+            // check for [align]
+            if(Trait::eq(*str, out.widen('<'))) {
+                out.setf(out.left, out.adjustfield);
+                ++str;
+            }
+            else if(Trait::eq(*str, out.widen('>'))) {
+                out.setf(out.right, out.adjustfield);
+                ++str;
+            }
+            else if(Trait::eq(*str, out.widen('^'))) {
+                out.setf(out.internal, out.adjustfield);
+                ++str;
+            }
+
+            // check for [width]
+            if(Trait::eq(*str, out.widen('*'))) {
+                ++str;
+                std::tie(temp_pos, has_integer) = parse_integer(str, zero);
+                if(!has_integer) {
+                    throw std::runtime_error("expected positional index after *");
+                }
+                apply(args, temp_pos, make_extractor(changed.width));
+            }
+            else {
+                std::tie(changed.width, std::ignore) = parse_integer(str, zero);
+            }
+
+            // check for [.precision]
+            if(Trait::eq(*str, out.widen('.'))) {
+                ++str;
+                if(Trait::eq(*str, out.widen('*'))) {
+                    ++str;
+                    std::tie(temp_pos, has_integer) = parse_integer(str, zero);
+                    if(!has_integer) {
+                        throw std::runtime_error("expected positional index after *");
+                    }
+                    apply(args, temp_pos, make_extractor(changed.precision));
+                }
+                else {
+                    std::tie(changed.precision, std::ignore) = parse_integer(str, zero);
+                }
+            }
+
+            // check for [verbs]
+            // they are as follows:
+            // f  - Set std::fixed
+            // e  - Set std::scientific
+            // u  - Set std::uppercase
+            // x  - Set std::hex
+            // b  - Set std::showbase
+            // o  - Set std::oct
+            // d  - Set std::dec
+            // t  - Set std::boolalpha
+            // p  - Set std::showpos
+            // g  - Set std::defaultfloat
+
+            out.unsetf(out.uppercase | out.showbase | out.boolalpha | out.showpos);
+            while(*str) {
+                if(Trait::eq(*str, out.widen('f'))) {
+                    out.setf(out.fixed, out.floatfield);
+                }
+                else if(Trait::eq(*str, out.widen('e'))) {
+                    out.setf(out.scientific, out.floatfield);
+                }
+                else if(Trait::eq(*str, out.widen('g'))) {
+                    out.unsetf(out.floatfield);
+                }
+                else if(Trait::eq(*str, out.widen('u'))) {
+                    out.setf(out.uppercase);
+                }
+                else if(Trait::eq(*str, out.widen('x'))) {
+                    out.setf(out.hex, out.basefield);
+                }
+                else if(Trait::eq(*str, out.widen('o'))) {
+                    out.setf(out.oct, out.basefield);
+                }
+                else if(Trait::eq(*str, out.widen('d'))) {
+                    out.setf(out.dec, out.basefield);
+                }
+                else if(Trait::eq(*str, out.widen('b'))) {
+                    out.setf(out.showbase);
+                }
+                else if(Trait::eq(*str, out.widen('t'))) {
+                    out.setf(out.boolalpha);
+                }
+                else if(Trait::eq(*str, out.widen('p'))) {
+                    out.setf(out.showpos);
+                }
+                else {
+                    // unknown flag
+                    break;
+                }
+                ++str;
+            }
+        }
+
+        if(*str && Trait::eq(*str, pipe)) {
+            // apply the changes
+            changed.apply(out);
+            // print it out
+            apply(args, position, func);
+            // revert changed
+            original.apply(out);
+            ++str;
         }
         else {
-            // since it isn't a digit, it doesn't match our format string
-            throw std::runtime_error("invalid format string specified");
-        }
-
-        // check if alignment argument exists
-        if(str[j] == out.widen(',')) {
-            // check if the next character is valid
-            if(j + 1 < length) {
-                // check if the alignment is left or right
-                if(str[j + 1] == out.widen('-')) {
-                    format |= out.left;
-                    // increment by two to get to the numerical section
-                    j += 2;
-                }
-                else {
-                    format |= out.right;
-                    ++j;
-                }
-                // check if the next character is a digit
-                if(j < length && cmp(str[j])) {
-                    do {
-                        // since it is, multiply the width
-                        width = (width * 10) + (str[j++] - out.widen('0'));
-                    }
-                    while(j < length && cmp(str[j]));
-                }
-                else {
-                    // invalid format string found
-                    throw std::runtime_error("invalid format string specified");
-                }
-
-            }
-        }
-
-        // check if format specifier exists
-        if(str[j] == out.widen(':')) {
-            // check if the character is valid
-            if(j + 1 < length) {
-                auto&& specifier = str[j + 1];
-                switch(specifier) {
-                case 'F':
-                    format |= out.fixed;
-                    break;
-                case 'O':
-                    format = (format & ~out.basefield) | out.oct;
-                    break;
-                case 'x':
-                    format = (format & ~out.basefield) | out.hex;
-                    break;
-                case 'X':
-                    format = (format & ~out.basefield) | out.hex | out.uppercase;
-                    break;
-                case 'E':
-                    format |= out.scientific | out.uppercase;
-                    break;
-                case 'e':
-                    format |= out.scientific;
-                    break;
-                case 'B':
-                    format |= out.boolalpha;
-                    break;
-                case 'S':
-                    format |= out.showpos;
-                    break;
-                default:
-                    throw std::runtime_error("no such format specifier found");
-                    break;
-                }
-                j += 2;
-
-                // handle precision specifier
-                if(j < length && cmp(str[j])) {
-                    do {
-                        precision = (precision * 10) + (str[j++] - out.widen('0'));
-                    }
-                    while(j < length && cmp(str[j]));
-                }
-            }
-        }
-
-        // now that we're done processing, handle the results
-        if(str[j] == out.widen('}')) {
-            out.flags(format);
-            out.width(width);
-            out.precision(precision);
-            detail::index_printer(out, index, args);
-            out.width(original_width);
-            out.flags(original_format);
-            out.precision(original_precision);
-            i = j;
+            throw std::runtime_error("expected end of format string");
         }
     }
+
+    out.flags(original_flags);
+}
+} // detail
+
+template<typename Char, typename Trait, typename... Args>
+inline void fprint(std::basic_ostream<Char, Trait>& out, const std::basic_string<Char, Trait>& str, const Args&... args) {
+    detail::fprint(out, str.c_str(), args...);
+}
+
+template<typename Char, typename Trait, typename... Args>
+inline void fprint(std::basic_ostream<Char, Trait>& out, const Char* str, const Args&... args) {
+    detail::fprint(out, str, args...);
 }
 } // io
 } // gears

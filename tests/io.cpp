@@ -20,41 +20,67 @@
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 #include <catch.hpp>
-#include <gears/string/literals.hpp>
 #include <gears/io.hpp>
 #include <cctype>
 
 namespace io = gears::io;
-using namespace gears::string::literals;
 
 TEST_CASE("Input/Output", "[io]") {
     SECTION("Basics", "[io-basic]") {
-        REQUIRE(io::sprint("{0} {1} {0}"_s, 1, 2) == "1 2 1");
-        REQUIRE(io::sprint("{0} + {0} = {1}"_s, 1, 2) == "1 + 1 = 2");
-        REQUIRE(io::sprint("{{{0}} {{{1}}"_s, 'a', 'b') == "{a} {b}");
-        auto&& longer = io::sprint("{0}{1}{2}{3}{4}{5}{6}{7}{8}{9}{10}{11}"_s, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12);
+        REQUIRE(io::sprint("|0| |1| |0|", 1, 2) == "1 2 1");
+        REQUIRE(io::sprint("|0| + |0| = |1|", 1, 2) == "1 + 1 = 2");
+        REQUIRE(io::sprint("|||0||| |||1|||", 'a', 'b') == "|a| |b|");
+        auto&& longer = io::sprint("|0||1||2||3||4||5||6||7||8||9||10||11|", 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12);
         REQUIRE(longer == "123456789101112");
-        REQUIRE(io::sprint("{{{{{0}"_s, 1) == "{{1");
-        REQUIRE(io::sprint("{{{{{0}{{"_s, 1) == "{{1{");
-        REQUIRE(io::sprint("{{{{{0}{{}{{}"_s, 1) == "{{1{}{}");
-        REQUIRE(io::sprint(true ? "[{0}]"_s : "{{0}}"_s, 10) == "[10]");
+        REQUIRE(io::sprint("|||0|", 1) == "|1");
+        REQUIRE(io::sprint("|||||0|||", 1) == "||1|");
+        REQUIRE(io::sprint("|||||0|||||||||", 1) == "||1||||");
+        REQUIRE(io::sprint(true ? "[|0|]" : "|||0|||", 10) == "[10]");
     }
 
     SECTION("Alignment", "[io-align]") {
-        REQUIRE(io::sprint("{0,10}"_s, "Hello") == "     Hello");
-        REQUIRE(io::sprint("{0,-10}"_s, "Hello") == "Hello     ");
-        REQUIRE(io::sprint("{{0,-10}"_s, 10) == "{0,-10}");
-        REQUIRE(io::sprint(".{0,10}.\n.{0,-10}.\n.{0,10}."_s, "Hello") == ".     Hello.\n.Hello     .\n.     Hello.");
+        // without fill character
+        REQUIRE(io::sprint("|0:>10|", "Hello") == "     Hello");
+        REQUIRE(io::sprint("|0:<10|", "Hello") == "Hello     ");
+        REQUIRE(io::sprint("||0:<10||", 10) == "|0:<10|");
+        REQUIRE(io::sprint(".|0:>10|.\n.|0:<10|.\n.|0:>10|.", "Hello") == ".     Hello.\n.Hello     .\n.     Hello.");
+        REQUIRE(io::sprint("|0:>*1|", "Hello", 10) == "     Hello");
+        REQUIRE(io::sprint("|0:<*1|", "Hello", 10) == "Hello     ");
+        REQUIRE(io::sprint("||0:<*1||", 10, 10) == "|0:<*1|");
+        REQUIRE(io::sprint(".|0:>*1|.\n.|0:<*1|.\n.|0:>*1|.", "Hello", 10) == ".     Hello.\n.Hello     .\n.     Hello.");
+
+        // with fill character
+        REQUIRE(io::sprint("|0:'#>10|", "Hello") == "#####Hello");
+        REQUIRE(io::sprint("|0:'#<10|", "Hello") == "Hello#####");
+        REQUIRE(io::sprint("||0:'#<10||", 10) == "|0:'#<10|");
+        REQUIRE(io::sprint(".|0:'#>10|.\n.|0:'#<10|.\n.|0:'#>10|.", "Hello") == ".#####Hello.\n.Hello#####.\n.#####Hello.");
+        REQUIRE(io::sprint("|0:'#>*1|", "Hello", 10) == "#####Hello");
+        REQUIRE(io::sprint("|0:'#<*1|", "Hello", 10) == "Hello#####");
+        REQUIRE(io::sprint("||0:'#<*1||", 10, 10) == "|0:'#<*1|");
+        REQUIRE(io::sprint(".|0:'#>*1|.\n.|0:'#<*1|.\n.|0:'#>*1|.", "Hello", 10) == ".#####Hello.\n.Hello#####.\n.#####Hello.");
     }
 
     SECTION("Format", "[io-format]") {
-        REQUIRE(io::sprint("{0:F2}"_s, 2.142134) == "2.14");
-        REQUIRE(io::sprint("{0:S} {1:S}"_s, -1, 1) == "-1 +1");
-        REQUIRE(io::sprint("0x{0:X} 0x{0:x}"_s, 1001) == "0x3E9 0x3e9");
-        REQUIRE(io::sprint("{0:e} {0:E}"_s, 6e+100) == "6e+100 6E+100");
-        REQUIRE(io::sprint("{0:e3} {0:E3}"_s, 6.1232e+100) == "6.123e+100 6.123E+100");
-        REQUIRE(io::sprint("0{0:O}"_s, 100) == "0144");
-        REQUIRE(io::sprint("{0:B} {1:B}"_s, true, false) == "true false");
+        // basic format
+        REQUIRE(io::sprint("|0:.2f|", 2.142134) == "2.14");
+        REQUIRE(io::sprint("|0:p| |1:p|", -1, 1) == "-1 +1");
+        REQUIRE(io::sprint("0x|0:xu| |0:xb| |0:xub|", 1001) == "0x3E9 0x3e9 0X3E9");
+        REQUIRE(io::sprint("|0:e| |0:eu|", 6e+100) == "6.000000e+100 6.000000E+100");
+        REQUIRE(io::sprint("|0:.3e| |0:.3eu|", 6.1232e+100) == "6.123e+100 6.123E+100");
+        REQUIRE(io::sprint("|0:ob|", 100) == "0144");
+        REQUIRE(io::sprint("|0:t| |1:t|", true, false) == "true false");
+        REQUIRE(io::sprint("|0:tu|", true) == "true");
+        REQUIRE(io::sprint("|0:d|", 10) == "10");
+
+        // bit more complicated
+        REQUIRE(io::sprint("|0:'0>10|", 10) == "0000000010");
+        REQUIRE(io::sprint("|0:'0>*1|", 10, 10) == "0000000010");
+        REQUIRE(io::sprint("|0:'0<10|", 10) == "1000000000");
+        REQUIRE(io::sprint("|0:'0<*1|", 10, 10) == "1000000000");
+        REQUIRE(io::sprint("|0:'#<10.5f|", 3.14) == "3.14000###");
+        REQUIRE(io::sprint("|0:'#>10.5f|", 3.14) == "###3.14000");
+        REQUIRE(io::sprint("|0:'#<*1.*2f|", 3.14, 10, 5) == "3.14000###");
+        REQUIRE(io::sprint("|0:'#>*1.*2f|", 3.14, 10, 5) == "###3.14000");
     }
 
     SECTION("Lines", "[io-lines]") {

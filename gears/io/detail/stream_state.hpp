@@ -19,34 +19,37 @@
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-#ifndef GEARS_IO_DETAIL_INDEX_PRINTER_HPP
-#define GEARS_IO_DETAIL_INDEX_PRINTER_HPP
+#ifndef GEARS_IO_DETAIL_STREAM_STATE_HPP
+#define GEARS_IO_DETAIL_STREAM_STATE_HPP
 
 #include <iosfwd>
-#include <cstddef>
-#include <stdexcept>
-#include <gears/meta/enable_if.hpp>
-#include <gears/adl/get.hpp>
 
 namespace gears {
 namespace io {
 namespace detail {
-template<size_t N = 0, class Elem, class Traits, typename... Args,
-         meta::disable_if_t<meta::boolean<(N < sizeof...(Args))>> = meta::_>
-inline void index_printer(std::basic_ostream<Elem,Traits>&, const size_t, const std::tuple<Args...>&) {
-    throw std::out_of_range("Index exceeds number of arguments provided");
-}
+template<typename Char, typename Trait>
+struct stream_state {
+    using ostream_type = std::basic_ostream<Char, Trait>;
+    using istream_type = std::basic_istream<Char, Trait>;
+    std::streamsize width;
+    std::streamsize precision;
+    Char fill;
 
-template<size_t N = 0, class Elem, class Traits, typename... Args, meta::enable_if_t<meta::boolean<(N < sizeof...(Args))>> = meta::_>
-inline void index_printer(std::basic_ostream<Elem,Traits>& out, const size_t i, const std::tuple<Args...>& tup) {
-    if(i != N) {
-        index_printer<N + 1>(out, i, tup);
-        return;
+    stream_state() = default;
+    stream_state(const stream_state&) = default;
+
+    template<typename Stream>
+    stream_state(const Stream& s): width(s.width()), precision(s.precision()), fill(s.fill()) {}
+
+    template<typename Stream>
+    void apply(Stream& s) {
+        s.width(width);
+        s.precision(precision);
+        s.fill(fill);
     }
-    out << adl::get<N>(tup);
-}
+};
 } // detail
 } // io
 } // gears
 
-#endif // GEARS_IO_DETAIL_INDEX_PRINTER_HPP
+#endif // GEARS_IO_DETAIL_STREAM_STATE_HPP
