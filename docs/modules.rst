@@ -12,3 +12,4 @@ This page hosts the listing of modules in gears and their API reference.
     modules/chrono
     modules/enums
     modules/functional
+    modules/tuple
