@@ -1,5 +1,6 @@
 .. default-domain:: cpp
 .. highlight:: cpp
+.. namespace:: gears::functional
 .. _gears-modules-functional:
 
 Functional Module
