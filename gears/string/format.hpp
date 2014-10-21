@@ -19,34 +19,28 @@
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-#ifndef GEARS_IO_PRINT_HPP
-#define GEARS_IO_PRINT_HPP
+#ifndef GEARS_STRING_FORMAT_HPP
+#define GEARS_STRING_FORMAT_HPP
 
 #include <gears/io/fprint.hpp>
-#include <iostream>
+#include <sstream>
 
 namespace gears {
-namespace io {
-template<typename... Args>
-inline void print(const std::string& str, const Args&... args) {
-    detail::fprint(std::cout, str.c_str(), args...);
+namespace string {
+template<typename Char, typename Trait, typename... Args>
+inline std::basic_string<Char, Trait> format(const std::basic_string<Char, Trait>& str, const Args&... args) {
+    std::basic_ostringstream<Char, Trait> out;
+    io::detail::fprint(out, str.c_str(), args...);
+    return out.str();
 }
 
-template<typename... Args>
-inline void print(const char* str, const Args&... args) {
-    detail::fprint(std::cout, str, args...);
+template<typename Char, typename... Args>
+inline std::basic_string<Char> format(const Char* str, const Args&... args) {
+    std::basic_ostringstream<Char> out;
+    io::detail::fprint(out, str, args...);
+    return out.str();
 }
-
-template<typename... Args>
-inline void print(const std::wstring& str, const Args&... args) {
-    detail::fprint(std::wcout, str.c_str(), args...);
-}
-
-template<typename... Args>
-inline void print(const wchar_t* str, const Args&... args) {
-    detail::fprint(std::wcout, str, args...);
-}
-} // io
+} // string
 } // gears
 
-#endif // GEARS_IO_PRINT_HPP
+#endif // GEARS_STRING_FORMAT_HPP
