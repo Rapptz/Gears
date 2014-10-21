@@ -27,21 +27,6 @@
 
 namespace gears {
 namespace io {
-/**
- * @ingroup io
- * @brief Reads a string until a predicate is met.
- * @details Reads a string until a predicate is met. This function
- * behaves similarly to `std::getline` except that rather than
- * reading until a newline, it reads until a predicate given.
- * The predicate given must have a signature of `bool(const CharT&)`.
- * While this isn't strictly enforced, it's a good idea to not modify
- * the characters as this might lead to unexpected behaviour.
- *
- * @param in The input stream to read from.
- * @param str String to write to.
- * @param p Predicate to use.
- * @return The input stream.
- */
 template<typename CharT, typename Traits, typename Alloc, typename Pred>
 inline auto getline_until(std::basic_istream<CharT, Traits>& in, std::basic_string<CharT, Traits, Alloc>& str, Pred p) -> decltype(in) {
     std::ios_base::iostate state = std::ios_base::goodbit;

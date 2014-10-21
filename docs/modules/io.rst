@@ -97,6 +97,58 @@ Functions
     :throws out_of_range: Thrown when the index in a format string is out of bounds.
     :subinclude: print.hpp
 
+.. function:: auto getline_until(std::basic_istream<Char, Trait>& in, std::basic_string<Char, Trait, Alloc>& str, Predicate p)
+
+    Reads a string until a predicate is met. This function behaves similarly to :cpp:`std::getline <string/basic_string/getline>`
+    except that rather than reading until a newline, it reads until a predicate given. The predicate given must have a
+    signature of ``bool(const Char&)`` or ``bool(char)``. While this isn't strictly enforced, it's a good idea to not
+    modify the characters as this might lead to unexpected behaviour.
+
+    :param in: The input stream to read from.
+    :param str: The string to write to.
+    :param p: The predicate to use. Must return something convertible to bool.
+    :returns: A reference to the input stream.
+    :subinclude: getline.hpp
+
+.. function:: auto lines(std::basic_istream<CharT, Traits>& in)
+
+    Returns a range object to iterate through input lines. Best used with the range-based for loop.
+
+    Example: ::
+
+        #include <gears/io/lines.hpp>
+        #include <iostream>
+        #include <fstream>
+
+        namespace io = gears::io;
+
+        int main() {
+            std::ifstream in("test.txt"); // could be any file
+            for(auto&& line : io::lines(in)) {
+                std::cout << line << '\n';
+            }
+        }
+
+    .. admonition:: lines return type
+
+        **Member functions**
+
+        The return type of lines is a range object that defines a ``begin`` and an ``end`` member function
+        for compatibility with the C++11 range-based for loop.
+
+        **Iterator Information**
+
+        The iterator returned by the member functions are input iterators that are copyable and movable. These
+        iterators are expensive to copy so they should not be copied or moved too much.
+
+        **Constructibility**
+
+        The return type is CopyConstructible and MoveConstructible. It is not advised to do so however.
+
+    :param in: The input stream to iterate lines with.
+    :returns: An unspecified return type that meets the requirements set above.
+    :subinclude: lines.hpp
+
 .. _gears-modules-io-format:
 
 Format String Syntax
