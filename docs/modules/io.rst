@@ -43,11 +43,10 @@ Example usage:
 
     int main() {
         std::vector<int> v = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-        io::print("{0} + {0} = {1}\n", v.front(), v[1]);
-
-        // note: generic operator<< doesn't work with io::print
-        std::cout << v;
+        io::print("|0| + |0| = |1|\n", v.front(), v[1]);
+        io::print("|0|", v);
     }
+
 
 Output:
 
