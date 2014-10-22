@@ -13,4 +13,5 @@ This page hosts the listing of modules in gears and their API reference.
     modules/enums
     modules/functional
     modules/io
+    modules/math
     modules/tuple

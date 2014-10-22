@@ -42,7 +42,8 @@ todo_include_todos = True
 # short links
 extlinks = {
     'issue': ('https://github.com/Rapptz/Gears/issues/%s', 'issue #'),
-    'cpp': ('http://en.cppreference.com/w/cpp/%s', '')
+    'cpp': ('http://en.cppreference.com/w/cpp/%s', ''),
+    'wiki': ('http://en.wikipedia.org/wiki/%s', '')
 }
 
 # Add any paths that contain templates here, relative to this directory.

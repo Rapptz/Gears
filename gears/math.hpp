@@ -26,37 +26,4 @@
 #include <gears/math/generator.hpp>
 #include <gears/math/constants.hpp>
 
-/**
- * @defgroup math Math module
- * @brief Provides utilities to help with mathematics
- * @details This module provides an implementation of common
- * mathematical algorithms and an infinite precision integer.
- *
- * Example usage:
- *
- * @code
- * #include <gears/math.hpp>
- * #include <iostream>
- *
- * namespace math = gears::math;
- *
- * // needed to use _x user defined literal
- * using namespace gears::math::operators;
- *
- * int main() {
- *     auto lhs = 9384721983748274812387232191827321_x;
- *     auto rhs = 2937189237182973865769137697362736_x;
- *     std::cout << (lhs * rhs) << '\n';
- *     std::cout << math::factorial(10) << '\n';
- * }
- * @endcode
- *
- * Output
- * <pre>
- * 27564704404619880556797005156529364384954680388538087951954412110256
- * 3628800
- * </pre>
- *
- */
-
 #endif // GEARS_MATH_HPP

@@ -39,145 +39,65 @@ constexpr long double four_thirds_pi = 4.188790204786390984616857844372670512;
 constexpr long double two_pi = 6.283185307179586476925286766559005768;
 } // detail
 
-/**
- * @defgroup math_constants Mathematical Constants
- * @ingroup math
- * @brief Defines mathematical constants commonly in use.
- * @details These functions compute their respective named constants
- * up to the precision of the type given. The maximum valid precision
- * that is guaranteed to be valid is `std::numeric_limits<T>::digits10 + 2`.
- * This is to allow proper roundtrip calculations. For integer types the
- * computed constant is floored. So `pi<int>()` would return `3`. All
- * constants provided are `constexpr`.
- *
- * Example usage:
- *
- * @code
- * #include <gears/math/constants.hpp>
- *
- * using namespace gears;
- *
- * template<typename T>
- * constexpr T area(T radius) {
- *     return math::pi<T>() * radius * radius;
- * }
- *
- * int main() {
- *     static_assert(area<double>(4) == 50.26548245743669, "...");
- * }
- * @endcode
- *
- * </br>
- */
-
-/**
- * @ingroup math_constants
- * @brief Computes pi with the precision needed.
- */
 template<typename T>
 constexpr T pi() noexcept {
     return static_cast<T>(detail::pi);
 }
 
-/**
- * @ingroup math_constants
- * @brief Computes one half with the precision needed.
- */
 template<typename T>
 constexpr T half() noexcept {
     return static_cast<T>(detail::half);
 }
 
-/**
- * @ingroup math_constants
- * @brief Computes one third with the precision needed.
- */
 template<typename T>
 constexpr T third() noexcept {
     return static_cast<T>(detail::third);
 }
 
-/**
- * @ingroup math_constants
- * @brief Computes √2 with the precision needed.
- */
 template<typename T>
 constexpr T root_two() noexcept {
     return static_cast<T>(detail::root_two);
 }
 
-/**
- * @ingroup math_constants
- * @brief Computes pi with the precision needed.
- */
 template<typename T>
 constexpr T ln_two() noexcept {
     return static_cast<T>(detail::ln_two);
 }
 
-/**
- * @ingroup math_constants
- * @brief Computes half pi with the precision needed.
- */
 template<typename T>
 constexpr T half_pi() noexcept {
     return static_cast<T>(detail::half_pi);
 }
 
-/**
- * @ingroup math_constants
- * @brief Computes one third pi with the precision needed.
- */
 template<typename T>
 constexpr T third_pi() noexcept {
     return static_cast<T>(detail::third_pi);
 }
 
-/**
- * @ingroup math_constants
- * @brief Computes two thirds pi with the precision needed.
- */
 template<typename T>
 constexpr T two_thirds_pi() noexcept {
     return static_cast<T>(detail::two_thirds_pi);
 }
 
-/**
- * @ingroup math_constants
- * @brief Computes one sixth pi with the precision needed.
- */
 template<typename T>
 constexpr T sixth_pi() noexcept {
     return static_cast<T>(detail::sixth_pi);
 }
 
-/**
- * @ingroup math_constants
- * @brief Computes three fourths pi with the precision needed.
- */
 template<typename T>
 constexpr T three_fourths_pi() noexcept {
     return static_cast<T>(detail::three_fourths_pi);
 }
 
-/**
- * @ingroup math_constants
- * @brief Computes four thirds pi with the precision needed.
- */
 template<typename T>
 constexpr T four_thirds_pi() noexcept {
     return static_cast<T>(detail::four_thirds_pi);
 }
 
-/**
- * @ingroup math_constants
- * @brief Computes two pi with the precision needed.
- */
 template<typename T>
 constexpr T two_pi() noexcept {
     return static_cast<T>(detail::two_pi);
 }
-
 } // math
 } // gears
 
