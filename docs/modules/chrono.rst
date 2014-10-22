@@ -3,8 +3,8 @@
 .. namespace:: gears::chrono
 .. _gears-modules-chrono:
 
-Chrono Module
-==================
+Chrono Module --- Time Utilities
+===================================
 
 *Included through* ``<gears/chrono.hpp>``
 

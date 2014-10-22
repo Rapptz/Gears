@@ -3,8 +3,8 @@
 .. namespace:: gears::functional
 .. _gears-modules-functional:
 
-Functional Module
-====================
+Functional Module --- Support for functional programming
+==========================================================
 
 *Included through* ``<gears/functional.hpp>``
 

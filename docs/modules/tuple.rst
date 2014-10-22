@@ -3,8 +3,8 @@
 .. namespace:: gears::tuple
 .. _gears-modules-tuple:
 
-Tuple Module
-===============
+Tuple Module --- Facilities to work with tuples
+=================================================
 
 *Included through* ``<gears/tuple.hpp>``
 

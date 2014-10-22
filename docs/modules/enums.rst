@@ -3,8 +3,8 @@
 .. namespace:: gears::enums
 .. _gears-modules-enums:
 
-Enums Module
-=================
+Enums Module --- Support for enum classes as bitmasks
+=======================================================
 
 *Included through* ``<gears/enums.hpp>``
 

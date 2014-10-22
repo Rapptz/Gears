@@ -1,7 +1,7 @@
 .. _gears-modules:
 
-API Reference
-==================
+Module Reference
+===================
 
 This page hosts the listing of modules in gears and their API reference.
 

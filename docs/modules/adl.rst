@@ -3,8 +3,8 @@
 .. namespace:: gears::adl
 .. _gears-modules-adl:
 
-ADL Module
-==============
+ADL Module --- Suite of functions that help with Argument Dependent Lookup
+=============================================================================
 
 *Included through* ``<gears/adl.hpp>``
 

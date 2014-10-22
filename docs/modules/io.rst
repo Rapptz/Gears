@@ -3,8 +3,8 @@
 .. namespace:: gears::io
 .. _gears-modules-io:
 
-I/O Module
-==============
+I/O Module --- Suite of functions to aid usage of iostreams
+=============================================================
 
 *Included through* ``<gears/io.hpp>``
 
