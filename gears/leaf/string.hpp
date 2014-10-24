@@ -19,8 +19,8 @@
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-#ifndef GEARS_META_CONST_STRING_HPP
-#define GEARS_META_CONST_STRING_HPP
+#ifndef GEARS_LEAF_STRING_HPP
+#define GEARS_LEAF_STRING_HPP
 
 #include <gears/meta/core.hpp>
 #include <gears/meta/indices.hpp>
@@ -28,7 +28,7 @@
 #include <stdexcept>
 
 namespace gears {
-namespace meta {
+namespace leaf {
 /**
  * @ingroup constexpr
  * @brief `constexpr`-enabled string class.
@@ -630,7 +630,7 @@ template<typename CharT, size_t N>
 constexpr basic_string<CharT, N> make_string(const CharT (&arr)[N]) {
     return { arr };
 }
-} // meta
+} // leaf
 } // gears
 
-#endif // GEARS_META_CONST_STRING_HPP
+#endif // GEARS_LEAF_STRING_HPP

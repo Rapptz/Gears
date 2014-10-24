@@ -19,11 +19,11 @@
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-#ifndef GEARS_META_CONST_HPP
-#define GEARS_META_CONST_HPP
+#ifndef GEARS_LEAF_HPP
+#define GEARS_LEAF_HPP
 
-#include <gears/meta/const/string.hpp>
-#include <gears/meta/const/cstdlib.hpp>
+#include <gears/leaf/string.hpp>
+#include <gears/leaf/cstdlib.hpp>
 
 /**
  * @defgroup constexpr Constexpr Utilities
@@ -36,4 +36,4 @@
  * consequence it should work in both C++11 and C++14.
  */
 
-#endif // GEARS_META_CONST_HPP
+#endif // GEARS_LEAF_HPP

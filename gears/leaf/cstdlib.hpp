@@ -19,8 +19,8 @@
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-#ifndef GEARS_META_CONST_CSTDLIB_HPP
-#define GEARS_META_CONST_CSTDLIB_HPP
+#ifndef GEARS_LEAF_CSTDLIB_HPP
+#define GEARS_LEAF_CSTDLIB_HPP
 
 #include <stdexcept>
 #include <type_traits>
@@ -37,7 +37,7 @@
  */
 
 namespace gears {
-namespace meta {
+namespace leaf {
 /**
  * @ingroup constexpr_cstdlib
  * @brief A structure that represents the result of `div`.
@@ -123,7 +123,7 @@ constexpr Integral atoi(const char* str) {
            detail::atoi(str + (*str == '+'), static_cast<Integral>(0)) :
            static_cast<Integral>(-1) * detail::atoi(str + 1, static_cast<Integral>(0));
 }
-} // meta
+} // leaf
 } // gears
 
-#endif // GEARS_META_CONST_CSTDLIB_HPP
+#endif // GEARS_LEAF_CSTDLIB_HPP
