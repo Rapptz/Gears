@@ -6,36 +6,18 @@
 Enums Module --- Support for enum classes as bitmasks
 =======================================================
 
+.. sidebar:: Tutorial
+
+    This page just hosts the API reference.
+
+    For a tutorial and a motivation on why to use this, check the
+    :ref:`tutorial <gears-tutorials-enums>`.
+
 *Included through* ``<gears/enums.hpp>``
 
 This module is meant to help with the usage of enums as bitmasks. C++11 has added support for strongly typed enums through
 the usage of ``enum class`` or ``enum struct``. A big problem with using the strongly typed enums is that the usual
-operators are unavailable for usage. For example, the following code is not well formed:::
-
-    enum class test {
-        one = 1 << 0,
-        two = 1 << 1
-    };
-
-    int main() {
-        auto x = test::one & test::two;
-    }
-
-The purpose of this module is to aid in the usage of enums by making it a little bit easier than having to define
-the entire set of operators yourself. To fix the error above, all you have to do is the following:::
-
-    #include <gears/enums.hpp>
-    using namespace gears::enums::operators;
-
-    enum class test {
-        one = 1 << 0,
-        two = 1 << 1
-    };
-
-    int main() {
-        auto x = test::one & test::two;
-    }
-
+operators are unavailable for usage. More details could be found in the :ref:`tutorial <gears-tutorials-enums>`.
 
 Functions
 -----------

@@ -6,6 +6,12 @@
 Chrono Module --- Time Utilities
 ===================================
 
+.. sidebar:: Tutorial
+
+    This page just hosts the API reference.
+
+    A tutorial for this module will be coming soon.
+
 *Included through* ``<gears/chrono.hpp>``
 
 This module defines utilities that make working with the ``<chrono>`` header
@@ -53,11 +59,6 @@ Example usage can be found below.
 
 Classes
 ----------
-
-.. _gears-modules-chrono-classes-stopwatch:
-
-Stopwatch
-~~~~~~~~~~~
 
 .. class:: basic_stopwatch<Clock>
 

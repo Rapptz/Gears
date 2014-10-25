@@ -6,6 +6,13 @@
 ADL Module --- Suite of functions that help with Argument Dependent Lookup
 =============================================================================
 
+.. sidebar:: Tutorial
+
+    This page just hosts the API reference.
+
+    For a tutorial and a motivation on why to use this, check the
+    :ref:`tutorial <gears-tutorials-adl>`.
+
 *Included through* ``<gears/adl.hpp>``
 
 This module is very simple, allowing for an ADL-enabled function calls.
@@ -13,40 +20,6 @@ This is useful because it allows you to write generic code that relies on certai
 without actually having to specify the ``using`` statement for every function in every line.
 For more information about ADL (or Argument Dependent Lookup), see
 `here <http://en.wikipedia.org/wiki/Argument-dependent_name_lookup>`_.
-
-Example usage:
-
-.. code-block:: cpp
-
-    #include <gears/adl/get.hpp>
-    #include <tuple>
-    #include <iostream>
-
-    namespace adl = gears::adl;
-
-    namespace my {
-    struct get_example {
-        int x;
-        int y;
-    };
-
-    template<size_t N>
-    constexpr int get(const get_example& g) {
-        return N == 0 ? g.x : g.y;
-    }
-    } // my
-
-    int main() {
-        auto tup = std::make_tuple("hello", 3.14);
-        my::get_example f = {10, 11};
-        std::cout << adl::get<0>(tup) << ' ' << adl::get<0>(f);
-    }
-
-Output:
-
-.. code-block:: none
-
-    hello 10
 
 .. _gears-modules-adl-api:
 
