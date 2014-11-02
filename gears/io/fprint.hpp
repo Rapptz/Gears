@@ -29,16 +29,19 @@
 namespace gears {
 namespace io {
 namespace detail {
-template<typename Char>
-inline std::tuple<size_t, bool> parse_integer(const Char*& str, const Char zero) {
-    size_t result = 0;
-    bool b = false;
-    //             checks if a character is a digit
-    while(*str >= zero && *str <= zero + 9) {
-        b = true;
-        result = (result * 10) + (*str++ - zero);
+template<typename T, typename Char>
+inline bool parse_integer(T& num, const Char*& str, const Char zero) {
+    // checks if a character is a digit
+    if(*str >= zero && *str <= zero + 9) {
+        num = 0;
+        do {
+            num = (num * 10) + (*str++ - zero);
+        }
+        while(*str >= zero && *str <= zero + 9);
+
+        return true;
     }
-    return std::make_tuple(result, b);
+    return false;
 }
 
 template<typename Char, typename Trait, typename... Args>
@@ -83,10 +86,9 @@ inline void fprint(std::basic_ostream<Char, Trait>& out, const Char* str, const 
         // actual beginning of format-spec
         changed.reset();
         out.flags((out.dec | out.skipws) & ~out.floatfield);
-        has_integer = false;
 
         // retrieve parameter
-        std::tie(position, has_integer) = parse_integer(str, zero);
+        has_integer = parse_integer(position, str, zero);
 
         if(!has_integer) {
             throw std::runtime_error("numeric parameter expected");
@@ -120,14 +122,14 @@ inline void fprint(std::basic_ostream<Char, Trait>& out, const Char* str, const 
             // check for [width]
             if(Trait::eq(*str, out.widen('*'))) {
                 ++str;
-                std::tie(temp_pos, has_integer) = parse_integer(str, zero);
+                has_integer = parse_integer(temp_pos, str, zero);
                 if(!has_integer) {
                     throw std::runtime_error("expected positional index after *");
                 }
                 apply(args, temp_pos, make_extractor(changed.width));
             }
             else {
-                std::tie(changed.width, std::ignore) = parse_integer(str, zero);
+                parse_integer(changed.width, str, zero);
             }
 
             // check for [.precision]
@@ -135,14 +137,14 @@ inline void fprint(std::basic_ostream<Char, Trait>& out, const Char* str, const 
                 ++str;
                 if(Trait::eq(*str, out.widen('*'))) {
                     ++str;
-                    std::tie(temp_pos, has_integer) = parse_integer(str, zero);
+                    has_integer = parse_integer(temp_pos, str, zero);
                     if(!has_integer) {
                         throw std::runtime_error("expected positional index after *");
                     }
                     apply(args, temp_pos, make_extractor(changed.precision));
                 }
                 else {
-                    std::tie(changed.precision, has_integer) = parse_integer(str, zero);
+                    has_integer = parse_integer(changed.precision, str, zero);
                     if(!has_integer) {
                         throw std::runtime_error("expected precision number after .");
                     }
