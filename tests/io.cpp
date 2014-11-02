@@ -64,7 +64,8 @@ TEST_CASE("Input/Output", "[io]") {
     SECTION("Format", "[io-format]") {
         // basic format
         REQUIRE(string::format("|0:.2f|", 2.142134) == "2.14");
-        REQUIRE(string::format("|0:p| |1:p|", -1, 1) == "-1 +1");
+        REQUIRE(string::format("|0:+| |1:+|", -1, 1) == "-1 +1");
+        REQUIRE(string::format("|0:p|", 1.0) == "1.00000");
         REQUIRE(string::format("0x|0:xu| |0:xb| |0:xub|", 1001) == "0x3E9 0x3e9 0X3E9");
         REQUIRE(string::format("|0:e| |0:eu|", 6e+100) == "6.000000e+100 6.000000E+100");
         REQUIRE(string::format("|0:.3e| |0:.3eu|", 6.1232e+100) == "6.123e+100 6.123E+100");

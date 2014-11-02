@@ -247,7 +247,8 @@ g           :cpp:`std::defaultfloat <io/manip/fixed>`
 x           :cpp:`std::hex <io/manip/hex>`
 o           :cpp:`std::oct <io/manip/hex>`
 d           :cpp:`std::dec <io/manip/hex>`
-p           :cpp:`std::showpos <io/manip/showpos>`
+p           :cpp:`std::showpoint <io/manip/showpoint>`
++           :cpp:`std::showpos <io/manip/showpos>`
 u           :cpp:`std::uppercase <io/manip/uppercase>`
 b           :cpp:`std::showbase <io/manip/showbase>`
 t           :cpp:`std::boolalpha <io/manip/boolalpha>`

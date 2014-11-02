@@ -34,7 +34,7 @@ inline std::tuple<size_t, bool> parse_integer(const Char*& str, const Char zero)
     size_t result = 0;
     bool b = false;
     //             checks if a character is a digit
-    while(*str && (*str >= zero && *str <= zero + 9)) {
+    while(*str >= zero && *str <= zero + 9) {
         b = true;
         result = (result * 10) + (*str++ - zero);
     }
@@ -62,7 +62,7 @@ inline void fprint(std::basic_ostream<Char, Trait>& out, const Char* str, const 
     size_t temp_pos = 0;
     bool has_integer = false;
 
-    while(*str != 0) {
+    while(*str) {
         // not a |
         if(!Trait::eq(*str, pipe)) {
             out << *str++;
@@ -74,7 +74,7 @@ inline void fprint(std::basic_ostream<Char, Trait>& out, const Char* str, const 
         ++str;
 
         // escaped | so format-spec is over
-        if(*str && Trait::eq(*str, pipe)) {
+        if(Trait::eq(*str, pipe)) {
             out << pipe;
             ++str;
             continue;
@@ -93,7 +93,7 @@ inline void fprint(std::basic_ostream<Char, Trait>& out, const Char* str, const 
         }
 
         // check if format spec exists
-        if(*str && Trait::eq(*str, out.widen(':'))) {
+        if(Trait::eq(*str, out.widen(':'))) {
             ++str;
 
             // check for [fill]
@@ -159,7 +159,8 @@ inline void fprint(std::basic_ostream<Char, Trait>& out, const Char* str, const 
             // o  - Set std::oct
             // d  - Set std::dec
             // t  - Set std::boolalpha
-            // p  - Set std::showpos
+            // +  - Set std::showpos
+            // p  - Set std::showpoint
             // g  - Set std::defaultfloat
             while(*str) {
                 if(Trait::eq(*str, out.widen('f'))) {
@@ -190,6 +191,9 @@ inline void fprint(std::basic_ostream<Char, Trait>& out, const Char* str, const 
                     out.setf(out.boolalpha);
                 }
                 else if(Trait::eq(*str, out.widen('p'))) {
+                    out.setf(out.showpoint);
+                }
+                else if(Trait::eq(*str, out.widen('+'))) {
                     out.setf(out.showpos);
                 }
                 else {
@@ -200,7 +204,7 @@ inline void fprint(std::basic_ostream<Char, Trait>& out, const Char* str, const 
             }
         }
 
-        if(*str && Trait::eq(*str, pipe)) {
+        if(Trait::eq(*str, pipe)) {
             // apply the changes
             changed.apply(out);
             // print it out
@@ -218,8 +222,8 @@ inline void fprint(std::basic_ostream<Char, Trait>& out, const Char* str, const 
 }
 } // detail
 
-template<typename Char, typename Trait, typename... Args>
-inline void fprint(std::basic_ostream<Char, Trait>& out, const std::basic_string<Char, Trait>& str, const Args&... args) {
+template<typename Char, typename Trait, typename Alloc, typename... Args>
+inline void fprint(std::basic_ostream<Char, Trait>& out, const std::basic_string<Char, Trait, Alloc>& str, const Args&... args) {
     detail::fprint(out, str.c_str(), args...);
 }
 

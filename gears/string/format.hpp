@@ -27,8 +27,8 @@
 
 namespace gears {
 namespace string {
-template<typename Char, typename Trait, typename... Args>
-inline std::basic_string<Char, Trait> format(const std::basic_string<Char, Trait>& str, const Args&... args) {
+template<typename Char, typename Trait, typename Alloc, typename... Args>
+inline std::basic_string<Char, Trait> format(const std::basic_string<Char, Trait, Alloc>& str, const Args&... args) {
     std::basic_ostringstream<Char, Trait> out;
     io::detail::fprint(out, str.c_str(), args...);
     return out.str();
