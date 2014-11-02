@@ -163,7 +163,8 @@ Everything not enclosed in 'pipes' is considered literal text and untouched in t
 The grammar of the format string is as follows:
 
     .. productionlist:: sf
-        format_string: "|" <`parameter`> [":" `format_spec`] "|"
+        format_string: [<`replacement_field`> | <any character>]*
+        replacement_field: "|" <`parameter`> [":" `format_spec`] "|"
         parameter: <integer>
         format_spec: [`fill`][`align`][`width`]["." `precision`][`verb`]*
         fill: "'" <any character>
