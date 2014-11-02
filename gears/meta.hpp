@@ -29,7 +29,6 @@
 #include <gears/meta/expand.hpp>
 #include <gears/meta/indices.hpp>
 #include <gears/meta/print.hpp>
-#include <gears/meta/const.hpp>
 #include <gears/meta/list.hpp>
 
 /**

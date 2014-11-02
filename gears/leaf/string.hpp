@@ -63,7 +63,7 @@ private:
     CharT str[N];
 
     template<size_t... Indices>
-    constexpr basic_string(const CharT (&arr)[N], index_sequence<Indices...>): str{ arr[Indices]... } {}
+    constexpr basic_string(const CharT (&arr)[N], meta::index_sequence<Indices...>): str{ arr[Indices]... } {}
 
     constexpr size_t rfind_character(CharT c, size_t i) const noexcept {
         return i == 0 && !Traits::eq(str[i], c) ?
@@ -147,7 +147,7 @@ public:
      *
      * @param arr The character array to construct with.
      */
-    constexpr basic_string(const CharT (&arr)[N]): basic_string(arr, make_index_sequence<N>{}) {}
+    constexpr basic_string(const CharT (&arr)[N]): basic_string(arr, meta::make_index_sequence<N>{}) {}
 
     //@{
     /**
@@ -504,7 +504,7 @@ public:
 namespace detail {
 template<typename C, typename T, size_t N, size_t M, size_t... Indices1, size_t... Indices2>
 constexpr basic_string<C, N + M - 1, T> append(const basic_string<C, N, T>& lhs, const basic_string<C, M, T>& rhs,
-                                               index_sequence<Indices1...>, index_sequence<Indices2...>) noexcept {
+                                               meta::index_sequence<Indices1...>, meta::index_sequence<Indices2...>) noexcept {
     return {{ lhs[Indices1]..., rhs[Indices2]...,  T::to_char_type(0) }};
 }
 } // detail
@@ -597,7 +597,7 @@ constexpr bool operator<=(const basic_string<CharT, N, Traits>& lhs, const basic
  */
 template<typename CharT, typename Traits, size_t N, size_t M, typename Result = basic_string<CharT, N + M - 1, Traits>>
 constexpr Result operator+(const basic_string<CharT, N, Traits>& lhs, const basic_string<CharT, M, Traits>& rhs) noexcept {
-    return detail::append(lhs, rhs, make_index_sequence<N - 1>{}, make_index_sequence<M - 1>{});
+    return detail::append(lhs, rhs, meta::make_index_sequence<N - 1>{}, meta::make_index_sequence<M - 1>{});
 }
 
 //@{

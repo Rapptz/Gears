@@ -20,23 +20,23 @@
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 #include <catch.hpp>
-#include <gears/meta/const/cstdlib.hpp>
+#include <gears/leaf/cstdlib.hpp>
 
 // macro to have every static assertion count towards total assertions
 #define required(...) static_assert(__VA_ARGS__, #__VA_ARGS__); REQUIRE(true)
 
-namespace gm = gears::meta;
+namespace gl = gears::leaf;
 
 TEST_CASE("constexpr cstdlib", "[gears-constexpr-cstdlib]") {
-    constexpr auto d = gm::div(9, 4);
+    constexpr auto d = gl::div(9, 4);
     required(d.quot == 1);
     required(d.rem == 2);
 
-    required(gm::abs(-10) == 10);
-    required(gm::abs(-0.0f) == 0.0f);
+    required(gl::abs(-10) == 10);
+    required(gl::abs(-0.0f) == 0.0f);
 
-    required(gm::atoi<int>("10") == 10);
-    required(gm::atoi<long long>("21474836481") == 21474836481LL);
-    required(gm::atoi<int>("-10") == -10);
-    required(gm::atoi<unsigned>("-1") == static_cast<unsigned>(-1));
+    required(gl::atoi<int>("10") == 10);
+    required(gl::atoi<long long>("21474836481") == 21474836481LL);
+    required(gl::atoi<int>("-10") == -10);
+    required(gl::atoi<unsigned>("-1") == static_cast<unsigned>(-1));
 }

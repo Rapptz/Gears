@@ -20,16 +20,16 @@
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 #include <catch.hpp>
-#include <gears/meta/const/string.hpp>
+#include <gears/leaf/string.hpp>
 
 // macro to have every static assertion count towards total assertions
 #define required(...) static_assert(__VA_ARGS__, #__VA_ARGS__); REQUIRE(true)
 
-namespace gm = gears::meta;
+namespace gl = gears::leaf;
 
 TEST_CASE("constexpr strings", "[gears-const-string]") {
-    constexpr auto hello = gm::make_string("hello");
-    required(hello == gm::make_string("hello"));
+    constexpr auto hello = gl::make_string("hello");
+    required(hello == gl::make_string("hello"));
     required(hello.size() == 5);
     required(hello.max_size() == 6);
     required(!hello.empty());
@@ -38,7 +38,7 @@ TEST_CASE("constexpr strings", "[gears-const-string]") {
     required(hello.back() == 'o');
     required(hello[3] == 'l');
 
-    constexpr auto empty = gm::make_string("");
+    constexpr auto empty = gl::make_string("");
     required(empty.empty());
     required(empty.capacity() == 1);
 
@@ -50,12 +50,12 @@ TEST_CASE("constexpr strings", "[gears-const-string]") {
     required(hello.find('l') == 2);
     required(hello.find('l', 3) == 3);
     required(hello.find('x') == hello.npos);
-    required(hello.find(gm::make_string("ll")) == 2);
+    required(hello.find(gl::make_string("ll")) == 2);
     required(hello.find(hello) == 0);
     required(hello.find(empty) == 0);
     required(empty.find('x') == empty.npos);
 
-    constexpr auto hello2 = gm::make_string("hello hello");
+    constexpr auto hello2 = gl::make_string("hello hello");
     required(hello2.find(hello) == 0);
     required(hello2.find(hello, hello.size()) == 6);
 
@@ -65,7 +65,7 @@ TEST_CASE("constexpr strings", "[gears-const-string]") {
     required(hello.rfind('l') == 3);
     required(hello.rfind('l', 0) == hello.npos);
     required(hello.rfind('x') == hello.npos);
-    required(hello.rfind(gm::make_string("ll")) == 2);
+    required(hello.rfind(gl::make_string("ll")) == 2);
     required(hello.rfind(hello) == 0);
     required(hello.rfind(empty) == 5);
     required(empty.rfind('x') == empty.npos);
@@ -75,17 +75,17 @@ TEST_CASE("constexpr strings", "[gears-const-string]") {
     // find_first_of
     required(hello.find_first_of('e') == 1);
     required(hello.find_first_of('l') == 2);
-    required(hello.find_first_of(gm::make_string("abcde")) == 1);
+    required(hello.find_first_of(gl::make_string("abcde")) == 1);
     required(hello2.find_first_of(hello) == 0);
     required(hello2.find_first_of('l') == hello2.find('l'));
-    required(hello.find_first_of(gm::make_string("qzxl")) == 2);
+    required(hello.find_first_of(gl::make_string("qzxl")) == 2);
     required(hello.find_first_of(empty) == hello.npos);
-    required(hello.find_first_of(gm::make_string("abce"), 3) == hello.npos);
-    required(hello.find_first_of(gm::make_string("xyz")) == hello.npos);
+    required(hello.find_first_of(gl::make_string("abce"), 3) == hello.npos);
+    required(hello.find_first_of(gl::make_string("xyz")) == hello.npos);
 
     // find_first_not_of
     required(hello.find_first_not_of('x') == 0);
-    required(hello.find_first_not_of(gm::make_string("elh")) == 4);
+    required(hello.find_first_not_of(gl::make_string("elh")) == 4);
     required(hello.find_first_not_of(hello) == hello.npos);
     required(hello.find_first_not_of(empty) == 0);
     required(hello2.find_first_not_of(hello) == 5);
@@ -94,15 +94,15 @@ TEST_CASE("constexpr strings", "[gears-const-string]") {
     required(hello.find_last_of('x') == hello.npos);
     required(hello.find_last_of('l') == 3);
     required(hello.find_last_of(empty) == hello.npos);
-    required(hello.find_last_of(gm::make_string("abcdel")) == 3);
-    required(hello.find_last_of(gm::make_string("axcl")) == 3);
+    required(hello.find_last_of(gl::make_string("abcdel")) == 3);
+    required(hello.find_last_of(gl::make_string("axcl")) == 3);
     required(hello2.find_last_of('l') == 9);
     required(hello2.find_last_of(hello) == 10);
 
     // find_last_not_of
     required(hello.find_last_not_of('x') == hello.size() - 1);
     required(hello.find_last_not_of(empty) == hello.size() - 1);
-    required(hello.find_last_not_of(gm::make_string("lo")) == 1);
+    required(hello.find_last_not_of(gl::make_string("lo")) == 1);
     required(hello2.find_last_not_of(hello) == 5);
 
     // comparison operators
@@ -115,12 +115,12 @@ TEST_CASE("constexpr strings", "[gears-const-string]") {
     required(hello2 > empty);
     required(hello >= hello);
     required(empty <= hello);
-    required(gm::make_string("cat") > gm::make_string("animal"));
-    required(gm::make_string("dog") > gm::make_string("cat"));
+    required(gl::make_string("cat") > gl::make_string("animal"));
+    required(gl::make_string("dog") > gl::make_string("cat"));
 
     // appending
-    required(hello + gm::make_string(" world") == gm::make_string("hello world"));
-    required(hello + hello == gm::make_string("hellohello"));
+    required(hello + gl::make_string(" world") == gl::make_string("hello world"));
+    required(hello + hello == gl::make_string("hellohello"));
     required(hello + ' ' + hello == hello2);
 }
 
