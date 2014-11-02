@@ -84,6 +84,21 @@ TEST_CASE("Input/Output", "[io]") {
         REQUIRE(string::format("|0:'#>*1.*2f|", 3.14, 10, 5) == "###3.14000");
     }
 
+    SECTION("Format Regressions", "[io-format-regr]") {
+        // test the functions being 'stateless'
+        std::ostringstream ss;
+        ss.fill('#');
+        REQUIRE_NOTHROW(io::fprint(ss, "|0:10|", "hello"));
+        REQUIRE(ss.str() == "     hello");
+        ss.clear();
+        ss.str("");
+        ss.precision(10);
+        REQUIRE_NOTHROW(io::fprint(ss, "|0|", 1.23456789));
+        REQUIRE(ss.str() == "1.23457");
+        ss.clear();
+        ss.str("");
+    }
+
     SECTION("Lines", "[io-lines]") {
         std::istringstream iss("10\n11\n12\n13\n14\n15");
         unsigned number_of_lines = 0;

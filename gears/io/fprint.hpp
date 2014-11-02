@@ -87,7 +87,8 @@ inline void fprint(std::basic_ostream<Char, Trait>& out, const Char* str, const 
         }
 
         // actual beginning of format-spec
-        changed = original;
+        changed.reset();
+        out.flags((out.dec | out.skipws) & ~out.floatfield);
         has_integer = false;
 
         // retrieve parameter
@@ -163,8 +164,6 @@ inline void fprint(std::basic_ostream<Char, Trait>& out, const Char* str, const 
             // t  - Set std::boolalpha
             // p  - Set std::showpos
             // g  - Set std::defaultfloat
-
-            out.unsetf(out.uppercase | out.showbase | out.boolalpha | out.showpos);
             while(*str) {
                 if(Trait::eq(*str, out.widen('f'))) {
                     out.setf(out.fixed, out.floatfield);

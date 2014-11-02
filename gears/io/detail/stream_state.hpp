@@ -31,15 +31,21 @@ template<typename Char, typename Trait>
 struct stream_state {
     using ostream_type = std::basic_ostream<Char, Trait>;
     using istream_type = std::basic_istream<Char, Trait>;
-    std::streamsize width;
-    std::streamsize precision;
-    Char fill;
+    std::streamsize width = 0;
+    std::streamsize precision = 6;
+    Char fill = 0x20;
 
     stream_state() = default;
     stream_state(const stream_state&) = default;
 
     template<typename Stream>
     stream_state(const Stream& s): width(s.width()), precision(s.precision()), fill(s.fill()) {}
+
+    void reset() {
+        width = 0;
+        precision = 6;
+        fill = 0x20;
+    }
 
     template<typename Stream>
     void apply(Stream& s) {
