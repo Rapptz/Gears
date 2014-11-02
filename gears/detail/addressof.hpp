@@ -19,46 +19,17 @@
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-#ifndef GEARS_UTILITY_MAYBE_TRAITS_HPP
-#define GEARS_UTILITY_MAYBE_TRAITS_HPP
+#ifndef GEARS_DETAIL_ADDRESSOF_HPP
+#define GEARS_DETAIL_ADDRESSOF_HPP
 
-#include <gears/meta/enable_if.hpp>
-#include <memory> // addressof
-
+// implements addressof without the <memory> dependency
 namespace gears {
 namespace detail {
-struct has_overloaded_address_of_impl {
-    template<typename T>
-    static auto test(int) -> decltype(std::declval<T&>().operator&(), std::true_type{}) {}
-    template<typename...>
-    static std::false_type test(...);
-};
-
 template<typename T>
-struct has_overloaded_address_of : decltype(has_overloaded_address_of_impl::test<T>(0)) {};
-
-template<typename T, meta::disable_if_t<has_overloaded_address_of<T>> = meta::_>
-constexpr T* address_of(T& t) noexcept {
-    return &t;
-}
-
-template<typename T, meta::enable_if_t<has_overloaded_address_of<T>> = meta::_>
-inline T* address_of(T& t) noexcept {
-    return std::addressof(t);
+inline T* addressof(T& t) {
+    return reinterpret_cast<T*>(&const_cast<char&>(reinterpret_cast<const volatile char&>(t)));
 }
 } // detail
-
-template<typename T>
-class maybe;
-
-template<typename T>
-class maybe<T&>;
-
-template<typename T>
-struct is_maybe : std::false_type {};
-
-template<typename T>
-struct is_maybe<maybe<T>> : std::true_type {};
 } // gears
 
-#endif // GEARS_UTILITY_MAYBE_TRAITS_HPP
+#endif // GEARS_DETAIL_ADDRESSOF_HPP

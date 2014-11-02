@@ -22,6 +22,7 @@
 #ifndef GEARS_IO_LINES_HPP
 #define GEARS_IO_LINES_HPP
 
+#include <gears/detail/addressof.hpp>
 #include <istream>
 #include <string>
 #include <iterator>
@@ -37,7 +38,7 @@ private:
     bool status;
 public:
     line_iterator() noexcept: reader(nullptr), status(false) {}
-    line_iterator(std::basic_istream<CharT, Traits>& out) noexcept: reader(&out) {
+    line_iterator(std::basic_istream<CharT, Traits>& out) noexcept: reader(gears::detail::addressof(out)) {
         status = reader && *reader && std::getline(*reader, value);
     }
 
@@ -56,8 +57,8 @@ public:
         return value;
     }
 
-    auto operator->() noexcept -> decltype(&value) {
-        return &value;
+    auto operator->() noexcept -> decltype(gears::detail::addressof(value)) {
+        return gears::detail::addressof(value);
     }
 
     bool operator==(const line_iterator& other) const noexcept {

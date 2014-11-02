@@ -89,7 +89,7 @@ public:
      *
      * @param object The object to bind the result of parsing to.
      */
-    typed_value(T& object): reference(&object) {}
+    typed_value(T& object): reference(std::addressof(object)) {}
 
 
     /**
