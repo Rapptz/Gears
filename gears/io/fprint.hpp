@@ -41,12 +41,6 @@ inline std::tuple<size_t, bool> parse_integer(const Char*& str, const Char zero)
     return std::make_tuple(result, b);
 }
 
-// optimisation for when sizeof...(Args) == 0
-template<typename Char, typename Trait>
-inline void fprint(std::basic_ostream<Char, Trait>& out, const Char* str) {
-    out << str;
-}
-
 template<typename Char, typename Trait, typename... Args>
 inline void fprint(std::basic_ostream<Char, Trait>& out, const Char* str, const Args&... arguments) {
     // format-string ::= "|" <`parameter`> [":" `format-spec`] "|"
@@ -148,7 +142,10 @@ inline void fprint(std::basic_ostream<Char, Trait>& out, const Char* str, const 
                     apply(args, temp_pos, make_extractor(changed.precision));
                 }
                 else {
-                    std::tie(changed.precision, std::ignore) = parse_integer(str, zero);
+                    std::tie(changed.precision, has_integer) = parse_integer(str, zero);
+                    if(!has_integer) {
+                        throw std::runtime_error("expected precision number after .");
+                    }
                 }
             }
 

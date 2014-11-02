@@ -97,6 +97,12 @@ TEST_CASE("Input/Output", "[io]") {
         REQUIRE(ss.str() == "1.23457");
         ss.clear();
         ss.str("");
+
+        REQUIRE_THROWS(io::fprint(ss, "|0"));
+        REQUIRE_THROWS(io::fprint(ss, "|0|"));
+        REQUIRE_THROWS(io::fprint(ss, "|0:.|", 10));
+        ss.clear();
+        ss.str("");
     }
 
     SECTION("Lines", "[io-lines]") {
