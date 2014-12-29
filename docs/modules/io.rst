@@ -1,4 +1,4 @@
-.. default-domain:: cpp
+.. default-domain:: gcpp
 .. highlight:: cpp
 .. namespace:: gears::io
 .. _gears-modules-io:

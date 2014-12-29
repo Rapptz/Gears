@@ -1,6 +1,6 @@
 :orphan:
 
-.. default-domain:: cpp
+.. default-domain:: gcpp
 .. highlight:: cpp
 .. _gears-tutorials-adl:
 

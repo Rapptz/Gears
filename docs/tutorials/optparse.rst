@@ -1,6 +1,6 @@
 .. _gears-tutorial-optparse:
 .. highlight:: cpp
-.. default-domain:: cpp
+.. default-domain:: gcpp
 
 Optparse Tutorial
 =====================

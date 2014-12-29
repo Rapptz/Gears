@@ -25,15 +25,4 @@
 #include <gears/leaf/string.hpp>
 #include <gears/leaf/cstdlib.hpp>
 
-/**
- * @defgroup constexpr Constexpr Utilities
- * @ingroup meta
- * @brief Provides `constexpr` enabled classes and miscellaneous utilities.
- * @details This submodule includes `constexpr` programming utilities such as
- * strings, arrays, heterogeneous lists, and standard library components that
- * can be made `constexpr` but aren't. These are all made with C++11 enabled
- * `constexpr` rather than the C++14 relaxed `constexpr`. However, as a positive
- * consequence it should work in both C++11 and C++14.
- */
-
 #endif // GEARS_LEAF_HPP
