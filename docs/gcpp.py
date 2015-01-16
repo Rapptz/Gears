@@ -1639,7 +1639,7 @@ class GCPPObject(ObjectDescription):
         name = text_type(ast.prefixedName)
         if theid not in self.state.document.ids:
             # the name is not unique, the first one will win
-            objects = self.env.domaindata['cpp']['objects']
+            objects = self.env.domaindata['gcpp']['objects']
             if not name in objects:
                 signode['names'].append(name)
             signode['ids'].append(theid)
