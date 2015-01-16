@@ -7,11 +7,6 @@ This page hosts the listing of modules in gears and their API reference.
 
 .. toctree::
     :maxdepth: 3
+    :glob:
 
-    modules/adl
-    modules/chrono
-    modules/enums
-    modules/functional
-    modules/io
-    modules/math
-    modules/tuple
+    modules/*
