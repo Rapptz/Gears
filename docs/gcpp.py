@@ -6,7 +6,7 @@
     The C++ language domain. Extended by Rapptz.
 
     :copyright: Copyright 2007-2014 by the Sphinx team, see AUTHORS.
-    :copyright: Copyright 2014 by Rapptz.
+    :copyright: Copyright 2014-2015 by Rapptz.
     :license: BSD, see LICENSE for details.
 
     See http://www.nongnu.org/hcb/ for the grammar.
