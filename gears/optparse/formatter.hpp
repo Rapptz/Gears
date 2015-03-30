@@ -166,7 +166,7 @@ struct formatter {
         std::string out = "subcommands\n";
 
         auto&& max = std::max_element(subs.begin(), subs.end(), [](const subcommand& lhs, const subcommand& rhs) {
-            return lhs.name < rhs.name;
+            return lhs.name.size() < rhs.name.size();
         });
 
         size_t indent = 20u;
@@ -218,22 +218,16 @@ struct formatter {
 
         std::string result = "options:\n";
 
-        auto&& max_name = std::max_element(opts.begin(), opts.end(), [](const option& lhs, const option& rhs) {
-            return lhs.name < rhs.name;
-        });
-
-        auto&& max_meta = std::max_element(opts.begin(), opts.end(), [](const option& lhs, const option& rhs) {
-            return lhs.metavar() < rhs.metavar();
+        auto&& max = std::max_element(opts.begin(), opts.end(), [](const option& lhs, const option& rhs) {
+            auto size_one = lhs.name.size() + 5u + lhs.metavar().size();
+            auto size_two = rhs.name.size() + 5u + rhs.metavar().size();
+            return size_one < size_two;
         });
 
         size_t max_indent = 14u;
 
-        if(max_name != opts.end()) {
-            max_indent += max_name->name.size();
-        }
-
-        if(max_meta != opts.end()) {
-            max_indent += 5u + max_meta->metavar().size();
+        if(max != opts.end()) {
+            max_indent += max->name.size() + 5u + max->metavar().size();
         }
 
         for(auto&& opt : opts) {
@@ -248,16 +242,16 @@ struct formatter {
             const bool has_metavar      = !metavar.empty();
 
             if(has_long_option && has_short_option) {
-                result.append(4, ' ').append(1, '-').append(1, opt.alias).append(", --").append(opt.name);
-                indent -= 10u + opt.name.size();
+                result.append(2, ' ').append(1, '-').append(1, opt.alias).append(", --").append(opt.name);
+                indent -= 8u + opt.name.size();
             }
             else if(has_long_option) {
-                result.append(4, ' ').append("    --").append(opt.name);
-                indent -= 10u + opt.name.size();
+                result.append(2, ' ').append("    --").append(opt.name);
+                indent -= 8u + opt.name.size();
             }
             else if(has_short_option) {
-                result.append(4, ' ').append(1, '-').append(1, opt.alias);
-                indent -= 6u;
+                result.append(2, ' ').append(1, '-').append(1, opt.alias);
+                indent -= 4u;
             }
 
             if(has_metavar) {
@@ -278,7 +272,7 @@ struct formatter {
                 continue;
             }
 
-            result.append(wrap(opt.help, indent));
+            result.append(wrap(opt.help, max_indent));
         }
 
         return result;
